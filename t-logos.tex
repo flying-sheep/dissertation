@@ -1,0 +1,24 @@
+\definecolor[lmutumgray][s=.65]
+\definecolor[lmugreen][c=1, y=.95, k=.5]
+\definecolor[tumblue] [c=1, m=.43]
+
+\def\lmu{
+    %LMU-Logo. Base height 0.38
+    \starttikzpicture[scale=3.5]
+    %L
+    \fill [fill=lmugreen] (0,.38) -- (0,0) -- (.15,0) -- (.15,.025) -- (.025,.025) -- (.025,.38);
+    %M
+    \fill [fill=lmugreen, xshift=2mm] (0,0) |- (.1,.38) -- (.175,.1) -- (.25,.38) -| (.35,0) -| (.3,.35) -- (.2,0) -- (.15,0) -- (.05,.35) |- (0,0);
+    %U
+    \fill [fill=lmugreen, xshift=6mm] (0,.1) |- (.1,.38) -- (.1,.1) arc (180:360:.05 and .03) |- (.3,.38) -- (.3,.1) arc (360:180:.15 and .1);
+    \stoptikzpicture
+}
+
+\def\tum{
+    %TUM-Logo. base height: .5
+    \starttikzpicture[scale=2.66]
+    \fill [fill=tumblue] (0,.5) -| (.4,.1) -| (.5,.5) -| (1,0) -| (.9,.4) -| (.8,0) -| (.7,.4) -| (.6,0) -| (.3,.4) -| (.2,.0) -| (.1,.4) -| (0,.5);
+    \stoptikzpicture
+}
+
+\endinput

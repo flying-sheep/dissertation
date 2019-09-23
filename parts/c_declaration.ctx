@@ -1,0 +1,42 @@
+\startcomponent c_declaration
+\product prd_dissertation
+
+\startalignment[middle]
+TECHNISCHE UNIVERSITÄT MÜNCHEN
+
+\vfill
+
+Wissenschaftszentrum Weihenstephan für Ernährung, Landnutzung und Umwelt
+
+\vfill
+
+{\tfb\bf \title}
+
+\blank[big]
+
+{\tfb\em \author}
+\stopalignment
+
+\vfill
+
+\noindentation Vollständiger Abdruck der von dem Wissenschaftszentrum Weihenstephan für Ernährung, Landnutzung und Umwelt — Lehrstuhl M12 (Mathematische Modellierung biologischer Systeme) der Technischen Universität München zur Erlangung des akademischen Grades eines
+
+\startalignment[middle]
+Doktors der Naturwissenschaften (Dr. rer. nat.)
+\stopalignment
+
+\noindentation genehmigten Dissertation.
+
+\startdesc{Vorsitzender:}\crlf
+Univ.-Prof. Dr. M. Hrabě de Angelis
+\stopdesc
+\startdesc{Prüfer der Dissertation:}
+\startitemize[1]
+\item Univ.-Prof. Dr. Dr. F. J. Theis
+\item \TODO{Prüfer}
+\stopitemize
+\stopdesc
+
+\noindentation Die Dissertation wurde am \underbar{\color[white]{01.01.2001}}\ bei der Technischen Universität München eingereicht und durch die Fakultät Wissenschaftszentrum Weihenstephan für Ernährung, Landnutzung und Umwelt am \underbar{\color[white]{01.01.2001}}\ angenommen.
+
+\stopcomponent

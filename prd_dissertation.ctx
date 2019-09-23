@@ -1,0 +1,82 @@
+% !TEX program = context
+
+% https://docs.google.com/document/d/17HxWt5IcTeqwtI7X3_eT4jgTgd7zvFO_ZBZXjYMqyJ0/edit#
+% /home/angerer/Dropbox/Arbeit/lebenslauf/cv.ctx
+% /home/angerer/Analysis/destiny-2.0-poster/meins.ctx
+% /home/angerer/Dropbox/Uni/Masterarbeit/thesis/main.ctx 
+% ∀∃∄ ∈∉ ≤≥≙≠ ⋀⋁∧∨ ∩∪ ⊂⊄⊆⊈ ⊃⊅⊇⊉ ∑∏∫∞ ⇒⇔ ∎
+% ⌀≡∑ⁿe∕n           ∅≡{}           ε
+
+
+\startproduct prd_dissertation
+\environment env_dissertation.ctx
+
+\def\TODO#1{\color[red]{{\bf TODO:} #1}}
+
+\starttext
+
+\setuppagenumbering[state=stop]
+\setupheader[state=stop]
+
+\startstandardmakeup[doublesided=no]
+
+\tum
+
+\vfill
+
+\framed[frame=off, topframe=on, bottomframe=on, width=\textwidth, align=middle]{
+\tfd \title
+}
+
+\vfill
+
+\startalignment[middle]
+\author
+\stopalignment
+
+\vfill
+
+\startalignment[middle]
+\date
+\stopalignment
+
+\vfill
+
+\stopstandardmakeup
+
+%\page[empty]
+
+\component c_declaration.ctx
+
+\page[empty]
+
+\setuppagenumbering[state=start]
+\setupheader[state=start]
+
+\startfrontmatter
+
+\component c_danksagung.ctx
+\component c_abstract.ctx
+\component c_publist.ctx
+
+\completecontent[criterium=all]
+
+\stopfrontmatter
+
+\startbodymatter
+
+\component c_introduction.ctx
+%\component c_methods.ctx
+%\component c_conclusion.ctx
+
+\completepublications[criterium=text]
+
+%\startchapter[title=Appendix]
+%\copypages[../code/mca/mca.pdf][n=8]
+%\stopchapter
+
+\stopbodymatter
+
+\stoptext
+
+\stopproduct

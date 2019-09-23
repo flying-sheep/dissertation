@@ -1,0 +1,13 @@
+\startcomponent c_introduction
+\product prd_dissertation
+
+\startchapter[reference=intro, title=Introduction]
+
+\TODO{Introduction}
+
+\cite{Zunder2015}
+\cite{Angerer2016}
+
+\stopchapter
+
+\stopcomponent

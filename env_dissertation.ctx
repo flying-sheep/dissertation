@@ -1,0 +1,245 @@
+\startenvironment env_dissertation
+\usepath[{parts}]
+
+\enableregime[utf-8]
+\mainlanguage[en]
+
+\def\title{Enabling technologies for visualization and analysis of single cell RNA-Seq data}
+\def\author{Philipp Angerer}
+\def\kindofwork{PhD Thesis}
+\def\topicofwork{Computational Biology}
+
+% Page layout
+\setuplayout[
+	alternative=doublesided,
+	width=middle,
+	headerdistance=0cm,
+	header=1cm,
+	footerdistance=0cm,
+	footer=0cm,
+]
+% Page numbering
+\setuppagenumbering[
+	state=start,
+	alternative=singlesided,
+	location={header, right},
+	style=sans,
+	way=bypart,
+	sectionnumber=no,
+	strut=yes,
+]
+% Headers & footers
+\setupheader[text][after=\vskip 4pt \hrule]
+\setupheadertexts
+	[{\pagenumber}]
+	[{\getmarking[chapternumber] \getmarking[chapter]}]
+	[{\pagenumber}]
+	[{\getmarking[chapternumber] \getmarking[chapter]}]
+
+% Allow colors
+\setupcolors[state=start]
+\setupbar[color=black]
+% Links & document metadata
+\setupinteraction[
+	state=start,
+	color=,
+	contrastcolor=,
+	% Document metadata
+	title=\title,
+	subtitle={\kindofwork\ in \topicofwork},
+	author=\author,
+	% Don’t switch to fit page mode on link click
+	focus=standard,
+]
+% Make all section titles interactive
+\setupcombinedlist[content][interaction=all]
+
+% Which PDF bookmarks to create and which ones to open
+\placebookmarks[chapter,section,subsection][chapter,section]
+\setupinteractionscreen[option=bookmark]
+
+% % Vim syntax highlighting
+%\usemodule[vim]
+%\definevimtyping[python][syntax=python, strip=yes, lines=split, escape=on]
+%\definevimtyping[R][syntax=r, strip=yes]
+
+% Font settings
+\definefontfamily[myfonts][serif][TeX Gyre Pagella] %Palatino
+\definefontfamily[myfonts][math][TeX Gyre Pagella Math]
+\definefontfamily[myfonts][sans][TeX Gyre Heros]   %Helvetica
+\definefontfamily[myfonts][mono][Source Code Pro]
+\setupbodyfont[myfonts, 12pt]
+
+% Typography settings
+\setupalign[hz, hanging] % Microtypography: Font expansion, Protuding punctuation
+\definefontfeature[default][default][expansion=quality, protrusion=quality, onum=yes]
+\setupbodyfontenvironment[default][em=italic] %italic instead of slanted
+\setupindenting[yes, medium] % Indent paragraph starts
+\setbreakpoints[compound] % Allow breaking after dashes
+
+% Heading style
+\setuphead[chapter]      [style=\ss\bfc, align=flushleft]
+\setuphead[section]      [style=\ss\bfb, align=flushleft]
+\setuphead[subsection]   [style=\ss\bfa, align=flushleft]
+\setuphead[subsubsection][style=\ss\bf,  align=flushleft]
+
+% List environments
+\definedescription[desc][
+	headstyle=bold, style=normal,
+	align=flushleft, alternative=hanging,
+	width=broad, margin=1cm,
+]
+
+% Floating environments
+\setupcombinations[location=top]
+\definefloat[listing][listings]
+\definefloat[subfigure][subfigures]
+\setupcaption[subfigure][number=no, style=bold, location=top]
+
+% Tables
+\setupTABLE[c][each][align={middle,lohi},frame=off]
+
+\usemodule[database]
+\defineseparatedlist
+	[TSV]
+	[separator=tab,first=\bTR,last=\eTR,left=\bTD,right=\eTD]
+\defineseparatedlist
+	[CSV]
+	[separator=comma,first=\bTR,last=\eTR,left=\bTD,right=\eTD]
+
+%\startseparatedlist[TSV]
+%\startTSV
+%\processseparatedfile[TSV][filename]
+
+% Citations/Bibliography
+\setupbibtex[database=bib/\jobname, sort=author]
+\setuppublications[alternative=apa, criterium=all, numbering=no]
+%\setuppublications[numbering=yes]
+\def\inlinecite[#1]{\cite[authoryear][#1]}
+\newbibfield[timestamp]
+\setuppublicationlayout[electronic]{%
+	\insertauthors{}{. }{}%
+	\inserttitle{}{ }{}%
+	\inserturl{\bgroup\tt}{\egroup\ }{}%
+	\inserttimestamp{accessed:}{ }{}%
+	\insertnote{ }{.}{}%
+}
+
+\setupexternalfigures[directory=imgs]
+% Modules
+%\usemodule[newmat]
+%\usemodule[chemic]
+
+\usemodule[tikz]
+%\usetikzlibrary[positioning]
+%\usetikzlibrary[decorations.pathreplacing]
+%\usetikzlibrary[shapes]
+%\usetikzlibrary[shadings]
+%\usetikzlibrary[calc]
+%\usetikzlibrary[external]
+%\tikzexternalize[prefix=imgs/]
+
+%\usemodule[pgfplots]
+%\pgfplotsset{compat=1.10}
+%\usemodule[pgfplotstable]
+%\usepgfplotslibrary[groupplots]
+
+\usemodule[logos]
+
+%\definemathcommand[cdf][nolop]{\mfunction{cdf}}
+%\definemathcommand[Cov][nolop]{\mfunction{Cov}}
+%\definemathcommand[Var][nolop]{\mfunction{Var}}
+%\definemathcommand[argmin][limop]{\mfunction{argmin}}
+%\definemathcommand[argmax][limop]{\mfunction{argmax}}
+
+% % http://tex.stackexchange.com/questions/60950/how-to-draw-cdf-of-normal-distribution-in-tikz
+%\tikzset{
+%	declare function={
+%		normcdf(\x,\mu,\s)=1/(1 + exp(-0.07056*((\x-\mu)/\s)^3 - 1.5976*(\x-\mu)/\s));
+%	}
+%}
+
+%\pgfmathdeclarefunction{gauss}{2}{%
+%	\pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}%
+%}
+
+% % for i in range(11): print('rgb({}mm)=({s[0]},{s[1]},{s[2]});'.format(i*8, s=Spectral(i, bytes=False)))
+%\pgfplotsset{
+%	every axis title/.style={at={(0.5,1)},above,yshift=6pt,font=\bold},
+%	colormap={spectral}{%
+%		rgb(0mm)=(0.61,0.0,0.25);
+%		rgb(8mm)=(0.82,0.23,0.3);
+%		rgb(16mm)=(0.95,0.42,0.26);
+%		rgb(24mm)=(0.98,0.67,0.37);
+%		rgb(32mm)=(0.99,0.87,0.54);
+%		rgb(40mm)=(0.99,0.99,0.74);
+%		rgb(48mm)=(0.9,0.96,0.59);
+%		rgb(56mm)=(0.66,0.86,0.64);
+%		rgb(64mm)=(0.4,0.76,0.64);
+%		rgb(72mm)=(0.19,0.52,0.73);
+%		rgb(80mm)=(0.36,0.3,0.63)},
+%	colormap={purd}{%
+%		rgb255=(103,0,31)
+%		rgb255=(152,0,67)
+%		rgb255=(206,18,86)
+%		rgb255=(231,41,138)
+%		rgb255=(223,101,176)
+%		rgb255=(201,148,199)
+%		rgb255=(212,185,218)
+%		rgb255=(231,225,239)
+%		rgb255=(247,244,249)},
+%}
+
+%\pgfplotsset{
+%	% this transformation ensures that every input argument is
+%	% transformed from -0.2 : 0.5 -> -0.5,0.5 
+%	% and every tick label is transformed back:
+%	nonlinear colormap trafo/.code 2 args={
+%		\def\nonlinearscalefactor{((#2)/(#1))}%
+%		\pgfkeysalso{%
+%			y coord trafo/.code={%
+%				\pgfmathparse{##1 < 0 ? -1*##1*\nonlinearscalefactor : ##1}%
+%			},
+%			y coord inv trafo/.code={%
+%				\pgfmathparse{##1 < 0 ? -1*##1/\nonlinearscalefactor : ##1}%
+%			},
+%		}%
+%	},
+%	nonlinear colormap around 0/.code 2 args={
+%		\def\nonlinearscalefactor{((#2)/(#1))}%
+%		\pgfkeysalso{
+%			colorbar style={
+%				nonlinear colormap trafo={#1}{#2},
+%				%
+%				% OVERRIDE this here. The value is *only* used to
+%				% generate a nice axis, it does not affect the data.
+%				% Note that these values will be mapped through the
+%				% colormap trafo as defined above.
+%				point meta min={#1},
+%				point meta max={#2},
+%			},
+%			%
+%			% this here is how point meta is computed for the plot.
+%			% It means that a point meta of -0.2 will actually become -0.5
+%			% Thus, the *real* point meta min is -0.5... but we
+%			% override it above.
+%			point meta={y < 0 ? -y*\nonlinearscalefactor : y},
+%		}%
+%	},
+%}
+
+
+% Front and body part definitions
+\definestructureconversionset[frontpart:pagenumber][][romannumerals]
+\definestructureconversionset[bodypart:pagenumber] [][numbers]
+\setuplist[chapter][pageconversionset=pagenumber]
+\startsectionblockenvironment[frontpart]
+\setupuserpagenumber[numberconversion=romannumerals]
+\setcounter[userpage][1]
+\stopsectionblockenvironment
+\startsectionblockenvironment[bodypart]
+\setupuserpagenumber[numberconversion=numbers]
+\setcounter[userpage][1]
+\stopsectionblockenvironment
+
+\stopenvironment

@@ -1,0 +1,32 @@
+\startcomponent c_abstract
+\product prd_dissertation
+
+% \unprotect
+% \unexpanded\def\placepublication#1{
+% 	\def\currentpublicationkey{#1}%
+% 	%\ctxlua{bibtex.hacks.registerplaced("#1")}%
+% 	\def \currentlist               {pubs}%
+% 	\edef\currentlistentrynumber    {\number\bibtexcounter}%
+% 	\let \currentlistentrytitle     \bibtexpubtext
+% 	\let \currentlistentrypagenumber\empty
+% 	\strc_lists_apply_renderingsetup%
+% }
+% \protect
+
+\starttitle[title=List of publications]
+
+% \def\publistnumber#1{\romannumerals{#1}\hfill~}
+\def\publistnumber#1{\expandafter\message{>>>#1}#1\hfill~}
+
+{
+% \setuplist[pubs][numbercommand=\publistnumber]
+\setuppublicationlist[numbercommand=\publistnumber]
+\doplacepublicationindeed{Angerer2016}
+\doplacepublicationindeed{Angerer2017}
+\doplacepublicationindeed{Wolf2017}
+\doplacepublicationindeed{Uzbas2019}
+% \doplacepublicationindeed{Angerer2019}
+}
+
+\stoptitle
+\stopcomponent

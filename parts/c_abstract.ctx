@@ -1,0 +1,14 @@
+\startcomponent c_abstract
+\product prd_dissertation
+
+\starttitle[title=Abstract]
+\TODO{Abstract}
+\stoptitle
+
+\language[de]
+\starttitle[title=Zusammenfassung]
+\TODO{Zusammenfassung}
+\stoptitle
+\language[en]
+
+\stopcomponent

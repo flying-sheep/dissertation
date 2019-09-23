@@ -1,0 +1,18 @@
+\startcomponent c_danksagung
+\product prd_dissertation
+
+\language[de]
+\starttitle[title=Danksagung]
+{\tfa\ss
+
+\setupindenting[no]
+\setupwhitespace[line]
+\setupinterlinespace[medium]
+
+\TODO{Danksagung}
+
+}
+\stoptitle
+\language[en]
+
+\stopcomponent

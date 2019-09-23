@@ -1,0 +1,6 @@
+{
+    "latex-workshop.latex.search.rootFiles.include": [
+        "**/*.tex",
+        "**/*.ctx"
+    ]
+}
