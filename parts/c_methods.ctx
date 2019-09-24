@@ -5,6 +5,54 @@
 
 \startsection[title={Diffusion Maps}]
 \cite[Coifman2005] \cite[Haghverdi2015] \cite[Haghverdi2016] \cite[Angerer2016]
+
+
+\startplacefigure[title={Model visualisation}]
+	\startfloatcombination[2*1]
+	\startplacesubfigure[title=Data]
+		\hbox{
+		\starttikzpicture
+			\draw (0,0) rectangle (3, 5);
+			\node at (3.25,2.5) {$↪$};
+			\node at (1.5,2.5) {\tfa $x_{gc}$};
+			\draw[decorate, decoration={brace, amplitude=10pt}, xshift=-4pt]
+				(0,0) -- node[left=10pt, rotate=90, anchor=south] {$c ∈ \{1, …, C\}$} (0,5);
+			\draw[decorate, decoration={brace, amplitude=10pt}, yshift=4pt]
+				(0,5) -- node[above=10pt] {$g ∈ \{1, …, G\}$} (3,5);
+			\scope[shift={(3.5,0)}]
+			\draw (0,0) rectangle (2, 5);
+			\node at (1,2.5) {\tfa $s_{pc}$};
+			\draw[decorate, decoration={brace, amplitude=10pt}, yshift=4pt]
+				(0,5) -- node[above=10pt] {$p ∈ \{1, …, P\}$} (2,5);
+			\endscope
+		\stoptikzpicture
+		}
+	\stopplacesubfigure
+	\startplacesubfigure[title={Gene expression differential estimation}]
+		\hbox{
+		\starttikzpicture
+			\startaxis[
+				axis equal,
+				width=8cm,
+				colormap name=viridis,
+				colorbar,
+				colorbar style={title=Expression, ticks=none},
+				ticks=none,
+				xlabel={$s_{1}$},
+				ylabel={$s_{2}$}
+			]
+			\addplot[only marks, scatter, point meta=explicit]
+				table[x=DC1, y=DC2, meta=X920]
+				{scdata.dat};
+			\draw[red, dashed, thick] (-0.00,-0.02) circle (0.04);
+			\draw[red, dashed, thick] (-0.05, 0.10) circle (0.02);
+			\stopaxis
+		\stoptikzpicture
+		}
+	\stopplacesubfigure
+	\stopfloatcombination
+\stopplacefigure
+
 \stopsection
 
 \stopchapter

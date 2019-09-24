@@ -131,18 +131,22 @@
 %\usemodule[chemic]
 
 \usemodule[tikz]
-%\usetikzlibrary[positioning]
-%\usetikzlibrary[decorations.pathreplacing]
+\usetikzlibrary[positioning]
+\usetikzlibrary[decorations.pathreplacing]
 %\usetikzlibrary[shapes]
 %\usetikzlibrary[shadings]
-%\usetikzlibrary[calc]
+\usetikzlibrary[calc]
 %\usetikzlibrary[external]
 %\tikzexternalize[prefix=imgs/]
 
-%\usemodule[pgfplots]
-%\pgfplotsset{compat=1.10}
-%\usemodule[pgfplotstable]
+\usemodule[pgfplots]
+\pgfplotsset{compat=1.14}
+\usemodule[pgfplotstable]
 %\usepgfplotslibrary[groupplots]
+
+\pgfplotsset{
+	table/search path={data},
+}
 
 \usemodule[logos]
 
