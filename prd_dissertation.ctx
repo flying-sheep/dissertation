@@ -61,7 +61,9 @@
 \component c_methods.ctx
 \component c_conclusion.ctx
 
-\completepublications[criterium=text]
+\startchapter[title=References]
+\doplacepublications[criterium=text]
+\stopchapter
 
 %\startchapter[title=Appendix]
 %\copypages[../code/mca/mca.pdf][n=8]
