@@ -1,13 +1,5 @@
 % !TEX program = context
 
-% https://docs.google.com/document/d/17HxWt5IcTeqwtI7X3_eT4jgTgd7zvFO_ZBZXjYMqyJ0/edit#
-% /home/angerer/Dropbox/Arbeit/lebenslauf/cv.ctx
-% /home/angerer/Analysis/destiny-2.0-poster/meins.ctx
-% /home/angerer/Dropbox/Uni/Masterarbeit/thesis/main.ctx 
-% ∀∃∄ ∈∉ ≤≥≙≠ ⋀⋁∧∨ ∩∪ ⊂⊄⊆⊈ ⊃⊅⊇⊉ ∑∏∫∞ ⇒⇔ ∎
-% ⌀≡∑ⁿe∕n           ∅≡{}           ε
-
-
 \startproduct prd_dissertation
 \environment env_dissertation.ctx
 
@@ -24,9 +16,9 @@
 
 \vfill
 
-\framed[frame=off, topframe=on, bottomframe=on, width=\textwidth, align=middle]{
-\tfd \title
-}
+\framed
+    [frame=off, topframe=on, bottomframe=on, width=\textwidth, align=middle]
+    {\tfd \title}
 
 \vfill
 
