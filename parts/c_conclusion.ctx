@@ -1,7 +1,7 @@
 \startcomponent c_conclusion
 \product prd_dissertation
 
-\startchapter[reference=intro, title=Conclusion]
+\startchapter[reference=conclusion, title=Conclusion]
 
 \TODO{Conclusion}
 

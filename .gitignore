@@ -1,6 +1,8 @@
+/prd_dissertation.pgf
+
 *.aux
 *.bbl
 *.blg
 *.log
 *.pdf
-*.tuc 
+*.tuc

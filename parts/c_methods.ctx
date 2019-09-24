@@ -1,9 +1,11 @@
 \startcomponent c_methods
 \product prd_dissertation
 
-\startchapter[reference=intro, title=Methods]
+\startchapter[reference=methods, title=Methods]
 
-\TODO{Methods}
+\startsection[title={Diffusion Maps}]
+\cite[Coifman2005] \cite[Haghverdi2015] \cite[Haghverdi2016] \cite[Angerer2016]
+\stopsection
 
 \stopchapter
 
