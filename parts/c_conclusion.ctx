@@ -1,0 +1,10 @@
+\startcomponent c_conclusion
+\product prd_dissertation
+
+\startchapter[reference=intro, title=Conclusion]
+
+\TODO{Conclusion}
+
+\stopchapter
+
+\stopcomponent

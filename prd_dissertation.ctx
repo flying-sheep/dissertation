@@ -58,8 +58,8 @@
 \startbodymatter
 
 \component c_introduction.ctx
-%\component c_methods.ctx
-%\component c_conclusion.ctx
+\component c_methods.ctx
+\component c_conclusion.ctx
 
 \completepublications[criterium=text]
 

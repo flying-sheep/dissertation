@@ -1,0 +1,10 @@
+\startcomponent c_methods
+\product prd_dissertation
+
+\startchapter[reference=intro, title=Methods]
+
+\TODO{Methods}
+
+\stopchapter
+
+\stopcomponent
