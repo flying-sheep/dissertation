@@ -91,10 +91,13 @@
 ]
 
 % Floating environments
-\setupcombinations[location=top]
+\setupcombinations[location=top, alternative=text]
 \definefloat[listing][listings]
 \definefloat[subfigure][subfigures]
-\setupcaption[subfigure][number=no, style=bold, location=top]
+\setupfloat[subfigure][local=yes]
+\setupcaption[subfigure][number=yes, numberconversion=a, style=bold, location=top]
+\setuplabeltext[subfigure=]
+\appendvalue{stopplacefigure}{\resetcounter[subfigure]}
 
 % Tables
 \setupTABLE[c][each][align={middle,lohi},frame=off]

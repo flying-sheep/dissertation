@@ -9,7 +9,7 @@
 
 \startplacefigure[title={Model visualisation}]
 	\startfloatcombination[2*1]
-	\startplacesubfigure[title=Data]
+	\startplacesubfigure[title={Data and embedding}]
 		\hbox{
 		\starttikzpicture
 			\draw (0,0) rectangle (3, 5);
