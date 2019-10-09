@@ -3,8 +3,16 @@
 
 \startchapter[reference=methods, title=Methods]
 
-\startsection[title={Diffusion Maps}]
-\cite[Coifman2005] \cite[Haghverdi2015] \cite[Haghverdi2016] \cite[Angerer2016]
+\startsection[title={Dimensionality Reduction Methods}]
+
+\startsubsection[title={Machine learning}]
+\stopsubsection
+
+\startsubsection[title={Spectral decomposition}]
+Principal Component Analysis
+
+\startsubsubsection[title={Diffusion Maps}]
+ Diffusion maps are another spectral decomposition of data. \cite[Coifman2005] \cite[Haghverdi2015] \cite[Haghverdi2016] \cite[Angerer2016]
 
 
 \startplacefigure[title={Model visualisation}]
@@ -52,6 +60,10 @@
 	\stopplacesubfigure
 	\stopfloatcombination
 \stopplacefigure
+
+\stopsubsubsection
+
+\stopsubsection
 
 \stopsection
 
