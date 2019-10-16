@@ -62,7 +62,7 @@
 \component c_conclusion.ctx
 
 \startchapter[title=References]
-\doplacepublications[criterium=text]
+\placebtxrendering[main][method=global]
 \stopchapter
 
 %\startchapter[title=Appendix]

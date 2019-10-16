@@ -115,18 +115,20 @@
 %\processseparatedfile[TSV][filename]
 
 % Citations/Bibliography
-\setupbibtex[database=bib/\jobname, sort=author]
-\setuppublications[alternative=apa, criterium=all, numbering=no]
-%\setuppublications[numbering=yes]
-\def\inlinecite[#1]{\cite[authoryear][#1]}
-\newbibfield[timestamp]
-\setuppublicationlayout[electronic]{%
-	\insertauthors{}{. }{}%
-	\inserttitle{}{ }{}%
-	\inserturl{\bgroup\tt}{\egroup\ }{}%
-	\inserttimestamp{accessed:}{ }{}%
-	\insertnote{ }{.}{}%
-}
+% http://pragma-ade.nl/general/manuals/mkiv-publications.pdf
+\usebtxdataset[main][bib/\jobname.bib]
+\setupbtx[dataset=main] % make cite use this
+\definebtxrendering[main][apa][dataset=main, sorttype=authoryear, numbering=no]
+\setupbtx[default:cite][alternative=authoryear]
+% \newbibfield[timestamp]
+% \setuppublicationlayout[electronic]{%
+% 	\insertauthors{}{. }{}%
+% 	\inserttitle{}{ }{}%
+% 	\inserturl{\bgroup\tt}{\egroup\ }{}%
+% 	\inserttimestamp{accessed:}{ }{}%
+% 	\insertnote{ }{.}{}%
+% }
+\def\inlinecite[#1]{\cite[authoryears][#1]}
 
 \setupexternalfigures[directory=imgs]
 % Modules
