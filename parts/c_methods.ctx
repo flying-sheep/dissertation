@@ -6,13 +6,19 @@
 \startsection[title={Dimensionality Reduction Methods}]
 
 \startsubsection[title={Machine learning}]
+% https://nbisweden.github.io/workshop-scRNAseq/slides2019/Dimensionality_reduction_P_Czarnewski_2019.pdf
+In order to optimize the embedding for certain use cases, nonlinear embedding functions can be learned. A common goal is to represent relationships in the data as faithfully as possible in a 2- or 3-dimensional embedding that can be displayed on a screen or paper. This is possible since the intrinsic dimensionality of transcriptomic data is low and can therefore be flattened without losing too much meaning \cite[ding2018].
+
+One such machine learning driven method, t-distributed stochastic neighborhood embedding (t-SNE, \inlinecite[vandermaaten2008]), remains the most popular dimensionality reduction method \cite[kobak2019]. The more recent method UMAP \cite[mcinnes2018] was designed to fix \TODO{what}. \inlinecite[kobak2019] showed that t-SNE  with a data-driven selection of metaparameters still outperforms UMAP under some circumstances.
 \stopsubsection
 
 \startsubsection[title={Spectral decomposition}]
 Principal Component Analysis
 
+While the intrinsic dimensionality of the data is low, more complex datasets cannot be faithfully represented by a low number of (linear) principal components \cite[lenz2016].
+
 \startsubsubsection[title={Diffusion Maps}]
- Diffusion maps are another spectral decomposition of data. \cite[Coifman2005] \cite[Haghverdi2015] \cite[Haghverdi2016] \cite[Angerer2016]
+ Diffusion maps are another spectral decomposition of data. \cite[coifman2005] It preserves global structures and the pseudotemporal ordering of cells better than t-SNE \cite[haghverdi2015] \cite[haghverdi2016] \cite[angerer2016]
 
 
 \startplacefigure[title={Model visualisation}]
