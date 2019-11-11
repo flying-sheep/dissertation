@@ -9,7 +9,7 @@
 % https://nbisweden.github.io/workshop-scRNAseq/slides2019/Dimensionality_reduction_P_Czarnewski_2019.pdf
 In order to optimize the embedding for certain use cases, nonlinear embedding functions can be learned. A common goal is to represent relationships in the data as faithfully as possible in a 2- or 3-dimensional embedding that can be displayed on a screen or paper. This is possible since the intrinsic dimensionality of transcriptomic data is low and can therefore be flattened without losing too much meaning \cite[ding2018].
 
-One such machine learning driven method, t-distributed stochastic neighborhood embedding (t-SNE, \inlinecite[vandermaaten2008]), remains the most popular dimensionality reduction method \cite[kobak2019]. The more recent method UMAP \cite[mcinnes2018] was designed to fix \TODO{what}. \inlinecite[kobak2019] showed that t-SNE  with a data-driven selection of metaparameters still outperforms UMAP under some circumstances.
+One such machine learning driven method, t-distributed stochastic neighborhood embedding (t-SNE, \inlinecite[vandermaaten2008]), remains the most popular dimensionality reduction method \cite[kobak2019]. The more recent method UMAP \cite[mcinnes2018] was designed to fix \TODO{what} \cite[becht2018]. \inlinecite[kobak2019] showed that t-SNE with a data-driven selection of metaparameters still outperforms UMAP under some circumstances.
 \stopsubsection
 
 \startsubsection[title={Spectral decomposition}]

@@ -1,7 +1,7 @@
 src_files = prd_dissertation.ctx $(wildcard parts/*.ctx)
 
 prd_dissertation.pdf: $(src_files) bib/prd_dissertation.bib
-	context $<
+	context --nonstopmode $<
 
 bib/prd_dissertation.bib: bib/library.bib
 	cd bib; bibtool -r bibtool.rsc
