@@ -116,11 +116,12 @@
 
 % Citations/Bibliography
 % http://pragma-ade.nl/general/manuals/mkiv-publications.pdf
+\definebtxdataset[main]
 \usebtxdataset[main][bib/\jobname.bib]
 \setupbtx[dataset=main] % make cite use this
-\loadbtxdefinitionfile[apa]
-\definebtxrendering[main][apa][dataset=main, sorttype=authoryear, numbering=no]
-\setupbtx[default:cite][alternative=authoryear]
+\setupbtx[default:cite][alternative=authoryear] % cite style
+\usebtxdefinitions[apa] % load and activate list rendering
+\definebtxrendering[main][apa][dataset=main, pagestate=start] % list rendering, sorting, numbering=no, … 
 % \newbibfield[timestamp]
 % \setuppublicationlayout[electronic]{%
 % 	\insertauthors{}{. }{}%

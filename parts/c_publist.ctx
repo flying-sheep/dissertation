@@ -11,10 +11,13 @@
 % \item \cite[entry][angerer2019]
 \stopitemize
 
+% \showbtxdatasetfields[dataset=main,specification=apa]
+
 \startluacode
 local current = publications.datasets.main
 -- tex.print('\\starttyping')
 -- tex.print(table.serialize(current.luadata.angerer2016))
+-- tex.print(table.serialize(publications.specifications.apa.categories.article.fields))
 -- tex.print('\\stoptyping')
 \stopluacode
 
