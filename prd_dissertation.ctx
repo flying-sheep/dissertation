@@ -3,7 +3,11 @@
 \startproduct prd_dissertation
 \environment env_dissertation.ctx
 
-\def\TODO#1{\color[red]{{\bf TODO:} #1}}
+\def\TODO{\dosingleempty\doTODO}
+\def\doTODO[#1]{\color[red]{%
+    {\bf TODO\iffirstargument:\fi}
+    #1%
+}}
 
 \starttext
 

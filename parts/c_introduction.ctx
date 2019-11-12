@@ -3,7 +3,7 @@
 
 \startchapter[reference=intro, title=Introduction]
 
-\TODO{Introduction}
+\TODO[Introduction]
 
 \cite[zunder2015]
 \cite[angerer2016]

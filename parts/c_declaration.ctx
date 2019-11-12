@@ -33,7 +33,7 @@ Univ.-Prof. Dr. M. Hrabě de Angelis
 \startdesc{Prüfer der Dissertation:}
 \startitemize[1]
 \item Univ.-Prof. Dr. Dr. F. J. Theis
-\item \TODO{Prüfer}
+\item \TODO[Prüfer]
 \stopitemize
 \stopdesc
 

@@ -6,7 +6,7 @@
 \startsection[title={Dimensionality Reduction Methods}]
 
 Dimensionality reduction methods embed high dimensional data into a low-dimensional space.
-The intrinsic dimensionality of transcriptomic data is low enough that a 2 or 3 dimensional embedding is able to faithfully reflect structures in the data \cite[ding2018].
+The intrinsic dimensionality of transcriptomic data is low, so \TODO are enough to \cite[ding2018] enough that a 2 or 3 dimensional embedding is able to faithfully reflect structures in the data.
 
 \startsubsection[title={Spectral decomposition}]
 
@@ -16,7 +16,12 @@ They can be used as dimensionality reduction methods by discarding components wi
 This is most useful as a preprocessing step to define a less noisy latent space reflecting the inherent dimensionality of the data, but components can also be directly visualized.
 
 \startsubsubsection[title={Principal Component Analysis}]
-While the intrinsic dimensionality of the data is low, more complex datasets cannot be faithfully represented by a low number of (linear) principal components \cite[lenz2016].
+Principal component analysis (PCA) is a simple spectral decomposition.
+Its components are weighted products of input features (such as transcripts), ranked by the variance each PC explains.
+While the intrinsic dimensionality of transcriptomic data is low, more complex datasets cannot be faithfully represented by a low number of (linear) PCs \cite[lenz2016].
+Picking a (higher) number of PCs, for example using the jackstraw \cite[chung2015] is a popular a preprocessing step for downstream analysis.
+
+There are a number of related methods that can serve a similar purpose, such as independent component analysis or factor analysis. Furthermore, single cell transcriptomics specific extensions exist
 \stopsubsubsection
 
 \startsubsubsection[title={Diffusion Maps}]
@@ -83,7 +88,7 @@ In order to optimize the embedding for certain use cases, nonlinear embedding fu
 A common goal is to represent relationships in the data as faithfully as possible in a 2- or 3-dimensional embedding that can be displayed on a screen or paper.
 
 One such machine learning driven method, t-distributed stochastic neighborhood embedding (t-SNE, \inlinecite[vandermaaten2008]), remains the most popular dimensionality reduction method \cite[kobak2019].
-The more recent method UMAP \cite[mcinnes2018] was designed to fix \TODO{what} \cite[becht2018].
+The more recent method UMAP \cite[mcinnes2018] was designed to fix \TODO[what] \cite[becht2018].
 \inlinecite[kobak2019] showed that t-SNE with a data-driven selection of metaparameters still outperforms UMAP under some circumstances.
 
 Disadvantages of machine learning based methods are their nondeterministic nature and the lack of a resulting function to project new data into an existing embedding.

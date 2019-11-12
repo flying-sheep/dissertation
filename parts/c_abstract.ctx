@@ -2,12 +2,12 @@
 \product prd_dissertation
 
 \starttitle[title=Abstract]
-\TODO{Abstract}
+\TODO[Abstract]
 \stoptitle
 
 \language[de]
 \starttitle[title=Zusammenfassung]
-\TODO{Zusammenfassung}
+\TODO[Zusammenfassung]
 \stoptitle
 \language[en]
 

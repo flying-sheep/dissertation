@@ -9,7 +9,7 @@
 \setupwhitespace[line]
 \setupinterlinespace[medium]
 
-\TODO{Danksagung}
+\TODO[Danksagung]
 
 }
 \stoptitle
