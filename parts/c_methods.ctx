@@ -5,21 +5,21 @@
 
 \startsection[title={Dimensionality Reduction Methods}]
 
-\startsubsection[title={Machine learning}]
-% https://nbisweden.github.io/workshop-scRNAseq/slides2019/Dimensionality_reduction_P_Czarnewski_2019.pdf
-In order to optimize the embedding for certain use cases, nonlinear embedding functions can be learned. A common goal is to represent relationships in the data as faithfully as possible in a 2- or 3-dimensional embedding that can be displayed on a screen or paper. This is possible since the intrinsic dimensionality of transcriptomic data is low and can therefore be flattened without losing too much meaning \cite[ding2018].
-
-One such machine learning driven method, t-distributed stochastic neighborhood embedding (t-SNE, \inlinecite[vandermaaten2008]), remains the most popular dimensionality reduction method \cite[kobak2019]. The more recent method UMAP \cite[mcinnes2018] was designed to fix \TODO{what} \cite[becht2018]. \inlinecite[kobak2019] showed that t-SNE with a data-driven selection of metaparameters still outperforms UMAP under some circumstances.
-\stopsubsection
+Dimensionality reduction methods embed high dimensional data into a low-dimensional space. The intrinsic dimensionality of transcriptomic data is low enough that a 2 or 3 dimensional embedding is able to faithfully reflect structures in the data \cite[ding2018].
 
 \startsubsection[title={Spectral decomposition}]
-Principal Component Analysis
 
+Spectral decomposition is the act of transforming the data into components that each capture a different source of variance in the data. The components are ranked by their ability to explain the data’s structure. They can be used as dimensionality reduction methods by discarding components with low enough scores. This is most useful as a preprocessing step to define a less noisy latent space reflecting the inherent dimensionality of the data, but components can also be directly visualized.
+
+\startsubsubsection[title={Principal Component Analysis}]
 While the intrinsic dimensionality of the data is low, more complex datasets cannot be faithfully represented by a low number of (linear) principal components \cite[lenz2016].
+\stopsubsubsection
 
 \startsubsubsection[title={Diffusion Maps}]
- Diffusion maps are another spectral decomposition of data. \cite[coifman2005] It preserves global structures and the pseudotemporal ordering of cells better than t-SNE \cite[haghverdi2015] \cite[haghverdi2016] \cite[angerer2016]
+Diffusion maps are another spectral decomposition of data. Their practicality for data analysis was first shown by \inlinecite[coifman2005]. A diffusion map preserves global structures and the pseudotemporal ordering of cells better than t-SNE \cite[haghverdi2015], and the first diffusion components are often sufficient to directly capture and visualize bifurcation events in differentiating cells.
 
+\cite[haghverdi2016]
+\cite[angerer2016]
 
 \startplacefigure[title={Model visualisation}]
 	\startfloatcombination[2*1]
@@ -69,6 +69,15 @@ While the intrinsic dimensionality of the data is low, more complex datasets can
 
 \stopsubsubsection
 
+\stopsubsection
+
+\startsubsection[title={Machine learning}]
+% https://nbisweden.github.io/workshop-scRNAseq/slides2019/Dimensionality_reduction_P_Czarnewski_2019.pdf
+In order to optimize the embedding for certain use cases, nonlinear embedding functions can be learned. A common goal is to represent relationships in the data as faithfully as possible in a 2- or 3-dimensional embedding that can be displayed on a screen or paper.
+
+One such machine learning driven method, t-distributed stochastic neighborhood embedding (t-SNE, \inlinecite[vandermaaten2008]), remains the most popular dimensionality reduction method \cite[kobak2019]. The more recent method UMAP \cite[mcinnes2018] was designed to fix \TODO{what} \cite[becht2018]. \inlinecite[kobak2019] showed that t-SNE with a data-driven selection of metaparameters still outperforms UMAP under some circumstances.
+
+Disadvantages of machine learning based methods are their nondeterministic nature and the lack of a resulting function to project new data into an existing embedding.
 \stopsubsection
 
 \stopsection
