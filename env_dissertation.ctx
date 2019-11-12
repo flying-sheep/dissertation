@@ -118,6 +118,7 @@
 % http://pragma-ade.nl/general/manuals/mkiv-publications.pdf
 \usebtxdataset[main][bib/\jobname.bib]
 \setupbtx[dataset=main] % make cite use this
+\loadbtxdefinitionfile[apa]
 \definebtxrendering[main][apa][dataset=main, sorttype=authoryear, numbering=no]
 \setupbtx[default:cite][alternative=authoryear]
 % \newbibfield[timestamp]

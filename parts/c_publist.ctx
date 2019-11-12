@@ -1,24 +1,22 @@
 \startcomponent c_abstract
 \product prd_dissertation
 
-\starttitle[title=List of publications]
+\starttitle[title={List of publications}]
 
-% \setuppublicationlist[numbercommand=\publistnumber]
-% /opt/context-minimals/texmf-context/tex/context/base/mkiv/publ-fnd.lua
+\startitemize
+\item \cite[alternative=entry, left=, right=][angerer2016]
+\item \cite[alternative=entry, left=, right=][angerer2017]
+\item \cite[alternative=entry, left=, right=][wolf2018]
+\item \cite[alternative=entry, left=, right=][uzbas2019]
+% \item \cite[entry][angerer2019]
+\stopitemize
+
 \startluacode
 local current = publications.datasets.main
-local mine = {"Angerer2016", "Angerer2017", "Wolf2017", "Uzbas2019"} -- Angerer2019
-local pub = publications.new("Publications")
-for _, tag in ipairs(mine) do
-	local entry = table.copy(current.luadata[tag])
-	entry.index = publications.getindex(current, current.luadata, tag)
-	pub.luadata[tag] = entry
-end
--- print(table.serialize(pub.luadata))
-publications.datasets["publist"] = pub
+-- tex.print('\\starttyping')
+-- tex.print(table.serialize(current.luadata.angerer2016))
+-- tex.print('\\stoptyping')
 \stopluacode
-\definebtxrendering[publist][apa][dataset=publist, numbering=yes]
-\placebtxrendering[publist][method=database]
 
 \stoptitle
 \stopcomponent
