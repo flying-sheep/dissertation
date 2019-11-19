@@ -63,19 +63,19 @@
 %\definevimtyping[python][syntax=python, strip=yes, lines=split, escape=on]
 %\definevimtyping[R][syntax=r, strip=yes]
 
-% Font settings
-\definefontfamily[myfonts][serif][TeX Gyre Pagella] %Palatino
-\definefontfamily[myfonts][math][TeX Gyre Pagella Math]
-\definefontfamily[myfonts][sans][TeX Gyre Heros]   %Helvetica
-\definefontfamily[myfonts][mono][Source Code Pro]
-\setupbodyfont[myfonts, 12pt]
-
 % Typography settings
 \setupalign[hz, hanging] % Microtypography: Font expansion, Protuding punctuation
 \definefontfeature[default][default][expansion=quality, protrusion=quality, onum=yes]
 \setupbodyfontenvironment[default][em=italic] %italic instead of slanted
 \setupindenting[yes, medium] % Indent paragraph starts
 \setbreakpoints[compound] % Allow breaking after dashes
+
+% Font settings, need to be after typography
+\definefontfamily[myfonts][serif][TeX Gyre Pagella] %Palatino
+\definefontfamily[myfonts][math][TeX Gyre Pagella Math]
+\definefontfamily[myfonts][sans][TeX Gyre Heros]   %Helvetica
+\definefontfamily[myfonts][mono][Source Code Pro]
+\setupbodyfont[myfonts, 12pt]
 
 % Heading style
 \setuphead[chapter]      [style=\ss\bfc, align=flushleft]
