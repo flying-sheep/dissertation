@@ -3,12 +3,12 @@
 
 \starttitle[title={List of publications}]
 
-\startitemize
+\startitemize[r, fit][itemalign=flushright, stopper={) }]
 \item \cite[alternative=entry, left=, right=][angerer2016]
 \item \cite[alternative=entry, left=, right=][angerer2017]
 \item \cite[alternative=entry, left=, right=][wolf2018]
 \item \cite[alternative=entry, left=, right=][uzbas2019]
-% \item \cite[entry][angerer2019]
+\item \cite[entry][angerer2019]
 \stopitemize
 
 % \showbtxdatasetfields[dataset=main,specification=apa]
