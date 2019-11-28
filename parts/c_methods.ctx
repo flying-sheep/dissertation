@@ -82,7 +82,7 @@ A diffusion map preserves global structures and the pseudotemporal ordering of c
 
 \stopsubsection
 
-\startsubsection[title={Machine learning}]
+\startsubsection[title={Learned embeddings}]
 % https://nbisweden.github.io/workshop-scRNAseq/slides2019/Dimensionality_reduction_P_Czarnewski_2019.pdf
 In order to optimize the embedding for certain use cases, nonlinear embedding functions can be learned.
 A common goal is to represent relationships in the data as faithfully as possible in a 2- or 3-dimensional embedding that can be displayed on a screen or paper.
