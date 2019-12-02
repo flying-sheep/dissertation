@@ -29,9 +29,6 @@ Diffusion maps are another spectral decomposition of data.
 Their practicality for data analysis was first shown by \inlinecite[coifman2005].
 A diffusion map preserves global structures and the pseudotemporal ordering of cells better than t-SNE \cite[haghverdi2015], and the first diffusion components are often sufficient to directly capture and visualize bifurcation events in differentiating cells.
 
-\cite[haghverdi2016]
-\cite[angerer2016]
-
 \startplacefigure[title={Model visualisation}]
 	\startfloatcombination[2*1]
 	\startplacesubfigure[title={Data and embedding}]
@@ -78,6 +75,63 @@ A diffusion map preserves global structures and the pseudotemporal ordering of c
 	\stopfloatcombination
 \stopplacefigure
 
+%https://static-content.springer.com/esm/art%3A10.1038%2Fnmeth.3971/MediaObjects/41592_2016_BFnmeth3971_MOESM373_ESM.pdf
+
+\placeformula
+\startformula
+Y_x\left(x'\right) =
+	∜{2 \over {π σ_x^2}}
+	\exp \left(-{
+		\left\|\left\|x'-x\right\|\right\|^2
+		\over
+		σ_x^2
+	}\right)
+\stopformula
+
+\placeformula
+\startformula
+\startalign
+\NC K(x, y) \NC =
+	∫_{-∞}^∞ Y_x\left(x'\right) Y_y\left(x'\right) \mathword{d} x'
+\NR
+\NC \NC =
+	√{2 σ_x σ_y \over σ_x^2+σ_y^2}
+	\exp \left(-{
+		\|\|x-y\|\|^2
+		\over
+		2\left(σ_x^2+σ_y^2\right)
+	}\right)
+\NR
+\stopalign
+\stopformula
+
+\placeformula
+\startformula
+W_{xy} = {K(x, y) \over Z(x) Z(y)}
+\stopformula
+
+\placeformula
+\startformula
+Z(x) = ∑_{y ∈ Ω} K(x, y)
+\stopformula
+
+\placeformula
+\startformula
+\tilde{Z}(x) = ∑_{y ∈ Ω} W(x, y)
+\stopformula
+
+\placeformula
+\startformula
+T_{xy}^{\mathword{asym}} = \tilde{Z}(x)^{-1} W_{xy}
+\stopformula
+
+\placeformula
+\startformula
+T_{xy}^{\mathword{sym}} = √{\tilde{Z}(x)}^{-1} W_{xy} √{\tilde{Z}(y)}^{-1}
+\stopformula
+
+During the parallel development of destiny \cite[angerer2016] and diffusion pseudo time \cite[haghverdi2016], I helped shape the efficient flavor of diffusion maps most used today \TODO[data]. I pioneered the use of a symmetricized kNN graph represented as a symmetric sparse matrix, using this kNN information as a density estimate for the locally scaled kernel $K$ and its sparsity structure for efficient calculation of the symmetric transition probability matrix $T$.
+
 \stopsubsubsection
 
 \stopsubsection
@@ -87,9 +141,9 @@ A diffusion map preserves global structures and the pseudotemporal ordering of c
 In order to optimize the embedding for certain use cases, nonlinear embedding functions can be learned.
 A common goal is to represent relationships in the data as faithfully as possible in a 2- or 3-dimensional embedding that can be displayed on a screen or paper.
 
-One such machine learning driven method, t-distributed stochastic neighborhood embedding (t-SNE, \inlinecite[vandermaaten2008]), remains the most popular dimensionality reduction method \cite[kobak2019].
+One such machine learning driven method, t-distributed stochastic neighborhood embedding (t-SNE, ∈linecite[vandermaaten2008]), remains the most popular dimensionality reduction method \cite[kobak2019].
 The more recent method UMAP \cite[mcinnes2018] was designed to fix \TODO[what] \cite[becht2018].
-\inlinecite[kobak2019] showed that t-SNE with a data-driven selection of metaparameters still outperforms UMAP under some circumstances.
+∈linecite[kobak2019] showed that t-SNE with a data-driven selection of metaparameters still outperforms UMAP under some circumstances.
 
 Disadvantages of machine learning based methods are their nondeterministic nature and the lack of a resulting function to project new data into an existing embedding.
 \stopsubsection

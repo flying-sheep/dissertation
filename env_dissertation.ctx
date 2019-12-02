@@ -157,6 +157,8 @@
 
 \usemodule[logos]
 
+\catcode`√=13\def√{\sqrt}
+\catcode`∜=13\def∜{\sqrt[4]}
 %\definemathcommand[cdf][nolop]{\mfunction{cdf}}
 %\definemathcommand[Cov][nolop]{\mfunction{Cov}}
 %\definemathcommand[Var][nolop]{\mfunction{Var}}
