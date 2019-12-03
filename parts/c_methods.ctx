@@ -77,29 +77,31 @@ A diffusion map preserves global structures and the pseudotemporal ordering of c
 
 %https://static-content.springer.com/esm/art%3A10.1038%2Fnmeth.3971/MediaObjects/41592_2016_BFnmeth3971_MOESM373_ESM.pdf
 
+A diffusion map consists of the eigenvectors $s_{p·}$ of a matrix of transition probabilities between cells.
+
 \placeformula
 \startformula
-Y_x\left(x'\right) =
-	∜{2 \over {π σ_x^2}}
+Y_c\left(c'\right) =
+	∜{2 \over {π σ_c^2}}
 	\exp \left(-{
-		\left\|\left\|x'-x\right\|\right\|^2
+		\left\|\left\|c'-c\right\|\right\|^2
 		\over
-		σ_x^2
+		σ_c^2
 	}\right)
 \stopformula
 
 \placeformula
 \startformula
 \startalign
-\NC K(x, y) \NC =
-	∫_{-∞}^∞ Y_x\left(x'\right) Y_y\left(x'\right) \mathword{d} x'
+\NC K(c, d) \NC =
+	∫_{-∞}^∞ Y_c\left(c'\right) Y_d\left(c'\right) \mathword{d} c'
 \NR
 \NC \NC =
-	√{2 σ_x σ_y \over σ_x^2+σ_y^2}
+	√{2 σ_c σ_d \over σ_c^2+σ_d^2}
 	\exp \left(-{
-		\|\|x-y\|\|^2
+		\|\|c-d\|\|^2
 		\over
-		2\left(σ_x^2+σ_y^2\right)
+		2\left(σ_c^2+σ_d^2\right)
 	}\right)
 \NR
 \stopalign
@@ -107,27 +109,27 @@ Y_x\left(x'\right) =
 
 \placeformula
 \startformula
-W_{xy} = {K(x, y) \over Z(x) Z(y)}
+W_{cd} = {K(c, d) \over Z(c) Z(d)}
 \stopformula
 
 \placeformula
 \startformula
-Z(x) = ∑_{y ∈ Ω} K(x, y)
+Z(c) = ∑_{d∈\{1,…,C\}} K(c, d)
 \stopformula
 
 \placeformula
 \startformula
-\tilde{Z}(x) = ∑_{y ∈ Ω} W(x, y)
+\tilde{Z}(c) = ∑_{d∈\{1,…,C\}} W(c, d)
 \stopformula
 
 \placeformula
 \startformula
-T_{xy}^{\mathword{asym}} = \tilde{Z}(x)^{-1} W_{xy}
+T_{cd}^{\mathword{asym}} = \tilde{Z}(c)^{-1} W_{cd}
 \stopformula
 
 \placeformula
 \startformula
-T_{xy}^{\mathword{sym}} = √{\tilde{Z}(x)}^{-1} W_{xy} √{\tilde{Z}(y)}^{-1}
+T_{cd}^{\mathword{sym}} = √{\tilde{Z}(c)}^{-1} W_{cd} √{\tilde{Z}(y)}^{-1}
 \stopformula
 
 During the parallel development of destiny \cite[angerer2016] and diffusion pseudo time \cite[haghverdi2016], I helped shape the efficient flavor of diffusion maps most used today \TODO[data]. I pioneered the use of a symmetricized kNN graph represented as a symmetric sparse matrix, using this kNN information as a density estimate for the locally scaled kernel $K$ and its sparsity structure for efficient calculation of the symmetric transition probability matrix $T$.
