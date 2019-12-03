@@ -6,7 +6,8 @@
 \startsection[title={Dimensionality Reduction Methods}]
 
 Dimensionality reduction methods embed high dimensional data into a low-dimensional space.
-The intrinsic dimensionality of transcriptomic data is low, so \TODO are enough to \cite[ding2018] enough that a 2 or 3 dimensional embedding is able to faithfully reflect structures in the data.
+The intrinsic dimensionality of transcriptomic data is low, so 50-100 linear combinations of genes are enough to capture nearly all biologically relevant variation and structure in the data \cite[ding2018].
+Global structures can often be faithfully reflected in a 2 or 3 dimensional embedding interpretable by humans.
 
 \startsubsection[title={Spectral decomposition}]
 
