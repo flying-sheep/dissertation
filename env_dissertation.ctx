@@ -146,6 +146,7 @@
 %\usetikzlibrary[external]
 %\tikzexternalize[prefix=imgs/]
 
+\def\AtBeginDocument#1{} % shut up about compat
 \usemodule[pgfplots]
 \pgfplotsset{compat=1.14}
 \usemodule[pgfplotstable]
