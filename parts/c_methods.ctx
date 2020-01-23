@@ -79,6 +79,14 @@ A diffusion map preserves global structures and the pseudotemporal ordering of c
 %https://static-content.springer.com/esm/art%3A10.1038%2Fnmeth.3971/MediaObjects/41592_2016_BFnmeth3971_MOESM373_ESM.pdf
 
 A diffusion map consists of the eigenvectors $s_{p·}$ of a matrix of transition probabilities between cells.
+The transition probabilities are derived from a diffusion model.
+There are several flavors of diffusion models, parametrized over the chosen distance function $\text{dist}$ and the kernel width $σ$ (square root of the gaussian function $Y(c)$’s variance).
+\TODO[Clarify how a kernel not based on euclidean distance would be called and defined.]
+
+The most useful set of flavors is the ones independent of local density.
+These flavors parametrize their gaussian kernel with a cell-dependent $σ_c$ derived from the local density $σ_c = \text{dist}(c, NN_k(c))$.
+\TODO[define dist, NN better.]
+Their gaussian function is:
 
 \placeformula
 \startformula
@@ -90,6 +98,8 @@ Y_c\left(c'\right) =
 		σ_c^2
 	}\right)
 \stopformula
+
+Since gaussian functions are wave functions, the kernel is defined by the interference of two wave functions centered at cells:
 
 \placeformula
 \startformula
@@ -108,6 +118,8 @@ Y_c\left(c'\right) =
 \stopalign
 \stopformula
 
+With a kernel function defined, the connectivities $W_{cd}$ between cells can be are defined as follows:
+
 \placeformula
 \startformula
 W_{cd} = {K(c, d) \over Z(c) Z(d)}
@@ -118,15 +130,23 @@ W_{cd} = {K(c, d) \over Z(c) Z(d)}
 Z(c) = ∑_{d∈\{1,…,C\}} K(c, d)
 \stopformula
 
+More commonly today, $W$ is approximated. One approach is to only define $W_{cd}$ for $d∈\{NN_k(c)\}$ instead of all $d∈\{1,…,C\}$, another is employed by UMAP, which uses fuzzy simplical sets derived from $σ_c$ instead of discrete sets of nearest neighbors.
+
+In any case, a transition probability matrix $T$ can be obtained by row-normalizing $W$:
+
 \placeformula
 \startformula
-\tilde{Z}(c) = ∑_{d∈\{1,…,C\}} W(c, d)
+\tilde{Z}(c) = ∑_{d∈\{1,…,C\}} W_{cd}
 \stopformula
+
+The traditional variant $T_{cd}^{\mathword{asym}}$, mentioned for completeness, is defined as:
 
 \placeformula
 \startformula
 T_{cd}^{\mathword{asym}} = \tilde{Z}(c)^{-1} W_{cd}
 \stopformula
+
+The symmetrical variant $T_{cd}^{\mathword{sym}}$ has several advantages, including computational performance and the ability to reuse the sparsity structure of $W$: 
 
 \placeformula
 \startformula
