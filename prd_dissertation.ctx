@@ -3,11 +3,13 @@
 \startproduct prd_dissertation
 \environment env_dissertation.ctx
 
+\usemodule[annotation]
+
 \def\TODO{\dosingleempty\doTODO}
-\def\doTODO[#1]{\color[red]{%
-    {\bf TODO\iffirstargument:\fi}
-    #1%
-}}
+\def\doTODO[#1]{%
+	\edef\gap{\iffirstargument: \fi}%
+	\comment[symbol=Comment,color=red,width=9mm]{TODO\gap#1}%
+}
 
 \starttext
 
