@@ -164,9 +164,9 @@ During the parallel development of destiny \cite[angerer2016] and diffusion pseu
 In order to optimize the embedding for certain use cases, nonlinear embedding functions can be learned.
 A common goal is to represent relationships in the data as faithfully as possible in a 2- or 3-dimensional embedding that can be displayed on a screen or paper.
 
-One such machine learning driven method, t-distributed stochastic neighborhood embedding (t-SNE, ∈linecite[vandermaaten2008]), remains the most popular dimensionality reduction method \cite[kobak2019].
+One such machine learning driven method, t-distributed stochastic neighborhood embedding (t-SNE, \inlinecite[vandermaaten2008]), remains the most popular dimensionality reduction method \cite[kobak2019].
 The more recent method UMAP \cite[mcinnes2018] was designed to fix \TODO[what] \cite[becht2018].
-∈linecite[kobak2019] showed that t-SNE with a data-driven selection of metaparameters still outperforms UMAP under some circumstances.
+\inlinecite[kobak2019] showed that t-SNE with a data-driven selection of metaparameters still outperforms UMAP under some circumstances.
 
 Disadvantages of machine learning based methods are their nondeterministic nature and the lack of a resulting function to project new data into an existing embedding.
 \stopsubsection
