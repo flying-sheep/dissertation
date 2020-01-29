@@ -1,12 +1,80 @@
-\startcomponent c_introduction
-\product prd_dissertation
+\startcomponent *
+\project project_dissertation.ctx
 
 \startchapter[reference=intro, title=Introduction]
 
-\TODO[Introduction]
+Basic structure: Zoom in; What’s the big field, how to get from there to scRNASeq?
 
 \cite[zunder2015]
 \cite[angerer2016]
+
+\startitemize
+\item zoom in: for decades, bio research limited to bulk analysis
+\item SC revolution (cite nat meth of the year 20xx)
+\item now new analysis are possible. highlight a few
+	\startitemize
+	\item rajewsky work
+	\item teichman paper
+	\item regev paper
+	\stopitemize
+\item however, approach comes with new challenges...
+\stopitemize
+
+\startsection[title=Workflow]
+
+story: new challenges by sc data. old way to deal with data (workflows) are not efficient. new approaches needed → me
+
+\startsubsection[title=Overview]
+Describe how the workflows work and why the aforementioned is important.
+\startitemize
+\item transcripts
+\item features identified and counted
+\item normalized expression
+\item Results: uncover dynamics, heterogeneity structure, feature importance and role
+\stopitemize
+\stopsubsection
+
+\startsubsection[title={Old way}]
+People often need to cobble together their own pipelines and use default parameters without knowing what they do. Existing methods are not focused on interoperability. Mention specifically the flaws fixed by what I do:
+\startitemize
+\item pre-destiny: DM creation in R
+\item pre-scanpy: scran+Seurat are more opinionated and offer less choice (host code problem). Integrated solution of everything helps save time and eliminate invalid states (type theory: make invalid states unrepresentable)
+\item pre-GR: differential expression and trendsceek
+\stopitemize
+\stopsubsection
+
+\startsubsection[title={New way}]
+\startitemize
+\item Through frameworks, data interchange formats and containers we get interoperability and reproducibility.
+\item serving all MOs: iterative with biologists, manual coding, let it be done as-a-service
+\item good error reporting / software quality important for good science (Avoid garbage-in garbage-out. Lücken says e.g. DE tools often do “their thing” when design matrix are not full rank)
+\stopitemize
+\stopsubsection
+
+\stopsection
+
+
+\startsection[title={Own contributions / workflows I contributed / concrete workflows}]
+
+(I am the one who can create usable interfaces and/for pipelines and fill in the gaps where “cobblestones” are missing)
+
+\startsubsection[title=destiny]
+efficient and flexible diffusion maps for R
+\stopsubsection
+
+\startsubsection[title=scanpy]
+reusable and remixable workflow building blocks and data structures
+\stopsubsection
+
+\startsubsection[title={BART-Seq}]
+flexible processing pipeline and python library
+\stopsubsection
+
+\startsubsection[title={gene relevance}]
+combines gene-level with cell-level analysis
+\stopsubsection
+
+\stopsection
 
 \stopchapter
 

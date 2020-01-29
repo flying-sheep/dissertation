@@ -7,3 +7,8 @@
 *.log
 *.pdf
 *.tuc
+*.synctex
+
+# IDE stuff
+/.kile/
+*.kate-swp

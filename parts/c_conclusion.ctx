@@ -1,5 +1,5 @@
-\startcomponent c_conclusion
-\product prd_dissertation
+\startcomponent *
+\project project_dissertation.ctx
 
 \startchapter[reference=conclusion, title=Conclusion]
 

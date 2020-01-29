@@ -1,7 +1,7 @@
 % !TEX program = context
 
 \startproduct prd_dissertation
-\environment env_dissertation.ctx
+\project project_dissertation.ctx
 
 \usemodule[annotation]
 

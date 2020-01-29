@@ -1,5 +1,5 @@
-\startcomponent c_danksagung
-\product prd_dissertation
+\startcomponent *
+\project project_dissertation.ctx
 
 \language[de]
 \starttitle[title=Danksagung]

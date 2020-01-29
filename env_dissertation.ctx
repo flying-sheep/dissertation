@@ -51,6 +51,7 @@
 	% Don’t switch to fit page mode on link click
 	focus=standard,
 ]
+\setupsynctex[state=start]
 % Make all section titles interactive
 \setupcombinedlist[content][interaction=all]
 

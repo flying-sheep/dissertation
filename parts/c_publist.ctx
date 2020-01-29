@@ -1,5 +1,5 @@
-\startcomponent c_abstract
-\product prd_dissertation
+\startcomponent *
+\project project_dissertation.ctx
 
 \starttitle[title={List of publications}]
 
@@ -8,7 +8,7 @@
 \item \cite[alternative=entry, left=, right=][angerer2017]
 \item \cite[alternative=entry, left=, right=][wolf2018]
 \item \cite[alternative=entry, left=, right=][uzbas2019]
-\item \cite[entry][angerer2019]
+\item \cite[entry][angerer2020]
 \stopitemize
 
 % \showbtxdatasetfields[dataset=main,specification=apa]

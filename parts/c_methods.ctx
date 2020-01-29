@@ -1,5 +1,5 @@
-\startcomponent c_methods
-\product prd_dissertation
+\startcomponent *
+\project project_dissertation.ctx
 
 \startchapter[reference=methods, title=Methods]
 
