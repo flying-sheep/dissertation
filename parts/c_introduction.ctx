@@ -2,53 +2,73 @@
 \project project_dissertation.ctx
 
 \startchapter[reference=intro, title=Introduction]
+% Basic structure: Zoom in; What’s the big field, how to get from there to scRNASeq?
 
-Basic structure: Zoom in; What’s the big field, how to get from there to scRNASeq?
+% big topic: cell biology and medicine
+Cell biology is the science touching the most existential part of us.
+Every aspect of our health and therefore continued existence as thinking beings touches cell function.
+Our body consists of cells performing the most varied tasks in order to maintain it:
+even our thinking depends on neurons, our psyche on cellular regulation of our brain chemistry.
+Formed by evolution, this machinery is not built to last.
+Health, life and death are therefore topics every human has to confront at some point in their life.
 
-\cite[zunder2015]
-\cite[angerer2016]
+% complex diseases need better tools
+Modern medicine has performed incredible feats of extending our expected lifespan and living quality.
+In our consequently aging society, it becomes increasingly important to understand the long term effects of living.
+It is also possible to shift our focus to rarer or more complex diseases as the low hanging fruit is being reaped.
+This includes diseases like cancer, caused by mutated cells, or diseases caused by malfunctioning regulations.
+All those diseases have in common that they cannot be understood without knowing the cellular mechanisms involved.
 
-\startitemize
-\item zoom in: for decades, bio research limited to bulk analysis
-\item SC revolution (cite nat meth of the year 20xx)
-\item now new analysis are possible. highlight a few
-	\startitemize
-	\item rajewsky work
-	\item teichman paper
-	\item regev paper
-	\stopitemize
-\item however, approach comes with new challenges...
-\stopitemize
+% motivate RNA-Seq
+All inner workings of a cell are performed directly or indirectly through proteins.
+Knowing what proteins are being produced in a cell at a given moment allows to draw conclusions about its purpose and health.
+According to the central dogma of molecular biology, the current production of a given protein is indicated by the presence of the short lived messenger RNA (mRNA), transcribed from the DNA and containing a blueprint ready to be translated into the protein.%
+\footnote{Or rather a class of proteins: Similar proteins come from the same gene which is transcribed into a pre-mRNA and then spliced into one of several possible final mRNAs encoding a different protein each.}
+It is possible to quantify and subsequently analyze snapshots of all mRNA molecules in flight using RNA sequencing (RNA-Seq).
+This is called gene expression analysis.
+Decades of biological research made due with averaged RNA profiles of cell samples (bulk RNA-Seq).
+Those allow to capture the gene expression of a tissue or fluid sample without accounting for cell-to-cell variability.
+
+% SC revolution (cite nat meth of the year 20xx) this one? https://www.nature.com/articles/nmeth.1557
+But Biology is immensely complex, so every answer seems to only bring forth new questions:
+e.\,g. the confidently named central dogma of molecular biology continues to accumulate exceptions and neither genes nor cell types are considered discrete, enumerable entities anymore.
+More complex diseases require a more intricate understanding of cellular processes and inter-cellular variation.
+Advances in experimental technology of the last decade allow to tackle these challenges.
+Single-cell RNA-Seq (scRNA-Seq) can measure extremely small expression values down to a single mRNA molecule.
+\TODO[the following two are a bit redundant, make clear what you mean]
+This data comes not without its own challenges, but enables the study of heterogeneous tissues like cancer, where expression averages from bulk RNA-Seq are not meaningful.
+The second great advantage is that the amounts of data present in scRNA-Seq lend themselves to machine learning approaches:
+patterns that no human can detect by hand and careful choice of samples can be derived from the ample variation between hundreds to millions of individual cells.
+\TODO[highlight a few: m. rajewsky work, teichman & regev papers]
+
+% my work
+The thesis at hand is a slice of the author’s continued efforts to standardize and bring together what is there, and to bring back what was lost in the transition to our new world of single-cell data analysis.
+
+\TODO[challenges]
 
 \startsection[title=Workflow]
 
-story: new challenges by sc data. old way to deal with data (workflows) are not efficient. new approaches needed → me
+% story: new challenges by sc data. old way to deal with data (workflows) are not efficient. new approaches needed → me
 
 \startsubsection[title=Overview]
-Describe how the workflows work and why the aforementioned is important.
-\startitemize
-\item transcripts
-\item features identified and counted
-\item normalized expression
-\item Results: uncover dynamics, heterogeneity structure, feature importance and role
-\stopitemize
+% Describe how the workflows work and why the aforementioned is important.
+% - transcripts
+% - features identified and counted
+% - normalized expression
+% - Results: uncover dynamics, heterogeneity structure, feature importance and role
 \stopsubsection
 
 \startsubsection[title={Old way}]
-People often need to cobble together their own pipelines and use default parameters without knowing what they do. Existing methods are not focused on interoperability. Mention specifically the flaws fixed by what I do:
-\startitemize
-\item pre-destiny: DM creation in R
-\item pre-scanpy: scran+Seurat are more opinionated and offer less choice (host code problem). Integrated solution of everything helps save time and eliminate invalid states (type theory: make invalid states unrepresentable)
-\item pre-GR: differential expression and trendsceek
-\stopitemize
+% People often need to cobble together their own pipelines and use default parameters without knowing what they do. Existing methods are not focused on interoperability. Mention specifically the flaws fixed by what I do:
+% - pre-destiny: DM creation in R
+% - pre-scanpy: scran+Seurat are more opinionated and offer less choice (host code problem). Integrated solution of everything helps save time and eliminate invalid states (type theory: make invalid states unrepresentable)
+% - pre-GR: differential expression and trendsceek
 \stopsubsection
 
 \startsubsection[title={New way}]
-\startitemize
-\item Through frameworks, data interchange formats and containers we get interoperability and reproducibility.
-\item serving all MOs: iterative with biologists, manual coding, let it be done as-a-service
-\item good error reporting / software quality important for good science (Avoid garbage-in garbage-out. Lücken says e.g. DE tools often do “their thing” when design matrix are not full rank)
-\stopitemize
+% - Through frameworks, data interchange formats and containers we get interoperability and reproducibility.
+% - serving all MOs: iterative with biologists, manual coding, let it be done as-a-service
+% - good error reporting / software quality important for good science (Avoid garbage-in garbage-out. Lücken says e.g. DE tools often do “their thing” when design matrix are not full rank)
 \stopsubsection
 
 \stopsection
@@ -56,22 +76,22 @@ People often need to cobble together their own pipelines and use default paramet
 
 \startsection[title={Own contributions / workflows I contributed / concrete workflows}]
 
-(I am the one who can create usable interfaces and/for pipelines and fill in the gaps where “cobblestones” are missing)
+% (I am the one who can create usable interfaces and/for pipelines and fill in the gaps where “cobblestones” are missing)
 
 \startsubsection[title=destiny]
-efficient and flexible diffusion maps for R
+% efficient and flexible diffusion maps for R
 \stopsubsection
 
 \startsubsection[title=scanpy]
-reusable and remixable workflow building blocks and data structures
+% reusable and remixable workflow building blocks and data structures
 \stopsubsection
 
 \startsubsection[title={BART-Seq}]
-flexible processing pipeline and python library
+% flexible processing pipeline and python library
 \stopsubsection
 
 \startsubsection[title={gene relevance}]
-combines gene-level with cell-level analysis
+% combines gene-level with cell-level analysis
 \stopsubsection
 
 \stopsection

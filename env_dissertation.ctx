@@ -51,7 +51,7 @@
 	% Don’t switch to fit page mode on link click
 	focus=standard,
 ]
-\setupsynctex[state=start]
+% \setupsynctex[state=start] % doesn’t seem to work in kile
 % Make all section titles interactive
 \setupcombinedlist[content][interaction=all]
 
