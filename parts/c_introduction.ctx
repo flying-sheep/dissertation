@@ -41,10 +41,22 @@ The second great advantage is that the amounts of data present in scRNA-Seq lend
 patterns that no human can detect by hand and careful choice of samples can be derived from the ample variation between hundreds to millions of individual cells.
 \TODO[highlight a few: m. rajewsky work, teichman & regev papers]
 
-% my work
-The thesis at hand is a slice of the author’s continued efforts to standardize and bring together what is there, and to bring back what was lost in the transition to our new world of single-cell data analysis.
+%challenges
+All these opportunities come at the cost of additional complexity and more confounding variables.
+The small amount of mRNA molecules in single cells results in noisier measurements and the so-called drop-out or zero inflation effect:
+genes with the smallest counts tend to appear as zeros the data.
+The increased complexity can be conquered with improved modelling or more sophisticated preprocessing.
+The modelling approach is more correct, but less flexible, as it requires careful informed design across the whole analysis process.
+Each new analysis that significantly deviates from previous analyses requires a re-thinking and re-building of the model almost from the ground up.
 
-\TODO[challenges]
+% my work
+The more practical approach is to start with careful improvements in preprocessing that allow to shape the data in a way that fullfills the assumptions of subsequent analysis.
+The second step is to create and use streamlined building blocks for pipelines to preprocess and analyze the data, and to then then visualize the insights gained.
+Until few years ago, there were no freely available programming and environments that allowed this approach for single cell data analysis.
+Analysis pipelines came custom-built for a certain publication, just as hard to take apart and reuse as a holistic model would have been.
+Every graduate student and postdoctoral researcher had to start from scratch.
+The thesis at hand is a slice of the author’s continued efforts to change this.
+I improved interoperability and modularity of existing tools, pioneered technologies and software development processes in a research environment, and developed some of the missing building blocks for the resulting toolkit.
 
 \startsection[title=Workflow]
 

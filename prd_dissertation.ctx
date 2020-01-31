@@ -8,7 +8,7 @@
 \def\TODO{\dosingleempty\doTODO}
 \def\doTODO[#1]{%
 	\edef\gap{\iffirstargument: \fi}%
-	\comment[symbol=Comment,color=red,width=9mm]{TODO\gap#1}%
+	\comment[author=\author,symbol=Comment,color=red,width=9mm]{TODO\gap#1}%
 }
 
 \starttext
