@@ -38,6 +38,18 @@
   year		= {2016}
 }
 
+@Article{	  angerer2016-pf,
+  abstract	= {UNLABELLED: : Diffusion maps are a spectral method for non-linear dimension reduction and have recently been adapted for the visualization of single-cell expression data. Here we present destiny, an efficient R implementation of the diffusion map algorithm. Our package includes a single-cell specific noise model allowing for missing and censored values. In contrast to previous implementations, we further present an efficient nearest-neighbour approximation that allows for the processing of hundreds of thousands of cells and a functionality for projecting new data on existing diffusion maps. We exemplarily apply destiny to a recent time-resolved mass cytometry dataset of cellular reprogramming. AVAILABILITY AND IMPLEMENTATION: destiny is an open-source R/Bioconductor package ``bioconductor.org/packages/destiny'' also available at www.helmholtz-muenchen.de/icb/destiny A detailed vignette describing functions and workflows is provided with the package. CONTACT: carsten.marr@helmholtz-muenchen.de or f.buettner@helmholtz-muenchen.de SUPPLEMENTARY INFORMATION: Supplementary data are available at Bioinformatics online.},
+  author	= {Angerer, Philipp and Haghverdi, Laleh and B{\"{u}}ttner, Maren and Theis, Fabian J and Marr, Carsten and Buettner, Florian},
+  journal	= {Bioinformatics},
+  month		= {apr},
+  number	= {8},
+  pages		= {1241--1243},
+  title		= {{destiny: diffusion maps for large-scale single-cell data in {\{}R{\}}}},
+  volume	= {32},
+  year		= {2016}
+}
+
 @Article{	  angerer2016a,
   author	= {Angerer, Philipp and Haghverdi, Laleh and B{\"{u}}ttner, Maren and Theis, Fabian J. and Marr, Carsten and Buettner, Florian},
   doi		= {10.1093/bioinformatics/btv715},
@@ -99,6 +111,42 @@
   url		= {http://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-0927-y files/71/Bacher und Kendziorski - 2016 - Design and computational analysis of single-cell R.pdf},
   volume	= {17},
   year		= {2016}
+}
+
+@Article{	  baron2016-ba,
+  abstract	= {Although the function of the mammalian pancreas hinges on complex interactions of distinct cell types, gene expression profiles have primarily been described with bulk mixtures. Here we implemented a droplet-based, single-cell RNA-seq method to determine the transcriptomes of over 12,000 individual pancreatic cells from four human donors and two mouse strains. Cells could be divided into 15 clusters that matched previously characterized cell types: all endocrine cell types, including rare epsilon-cells; exocrine cell types; vascular cells; Schwann cells; quiescent and activated stellate cells; and four types of immune cells. We detected subpopulations of ductal cells with distinct expression profiles and validated their existence with immuno-histochemistry stains. Moreover, among human beta- cells, we detected heterogeneity in the regulation of genes relating to functional maturation and levels of ER stress. Finally, we deconvolved bulk gene expression samples using the single-cell data to detect disease-associated differential expression. Our dataset provides a resource for the discovery of novel cell type-specific transcription factors, signaling receptors, and medically relevant genes.},
+  author	= {Baron, Maayan and Veres, Adrian and Wolock, Samuel L and Faust, Aubrey L and Gaujoux, Renaud and Vetere, Amedeo and Ryu, Jennifer Hyoje and Wagner, Bridget K and Shen-Orr, Shai S and Klein, Allon M and Melton, Douglas A and Yanai, Itai},
+  journal	= {Cell Syst},
+  number	= {4},
+  pages		= {346----360.e4},
+  title		= {{A {\{}Single-Cell{\}} Transcriptomic Map of the Human and Mouse Pancreas Reveals Inter- and Intra-cell Population Structure}},
+  volume	= {3},
+  year		= {2016}
+}
+
+@Article{	  becht2018,
+  abstract	= {A benchmarking analysis on single-cell RNA-seq and mass cytometry data reveals the best-performing technique for dimensionality reduction.},
+  annote	= {Paper that compares visualization techniques for scRNA-seq data and shows UMAP performs best.
+		  
+		  An interesting comparison was performed by computing the NMI of a random forest classier on reduced dimensions versus Phenograph clustering. On 3 out of 4 datasets no visualization method had a higher NMI than 0.5 showing that visualization dimensions are not sufficiently informative of cell heterogeneity (t-SNE should not be used for clustering).
+		  
+		  UMAP was also more robust to subsampling especially compared to t-SNE.
+		  
+		  Overall there is not much new information in this paper... except a few interesting evaluation methods.},
+  author	= {Becht, Etienne and McInnes, Leland and Healy, John and Dutertre, Charles-Antoine and Kwok, Immanuel W. H. and Ng, Lai Guan and Ginhoux, Florent and Newell, Evan W.},
+  doi		= {10.1038/nbt.4314},
+  issn		= {1087-0156},
+  journal	= {Nature Biotechnology},
+  keywords	= {Comparison,Computational biology and bioinformatics,Data mining,Immunology,UMAP,Visualization,scRNA-seq analysis},
+  mendeley-tags	= {Comparison,UMAP,Visualization,scRNA-seq analysis},
+  month		= {dec},
+  number	= {1},
+  pages		= {38--44},
+  publisher	= {Nature Publishing Group},
+  title		= {{Dimensionality reduction for visualizing single-cell data using UMAP}},
+  url		= {http://www.nature.com/doifinder/10.1038/nbt.4314},
+  volume	= {37},
+  year		= {2018}
 }
 
 @Article{	  becht2018,
@@ -177,6 +225,16 @@
   year		= {2014}
 }
 
+@Misc{		  boukhzar2016-fj,
+  author	= {Boukhzar, Loubna and Hamieh, Abdallah and Cartier, Dorthe and Tanguy, Yannick and Alsharif, Ifat and Castex, Matthieu and Arabo, Arnaud and {El Hajji}, Sana and Bonnet, Jean-Jacques and Errami, Mohammed and Falluel-Morel, Anthony and Chagraoui, Abdeslam and Lihrmann, Isabelle and Anouar, Youssef},
+  booktitle	= {Antioxidants {\&} Redox Signaling},
+  number	= {11},
+  pages		= {557--574},
+  title		= {{Selenoprotein {\{}T{\}} Exerts an Essential Oxidoreductase Activity That Protects Dopaminergic Neurons in Mouse Models of Parkinson's Disease}},
+  volume	= {24},
+  year		= {2016}
+}
+
 @Article{	  brennecke2013,
   abstract	= {Single-cell RNA-seq can yield valuable insights about the variability within a population of seemingly homogeneous cells. We developed a quantitative statistical method to distinguish true biological variability from the high levels of technical noise in single-cell experiments. Our approach quantifies the statistical significance of observed cell-to-cell variability in expression strength on a gene-by-gene basis. We validate our approach using two independent data sets from Arabidopsis thaliana and Mus musculus.},
   author	= {Brennecke, Philip and Anders, Simon and Kim, Jong Kyoung and Ko{\l}odziejczyk, Aleksandra A and Zhang, Xiuwei and Proserpio, Valentina and Baying, Bianka and Benes, Vladimir and Teichmann, Sarah A and Marioni, John C and Heisler, Marcus G},
@@ -187,6 +245,18 @@
   pages		= {1093--1098},
   title		= {{Accounting for technical noise in single-cell RNA-seq experiments}},
   url		= {http://www.nature.com/doifinder/10.1038/nmeth.2645 files/57/Brennecke et al. - 2013 - Accounting for technical noise in single-cell RNA-.pdf},
+  volume	= {10},
+  year		= {2013}
+}
+
+@Article{	  brennecke2013-sn,
+  abstract	= {Single-cell RNA-seq can yield valuable insights about the variability within a population of seemingly homogeneous cells. We developed a quantitative statistical method to distinguish true biological variability from the high levels of technical noise in single-cell experiments. Our approach quantifies the statistical significance of observed cell-to-cell variability in expression strength on a gene-by-gene basis. We validate our approach using two independent data sets from Arabidopsis thaliana and Mus musculus.},
+  author	= {Brennecke, Philip and Anders, Simon and Kim, Jong Kyoung and Ko{\l}odziejczyk, Aleksandra A and Zhang, Xiuwei and Proserpio, Valentina and Baying, Bianka and Benes, Vladimir and Teichmann, Sarah A and Marioni, John C and Heisler, Marcus G},
+  journal	= {Nat. Methods},
+  month		= {nov},
+  number	= {11},
+  pages		= {1093--1095},
+  title		= {{Accounting for technical noise in single-cell {\{}RNA-seq{\}} experiments}},
   volume	= {10},
   year		= {2013}
 }
@@ -317,6 +387,22 @@
   year		= {2015}
 }
 
+@Article{	  cobos2020,
+  abstract	= {Many computational methods to infer cell type proportions from bulk transcriptomics data have been developed. Attempts comparing these methods revealed that the choice of reference marker signatures is far more important than the method itself. However, a thorough evaluation of the combined impact of data transformation, pre-processing, marker selection, cell type composition and choice of methodology on the results is still lacking.
+		  
+		  Using different single-cell RNA-sequencing (scRNA-seq) datasets, we generated hundreds of pseudo-bulk mixtures to evaluate the combined impact of these factors on the deconvolution results. Along with methods to perform deconvolution of bulk RNA-seq data we also included five methods specifically designed to infer the cell type composition of bulk data using scRNA-seq data as reference.
+		  
+		  Both bulk and single-cell deconvolution methods perform best when applied to data in linear scale and the choice of normalization can have a dramatic impact on the performance of some, but not all methods. Overall, single-cell methods have comparable performance to the best performing bulk methods and bulk methods based on semi-supervised approaches showed higher error and lower correlation values between the computed and the expected proportions. Moreover, failure to include cell types in the reference that are present in a mixture always led to substantially worse results, regardless of any of the previous choices. Taken together, we provide a thorough evaluation of the combined impact of the different factors affecting the computational deconvolution task across different datasets and propose general guidelines to maximize its performance.},
+  author	= {Cobos, Francisco Avila and Alquicira-Hernandez, Jos{\'{e}} and Powell, Joseph and Mestdagh, Pieter and Preter, Katleen De},
+  doi		= {10.1101/2020.01.10.897116},
+  journal	= {bioRxiv},
+  month		= {jan},
+  pages		= {2020.01.10.897116},
+  publisher	= {Cold Spring Harbor Laboratory},
+  title		= {{Comprehensive benchmarking of computational deconvolution of transcriptomics data}},
+  year		= {2020}
+}
+
 @Article{	  coifman2005,
   abstract	= {In the companion article, a framework for structural multiscale geometric organization of subsets of R(n) and of graphs was introduced. Here, diffusion semigroups are used to generate multiscale analyses in order to organize and represent complex structures. We emphasize the multiscale nature of these problems and build scaling functions of Markov matrices (describing local transitions) that lead to macroscopic descriptions at different scales. The process of iterating or diffusing the Markov matrix is seen as a generalization of some aspects of the Newtonian paradigm, in which local infinitesimal transitions of a system lead to global macroscopic descriptions by integration. This article deals with the construction of fast-order N algorithms for data representation and for homogenization of heterogeneous structures.},
   author	= {Coifman, R. R. and Lafon, S. and Lee, A. B. and Maggioni, M. and Nadler, B. and Warner, F. and Zucker, S. W.},
@@ -328,6 +414,16 @@
   pages		= {7432--7437},
   publisher	= {Proceedings of the National Academy of Sciences},
   title		= {{Geometric diffusions as a tool for harmonic analysis and structure definition of data: Multiscale methods}},
+  volume	= {102},
+  year		= {2005}
+}
+
+@Misc{		  coifman2005-iw,
+  author	= {Coifman, R R and Lafon, S and Lee, A B and Maggioni, M and Nadler, B and Warner, F and Zucker, S W},
+  booktitle	= {Proceedings of the National Academy of Sciences},
+  number	= {21},
+  pages		= {7426--7431},
+  title		= {{Geometric diffusions as a tool for harmonic analysis and structure definition of data: Diffusion maps}},
   volume	= {102},
   year		= {2005}
 }
@@ -407,6 +503,15 @@
   year		= {2019}
 }
 
+@Unpublished{	  delaney2019-hq,
+  abstract	= {Abstract Single-cell transcriptomic studies are identifying novel cell populations with exciting functional roles in various in vivo contexts, but identification of succinct gene-marker panels for such populations remains a challenge. In this work we introduce COMET, a computational framework for the identification of candidate marker panels consisting of one or more genes for cell populations of interest identified with single-cell RNA-seq data. We show that COMET outperforms other methods for the identification of single-gene panels, and enables, for the first time, prediction of multi-gene marker panels ranked by relevance. Staining by flow-cytometry assay confirmed the accuracy of COMET's predictions in identifying marker-panels for cellular subtypes, at both the single- and multi-gene levels, validating COMET's applicability and accuracy in predicting favorable marker-panels from transcriptomic input. COMET is a general non-parametric statistical framework and can be used as-is on various high-throughput datasets in addition to single-cell RNA-sequencing data. COMET is available for use via a web interface (http://www.cometsc.com/) or a standalone software package (https://github.com/MSingerLab/COMETSC).},
+  author	= {Delaney, Conor and Schnell, Alexandra and Cammarata, Louis V and Yao-Smith, Aaron and Regev, Aviv and Kuchroo, Vijay K and Singer, Meromit},
+  booktitle	= {bioRxiv},
+  pages		= {655753},
+  title		= {{Combinatorial prediction of gene-marker panels from single-cell transcriptomic data}},
+  year		= {2019}
+}
+
 @Misc{		  devargasroditi2015,
   abstract	= {Novel technological developments enable single cell population profiling with respect to their spatial and molecular setup. These include single cell sequencing, flow cytometry and multiparametric imaging approaches and open unprecedented possibilities to learn about the heterogeneity, dynamics and interplay of the different cell types which constitute tissues and multicellular organisms. Statistical and dynamic systems theory approaches have been applied to quantitatively describe a variety of cellular processes, such as transcription and cell signaling. Machine learning approaches have been developed to define cell types, their mutual relationships, and differentiation hierarchies shaping heterogeneous cell populations, yielding insights into topics such as, for example, immune cell differentiation and tumor cell type composition. This combination of experimental and computational advances has opened perspectives towards learning predictive multi-scale models of heterogeneous cell populations.},
   author	= {{de Vargas Roditi}, Laura and Claassen, Manfred},
@@ -453,6 +558,16 @@
   year		= {2018}
 }
 
+@Article{	  eden2009-re,
+  abstract	= {BACKGROUND: Since the inception of the GO annotation project, a variety of tools have been developed that support exploring and searching the GO database. In particular, a variety of tools that perform GO enrichment analysis are currently available. Most of these tools require as input a target set of genes and a background set and seek enrichment in the target set compared to the background set. A few tools also exist that support analyzing ranked lists. The latter typically rely on simulations or on union-bound correction for assigning statistical significance to the results. RESULTS: GOrilla is a web-based application that identifies enriched GO terms in ranked lists of genes, without requiring the user to provide explicit target and background sets. This is particularly useful in many typical cases where genomic data may be naturally represented as a ranked list of genes (e.g. by level of expression or of differential expression). GOrilla employs a flexible threshold statistical approach to discover GO terms that are significantly enriched at the top of a ranked gene list. Building on a complete theoretical characterization of the underlying distribution, called mHG, GOrilla computes an exact p-value for the observed enrichment, taking threshold multiple testing into account without the need for simulations. This enables rigorous statistical analysis of thousand of genes and thousands of GO terms in order of seconds. The output of the enrichment analysis is visualized as a hierarchical structure, providing a clear view of the relations between enriched GO terms. CONCLUSION: GOrilla is an efficient GO analysis tool with unique features that make a useful addition to the existing repertoire of GO enrichment tools. GOrilla's unique features and advantages over other threshold free enrichment tools include rigorous statistics, fast running time and an effective graphical representation. GOrilla is publicly available at: http://cbl-gorilla.cs.technion.ac.il},
+  author	= {Eden, Eran and Navon, Roy and Steinfeld, Israel and Lipson, Doron and Yakhini, Zohar},
+  journal	= {BMC Bioinformatics},
+  pages		= {48},
+  title		= {{{\{}GOrilla{\}}: a tool for discovery and visualization of enriched {\{}GO{\}} terms in ranked gene lists}},
+  volume	= {10},
+  year		= {2009}
+}
+
 @Article{	  edsgard2018,
   abstract	= {trendsceek identifies genes with significant spatial trends in single-cell spatial expression data, as well as in low-dimensional projections of dissociated single-cell RNA-seq data.},
   author	= {Edsg{\"{a}}rd, Daniel and Johnsson, Per and Sandberg, Rickard},
@@ -466,6 +581,17 @@
   publisher	= {Nature Publishing Group},
   title		= {{Identification of spatial expression trends in single-cell gene expression data}},
   url		= {http://www.nature.com/articles/nmeth.4634},
+  volume	= {15},
+  year		= {2018}
+}
+
+@Article{	  edsgard2018-pt,
+  abstract	= {As methods for measuring spatial gene expression at single-cell resolution become available, there is a need for computational analysis strategies. We present trendsceek, a method based on marked point processes that identifies genes with statistically significant spatial expression trends. trendsceek finds these genes in spatial transcriptomic and sequential fluorescence in situ hybridization data, and also reveals significant gene expression gradients and hot spots in low-dimensional projections of dissociated single-cell RNA-seq data.},
+  author	= {Edsg{\"{a}}rd, Daniel and Johnsson, Per and Sandberg, Rickard},
+  journal	= {Nat. Methods},
+  number	= {5},
+  pages		= {339--342},
+  title		= {{Identification of spatial expression trends in single-cell gene expression data}},
   volume	= {15},
   year		= {2018}
 }
@@ -576,6 +702,19 @@
   year		= {2014}
 }
 
+@Article{	  gray_camp2015-hl,
+  abstract	= {Cerebral organoids---3D cultures of human cerebral tissue derived from pluripotent stem cells---have emerged as models of human cortical development. However, the extent to which in vitro organoid systems recapitulate neural progenitor cell proliferation and neuronal differentiation programs observed in vivo remains unclear. Here we use single-cell RNA sequencing (scRNA-seq) to dissect and compare cell composition and progenitor-to-neuron lineage relationships in human cerebral organoids and fetal neocortex. Covariation network analysis using the fetal neocortex data reveals known and previously unidentified interactions among genes central to neural progenitor proliferation and neuronal differentiation. In the organoid, we detect diverse progenitors and differentiated cell types of neuronal and mesenchymal lineages and identify cells that derived from regions resembling the fetal neocortex. We find that these organoid cortical cells use gene expression programs remarkably similar to those of the fetal tissue to organize into cerebral cortex-like regions. Our comparison of in vivo and in vitro cortical single-cell transcriptomes illuminates the genetic features underlying human cortical development that can be studied in organoid cultures.},
+  author	= {{Gray Camp}, J and Badsha, Farhath and Florio, Marta and Kanton, Sabina and Gerber, Tobias and Wilsch-Br{\"{a}}uninger, Michaela and Lewitus, Eric and Sykes, Alex and Hevers, Wulf and Lancaster, Madeline and Knoblich, Juergen A and Lachmann, Robert and P{\"{a}}{\"{a}}bo, Svante and Huttner, Wieland B and Treutlein, Barbara},
+  doi		= {10.1073/pnas.1520760112},
+  journal	= {Proc. Natl. Acad. Sci. U. S. A.},
+  number	= {51},
+  pages		= {15672--15677},
+  publisher	= {National Academy of Sciences},
+  title		= {{Human cerebral organoids recapitulate gene expression programs of fetal neocortex development}},
+  volume	= {112},
+  year		= {2015}
+}
+
 @Article{	  griffiths2018,
   abstract	= {High-throughput -omics techniques have revolutionised biology, allowing for thorough and unbiased characterisation of the molecular states of biological systems. However, cellular decision-making is inherently a unicellular process to which "bulk" -omics techniques are poorly suited, as they capture ensemble averages of cell states. Recently developed single-cell methods bridge this gap, allowing high-throughput molecular surveys of individual cells. In this review, we cover core concepts of analysis of single-cell gene expression data and highlight areas of developmental biology where single-cell techniques have made important contributions. These include understanding of cell-to-cell heterogeneity, the tracing of differentiation pathways, quantification of gene expression from specific alleles, and the future directions of cell lineage tracing and spatial gene expression analysis.},
   author	= {Griffiths, Jonathan A and Scialdone, Antonio and Marioni, John C},
@@ -639,6 +778,18 @@
   year		= {2015}
 }
 
+@Article{	  haghverdi2015-ob,
+  abstract	= {MOTIVATION: Single-cell technologies have recently gained popularity in cellular differentiation studies regarding their ability to resolve potential heterogeneities in cell populations. Analyzing such high-dimensional single-cell data has its own statistical and computational challenges. Popular multivariate approaches are based on data normalization, followed by dimension reduction and clustering to identify subgroups. However, in the case of cellular differentiation, we would not expect clear clusters to be present but instead expect the cells to follow continuous branching lineages. RESULTS: Here, we propose the use of diffusion maps to deal with the problem of defining differentiation trajectories. We adapt this method to single-cell data by adequate choice of kernel width and inclusion of uncertainties or missing measurement values, which enables the establishment of a pseudotemporal ordering of single cells in a high-dimensional gene expression space. We expect this output to reflect cell differentiation trajectories, where the data originates from intrinsic diffusion-like dynamics. Starting from a pluripotent stage, cells move smoothly within the transcriptional landscape towards more differentiated states with some stochasticity along their path. We demonstrate the robustness of our method with respect to extrinsic noise (e.g. measurement noise) and sampling density heterogeneities on simulated toy data as well as two single-cell quantitative polymerase chain reaction datasets (i.e. mouse haematopoietic stem cells and mouse embryonic stem cells) and an RNA-Seq data of human pre-implantation embryos. We show that diffusion maps perform considerably better than Principal Component Analysis and are advantageous over other techniques for non-linear dimension reduction such as t-distributed Stochastic Neighbour Embedding for preserving the global structures and pseudotemporal ordering of cells. AVAILABILITY AND IMPLEMENTATION: The Matlab implementation of diffusion maps for single-cell data is available at https://www.helmholtz-muenchen.de/icb/single-cell-diffusion-map. CONTACT: fbuettner.phys@gmail.com, fabian.theis@helmholtz-muenchen.de SUPPLEMENTARY INFORMATION: Supplementary data are available at Bioinformatics online.},
+  author	= {Haghverdi, Laleh and Buettner, Florian and Theis, Fabian J},
+  journal	= {Bioinformatics},
+  month		= {sep},
+  number	= {18},
+  pages		= {2989--2998},
+  title		= {{Diffusion maps for high-dimensional single-cell analysis of differentiation data}},
+  volume	= {31},
+  year		= {2015}
+}
+
 @Article{	  haghverdi2016,
   abstract	= {{\textcopyright} 2016 Nature America, Inc. All rights reserved. The temporal order of differentiating cells is intrinsically encoded in their single-cell expression profiles. We describe an efficient way to robustly estimate this order according to diffusion pseudotime (DPT), which measures transitions between cells using diffusion-like random walks. Our DPT software implementations make it possible to reconstruct the developmental progression of cells and identify transient or metastable states, branching decisions and differentiation endpoints.},
   author	= {Haghverdi, Laleh and B{\"{u}}ttner, Maren and Wolf, F Alexander and Buettner, Florian and Theis, Fabian J},
@@ -652,6 +803,20 @@
   url		= {http://www.nature.com/doifinder/10.1038/nmeth.3971 files/101/Haghverdi et al. - 2016 - Diffusion pseudotime robustly reconstructs lineage (supplement).pdf files/98/Haghverdi et al. - 2016 - Diffusion pseudotime robustly reconstructs lineage.pdf},
   volume	= {13},
   year		= {2016}
+}
+
+@Article{	  haque2017,
+  abstract	= {RNA sequencing (RNA-seq) is a genomic approach for the detection and quantitative analysis of messenger RNA molecules in a biological sample and is useful for studying cellular responses. RNA-seq has fueled much discovery and innovation in medicine over recent years. For practical reasons, the technique is usually conducted on samples comprising thousands to millions of cells. However, this has hindered direct assessment of the fundamental unit of biology-the cell. Since the first single-cell RNA-sequencing (scRNA-seq) study was published in 2009, many more have been conducted, mostly by specialist laboratories with unique skills in wet-lab single-cell genomics, bioinformatics, and computation. However, with the increasing commercial availability of scRNA-seq platforms, and the rapid ongoing maturation of bioinformatics approaches, a point has been reached where any biomedical researcher or clinician can use scRNA-seq to make exciting discoveries. In this review, we present a practical guide to help researchers design their first scRNA-seq studies, including introductory information on experimental hardware, protocol choice, quality control, data analysis and biological interpretation.},
+  author	= {Haque, Ashraful and Engel, Jessica and Teichmann, Sarah A. and L{\"{o}}nnberg, Tapio},
+  doi		= {10.1186/s13073-017-0467-4},
+  issn		= {1756994X},
+  journal	= {Genome Medicine},
+  month		= {aug},
+  number	= {1},
+  publisher	= {BioMed Central Ltd.},
+  title		= {{A practical guide to single-cell RNA-sequencing for biomedical research and clinical applications}},
+  volume	= {9},
+  year		= {2017}
 }
 
 @Article{	  heiser2019,
@@ -676,6 +841,52 @@
   month		= {jul},
   title		= {{Spectral approximations in machine learning}},
   url		= {http://arxiv.org/abs/1107.4340},
+  year		= {2011}
+}
+
+@Article{	  huang2018,
+  abstract	= {Single-cell RNA sequencing (scRNA-seq) has been tremendously developed in the past decade owing to overcoming challenges associated with isolation of massive quantities of single cells. Previously, cell heterogeneity and low quantities of available biological material posed significant difficulties to scRNA-seq. Cell-to-cell variation and heterogeneity are fundamental and intrinsic characteristics of normal and malignant hematopoietic cells; this heterogeneity has often been ignored in omics studies. The application of scRNA-seq has profoundly changed our comprehension of many biological phenomena, including organ development and carcinogenesis. Hematopoiesis, is actually a maturation process for more than ten distinct blood and immune cells, and is thought to be critically involved in hematological homeostasis and in sustaining the physiological functions. However, aberrant hematopoiesis directly leads to hematological malignancy, and a deeper understanding of malignant hematopoiesis will provide deeper insights into diagnosis and prognosis for patients with hematological malignancies. Here, we aim to review the recent technical progress and future prospects for scRNA-seq, as applied in physiological and malignant hematopoiesis, in efforts to further understand the hematopoietic hierarchy and to illuminate personalized therapy and precision medicine approaches used in the clinical treatment of hematological malignancies.},
+  author	= {Huang, Xiang Tao and Li, Xi and Qin, Pei Zhong and Zhu, Yao and Xu, Shuang Nian and Chen, Jie Ping},
+  doi		= {10.3389/fonc.2018.00582},
+  issn		= {2234943X},
+  journal	= {Frontiers in Oncology},
+  keywords	= {Hematological malignancy,Hematopoietic hierarchy,Malignant hematopoiesis,Normal hematopoiesis,Single-cell RNA sequencing},
+  number	= {DEC},
+  publisher	= {Frontiers Media S.A.},
+  title		= {{Technical advances in single-cell RNA sequencing and applications in normal and malignant hematopoiesis}},
+  volume	= {8},
+  year		= {2018}
+}
+
+@Misc{		  husnain2019-ud,
+  author	= {Husnain, Mujtaba and Missen, Malik and Mumtaz, Shahzad and Luqman, Muhammad and Coustaty, Micka{\"{e}}l and Ogier, Jean-Marc},
+  booktitle	= {Symmetry},
+  number	= {1},
+  pages		= {107},
+  title		= {{Visualization of {\{}High-Dimensional{\}} Data by Pairwise Fusion Matrices Using {\{}t-SNE{\}}}},
+  volume	= {11},
+  year		= {2019}
+}
+
+@Article{	  ibarra-soria2018-ka,
+  abstract	= {During gastrulation, cell types from all three germ layers are specified and the basic body plan is established . However, molecular analysis of this key developmental stage has been hampered by limited cell numbers and a paucity of markers. Single-cell RNA sequencing circumvents these problems, but has so far been limited to specific organ systems . Here, we report single-cell transcriptomic characterization of {\textgreater}20,000 cells immediately following gastrulation at E8.25 of mouse development. We identify 20 major cell types, which frequently contain substructure, including three distinct signatures in early foregut cells. Pseudo-space ordering of somitic progenitor cells identifies dynamic waves of transcription and candidate regulators, which are validated by molecular characterization of spatially resolved regions of the embryo. Within the endothelial population, cells that transition from haemogenic endothelial to erythro-myeloid progenitors specifically express Alox5 and its co-factor Alox5ap, which control leukotriene production. Functional assays using mouse embryonic stem cells demonstrate that leukotrienes promote haematopoietic progenitor cell generation. Thus, this comprehensive single-cell map can be exploited to reveal previously unrecognized pathways that contribute to tissue development.},
+  author	= {Ibarra-Soria, Ximena and Jawaid, Wajid and Pijuan-Sala, Blanca and Ladopoulos, Vasileios and Scialdone, Antonio and J{\"{o}}rg, David J and Tyser, Richard C V and Calero-Nieto, Fernando J and Mulas, Carla and Nichols, Jennifer and Vallier, Ludovic and Srinivas, Shankar and Simons, Benjamin D and G{\"{o}}ttgens, Berthold and Marioni, John C},
+  journal	= {Nat. Cell Biol.},
+  number	= {2},
+  pages		= {127--134},
+  title		= {{Defining murine organogenesis at single-cell resolution reveals a role for the leukotriene pathway in regulating blood progenitor formation}},
+  volume	= {20},
+  year		= {2018}
+}
+
+@Article{	  islam2011-cn,
+  abstract	= {Our understanding of the development and maintenance of tissues has been greatly aided by large-scale gene expression analysis. However, tissues are invariably complex, and expression analysis of a tissue confounds the true expression patterns of its constituent cell types. Here we describe a novel strategy to access such complex samples. Single-cell RNA-seq expression profiles were generated, and clustered to form a two-dimensional cell map onto which expression data were projected. The resulting cell map integrates three levels of organization: the whole population of cells, the functionally distinct subpopulations it contains, and the single cells themselves-all without need for known markers to classify cell types. The feasibility of the strategy was demonstrated by analyzing the transcriptomes of 85 single cells of two distinct types. We believe this strategy will enable the unbiased discovery and analysis of naturally occurring cell types during development, adult physiology, and disease.},
+  author	= {Islam, Saiful and Kj{\"{a}}llquist, Una and Moliner, Annalena and Zajac, Pawel and Fan, Jian-Bing and L{\"{o}}nnerberg, Peter and Linnarsson, Sten},
+  journal	= {Genome Res.},
+  number	= {7},
+  pages		= {1160--1167},
+  title		= {{Characterization of the single-cell transcriptional landscape by highly multiplex {\{}RNA-seq{\}}}},
+  volume	= {21},
   year		= {2011}
 }
 
@@ -834,6 +1045,17 @@
   year		= {2019}
 }
 
+@Article{	  kolodziejczyk2015-pf,
+  abstract	= {Embryonic stem cell (ESC) culture conditions are important for maintaining long-term self-renewal, and they influence cellular pluripotency state. Here, we report single cell RNA-sequencing of mESCs cultured in three different conditions: serum, 2i, and the alternative ground state a2i. We find that the cellular transcriptomes of cells grown in these conditions are distinct, with 2i being the most similar to blastocyst cells and including a subpopulation resembling the two-cell embryo state. Overall levels of intercellular gene expression heterogeneity are comparable across the three conditions. However, this masks variable expression of pluripotency genes in serum cells and homogeneous expression in 2i and a2i cells. Additionally, genes related to the cell cycle are more variably expressed in the 2i and a2i conditions. Mining of our dataset for correlations in gene expression allowed us to identify additional components of the pluripotency network, including Ptma and Zfp640, illustrating its value as a resource for future discovery.},
+  author	= {Kolodziejczyk, Aleksandra A and Kim, Jong Kyoung and Tsang, Jason C H and Ilicic, Tomislav and Henriksson, Johan and Natarajan, Kedar N and Tuck, Alex C and Gao, Xuefei and B{\"{u}}hler, Marc and Liu, Pentao and Marioni, John C and Teichmann, Sarah A},
+  journal	= {Cell Stem Cell},
+  number	= {4},
+  pages		= {471--485},
+  title		= {{Single Cell {\{}RNA-Sequencing{\}} of Pluripotent States Unlocks Modular Transcriptional Variation}},
+  volume	= {17},
+  year		= {2015}
+}
+
 @Article{	  korsunsky2018,
   abstract	= {The rapidly emerging diversity of single cell RNAseq datasets allows us to characterize the transcriptional behavior of cell types across a wide variety of biological and clinical conditions. With this comprehensive breadth comes a major analytical challenge. The same cell type across tissues, from different donors, or in different disease states, may appear to express different genes. A joint analysis of multiple datasets requires the integration of cells across diverse conditions. This is particularly challenging when datasets are assayed with different technologies in which real biological differences are interspersed with technical differences. We present Harmony, an algorithm that projects cells into a shared embedding in which cells group by cell type rather than dataset-specific conditions. Unlike available single-cell integration methods, Harmony can simultaneously account for multiple experimental and biological factors. We develop objective metrics to evaluate the quality of data integration. In four separate analyses, we demonstrate the superior performance of Harmony to four single-cell-specific integration algorithms. Moreover, we show that Harmony requires dramatically fewer computational resources. It is the only available algorithm that makes the integration of {\~{}}10[6][1] cells feasible on a personal computer. We demonstrate that Harmony identifies both broad populations and fine-grained subpopulations of PBMCs from datasets with large experimental differences. In a meta-analysis of 14,746 cells from 5 studies of human pancreatic islet cells, Harmony accounts for variation among technologies and donors to successfully align several rare subpopulations. In the resulting integrated embedding, we identify a previously unidentified population of potentially dysfunctional alpha islet cells, enriched for genes active in the Endoplasmic Reticulum (ER) stress response. The abundance of these alpha cells correlates across donors with the proportion of dysfunctional beta cells also enriched in ER stress response genes. Harmony is a fast and flexible general purpose integration algorithm that enables the identification of shared fine-grained subpopulations across a variety of experimental and biological conditions. [1]: {\#}ref-6},
   author	= {Korsunsky, Ilya and Fan, Jean and Slowikowski, Kamil and Zhang, Fan and Wei, Kevin and Baglaenko, Yuriy and Brenner, Michael and Loh, Po-Ru and Raychaudhuri, Soumya},
@@ -880,6 +1102,18 @@
   year		= {2014}
 }
 
+@Article{	  la_manno2018-bm,
+  abstract	= {RNA abundance is a powerful indicator of the state of individual cells. Single-cell RNA sequencing can reveal RNA abundance with high quantitative accuracy, sensitivity and throughput. However, this approach captures only a static snapshot at a point in time, posing a challenge for the analysis of time-resolved phenomena such as embryogenesis or tissue regeneration. Here we show that RNA velocity-the time derivative of the gene expression state-can be directly estimated by distinguishing between unspliced and spliced mRNAs in common single-cell RNA sequencing protocols. RNA velocity is a high-dimensional vector that predicts the future state of individual cells on a timescale of hours. We validate its accuracy in the neural crest lineage, demonstrate its use on multiple published datasets and technical platforms, reveal the branching lineage tree of the developing mouse hippocampus, and examine the kinetics of transcription in human embryonic brain. We expect RNA velocity to greatly aid the analysis of developmental lineages and cellular dynamics, particularly in humans.},
+  author	= {{La Manno}, Gioele and Soldatov, Ruslan and Zeisel, Amit and Braun, Emelie and Hochgerner, Hannah and Petukhov, Viktor and Lidschreiber, Katja and Kastriti, Maria E and L{\"{o}}nnerberg, Peter and Furlan, Alessandro and Fan, Jean and Borm, Lars E and Liu, Zehua and van Bruggen, David and Guo, Jimin and He, Xiaoling and Barker, Roger and Sundstr{\"{o}}m, Erik and Castelo-Branco, Gon{\c{c}}alo and Cramer, Patrick and Adameyko, Igor and Linnarsson, Sten and Kharchenko, Peter V},
+  journal	= {Nature},
+  month		= {aug},
+  number	= {7719},
+  pages		= {494--498},
+  title		= {{{\{}RNA{\}} velocity of single cells}},
+  volume	= {560},
+  year		= {2018}
+}
+
 @Article{	  lafzi2018,
   abstract	= {Single-cell RNA sequencing is at the forefront of high-resolution phenotyping experiments for complex samples. Although this methodology requires specialized equipment and expertise, it is now widely applied in research. However, it is challenging to create broadly applicable experimental designs because each experiment requires the user to make informed decisions about sample preparation, RNA sequencing and data analysis. To facilitate this decision-making process, in this tutorial we summarize current methodological and analytical options, and discuss their suitability for a range of research scenarios. Specifically, we provide information about best practices for the separation of individual cells and provide an overview of current single-cell capture methods at different cellular resolutions and scales. Methods for the preparation of RNA sequencing libraries vary profoundly across applications, and we discuss features important for an informed selection process. An erroneous or biased analysis can lead to misinterpretations or obscure biologically important information. We provide a guide to the major data processing steps and options for meaningful data interpretation. These guidelines will serve as a reference to support users in building a single-cell experimental framework—from sample preparation to data interpretation—that is tailored to the underlying research context.},
   author	= {Lafzi, Atefeh and Moutinho, Catia and Picelli, Simone and Heyn, Holger},
@@ -915,6 +1149,19 @@
   year		= {2018}
 }
 
+@Article{	  latinkic2001-hh,
+  abstract	= {Abstract. The cysteine-rich angiogenic protein 61 (Cyr61) is an extracellular matrix-associated, heparin-binding protein that mediates cell adhesion, stimulate},
+  author	= {Latinki{\'{c}}, Branko V and Mo, Fan-E and Greenspan, Jeffrey A and Copeland, Neal G and Gilbert, Debra J and Jenkins, Nancy A and Ross, Susan R and Lau, Lester F},
+  journal	= {Endocrinology},
+  keywords	= {angiogenesis; fibroblasts; cardiovascular system;,human,pair 3; cysteine; cell motility; transcriptional,transgenic; serum response element; wound healing},
+  number	= {6},
+  pages		= {2549--2557},
+  publisher	= {Narnia},
+  title		= {{Promoter Function of the Angiogenic Inducer {\{}Cyr61Gene{\}} in Transgenic Mice: Tissue Specificity, Inducibility During Wound Healing, and Role of the Serum Response Element}},
+  volume	= {142},
+  year		= {2001}
+}
+
 @Article{	  lenz2016,
   abstract	= {Principal components analysis (PCA) is a common unsupervised method for the analysis of gene expression microarray data, providing information on the overall structure of the analyzed dataset. In the recent years, it has been applied to very large datasets involving many different tissues and cell types, in order to create a low dimensional global map of human gene expression. Here, we reevaluate this approach and show that the linear intrinsic dimensionality of this global map is higher than previously reported. Furthermore, we analyze in which cases PCA fails to detect biologically relevant information and point the reader to methods that overcome these limitations. Our results refine the current understanding of the overall structure of gene expression spaces and show that PCA critically depends on the effect size of the biological signal as well as on the fraction of samples containing this signal.},
   author	= {Lenz, Michael and M{\"{u}}ller, Franz-Josef and Zenke, Martin and Schuppert, Andreas},
@@ -930,6 +1177,18 @@
   url		= {http://www.nature.com/articles/srep25696},
   volume	= {6},
   year		= {2016}
+}
+
+@Article{	  lin2017-dm,
+  abstract	= {Retinoic acid (RA) is the active ingredient of vitamin A. It exerts its canonical activity by binding to nuclear RA receptors (RARs) to regulate gene expression. Increasingly, RA is also known to elicit nongenomic RAR-independent activities, most widely detected in activating extracellular regulated kinase (ERK)1/2. This study validated the functional role of cellular retinoic acid-binding protein 1 (Crabp1) in mediating nongenomic activity in RA, specifically activating ERK1/2 to rapidly augment the cell cycle by expanding the growth 1 phase and slowing down embryonic stem cell and neural stem cell (NSC) proliferation. The study further uncovered the physiological activity of Crabp1 in modulating NSC proliferation and animal behavior. In the Crabp1 knockout mouse hippocampus, where Crabp1 is otherwise detected in the subgranular zone, neurogenesis and NSC proliferation increased and hippocampus-dependent brain functions such as learning and memory correspondingly improved. This study established the physiological role of Crabp1 in modulating stem cell proliferation and hippocampus-dependent brain activities such as learning and memory.},
+  author	= {Lin, Yu-Lung and Persaud, Shawna D and Nhieu, Jennifer and Wei, Li-Na},
+  journal	= {Endocrinology},
+  month		= {sep},
+  number	= {9},
+  pages		= {3004--3014},
+  title		= {{Cellular Retinoic {\{}Acid-Binding{\}} Protein 1 Modulates Stem Cell Proliferation to Affect Learning and Memory in Male Mice}},
+  volume	= {158},
+  year		= {2017}
 }
 
 @Article{	  livak2013,
@@ -1019,6 +1278,16 @@
   year		= {2018}
 }
 
+@Article{	  maaten2008-qx,
+  author	= {van der Maaten, Laurens and Hinton, Geoffrey},
+  journal	= {J. Mach. Learn. Res.},
+  number	= {Nov},
+  pages		= {2579--2605},
+  title		= {{Visualizing data using {\{}t-SNE{\}}}},
+  volume	= {9},
+  year		= {2008}
+}
+
 @Article{	  macaulay2014,
   author	= {Macaulay, Iain C. and Voet, Thierry},
   doi		= {10.1371/journal.pgen.1004126},
@@ -1060,6 +1329,28 @@
   eprint	= {1802.03426},
   title		= {{UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction}},
   url		= {http://arxiv.org/abs/1802.03426},
+  year		= {2018}
+}
+
+@Article{	  mcinnes2018,
+  abstract	= {UMAP (Uniform Manifold Approximation and Projection) is a novel manifold learning technique for dimension reduction. UMAP is constructed from a theoretical framework based in Riemannian geometry and algebraic topology. The result is a practical scalable algorithm that applies to real world data. The UMAP algorithm is competitive with t-SNE for visualization quality, and arguably preserves more of the global structure with superior run time performance. Furthermore, UMAP has no computational restrictions on embedding dimension, making it viable as a general purpose dimension reduction technique for machine learning.},
+  archiveprefix	= {arXiv},
+  arxivid	= {1802.03426},
+  author	= {McInnes, Leland and Healy, John and Melville, James},
+  eprint	= {1802.03426},
+  month		= {feb},
+  title		= {{UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction}},
+  url		= {http://arxiv.org/abs/1802.03426},
+  year		= {2018}
+}
+
+@Misc{		  mcinnes2018-uo,
+  author	= {McInnes, Leland and Healy, John and Saul, Nathaniel and Gro{\ss}berger, Lukas},
+  booktitle	= {Journal of Open Source Software},
+  number	= {29},
+  pages		= {861},
+  title		= {{{\{}UMAP{\}}: Uniform Manifold Approximation and Projection}},
+  volume	= {3},
   year		= {2018}
 }
 
@@ -1177,6 +1468,20 @@
   year		= {2019}
 }
 
+@Article{	  natarajan2019a,
+  author	= {Natarajan, Kedar Nath and Miao, Zhichao and Jiang, Miaomiao and Huang, Xiaoyun and Zhou, Hongpo and Xie, Jiarui and Wang, Chunqing and Qin, Shishang and Zhao, Zhikun and Wu, Liang and Yang, Naibo and Li, Bo and Hou, Yong and Liu, Shiping and Teichmann, Sarah A.},
+  doi		= {10.1186/s13059-019-1676-5},
+  issn		= {1474-760X},
+  journal	= {Genome Biology},
+  month		= {dec},
+  number	= {1},
+  pages		= {70},
+  title		= {{Comparative analysis of sequencing technologies for single-cell transcriptomics}},
+  url		= {https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1676-5},
+  volume	= {20},
+  year		= {2019}
+}
+
 @Article{	  ntranos2016,
   abstract	= {Current approaches to single-cell transcriptomic analysis are computationally intensive and require assay-specific modeling which limit their scope and generality. We propose a novel method that departs from standard analysis pipelines, comparing and clustering cells based not on their transcript or gene quantifications but on their transcript-compatibility read counts. In re-analysis of two landmark yet disparate single-cell RNA-Seq datasets, we show that our method is up to two orders of magnitude faster than previous approaches, provides accurate and in some cases improved results, and is directly applicable to data from a wide variety of assays.},
   author	= {Ntranos, Vasilis and Kamath, Govinda M and Zhang, Jesse M and Pachter, Lior and Tse, David N},
@@ -1205,6 +1510,15 @@
   title		= {{Single-cell RNA sequencing to explore immune cell heterogeneity}},
   volume	= {18},
   year		= {2018}
+}
+
+@Unpublished{	  pliner2019-si,
+  abstract	= {Single cell technologies for profiling tissues or even entire organisms are rapidly being adopted. However, the manual process by which cell types are typically annotated in the resulting data is labor-intensive and increasingly rate-limiting for the field. Here we describe Garnett, an algorithm and accompanying software for rapidly annotating cell types in scRNA-seq and scATAC-seq datasets, based on an interpretable, hierarchical markup language of cell type-specific genes. Garnett successfully classifies cell types in tissue and whole organism datasets, as well as across species.},
+  author	= {Pliner, Hannah A and Shendure, Jay and Trapnell, Cole},
+  booktitle	= {bioRxiv},
+  pages		= {538652},
+  title		= {{Supervised classification enables rapid annotation of cell atlases}},
+  year		= {2019}
 }
 
 @Article{	  poirion2016,
@@ -1459,6 +1773,18 @@
   year		= {1976}
 }
 
+@Article{	  shema2018-kx,
+  abstract	= {Recent advances in single-cell and single-molecule epigenomic technologies now enable the study of genome regulation and dynamics at unprecedented resolution. In this Perspective, we highlight some of these transformative technologies and discuss how they have been used to identify new modes of gene regulation. We also contrast these assays with recent advances in single-cell transcriptomics and argue for the essential role of epigenomic technologies in both understanding cellular diversity and discovering gene regulatory mechanisms. In addition, we provide our view on the next generation of biological tools that we expect will open new avenues for elucidating the fundamental principles of gene regulation. Overall, this Perspective motivates the use of these high-resolution epigenomic technologies for mapping cell states and understanding regulatory diversity at single-molecule resolution within single cells.},
+  author	= {Shema, Efrat and Bernstein, Bradley E and Buenrostro, Jason D},
+  journal	= {Nat. Genet.},
+  number	= {1},
+  pages		= {19},
+  publisher	= {Nature Publishing Group},
+  title		= {{Single-cell and single-molecule epigenomics to uncover genome regulation at unprecedented resolution}},
+  volume	= {51},
+  year		= {2018}
+}
+
 @Article{	  skinnider2019,
   abstract	= {Single-cell transcriptomics provides an opportunity to characterize cell-type-specific transcriptional networks, intercellular signaling pathways and cellular diversity with unprecedented resolution by profiling thousands of cells in a single experiment. However, owing to the unique statistical properties of scRNA-seq data, the optimal measures of association for identifying gene–gene and cell–cell relationships from single-cell transcriptomics remain unclear. Here, we conducted a large-scale evaluation of 17 measures of association for their ability to reconstruct cellular networks, cluster cells of the same type and link cell-type-specific transcriptional programs to disease. Measures of proportionality were consistently among the best-performing methods across datasets and tasks. Our analysis provides data-driven guidance for gene and cell network analysis in single-cell transcriptomics.},
   author	= {Skinnider, Michael A. and Squair, Jordan W. and Foster, Leonard J.},
@@ -1472,6 +1798,17 @@
   title		= {{Evaluating measures of association for single-cell transcriptomics}},
   url		= {http://www.nature.com/articles/s41592-019-0372-4},
   year		= {2019}
+}
+
+@Article{	  soerensen2008-sz,
+  abstract	= {The thioredoxin-dependent system is an essential regulator of cellular redox balance. Since oxidative stress has been linked with neurodegenerative disease, we studied the roles of thioredoxin reductases in brain using mice with nervous system (NS)-specific ...},
+  author	= {Soerensen, Jonna and Jakupoglu, Cemile and Beck, Heike and F{\"{o}}rster, Heidi and Schmidt, J{\"{o}}rg and Schmahl, Wolfgang and Schweizer, Ulrich and Conrad, Marcus and Brielmeier, Markus},
+  journal	= {PLoS One},
+  number	= {3},
+  publisher	= {Public Library of Science},
+  title		= {{The Role of Thioredoxin Reductases in Brain Development}},
+  volume	= {3},
+  year		= {2008}
 }
 
 @Article{	  soneson2017,
@@ -1524,6 +1861,17 @@
   title		= {{Characterization of directed differentiation by high-throughput single-cell RNA-Seq - SI}},
   url		= {http://biorxiv.org/lookup/doi/10.1101/003236 files/49/Soumillon et al. - 2014 - Characterization of directed differentiation by hi.pdf https://www.biorxiv.org/content/10.1101/003236v1{\%}0Ahttp://biorxiv.org/content/early/2014/03/05/003236.abstract},
   year		= {2014}
+}
+
+@Article{	  spitzer2016-jj,
+  abstract	= {Technology development in biological research often aims to either increase the number of cellular features that can be surveyed simultaneously or enhance the resolution at which such observations are possible. For decades, flow cytometry has balanced these goals to fill a critical need by enabling the measurement of multiple features in single cells, commonly to examine complex or hierarchical cellular systems. Recently, a format for flow cytometry has been developed that leverages the precision of mass spectrometry. This fusion of the two technologies, termed mass cytometry, provides measurement of over 40 simultaneous cellular parameters at single-cell resolution, significantly augmenting the ability of cytometry to evaluate complex cellular systems and processes. In this Primer, we review the current state of mass cytometry, providing an overview of the instrumentation, its present capabilities, and methods of data analysis, as well as thoughts on future developments and applications.},
+  author	= {Spitzer, Matthew H and Nolan, Garry P},
+  journal	= {Cell},
+  number	= {4},
+  pages		= {780--791},
+  title		= {{Mass Cytometry: Single Cells, Many Features}},
+  volume	= {165},
+  year		= {2016}
 }
 
 @Article{	  stegle2012,
@@ -1584,6 +1932,16 @@
   title		= {{SpatialDE: identification of spatially variable genes}},
   url		= {http://www.nature.com/articles/nmeth.4636},
   volume	= {15},
+  year		= {2018}
+}
+
+@Misc{		  svensson2018-gq,
+  author	= {Svensson, Valentine and Pachter, Lior},
+  booktitle	= {Molecular Cell},
+  number	= {1},
+  pages		= {7--9},
+  title		= {{{\{}RNA{\}} Velocity: Molecular Kinetics from {\{}Single-Cell{\}} {\{}RNA-Seq{\}}}},
+  volume	= {72},
   year		= {2018}
 }
 
@@ -1668,6 +2026,19 @@
   year		= {2014}
 }
 
+@Article{	  tritschler2017-hi,
+  abstract	= {BACKGROUND: Diabetes mellitus is characterized by loss or dysfunction of insulin-producing {\$}\beta{\$}-cells in the pancreas, resulting in failure of blood glucose regulation and devastating secondary complications. Thus, {\$}\beta{\$}-cells are currently the prime target for cell-replacement and regenerative therapy. Triggering endogenous repair is a promising strategy to restore {\$}\beta{\$}-cell mass and normoglycemia in diabetic patients. Potential strategies include targeting specific {\$}\beta{\$}-cell subpopulations to increase proliferation or maturation. Alternatively, transdifferentiation of pancreatic islet cells (e.g. {\$}\alpha{\$}- or {\$}\delta{\$}-cells), extra-islet cells (acinar and ductal cells), hepatocytes, or intestinal cells into insulin-producing cells might improve glycemic control. To this end, it is crucial to systematically characterize and unravel the transcriptional program of all pancreatic cell types at the molecular level in homeostasis and disease. Furthermore, it is necessary to better determine the underlying mechanisms of {\$}\beta{\$}-cell maturation, maintenance, and dysfunction in diabetes, to identify and molecularly profile endocrine subpopulations with regenerative potential, and to translate the findings from mice to man. Recent approaches in single-cell biology started to illuminate heterogeneity and plasticity in the pancreas that might be targeted for {\$}\beta{\$}-cell regeneration in diabetic patients. SCOPE OF REVIEW: This review discusses recent literature on single-cell analysis including single-cell RNA sequencing, single-cell mass cytometry, and flow cytometry of pancreatic cell types in the context of mechanisms of endogenous {\$}\beta{\$}-cell regeneration. We discuss new findings on the regulation of postnatal {\$}\beta{\$}-cell proliferation and maturation. We highlight how single-cell analysis recapitulates described principles of functional {\$}\beta{\$}-cell heterogeneity in animal models and adds new knowledge on the extent of {\$}\beta{\$}-cell heterogeneity in humans as well as its role in homeostasis and disease. Furthermore, we summarize the findings on cell subpopulations with regenerative potential that might enable the formation of new {\$}\beta{\$}-cells in diseased state. Finally, we review new data on the transcriptional program and function of rare pancreatic cell types and their implication in diabetes. MAJOR CONCLUSION: Novel, single-cell technologies offer high molecular resolution of cellular heterogeneity within the pancreas and provide information on processes and factors that govern {\$}\beta{\$}-cell homeostasis, proliferation, and maturation. Eventually, these technologies might lead to the characterization of cells with regenerative potential and unravel disease-associated changes in gene expression to identify cellular and molecular targets for therapy.},
+  author	= {Tritschler, Sophie and Theis, Fabian J and Lickert, Heiko and B{\"{o}}ttcher, Anika},
+  journal	= {Mol Metab},
+  keywords	= {Dedifferentiation; Diabetes; Endocrine cells; Matu},
+  month		= {sep},
+  number	= {9},
+  pages		= {974--990},
+  title		= {{Systematic single-cell analysis provides new insights into heterogeneity and plasticity of the pancreas}},
+  volume	= {6},
+  year		= {2017}
+}
+
 @Article{	  tsai1975,
   abstract	= {PMID: 457},
   author	= {Tsai, L H and Liu, H J and Yang, C P and Chang, C},
@@ -1684,6 +2055,20 @@
   year		= {1975}
 }
 
+@Article{	  tsuyuzaki2020,
+  author	= {Tsuyuzaki, Koki and Sato, Hiroyuki and Sato, Kenta and Nikaido, Itoshi},
+  doi		= {10.1186/s13059-019-1900-3},
+  issn		= {1474-760X},
+  journal	= {Genome Biology},
+  month		= {dec},
+  number	= {1},
+  pages		= {9},
+  title		= {{Benchmarking principal component analysis for large-scale single-cell RNA-sequencing}},
+  url		= {https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1900-3},
+  volume	= {21},
+  year		= {2020}
+}
+
 @Article{	  uzbas2019,
   abstract	= {We describe a highly sensitive, quantitative, and inexpensive technique for targeted sequencing of transcript cohorts or genomic regions from thousands of bulk samples or single cells in parallel. Multiplexing is based on a simple method that produces extensive matrices of diverse DNA barcodes attached to invariant primer sets, which are all pre-selected and optimized in silico. By applying the matrices in a novel workflow named Barcode Assembly foR Targeted Sequencing (BART-Seq), we analyze developmental states of thousands of single human pluripotent stem cells, either in different maintenance media or upon Wnt/$\beta$-catenin pathway activation, which identifies the mechanisms of differentiation induction. Moreover, we apply BART-Seq to the genetic screening of breast cancer patients and identify BRCA mutations with very high precision. The processing of thousands of samples and dynamic range measurements that outperform global transcriptomics techniques makes BART-Seq first targeted sequencing technique suitable for numerous research applications.},
   author	= {Uzbas, Fatma and Opperer, Florian and S{\"{o}}nmezer, Can and Shaposhnikov, Dmitry and Sass, Steffen and Krendl, Christian and Angerer, Philipp and Theis, Fabian J. and Mueller, Nikola S. and Drukker, Micha},
@@ -1695,6 +2080,17 @@
   title		= {{BART-Seq: cost-effective massively parallelized targeted sequencing for genomics, transcriptomics, and single-cell analysis}},
   volume	= {20},
   year		= {2019}
+}
+
+@Article{	  valihrach2018-ut,
+  abstract	= {Single-cell analysis has become an established method to study cell heterogeneity and for rare cell characterization. Despite the high cost and technical constraints, applications are increasing every year in all fields of biology. Following the trend, there is a tremendous development of tools for single-cell analysis, especially in the RNA sequencing field. Every improvement increases sensitivity and throughput. Collecting a large amount of data also stimulates the development of new approaches for bioinformatic analysis and interpretation. However, the essential requirement for any analysis is the collection of single cells of high quality. The single-cell isolation must be fast, effective, and gentle to maintain the native expression profiles. Classical methods for single-cell isolation are micromanipulation, microdissection, and fluorescence-activated cell sorting (FACS). In the last decade several new and highly efficient approaches have been developed, which not just supplement but may fully replace the traditional ones. These new techniques are based on microfluidic chips, droplets, micro-well plates, and automatic collection of cells using capillaries, magnets, an electric field, or a punching probe. In this review we summarize the current methods and developments in this field. We discuss the advantages of the different commercially available platforms and their applicability, and also provide remarks on future developments.},
+  author	= {Valihrach, Lukas and Androvic, Peter and Kubista, Mikael},
+  journal	= {Int. J. Mol. Sci.},
+  keywords	= {analysis; collection; isolation; single cell},
+  number	= {3},
+  title		= {{Platforms for {\{}Single-Cell{\}} Collection and Analysis}},
+  volume	= {19},
+  year		= {2018}
 }
 
 @Article{	  vallejos2016,
@@ -1760,6 +2156,29 @@
   title		= {{Dimensionality reduction: A comparative review}},
   url		= {files/40/Van der Maaten et al. - 2009 - Dimensionality reduction A comparative review.pdf},
   year		= {2009}
+}
+
+@Article{	  vento-tormo2018-sn,
+  abstract	= {During early human pregnancy the uterine mucosa transforms into the decidua, into which the fetal placenta implants and where placental trophoblast cells intermingle and communicate with maternal cells. Trophoblast-decidual interactions underlie common diseases of pregnancy, including pre-eclampsia and stillbirth. Here we profile the transcriptomes of about 70,000 single cells from first-trimester placentas with matched maternal blood and decidual cells. The cellular composition of human decidua reveals subsets of perivascular and stromal cells that are located in distinct decidual layers. There are three major subsets of decidual natural killer cells that have distinctive immunomodulatory and chemokine profiles. We develop a repository of ligand-receptor complexes and a statistical tool to predict the cell-type specificity of cell-cell communication via these molecular interactions. Our data identify many regulatory interactions that prevent harmful innate or adaptive immune responses in this environment. Our single-cell atlas of the maternal-fetal interface reveals the cellular organization of the decidua and placenta, and the interactions that are critical for placentation and reproductive success.},
+  author	= {Vento-Tormo, Roser and Efremova, Mirjana and Botting, Rachel A and Turco, Margherita Y and Vento-Tormo, Miquel and Meyer, Kerstin B and Park, Jong-Eun and Stephenson, Emily and Pola{\'{n}}ski, Krzysztof and Goncalves, Angela and Gardner, Lucy and Holmqvist, Staffan and Henriksson, Johan and Zou, Angela and Sharkey, Andrew M and Millar, Ben and Innes, Barbara and Wood, Laura and Wilbrey-Clark, Anna and Payne, Rebecca P and Ivarsson, Martin A and Lisgo, Steve and Filby, Andrew and Rowitch, David H and Bulmer, Judith N and Wright, Gavin J and Stubbington, Michael J T and Haniffa, Muzlifah and Moffett, Ashley and Teichmann, Sarah A},
+  journal	= {Nature},
+  month		= {nov},
+  number	= {7731},
+  pages		= {347--353},
+  title		= {{Single-cell reconstruction of the early maternal-fetal interface in humans}},
+  volume	= {563},
+  year		= {2018}
+}
+
+@Article{	  veres2019-zn,
+  abstract	= {In vitro differentiation of human stem cells can produce pancreatic {\$}\beta{\$}-cells; the loss of this insulin-secreting cell type underlies type 1 diabetes. Here, as a step towards understanding this differentiation process, we report the transcriptional profiling of more than 100,000 human cells undergoing in vitro {\$}\beta{\$}-cell differentiation, and describe the cells that emerged. We resolve populations that correspond to {\$}\beta{\$}-cells, {\$}\alpha{\$}-like poly-hormonal cells, non-endocrine cells that resemble pancreatic exocrine cells and a previously unreported population that resembles enterochromaffin cells. We show that endocrine cells maintain their identity in culture in the absence of exogenous growth factors, and that changes in gene expression associated with in vivo {\$}\beta{\$}-cell maturation are recapitulated in vitro. We implement a scalable re-aggregation technique to deplete non-endocrine cells and identify CD49a (also known as ITGA1) as a surface marker of the {\$}\beta{\$}-cell population, which allows magnetic sorting to a purity of 80{\%}. Finally, we use a high-resolution sequencing time course to characterize gene-expression dynamics during the induction of human pancreatic endocrine cells, from which we develop a lineage model of in vitro {\$}\beta{\$}-cell differentiation. This study provides a perspective on human stem-cell differentiation, and will guide future endeavours that focus on the differentiation of pancreatic islet cells, and their applications in regenerative medicine.},
+  author	= {Veres, Adrian and Faust, Aubrey L and Bushnell, Henry L and Engquist, Elise N and Kenty, Jennifer Hyoje-Ryu and Harb, George and Poh, Yeh-Chuin and Sintov, Elad and G{\"{u}}rtler, Mads and Pagliuca, Felicia W and Peterson, Quinn P and Melton, Douglas A},
+  journal	= {Nature},
+  number	= {7756},
+  pages		= {368--373},
+  title		= {{Charting cellular identity during human in vitro {\$}\beta{\$}-cell differentiation}},
+  volume	= {569},
+  year		= {2019}
 }
 
 @Article{	  vieth2019,
@@ -1829,6 +2248,16 @@
   year		= {2010}
 }
 
+@Misc{		  webber2010-vh,
+  author	= {Webber, William and Moffat, Alistair and Zobel, Justin},
+  booktitle	= {ACM Transactions on Information Systems},
+  number	= {4},
+  pages		= {1--38},
+  title		= {{A similarity measure for indefinite rankings}},
+  volume	= {28},
+  year		= {2010}
+}
+
 @Article{	  weinreb2018,
   abstract	= {Single-cell expression profiling reveals the molecular states of individual cells with unprecedented detail. Because these methods destroy cells in the process of analysis, they cannot measure how gene expression changes over time. However, some information on dynamics is present in the data: the continuum of molecular states in the population can reflect the trajectory of a typical cell. Many methods for extracting single-cell dynamics from population data have been proposed. However, all such attempts face a common limitation: for any measured distribution of cell states, there are multiple dynamics that could give rise to it, and by extension, multiple possibilities for underlying mechanisms of gene regulation. Here, we describe the aspects of gene expression dynamics that cannot be inferred from a static snapshot alone and identify assumptions necessary to constrain a unique solution for cell dynamics from static snapshots. We translate these constraints into a practical algorithmic approach, population balance analysis (PBA), which makes use of a method from spectral graph theory to solve a class of high-dimensional differential equations. We use simulations to show the strengths and limitations of PBA, and then apply it to single-cell profiles of hematopoietic progenitor cells (HPCs). Cell state predictions from this analysis agree with HPC fate assays reported in several papers over the past two decades. By highlighting the fundamental limits on dynamic inference faced by any method, our framework provides a rigorous basis for dynamic interpretation of a gene expression continuum and clarifies best experimental designs for trajectory reconstruction from static snapshot measurements.},
   author	= {Weinreb, Caleb and Wolock, Samuel and Tusi, Betsabeh K and Socolovsky, Merav and Klein, Allon M},
@@ -1881,6 +2310,17 @@
   year		= {2018}
 }
 
+@Article{	  yahata2002-py,
+  abstract	= {The CITED family proteins bind to CBP/p300 transcriptional integrators through their conserved C-terminal acidic domain and function as coactivators. The 21-kDa mouse Cited4 protein, a novel member of the CITED family, interacted with CBP/p300 as well as isoforms of the TFAP2 transcription factor, coactivating TFAP2-dependent transcription. The cited4 gene consisted of only a single exon located on chromosome 4 at 56.5-56.8 cM flanked by marker genes kcnq4 and scml1. Expression of Cited4 protein was strong and selective in embryonic hematopoietic tissues and endothelial cells. In adult animals, Cited4 showed strong milk cycle-dependent induction in pregnant and lactating mammary epithelial cells. Strong induction of Cited4 expression was also observed in SCp2 mouse mammary epithelial cells during their prolactin-dependent in vitro differentiation. These results implied possible roles for Cited4 in regulation of gene expression during development and differentiation of blood cells, endothelial cells, and mammary epithelial cells.},
+  author	= {Yahata, Tetsuro and Takedatsu, Hiroko and Dunwoodie, Sally L and Bragan{\c{c}}a, Jos{\'{e}} and Swingler, Tracey and Withington, Sarah L and Hur, Jingyung and Coser, Kathryn R and Isselbacher, Kurt J and Bhattacharya, Shoumo and Shioda, Toshi},
+  journal	= {Genomics},
+  number	= {6},
+  pages		= {601--613},
+  title		= {{Cloning of mouse Cited4, a member of the {\{}CITED{\}} family {\{}p300/CBP-binding{\}} transcriptional coactivators: induced expression in mammary epithelial cells}},
+  volume	= {80},
+  year		= {2002}
+}
+
 @Article{	  yip2018,
   annote	= {A paper that evaluates HVG detection methods. The paper does not disentangle pre-processing from HVG detection algorithms, thus its conclusions are not reliable regarding the HVG methods themselves. It concludes that scran performs best as other methods show concerns about their implementation. For example scLVM's HVGs look very similar to the highly expressed gene list.
 		  
@@ -1892,6 +2332,48 @@
   month		= {feb},
   title		= {{Evaluation of tools for highly variable gene discovery from single-cell RNA-seq data}},
   url		= {https://academic.oup.com/bib/advance-article/doi/10.1093/bib/bby011/4898116},
+  year		= {2018}
+}
+
+@Article{	  yip2018,
+  annote	= {A paper that evaluates HVG detection methods. The paper does not disentangle pre-processing from HVG detection algorithms, thus its conclusions are not reliable regarding the HVG methods themselves. It concludes that scran performs best as other methods show concerns about their implementation. For example scLVM's HVGs look very similar to the highly expressed gene list.
+		  
+		  Overall the paper likely finds that scran's pre-processing performs best. However, Seurat's HVG detection is least like the highly expressed gene list, so this method seems to have a positive performance as well.},
+  author	= {Yip, Shun H. and Sham, Pak Chung and Wang, Junwen},
+  doi		= {10.1093/bib/bby011},
+  issn		= {1467-5463},
+  journal	= {Briefings in Bioinformatics},
+  month		= {feb},
+  title		= {{Evaluation of tools for highly variable gene discovery from single-cell RNA-seq data}},
+  url		= {https://academic.oup.com/bib/advance-article/doi/10.1093/bib/bby011/4898116},
+  year		= {2018}
+}
+
+@Article{	  yuan2017-on,
+  abstract	= {Single-cell analysis is a rapidly evolving approach to characterize genome-scale molecular information at the individual cell level. Development of single-cell technologies and computational methods has enabled systematic investigation of cellular heterogeneity in a wide range of tissues and cell populations, yielding fresh insights into the composition, dynamics, and regulatory mechanisms of cell states in development and disease. Despite substantial advances, significant challenges remain in the analysis, integration, and interpretation of single-cell omics data. Here, we discuss the state of the field and recent advances and look to future opportunities.},
+  author	= {Yuan, Guo-Cheng and Cai, Long and Elowitz, Michael and Enver, Tariq and Fan, Guoping and Guo, Guoji and Irizarry, Rafael and Kharchenko, Peter and Kim, Junhyong and Orkin, Stuart and Quackenbush, John and Saadatpour, Assieh and Schroeder, Timm and Shivdasani, Ramesh and Tirosh, Itay},
+  journal	= {Genome Biol.},
+  number	= {1},
+  pages		= {84},
+  title		= {{Challenges and emerging directions in single-cell analysis}},
+  volume	= {18},
+  year		= {2017}
+}
+
+@Article{	  zappia2018,
+  abstract	= {As single-cell RNA-sequencing (scRNA-seq) datasets have become more widespread the number of tools designed to analyse these data has dramatically increased. Navigating the vast sea of tools now available is becoming increasingly challenging for researchers. In order to better facilitate selection of appropriate analysis tools we have created the scRNA-tools database (www.scRNA-tools.org) to catalogue and curate analysis tools as they become available. Our database collects a range of information on each scRNA-seq analysis tool and categorises them according to the analysis tasks they perform. Exploration of this database gives insights into the areas of rapid development of analysis methods for scRNA-seq data. We see that many tools perform tasks specific to scRNA-seq analysis, particularly clustering and ordering of cells. We also find that the scRNA-seq community embraces an open-source and open-science approach, with most tools available under open-source licenses and preprints being extensively used as a means to describe methods. The scRNA-tools database provides a valuable resource for researchers embarking on scRNA-seq analysis and records the growth of the field over time.},
+  author	= {Zappia, Luke and Phipson, Belinda and Oshlack, Alicia},
+  doi		= {10.1371/journal.pcbi.1006245},
+  editor	= {Schneidman, Dina},
+  issn		= {1553-7358},
+  journal	= {PLOS Computational Biology},
+  month		= {jun},
+  number	= {6},
+  pages		= {e1006245},
+  publisher	= {Public Library of Science},
+  title		= {{Exploring the single-cell RNA-seq analysis landscape with the scRNA-tools database}},
+  url		= {http://dx.plos.org/10.1371/journal.pcbi.1006245},
+  volume	= {14},
   year		= {2018}
 }
 
@@ -1998,6 +2480,24 @@
   publisher	= {Cell Press},
   title		= {{Comparative Analysis of Single-Cell RNA Sequencing Methods}},
   url		= {https://www.sciencedirect.com/science/article/pii/S1097276517300497?via{\%}3Dihub},
+  volume	= {65},
+  year		= {2017}
+}
+
+@Article{	  ziegenhain2017,
+  abstract	= {Single-cell RNA sequencing (scRNA-seq) offers new possibilities to address biological and medical questions. However, systematic comparisons of the performance of diverse scRNA-seq protocols are lacking. We generated data from 583 mouse embryonic stem cells to evaluate six prominent scRNA-seq methods: CEL-seq2, Drop-seq, MARS-seq, SCRB-seq, Smart-seq, and Smart-seq2. While Smart-seq2 detected the most genes per cell and across cells, CEL-seq2, Drop-seq, MARS-seq, and SCRB-seq quantified mRNA levels with less amplification noise due to the use of unique molecular identifiers (UMIs). Power simulations at different sequencing depths showed that Drop-seq is more cost-efficient for transcriptome quantification of large numbers of cells, while MARS-seq, SCRB-seq, and Smart-seq2 are more efficient when analyzing fewer cells. Our quantitative comparison offers the basis for an informed choice among six prominent scRNA-seq methods, and it provides a framework for benchmarking further improvements of scRNA-seq protocols.},
+  author	= {Ziegenhain, Christoph and Vieth, Beate and Parekh, Swati and Reinius, Bj{\"{o}}rn and Guillaumet-Adkins, Amy and Smets, Martha and Leonhardt, Heinrich and Heyn, Holger and Hellmann, Ines and Enard, Wolfgang},
+  doi		= {10.1016/j.molcel.2017.01.023},
+  issn		= {1097-4164},
+  journal	= {Molecular cell},
+  keywords	= {cost-effectiveness,method comparison,power analysis,simulation,single-cell RNA-seq,transcriptomics},
+  month		= {feb},
+  number	= {4},
+  pages		= {631--643.e4},
+  pmid		= {28212749},
+  publisher	= {Elsevier},
+  title		= {{Comparative Analysis of Single-Cell RNA Sequencing Methods.}},
+  url		= {http://www.ncbi.nlm.nih.gov/pubmed/28212749},
   volume	= {65},
   year		= {2017}
 }

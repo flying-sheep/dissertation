@@ -59,15 +59,42 @@ The thesis at hand is a slice of the author’s continued efforts to change this
 I improved interoperability and modularity of existing tools, pioneered technologies and software development processes in a research environment, and developed some of the missing building blocks for the resulting toolkit.
 
 \startsection[title=Workflow]
-
 % story: new challenges by sc data. old way to deal with data (workflows) are not efficient. new approaches needed → me
 
 \startsubsection[title=Overview]
 % Describe how the workflows work and why the aforementioned is important.
-% - transcripts
-% - features identified and counted
-% - normalized expression
-% - Results: uncover dynamics, heterogeneity structure, feature importance and role
+The general workflow of scRNA-Seq data processing consists of five steps.
+
+% 1. library preparation (cells → transcript library) and sequencing (transcript library → reads)
+It begins with an experiment to prepare and sequence a transcript library containing mostly the mRNA but also unspliced mRNA and other RNA.
+There are different kinds of library preparation protocols, all of which have in common that they isolate and fragment the RNA per single cell, then tag each fragment with a cell specific barcode for later assignment to their origin cell.
+The most important differences between protocols manifest in cost, sensitivity and the distinction between those capturing paired fragments starting at both ends of the RNA and those capturing only the RNA end where translation into proteins starts (the 3’ end).
+The sequencing machine finally digitizes the fragments and allows all further processing to happen on a computer.
+\TODO[Mention droplet stuff here?]
+\cite[ziegenhain2017,haque2017,huang2018]
+% 1½. protocol specific bias correction
+Additional to the cell barcode, some protocols allow to enrich the library with information that can be used to reduce sources of noise or bias.
+This includes e.\,g. unique molecular identifiers (UMIs), which allows to count each transcript only once despite a common protocol step involving several duplications of all transcripts.
+A second example is adding known quantities of RNA from a foreign organism (spike-in RNA) to each cell library, which later allows to correct for nonlinear per-cell biases in transcript counts.
+
+% 2. counting (reads → counts)
+Counting starts from the paired sequences read from both ends of a fragment (paired reads) or the 3’ end sequences (single reads),
+as well as the read’s or read pair’s cell barcode and – if available – its UMI barcode.
+Classic counting uses specialized short read alignment tools like BOWTIE or STAR to match reads to a reference genome annotated with information about where genes start, end, and can be spliced.
+For each known splicing configuration translating to a protein, the reads aligned to it are then counted, while collapsing the counts for reads with identical UMIs – if available.
+Since only the resulting count matrix is needed for many kinds of downstream analysis, there have been advances in pseudo-alignment algorithms like Kallisto or Salmon, which directly count the reads.
+
+% 3. preprocessing (counts → expressions)
+In order to obtain comparable quantities, raw counts have to be preprocessed to correct for various technical biases.
+Commonly one starts by eliminating rows and columns from the count matrix that contain uncharacteristically low counts: No gene or cell is likely to only contain a single read.
+Another common preprocessing step is correction for common cell variation caused by known processes such as the cell cycle, if one isn’t interested in studying this process.
+If multiple runs of the sequencer were used to obtain the full data, there will be biases per run that can be reduced by using a dedicated batch effect correction algorithm.
+Preprocessing can also involve scaling count values using a per-cell function derived from the aforementioned spike-ins.
+% log
+% filter highly variable
+
+% 4. analysis: uncover dynamics, heterogeneity structure, feature importance and role
+% 5. visualization (results often too complex to understand as numbers)
 \stopsubsection
 
 \startsubsection[title={Old way}]
