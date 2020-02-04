@@ -28,7 +28,9 @@ It is possible to quantify and subsequently analyze snapshots of all mRNA molecu
 This is called gene expression analysis.
 Decades of biological research made due with averaged RNA profiles of cell samples (bulk RNA-Seq).
 Those allow to capture the gene expression of a tissue or fluid sample without accounting for cell-to-cell variability.
-\TODO{Figure: Central dogma}
+\startplacefigure[location=left, title={The central dogma}]
+\externalfigure[https://upload.wikimedia.org/wikipedia/commons/0/06/Centraldogma_nodetails.png][width=3cm]
+\stopplacefigure
 
 % SC revolution (cite nat meth of the year 20xx) this one? https://www.nature.com/articles/nmeth.1557
 But Biology is immensely complex, so every answer seems to only bring forth new questions:
@@ -84,7 +86,7 @@ as well as the read’s or read pair’s cell barcode and – if available – i
 Classic counting uses specialized short read alignment tools like BOWTIE or STAR to match reads to a reference genome annotated with information about where genes start, end, and can be spliced.
 For each known splicing configuration translating to a protein, the reads aligned to it are then counted, while collapsing the counts for reads with identical UMIs – if available.
 Since only the resulting count matrix is needed for many kinds of downstream analysis, there have been advances in pseudo-alignment algorithms like Kallisto or Salmon, which directly count the reads.
-\TODO{Figure: Read structure and sequencing}
+\TODO[Figure: Read structure and sequencing]
 
 % 3. preprocessing (counts → expressions)
 % generally luecken2018: https://www.embopress.org/doi/10.15252/msb.20188746
@@ -97,7 +99,7 @@ Preprocessing can also involve scaling count values using a per-cell function de
 Usually, count data is logarithmized, as in log-space, distances represent log-fold changes, the usual way to compare expression level.
 Many downstream analyses expect this property, as they model normal distributions or use a distance metric designed for data with no mean–variance dependency. \cite[brennecke2013,eling2018]
 A final common preprocessing step is reduction of the data by discarding genes with low variability that are assumed to contribute little to the data’s variability (highly variable gene selection).
-\TODO{Figure: Batch effect correction? Quality control? (Also TODO: mention quality control as part of counting and preprocessing)}
+\TODO[Figure: Batch effect correction? Quality control? (Also TODO: mention quality control as part of counting and preprocessing)]
 
 % 4. analysis: uncover dynamics, heterogeneity structure, feature importance and role
 With unwanted sources of noise and variability removed or reduced, the data can be analyzed.
@@ -114,7 +116,12 @@ During their path of development, cells usually get increasingly specialized, bu
 Furthermore, developing cells do not necessarily follow all steps of differentiation in the same order or magnitude.
 This results in cells temporarily or sometimes permanently stuck as intermediate types.
 While marker genes for certain cell roles or developmental steps exist, this complex and gradual nature of most tissues requires more sophisticated analysis and visualization.
-\TODO{Figure: Waddington-landscape? linear discrimination using marker genes? smoothly diverging developmental markers?}
+
+\startplacefigure[title={Analysis: Cells differentiate smoothly, in stochasically diverging paths, and not always in the same general direction.}]
+%https://anatomypubs.onlinelibrary.wiley.com/doi/full/10.1002/dvdy.24678
+\externalfigure[https://anatomypubs.onlinelibrary.wiley.com/cms/asset/aafdf349-9324-496d-822d-183edae5d947/dvdy24678-fig-0001-m.jpg][width=\textwidth]
+\TODO[better use linear discrimination using marker genes? or smoothly diverging developmental markers?]
+\stopplacefigure
 
 % 5. visualization (results often too complex to understand as numbers)
 % talk about dim red here and the fact that it’s hard to reason about how the input features relate back to output – make path for GR coming to the rescue
