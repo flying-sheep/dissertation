@@ -28,6 +28,7 @@ It is possible to quantify and subsequently analyze snapshots of all mRNA molecu
 This is called gene expression analysis.
 Decades of biological research made due with averaged RNA profiles of cell samples (bulk RNA-Seq).
 Those allow to capture the gene expression of a tissue or fluid sample without accounting for cell-to-cell variability.
+\TODO{Figure: Central dogma}
 
 % SC revolution (cite nat meth of the year 20xx) this one? https://www.nature.com/articles/nmeth.1557
 But Biology is immensely complex, so every answer seems to only bring forth new questions:
@@ -83,18 +84,40 @@ as well as the read’s or read pair’s cell barcode and – if available – i
 Classic counting uses specialized short read alignment tools like BOWTIE or STAR to match reads to a reference genome annotated with information about where genes start, end, and can be spliced.
 For each known splicing configuration translating to a protein, the reads aligned to it are then counted, while collapsing the counts for reads with identical UMIs – if available.
 Since only the resulting count matrix is needed for many kinds of downstream analysis, there have been advances in pseudo-alignment algorithms like Kallisto or Salmon, which directly count the reads.
+\TODO{Figure: Read structure and sequencing}
 
 % 3. preprocessing (counts → expressions)
+% generally luecken2018: https://www.embopress.org/doi/10.15252/msb.20188746
 In order to obtain comparable quantities, raw counts have to be preprocessed to correct for various technical biases.
 Commonly one starts by eliminating rows and columns from the count matrix that contain uncharacteristically low counts: No gene or cell is likely to only contain a single read.
-Another common preprocessing step is correction for common cell variation caused by known processes such as the cell cycle, if one isn’t interested in studying this process.
+Another common preprocessing step is normalization:
+correction for common cell variation caused by known processes such as the cell cycle, if one isn’t interested in studying this process.
 If multiple runs of the sequencer were used to obtain the full data, there will be biases per run that can be reduced by using a dedicated batch effect correction algorithm.
 Preprocessing can also involve scaling count values using a per-cell function derived from the aforementioned spike-ins.
-% log
-% filter highly variable
+Usually, count data is logarithmized, as in log-space, distances represent log-fold changes, the usual way to compare expression level.
+Many downstream analyses expect this property, as they model normal distributions or use a distance metric designed for data with no mean–variance dependency. \cite[brennecke2013,eling2018]
+A final common preprocessing step is reduction of the data by discarding genes with low variability that are assumed to contribute little to the data’s variability (highly variable gene selection).
+\TODO{Figure: Batch effect correction? Quality control? (Also TODO: mention quality control as part of counting and preprocessing)}
 
 % 4. analysis: uncover dynamics, heterogeneity structure, feature importance and role
+With unwanted sources of noise and variability removed or reduced, the data can be analyzed.
+Analysis of single cell data focuses on heterogeneity, as its presence separates single cell data from bulk data.
+The kind of heterogeneity to uncover depends on the kind of data available:
+the simplest case is discrimination between treatments or other conditions.
+A possible goal is to find a small number of marker genes able to distinguish the same condition with a less expensive targeted approach.
+Methods performing this search are called differential gene expression analyses.
+Another source of heterogeneity is the composition of the studied tissue.
+Tumors as well as many kinds of healthy tissue are composed of cells fulfilling different roles.
+Traditionally, cells were thought of exhibiting a discrete cell type, which still applies to cells that are dramatically specialized for their roles.
+There are also tissues consisting of less discrete cell types, like the pluripotent stem cells from which all cells derive.
+During their path of development, cells usually get increasingly specialized, but the reverse direction (dedifferentiation) can also be observed.
+Furthermore, developing cells do not necessarily follow all steps of differentiation in the same order or magnitude.
+This results in cells temporarily or sometimes permanently stuck as intermediate types.
+While marker genes for certain cell roles or developmental steps exist, this complex and gradual nature of most tissues requires more sophisticated analysis and visualization.
+\TODO{Figure: Waddington-landscape? linear discrimination using marker genes? smoothly diverging developmental markers?}
+
 % 5. visualization (results often too complex to understand as numbers)
+% talk about dim red here and the fact that it’s hard to reason about how the input features relate back to output – make path for GR coming to the rescue
 \stopsubsection
 
 \startsubsection[title={Old way}]
