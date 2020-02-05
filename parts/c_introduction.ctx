@@ -28,13 +28,14 @@ It is possible to quantify and subsequently analyze snapshots of all mRNA molecu
 This is called gene expression analysis.
 Decades of biological research made due with averaged RNA profiles of cell samples (bulk RNA-Seq).
 Those allow to capture the gene expression of a tissue or fluid sample without accounting for cell-to-cell variability.
-\startplacefigure[location=left, title={The central dogma}]
+
+\startplacefigure[reference=fig:dogma, location=left, title={The central dogma}]
 \externalfigure[https://upload.wikimedia.org/wikipedia/commons/0/06/Centraldogma_nodetails.png][width=3cm]
 \stopplacefigure
 
 % SC revolution (cite nat meth of the year 20xx) this one? https://www.nature.com/articles/nmeth.1557
 But Biology is immensely complex, so every answer seems to only bring forth new questions:
-e.\,g. the confidently named central dogma of molecular biology continues to accumulate exceptions and neither genes nor cell types are considered discrete, enumerable entities anymore.
+e.\,g. the confidently named central dogma of molecular biology continues to accumulate exceptions and neither genes nor cell types are considered discrete, enumerable entities anymore (see \infig[fig:dogma]).
 More complex diseases require a more intricate understanding of cellular processes and inter-cellular variation.
 Advances in experimental technology of the last decade allow to tackle these challenges.
 Single-cell RNA-Seq (scRNA-Seq) can measure extremely small expression values down to a single mRNA molecule.
@@ -69,16 +70,16 @@ I improved interoperability and modularity of existing tools, pioneered technolo
 The general workflow of scRNA-Seq data processing consists of five steps.
 
 % 1. library preparation (cells → transcript library) and sequencing (transcript library → reads)
-\startplacefigure[title={Library preparation, sequencing, and mapping}]
+\startplacefigure[reference=fig:rna-seq,title={Library preparation, sequencing, and mapping}]
 % https://upload.wikimedia.org/wikipedia/commons/f/f3/Summary_of_RNA-Seq.svg
 \externalfigure[Summary_of_RNA-Seq.svg][width=.7\textwidth]
 \stopplacefigure
 
-It begins with an experiment to prepare and sequence a transcript library containing mostly the mRNA but also unspliced mRNA and other RNA.
+It begins with an experiment to prepare and sequence a transcript library containing mostly mature mRNA but also unspliced mRNA and other RNA (see \infig[fig:rna-seq]a).
 There are different kinds of library preparation protocols, all of which have in common that they isolate and fragment the RNA per single cell, then tag each fragment with a cell specific barcode for later assignment to their origin cell.
 The most important differences between protocols manifest in cost, sensitivity and the distinction between those capturing paired fragments starting at both ends of the RNA and those capturing only the RNA end where translation into proteins starts (the 3’ end).
-The sequencing machine finally digitizes the fragments and allows all further processing to happen on a computer.
-\TODO[Mention droplet stuff here?]
+The sequencing machine finally digitizes the fragments and allows all further processing to happen on a computer (see \infig[fig:rna-seq]b).
+\TODO[give figure an a, b, c. Mention droplet stuff here?]
 \cite[ziegenhain2017,haque2017,huang2018]
 % 1½. protocol specific bias correction
 Additional to the cell barcode, some protocols allow to enrich the library with information that can be used to reduce sources of noise or bias.
@@ -89,12 +90,12 @@ A second example is adding known quantities of RNA from a foreign organism (spik
 Counting starts from the paired sequences read from both ends of a fragment (paired reads) or the 3’ end sequences (single reads),
 as well as the read’s or read pair’s cell barcode and – if available – its UMI barcode.
 Classic counting uses specialized short read alignment tools like BOWTIE or STAR to match reads to a reference genome annotated with information about where genes start, end, and can be spliced.
-For each known splicing configuration translating to a protein, the reads aligned to it are then counted, while collapsing the counts for reads with identical UMIs – if available.
+For each known splicing configuration translating to a protein, the reads aligned to it are then counted, while collapsing the counts for reads with identical UMIs – if available (see \infig[fig:rna-seq]c).
 Since only the resulting count matrix is needed for many kinds of downstream analysis, there have been advances in pseudo-alignment algorithms like Kallisto or Salmon, which directly count the reads.
 
 % 3. preprocessing (counts → expressions)
 % generally luecken2018: https://www.embopress.org/doi/10.15252/msb.20188746
-\startplacefigure[title={Batch effect correction},location=right]
+\startplacefigure[reference=fig:batch-effect,location=right,title={Batch effect correction reduces biases between data gathered in multiple sequencer runs. Cells from well-normalized data will not only have similar expression profiles to cells from the same run.}]
 \externalfigure[batch-effect-correction.svg][width=.5\textwidth]
 \stopplacefigure
 
@@ -102,7 +103,7 @@ In order to obtain comparable quantities, raw counts have to be preprocessed to 
 Commonly one starts by eliminating rows and columns from the count matrix that contain uncharacteristically low counts: No gene or cell is likely to only contain a single read.
 Another common preprocessing step is normalization:
 correction for common cell variation caused by known processes such as the cell cycle, if one isn’t interested in studying this process.
-If multiple runs of the sequencer were used to obtain the full data, there will be biases per run that can be reduced by using a dedicated batch effect correction algorithm.
+If multiple runs of the sequencer were used to obtain the full data, there will be biases per run that can be reduced by using a dedicated batch effect correction algorithm (see \infig[fig:batch-effect]).
 Preprocessing can also involve scaling count values using a per-cell function derived from the aforementioned spike-ins.
 Usually, count data is logarithmized, as in log-space, distances represent log-fold changes, the usual way to compare expression level.
 Many downstream analyses expect this property, as they model normal distributions or use a distance metric designed for data with no mean–variance dependency. \cite[brennecke2013,eling2018]
@@ -110,7 +111,7 @@ A final common preprocessing step is reduction of the data by discarding genes w
 \TODO[mention quality control as part of counting and preprocessing]
 
 % 4. analysis: uncover dynamics, heterogeneity structure, feature importance and role
-\startplacefigure[title={Analysis: Cells differentiate smoothly, in stochasically diverging paths, and not always in the same general direction.},location=left]
+\startplacefigure[reference=fig:waddington,location=left,title={Analysis: Cells differentiate smoothly, in stochasically diverging paths, and not always in the same general direction.}]
 %https://anatomypubs.onlinelibrary.wiley.com/doi/full/10.1002/dvdy.24678
 \externalfigure[https://anatomypubs.onlinelibrary.wiley.com/cms/asset/aafdf349-9324-496d-822d-183edae5d947/dvdy24678-fig-0001-m.jpg][width=.5\textwidth]
 \stopplacefigure
@@ -126,7 +127,7 @@ Another source of heterogeneity is the composition of the studied tissue.
 Tumors as well as many kinds of healthy tissue are composed of cells fulfilling different roles.
 Traditionally, cells were thought of exhibiting a discrete cell type, which still applies to cells that are dramatically specialized for their roles.
 There are also tissues consisting of less discrete cell types, like the pluripotent stem cells from which all cells derive.
-During their path of development, cells usually get increasingly specialized, but the reverse direction (dedifferentiation) can also be observed.
+During their path of development, cells usually get increasingly specialized, but the reverse direction (dedifferentiation) can also be observed (see \infig[fig:waddington]).
 Furthermore, developing cells do not necessarily follow all steps of differentiation in the same order or magnitude.
 This results in cells temporarily or sometimes permanently stuck as intermediate types.
 While marker genes for certain cell roles or developmental steps exist, this complex and gradual nature of most tissues requires more sophisticated analysis and visualization.
@@ -135,14 +136,15 @@ For example an indication of the direction in which cells differentiate are RNA 
 
 % 5. visualization (results often too complex to understand as numbers)
 % talk about dim red here and the fact that it’s hard to reason about how the input features relate back to output – make path for GR coming to the rescue
-\startplacefigure[title={Four two dimensional plots with increasingly complex dimensions. The differentiating cells are colored by age in days. (a) Two genes, even carefully selected markers, are not able to separate the differentiation paths (b) A PCA is able to differentiate clusters, but not like (c) diffusion maps, bifurcations and smooth transitions. (d) UMAPs use machine learning, allowing here to flatten multiple kinds of differences into a 2D plot, as in this case both bifurcation events present in the data.}]
+\startplacefigure[reference=fig:embeddings, title={Four increasingly complex two dimensional embeddings of the same cells. The differentiating cells are colored by age in days. (a) Two genes, even carefully selected markers, are not able to separate the differentiation paths (b) A PCA is able to differentiate clusters, but not like (c) diffusion maps, bifurcations and smooth transitions. (d) UMAPs use machine learning, allowing here to flatten multiple kinds of differences into a 2D plot, as in this case both bifurcation events present in the data.}]
 \externalfigure[dim-red.pdf][width=\textwidth]
 %\input{imgs/dim-red.tikz}
 \stopplacefigure
 
 The complexity of the heterogeneity being uncovered not only reflects in analysis methods but also the visualizations of their results.
-Complex developmental hierarchies and other relations in the data need
-\TODO[explain the linear combination (PCA) thing]
+Complex developmental hierarchies and other relations in the data need to be faithfully represented.
+This commonly involves laying out points representing the cells in a flat plane while trying to maintain relationships such as developmental closeness (see \infig[fig:embeddings]).
+This process and its end result is called embedding.
 \stopsubsection
 
 \startsubsection[title={Old way}]

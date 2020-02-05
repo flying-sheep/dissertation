@@ -1,6 +1,7 @@
 /prd_dissertation.pgf
 /bib/library.bib
 
+# TeX stuff
 *.aux
 *.bbl
 *.blg
@@ -9,6 +10,9 @@
 *.tuc
 *.synctex
 
-# IDE stuff
+# IDE/Editor stuff
 /.kile/
 *.kate-swp
+
+# Notebook stuff
+.ipynb_checkpoints/

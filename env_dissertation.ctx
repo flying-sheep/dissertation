@@ -172,6 +172,10 @@
 %\definemathcommand[argmin][limop]{\mfunction{argmin}}
 %\definemathcommand[argmax][limop]{\mfunction{argmax}}
 
+% References
+\definereferenceformat[ineq][text={Equation }] %left=(,right=),
+\definereferenceformat[infig][text={Figure }]
+
 % % http://tex.stackexchange.com/questions/60950/how-to-draw-cdf-of-normal-distribution-in-tikz
 %\tikzset{
 %	declare function={
