@@ -133,7 +133,8 @@
 % }
 \def\inlinecite[#1]{\cite[authoryears][#1]}
 
-\setupexternalfigures[directory=imgs]
+\usemodule[res-08] \setups[rl:manipulate]
+\setupexternalfigures[directory=imgs,conversion=pdf] 
 % Modules
 %\usemodule[newmat]
 %\usemodule[chemic]

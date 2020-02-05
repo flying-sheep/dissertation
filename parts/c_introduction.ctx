@@ -69,6 +69,11 @@ I improved interoperability and modularity of existing tools, pioneered technolo
 The general workflow of scRNA-Seq data processing consists of five steps.
 
 % 1. library preparation (cells → transcript library) and sequencing (transcript library → reads)
+\startplacefigure[title={Library preparation, sequencing, and mapping},location=right]
+% https://upload.wikimedia.org/wikipedia/commons/f/f3/Summary_of_RNA-Seq.svg
+\externalfigure[Summary_of_RNA-Seq.svg][width=.7\textwidth]
+\stopplacefigure
+
 It begins with an experiment to prepare and sequence a transcript library containing mostly the mRNA but also unspliced mRNA and other RNA.
 There are different kinds of library preparation protocols, all of which have in common that they isolate and fragment the RNA per single cell, then tag each fragment with a cell specific barcode for later assignment to their origin cell.
 The most important differences between protocols manifest in cost, sensitivity and the distinction between those capturing paired fragments starting at both ends of the RNA and those capturing only the RNA end where translation into proteins starts (the 3’ end).
@@ -86,10 +91,13 @@ as well as the read’s or read pair’s cell barcode and – if available – i
 Classic counting uses specialized short read alignment tools like BOWTIE or STAR to match reads to a reference genome annotated with information about where genes start, end, and can be spliced.
 For each known splicing configuration translating to a protein, the reads aligned to it are then counted, while collapsing the counts for reads with identical UMIs – if available.
 Since only the resulting count matrix is needed for many kinds of downstream analysis, there have been advances in pseudo-alignment algorithms like Kallisto or Salmon, which directly count the reads.
-\TODO[Figure: Read structure and sequencing]
 
 % 3. preprocessing (counts → expressions)
 % generally luecken2018: https://www.embopress.org/doi/10.15252/msb.20188746
+\startplacefigure[title={Batch effect correction},location=right]
+\externalfigure[batch-effect-correction.svg][width=.5\textwidth]
+\stopplacefigure
+
 In order to obtain comparable quantities, raw counts have to be preprocessed to correct for various technical biases.
 Commonly one starts by eliminating rows and columns from the count matrix that contain uncharacteristically low counts: No gene or cell is likely to only contain a single read.
 Another common preprocessing step is normalization:
@@ -99,9 +107,15 @@ Preprocessing can also involve scaling count values using a per-cell function de
 Usually, count data is logarithmized, as in log-space, distances represent log-fold changes, the usual way to compare expression level.
 Many downstream analyses expect this property, as they model normal distributions or use a distance metric designed for data with no mean–variance dependency. \cite[brennecke2013,eling2018]
 A final common preprocessing step is reduction of the data by discarding genes with low variability that are assumed to contribute little to the data’s variability (highly variable gene selection).
-\TODO[Figure: Batch effect correction? Quality control? (Also TODO: mention quality control as part of counting and preprocessing)]
+\TODO[mention quality control as part of counting and preprocessing]
 
 % 4. analysis: uncover dynamics, heterogeneity structure, feature importance and role
+\startplacefigure[title={Analysis: Cells differentiate smoothly, in stochasically diverging paths, and not always in the same general direction.},location=left]
+%https://anatomypubs.onlinelibrary.wiley.com/doi/full/10.1002/dvdy.24678
+\externalfigure[https://anatomypubs.onlinelibrary.wiley.com/cms/asset/aafdf349-9324-496d-822d-183edae5d947/dvdy24678-fig-0001-m.jpg][width=.5\textwidth]
+\stopplacefigure
+
+\TODO[Figure: better use linear discrimination using marker genes? or smoothly diverging developmental markers?]
 With unwanted sources of noise and variability removed or reduced, the data can be analyzed.
 Analysis of single cell data focuses on heterogeneity, as its presence separates single cell data from bulk data.
 The kind of heterogeneity to uncover depends on the kind of data available:
@@ -116,12 +130,6 @@ During their path of development, cells usually get increasingly specialized, bu
 Furthermore, developing cells do not necessarily follow all steps of differentiation in the same order or magnitude.
 This results in cells temporarily or sometimes permanently stuck as intermediate types.
 While marker genes for certain cell roles or developmental steps exist, this complex and gradual nature of most tissues requires more sophisticated analysis and visualization.
-
-\startplacefigure[title={Analysis: Cells differentiate smoothly, in stochasically diverging paths, and not always in the same general direction.}]
-%https://anatomypubs.onlinelibrary.wiley.com/doi/full/10.1002/dvdy.24678
-\externalfigure[https://anatomypubs.onlinelibrary.wiley.com/cms/asset/aafdf349-9324-496d-822d-183edae5d947/dvdy24678-fig-0001-m.jpg][width=\textwidth]
-\TODO[better use linear discrimination using marker genes? or smoothly diverging developmental markers?]
-\stopplacefigure
 
 % 5. visualization (results often too complex to understand as numbers)
 % talk about dim red here and the fact that it’s hard to reason about how the input features relate back to output – make path for GR coming to the rescue
