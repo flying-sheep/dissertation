@@ -147,6 +147,10 @@
 \usetikzlibrary[calc]
 %\usetikzlibrary[external]
 %\tikzexternalize[prefix=imgs/]
+\usemodule[pgfplots]
+\usepgfplotslibrary[groupplots]
+\unexpanded\def\startgroupplot{\groupplot}
+\unexpanded\def\stopgroupplot{\endgroupplot}
 
 \def\AtBeginDocument#1{} % shut up about compat
 \usemodule[pgfplots]

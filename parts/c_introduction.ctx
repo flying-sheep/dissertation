@@ -69,7 +69,7 @@ I improved interoperability and modularity of existing tools, pioneered technolo
 The general workflow of scRNA-Seq data processing consists of five steps.
 
 % 1. library preparation (cells → transcript library) and sequencing (transcript library → reads)
-\startplacefigure[title={Library preparation, sequencing, and mapping},location=right]
+\startplacefigure[title={Library preparation, sequencing, and mapping}]
 % https://upload.wikimedia.org/wikipedia/commons/f/f3/Summary_of_RNA-Seq.svg
 \externalfigure[Summary_of_RNA-Seq.svg][width=.7\textwidth]
 \stopplacefigure
@@ -130,9 +130,19 @@ During their path of development, cells usually get increasingly specialized, bu
 Furthermore, developing cells do not necessarily follow all steps of differentiation in the same order or magnitude.
 This results in cells temporarily or sometimes permanently stuck as intermediate types.
 While marker genes for certain cell roles or developmental steps exist, this complex and gradual nature of most tissues requires more sophisticated analysis and visualization.
+Further analyses can also depend on the availability of other kinds of data.
+For example an indication of the direction in which cells differentiate are RNA velocities, which can be reconstructed from the relation of spliced and unspliced mRNA \cite[manno2018].
 
 % 5. visualization (results often too complex to understand as numbers)
 % talk about dim red here and the fact that it’s hard to reason about how the input features relate back to output – make path for GR coming to the rescue
+\startplacefigure[title={Four two dimensional plots with increasingly complex dimensions. The differentiating cells are colored by age in days. (a) Two genes, even carefully selected markers, are not able to separate the differentiation paths (b) A PCA is able to differentiate clusters, but not like (c) diffusion maps, bifurcations and smooth transitions. (d) UMAPs use machine learning, allowing here to flatten multiple kinds of differences into a 2D plot, as in this case both bifurcation events present in the data.}]
+\externalfigure[dim-red.pdf][width=\textwidth]
+%\input{imgs/dim-red.tikz}
+\stopplacefigure
+
+The complexity of the heterogeneity being uncovered not only reflects in analysis methods but also the visualizations of their results.
+Complex developmental hierarchies and other relations in the data need
+\TODO[explain the linear combination (PCA) thing]
 \stopsubsection
 
 \startsubsection[title={Old way}]
