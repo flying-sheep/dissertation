@@ -145,16 +145,31 @@ The complexity of the heterogeneity being uncovered not only reflects in analysi
 Complex developmental hierarchies and other relations in the data need to be faithfully represented.
 This commonly involves laying out points representing the cells in a flat plane while trying to maintain relationships such as developmental closeness (see \infig[fig:embeddings]).
 This process and its end result is called embedding.
+And the more complex a process is, the more likely it is that this process contains steps that cannot be traced back.
+This presents a challenge for one’s visualizations and any insights one wants to derive from it:
+with no ability to validate the embedding, any arbitrary arrangement would be equally valid.
+\TODO[not happy with this … ]
 \stopsubsection
 
-\startsubsection[title={Old way}]
+The above sequence of steps should be a generic overview of scRNA-Seq analysis able to serve as a framework in which to place my specific contributions.
+While I worked on every in-silico section \TODO[better term] of the process except for alignment, my contributions are focused on the steps after counting.
+To provide further context for my work, I would like to contrast the ways people used to work before and after the creation of my tools.
+
+\startsubsection[title={The old way}]
 % People often need to cobble together their own pipelines and use default parameters without knowing what they do. Existing methods are not focused on interoperability. Mention specifically the flaws fixed by what I do:
+Without publicly available analysis frameworks, the most common way to operate was writing scripts that invoked command line tools.
+Each step invoked reading text files from a file system, processing them, and writing them back to disk.
+This process involved long run times due to slow reading and writing, high storage space requirements and little resilience to errors.
+File corruption introduced e.\,g. via unreliable access to network storage could not be detected in text files, which lack checksums and other resilience precautions.
+All those problems could be circumvented by a sufficiently motivated and able computational biologist.
+In practive, the lack of frameworks led to very specific code that was hard to generalize and share, which meant that everyone had to solve the same problems independently.
 % - pre-destiny: DM creation in R
 % - pre-scanpy: scran+Seurat are more opinionated and offer less choice (host code problem). Integrated solution of everything helps save time and eliminate invalid states (type theory: make invalid states unrepresentable)
+%   seurat has very seurat-specific object, scanpy’s anndata is generic
 % - pre-GR: differential expression and trendsceek
 \stopsubsection
 
-\startsubsection[title={New way}]
+\startsubsection[title={The new way}]
 % - Through frameworks, data interchange formats and containers we get interoperability and reproducibility.
 % - serving all MOs: iterative with biologists, manual coding, let it be done as-a-service
 % - good error reporting / software quality important for good science (Avoid garbage-in garbage-out. Lücken says e.g. DE tools often do “their thing” when design matrix are not full rank)
