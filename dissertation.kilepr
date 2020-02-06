@@ -7,12 +7,12 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=3
 kileversion=2.9.93
-masterDocument=prd_dissertation.ctx
+masterDocument=prd_dissertation.mkiv
 name=Dissertation
 pkg_extIsRegExp=false
 pkg_extensions=.cls .sty .bbx .cbx .lbx
 src_extIsRegExp=false
-src_extensions=.tex .ltx .latex .dtx .ins .ctx
+src_extensions=.tex .ltx .latex .dtx .ins .mkiv
 
 [Tools]
 MakeIndex=
@@ -42,61 +42,61 @@ encoding=
 highlight=
 mode=
 
-[item:env_dissertation.ctx]
+[item:env_dissertation.mkiv]
 archive=true
 encoding=UTF-8
 highlight=ConTeXt
 mode=ConTeXt
 
-[item:parts/c_abstract.ctx]
+[item:parts/c_abstract.mkiv]
 archive=true
 encoding=UTF-8
 highlight=ConTeXt
 mode=ConTeXt
 
-[item:parts/c_conclusion.ctx]
+[item:parts/c_conclusion.mkiv]
 archive=true
 encoding=UTF-8
 highlight=ConTeXt
 mode=ConTeXt
 
-[item:parts/c_danksagung.ctx]
+[item:parts/c_danksagung.mkiv]
 archive=true
 encoding=UTF-8
 highlight=ConTeXt
 mode=ConTeXt
 
-[item:parts/c_declaration.ctx]
+[item:parts/c_declaration.mkiv]
 archive=true
 encoding=UTF-8
 highlight=ConTeXt
 mode=ConTeXt
 
-[item:parts/c_introduction.ctx]
+[item:parts/c_introduction.mkiv]
 archive=true
 encoding=UTF-8
 highlight=ConTeXt
 mode=ConTeXt
 
-[item:parts/c_methods.ctx]
+[item:parts/c_methods.mkiv]
 archive=true
 encoding=UTF-8
 highlight=ConTeXt
 mode=ConTeXt
 
-[item:parts/c_publist.ctx]
+[item:parts/c_publist.mkiv]
 archive=true
 encoding=UTF-8
 highlight=ConTeXt
 mode=ConTeXt
 
-[item:prd_dissertation.ctx]
+[item:prd_dissertation.mkiv]
 archive=true
 encoding=UTF-8
 highlight=ConTeXt
 mode=ConTeXt
 
-[item:project_dissertation.ctx]
+[item:project_dissertation.mkiv]
 archive=true
 encoding=UTF-8
 highlight=ConTeXt

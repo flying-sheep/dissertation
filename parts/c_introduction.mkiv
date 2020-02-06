@@ -1,5 +1,5 @@
 \startcomponent *
-\project project_dissertation.ctx
+\project project_dissertation
 
 \startchapter[reference=intro, title=Introduction]
 % Basic structure: Zoom in; What’s the big field, how to get from there to scRNASeq?
@@ -103,7 +103,7 @@ In order to obtain comparable quantities, raw counts have to be preprocessed to 
 Commonly one starts by eliminating rows and columns from the count matrix that contain uncharacteristically low counts: No gene or cell is likely to only contain a single read.
 Another common preprocessing step is normalization:
 correction for common cell variation caused by known processes such as the cell cycle, if one isn’t interested in studying this process.
-If multiple runs of the sequencer were used to obtain the full data, there will be biases per run that can be reduced by using a dedicated batch effect correction algorithm (see \infig[fig:batch-effect]).
+If multiple runs of the sequencer were used to obtain the full data, there will be biases per run that can be reduced by using a dedicated batch effect correction algori\-thm (see \infig[fig:batch-effect]).
 Preprocessing can also involve scaling count values using a per-cell function derived from the aforementioned spike-ins.
 Usually, count data is logarithmized, as in log-space, distances represent log-fold changes, the usual way to compare expression level.
 Many downstream analyses expect this property, as they model normal distributions or use a distance metric designed for data with no mean–variance dependency. \cite[brennecke2013,eling2018]

@@ -1,4 +1,4 @@
-src_files = prd_dissertation.ctx env_dissertation.ctx $(wildcard parts/*.ctx) Makefile
+src_files = prd_dissertation.mkiv env_dissertation.mkiv $(wildcard parts/*.mkiv) Makefile
 
 prd_dissertation.pdf: $(src_files) bib/prd_dissertation.bib
 	context --nonstopmode --nostatistics --silent=all $<

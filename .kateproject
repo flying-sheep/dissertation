@@ -1,8 +1,0 @@
-{
-	"name": "dissertation",
-	"files": [{"git": 1}],
-	"build": {
-		"directory": ".",
-		"build": "context prd_dissertation.ctx"
-	}
-}

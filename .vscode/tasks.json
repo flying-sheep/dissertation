@@ -6,7 +6,7 @@
         {
             "label": "ConTeXt",
             "type": "shell",
-            "command": "context prd_dissertation.ctx",
+            "command": "context prd_dissertation.mkiv",
             "group": {
                 "kind": "build",
                 "isDefault": true
