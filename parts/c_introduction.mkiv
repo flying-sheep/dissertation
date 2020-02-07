@@ -2,7 +2,7 @@
 \project project_dissertation
 
 \startchapter[reference=intro, title=Introduction]
-% Basic structure: Zoom in; What’s the big field, how to get from there to scRNASeq?
+% Basic structure: Zoom in; What’s the big field, how to get from there to scRNA-Seq?
 
 % big topic: cell biology and medicine
 Cell biology is the science touching the most existential part of us.
@@ -159,20 +159,34 @@ To provide further context for my work, I would like to contrast the ways people
 % People often need to cobble together their own pipelines and use default parameters without knowing what they do. Existing methods are not focused on interoperability. Mention specifically the flaws fixed by what I do:
 Without publicly available analysis frameworks, the most common way to operate was writing scripts that invoked command line tools.
 Each step invoked reading text files from a file system, processing them, and writing them back to disk.
+% - pre-scanpy: Integrated solution of everything helps save time and eliminate invalid states (type theory: make invalid states unrepresentable)
+%               scran+Seurat are more opinionated and offer less choice (host code problem).
+%               seurat has very seurat-specific object, scanpy’s anndata is generic
 This process involved long run times due to slow reading and writing, high storage space requirements and little resilience to errors.
 File corruption introduced e.\,g. via unreliable access to network storage could not be detected in text files, which lack checksums and other resilience precautions.
-All those problems could be circumvented by a sufficiently motivated and able computational biologist.
-In practive, the lack of frameworks led to very specific code that was hard to generalize and share, which meant that everyone had to solve the same problems independently.
+All those problems can be circumvented by a sufficient investment of effort and time.
+In practive, the lack of frameworks led to very application-specific code that was hard to generalize and share.
+Redundant solving of problems already solved elsewhere is not only wasteful, but also error prone.
+No single cell analysis framework in Python existed, despite more and more people in the field working with machine learning algorithms.
+Existing tools in R were opinionated and offered little extensibility, limiting their scope of application.
+Their performance was inconsistent and often not sufficient for upcoming large datasets from the upcoming microfluidic protocols.
+Furthermore, no data structures and file exchange formats suitable for scRNA-Seq existed.
+Existing workflows dealt with raw matrices and data frames that needed to be kept in sync manually across filtering steps, increasing the potential for error.
 % - pre-destiny: DM creation in R
-% - pre-scanpy: scran+Seurat are more opinionated and offer less choice (host code problem). Integrated solution of everything helps save time and eliminate invalid states (type theory: make invalid states unrepresentable)
-%   seurat has very seurat-specific object, scanpy’s anndata is generic
+In the R landscape, the Bioconductor project provided tools for preprocessing, and basic analysis, but little in the way of embeddings.
+The only available option for diffusion map embedding at the time did not offer features necessary for scRNA-Seq analysis and was impractically slow.
+\TODO[can’t introduce PCA and DMs here…]
 % - pre-GR: differential expression and trendsceek
+No dimension reduction method except for the simplistic PCA provides a way to relate embedding location back to input features.
+The existing and popular differential expression analysis requires discrete partitioning of the data, which is not well defined for data containing gradual transition of gene expression profiles between cells.
 \stopsubsection
 
 \startsubsection[title={The new way}]
 % - Through frameworks, data interchange formats and containers we get interoperability and reproducibility.
 % - serving all MOs: iterative with biologists, manual coding, let it be done as-a-service
 % - good error reporting / software quality important for good science (Avoid garbage-in garbage-out. Lücken says e.g. DE tools often do “their thing” when design matrix are not full rank)
+% - principle of many eyes: less bugs in shared code
+% - data structure: big sparse data
 \stopsubsection
 
 \stopsection
