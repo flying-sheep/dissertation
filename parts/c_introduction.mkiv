@@ -228,6 +228,18 @@ New embeddings have been developed, none of which are able to relate embedding d
 
 \startsubsection[title=destiny]
 % efficient and flexible diffusion maps for R
+Destiny is a flexible and fast tool for the creation and visualization of diffusion maps in R.
+It can utilize a number of distance metrics to create a distance matrix with, as well as sparse distance matrices, including euclidean, cosine, and rank correlation distance.
+I achieved destiny’s high performance by reusing this sparsity structure using sparse distance matrices with larger distances removed.
+To this end, destiny starts with symmetric kNN matrices and uses the symmetric variant of diffusion maps.
+This tactic has later been used by Scanpy and other tools using a kNN search as simplifying preprocessing step.
+For destiny’s stability, I also helped develop the concept of locally scaled diffusion maps as first described in the supplementary materials of \inlinecite[haghverdi2016].
+I contributed to and developed a number of independent building blocks for use in destiny.
+This includes a nearest neighbor search operating in the same space the diffusion kernel is applied to.
+For destiny, I contributed to a few projects it depends on to support determinism if a random seed is set.
+Destiny also contained a preceptionally continuous colormap before they found their way into the major plotting libraries of Python or R.
+Destiny Bioconductor’s annotated expression matrix classes and directly integrates into the popular plotting library ggplot.
+Apart from diffusion maps, destiny also supports using its diffusion space to calculate diffusion pseudo time between cells as well as to project new data into the diffusion space of the data used to create the diffusion space.
 \stopsubsection
 
 \startsubsection[title=scanpy]
