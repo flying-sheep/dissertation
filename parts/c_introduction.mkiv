@@ -167,11 +167,15 @@ File corruption introduced e.\,g. via unreliable access to network storage could
 All those problems can be circumvented by a sufficient investment of effort and time.
 In practive, the lack of frameworks led to very application-specific code that was hard to generalize and share.
 Redundant solving of problems already solved elsewhere is not only wasteful, but also error prone.
-No single cell analysis framework in Python existed, despite more and more people in the field working with machine learning algorithms.
+No scRNA-Seq analysis framework in Python existed, despite more and more people in the field working with machine learning algorithms implemented in Python.
 Existing tools in R were opinionated and offered little extensibility, limiting their scope of application.
 Their performance was inconsistent and often not sufficient for upcoming large datasets from the upcoming microfluidic protocols.
+Similarly, their code quality and error reporting varied greatly.
+For example, many common differential expression tools used to simply process data being put in, with no errors reported in the case of non-converging models or other detectable degenerate cases \cite[luecken2018].
+\TODO[Check if *this* Lücken citation says that]
 Furthermore, no data structures and file exchange formats suitable for scRNA-Seq existed.
 Existing workflows dealt with raw matrices and data frames that needed to be kept in sync manually across filtering steps, increasing the potential for error.
+Furthermore, reproducibility was hard to guarantee in the presence of nondeterministic methods and a multitude of tool versions with subtly different defaults and behavior.
 % - pre-destiny: DM creation in R
 In the R landscape, the Bioconductor project provided tools for preprocessing, and basic analysis, but little in the way of embeddings.
 The only available option for diffusion map embedding at the time did not offer features necessary for scRNA-Seq analysis and was impractically slow.
@@ -183,10 +187,36 @@ The existing and popular differential expression analysis requires discrete part
 
 \startsubsection[title={The new way}]
 % - Through frameworks, data interchange formats and containers we get interoperability and reproducibility.
+Today, Python and R have viable frameworks for scRNA-Seq analysis based on annotated expression matrix data structures.
+These data structures allow keeping gene and cell annotations and graphs in sync with the expression matrix while filtering and concatenating data.
+In R, the landscape is more fragmented than in Python:
+The Bioconductor ecosystem provides annotated matrix data structures and tools for mainly preprocessing scRNA-Seq data.
+Seurat provides opinionated preprocessing, analysis and plotting routines but is not integrated into the Bioconductor ecosystem.
+Its data structure is Seurat-specific and needs conversion to the more generic Bioconductor data structures.
+Standalone tools often support Bioconductor data structures or just plain matrices and data frames.
+%reproducibility
+In both language environments, reproducibility seems to be largely possible.
+Container solutions that capture a whole environment of libraries of specific versions are common.
+Frameworks support methods to set random seeds to get identical output of nondeterministic processes for consistent visualizations.
+%anndata, scanpy
+In Python, many standalone tools operate on the generic AnnData data structure.
+It was developed alongside Scanpy, which is now in widespread international use and being continuously expanded with new algorithms.
+Scanpy contains wrappers around third party tools which are often slim as they already directly operate on AnnData objects.
+\TODO[already said above, deduplicate]
+AnnData supports reading and writing from and to several language agnostic interchange formats.
+It was the first annotated matrix data structure to support sparse expression matrices and therefore up to millions of cells.
+It provides its own format that supports disk backing for operations on data too large to be performed in memory, sparse or dense.
 % - serving all MOs: iterative with biologists, manual coding, let it be done as-a-service
-% - good error reporting / software quality important for good science (Avoid garbage-in garbage-out. Lücken says e.g. DE tools often do “their thing” when design matrix are not full rank)
+Scanpy lends itself to be used interactively to quickly iterate on analyses with close feedback from biologists.
+It also supports being used as a Python library to back visualization tools, web servers and traditional file-based processing pipelines.
+% - good error reporting / software quality important for good science (Avoid garbage-in garbage-out)
 % - principle of many eyes: less bugs in shared code
-% - data structure: big sparse data
+The number of users of a framework or tool contributes to its quality and therefore the quality of studies relying on it.
+Bigger frameworks encompassing many tools have an easier time to test several permutations of their functionality than each tool would be able to when standing alone.
+More people reporting errors and special use cases contribute to the robustness of the frameworks towards those problems.
+%destiny, gr
+New embeddings have been developed, none of which are able to relate embedding dimensions back to the input genes.
+\TODO[really mention here?]
 \stopsubsection
 
 \stopsection
@@ -202,6 +232,7 @@ The existing and popular differential expression analysis requires discrete part
 
 \startsubsection[title=scanpy]
 % reusable and remixable workflow building blocks and data structures
+% loom, SCE, anndata2ri
 \stopsubsection
 
 \startsubsection[title={BART-Seq}]
