@@ -159,9 +159,9 @@ To provide further context for my work, I would like to contrast the ways people
 % People often need to cobble together their own pipelines and use default parameters without knowing what they do. Existing methods are not focused on interoperability. Mention specifically the flaws fixed by what I do:
 Without publicly available analysis frameworks, the most common way to operate was writing scripts that invoked command line tools.
 Each step invoked reading text files from a file system, processing them, and writing them back to disk.
-% - pre-scanpy: Integrated solution of everything helps save time and eliminate invalid states (type theory: make invalid states unrepresentable)
+% - pre-Scanpy: Integrated solution of everything helps save time and eliminate invalid states (type theory: make invalid states unrepresentable)
 %               scran+Seurat are more opinionated and offer less choice (host code problem).
-%               seurat has very seurat-specific object, scanpy’s anndata is generic
+%               seurat has very seurat-specific object, Scanpy’s anndata is generic
 This process involved long run times due to slow reading and writing, high storage space requirements and little resilience to errors.
 File corruption introduced e.\,g. via unreliable access to network storage could not be detected in text files, which lack checksums and other resilience precautions.
 All those problems can be circumvented by a sufficient investment of effort and time.
@@ -176,7 +176,7 @@ For example, many common differential expression tools used to simply process da
 Furthermore, no data structures and file exchange formats suitable for scRNA-Seq existed.
 Existing workflows dealt with raw matrices and data frames that needed to be kept in sync manually across filtering steps, increasing the potential for error.
 Furthermore, reproducibility was hard to guarantee in the presence of nondeterministic methods and a multitude of tool versions with subtly different defaults and behavior.
-% - pre-destiny: DM creation in R
+% - pre-Destiny: DM creation in R
 In the R landscape, the Bioconductor project provided tools for preprocessing, and basic analysis, but little in the way of embeddings.
 The only available option for diffusion map embedding at the time did not offer features necessary for scRNA-Seq analysis and was impractically slow.
 \TODO[can’t introduce PCA and DMs here…]
@@ -186,6 +186,10 @@ The existing and popular differential expression analysis requires discrete part
 \stopsubsection
 
 \startsubsection[title={The new way}]
+\startplacefigure[reference=fig:anndata, title={AnnData structure}]
+\hbox{\input{imgs/anndata.tikz}}
+\stopplacefigure
+
 % - Through frameworks, data interchange formats and containers we get interoperability and reproducibility.
 Today, Python and R have viable frameworks for scRNA-Seq analysis based on annotated expression matrix data structures.
 These data structures allow keeping gene and cell annotations and graphs in sync with the expression matrix while filtering and concatenating data.
@@ -198,7 +202,7 @@ Standalone tools often support Bioconductor data structures or just plain matric
 In both language environments, reproducibility seems to be largely possible.
 Container solutions that capture a whole environment of libraries of specific versions are common.
 Frameworks support methods to set random seeds to get identical output of nondeterministic processes for consistent visualizations.
-%anndata, scanpy
+%AnnData, Scanpy
 In Python, many standalone tools operate on the generic AnnData data structure.
 It was developed alongside Scanpy, which is now in widespread international use and being continuously expanded with new algorithms.
 Scanpy contains wrappers around third party tools which are often slim as they already directly operate on AnnData objects.
@@ -214,7 +218,7 @@ It also supports being used as a Python library to back visualization tools, web
 The number of users of a framework or tool contributes to its quality and therefore the quality of studies relying on it.
 Bigger frameworks encompassing many tools have an easier time to test several permutations of their functionality than each tool would be able to when standing alone.
 More people reporting errors and special use cases contribute to the robustness of the frameworks towards those problems.
-%destiny, gr
+%Destiny, GR
 New embeddings have been developed, none of which are able to relate embedding dimensions back to the input genes.
 \TODO[really mention here?]
 \stopsubsection
@@ -226,25 +230,30 @@ New embeddings have been developed, none of which are able to relate embedding d
 
 % (I am the one who can create usable interfaces and/for pipelines and fill in the gaps where “cobblestones” are missing)
 
-\startsubsection[title=destiny]
+\startsubsection[title=Destiny]
 % efficient and flexible diffusion maps for R
 Destiny is a flexible and fast tool for the creation and visualization of diffusion maps in R.
 It can utilize a number of distance metrics to create a distance matrix with, as well as sparse distance matrices, including euclidean, cosine, and rank correlation distance.
-I achieved destiny’s high performance by reusing this sparsity structure using sparse distance matrices with larger distances removed.
-To this end, destiny starts with symmetric kNN matrices and uses the symmetric variant of diffusion maps.
+I achieved Destiny’s high performance by reusing this sparsity structure using sparse distance matrices with larger distances removed.
+To this end, Destiny starts with symmetric kNN matrices and uses the symmetric variant of diffusion maps.
 This tactic has later been used by Scanpy and other tools using a kNN search as simplifying preprocessing step.
-For destiny’s stability, I also helped develop the concept of locally scaled diffusion maps as first described in the supplementary materials of \inlinecite[haghverdi2016].
-I contributed to and developed a number of independent building blocks for use in destiny.
+For Destiny’s stability, I also helped develop the concept of locally scaled diffusion maps as first described in the supplementary materials of \inlinecite[haghverdi2016].
+I contributed to and developed a number of independent building blocks for use in Destiny.
 This includes a nearest neighbor search operating in the same space the diffusion kernel is applied to.
-For destiny, I contributed to a few projects it depends on to support determinism if a random seed is set.
+For Destiny, I contributed to a few projects it depends on to support determinism if a random seed is set.
 Destiny also contained a preceptionally continuous colormap before they found their way into the major plotting libraries of Python or R.
 Destiny Bioconductor’s annotated expression matrix classes and directly integrates into the popular plotting library ggplot.
-Apart from diffusion maps, destiny also supports using its diffusion space to calculate diffusion pseudo time between cells as well as to project new data into the diffusion space of the data used to create the diffusion space.
+Apart from diffusion maps, Destiny also supports using its diffusion space to calculate diffusion pseudo time between cells as well as to project new data into the diffusion space of the data used to create the diffusion space.
 \stopsubsection
 
-\startsubsection[title=scanpy]
+\startsubsection[title={Scanpy and AnnData}]
 % reusable and remixable workflow building blocks and data structures
-% loom, SCE, anndata2ri
+Scanpy is a framework for scRNA-Seq preprocessing, analysis, and visualization in Python.
+AnnData is a data structure for annotated observation data including scRNA-Seq counts and expressions.
+With F. Alexander Wolf we implemented the initial version, where he focused on performance while I focused on API and data structure design.
+Scanpy is designed around AnnData, storing the results of each processing step in an expression matrix layer or 
+% Loom, SCE, AnnData2ri
+
 \stopsubsection
 
 \startsubsection[title={BART-Seq}]

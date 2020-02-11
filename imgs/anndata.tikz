@@ -1,0 +1,62 @@
+\definecolorgroup[set1][rgb][0.89:0.1:0.11,0.22:0.49:0.72,0.3:0.69:0.29,0.6:0.31:0.64,1.0:0.5:0.0,1.0:1.0:0.2,0.65:0.34:0.16,0.97:0.51:0.75,0.6:0.6:0.6] 
+% 1 rd, gr, bu
+% 4 pu, or, yl
+% 7 bn, pk, gy
+
+\pgfmathsetmacro\obsh{6} \pgfmathsetmacro\obscols{5} \pgfmathsetmacro\obsmw{1.5}
+\pgfmathsetmacro\varw{4} \pgfmathsetmacro\varcols{4} \pgfmathsetmacro\varmh{1.2}
+\pgfmathsetmacro\offset{0.2}
+\pgfmathsetmacro\gap{0.3}
+
+\starttikzpicture
+\tikzstyle{every node}=[fill=white, fill opacity=1, inner sep=0, align=center]
+\tikzstyle{every path}=[fill=white, fill opacity=0.8]
+
+% layers
+\foreach \shift in {2*\offset, \offset, 0} {
+	\startscope[shift={(-\shift, -\shift)}]
+	\draw (0, 0) rectangle (\varw, \obsh);
+	\stopscope
+}
+\node at (\varw/2, \obsh/2) {Expression\\Layers (2D)};
+
+% obs
+\foreach \shift in {1, 2, ..., \obscols} {
+	\startscope[shift={(\varw + \gap + \shift*\offset - \offset, 0)}]
+	\draw (0, 0) rectangle (\offset, \obsh);
+	\stopscope
+}
+\node[rotate=-90] at (\varw + \gap + \obscols/2*\offset, \obsh/2) {1D observation annotations};
+
+% obsm
+\foreach \shift/\w in {2*\offset/1.2, \offset/1.8, 0/\obsmw} {
+	\startscope[shift={(\varw + 2*\gap + \obscols*\offset + \shift, -\shift)}]
+	\draw (0, 0) rectangle (\w, \obsh);
+	\stopscope
+}
+\node[rotate=-90] at (\varw + 2*\gap + \obscols*\offset + \obsmw/2, \obsh/2) {2D observation annotations};
+
+% var
+\foreach \shift in {1, 2, ..., \varcols} {
+	\startscope[shift={(0, \obsh + \gap + \shift*\offset - \offset)}]
+	\draw (0, 0) rectangle (\varw, \offset);
+	\stopscope
+}
+\node at (\varw/2, \obsh + \gap + \varcols/2*\offset) {1D feature annotations};
+
+% varm
+\foreach \shift/\h in {\offset/0.8, 0/\varmh} {
+	\startscope[shift={(-\shift, \obsh + 2*\gap + \varcols*\offset + \shift)}]
+	\draw (0, 0) rectangle (\varw, \h);
+	\stopscope
+}
+\node at (\varw/2, \obsh + 2*\gap + \varcols*\offset + \varmh/2) {2D feature annotations};
+
+% uns
+
+\pgfmathsetmacro\unsw{\obscols*\offset + \gap + \obsmw}
+\pgfmathsetmacro\unsh{\varcols*\offset + \gap + \varmh}
+\draw (\varw + \gap, \obsh + \gap) rectangle ++(\unsw, \unsh);
+\node at (\varw + \gap + \unsw/2, \obsh + \gap + \unsh/2) {Unaligned\\annotations\\(Hierarchy)};
+
+\stoptikzpicture
