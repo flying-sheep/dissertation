@@ -242,8 +242,19 @@ I contributed to and developed a number of independent building blocks for use i
 This includes a nearest neighbor search operating in the same space the diffusion kernel is applied to.
 For Destiny, I contributed to a few projects it depends on to support determinism if a random seed is set.
 Destiny also contained a preceptionally continuous colormap before they found their way into the major plotting libraries of Python or R.
-Destiny Bioconductor’s annotated expression matrix classes and directly integrates into the popular plotting library ggplot.
 Apart from diffusion maps, Destiny also supports using its diffusion space to calculate diffusion pseudo time between cells as well as to project new data into the diffusion space of the data used to create the diffusion space.
+Destiny supports Bioconductor’s annotated expression matrix classes and directly integrates into the popular plotting library ggplot.
+It contains dedicated plotting routines for diffusion maps and diffusion pseudo time.
+\stopsubsection
+
+\startsubsection[title={Gene Relevance}]
+% combines gene-level with cell-level analysis
+The most recent addition to Destiny is the gene relevance algorithm.
+Gene relevance is a scoring algorithm designed to combine gene level analysis with cell level analysis.
+It allows to identify genes that drive the local positioning of a cell in an embedding.
+The initial idea comes from Fabian Theis, while I implemented it and iterated on the design until it was applicable to real data.
+I also extended the idea to include scores for defined groups of cells such as clusters or the whole data for a global relevance score per gene.
+Destiny includes several plotting routines designed for the different gene relevance concepts.
 \stopsubsection
 
 \startsubsection[title={Scanpy and AnnData}]
@@ -265,10 +276,11 @@ This modular design philosophy allows Scanpy routines to be effortlessly intersp
 
 \startsubsection[title={BART-Seq}]
 % flexible processing pipeline and Python library
-\stopsubsection
-
-\startsubsection[title={gene relevance}]
-% combines gene-level with cell-level analysis
+Beyond processing count matrices, I also contributed to a new, targeted RNA-Seq protocol called BART-Seq \cite[uzbas2019].
+It is set apart from untargeted single cell and bulk RNA-Seq protocols due to its high sensitivity and low cost.
+I designed a demultiplexing and counting strategy for BART-Seq together with Fatma Uzbas and Micha Drucker.
+I implemented those strategies as well as visualization routines for the protocol as a Python package.
+Part of this package is a pipeline based on Snakemake that performs all steps of the protocol to create count matrices, statistics and visualizations.
 \stopsubsection
 
 \stopsection
