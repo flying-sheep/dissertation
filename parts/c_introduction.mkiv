@@ -111,7 +111,7 @@ A final common preprocessing step is reduction of the data by discarding genes w
 \TODO[mention quality control as part of counting and preprocessing]
 
 % 4. analysis: uncover dynamics, heterogeneity structure, feature importance and role
-\startplacefigure[reference=fig:waddington,location=left,title={Analysis: Cells differentiate smoothly, in stochasically diverging paths, and not always in the same general direction.}]
+\startplacefigure[reference=fig:waddington,location=left,title={Cells differentiate smoothly, in stochasically diverging paths, and not always in the same general direction.}]
 %https://anatomypubs.onlinelibrary.wiley.com/doi/full/10.1002/dvdy.24678
 \externalfigure[https://anatomypubs.onlinelibrary.wiley.com/cms/asset/aafdf349-9324-496d-822d-183edae5d947/dvdy24678-fig-0001-m.jpg][width=.5\textwidth]
 \stopplacefigure
@@ -251,13 +251,20 @@ Apart from diffusion maps, Destiny also supports using its diffusion space to ca
 Scanpy is a framework for scRNA-Seq preprocessing, analysis, and visualization in Python.
 AnnData is a data structure for annotated observation data including scRNA-Seq counts and expressions.
 With F. Alexander Wolf we implemented the initial version, where he focused on performance while I focused on API and data structure design.
-Scanpy is designed around AnnData, storing the results of each processing step in an expression matrix layer or 
+Scanpy is designed around AnnData, storing the results of each processing step in an expression matrix layer or an aligned annotation (see \infig[fig:anndata]).
+This data structure enables Scanpy’s flexibility.
 % Loom, SCE, AnnData2ri
-
+It can be held in memory for fast operations and in-memory conversion to R’s SingleCellExperiment \cite[lun2017,angerer2019].
+It can also be persisted to disk in various formats such as Loom \cite[linnarson2017] for pipeline checkpoints, result archiving, and interoperability with command line tools.
+AnnData’s native “h5ad” is an efficient, HDF5-backed format that allows disk-backed operations for data too large to hold in memory.
+\TODO[already mentioned above. Draw connection to microfluidics]
+AnnData’s structure allows close interoperability between Scanpy and other tools using AnnData.
+For example, after storing an dimension reduction algorithm’s embedding coordinates into an AnnData object’s 2D annotations, they can be used from Scanpy’s plotting routines.
+This modular design philosophy allows Scanpy routines to be effortlessly interspersed with preprocessing and analysis steps of other tools.
 \stopsubsection
 
 \startsubsection[title={BART-Seq}]
-% flexible processing pipeline and python library
+% flexible processing pipeline and Python library
 \stopsubsection
 
 \startsubsection[title={gene relevance}]

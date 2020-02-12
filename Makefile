@@ -1,4 +1,4 @@
-src_files = prd_dissertation.mkiv env_dissertation.mkiv $(wildcard parts/*.mkiv) $(patsubst %.ipynb,%.pdf,$(wildcard imgs/*.ipynb)) Makefile
+src_files = prd_dissertation.mkiv env_dissertation.mkiv $(wildcard parts/*.mkiv) $(wildcard imgs/*.tikz) $(patsubst %.ipynb,%.pdf,$(wildcard imgs/*.ipynb)) Makefile
 
 prd_dissertation.pdf: $(src_files) bib/prd_dissertation.bib
 	context --nonstopmode --nostatistics --silent=all $<
