@@ -8,20 +8,26 @@
 \TODO[explain how much about RNA-Seq?]
 BART-Seq is a targeted RNA sequencing protocol able to sensitively and inexpensively measure expressions of thousands of samples.
 It consists of three steps; design, experiment, and quantification.
+
 % primer/barcode design
 The design step involves algorithms to design primer pairs matching genes and barcodes identifying samples.
 The primer design algorithm optimizes primer pairs to stably dimerize with their target genes.
 The barcode design algorithm minimizes the chance of misassigning barcodes through sequencing errors by maximizing their mutual alignment distances.
 The set of barcodes is split into two halves arbitrarily – forward and reverse.
+
 % experiment
 For the experimental step, barcodes are synthesized and those of each half are ligated to the half’s respective primer.
-Each well receives a different combination of forward and reverse barcode assemblies, allowing to address $(\text{#barcodes} ÷ 2)^2$ wells.
+Each well receives a different combination of forward and reverse barcode assemblies, allowing to address $(\text{\#barcodes} ÷ 2)^2$ wells.
 The experiment concludes like a regular paired-end sequencing run, resulting in a read library containing sequences of barcode-then-linker-then-amplicon-end.
-% sequencing and multiplexing
-Before alignment, the amplicon ends are isolated tagged with their respective barcode.
+
+% quantification: sequencing and multiplexing
+In the quantification step, the amplicon ends are isolated and tagged with their respective barcode.
 This process assigns barcodes with up to one mismatching base using the algorithm of \inlinecite[aho1975], as long as the assignment is still unique – reads with barcode sequences one mismatch away from two different barcodes are discarded.
-The tagged amplicon ends are then aligned to the targeted genes’ sequences individually.
-\TODO[counting]
+The tagged amplicon ends are then aligned to the targeted genes’ sequences individually using HISAT2 \cite[kim2019].
+Genes are counted per barcode combination according to one of two strategies.
+The conservative strategy only increments the counter where both amplicon ends aligned to the same gene, while the sensitive strategy increments when one of both is unaligned.
+
+I designed the quantification step in collaboration with Fatma Uzbas and Micha Drucker, and implemented a Python library and pipeline executing it.
 
 \stopsection
 
@@ -40,11 +46,11 @@ This is most useful as a preprocessing step to define a less noisy latent space 
 
 \startsubsubsection[title={Principal Component Analysis}]
 Principal component analysis (PCA) is a simple spectral decomposition.
-Its components are weighted products of input features (such as transcripts), ranked by the variance each PC explains.
+Its components are weighted products of input features (such as transcripts), ranked by the variance each principal component vector (PC) explains.
 While the intrinsic dimensionality of transcriptomic data is low, more complex datasets cannot be faithfully represented by a low number of (linear) PCs \cite[lenz2016].
 Picking a (higher) number of PCs, for example using the jackstraw \cite[chung2015] is a popular a preprocessing step for downstream analysis.
 
-There are a number of related methods that can serve a similar purpose, such as independent component analysis or factor analysis. Furthermore, single cell transcriptomics specific extensions exist
+There are a number of related methods that can serve a similar purpose, such as independent component analysis \cite[bell1995] or factor analysis \cite[stephenson1935]. Furthermore, single cell transcriptomics specific extensions exist.
 \stopsubsubsection
 
 \startsubsubsection[title={Diffusion Maps}]
