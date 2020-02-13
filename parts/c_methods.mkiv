@@ -3,6 +3,28 @@
 
 \startchapter[reference=methods, title=Methods]
 
+\startsection[title={BART-Seq (demultiplexing and quantification)}]
+
+\TODO[explain how much about RNA-Seq?]
+BART-Seq is a targeted RNA sequencing protocol able to sensitively and inexpensively measure expressions of thousands of samples.
+It consists of three steps; design, experiment, and quantification.
+% primer/barcode design
+The design step involves algorithms to design primer pairs matching genes and barcodes identifying samples.
+The primer design algorithm optimizes primer pairs to stably dimerize with their target genes.
+The barcode design algorithm minimizes the chance of misassigning barcodes through sequencing errors by maximizing their mutual alignment distances.
+The set of barcodes is split into two halves arbitrarily – forward and reverse.
+% experiment
+For the experimental step, barcodes are synthesized and those of each half are ligated to the half’s respective primer.
+Each well receives a different combination of forward and reverse barcode assemblies, allowing to address $(\text{#barcodes} ÷ 2)^2$ wells.
+The experiment concludes like a regular paired-end sequencing run, resulting in a read library containing sequences of barcode-then-linker-then-amplicon-end.
+% sequencing and multiplexing
+Before alignment, the amplicon ends are isolated tagged with their respective barcode.
+This process assigns barcodes with up to one mismatching base using the algorithm of \inlinecite[aho1975], as long as the assignment is still unique – reads with barcode sequences one mismatch away from two different barcodes are discarded.
+The tagged amplicon ends are then aligned to the targeted genes’ sequences individually.
+\TODO[counting]
+
+\stopsection
+
 \startsection[title={Dimensionality Reduction Methods}]
 
 Dimensionality reduction methods embed high dimensional data into a low-dimensional space.
@@ -171,6 +193,18 @@ The more recent method UMAP \cite[mcinnes2018] was designed to fix \TODO[what] \
 
 Disadvantages of machine learning based methods are their nondeterministic nature and the lack of a resulting function to project new data into an existing embedding.
 \stopsubsection
+
+\stopsection
+
+\startsection[title={Gene relevance}]
+
+\TODO[Basically Methods section of GR paper. Describe smoothing and other niceties in more detail.]
+
+\stopsection
+
+\startsection[title={Scanpy}]
+
+\TODO[Efficiency (PCA, sparse, …) and APIs]
 
 \stopsection
 
