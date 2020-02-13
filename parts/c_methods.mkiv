@@ -112,7 +112,7 @@ There are several flavors of diffusion models, parametrized over the chosen dist
 \TODO[Clarify how a kernel not based on euclidean distance would be called and defined.]
 
 The most useful set of flavors is the ones independent of local density.
-These flavors parametrize their gaussian kernel with a cell-dependent $σ_c$ derived from the local density $σ_c = \text{dist}(c, NN_k(c))$.
+These flavors parametrize their gaussian kernel with a cell-dependent $σ_c$ derived from the local density $σ_c = \text{dist}(c, \text{NN}_k(c))$.
 \TODO[define dist, NN better.]
 Their gaussian function is:
 
@@ -158,7 +158,7 @@ W_{cd} = {K(c, d) \over Z(c) Z(d)}
 Z(c) = ∑_{d∈\{1,…,C\}} K(c, d)
 \stopformula
 
-More commonly today, $W$ is approximated. One approach is to only define $W_{cd}$ for $d∈\{NN_k(c)\}$ instead of all $d∈\{1,…,C\}$, another is employed by UMAP, which uses fuzzy simplical sets derived from $σ_c$ instead of discrete sets of nearest neighbors.
+More commonly today, $W$ is approximated. One approach is to only define $W_{cd}$ for $d∈\{\text{NN}_k(c)\}$ instead of all $d∈\{1,…,C\}$, another is employed by UMAP, which uses fuzzy simplical sets derived from $σ_c$ instead of discrete sets of nearest neighbors.
 
 In any case, a transition probability matrix $T$ can be obtained by row-normalizing $W$:
 
@@ -205,6 +205,59 @@ Disadvantages of machine learning based methods are their nondeterministic natur
 \startsection[title={Gene relevance}]
 
 \TODO[Basically Methods section of GR paper. Describe smoothing and other niceties in more detail.]
+
+\definemathcommand[lr][nolop]{\mfunction{LR}}
+\definemathcommand[gr][nolop]{\mfunction{GR}}
+\definemathcommand[rank][nolop]{\mfunction{rg}}
+\definemathcommand[dnorm]{\left\|\left\|d_{gc}\right\|\right\|_2}
+
+\placeformula
+\startformula
+d_{gc} = \left(\frac{∂ x_{gc}}{∂ s_{1c}}, …, \frac{∂ x_{gc}}{∂ s_{Pc}}\right)
+\stopformula
+
+\placeformula
+\startformula
+\widehat{\left(d_{gc}\right)_p} =
+\startcases
+\NC \mathit{NA}, \NC \text{if } x_{gc} = 0 \NR
+\NC \underset{n ∈ \text{NN}_k(c) ∧ n≠c}\median \frac{x_{gc}-x_{gn}}{s_{pn}-s_{pc}}, \NC \text{otherwise} \NR
+\stopcases
+\stopformula
+
+\placeformula
+\startformula
+\dnorm = \sqrt{∑_{p=1}^P \left(d_{gc}\right)_p^2}
+\stopformula
+
+\placeformula
+\startformula
+\lr_{\rank_{\max}}(g, Ψ) = \frac{ ∑_{c∈Ψ} \left[ \rank_{\dnorm} < \rank_{\max} \right] }{|Ψ|}
+\stopformula
+
+\placeformula
+\startformula
+\left[P\right] =
+\startcases
+\NC 1, \NC \text{if $P$ is true} \NR
+\NC 0, \NC \text{otherwise} \NR
+\stopcases
+\text{, for any predicate $P$}
+\stopformula
+
+\placeformula
+\startformula
+\gr_{\rank_{\max}}(g) = \lr_{\rank_{\max}}(g, \{1,…,C\})
+\stopformula
+
+\placeformula
+\startformula
+l_c^m = \argmax_{g ∈ Ω} 
+\startcases
+\NC \dnorm, \NC \text{ if $m=0$} \NR
+\NC \frac1k ∑_{n ∈ \text{NN}_k(c)} \left[ l_n^{m-1} = g \right], \NC \text{ otherwise.} \NR
+\stopcases
+\stopformula
 
 \stopsection
 
