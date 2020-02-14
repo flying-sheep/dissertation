@@ -34,7 +34,10 @@ I designed the quantification step in collaboration with Fatma Uzbas and Micha D
 \startsection[title={Dimensionality Reduction Methods}]
 
 Dimensionality reduction methods embed high dimensional data into a low-dimensional space.
-The intrinsic dimensionality of transcriptomic data is low, so 50-100 linear combinations of genes are enough to capture nearly all biologically relevant variation and structure in the data \cite[ding2018].
+While a gene expression matrix $x_{gc}$ can contain tens of thousands of genes $g∈\{1,…,G\}$ measured for up to approximately one million cells $c∈\{1,…,C\}$, matrices this big are very sparse due to high dropout ubiquitous in protocols able to capture this many cells.
+\TODO[cite. only dropout makes them sparse?]
+The intrinsic dimensionality of transcriptomic data is also low, so a embedding space $s_{pc}$ with a low number of components $p∈\{1,…,P\}$ enough to capture nearly all biologically relevant variation and structure in the data.
+This amount corresponds to 50-100 linear combinations of genes \cite[ding2018].
 Global structures can often be faithfully reflected in a 2 or 3 dimensional embedding interpretable by humans.
 
 \startsubsection[title={Spectral decomposition}]
@@ -106,8 +109,8 @@ A diffusion map preserves global structures and the pseudotemporal ordering of c
 
 %https://static-content.springer.com/esm/art%3A10.1038%2Fnmeth.3971/MediaObjects/41592_2016_BFnmeth3971_MOESM373_ESM.pdf
 
-A diffusion map consists of the eigenvectors $s_{p·}$ of a matrix of transition probabilities between cells.
-The transition probabilities are derived from a diffusion model.
+A diffusion map consists of the eigenvectors $s_{p·}$ of a matrix of transition probabilities $T_{cd}$ between cells $c$ and $d$.
+The transition probabilities are derived from a diffusion model applied to the expression profiles $x_{·c}$.
 There are several flavors of diffusion models, parametrized over the chosen distance function $\text{dist}$ and the kernel width $σ$ (square root of the gaussian function $Y(c)$’s variance).
 \TODO[Clarify how a kernel not based on euclidean distance would be called and defined.]
 
@@ -209,30 +212,35 @@ Disadvantages of machine learning based methods are their nondeterministic natur
 \definemathcommand[lr][nolop]{\mfunction{LR}}
 \definemathcommand[gr][nolop]{\mfunction{GR}}
 \definemathcommand[rank][nolop]{\mfunction{rg}}
-\definemathcommand[dnorm]{\left\|\left\|d_{gc}\right\|\right\|_2}
+\definemathcommand[gradnorm]{\left\|\left\|∇_{gc}\right\|\right\|_2}
+
+% https://de.wikipedia.org/wiki/Nabla-Operator
+% Gerechnet wird mit dem Nabla-Operator wie mit einem Vektor, wobei das „Produkt“ von beispielsweise ∂ / ∂x_i mit einer rechts davon stehenden Funktion f als partielle Ableitung ∂f / ∂x_i interpretiert wird. 
+% ∇f is the gradient of the function f, and I think that’s in our case the function mapping the embedding to the gene expressions, so the inverse of the embedding function.
 
 \placeformula
 \startformula
-d_{gc} = \left(\frac{∂ x_{gc}}{∂ s_{1c}}, …, \frac{∂ x_{gc}}{∂ s_{Pc}}\right)
+∇_{gc} = \left(\frac{∂ x_{gc}}{∂ s_{1c}}, …, \frac{∂ x_{gc}}{∂ s_{Pc}}\right)
 \stopformula
 
 \placeformula
 \startformula
-\widehat{\left(d_{gc}\right)_p} =
-\startcases
+\widehat{∇_{gc}} = \left(
+\startcases[left={\left.}, style=\displaystyle]
 \NC \mathit{NA}, \NC \text{if } x_{gc} = 0 \NR
 \NC \underset{n ∈ \text{NN}_k(c) ∧ n≠c}\median \frac{x_{gc}-x_{gn}}{s_{pn}-s_{pc}}, \NC \text{otherwise} \NR
 \stopcases
+\right)
 \stopformula
 
 \placeformula
 \startformula
-\dnorm = \sqrt{∑_{p=1}^P \left(d_{gc}\right)_p^2}
+\gradnorm = \sqrt{∑_{p=1}^P \left(∇_{gc}\right)_p^2}
 \stopformula
 
 \placeformula
 \startformula
-\lr_{\rank_{\max}}(g, Ψ) = \frac{ ∑_{c∈Ψ} \left[ \rank_{\dnorm} < \rank_{\max} \right] }{|Ψ|}
+\lr_{\rank_{\max}}(g, Ψ) = \frac{ ∑_{c∈Ψ} \left[ \rank_{\gradnorm} < \rank_{\max} \right] }{|Ψ|}
 \stopformula
 
 \placeformula
@@ -254,7 +262,7 @@ d_{gc} = \left(\frac{∂ x_{gc}}{∂ s_{1c}}, …, \frac{∂ x_{gc}}{∂ s_{Pc}}
 \startformula
 l_c^m = \argmax_{g ∈ Ω} 
 \startcases
-\NC \dnorm, \NC \text{ if $m=0$} \NR
+\NC \gradnorm, \NC \text{ if $m=0$} \NR
 \NC \frac1k ∑_{n ∈ \text{NN}_k(c)} \left[ l_n^{m-1} = g \right], \NC \text{ otherwise.} \NR
 \stopcases
 \stopformula
