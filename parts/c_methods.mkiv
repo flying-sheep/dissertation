@@ -119,15 +119,15 @@ A diffusion map preserves global structures and the pseudo-temporal ordering of 
 
 %https://static-content.springer.com/esm/art%3A10.1038%2Fnmeth.3971/MediaObjects/41592_2016_BFnmeth3971_MOESM373_ESM.pdf
 
-A diffusion map consists of the eigenvectors $s_{p·}$ of a matrix of transition probabilities $T_{cd}$ between cells $c$ and $d$.
-The transition probabilities are derived from a diffusion model applied to the expression profiles $x_{·c}$.
-There are several flavors of diffusion models, parametrized over the chosen distance function $\text{dist}$ and the kernel width $σ$ (square root of the Gaussian function $Y(c)$’s variance).
-\TODO[Clarify how a kernel not based on euclidean distance would be called and defined.]
+A diffusion map $s_{pc}$ has as components $p$ the eigenvectors of a matrix of transition probabilities $T_{cd}$ between cells $c$ and $d ∈ \{1, …, C\} ∖ \{c\}$.
+\TODO[I already s, x, g, p, c above. Is it correct to name the used variables again in the context they’re now being used in?]
+The transition probabilities are derived from a diffusion model applied to the cells’ expression profiles $x_{gc}$.
+There are several flavors of diffusion models, parametrized over the chosen distance function $dist$ and the kernel width $σ$ (square root of the Gaussian function $Y(c)$’s variance).
+\TODO[You underlined Y(c) here, but I define it as the next formula!]
 
 The most useful set of flavors is the ones independent of local density.
-These flavors parametrize their Gaussian kernel with a cell-dependent $σ_c$ derived from the local density $σ_c = \text{dist}(c, \text{NN}_k(c))$.
-\TODO[define dist, NN better.]
-Their Gaussian function is:
+These flavors parametrize their Gaussian kernel with a cell-dependent kernel width $σ_c$ set to the local density.
+Those flavors’ Gaussian function is:
 
 \placeformula
 \startformula
@@ -140,7 +140,14 @@ Y_c\left(c'\right) =
 	}\right)
 \stopformula
 
-Since Gaussian functions are wave functions, the kernel is defined by the interference of two wave functions centered at cells:
+Where $σ_c$ can be estimated from $c$’s $k$th-nearest neighbor $\text{NN}_k(c)$:
+
+\placeformula
+\startformula
+\widehat{σ_c} = dist(c, \text{NN}_k(c))
+\stopformula
+
+Since Gaussian functions are wave functions, the kernel $K(c, d)$ is defined by the interference of two wave functions centered at $c$ and $d$:
 
 \placeformula
 \startformula
@@ -159,7 +166,7 @@ Since Gaussian functions are wave functions, the kernel is defined by the interf
 \stopalign
 \stopformula
 
-With a kernel function defined, the connectivities $W_{cd}$ between cells can be are defined as follows:
+With a kernel function defined, the connectivities $W_{cd}$ between cells are defined as follows:
 
 \placeformula
 \startformula
