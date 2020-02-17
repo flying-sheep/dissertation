@@ -10,4 +10,5 @@ imgs/%.pdf: imgs/%.ipynb
 	cd imgs; jupyter nbconvert --execute --stdout ../$< >/dev/null
 
 watch: $(src_files) bib/library.bib
+	@echo Making file://$(PWD)/prd_dissertation.pdf
 	ls $(src_files) bib/library.bib | entr make

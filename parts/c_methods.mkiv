@@ -33,91 +33,101 @@ I designed the quantification step in collaboration with Fatma Uzbas and Micha D
 
 \startsection[title={Dimensionality Reduction Methods}]
 
-Dimensionality reduction methods embed high dimensional data into a low-dimensional space.
-While a gene expression matrix $x_{gc}$ can contain tens of thousands of genes $g∈\{1,…,G\}$ measured for up to approximately one million cells $c∈\{1,…,C\}$, matrices this big are very sparse due to high dropout ubiquitous in protocols able to capture this many cells.
-\TODO[cite. only dropout makes them sparse?]
-The intrinsic dimensionality of transcriptomic data is also low, so a embedding space $s_{pc}$ with a low number of components $p∈\{1,…,P\}$ enough to capture nearly all biologically relevant variation and structure in the data.
-This amount corresponds to 50-100 linear combinations of genes \cite[ding2018].
-Global structures can often be faithfully reflected in a 2 or 3 dimensional embedding interpretable by humans.
+Dimensionality reduction methods embed high dimensional data into a low dimensional space.
+They are designed around the resulting space’s purpose, which includes 2-3 dimensional spaces for visualization or a latent space for further processing.
+Some methods also assign scores to each result dimension, which can e.\,g. be used to decide which dimensions to discard and which ones to keep for visualization or as latent space.
+
+In the context of scRNA-Seq data, the high dimensional data are gene expression matrices $x_{gc}$ with tens of thousands of genes $g∈\{1,…,G\}$, measured for up to approximately one million cells $c∈\{1,…,C\}$ at once.
+%Matrices this big are very sparse due to the ubiquity of high dropout in protocols able to capture this many cells.
+%\TODO[cite. only dropout makes them sparse?]
+The intrinsic dimensionality of transcriptomic data is low when compared to these numbers of genes, so an embedding $s_{pc}$ with a comparatively low number of dimensions $p∈\{1,…,P\}$ is enough to capture nearly all biologically relevant variation and structure in the data.
+As an example of such a latent space, about $50≤P≤100$ linear combinations of genes are sufficient to capture all information necessary to reconstruct all known biological processes \cite[ding2018].
+Global structures of the data such as strongly differing cell types or differentiation can often be faithfully reflected in a 2 or 3 dimensional embedding.
+Using such embeddings as scatter plot coordinates serves as the basis of visualizations interpretable by humans.
 
 \startsubsection[title={Spectral decomposition}]
 
 Spectral decomposition is the act of transforming the data into components that each capture a different source of variance in the data.
-The components are ranked by their ability to explain the data’s structure.
-They can be used as dimensionality reduction methods by discarding components with low enough scores.
+These components are scored by their ability to explain the data’s structure.
+By keeping components with high enough scores as embedding dimensions, spectral decompositions can therefore be used as dimensionality reduction methods.
 This is most useful as a preprocessing step to define a less noisy latent space reflecting the inherent dimensionality of the data, but components can also be directly visualized.
 
 \startsubsubsection[title={Principal Component Analysis}]
 Principal component analysis (PCA) is a simple spectral decomposition.
-Its components are weighted products of input features (such as transcripts), ranked by the variance each principal component vector (PC) explains.
-While the intrinsic dimensionality of transcriptomic data is low, more complex datasets cannot be faithfully represented by a low number of (linear) PCs \cite[lenz2016].
-Picking a (higher) number of PCs, for example using the jackstraw \cite[chung2015] is a popular a preprocessing step for downstream analysis.
+Its principal components (PCs) are weighted products of input features (such as transcripts), scored by the variance each PC explains.
+As each PC ideally represents one source of variation, data with up to around 4 linearly separable sources of variation can be interpreted by visualizing the corresponding number of PCs.
+As mentioned before as an example, while the intrinsic dimensionality of transcriptomic data is low, the number of PCs necessary to faithfully represent all biological processes one might care about is around 50-100 \cite[lenz2016].
+Picking a number of PCs in this range, for example using the jackstraw algorithm \cite[chung2015] is a popular a preprocessing step for downstream analysis.
 
-There are a number of related methods that can serve a similar purpose, such as independent component analysis \cite[bell1995] or factor analysis \cite[stephenson1935]. Furthermore, single cell transcriptomics specific extensions exist.
+There are a number of related methods that can serve a similar purpose, such as independent component analysis \cite[bell1995] or factor analysis \cite[stephenson1935].
+\TODO[I don’t use them but mention them for completeness, is that wrong?]
+Furthermore, single cell transcriptomics specific extensions exist, such as ZINB-WaVE \cite[risso2018], which addresses zero inflation and over-dispersion of scRNASeq-data in its dimensionality reduction.
 \stopsubsubsection
 
 \startsubsubsection[title={Diffusion Maps}]
-Diffusion maps are another spectral decomposition of data.
+Diffusion maps provide another spectral decomposition of data.
 Their practicality for data analysis was first shown by \inlinecite[coifman2005].
-A diffusion map preserves global structures and the pseudotemporal ordering of cells better than t-SNE \cite[haghverdi2015], and the first diffusion components are often sufficient to directly capture and visualize bifurcation events in differentiating cells.
+A diffusion map preserves global structures and the pseudo-temporal ordering of cells better than even than learned embeddings like t-SNE (see \in{section}[sec:learned-embeddings]) \cite[haghverdi2015], and the first diffusion components are often sufficient to directly capture and visualize bifurcation events in differentiating cells.
 
 \startplacefigure[title={Model visualisation}]
-	\startfloatcombination[2*1]
-	\startplacesubfigure[title={Data and embedding}]
-		\hbox{
-		\starttikzpicture
-			\draw (0,0) rectangle (3, 5);
-			\node at (3.25,2.5) {$↪$};
-			\node at (1.5,2.5) {\tfa $x_{gc}$};
-			\draw[decorate, decoration={brace, amplitude=10pt}, xshift=-4pt]
-				(0,0) -- node[left=10pt, rotate=90, anchor=south] {$c ∈ \{1, …, C\}$} (0,5);
-			\draw[decorate, decoration={brace, amplitude=10pt}, yshift=4pt]
-				(0,5) -- node[above=10pt] {$g ∈ \{1, …, G\}$} (3,5);
-			\scope[shift={(3.5,0)}]
-			\draw (0,0) rectangle (2, 5);
-			\node at (1,2.5) {\tfa $s_{pc}$};
-			\draw[decorate, decoration={brace, amplitude=10pt}, yshift=4pt]
-				(0,5) -- node[above=10pt] {$p ∈ \{1, …, P\}$} (2,5);
-			\endscope
-		\stoptikzpicture
-		}
-	\stopplacesubfigure
-	\startplacesubfigure[title={Gene expression differential estimation}]
-		\hbox{
-		\starttikzpicture
-			\startaxis[
-				axis equal,
-				width=8cm,
-				colormap name=viridis,
-				colorbar,
-				colorbar style={title=Expression, ticks=none},
-				ticks=none,
-				xlabel={$s_{1}$},
-				ylabel={$s_{2}$}
-			]
-			\addplot[only marks, scatter, point meta=explicit]
-				table[x=DC1, y=DC2, meta=X920]
-				{scdata.dat};
-			\draw[red, dashed, thick] (-0.00,-0.02) circle (0.04);
-			\draw[red, dashed, thick] (-0.05, 0.10) circle (0.02);
-			\stopaxis
-		\stoptikzpicture
-		}
-	\stopplacesubfigure
-	\stopfloatcombination
+\startcombination[2*1]
+{
+	\hbox{
+	\starttikzpicture
+		\draw (0,0) rectangle (3, 5);
+		\node at (3.25,2.5) {$↪$};
+		\node at (1.5,2.5) {\tfa $x_{gc}$};
+		\draw[decorate, decoration={brace, amplitude=10pt}, xshift=-4pt]
+			(0,0) -- node[left=10pt, rotate=90, anchor=south] (leftcap) {$c ∈ \{1, …, C\}$} (0,5);
+		\draw[decorate, decoration={brace, amplitude=10pt}, yshift=4pt]
+			(0,5) -- node[above=10pt] (topcap) {$g ∈ \{1, …, G\}$} (3,5);
+		\scope[shift={(3.5,0)}]
+		\draw (0,0) rectangle (2, 5);
+		\node at (1,2.5) {\tfa $s_{pc}$};
+		\draw[decorate, decoration={brace, amplitude=10pt}, yshift=4pt]
+			(0,5) -- node[above=10pt] {$p ∈ \{1, …, P\}$} (2,5);
+		\endscope
+		\path (leftcap |- topcap) node[font=\bf] {a};
+	\stoptikzpicture
+	}
+}{}
+{
+	\hbox{
+	\starttikzpicture
+		\startaxis[
+			axis equal,
+			width=8cm,
+			colormap name=viridis,
+			colorbar,
+			colorbar style={title=Expression, ticks=none},
+			ticks=none,
+			xlabel={$s_{1}$},
+			ylabel={$s_{2}$}
+		]
+		\addplot[only marks, scatter, point meta=explicit]
+			table[x=DC1, y=DC2, meta=X920]
+			{scdata.dat};
+		\draw[red, dashed, thick] (-0.00,-0.02) circle (0.04);
+		\draw[red, dashed, thick] (-0.05, 0.10) circle (0.02);
+		\stopaxis
+		\path (current axis.outer north west |- current colorbar axis.outer north west) node[font=\bf, anchor=north west] {b};
+	\stoptikzpicture
+	}
+}{}
+\stopcombination
 \stopplacefigure
 
 %https://static-content.springer.com/esm/art%3A10.1038%2Fnmeth.3971/MediaObjects/41592_2016_BFnmeth3971_MOESM373_ESM.pdf
 
 A diffusion map consists of the eigenvectors $s_{p·}$ of a matrix of transition probabilities $T_{cd}$ between cells $c$ and $d$.
 The transition probabilities are derived from a diffusion model applied to the expression profiles $x_{·c}$.
-There are several flavors of diffusion models, parametrized over the chosen distance function $\text{dist}$ and the kernel width $σ$ (square root of the gaussian function $Y(c)$’s variance).
+There are several flavors of diffusion models, parametrized over the chosen distance function $\text{dist}$ and the kernel width $σ$ (square root of the Gaussian function $Y(c)$’s variance).
 \TODO[Clarify how a kernel not based on euclidean distance would be called and defined.]
 
 The most useful set of flavors is the ones independent of local density.
-These flavors parametrize their gaussian kernel with a cell-dependent $σ_c$ derived from the local density $σ_c = \text{dist}(c, \text{NN}_k(c))$.
+These flavors parametrize their Gaussian kernel with a cell-dependent $σ_c$ derived from the local density $σ_c = \text{dist}(c, \text{NN}_k(c))$.
 \TODO[define dist, NN better.]
-Their gaussian function is:
+Their Gaussian function is:
 
 \placeformula
 \startformula
@@ -130,7 +140,7 @@ Y_c\left(c'\right) =
 	}\right)
 \stopformula
 
-Since gaussian functions are wave functions, the kernel is defined by the interference of two wave functions centered at cells:
+Since Gaussian functions are wave functions, the kernel is defined by the interference of two wave functions centered at cells:
 
 \placeformula
 \startformula
@@ -158,7 +168,7 @@ W_{cd} = {K(c, d) \over Z(c) Z(d)}
 
 \placeformula
 \startformula
-Z(c) = ∑_{d∈\{1,…,C\}} K(c, d)
+Z(c) = ∑_{d ∈ \{1,…,C\}} K(c, d)
 \stopformula
 
 More commonly today, $W$ is approximated. One approach is to only define $W_{cd}$ for $d∈\{\text{NN}_k(c)\}$ instead of all $d∈\{1,…,C\}$, another is employed by UMAP, which uses fuzzy simplical sets derived from $σ_c$ instead of discrete sets of nearest neighbors.
@@ -185,20 +195,20 @@ T_{cd}^{\mathword{sym}} = √{\tilde{Z}(c)}^{-1} W_{cd} √{\tilde{Z}(y)}^{-1}
 \stopformula
 
 During the parallel development of destiny \cite[angerer2016] and diffusion pseudo time \cite[haghverdi2016], I helped shape the efficient flavor of diffusion maps most used today \TODO[data].
-I pioneered the use of a symmetricized kNN graph represented as a symmetric sparse matrix, using this kNN information as a density estimate for the locally scaled kernel $K$ and its sparsity structure for efficient calculation of the symmetric transition probability matrix $T$.
+I pioneered the use of a symmetrized kNN graph represented as a symmetric sparse matrix, using this kNN information as a density estimate for the locally scaled kernel $K$ and its sparsity structure for efficient calculation of the symmetric transition probability matrix $T$.
 
 \stopsubsubsection
 
 \stopsubsection
 
-\startsubsection[title={Learned embeddings}]
+\startsubsection[reference=sec:learned-embeddings,title={Learned embeddings}]
 % https://nbisweden.github.io/workshop-scRNAseq/slides2019/Dimensionality_reduction_P_Czarnewski_2019.pdf
 In order to optimize the embedding for certain use cases, nonlinear embedding functions can be learned.
 A common goal is to represent relationships in the data as faithfully as possible in a 2- or 3-dimensional embedding that can be displayed on a screen or paper.
 
 One such machine learning driven method, t-distributed stochastic neighborhood embedding (t-SNE, \inlinecite[vandermaaten2008]), remains the most popular dimensionality reduction method \cite[kobak2019].
 The more recent method UMAP \cite[mcinnes2018] was designed to fix \TODO[what] \cite[becht2018].
-\inlinecite[kobak2019] showed that t-SNE with a data-driven selection of metaparameters still outperforms UMAP under some circumstances.
+\inlinecite[kobak2019] showed that t-SNE with a data-driven selection of meta-parameters still outperforms UMAP under some circumstances.
 
 Disadvantages of machine learning based methods are their nondeterministic nature and the lack of a resulting function to project new data into an existing embedding.
 \stopsubsection

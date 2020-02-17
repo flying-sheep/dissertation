@@ -1,0 +1,20 @@
+{
+    "spellright.language": [
+        "en_US"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "context",
+        "plaintext"
+    ],
+    "spellright.parserByClass": {
+        "context": {
+            "parser": "latex"
+        }
+    },
+    "spellright.ignoreRegExps": [
+        "/\\\\starttikzpicture.*?\\\\stoptikzpicture/gm",
+        "/\\\\startformula.*?\\\\stopformula/gm"
+    ]
+}

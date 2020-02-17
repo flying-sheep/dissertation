@@ -33,7 +33,7 @@ Those allow to capture the gene expression of a tissue or fluid sample without a
 \externalfigure[https://upload.wikimedia.org/wikipedia/commons/0/06/Centraldogma_nodetails.png][width=3cm]
 \stopplacefigure
 
-% SC revolution (cite nat meth of the year 20xx) this one? https://www.nature.com/articles/nmeth.1557
+% SC revolution (cite nature methods of the year 20xx) this one? https://www.nature.com/articles/nmeth.1557
 But Biology is immensely complex, so every answer seems to only bring forth new questions:
 e.\,g. the confidently named central dogma of molecular biology continues to accumulate exceptions and neither genes nor cell types are considered discrete, enumerable entities anymore (see \infig[fig:dogma]).
 More complex diseases require a more intricate understanding of cellular processes and inter-cellular variation.
@@ -49,12 +49,12 @@ patterns that no human can detect by hand and careful choice of samples can be d
 All these opportunities come at the cost of additional complexity and more confounding variables.
 The small amount of mRNA molecules in single cells results in noisier measurements and the so-called drop-out or zero inflation effect:
 genes with the smallest counts tend to appear as zeros the data.
-The increased complexity can be conquered with improved modelling or more sophisticated preprocessing.
-The modelling approach is more correct, but less flexible, as it requires careful informed design across the whole analysis process.
+The increased complexity can be conquered with improved modeling or more sophisticated preprocessing.
+The modeling approach is more correct, but less flexible, as it requires careful informed design across the whole analysis process.
 Each new analysis that significantly deviates from previous analyses requires a re-thinking and re-building of the model almost from the ground up.
 
 % my work
-The more practical approach is to start with careful improvements in preprocessing that allow to shape the data in a way that fullfills the assumptions of subsequent analysis.
+The more practical approach is to start with careful improvements in preprocessing that allow to shape the data in a way that fulfills the assumptions of subsequent analysis.
 The second step is to create and use streamlined building blocks for pipelines to preprocess and analyze the data, and to then then visualize the insights gained.
 Until few years ago, there were no freely available programming and environments that allowed this approach for single cell data analysis.
 Analysis pipelines came custom-built for a certain publication, just as hard to take apart and reuse as a holistic model would have been.
@@ -69,7 +69,7 @@ I improved interoperability and modularity of existing tools, pioneered technolo
 % Describe how the workflows work and why the aforementioned is important.
 The general workflow of scRNA-Seq data processing consists of five steps.
 
-% 1. library preparation (cells → transcript library) and sequencing (transcript library → reads)
+% 1. library preparation (cells → transcript library) and sequencing (transcript library t reads)
 \startplacefigure[reference=fig:rna-seq,title={Library preparation, sequencing, and mapping}]
 % https://upload.wikimedia.org/wikipedia/commons/f/f3/Summary_of_RNA-Seq.svg
 \externalfigure[Summary_of_RNA-Seq.svg][width=.7\textwidth]
@@ -160,12 +160,12 @@ To provide further context for my work, I would like to contrast the ways people
 Without publicly available analysis frameworks, the most common way to operate was writing scripts that invoked command line tools.
 Each step invoked reading text files from a file system, processing them, and writing them back to disk.
 % - pre-Scanpy: Integrated solution of everything helps save time and eliminate invalid states (type theory: make invalid states unrepresentable)
-%               scran+Seurat are more opinionated and offer less choice (host code problem).
-%               seurat has very seurat-specific object, Scanpy’s anndata is generic
+%               Scran+Seurat are more opinionated and offer less choice (host code problem).
+%               Seurat has very Seurat-specific object, Scanpy’s AnnData is generic
 This process involved long run times due to slow reading and writing, high storage space requirements and little resilience to errors.
 File corruption introduced e.\,g. via unreliable access to network storage could not be detected in text files, which lack checksums and other resilience precautions.
 All those problems can be circumvented by a sufficient investment of effort and time.
-In practive, the lack of frameworks led to very application-specific code that was hard to generalize and share.
+In practice, the lack of frameworks led to very application-specific code that was hard to generalize and share.
 Redundant solving of problems already solved elsewhere is not only wasteful, but also error prone.
 No scRNA-Seq analysis framework in Python existed, despite more and more people in the field working with machine learning algorithms implemented in Python.
 Existing tools in R were opinionated and offered little extensibility, limiting their scope of application.
@@ -180,7 +180,7 @@ Furthermore, reproducibility was hard to guarantee in the presence of nondetermi
 In the R landscape, the Bioconductor project provided tools for preprocessing, and basic analysis, but little in the way of embeddings.
 The only available option for diffusion map embedding at the time did not offer features necessary for scRNA-Seq analysis and was impractically slow.
 \TODO[can’t introduce PCA and DMs here…]
-% - pre-GR: differential expression and trendsceek
+% - pre-GR: differential expression and Trendsceek
 No dimension reduction method except for the simplistic PCA provides a way to relate embedding location back to input features.
 The existing and popular differential expression analysis requires discrete partitioning of the data, which is not well defined for data containing gradual transition of gene expression profiles between cells.
 \stopsubsection
@@ -241,9 +241,9 @@ For Destiny’s stability, I also helped develop the concept of locally scaled d
 I contributed to and developed a number of independent building blocks for use in Destiny.
 This includes a nearest neighbor search operating in the same space the diffusion kernel is applied to.
 For Destiny, I contributed to a few projects it depends on to support determinism if a random seed is set.
-Destiny also contained a preceptionally continuous colormap before they found their way into the major plotting libraries of Python or R.
+Destiny also contained a perceptually continuous color-map before they found their way into the major plotting libraries of Python or R.
 Apart from diffusion maps, Destiny also supports using its diffusion space to calculate diffusion pseudo time between cells as well as to project new data into the diffusion space of the data used to create the diffusion space.
-Destiny supports Bioconductor’s annotated expression matrix classes and directly integrates into the popular plotting library ggplot.
+Destiny supports Bioconductor’s annotated expression matrix classes and directly integrates into the popular plotting library GGplot2.
 It contains dedicated plotting routines for diffusion maps and diffusion pseudo time.
 \stopsubsection
 
@@ -258,13 +258,13 @@ Destiny includes several plotting routines designed for the different gene relev
 \stopsubsection
 
 \startsubsection[title={Scanpy and AnnData}]
-% reusable and remixable workflow building blocks and data structures
+% reusable and remix-able workflow building blocks and data structures
 Scanpy is a framework for scRNA-Seq preprocessing, analysis, and visualization in Python.
 AnnData is a data structure for annotated observation data including scRNA-Seq counts and expressions.
 With F. Alexander Wolf we implemented the initial version, where he focused on performance while I focused on API and data structure design.
 Scanpy is designed around AnnData, storing the results of each processing step in an expression matrix layer or an aligned annotation (see \infig[fig:anndata]).
 This data structure enables Scanpy’s flexibility.
-% Loom, SCE, AnnData2ri
+% Loom, SingleCellExperiment, AnnData2ri
 It can be held in memory for fast operations and in-memory conversion to R’s SingleCellExperiment \cite[lun2017,angerer2019].
 It can also be persisted to disk in various formats such as Loom \cite[linnarson2017] for pipeline checkpoints, result archiving, and interoperability with command line tools.
 AnnData’s native “h5ad” is an efficient, HDF5-backed format that allows disk-backed operations for data too large to hold in memory.
