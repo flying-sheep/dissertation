@@ -50,7 +50,7 @@ As an example of such a latent space, about $50≤P≤100$ linear combinations o
 Global structures of the data such as strongly differing cell types or differentiation can often be faithfully reflected in a 2 or 3 dimensional embedding.
 Using such embeddings as scatter plot coordinates serves as the basis of visualizations interpretable by humans.
 
-\startsubsection[title={Spectral decomposition}]
+\startsubsection[reference=sec:spectral,title={Spectral decomposition}]
 
 Spectral decomposition is the act of transforming the data into components that each capture a different source of variance in the data.
 These components are scored by their ability to explain the data’s structure.
@@ -215,14 +215,19 @@ I pioneered the use of a symmetrized kNN graph represented as a symmetric sparse
 
 \startsubsection[reference=sec:learned-embeddings,title={Learned embeddings}]
 % https://nbisweden.github.io/workshop-scRNAseq/slides2019/Dimensionality_reduction_P_Czarnewski_2019.pdf
-In order to optimize the embedding for certain use cases, nonlinear embedding functions can be learned.
+In order to optimize the embedding for certain use cases, machine learning can be employed to learn an optimal embedding directly or a function to optimally embed the experession profiles.
 A common goal is to represent relationships in the data as faithfully as possible in a 2- or 3-dimensional embedding that can be displayed on a screen or paper.
 
 One such machine learning driven method, t-distributed stochastic neighborhood embedding (t-SNE, \inlinecite[vandermaaten2008]), remains the most popular dimensionality reduction method \cite[kobak2019].
 The more recent method UMAP \cite[mcinnes2018] works similarly, while representing global structures in the data more faithfully \cite[becht2018].
+Moreover it is claimed to be viable as a preprocessing dimensionality reduction method like the aforementioned \about[sec:spectral].
 \inlinecite[kobak2019] showed that t-SNE with a data-driven selection of meta-parameters still outperforms UMAP under some circumstances.
+\TODO[put the above into relation: can’t UMAP be tuned to be like t-SNE?]
 
-Disadvantages of machine learning based methods are their nondeterministic nature and the lack of a resulting function to project new data into an existing embedding.
+A disadvantages of machine learning based methods is their nondeterministic nature:
+the optimization converging to local optima can result in unstable inference of certain cells’ neighborhoods in the embedding.
+Another problem is that most common machine learning methods learn an embedding directly instead of an embedding function, making it impossible to project new data into an existing embedding.
+There are approaches to remedy this for UMAP and t-SNE \TODO[cite].
 \stopsubsection
 
 \stopsection
@@ -236,6 +241,13 @@ Disadvantages of machine learning based methods are their nondeterministic natur
 \definemathcommand[rank][nolop]{\mfunction{rg}}
 \definemathcommand[gradnorm]{\left\|\left\|∇_{gc}\right\|\right\|_2}
 
+Due to their lesser expressivity, basic dimensionality reduction methods based on linear combinations like PCA are rarely used for scRNA-Seq data – except as a preprocessing step.
+The nonlinear ones that are used instead lack the built-in relation from reduced dimensions to the input genes that linear combinations have.
+To this end, we developed the gene relevance method to derive this relation from a given embedding and gene expression profiles \cite[angerer2020].
+It defines a gene relevance score and summary scores called local and global gene relevance.
+The gene relevance score $\gradnorm$ is a measure of how much a gene drives the embedding coordinates of a specific cell.
+It can be derived from the gradient $∇_{gc}$ of the function mapping a embedding $s_{pc}$ to the gene expression $x_{gc}$:
+
 % https://de.wikipedia.org/wiki/Nabla-Operator
 % Gerechnet wird mit dem Nabla-Operator wie mit einem Vektor, wobei das „Produkt“ von beispielsweise ∂ / ∂x_i mit einer rechts davon stehenden Funktion f als partielle Ableitung ∂f / ∂x_i interpretiert wird. 
 % ∇f is the gradient of the function f, and I think that’s in our case the function mapping the embedding to the gene expressions, so the inverse of the embedding function.
@@ -244,6 +256,11 @@ Disadvantages of machine learning based methods are their nondeterministic natur
 \startformula
 ∇_{gc} = \left(\frac{∂ x_{gc}}{∂ s_{1c}}, …, \frac{∂ x_{gc}}{∂ s_{Pc}}\right)
 \stopformula
+
+This gradient can be estimated using local differences.
+\TODO[is it called that?]
+To address zero inflation, the gradient is only defined for $x_{gc}≠0$:
+\TODO[introduce zero inflation in intro]
 
 \placeformula
 \startformula
@@ -255,16 +272,19 @@ Disadvantages of machine learning based methods are their nondeterministic natur
 \right)
 \stopformula
 
+The gene relevance score is defined as the euclidean norm $\gradnorm$ of this gradient:
+
 \placeformula
 \startformula
 \gradnorm = \sqrt{∑_{p=1}^P \left(∇_{gc}\right)_p^2}
 \stopformula
 
-It begins with an experiment to prepare and sequence a transcript library containing mostly mature mRNA but also unspliced mRNA and other RNA (see \infig[fig:rna-seq]a).
+Local gene relevance $\lr_{\rank_{\max}}$ is a measure of how much a gene is driving the embedding given a set of interesting cells $Ψ$, e.\,g. a cluster in the embedding that is assumed to contain a certain cell type.
+Local relevance is defined depending on a maximum rank cutoff $\rank_{\max}$, but relatively robust against this parameter \cite[angerer2020].
 
 \placeformula
 \startformula
-\lr_{\rank_{\max}}(g, Ψ) = \frac{ ∑_{c∈Ψ} \left[ \rank_{\gradnorm} < \rank_{\max} \right] }{|Ψ|}
+\lr_{\rank_{\max}}(g, Ψ) = \frac{\displaystyle ∑_{c∈Ψ ∧ x_{gc}≠0} \left[ \rank_{\gradnorm} < \rank_{\max} \right] }{|Ψ|}
 \stopformula
 
 \placeformula
@@ -284,10 +304,10 @@ It begins with an experiment to prepare and sequence a transcript library contai
 
 \placeformula
 \startformula
-l_c^m = \argmax_{g ∈ Ω} 
+l_c^m = \argmax_{g∈Ω ∧ x_{gc}≠0} 
 \startcases
-\NC \gradnorm, \NC \text{ if $m=0$} \NR
-\NC \frac1k ∑_{n ∈ \text{NN}_k(c)} \left[ l_n^{m-1} = g \right], \NC \text{ otherwise.} \NR
+\NC \gradnorm, \NC \text{if $m=0$} \NR
+\NC \frac1k ∑_{n ∈ \text{NN}_k(c)} \left[ l_n^{m-1} = g \right], \NC \text{otherwise} \NR
 \stopcases
 \stopformula
 
