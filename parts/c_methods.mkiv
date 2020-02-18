@@ -5,8 +5,8 @@
 
 \startsection[title={BART-Seq (demultiplexing and quantification)}]
 
-\TODO[explain how much about RNA-Seq?]
-BART-Seq is a targeted RNA sequencing protocol able to sensitively and inexpensively measure expressions of thousands of samples.
+\TODO[Is the RNA-Seq explanation in the intro sufficient?]
+BART-Seq is a targeted RNA sequencing protocol able to sensitively and inexpensively measure expressions of thousands of samples \cite[uzbas2019].
 It consists of three steps; design, experiment, and quantification.
 
 % primer/barcode design
@@ -254,6 +254,8 @@ Disadvantages of machine learning based methods are their nondeterministic natur
 \startformula
 \gradnorm = \sqrt{∑_{p=1}^P \left(∇_{gc}\right)_p^2}
 \stopformula
+
+It begins with an experiment to prepare and sequence a transcript library containing mostly mature mRNA but also unspliced mRNA and other RNA (see \infig[fig:rna-seq]a).
 
 \placeformula
 \startformula

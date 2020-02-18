@@ -1,4 +1,20 @@
 
+@Article{	  aho1975,
+  abstract	= {This paper describes a simple, efficient algorithm to locate all occurrences of any of a finite number of keywords in a string of text. The algorithm consists of constructing a finite state pattern matching machine from the keywords and then using the pattern matching machine to process the text string in a single pass. Construction of the pattern matching machine takes time proportional to the sum of the lengths of the keywords. The number of state transitions made by the pattern matching machine in processing the text string is independent of the number of keywords. The algorithm has been used to improve the speed of a library bibliographic search program by a factor of 5 to 10. {\textcopyright} 1975, ACM. All rights reserved.},
+  author	= {Aho, Alfred V. and Corasick, Margaret J.},
+  doi		= {10.1145/360825.360855},
+  issn		= {15577317},
+  journal	= {Communications of the ACM},
+  keywords	= {bibliographic search,computational complexity,finite state machines,information retrieval,keywords and phrases,string pattern matching,text-editing},
+  month		= {jun},
+  number	= {6},
+  pages		= {333--340},
+  title		= {{Efficient String Matching: An Aid to Bibliographic Search}},
+  url		= {http://portal.acm.org/citation.cfm?doid=360825.360855},
+  volume	= {18},
+  year		= {1975}
+}
+
 @Article{	  andrews2018,
   abstract	= {Background: Single-cell RNASeq is a powerful tool for measuring gene expression at the resolution of individual cells. A significant challenge in the analysis of this data is the large amount of zero values, representing either missing data or no expression. Several imputation approaches have been proposed to deal with this issue, but since these methods generally rely on structure inherent to the dataset under consideration they may not provide any additional information.},
   annote	= {A comparison of 5 imputation methods with a specific focus on false-positive signals. On simulated data, SAVER performed well and did not generate false positives, while all other methods did (scImpute, MAGIC, DrImpute, and knn-smooth). On real data, results varied and all methods produced false-positives.
@@ -98,6 +114,15 @@
   year		= {2017}
 }
 
+@Misc{		  angerer2019,
+  author	= {Angerer, Philipp},
+  doi		= {10.5281/ZENODO.3673035},
+  month		= {aug},
+  title		= {anndata2ri v1.0.2},
+  url		= {https://github.com/flying-sheep/anndata2ri/},
+  year		= {2019}
+}
+
 @Misc{		  bacher2016,
   abstract	= {{\textcopyright} 2016 Bacher and Kendziorski. Single-cell RNA-sequencing (scRNA-seq) has emerged as a revolutionary tool that allows us to address scientific questions that eluded examination just a few years ago. With the advantages of scRNA-seq come computational challenges that are just beginning to be addressed. In this article, we highlight the computational methods available for the design and analysis of scRNA-seq experiments, their advantages and disadvantages in various settings, the open questions for which novel methods are needed, and expected future developments in this exciting area.},
   author	= {Bacher, Rhonda and Kendziorski, Christina},
@@ -151,12 +176,12 @@
 
 @Article{	  becht2018,
   abstract	= {A benchmarking analysis on single-cell RNA-seq and mass cytometry data reveals the best-performing technique for dimensionality reduction.},
-  author	= {Becht, Etienne and McInnes, Leland and Healy, John and Dutertre, Charles-Antoine and Kwok, Immanuel W H and Ng, Lai Guan and Ginhoux, Florent and Newell, Evan W},
+  author	= {Becht, Etienne and McInnes, Leland and Healy, John and Dutertre, Charles-Antoine and Kwok, Immanuel W. H. and Ng, Lai Guan and Ginhoux, Florent and Newell, Evan W.},
   doi		= {10.1038/nbt.4314},
   issn		= {1087-0156},
   journal	= {Nature Biotechnology},
-  keywords	= {Computational biology and bioinformatics,Data mining,Immunology},
-  month		= {jan},
+  keywords	= {Comparison,Computational biology and bioinformatics,Data mining,Immunology,UMAP,Visualization,scRNA-seq analysis},
+  mendeley-tags	= {Comparison,Computational biology and bioinformatics,Data mining,Immunology,UMAP,Visualization,scRNA-seq analysis},
   number	= {1},
   pages		= {38--44},
   publisher	= {Nature Publishing Group},
@@ -183,6 +208,20 @@
   url		= {http://www.nature.com/doifinder/10.1038/nbt.4314},
   volume	= {37},
   year		= {2018}
+}
+
+@Article{	  bell1995,
+  abstract	= {We derive a new self-organizing learning algorithm that maximizes the information transferred in a network of nonlinear units. The algorithm does not assume any knowledge of the input distributions, and is defined here for the zero-noise limit. Under these conditions, information maximization has extra properties not found in the linear case (Linsker 1989). The nonlinearities in the transfer function are able to pick up higher-order moments of the input distributions and perform something akin to true redundancy reduction between units in the output representation. This enables the network to separate statistically independent components in the inputs: a higher-order generalization of principal components analysis. We apply the network to the source separation (or cocktail party) problem, successfully separating unknown mixtures of up to 10 speakers. We also show that a variant on the network architecture is able to perform blind deconvolution (cancellation of unknown echoes and reverberation in a speech signal). Finally, we derive dependencies of information transfer on time delays. We suggest that information maximization provides a unifying framework for problems in "blind" signal processing.},
+  author	= {Bell, A. J. and Sejnowski, T. J.},
+  doi		= {10.1162/neco.1995.7.6.1129},
+  issn		= {08997667},
+  journal	= {Neural computation},
+  number	= {6},
+  pages		= {1129--1159},
+  pmid		= {7584893},
+  title		= {{An information-maximization approach to blind separation and blind deconvolution.}},
+  volume	= {7},
+  year		= {1995}
 }
 
 @Article{	  bendall2014,
@@ -220,18 +259,6 @@
   pages		= {1093--1098},
   title		= {{Accounting for technical noise in single-cell RNA-seq experiments}},
   url		= {http://www.nature.com/doifinder/10.1038/nmeth.2645 files/57/Brennecke et al. - 2013 - Accounting for technical noise in single-cell RNA-.pdf},
-  volume	= {10},
-  year		= {2013}
-}
-
-@Article{	  brennecke2013-sn,
-  abstract	= {Single-cell RNA-seq can yield valuable insights about the variability within a population of seemingly homogeneous cells. We developed a quantitative statistical method to distinguish true biological variability from the high levels of technical noise in single-cell experiments. Our approach quantifies the statistical significance of observed cell-to-cell variability in expression strength on a gene-by-gene basis. We validate our approach using two independent data sets from Arabidopsis thaliana and Mus musculus.},
-  author	= {Brennecke, Philip and Anders, Simon and Kim, Jong Kyoung and Ko{\l}odziejczyk, Aleksandra A and Zhang, Xiuwei and Proserpio, Valentina and Baying, Bianka and Benes, Vladimir and Teichmann, Sarah A and Marioni, John C and Heisler, Marcus G},
-  journal	= {Nat. Methods},
-  month		= {nov},
-  number	= {11},
-  pages		= {1093--1095},
-  title		= {{Accounting for technical noise in single-cell {\{}RNA-seq{\}} experiments}},
   volume	= {10},
   year		= {2013}
 }
@@ -568,6 +595,22 @@
   pages		= {339--342},
   title		= {{Identification of spatial expression trends in single-cell gene expression data}},
   volume	= {15},
+  year		= {2018}
+}
+
+@Article{	  eling2018,
+  abstract	= {Cell-to-cell transcriptional variability in otherwise homogeneous cell populations plays an important role in tissue function and development. Single-cell RNA sequencing can characterize this variability in a transcriptome-wide manner. However, technical variation and the confounding between variability and mean expression estimates hinder meaningful comparison of expression variability between cell populations. To address this problem, we introduce an analysis approach that extends the BASiCS statistical framework to derive a residual measure of variability that is not confounded by mean expression. This includes a robust procedure for quantifying technical noise in experiments where technical spike-in molecules are not available. We illustrate how our method provides biological insight into the dynamics of cell-to-cell expression variability, highlighting a synchronization of biosynthetic machinery components in immune cells upon activation. In contrast to the uniform up-regulation of the biosynthetic machinery, CD4+ T cells show heterogeneous up-regulation of immune-related and lineage-defining genes during activation and differentiation. When quantifying expression variability from single-cell RNA sequencing data, lowly expressed genes tend to be more variable compared to highly expressed genes. This confounding effect hinders robust expression variability testing between two cell populations when mean expression changes. Eling et al. introduce a Bayesian approach that corrects for this confounding effect and allows joint differential mean and differential variability testing. This led to the discovery of homogeneously and heterogeneously regulated genes during immune activation and differentiation.},
+  author	= {Eling, Nils and Richard, Arianne C. and Richardson, Sylvia and Marioni, John C. and Vallejos, Catalina A.},
+  doi		= {10.1016/j.cels.2018.06.011},
+  issn		= {24054720},
+  journal	= {Cell Systems},
+  keywords	= {Bayesian,immune activation,single-cell RNA sequencing,statistics,transcriptional noise,variability},
+  month		= {sep},
+  number	= {3},
+  pages		= {284--294.e12},
+  publisher	= {Cell Press},
+  title		= {{Correcting the Mean-Variance Dependency for Differential Variability Testing Using Single-Cell RNA Sequencing Data}},
+  volume	= {7},
   year		= {2018}
 }
 
@@ -942,6 +985,22 @@
   year		= {2018}
 }
 
+@Article{	  kim2019,
+  abstract	= {The human reference genome represents only a small number of individuals, which limits its usefulness for genotyping. We present a method named HISAT2 (hierarchical indexing for spliced alignment of transcripts 2) that can align both DNA and RNA sequences using a graph Ferragina Manzini index. We use HISAT2 to represent and search an expanded model of the human reference genome in which over 14.5 million genomic variants in combination with haplotypes are incorporated into the data structure used for searching and alignment. We benchmark HISAT2 using simulated and real datasets to demonstrate that our strategy of representing a population of genomes, together with a fast, memory-efficient search algorithm, provides more detailed and accurate variant analyses than other methods. We apply HISAT2 for HLA typing and DNA fingerprinting; both applications form part of the HISAT-genotype software that enables analysis of haplotype-resolved genes or genomic regions. HISAT-genotype outperforms other computational methods and matches or exceeds the performance of laboratory-based assays.},
+  author	= {Kim, Daehwan and Paggi, Joseph M. and Park, Chanhee and Bennett, Christopher and Salzberg, Steven L.},
+  doi		= {10.1038/s41587-019-0201-4},
+  issn		= {15461696},
+  journal	= {Nature Biotechnology},
+  keywords	= {Genetics research,Genome informatics,Population genetics},
+  month		= {aug},
+  number	= {8},
+  pages		= {907--915},
+  publisher	= {Nature Publishing Group},
+  title		= {{Graph-based genome alignment and genotyping with HISAT2 and HISAT-genotype}},
+  volume	= {37},
+  year		= {2019}
+}
+
 @Article{	  kiselev2019,
   abstract	= {Single-cell RNA sequencing (scRNA-seq) allows researchers to collect large catalogues detailing the transcriptomes of individual cells. Unsupervised clustering is of central importance for the analysis of these data, as it is used to identify putative cell types. However, there are many challenges involved. We discuss why clustering is a challenging problem from a computational point of view and what aspects of the data make it challenging. We also consider the difficulties related to the biological interpretation and annotation of the identified clusters.},
   author	= {Kiselev, Vladimir Yu and Andrews, Tallulah S. and Hemberg, Martin},
@@ -1077,18 +1136,6 @@
   year		= {2014}
 }
 
-@Article{	  la_manno2018-bm,
-  abstract	= {RNA abundance is a powerful indicator of the state of individual cells. Single-cell RNA sequencing can reveal RNA abundance with high quantitative accuracy, sensitivity and throughput. However, this approach captures only a static snapshot at a point in time, posing a challenge for the analysis of time-resolved phenomena such as embryogenesis or tissue regeneration. Here we show that RNA velocity-the time derivative of the gene expression state-can be directly estimated by distinguishing between unspliced and spliced mRNAs in common single-cell RNA sequencing protocols. RNA velocity is a high-dimensional vector that predicts the future state of individual cells on a timescale of hours. We validate its accuracy in the neural crest lineage, demonstrate its use on multiple published datasets and technical platforms, reveal the branching lineage tree of the developing mouse hippocampus, and examine the kinetics of transcription in human embryonic brain. We expect RNA velocity to greatly aid the analysis of developmental lineages and cellular dynamics, particularly in humans.},
-  author	= {{La Manno}, Gioele and Soldatov, Ruslan and Zeisel, Amit and Braun, Emelie and Hochgerner, Hannah and Petukhov, Viktor and Lidschreiber, Katja and Kastriti, Maria E and L{\"{o}}nnerberg, Peter and Furlan, Alessandro and Fan, Jean and Borm, Lars E and Liu, Zehua and van Bruggen, David and Guo, Jimin and He, Xiaoling and Barker, Roger and Sundstr{\"{o}}m, Erik and Castelo-Branco, Gon{\c{c}}alo and Cramer, Patrick and Adameyko, Igor and Linnarsson, Sten and Kharchenko, Peter V},
-  journal	= {Nature},
-  month		= {aug},
-  number	= {7719},
-  pages		= {494--498},
-  title		= {{{\{}RNA{\}} velocity of single cells}},
-  volume	= {560},
-  year		= {2018}
-}
-
 @Article{	  lafzi2018,
   abstract	= {Single-cell RNA sequencing is at the forefront of high-resolution phenotyping experiments for complex samples. Although this methodology requires specialized equipment and expertise, it is now widely applied in research. However, it is challenging to create broadly applicable experimental designs because each experiment requires the user to make informed decisions about sample preparation, RNA sequencing and data analysis. To facilitate this decision-making process, in this tutorial we summarize current methodological and analytical options, and discuss their suitability for a range of research scenarios. Specifically, we provide information about best practices for the separation of individual cells and provide an overview of current single-cell capture methods at different cellular resolutions and scales. Methods for the preparation of RNA sequencing libraries vary profoundly across applications, and we discuss features important for an informed selection process. An erroneous or biased analysis can lead to misinterpretations or obscure biologically important information. We provide a guide to the major data processing steps and options for meaningful data interpretation. These guidelines will serve as a reference to support users in building a single-cell experimental framework—from sample preparation to data interpretation—that is tailored to the underlying research context.},
   author	= {Lafzi, Atefeh and Moutinho, Catia and Picelli, Simone and Heyn, Holger},
@@ -1166,6 +1213,14 @@
   year		= {2017}
 }
 
+@Misc{		  linnarson2017,
+  abstract	= {Loom is an efficient file format for large omics datasets. Loom files contain a main matrix, optional additional layers, a variable number of row and column annotations, and sparse graph objects. Under the hood, Loom files are HDF5 and can be opened from many programming languages, including Python, R, C, C++, Java, MATLAB, Mathematica, and Julia.},
+  author	= {Linnarsson, Sten},
+  title		= {{Loom}},
+  url		= {https://loompy.org/},
+  year		= {2017}
+}
+
 @Article{	  livak2013,
   abstract	= {The stochastic nature of generating eukaryotic transcripts challenges conventional methods for obtaining and analyzing single-cell gene expression data. In order to address the inherent noise, detailed methods are described on how to collect data on multiple genes in a large number of single cells using microfluidic arrays. As part of a study exploring the effect of genotype on Wnt pathway activation, data were collected for 96 qPCR assays on 1440 lymphoblastoid cells. The description of methods includes preliminary data processing steps. The methods used in the collection and analysis of single-cell qPCR data are contrasted with those used in conventional qPCR. {\textcopyright} 2012 Elsevier Inc.},
   author	= {Livak, Kenneth J and Wills, Quin F and Tipping, Alex J and Datta, Krishnalekha and Mittal, Rowena and Goldson, Andrew J and Sexton, Darren W and Holmes, Chris C},
@@ -1197,6 +1252,22 @@
   year		= {2018}
 }
 
+@Article{	  luecken2019,
+  abstract	= {Single-cell RNA-seq has enabled gene expression to be studied at an unprecedented resolution. The promise of this technology is attracting a growing user base for single-cell analysis methods. As more analysis tools are becoming available, it is becoming increasingly difficult to navigate this landscape and produce an up-to-date workflow to analyse one's data. Here, we detail the steps of a typical single-cell RNA-seq analysis, including pre-processing (quality control, normalization, data correction, feature selection, and dimensionality reduction) and cell- and gene-level downstream analysis. We formulate current best-practice recommendations for these steps based on independent comparison studies. We have integrated these best-practice recommendations into a workflow, which we apply to a public dataset to further illustrate how these steps work in practice. Our documented case study can be found at https://www.github.com/theislab/single-cell-tutorial This review will serve as a workflow tutorial for new entrants into the field, and help established users update their analysis pipelines.},
+  author	= {Luecken, Malte D and Theis, Fabian J},
+  doi		= {10.15252/msb.20188746},
+  issn		= {1744-4292},
+  journal	= {Molecular Systems Biology},
+  keywords	= {analysis pipeline development,computational biology,data analysis tutorial,single‐cell RNA‐seq},
+  month		= {jun},
+  number	= {6},
+  publisher	= {EMBO},
+  title		= {{Current best practices in single‐cell RNA‐seq analysis: a tutorial}},
+  url		= {https://onlinelibrary.wiley.com/doi/abs/10.15252/msb.20188746},
+  volume	= {15},
+  year		= {2019}
+}
+
 @Article{	  lun2016,
   abstract	= {{\textcopyright} 2016 Lun et al. Normalization of single-cell RNA sequencing data is necessary to eliminate cell-specific biases prior to downstream analyses. However, this is not straightforward for noisy single-cell data where many counts are zero. We present a novel approach where expression values are summed across pools of cells, and the summed values are used for normalization. Pool-based size factors are then deconvolved to yield cell-based factors. Our deconvolution approach outperforms existing methods for accurate normalization of cell-specific biases in simulated data. Similar behavior is observed in real data, where deconvolution improves the relevance of results of downstream analyses.},
   author	= {Lun, Aaron T.L. and Bach, Karsten and Marioni, John C},
@@ -1226,6 +1297,15 @@
   url		= {https://f1000research.com/articles/5-2122/v2},
   volume	= {5},
   year		= {2016}
+}
+
+@Misc{		  lun2017,
+  abstract	= {Defines a S4 class for storing data from single-cell experiments. This includes specialized methods to store and retrieve spike-in information, dimensionality reduction coordinates and size factors for each cell, along with the usual metadata for genes and libraries.},
+  author	= {Lun, Aaron and Risso, Davide and Korthauer, Keegan},
+  doi		= {10.18129/B9.bioc.SingleCellExperiment},
+  title		= {{SingleCellExperiment: S4 Classes for Single Cell Data}},
+  url		= {https://doi.org/doi:10.18129/B9.bioc.SingleCellExperiment},
+  year		= {2017}
 }
 
 @Article{	  lun2018,
@@ -1592,6 +1672,22 @@
   year		= {2014}
 }
 
+@Article{	  risso2018,
+  abstract	= {Single-cell RNA-sequencing (scRNA-seq) is a powerful high-throughput technique that enables researchers to measure genome-wide transcription levels at the resolution of single cells. Because of the low amount of RNA present in a single cell, some genes may fail to be detected even though they are expressed; these genes are usually referred to as dropouts. Here, we present a general and flexible zero-inflated negative binomial model (ZINB-WaVE), which leads to low-dimensional representations of the data that account for zero inflation (dropouts), over-dispersion, and the count nature of the data. We demonstrate, with simulated and real data, that the model and its associated estimation procedure are able to give a more stable and accurate low-dimensional representation of the data than principal component analysis (PCA) and zero-inflated factor analysis (ZIFA), without the need for a preliminary normalization step.},
+  author	= {Risso, Davide and Perraudeau, Fanny and Gribkova, Svetlana and Dudoit, Sandrine and Vert, Jean Philippe},
+  doi		= {10.1038/s41467-017-02554-5},
+  issn		= {20411723},
+  journal	= {Nature Communications},
+  keywords	= {Gene expression,Software,Statistical methods,Statistics,Transcriptomics},
+  month		= {dec},
+  number	= {1},
+  pages		= {1--17},
+  publisher	= {Nature Publishing Group},
+  title		= {{A general and flexible method for signal extraction from single-cell RNA-seq data}},
+  volume	= {9},
+  year		= {2018}
+}
+
 @Article{	  rostom2017,
   abstract	= {The recent developments in high-throughput single-cell RNA sequencing technology (scRNA-seq) have enabled the generation of vast amounts of transcriptomic data at cellular resolution. With these advances come new modes of data analysis, building on high-dimensional data mining techniques. Here, we consider biological questions for which scRNA-seq data is used, both at a cell and gene level, and describe tools available for these types of analyses. This is an exciting and rapidly evolving field, where clustering, pseudotime inference, branching inference and gene-level analyses are particularly informative areas of computational analysis.},
   author	= {Rostom, Raghd and Svensson, Valentine and Teichmann, Sarah A. and Kar, Gozde},
@@ -1876,6 +1972,22 @@
   url		= {http://www.nature.com/doifinder/10.1038/nrg3833 files/22/Stegle et al. - 2015 - Computational and analytical challenges in single-.pdf},
   volume	= {16},
   year		= {2015}
+}
+
+@Article{	  stephenson1935,
+  abstract	= {Instead of the usual procedure with a selected group of n individuals each of whom has been measured in m tests, we may invert the technique and begin with a population of n different tests each of which is measured or scaled by m individuals. This makes possible new studies on the Spearman "central intellective factor" (g), and the two-factor theorem. The technique is especially valuable in experimental esthetics and educational psychology.},
+  author	= {STEPHENSON, W.},
+  doi		= {10.1038/136297b0},
+  issn		= {0028-0836},
+  journal	= {Nature},
+  keywords	= {Humanities and Social Sciences,Science,multidisciplinary},
+  month		= {aug},
+  number	= {3434},
+  pages		= {297--297},
+  publisher	= {Springer Nature},
+  title		= {{Technique of Factor Analysis}},
+  volume	= {136},
+  year		= {1935}
 }
 
 @Article{	  svensson2017,
