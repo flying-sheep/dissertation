@@ -5,27 +5,31 @@
 
 \startsection[title={BART-Seq (demultiplexing and quantification)}]
 
-\TODO[Is the RNA-Seq explanation in the intro sufficient?]
+\TODO[Is the RNA-Seq explanation in the intro sufficient for this chapter?]
 BART-Seq is a targeted RNA sequencing protocol able to sensitively and inexpensively measure expressions of thousands of samples \cite[uzbas2019].
 It consists of three steps; design, experiment, and quantification.
 
 % primer/barcode design
-The design step involves algorithms to design primer pairs matching genes and barcodes identifying samples.
-The primer design algorithm optimizes primer pairs to stably dimerize with their target genes.
+The design step involves algorithms to design primer pairs matching amplicons – such as genes – and barcodes identifying samples – such as single cells or cell groups.
+The primer design algorithm optimizes primer pairs to stably dimerize with their target amplicons.
 The barcode design algorithm minimizes the chance of misassigning barcodes through sequencing errors by maximizing their mutual alignment distances.
 The set of barcodes is split into two halves arbitrarily – forward and reverse.
+The result is two sets of barcodes, two linkers, and one primer pair per amplicon.
 
 % experiment
 For the experimental step, barcodes are synthesized and those of each half are ligated to the half’s respective primer.
-Each well receives a different combination of forward and reverse barcode assemblies, allowing to address $(\text{\#barcodes} ÷ 2)^2$ wells.
-The experiment concludes like a regular paired-end sequencing run, resulting in a read library containing sequences of barcode-then-linker-then-amplicon-end.
+Each well receives a different combination of forward and reverse barcode-linker-primer assemblies, allowing to address $(\text{\#barcodes} ÷ 2)^2$ wells.
+The experiment concludes like a regular paired-end sequencing run \cite[fullwood2009], resulting in a read library containing sequences of barcode-linker-read.
 
 % quantification: sequencing and multiplexing
-In the quantification step, the amplicon ends are isolated and tagged with their respective barcode.
-This process assigns barcodes with up to one mismatching base using the algorithm of \inlinecite[aho1975], as long as the assignment is still unique – reads with barcode sequences one mismatch away from two different barcodes are discarded.
-The tagged amplicon ends are then aligned to the targeted genes’ sequences individually using HISAT2 \cite[kim2019].
-Genes are counted per barcode combination according to one of two strategies.
-The conservative strategy only increments the counter where both amplicon ends aligned to the same gene, while the sensitive strategy increments when one of both is unaligned.
+In the quantification step, the barcodes, linkers and low-quality bases are cut off the raw read sequence.
+The shortened read sequences are then tagged with their corresponding designed barcode fi possible.
+This process assigns barcodes with up to one mismatching base using the algorithm of \inlinecite[aho1975], as long as the assignment is still unique – reads that could be tagged with one of multiple barcodes that are one mismatch away from each other are discarded.
+The tagged reads are then aligned to the targeted amplicons using HISAT2 \cite[kim2019].
+Amplicons are counted per barcode combination according to one of two strategies.
+The conservative strategy only counts where both reads aligned to the same amplicon, while the sensitive strategy also counts when one of both is unaligned.
+Neither strategy counts one of the aligned amplicons when there is a mismatch.
+The count of overall mismatches is included in the various statistics collected about the demultiplexing and quantification process.
 
 I designed the quantification step in collaboration with Fatma Uzbas and Micha Drucker, and implemented a Python library and pipeline executing it.
 
