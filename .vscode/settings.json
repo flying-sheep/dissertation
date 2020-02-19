@@ -17,6 +17,7 @@
         "context": [
             "/\\\\starttikzpicture[^]*?\\\\stoptikzpicture/gm",
             "/\\\\startformula[^]*?\\\\stopformula/gm",
+            "/\\\\startluacode[^]*?\\\\stopluacode/gm",
             "/\\$(’s|th)/g"
         ]
     }
