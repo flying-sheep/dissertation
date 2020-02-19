@@ -94,7 +94,7 @@ For each known splicing configuration translating to a protein, the reads aligne
 Since only the resulting count matrix is needed for many kinds of downstream analysis, there have been advances in pseudo-alignment algorithms like Kallisto or Salmon, which directly count the reads.
 
 % 3. preprocessing (counts → expressions)
-% generally luecken2018: https://www.embopress.org/doi/10.15252/msb.20188746
+% generally \cite[luecken2018]: https://www.embopress.org/doi/10.15252/msb.20188746
 \startplacefigure[reference=fig:batch-effect,location=right,title={Batch effect correction reduces biases between data gathered in multiple sequencer runs. Cells from well-normalized data will not only have similar expression profiles to cells from the same run.}]
 \externalfigure[batch-effect-correction.svg][width=.5\textwidth]
 \stopplacefigure
@@ -103,7 +103,7 @@ In order to obtain comparable quantities, raw counts have to be preprocessed to 
 Commonly one starts by eliminating rows and columns from the count matrix that contain uncharacteristically low counts: No gene or cell is likely to only contain a single read.
 Another common preprocessing step is normalization:
 correction for common cell variation caused by known processes such as the cell cycle, if one isn’t interested in studying this process.
-If multiple runs of the sequencer were used to obtain the full data, there will be biases per run that can be reduced by using a dedicated batch effect correction algori\-thm (see \infig[fig:batch-effect]).
+If multiple runs of the sequencer were used to obtain the full data, there will be biases per run that can be reduced by using a dedicated batch effect correction algorithm (see \infig[fig:batch-effect]).
 Preprocessing can also involve scaling count values using a per-cell function derived from the aforementioned spike-ins.
 Usually, count data is logarithmized, as in log-space, distances represent log-fold changes, the usual way to compare expression level.
 Many downstream analyses expect this property, as they model normal distributions or use a distance metric designed for data with no mean–variance dependency. \cite[brennecke2013,eling2018]

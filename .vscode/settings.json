@@ -13,8 +13,11 @@
             "parser": "latex"
         }
     },
-    "spellright.ignoreRegExps": [
-        "/\\\\starttikzpicture.*?\\\\stoptikzpicture/gm",
-        "/\\\\startformula.*?\\\\stopformula/gm"
-    ]
+    "spellright.ignoreRegExpsByClass": {
+        "context": [
+            "/\\\\starttikzpicture[^]*?\\\\stoptikzpicture/gm",
+            "/\\\\startformula[^]*?\\\\stopformula/gm",
+            "/\\$(’s|th)/g"
+        ]
+    }
 }

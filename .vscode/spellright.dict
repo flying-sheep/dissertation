@@ -12,7 +12,6 @@ t-SNE
 UMAP
 kNN
 UMI
-→
 
 Kallisto
 Bioconductor
@@ -46,3 +45,9 @@ unrepresentable
 pre
 microfluidic
 transcriptomics
+AnnData2ri
+ZINB-WaVE
+
+½
+→
+∇

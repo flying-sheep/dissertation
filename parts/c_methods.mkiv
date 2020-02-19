@@ -215,7 +215,7 @@ I pioneered the use of a symmetrized kNN graph represented as a symmetric sparse
 
 \startsubsection[reference=sec:learned-embeddings,title={Learned embeddings}]
 % https://nbisweden.github.io/workshop-scRNAseq/slides2019/Dimensionality_reduction_P_Czarnewski_2019.pdf
-In order to optimize the embedding for certain use cases, machine learning can be employed to learn an optimal embedding directly or a function to optimally embed the experession profiles.
+In order to optimize the embedding for certain use cases, machine learning can be employed to learn an optimal embedding directly or a function to optimally embed the expression profiles.
 A common goal is to represent relationships in the data as faithfully as possible in a 2- or 3-dimensional embedding that can be displayed on a screen or paper.
 
 One such machine learning driven method, t-distributed stochastic neighborhood embedding (t-SNE, \inlinecite[vandermaaten2008]), remains the most popular dimensionality reduction method \cite[kobak2019].
@@ -249,8 +249,8 @@ The gene relevance score $\gradnorm$ is a measure of how much a gene drives the 
 It can be derived from the gradient $∇_{gc}$ of the function mapping a embedding $s_{pc}$ to the gene expression $x_{gc}$:
 
 % https://de.wikipedia.org/wiki/Nabla-Operator
-% Gerechnet wird mit dem Nabla-Operator wie mit einem Vektor, wobei das „Produkt“ von beispielsweise ∂ / ∂x_i mit einer rechts davon stehenden Funktion f als partielle Ableitung ∂f / ∂x_i interpretiert wird. 
-% ∇f is the gradient of the function f, and I think that’s in our case the function mapping the embedding to the gene expressions, so the inverse of the embedding function.
+% use the ∇ operator like a vector, where the “product” of e.g. $∂ / ∂x_i$ with a function f on the right is interpreted as the partial derivative $∂f / ∂x_i$. 
+% ∇ f is the gradient of the function f, and I think that’s in our case the function mapping the embedding to the gene expressions, so the inverse of the embedding function.
 
 \placeformula
 \startformula
