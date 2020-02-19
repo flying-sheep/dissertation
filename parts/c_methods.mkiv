@@ -241,16 +241,17 @@ There are approaches to remedy this for UMAP and t-SNE \TODO[cite].
 \definemathcommand[rank][nolop]{\mfunction{rg}}
 \definemathcommand[gradnorm]{\left\|\left\|∇_{gc}\right\|\right\|_2}
 
-Due to their lesser expressivity, basic dimensionality reduction methods based on linear combinations like PCA are rarely used for scRNA-Seq data – except as a preprocessing step.
-The nonlinear ones that are used instead lack the built-in relation from reduced dimensions to the input genes that linear combinations have.
-To this end, we developed the gene relevance method to derive this relation from a given embedding and gene expression profiles \cite[angerer2020].
-It defines a gene relevance score and summary scores called local and global gene relevance.
-The gene relevance score $\gradnorm$ is a measure of how much a gene drives the embedding coordinates of a specific cell.
+Due to their lesser expressivity, basic dimensionality reduction methods based on linear combinations like PCA are rarely used for visualizing scRNA-Seq data anymore.
+The nonlinear methods used instead however lack the linear methods’ intrinsic relation from reduced dimensions to input genes.
+We developed the gene relevance method in order to derive this relation from scRNA-Seq data and a given one of its embeddings \cite[angerer2020].
+The method defines a gene relevance score $\gradnorm$ and summary scores called local gene relevance $\lr_{\rank_{\max}}(g, Ψ)$ and global gene relevance $\gr_{\rank_{\max}}(g)$.
+\TODO[can I hide the rg_max here?]
+The gene relevance score is a measure of the extent in which a gene drives the embedding coordinates of a specific cell.
 It can be derived from the gradient $∇_{gc}$ of the function mapping a embedding $s_{pc}$ to the gene expression $x_{gc}$:
+\TODO[∇f is the gradient of the function f, and I think that’s in our case the function mapping the embedding to the gene expressions, so the inverse of the embedding function. Does that make sense?]
 
 % https://de.wikipedia.org/wiki/Nabla-Operator
 % use the ∇ operator like a vector, where the “product” of e.g. $∂ / ∂x_i$ with a function f on the right is interpreted as the partial derivative $∂f / ∂x_i$. 
-% ∇ f is the gradient of the function f, and I think that’s in our case the function mapping the embedding to the gene expressions, so the inverse of the embedding function.
 
 \placeformula
 \startformula
@@ -279,13 +280,17 @@ The gene relevance score is defined as the euclidean norm $\gradnorm$ of this gr
 \gradnorm = \sqrt{∑_{p=1}^P \left(∇_{gc}\right)_p^2}
 \stopformula
 
-Local gene relevance $\lr_{\rank_{\max}}$ is a measure of how much a gene is driving the embedding given a set of interesting cells $Ψ$, e.\,g. a cluster in the embedding that is assumed to contain a certain cell type.
+Local gene relevance $\lr_{\rank_{\max}}(g, Ψ)$ is a measure of how much a gene $g$ is driving the embedding given a set of interesting cells $Ψ$, e.\,g. a cluster in the embedding that is assumed to contain a certain cell type.
 Local relevance is defined depending on a maximum rank cutoff $\rank_{\max}$, but relatively robust against this parameter \cite[angerer2020].
 
 \placeformula
 \startformula
-\lr_{\rank_{\max}}(g, Ψ) = \frac{\displaystyle ∑_{c∈Ψ ∧ x_{gc}≠0} \left[ \rank_{\gradnorm} < \rank_{\max} \right] }{|Ψ|}
+\lr_{\rank_{\max}}\left(g, Ψ\right) =
+	\frac1{\left|Ψ\right|}
+	∑_{c∈Ψ ∧ x_{gc}≠0} \left[ \rank_{\gradnorm} < \rank_{\max} \right]
 \stopformula
+
+With the \inlinecite[iverson1962] bracket notation:
 
 \placeformula
 \startformula
@@ -297,17 +302,22 @@ Local relevance is defined depending on a maximum rank cutoff $\rank_{\max}$, bu
 \text{, for any predicate $P$}
 \stopformula
 
+Global gene relevance $\gr_{\rank_{\max}}(g)$ is the local relevance of the set of all genes $\{1,…,C\}$:
+
 \placeformula
 \startformula
-\gr_{\rank_{\max}}(g) = \lr_{\rank_{\max}}(g, \{1,…,C\})
+\gr_{\rank_{\max}}\left(g\right) = \lr_{\rank_{\max}}(g, \{1,…,C\})
 \stopformula
+
+Gene relevance maps label each cell with the gene having the highest gene relevance score for that cell.
+Because this labeling is subject to noise, $m$ smoothing steps over the scores of each cells’ neighborhood are employed to obtain less and more stable labels.
 
 \placeformula
 \startformula
 l_c^m = \argmax_{g∈Ω ∧ x_{gc}≠0} 
-\startcases
+\startcases[style=\displaystyle]
 \NC \gradnorm, \NC \text{if $m=0$} \NR
-\NC \frac1k ∑_{n ∈ \text{NN}_k(c)} \left[ l_n^{m-1} = g \right], \NC \text{otherwise} \NR
+\NC {\textstyle \frac1k} ∑_{n ∈ \text{NN}_k(c)} \left[ l_n^{m-1} = g \right], \NC \text{otherwise} \NR
 \stopcases
 \stopformula
 
