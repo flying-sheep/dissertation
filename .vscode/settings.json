@@ -20,5 +20,7 @@
             "/\\\\startluacode[^]*?\\\\stopluacode/gm",
             "/\\$(’s|th)/g"
         ]
-    }
+    },
+    "gitlens.codeLens.enabled": false,
+    "gitlens.currentLine.enabled": false
 }

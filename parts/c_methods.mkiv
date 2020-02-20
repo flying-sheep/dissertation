@@ -50,31 +50,16 @@ As an example of such a latent space, about $50≤P≤100$ linear combinations o
 Global structures of the data such as strongly differing cell types or differentiation can often be faithfully reflected in a 2 or 3 dimensional embedding.
 Using such embeddings as scatter plot coordinates serves as the basis of visualizations interpretable by humans.
 
-\startsubsection[reference=sec:spectral,title={Spectral decomposition}]
-
-Spectral decomposition is the act of transforming the data into components that each capture a different source of variance in the data.
-These components are scored by their ability to explain the data’s structure.
-By keeping components with high enough scores as embedding dimensions, spectral decompositions can therefore be used as dimensionality reduction methods.
-This is most useful as a preprocessing step to define a less noisy latent space reflecting the inherent dimensionality of the data, but components can also be directly visualized.
-
-\startsubsubsection[title={Principal Component Analysis}]
-Principal component analysis (PCA) is a simple spectral decomposition.
-Its principal components (PCs) are weighted products of input features (such as transcripts), scored by the variance each PC explains.
-As each PC ideally represents one source of variation, data with up to around 4 linearly separable sources of variation can be interpreted by visualizing the corresponding number of PCs.
-As mentioned before as an example, while the intrinsic dimensionality of transcriptomic data is low, the number of PCs necessary to faithfully represent all biological processes one might care about is around 50-100 \cite[lenz2016].
-Picking a number of PCs in this range, for example using the jackstraw algorithm \cite[chung2015] is a popular a preprocessing step for downstream analysis.
-
-There are a number of related methods that can serve a similar purpose, such as independent component analysis \cite[bell1995] or factor analysis \cite[stephenson1935].
-\TODO[I don’t use them but mention them for completeness, is that wrong?]
-Furthermore, single cell transcriptomics specific extensions exist, such as ZINB-WaVE \cite[risso2018], which addresses zero inflation and over-dispersion of scRNASeq-data in its dimensionality reduction.
-\stopsubsubsection
-
-\startsubsubsection[title={Diffusion Maps}]
-Diffusion maps provide another spectral decomposition of data.
-Their practicality for data analysis was first shown by \inlinecite[coifman2005].
-A diffusion map preserves global structures and the pseudo-temporal ordering of cells better than even than learned embeddings like t-SNE (see \in{section}[sec:learned-embeddings]) \cite[haghverdi2015], and the first diffusion components are often sufficient to directly capture and visualize bifurcation events in differentiating cells.
-
-\startplacefigure[title={Model visualisation. \TODO[how much of the explanation should go in here? Do I basically define x, s, … twice?]}]
+\startplacefigure[title={
+Reducing dimensions using global and local distances.
+\bold{(a)}
+Dimensionality reduction methods embed samples (such as cells $c$) from a high dimensional space (such as gene expressions $g$) to a low dimensional space ($x_{gc} ↪ s_{pc}$, $G>>P$).
+They can be used as coordinates in visualizations \bold{(b)} or in data preprocessing.
+Linear dimensionality reduction methods such as PCA use linear combinations of input dimensions as embedding dimensions, which means that distances in $s$ directly relate to distances in $x$.
+Nonlinear dimensionality reduction methods such as t-SNE, UMAP, or diffusion maps attempt to maintain locality in the data.
+This means that local neighborhoods of samples in $x$ are still close neighbors in $s$ (red circles in \bold{b}).
+Some nonlinear dimensionality reduction methods also maintain global distances to a degree (UMAP and diffusion maps, not t-SNE).
+}]
 \startcombination[2*1]
 {
 	\hbox{
@@ -122,6 +107,30 @@ A diffusion map preserves global structures and the pseudo-temporal ordering of 
 \stopcombination
 \stopplacefigure
 
+\startsubsection[reference=sec:spectral,title={Spectral decomposition}]
+
+Spectral decomposition is the act of transforming the data into components that each capture a different source of variance in the data.
+These components are scored by their ability to explain the data’s structure.
+By keeping components with high enough scores as embedding dimensions, spectral decompositions can therefore be used as dimensionality reduction methods.
+This is most useful as a preprocessing step to define a less noisy latent space reflecting the inherent dimensionality of the data, but components can also be directly visualized.
+
+\startsubsubsection[title={Principal Component Analysis}]
+Principal component analysis (PCA) is a simple spectral decomposition.
+Its principal components (PCs) are weighted products of input features (such as transcripts), scored by the variance each PC explains.
+As each PC ideally represents one source of variation, data with up to around 4 linearly separable sources of variation can be interpreted by visualizing the corresponding number of PCs.
+As mentioned before as an example, while the intrinsic dimensionality of transcriptomic data is low, the number of PCs necessary to faithfully represent all biological processes one might care about is around 50-100 \cite[lenz2016].
+Picking a number of PCs in this range, for example using the jackstraw algorithm \cite[chung2015] is a popular a preprocessing step for downstream analysis.
+
+There are a number of related methods that can serve a similar purpose, such as independent component analysis \cite[bell1995] or factor analysis \cite[stephenson1935].
+\TODO[I don’t use them but mention them for completeness, is that wrong?]
+Furthermore, single cell transcriptomics specific extensions exist, such as ZINB-WaVE \cite[risso2018], which addresses zero inflation and over-dispersion of scRNASeq-data in its dimensionality reduction.
+\stopsubsubsection
+
+\startsubsubsection[title={Diffusion Maps}]
+Diffusion maps provide another spectral decomposition of data.
+Their practicality for data analysis was first shown by \inlinecite[coifman2005].
+A diffusion map preserves global structures and the pseudo-temporal ordering of cells better than even than \about[sec:learned-embeddings] \cite[haghverdi2015], and the first diffusion components are often sufficient to directly capture and visualize bifurcation events in differentiating cells.
+
 %https://static-content.springer.com/esm/art%3A10.1038%2Fnmeth.3971/MediaObjects/41592_2016_BFnmeth3971_MOESM373_ESM.pdf
 
 A diffusion map $s_{pc}$ has as components $p$ the eigenvectors of a matrix of transition probabilities $T_{cd}$ between cells $c$ and $d ∈ \{1, …, C\} ∖ \{c\}$.
@@ -139,7 +148,7 @@ Those flavors’ Gaussian function is:
 Y_c\left(c'\right) =
 	∜{2 \over {π σ_c^2}}
 	\exp \left(-{
-		\left\|\left\|c'-c\right\|\right\|^2
+		\left|\left|c'-c\right|\right|^2
 		\over
 		σ_c^2
 	}\right)
@@ -163,7 +172,7 @@ Since Gaussian functions are wave functions, the kernel $K(c, d)$ is defined by 
 \NC \NC =
 	√{2 σ_c σ_d \over σ_c^2+σ_d^2}
 	\exp \left(-{
-		\|\|c-d\|\|^2
+		||c-d||^2
 		\over
 		2\left(σ_c^2+σ_d^2\right)
 	}\right)
@@ -234,18 +243,15 @@ There are approaches to remedy this for UMAP and t-SNE \TODO[cite].
 
 \startsection[title={Gene relevance}]
 
-\TODO[Basically Methods section of GR paper. Describe smoothing and other niceties in more detail.]
-
 \definemathcommand[lr][nolop]{\mfunction{LR}}
 \definemathcommand[gr][nolop]{\mfunction{GR}}
-\definemathcommand[rank][nolop]{\mfunction{rg}}
-\definemathcommand[gradnorm]{\left\|\left\|∇_{gc}\right\|\right\|_2}
+\definemathcommand[rank][nolop]{\mfunction{rank}}
 
 Due to their lesser expressivity, basic dimensionality reduction methods based on linear combinations like PCA are rarely used for visualizing scRNA-Seq data anymore.
 The nonlinear methods used instead however lack the linear methods’ intrinsic relation from reduced dimensions to input genes.
-We developed the gene relevance method in order to derive this relation from scRNA-Seq data and a given one of its embeddings \cite[angerer2020].
-The method defines a gene relevance score $\gradnorm$ and summary scores called local gene relevance $\lr_{\rank_{\max}}(g, Ψ)$ and global gene relevance $\gr_{\rank_{\max}}(g)$.
-\TODO[can I hide the rg_max here?]
+We developed the gene relevance method in order to derive this relation from scRNA-Seq data and a given embedding \cite[angerer2020].
+The method defines a gene relevance score $R_{gc}$, as well as summary scores called local gene relevance $\lr_r(g, Ψ)$ and global gene relevance $\gr_r(g)$.
+\TODO[mention GR map ($l^m_c$) as well?]
 The gene relevance score is a measure of the extent in which a gene drives the embedding coordinates of a specific cell.
 It can be derived from the gradient $∇_{gc}$ of the function mapping a embedding $s_{pc}$ to the gene expression $x_{gc}$:
 \TODO[∇f is the gradient of the function f, and I think that’s in our case the function mapping the embedding to the gene expressions, so the inverse of the embedding function. Does that make sense?]
@@ -273,21 +279,21 @@ To address zero inflation, the gradient is only defined for $x_{gc}≠0$:
 \right)
 \stopformula
 
-The gene relevance score is defined as the euclidean norm $\gradnorm$ of this gradient:
+The gene relevance score $R_{gc}$ is defined as the euclidean norm of this gradient:
 
 \placeformula
 \startformula
-\gradnorm = \sqrt{∑_{p=1}^P \left(∇_{gc}\right)_p^2}
+R_{gc} = \left|\left|∇_{gc}\right|\right|_2 = \sqrt{∑_{p=1}^P \left(∇_{gc}\right)_p^2}
 \stopformula
 
-Local gene relevance $\lr_{\rank_{\max}}(g, Ψ)$ is a measure of how much a gene $g$ is driving the embedding given a set of interesting cells $Ψ$, e.\,g. a cluster in the embedding that is assumed to contain a certain cell type.
-Local relevance is defined depending on a maximum rank cutoff $\rank_{\max}$, but relatively robust against this parameter \cite[angerer2020].
+Local gene relevance $\lr_r(g, Ψ)$ is a measure of how much a gene $g$ is driving the embedding given a set of cells $Ψ⊆\{1,…,C\}$.
+Local gene relevance is defined depending on a rank cutoff $r∈\{2,…,|Ψ|\}$.
 
 \placeformula
 \startformula
-\lr_{\rank_{\max}}\left(g, Ψ\right) =
+\lr_r\left(g, Ψ\right) =
 	\frac1{\left|Ψ\right|}
-	∑_{c∈Ψ ∧ x_{gc}≠0} \left[ \rank_{\gradnorm} < \rank_{\max} \right]
+	∑_{c∈Ψ ∧ x_{gc}≠0} \left[ \rank\left(R_{gc}\right) < r \right]
 \stopformula
 
 With the \inlinecite[iverson1962] bracket notation:
@@ -302,11 +308,14 @@ With the \inlinecite[iverson1962] bracket notation:
 \text{, for any predicate $P$}
 \stopformula
 
-Global gene relevance $\gr_{\rank_{\max}}(g)$ is the local relevance of the set of all genes $\{1,…,C\}$:
+The set of cells of interest $Ψ$ can be obtained by metadata such as experimental markers or the labels from a clustering algorithm.
+Another alternative is the visualization of local relevance by dividing the embedding into shaped bins, which can be colored according to their respective local relevance.
+
+Global gene relevance $\gr_r(g)$ is the local relevance of the set of all genes $\{1,…,C\}$:
 
 \placeformula
 \startformula
-\gr_{\rank_{\max}}\left(g\right) = \lr_{\rank_{\max}}(g, \{1,…,C\})
+\gr_r\left(g\right) = \lr_r(g, \{1,…,C\})
 \stopformula
 
 Gene relevance maps label each cell with the gene having the highest gene relevance score for that cell.
@@ -316,10 +325,16 @@ Because this labeling is subject to noise, $m$ smoothing steps over the scores o
 \startformula
 l_c^m = \argmax_{g∈Ω ∧ x_{gc}≠0} 
 \startcases[style=\displaystyle]
-\NC \gradnorm, \NC \text{if $m=0$} \NR
+\NC R_{gc}, \NC \text{if $m=0$} \NR
 \NC {\textstyle \frac1k} ∑_{n ∈ \text{NN}_k(c)} \left[ l_n^{m-1} = g \right], \NC \text{otherwise} \NR
 \stopcases
 \stopformula
+
+Gene relevance is robust towards its rank cutoff parameter $r$ and reasonably robust towards its smoothing parameter $m$ \cite[angerer2020], given that strong smoothing $m≥3$ often results in all cells sharing the single most globally relevant gene as label.
+The implementation is sufficiently efficient in terms of computational time and memory that quick iteration is possible.
+
+I developed and implemented all of the mentioned concepts as part of destiny.
+The implementation offers a rich and user friendly API including plotting routines for all concepts.
 
 \stopsection
 

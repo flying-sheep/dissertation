@@ -151,6 +151,23 @@
 
 @Article{	  becht2018,
   abstract	= {A benchmarking analysis on single-cell RNA-seq and mass cytometry data reveals the best-performing technique for dimensionality reduction.},
+  author	= {Becht, Etienne and McInnes, Leland and Healy, John and Dutertre, Charles-Antoine and Kwok, Immanuel W. H. and Ng, Lai Guan and Ginhoux, Florent and Newell, Evan W.},
+  doi		= {10.1038/nbt.4314},
+  issn		= {1087-0156},
+  journal	= {Nature Biotechnology},
+  keywords	= {Comparison,Computational biology and bioinformatics,Data mining,Immunology,UMAP,Visualization,scRNA-seq analysis},
+  mendeley-tags	= {Comparison,Computational biology and bioinformatics,Data mining,Immunology,UMAP,Visualization,scRNA-seq analysis},
+  number	= {1},
+  pages		= {38--44},
+  publisher	= {Nature Publishing Group},
+  title		= {{Dimensionality reduction for visualizing single-cell data using UMAP}},
+  url		= {http://www.nature.com/articles/nbt.4314},
+  volume	= {37},
+  year		= {2018}
+}
+
+@Article{	  becht2018,
+  abstract	= {A benchmarking analysis on single-cell RNA-seq and mass cytometry data reveals the best-performing technique for dimensionality reduction.},
   annote	= {Paper that compares visualization techniques for scRNA-seq data and shows UMAP performs best.
 		  
 		  An interesting comparison was performed by computing the NMI of a random forest classier on reduced dimensions versus Phenograph clustering. On 3 out of 4 datasets no visualization method had a higher NMI than 0.5 showing that visualization dimensions are not sufficiently informative of cell heterogeneity (t-SNE should not be used for clustering).
@@ -170,23 +187,6 @@
   publisher	= {Nature Publishing Group},
   title		= {{Dimensionality reduction for visualizing single-cell data using UMAP}},
   url		= {http://www.nature.com/doifinder/10.1038/nbt.4314},
-  volume	= {37},
-  year		= {2018}
-}
-
-@Article{	  becht2018,
-  abstract	= {A benchmarking analysis on single-cell RNA-seq and mass cytometry data reveals the best-performing technique for dimensionality reduction.},
-  author	= {Becht, Etienne and McInnes, Leland and Healy, John and Dutertre, Charles-Antoine and Kwok, Immanuel W. H. and Ng, Lai Guan and Ginhoux, Florent and Newell, Evan W.},
-  doi		= {10.1038/nbt.4314},
-  issn		= {1087-0156},
-  journal	= {Nature Biotechnology},
-  keywords	= {Comparison,Computational biology and bioinformatics,Data mining,Immunology,UMAP,Visualization,scRNA-seq analysis},
-  mendeley-tags	= {Comparison,Computational biology and bioinformatics,Data mining,Immunology,UMAP,Visualization,scRNA-seq analysis},
-  number	= {1},
-  pages		= {38--44},
-  publisher	= {Nature Publishing Group},
-  title		= {{Dimensionality reduction for visualizing single-cell data using UMAP}},
-  url		= {http://www.nature.com/articles/nbt.4314},
   volume	= {37},
   year		= {2018}
 }
@@ -1360,16 +1360,6 @@
   year		= {2018}
 }
 
-@Article{	  maaten2008-qx,
-  author	= {van der Maaten, Laurens and Hinton, Geoffrey},
-  journal	= {J. Mach. Learn. Res.},
-  number	= {Nov},
-  pages		= {2579--2605},
-  title		= {{Visualizing data using {\{}t-SNE{\}}}},
-  volume	= {9},
-  year		= {2008}
-}
-
 @Article{	  macaulay2014,
   author	= {Macaulay, Iain C. and Voet, Thierry},
   doi		= {10.1371/journal.pgen.1004126},
@@ -1409,6 +1399,7 @@
   arxivid	= {1802.03426},
   author	= {McInnes, Leland and Healy, John and Melville, James},
   eprint	= {1802.03426},
+  month		= {feb},
   title		= {{UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction}},
   url		= {http://arxiv.org/abs/1802.03426},
   year		= {2018}
@@ -1420,7 +1411,6 @@
   arxivid	= {1802.03426},
   author	= {McInnes, Leland and Healy, John and Melville, James},
   eprint	= {1802.03426},
-  month		= {feb},
   title		= {{UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction}},
   url		= {http://arxiv.org/abs/1802.03426},
   year		= {2018}
@@ -1530,6 +1520,20 @@
 }
 
 @Article{	  natarajan2019a,
+  author	= {Natarajan, Kedar Nath and Miao, Zhichao and Jiang, Miaomiao and Huang, Xiaoyun and Zhou, Hongpo and Xie, Jiarui and Wang, Chunqing and Qin, Shishang and Zhao, Zhikun and Wu, Liang and Yang, Naibo and Li, Bo and Hou, Yong and Liu, Shiping and Teichmann, Sarah A.},
+  doi		= {10.1186/s13059-019-1676-5},
+  issn		= {1474-760X},
+  journal	= {Genome Biology},
+  month		= {dec},
+  number	= {1},
+  pages		= {70},
+  title		= {{Comparative analysis of sequencing technologies for single-cell transcriptomics}},
+  url		= {https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1676-5},
+  volume	= {20},
+  year		= {2019}
+}
+
+@Article{	  natarajan2019a,
   abstract	= {Single-cell RNA-seq technologies require library preparation prior to sequencing. Here, we present the first report to compare the cheaper BGISEQ-500 platform to the Illumina HiSeq platform for scRNA-seq. We generate a resource of 468 single cells and 1297 matched single cDNA samples, performing SMARTer and Smart-seq2 protocols on two cell lines with RNA spike-ins. We sequence these libraries on both platforms using single- and paired-end reads. The platforms have comparable sensitivity and accuracy in terms of quantification of gene expression, and low technical variability. Our study provides a standardized scRNA-seq resource to benchmark new scRNA-seq library preparation protocols and sequencing platforms.},
   annote	= {Comparison of Illumina HiSeq and BGISEQ-500 shows that sequencing technology doesn't affect variability of scRNA-seq data. Main technical variation from RNA to cDNA protocol and PCR amplification.
 		  
@@ -1544,20 +1548,6 @@
   number	= {1},
   pages		= {70},
   publisher	= {BioMed Central},
-  title		= {{Comparative analysis of sequencing technologies for single-cell transcriptomics}},
-  url		= {https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1676-5},
-  volume	= {20},
-  year		= {2019}
-}
-
-@Article{	  natarajan2019a,
-  author	= {Natarajan, Kedar Nath and Miao, Zhichao and Jiang, Miaomiao and Huang, Xiaoyun and Zhou, Hongpo and Xie, Jiarui and Wang, Chunqing and Qin, Shishang and Zhao, Zhikun and Wu, Liang and Yang, Naibo and Li, Bo and Hou, Yong and Liu, Shiping and Teichmann, Sarah A.},
-  doi		= {10.1186/s13059-019-1676-5},
-  issn		= {1474-760X},
-  journal	= {Genome Biology},
-  month		= {dec},
-  number	= {1},
-  pages		= {70},
   title		= {{Comparative analysis of sequencing technologies for single-cell transcriptomics}},
   url		= {https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1676-5},
   volume	= {20},
@@ -2003,7 +1993,7 @@
 
 @Article{	  stephenson1935,
   abstract	= {Instead of the usual procedure with a selected group of n individuals each of whom has been measured in m tests, we may invert the technique and begin with a population of n different tests each of which is measured or scaled by m individuals. This makes possible new studies on the Spearman "central intellective factor" (g), and the two-factor theorem. The technique is especially valuable in experimental esthetics and educational psychology.},
-  author	= {STEPHENSON, W.},
+  author	= {Stephenson, W.},
   doi		= {10.1038/136297b0},
   issn		= {0028-0836},
   journal	= {Nature},
@@ -2585,22 +2575,6 @@
 @Article{	  ziegenhain2017,
   abstract	= {Single-cell RNA sequencing (scRNA-seq) offers new possibilities to address biological and medical questions. However, systematic comparisons of the performance of diverse scRNA-seq protocols are lacking. We generated data from 583 mouse embryonic stem cells to evaluate six prominent scRNA-seq methods: CEL-seq2, Drop-seq, MARS-seq, SCRB-seq, Smart-seq, and Smart-seq2. While Smart-seq2 detected the most genes per cell and across cells, CEL-seq2, Drop-seq, MARS-seq, and SCRB-seq quantified mRNA levels with less amplification noise due to the use of unique molecular identifiers (UMIs). Power simulations at different sequencing depths showed that Drop-seq is more cost-efficient for transcriptome quantification of large numbers of cells, while MARS-seq, SCRB-seq, and Smart-seq2 are more efficient when analyzing fewer cells. Our quantitative comparison offers the basis for an informed choice among six prominent scRNA-seq methods, and it provides a framework for benchmarking further improvements of scRNA-seq protocols.},
   author	= {Ziegenhain, Christoph and Vieth, Beate and Parekh, Swati and Reinius, Bj{\"{o}}rn and Guillaumet-Adkins, Amy and Smets, Martha and Leonhardt, Heinrich and Heyn, Holger and Hellmann, Ines and Enard, Wolfgang},
-  doi		= {10.1016/J.MOLCEL.2017.01.023},
-  issn		= {1097-2765},
-  journal	= {Molecular Cell},
-  month		= {feb},
-  number	= {4},
-  pages		= {631--643.e4},
-  publisher	= {Cell Press},
-  title		= {{Comparative Analysis of Single-Cell RNA Sequencing Methods}},
-  url		= {https://www.sciencedirect.com/science/article/pii/S1097276517300497?via{\%}3Dihub},
-  volume	= {65},
-  year		= {2017}
-}
-
-@Article{	  ziegenhain2017,
-  abstract	= {Single-cell RNA sequencing (scRNA-seq) offers new possibilities to address biological and medical questions. However, systematic comparisons of the performance of diverse scRNA-seq protocols are lacking. We generated data from 583 mouse embryonic stem cells to evaluate six prominent scRNA-seq methods: CEL-seq2, Drop-seq, MARS-seq, SCRB-seq, Smart-seq, and Smart-seq2. While Smart-seq2 detected the most genes per cell and across cells, CEL-seq2, Drop-seq, MARS-seq, and SCRB-seq quantified mRNA levels with less amplification noise due to the use of unique molecular identifiers (UMIs). Power simulations at different sequencing depths showed that Drop-seq is more cost-efficient for transcriptome quantification of large numbers of cells, while MARS-seq, SCRB-seq, and Smart-seq2 are more efficient when analyzing fewer cells. Our quantitative comparison offers the basis for an informed choice among six prominent scRNA-seq methods, and it provides a framework for benchmarking further improvements of scRNA-seq protocols.},
-  author	= {Ziegenhain, Christoph and Vieth, Beate and Parekh, Swati and Reinius, Bj{\"{o}}rn and Guillaumet-Adkins, Amy and Smets, Martha and Leonhardt, Heinrich and Heyn, Holger and Hellmann, Ines and Enard, Wolfgang},
   doi		= {10.1016/j.molcel.2017.01.023},
   issn		= {1097-4164},
   journal	= {Molecular cell},
@@ -2612,6 +2586,22 @@
   publisher	= {Elsevier},
   title		= {{Comparative Analysis of Single-Cell RNA Sequencing Methods.}},
   url		= {http://www.ncbi.nlm.nih.gov/pubmed/28212749},
+  volume	= {65},
+  year		= {2017}
+}
+
+@Article{	  ziegenhain2017,
+  abstract	= {Single-cell RNA sequencing (scRNA-seq) offers new possibilities to address biological and medical questions. However, systematic comparisons of the performance of diverse scRNA-seq protocols are lacking. We generated data from 583 mouse embryonic stem cells to evaluate six prominent scRNA-seq methods: CEL-seq2, Drop-seq, MARS-seq, SCRB-seq, Smart-seq, and Smart-seq2. While Smart-seq2 detected the most genes per cell and across cells, CEL-seq2, Drop-seq, MARS-seq, and SCRB-seq quantified mRNA levels with less amplification noise due to the use of unique molecular identifiers (UMIs). Power simulations at different sequencing depths showed that Drop-seq is more cost-efficient for transcriptome quantification of large numbers of cells, while MARS-seq, SCRB-seq, and Smart-seq2 are more efficient when analyzing fewer cells. Our quantitative comparison offers the basis for an informed choice among six prominent scRNA-seq methods, and it provides a framework for benchmarking further improvements of scRNA-seq protocols.},
+  author	= {Ziegenhain, Christoph and Vieth, Beate and Parekh, Swati and Reinius, Bj{\"{o}}rn and Guillaumet-Adkins, Amy and Smets, Martha and Leonhardt, Heinrich and Heyn, Holger and Hellmann, Ines and Enard, Wolfgang},
+  doi		= {10.1016/J.MOLCEL.2017.01.023},
+  issn		= {1097-2765},
+  journal	= {Molecular Cell},
+  month		= {feb},
+  number	= {4},
+  pages		= {631--643.e4},
+  publisher	= {Cell Press},
+  title		= {{Comparative Analysis of Single-Cell RNA Sequencing Methods}},
+  url		= {https://www.sciencedirect.com/science/article/pii/S1097276517300497?via{\%}3Dihub},
   volume	= {65},
   year		= {2017}
 }
