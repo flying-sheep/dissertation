@@ -54,7 +54,11 @@ Using such embeddings as scatter plot coordinates serves as the basis of visuali
 Reducing dimensions using global and local distances.
 \bold{(a)}
 Dimensionality reduction methods embed samples (such as cells $c$) from a high dimensional space (such as gene expressions $g$) to a low dimensional space ($x_{gc} ↪ s_{pc}$, $G>>P$).
-They can be used as coordinates in visualizations \bold{(b)} or in data preprocessing.
+They can be used in data preprocessing or as coordinates in visualizations:
+\bold{(b)}
+This kind of visualization can be colored with any kind of label to see it in context.
+Here, the embedding shows a bifurcation of the cells and a gradual  change of gene $a$’s expression along the branches.
+If we know that gene $a$ is e.\,g. a marker for early development, this indicates that cells in the bottom left branch are young and undifferentiated, and the two other branches are differentiated.
 Linear dimensionality reduction methods such as PCA use linear combinations of input dimensions as embedding dimensions, which means that distances in $s$ directly relate to distances in $x$.
 Nonlinear dimensionality reduction methods such as t-SNE, UMAP, or diffusion maps attempt to maintain locality in the data.
 This means that local neighborhoods of samples in $x$ are still close neighbors in $s$ (red circles in \bold{b}).
@@ -89,10 +93,10 @@ Some nonlinear dimensionality reduction methods also maintain global distances t
 			width=8cm,
 			colormap name=viridis,
 			colorbar,
-			colorbar style={title=Expression, ticks=none},
+			colorbar style={title={$x_{a·}$}, ticks=none},
 			ticks=none,
-			xlabel={$s_{1}$},
-			ylabel={$s_{2}$}
+			xlabel={$s_{1·}$},
+			ylabel={$s_{2·}$}
 		]
 		\addplot[only marks, scatter, point meta=explicit]
 			table[x=DC1, y=DC2, meta=X920]
