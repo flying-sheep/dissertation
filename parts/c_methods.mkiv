@@ -42,7 +42,7 @@ Dimensionality reduction methods embed high dimensional data into a low dimensio
 They are designed around the resulting space’s purpose, which includes 2-3 dimensional spaces for visualization or a latent space for further processing.
 Some methods also assign scores to each result dimension, which can e.\,g. be used to decide which dimensions to discard and which ones to keep for visualization or as latent space.
 
-In the context of scRNA-Seq data, the high dimensional data are gene expression matrices $x_{gc}$ with tens of thousands of genes $g∈\{1,…,G\}$, measured for up to approximately one million cells $c∈\{1,…,C\}$ at once.
+In the context of scRNA-Seq data, the high dimensional data are represented as a gene expression matrix $x_{gc}$ with tens of thousands of genes $g∈\{1,…,G\}$, measured for up to approximately one million cells $c∈\{1,…,C\}$ at once.
 %Matrices this big are very sparse due to the ubiquity of high dropout in protocols able to capture this many cells.
 %\TODO[cite. only dropout makes them sparse?]
 The intrinsic dimensionality of transcriptomic data is low when compared to these numbers of genes, so an embedding $s_{pc}$ with a comparatively low number of dimensions $p∈\{1,…,P\}$ is enough to capture nearly all biologically relevant variation and structure in the data.
@@ -342,9 +342,33 @@ The implementation offers a rich and user friendly API including plotting routin
 
 \stopsection
 
-\startsection[title={Scanpy}]
+\startsection[title={Scanpy and AnnData}]
 
 \TODO[Efficiency (PCA, sparse, …) and APIs]
+Scanpy is a Python library providing functions and classes for scRNA-Seq preprocessing, analysis, and visualization.
+It is designed and developed in tandem with AnnData, a general purpose data structure for homogeneous, annotated two dimensional data (see \infig[fig:anndata]).
+AnnData’s structure matches the annotated observations-by-features ($c×g$) matrix format most biological snapshot data is analyzed in.
+For example in single cell imaging, such a matrix can be constructed containing each segmented cell $c$’s average fluorescent channel $g$ value.
+Further examples include data from RNA-Seq or quantitative real-time polymerase chain reaction (qRT-PCR, \inlinecite[nurmi2002]), where $g$ stands for gene expression.
+In bulk protocols, $c$ is a tissue sample, and in single cell protocols $c$ is a cell.
+In any case, further information per sample or feature can exist, for example from other experiments or by classifying cells according to shape or other characteristics that are not represented directly in $g$ or $c$.
+
+The central element of each AnnData object \type{adata} is consequently a stack of named layers \type{adata.layers}, each holding all features $g$ measured for all observations $c$.
+\footnote{Missing observations can be represented by the special pseudo-value \emph{NA}.}
+The default layer can be accessed via \type{adata.X}.
+For each observation and feature, an unique name is stored by which it can be addressed (\type{adata.obs_names}, \type{adata.var_names}).
+Each layer has one homogeneous scalar type able to represent it in sufficient IEEE 754 floating-point precision or integer size.
+The layers can be dense Numpy arrays \cite[vanderwalt2011] for normalized or densely measured data or Scipy sparse matrices \cite[virtanen2020] for zero-inflated scRNA-Seq data.
+\TODO[mention zero inflation in intro]
+Named one dimensional annotations such as cluster labels, gene IDs alternative to the feature name, or ranking indices are stored in their respective AnnData dimension’s Pandas data frame \cite[mckinney2010] (\type{adata.obs}, \type{adata.var}).
+\TODO[mention clustering in intro]
+Further, AnnData stores named multidimensional annotations (\type{adata.obsm}, \type{adata.varm}) and square sparse matrices representing weighted graphs (\type{adata.obsp}, \type{adata.varp}), each aligned to an AnnData dimension.
+AnnData maintains relations between data and annotations, keeping them in sync through filtering and concatenation.
+Due to the generic structure, Scanpy and other tools can interact by adding and reading annotations, as well as reading, modifying and adding layers.
+
+Scanpy’s design is structured around ease of use without compromising performance.
+This allows analyzing of up to a million cells in reasonable time in a familiar interactive environment.
+\TODO[Jupyter]
 
 \stopsection
 

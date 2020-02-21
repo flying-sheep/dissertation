@@ -15,9 +15,13 @@ t-SNE
 UMAP
 kNN
 UMI
+qPCR
+PCR
 
 Kallisto
 Bioconductor
+Numpy
+Scipy
 Scanpy
 GGplot2
 Trendsceek

@@ -151,23 +151,6 @@
 
 @Article{	  becht2018,
   abstract	= {A benchmarking analysis on single-cell RNA-seq and mass cytometry data reveals the best-performing technique for dimensionality reduction.},
-  author	= {Becht, Etienne and McInnes, Leland and Healy, John and Dutertre, Charles-Antoine and Kwok, Immanuel W. H. and Ng, Lai Guan and Ginhoux, Florent and Newell, Evan W.},
-  doi		= {10.1038/nbt.4314},
-  issn		= {1087-0156},
-  journal	= {Nature Biotechnology},
-  keywords	= {Comparison,Computational biology and bioinformatics,Data mining,Immunology,UMAP,Visualization,scRNA-seq analysis},
-  mendeley-tags	= {Comparison,Computational biology and bioinformatics,Data mining,Immunology,UMAP,Visualization,scRNA-seq analysis},
-  number	= {1},
-  pages		= {38--44},
-  publisher	= {Nature Publishing Group},
-  title		= {{Dimensionality reduction for visualizing single-cell data using UMAP}},
-  url		= {http://www.nature.com/articles/nbt.4314},
-  volume	= {37},
-  year		= {2018}
-}
-
-@Article{	  becht2018,
-  abstract	= {A benchmarking analysis on single-cell RNA-seq and mass cytometry data reveals the best-performing technique for dimensionality reduction.},
   annote	= {Paper that compares visualization techniques for scRNA-seq data and shows UMAP performs best.
 		  
 		  An interesting comparison was performed by computing the NMI of a random forest classier on reduced dimensions versus Phenograph clustering. On 3 out of 4 datasets no visualization method had a higher NMI than 0.5 showing that visualization dimensions are not sufficiently informative of cell heterogeneity (t-SNE should not be used for clustering).
@@ -187,6 +170,23 @@
   publisher	= {Nature Publishing Group},
   title		= {{Dimensionality reduction for visualizing single-cell data using UMAP}},
   url		= {http://www.nature.com/doifinder/10.1038/nbt.4314},
+  volume	= {37},
+  year		= {2018}
+}
+
+@Article{	  becht2018,
+  abstract	= {A benchmarking analysis on single-cell RNA-seq and mass cytometry data reveals the best-performing technique for dimensionality reduction.},
+  author	= {Becht, Etienne and McInnes, Leland and Healy, John and Dutertre, Charles-Antoine and Kwok, Immanuel W. H. and Ng, Lai Guan and Ginhoux, Florent and Newell, Evan W.},
+  doi		= {10.1038/nbt.4314},
+  issn		= {1087-0156},
+  journal	= {Nature Biotechnology},
+  keywords	= {Comparison,Computational biology and bioinformatics,Data mining,Immunology,UMAP,Visualization,scRNA-seq analysis},
+  mendeley-tags	= {Comparison,Computational biology and bioinformatics,Data mining,Immunology,UMAP,Visualization,scRNA-seq analysis},
+  number	= {1},
+  pages		= {38--44},
+  publisher	= {Nature Publishing Group},
+  title		= {{Dimensionality reduction for visualizing single-cell data using UMAP}},
+  url		= {http://www.nature.com/articles/nbt.4314},
   volume	= {37},
   year		= {2018}
 }
@@ -1399,7 +1399,6 @@
   arxivid	= {1802.03426},
   author	= {McInnes, Leland and Healy, John and Melville, James},
   eprint	= {1802.03426},
-  month		= {feb},
   title		= {{UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction}},
   url		= {http://arxiv.org/abs/1802.03426},
   year		= {2018}
@@ -1411,6 +1410,7 @@
   arxivid	= {1802.03426},
   author	= {McInnes, Leland and Healy, John and Melville, James},
   eprint	= {1802.03426},
+  month		= {feb},
   title		= {{UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction}},
   url		= {http://arxiv.org/abs/1802.03426},
   year		= {2018}
@@ -1424,6 +1424,16 @@
   title		= {{{\{}UMAP{\}}: Uniform Manifold Approximation and Projection}},
   volume	= {3},
   year		= {2018}
+}
+
+@TechReport{	  mckinney2010,
+  abstract	= {In this paper we are concerned with the practical issues of working with data sets common to finance, statistics, and other related fields. pandas is a new library which aims to facilitate working with these data sets and to provide a set of fundamental building blocks for implementing statistical models. We will discuss specific design issues encountered in the course of developing pandas with relevant examples and some comparisons with the R language. We conclude by discussing possible future directions for statistical computing and data analysis using Python.},
+  author	= {Mckinney, Wes},
+  booktitle	= {PROC. OF THE 9th PYTHON IN SCIENCE CONF},
+  keywords	= {Index Terms-data structure,R,statistics},
+  pages		= {51},
+  title		= {{Data Structures for Statistical Computing in Python}},
+  year		= {2010}
 }
 
 @Article{	  mereu2019,
@@ -1520,20 +1530,6 @@
 }
 
 @Article{	  natarajan2019a,
-  author	= {Natarajan, Kedar Nath and Miao, Zhichao and Jiang, Miaomiao and Huang, Xiaoyun and Zhou, Hongpo and Xie, Jiarui and Wang, Chunqing and Qin, Shishang and Zhao, Zhikun and Wu, Liang and Yang, Naibo and Li, Bo and Hou, Yong and Liu, Shiping and Teichmann, Sarah A.},
-  doi		= {10.1186/s13059-019-1676-5},
-  issn		= {1474-760X},
-  journal	= {Genome Biology},
-  month		= {dec},
-  number	= {1},
-  pages		= {70},
-  title		= {{Comparative analysis of sequencing technologies for single-cell transcriptomics}},
-  url		= {https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1676-5},
-  volume	= {20},
-  year		= {2019}
-}
-
-@Article{	  natarajan2019a,
   abstract	= {Single-cell RNA-seq technologies require library preparation prior to sequencing. Here, we present the first report to compare the cheaper BGISEQ-500 platform to the Illumina HiSeq platform for scRNA-seq. We generate a resource of 468 single cells and 1297 matched single cDNA samples, performing SMARTer and Smart-seq2 protocols on two cell lines with RNA spike-ins. We sequence these libraries on both platforms using single- and paired-end reads. The platforms have comparable sensitivity and accuracy in terms of quantification of gene expression, and low technical variability. Our study provides a standardized scRNA-seq resource to benchmark new scRNA-seq library preparation protocols and sequencing platforms.},
   annote	= {Comparison of Illumina HiSeq and BGISEQ-500 shows that sequencing technology doesn't affect variability of scRNA-seq data. Main technical variation from RNA to cDNA protocol and PCR amplification.
 		  
@@ -1554,6 +1550,20 @@
   year		= {2019}
 }
 
+@Article{	  natarajan2019a,
+  author	= {Natarajan, Kedar Nath and Miao, Zhichao and Jiang, Miaomiao and Huang, Xiaoyun and Zhou, Hongpo and Xie, Jiarui and Wang, Chunqing and Qin, Shishang and Zhao, Zhikun and Wu, Liang and Yang, Naibo and Li, Bo and Hou, Yong and Liu, Shiping and Teichmann, Sarah A.},
+  doi		= {10.1186/s13059-019-1676-5},
+  issn		= {1474-760X},
+  journal	= {Genome Biology},
+  month		= {dec},
+  number	= {1},
+  pages		= {70},
+  title		= {{Comparative analysis of sequencing technologies for single-cell transcriptomics}},
+  url		= {https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1676-5},
+  volume	= {20},
+  year		= {2019}
+}
+
 @Article{	  ntranos2016,
   abstract	= {Current approaches to single-cell transcriptomic analysis are computationally intensive and require assay-specific modeling which limit their scope and generality. We propose a novel method that departs from standard analysis pipelines, comparing and clustering cells based not on their transcript or gene quantifications but on their transcript-compatibility read counts. In re-analysis of two landmark yet disparate single-cell RNA-Seq datasets, we show that our method is up to two orders of magnitude faster than previous approaches, provides accurate and in some cases improved results, and is directly applicable to data from a wide variety of assays.},
   author	= {Ntranos, Vasilis and Kamath, Govinda M and Zhang, Jesse M and Pachter, Lior and Tse, David N},
@@ -1567,6 +1577,21 @@
   url		= {http://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-0970-8 files/120/Ntranos et al. - 2016 - Fast and accurate single-cell RNA-seq analysis by .pdf},
   volume	= {17},
   year		= {2016}
+}
+
+@Article{	  nurmi2002,
+  abstract	= {We report a time-resolved fluorescence-based, homogeneous approach for multiplex, real-time or end-point detection of PCR products. Signal generation consists of PCR associated digestion of a 5′-labeled oligonucleotide probe, rapid cooling of the reaction mixture, and hybridization of undigested probe oligonucleotides with a complementary, shorter probe that incorporates a quencher at its 3′ end. The signal coming from intact fluorescent probe molecules is, thus, quenched. The fluorophores we have used are environmentally sensitive lanthanide chelates. Their signals can be measured in a time-resolved manner that eliminates most of the unspecific fluorescent background. Signal-to-noise ratios are further enhanced by the environmental sensitivity of these chelates; they exhibit a higher fluorescence intensity when free in solution than when coupled to intact probe molecules. Because of the minimal background fluorescence, the signal-to-noise ratios are higher and threshold cycles are lower than those obtained using conventional TaqMan probes. The multiplexing capacity of the assay chemistry is demonstrated through simultaneous amplification and detection of prostate specific antigen (PSA) cDNA and an internal standard mRNA (mmPSA) using probes labeled with terbium and europium. The applicability of the assay chemistry to routine clinical diagnostics is demonstrated through absolute quantification of PSA mRNA in peripheral blood.},
+  author	= {Nurmi, Jussi and Wikman, Tiina and Karp, Matti and L{\"{o}}vgren, Timo},
+  doi		= {10.1021/ac020093y},
+  issn		= {00032700},
+  journal	= {Analytical Chemistry},
+  month		= {jul},
+  number	= {14},
+  pages		= {3525--3532},
+  publisher	= {American Chemical Society},
+  title		= {{High-performance real-time quantitative RT-PCR using lanthanide probes and a dual-temperature hybridization assay}},
+  volume	= {74},
+  year		= {2002}
 }
 
 @Misc{		  papalexi2018,
@@ -2262,6 +2287,24 @@
   year		= {2009}
 }
 
+@Article{	  vanderwalt2011,
+  abstract	= {In the Python world, NumPy arrays are the standard representation for numerical data and enable efficient implementation of numerical computations in a high-level language. As this effort shows, NumPy performance can be improved through three techniques: vectorizing calculations, avoiding copying data in memory, and minimizing operation counts. {\textcopyright} 2011 IEEE.},
+  archiveprefix	= {arXiv},
+  arxivid	= {1102.1523},
+  author	= {{Van Der Walt}, St{\'{e}}fan and Colbert, S. Chris and Varoquaux, Ga{\"{e}}l},
+  doi		= {10.1109/MCSE.2011.37},
+  eprint	= {1102.1523},
+  issn		= {15219615},
+  journal	= {Computing in Science and Engineering},
+  keywords	= {NumPy,Python,numerical computations,programming libraries,scientific programming},
+  month		= {mar},
+  number	= {2},
+  pages		= {22--30},
+  title		= {{The NumPy array: A structure for efficient numerical computation}},
+  volume	= {13},
+  year		= {2011}
+}
+
 @Article{	  vento-tormo2018-sn,
   abstract	= {During early human pregnancy the uterine mucosa transforms into the decidua, into which the fetal placenta implants and where placental trophoblast cells intermingle and communicate with maternal cells. Trophoblast-decidual interactions underlie common diseases of pregnancy, including pre-eclampsia and stillbirth. Here we profile the transcriptomes of about 70,000 single cells from first-trimester placentas with matched maternal blood and decidual cells. The cellular composition of human decidua reveals subsets of perivascular and stromal cells that are located in distinct decidual layers. There are three major subsets of decidual natural killer cells that have distinctive immunomodulatory and chemokine profiles. We develop a repository of ligand-receptor complexes and a statistical tool to predict the cell-type specificity of cell-cell communication via these molecular interactions. Our data identify many regulatory interactions that prevent harmful innate or adaptive immune responses in this environment. Our single-cell atlas of the maternal-fetal interface reveals the cellular organization of the decidua and placenta, and the interactions that are critical for placentation and reproductive success.},
   author	= {Vento-Tormo, Roser and Efremova, Mirjana and Botting, Rachel A and Turco, Margherita Y and Vento-Tormo, Miquel and Meyer, Kerstin B and Park, Jong-Eun and Stephenson, Emily and Pola{\'{n}}ski, Krzysztof and Goncalves, Angela and Gardner, Lucy and Holmqvist, Staffan and Henriksson, Johan and Zou, Angela and Sharkey, Andrew M and Millar, Ben and Innes, Barbara and Wood, Laura and Wilbrey-Clark, Anna and Payne, Rebecca P and Ivarsson, Martin A and Lisgo, Steve and Filby, Andrew and Rowitch, David H and Bulmer, Judith N and Wright, Gavin J and Stubbington, Michael J T and Haniffa, Muzlifah and Moffett, Ashley and Teichmann, Sarah A},
@@ -2307,6 +2350,25 @@
   title		= {{A Systematic Evaluation of Single Cell RNA-Seq Analysis Pipelines: Library preparation and normalisation methods have the biggest impact on the performance of scRNA-seq studies}},
   url		= {https://www.biorxiv.org/content/10.1101/583013v1},
   year		= {2019}
+}
+
+@Article{	  virtanen2020,
+  abstract	= {SciPy is an open-source scientific computing library for the Python programming language. Since its initial release in 2001, SciPy has become a de facto standard for leveraging scientific algorithms in Python, with over 600 unique code contributors, thousands of dependent packages, over 100,000 dependent repositories and millions of downloads per year. In this work, we provide an overview of the capabilities and development practices of SciPy 1.0 and highlight some recent technical developments.},
+  archiveprefix	= {arXiv},
+  arxivid	= {1907.10121},
+  author	= {Virtanen, Pauli and Gommers, Ralf and Oliphant, Travis E and Haberland, Matt and Reddy, Tyler and Cournapeau, David and Burovski, Evgeni and Peterson, Pearu and Weckesser, Warren and Bright, Jonathan and van der Walt, St{\'{e}}fan J and Brett, Matthew and Wilson, Joshua and Millman, K Jarrod and Mayorov, Nikolay and Nelson, Andrew R J and Jones, Eric and Kern, Robert and Larson, Eric and Carey, C J and Polat, İlhan and Feng, Yu and Moore, Eric W and VanderPlas, Jake and Laxalde, Denis and Perktold, Josef and Cimrman, Robert and Henriksen, Ian and Quintero, E A and Harris, Charles R and Archibald, Anne M and Ribeiro, Ant{\^{o}}nio H and Pedregosa, Fabian and van Mulbregt, Paul and {SciPy 1.0 Contributors}},
+  doi		= {10.1038/s41592-019-0686-2},
+  eprint	= {1907.10121},
+  issn		= {1548-7105},
+  journal	= {Nature methods},
+  keywords	= {Biophysical chemistry,Computational biology and bioinformatics,Technology},
+  month		= {feb},
+  pages		= {1--12},
+  pmid		= {32015543},
+  publisher	= {Nature Publishing Group},
+  title		= {{SciPy 1.0: fundamental algorithms for scientific computing in Python.}},
+  url		= {http://www.ncbi.nlm.nih.gov/pubmed/32015543},
+  year		= {2020}
 }
 
 @Article{	  wang2019,
@@ -2575,6 +2637,22 @@
 @Article{	  ziegenhain2017,
   abstract	= {Single-cell RNA sequencing (scRNA-seq) offers new possibilities to address biological and medical questions. However, systematic comparisons of the performance of diverse scRNA-seq protocols are lacking. We generated data from 583 mouse embryonic stem cells to evaluate six prominent scRNA-seq methods: CEL-seq2, Drop-seq, MARS-seq, SCRB-seq, Smart-seq, and Smart-seq2. While Smart-seq2 detected the most genes per cell and across cells, CEL-seq2, Drop-seq, MARS-seq, and SCRB-seq quantified mRNA levels with less amplification noise due to the use of unique molecular identifiers (UMIs). Power simulations at different sequencing depths showed that Drop-seq is more cost-efficient for transcriptome quantification of large numbers of cells, while MARS-seq, SCRB-seq, and Smart-seq2 are more efficient when analyzing fewer cells. Our quantitative comparison offers the basis for an informed choice among six prominent scRNA-seq methods, and it provides a framework for benchmarking further improvements of scRNA-seq protocols.},
   author	= {Ziegenhain, Christoph and Vieth, Beate and Parekh, Swati and Reinius, Bj{\"{o}}rn and Guillaumet-Adkins, Amy and Smets, Martha and Leonhardt, Heinrich and Heyn, Holger and Hellmann, Ines and Enard, Wolfgang},
+  doi		= {10.1016/J.MOLCEL.2017.01.023},
+  issn		= {1097-2765},
+  journal	= {Molecular Cell},
+  month		= {feb},
+  number	= {4},
+  pages		= {631--643.e4},
+  publisher	= {Cell Press},
+  title		= {{Comparative Analysis of Single-Cell RNA Sequencing Methods}},
+  url		= {https://www.sciencedirect.com/science/article/pii/S1097276517300497?via{\%}3Dihub},
+  volume	= {65},
+  year		= {2017}
+}
+
+@Article{	  ziegenhain2017,
+  abstract	= {Single-cell RNA sequencing (scRNA-seq) offers new possibilities to address biological and medical questions. However, systematic comparisons of the performance of diverse scRNA-seq protocols are lacking. We generated data from 583 mouse embryonic stem cells to evaluate six prominent scRNA-seq methods: CEL-seq2, Drop-seq, MARS-seq, SCRB-seq, Smart-seq, and Smart-seq2. While Smart-seq2 detected the most genes per cell and across cells, CEL-seq2, Drop-seq, MARS-seq, and SCRB-seq quantified mRNA levels with less amplification noise due to the use of unique molecular identifiers (UMIs). Power simulations at different sequencing depths showed that Drop-seq is more cost-efficient for transcriptome quantification of large numbers of cells, while MARS-seq, SCRB-seq, and Smart-seq2 are more efficient when analyzing fewer cells. Our quantitative comparison offers the basis for an informed choice among six prominent scRNA-seq methods, and it provides a framework for benchmarking further improvements of scRNA-seq protocols.},
+  author	= {Ziegenhain, Christoph and Vieth, Beate and Parekh, Swati and Reinius, Bj{\"{o}}rn and Guillaumet-Adkins, Amy and Smets, Martha and Leonhardt, Heinrich and Heyn, Holger and Hellmann, Ines and Enard, Wolfgang},
   doi		= {10.1016/j.molcel.2017.01.023},
   issn		= {1097-4164},
   journal	= {Molecular cell},
@@ -2586,22 +2664,6 @@
   publisher	= {Elsevier},
   title		= {{Comparative Analysis of Single-Cell RNA Sequencing Methods.}},
   url		= {http://www.ncbi.nlm.nih.gov/pubmed/28212749},
-  volume	= {65},
-  year		= {2017}
-}
-
-@Article{	  ziegenhain2017,
-  abstract	= {Single-cell RNA sequencing (scRNA-seq) offers new possibilities to address biological and medical questions. However, systematic comparisons of the performance of diverse scRNA-seq protocols are lacking. We generated data from 583 mouse embryonic stem cells to evaluate six prominent scRNA-seq methods: CEL-seq2, Drop-seq, MARS-seq, SCRB-seq, Smart-seq, and Smart-seq2. While Smart-seq2 detected the most genes per cell and across cells, CEL-seq2, Drop-seq, MARS-seq, and SCRB-seq quantified mRNA levels with less amplification noise due to the use of unique molecular identifiers (UMIs). Power simulations at different sequencing depths showed that Drop-seq is more cost-efficient for transcriptome quantification of large numbers of cells, while MARS-seq, SCRB-seq, and Smart-seq2 are more efficient when analyzing fewer cells. Our quantitative comparison offers the basis for an informed choice among six prominent scRNA-seq methods, and it provides a framework for benchmarking further improvements of scRNA-seq protocols.},
-  author	= {Ziegenhain, Christoph and Vieth, Beate and Parekh, Swati and Reinius, Bj{\"{o}}rn and Guillaumet-Adkins, Amy and Smets, Martha and Leonhardt, Heinrich and Heyn, Holger and Hellmann, Ines and Enard, Wolfgang},
-  doi		= {10.1016/J.MOLCEL.2017.01.023},
-  issn		= {1097-2765},
-  journal	= {Molecular Cell},
-  month		= {feb},
-  number	= {4},
-  pages		= {631--643.e4},
-  publisher	= {Cell Press},
-  title		= {{Comparative Analysis of Single-Cell RNA Sequencing Methods}},
-  url		= {https://www.sciencedirect.com/science/article/pii/S1097276517300497?via{\%}3Dihub},
   volume	= {65},
   year		= {2017}
 }
