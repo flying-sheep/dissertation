@@ -124,10 +124,11 @@
 % http://pragma-ade.nl/general/manuals/mkiv-publications.pdf
 \definebtxdataset[main]
 \usebtxdataset[main][bib/\jobname.bib]
-\setupbtx[dataset=main] % make cite use this
-\setupbtx[default:cite][alternative=authoryear] % cite style
-\usebtxdefinitions[apa] % load and activate list rendering
-\definebtxrendering[main][apa][dataset=main, pagestate=start] % list rendering, sorting, numbering=no, … 
+\setupbtx[dataset=main] % make \cite use this by default
+\setupbtx[default:cite][alternative=authoryear] % default so the shortcut \cite[ref] can be used
+\usebtxdefinitions[apa] % load apa styles for bib entry and \cite rendering
+\setupbtx[apa:cite][otherstext={ et al.}, etallimit=3]
+\definebtxrendering[main][apa][dataset=main, pagestate=start] % define a bib entry rendering to use with \placebtxrendering (sorting, numbering=no, …)
 % \newbibfield[timestamp]
 % \setuppublicationlayout[electronic]{%
 % 	\insertauthors{}{. }{}%
@@ -159,7 +160,7 @@
 \unexpanded\def\startgroupplot{\groupplot}
 \unexpanded\def\stopgroupplot{\endgroupplot}
 
-\def\AtBeginDocument#1{} % shut up about compat
+\def\AtBeginDocument#1{} % shut up about compatibility
 \usemodule[pgfplots]
 \pgfplotsset{compat=1.14}
 \usemodule[pgfplotstable]
