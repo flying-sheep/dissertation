@@ -3,39 +3,6 @@
 
 \startchapter[reference=methods, title=Methods]
 
-\startsection[title={BART-Seq (demultiplexing and quantification)}]
-
-\TODO[Is the RNA-Seq explanation in the intro sufficient for this chapter?]
-BART-Seq is a targeted RNA sequencing protocol able to sensitively and inexpensively measure expressions of thousands of samples \cite[uzbas2019].
-It consists of three steps; design, experiment, and quantification.
-
-% primer/barcode design
-The design step involves algorithms to design primer pairs matching amplicons – such as genes – and barcodes identifying samples – such as single cells or cell groups.
-The primer design algorithm optimizes primer pairs to stably dimerize with their target amplicons.
-The barcode design algorithm minimizes the chance of misassigning barcodes through sequencing errors by maximizing their mutual alignment distances.
-The set of barcodes is split into two halves arbitrarily – forward and reverse.
-The results are the sequences for two sets of barcodes, two linkers, and one primer pair per amplicon.
-
-% experiment
-For the experimental step, barcodes are synthesized and those of each half are ligated to the half’s respective primer.
-Each well of a sequencing plate receives a different combination of forward and reverse barcode-linker-primer assemblies, allowing to address $(\text{\#barcodes} ÷ 2)^2$ wells.
-The experiment concludes like a regular paired-end sequencing run \cite[fullwood2009], resulting in a raw read library containing sequences of barcode-linker-read.
-\TODO[understandable? “read” is a fragment later aligned to amplicons, while “raw read” is the whole thing and only has to carry us to the next line]
-
-% quantification: sequencing and multiplexing
-In the quantification step, the barcodes, linkers and low-quality bases are cut off the raw read sequence.
-The shortened read sequences are then tagged with their corresponding designed barcode if possible.
-This process assigns barcodes with up to one mismatching base using the algorithm of \inlinecite[aho1975], as long as the assignment is still unique – reads that could be tagged with one of multiple barcodes that are one mismatch away from each other are discarded.
-The tagged reads are then aligned to the targeted amplicons using HISAT2 \cite[kim2019].
-Amplicons are counted per barcode combination according to one of two strategies.
-The conservative strategy only counts where both reads aligned to the same amplicon, while the sensitive strategy also counts when one of both is unaligned.
-Neither strategy counts one of the aligned amplicons when there is a mismatch.
-The count of overall full matches, half matches, and mismatches is included in the various statistics collected about the demultiplexing and quantification process.
-
-I designed the quantification step in collaboration with Fatma Uzbas and Micha Drucker, and implemented a Python library and pipeline executing it.
-
-\stopsection
-
 \startsection[title={Dimensionality Reduction Methods}]
 
 Dimensionality reduction methods embed high dimensional data into a low dimensional space.
@@ -369,6 +336,39 @@ Due to the generic structure, Scanpy and other tools can interact by adding and 
 Scanpy’s design is structured around ease of use without compromising performance.
 This allows analyzing of up to a million cells in reasonable time in a familiar interactive environment.
 \TODO[Jupyter]
+
+\stopsection
+
+\startsection[title={BART-Seq (demultiplexing and quantification)}]
+
+\TODO[Is the RNA-Seq explanation in the intro sufficient for this chapter?]
+BART-Seq is a targeted RNA sequencing protocol able to sensitively and inexpensively measure expressions of thousands of samples \cite[uzbas2019].
+It consists of three steps; design, experiment, and quantification.
+
+% primer/barcode design
+The design step involves algorithms to design primer pairs matching amplicons – such as genes – and barcodes identifying samples – such as single cells or cell groups.
+The primer design algorithm optimizes primer pairs to stably dimerize with their target amplicons.
+The barcode design algorithm minimizes the chance of misassigning barcodes through sequencing errors by maximizing their mutual alignment distances.
+The set of barcodes is split into two halves arbitrarily – forward and reverse.
+The results are the sequences for two sets of barcodes, two linkers, and one primer pair per amplicon.
+
+% experiment
+For the experimental step, barcodes are synthesized and those of each half are ligated to the half’s respective primer.
+Each well of a sequencing plate receives a different combination of forward and reverse barcode-linker-primer assemblies, allowing to address $(\text{\#barcodes} ÷ 2)^2$ wells.
+The experiment concludes like a regular paired-end sequencing run \cite[fullwood2009], resulting in a raw read library containing sequences of barcode-linker-read.
+\TODO[understandable? “read” is a fragment later aligned to amplicons, while “raw read” is the whole thing and only has to carry us to the next line]
+
+% quantification: sequencing and multiplexing
+In the quantification step, the barcodes, linkers and low-quality bases are cut off the raw read sequence.
+The shortened read sequences are then tagged with their corresponding designed barcode if possible.
+This process assigns barcodes with up to one mismatching base using the algorithm of \inlinecite[aho1975], as long as the assignment is still unique – reads that could be tagged with one of multiple barcodes that are one mismatch away from each other are discarded.
+The tagged reads are then aligned to the targeted amplicons using HISAT2 \cite[kim2019].
+Amplicons are counted per barcode combination according to one of two strategies.
+The conservative strategy only counts where both reads aligned to the same amplicon, while the sensitive strategy also counts when one of both is unaligned.
+Neither strategy counts one of the aligned amplicons when there is a mismatch.
+The count of overall full matches, half matches, and mismatches is included in the various statistics collected about the demultiplexing and quantification process.
+
+I designed the quantification step in collaboration with Fatma Uzbas and Micha Drucker, and implemented a Python library and pipeline executing it.
 
 \stopsection
 
