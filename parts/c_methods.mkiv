@@ -342,20 +342,25 @@ This allows analyzing of up to a million cells in reasonable time in a familiar 
 \startsection[title={BART-Seq (demultiplexing and quantification)}]
 
 \TODO[Is the RNA-Seq explanation in the intro sufficient for this chapter?]
-BART-Seq is a targeted RNA sequencing protocol able to sensitively and inexpensively measure expressions of thousands of samples \cite[uzbas2019].
+BART-Seq is a targeted RNA sequencing protocol able to sensitively and inexpensively measure expressions of thousands of samples per experiment, such as single cells or cell groups \cite[uzbas2019].
 It consists of three steps; design, experiment, and quantification.
 
 % primer/barcode design
-The design step involves algorithms to design primer pairs matching amplicons – such as genes – and barcodes identifying samples – such as single cells or cell groups.
+The design step involves algorithms to design primer pairs matching amplicons – such as genes – and barcodes identifying samples.
 The primer design algorithm optimizes primer pairs to stably dimerize with their target amplicons.
+Each pair contains two primers binding to the 3' ends of each strand of the target amplicon, forward and reverse.
+\TODO[check if 3' or 5']
+The set of primer pairs is split up into one set of forward and one of reverse primers.
 The barcode design algorithm minimizes the chance of misassigning barcodes through sequencing errors by maximizing their mutual alignment distances.
-The set of barcodes is split into two halves arbitrarily – forward and reverse.
-The results are the sequences for two sets of barcodes, two linkers, and one primer pair per amplicon.
+The set of barcodes is split into two halves arbitrarily, one half per primer set.
+The results are the sequences for a forward and reverse set of barcodes, a forward and reverse linker, and a forward and reverse primer per amplicon.
 
 % experiment
-For the experimental step, barcodes are synthesized and those of each half are ligated to the half’s respective primer.
-Each well of a sequencing plate receives a different combination of forward and reverse barcode-linker-primer assemblies, allowing to address $(\text{\#barcodes} ÷ 2)^2$ wells.
-The experiment concludes like a regular paired-end sequencing run \cite[fullwood2009], resulting in a raw read library containing sequences of barcode-linker-read.
+For the experimental step, all barcode-linker and reverted complement (r.\,c.) primer-linker sequences are synthesized in sufficient quantities.
+Separately for each barcode, all combinations of forward primers and forwards barcodes are created by annealing barcode-linker and r.\,c. primer-linker strands arbitrarily, filling in the resulting incomplete double strands, and removing the r.\,c. strands.
+Analogously all possible reverse barcode-linker-primer strands are synthesized per reverse barcode.
+Each well of a sequencing plate receives a different combination of forward and reverse barcode-linker-primer assemblies, allowing to address $(\frac12\text{\#barcodes})^2$ wells.
+The experiment concludes like a regular paired-end sequencing run \cite[fullwood2009], resulting in a raw read library containing strands of barcode-linker-read.
 \TODO[understandable? “read” is a fragment later aligned to amplicons, while “raw read” is the whole thing and only has to carry us to the next line]
 
 % quantification: sequencing and multiplexing
