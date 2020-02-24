@@ -18,14 +18,14 @@ In the context of scRNA-Seq data, the high dimensional data are represented as a
 %Matrices this big are very sparse due to the ubiquity of high dropout in protocols able to capture this many cells.
 %\TODO[cite. only dropout makes them sparse?]
 The intrinsic dimensionality of transcriptomic data is low when compared to this number of genes.
-Embeddings $s_{pc}$ ($p∈\{1,…,P\}$) of most datasets therefore only require a comparatively low number of dimensions $50≤P≤100$ to capture all information necessary to reconstruct all known biological processes \cite[ding2018].
+Embeddings $s_{pc}$ ($p∈\{1,…,P\}$) of most datasets therefore only require a comparatively low number of dimensions $50≤P≤100$ to capture all information necessary to reconstruct all known biological processes \cite[ding2018,lenz2016].
 \TODO[lessen breadth of claim – most datasets & all information]
 Global structures of the data such as strongly differing cell types or differentiation can often be faithfully reflected in a 2 or 3 dimensional embedding.
 \TODO[ref]
 
 Dimensionality reduction methods can also be categorized into linear and nonlinear.
-Linear methods such as Principal component analysis (PCA) use linear combinations of input dimensions as embedding dimensions, which means that distances in $s$ directly relate to distances in $x$.
-Nonlinear methods such as t-SNE, UMAP, or diffusion maps attempt to maintain locality in the data.
+Linear methods such as Principal component analysis (PCA, \inlinecite[abdi2010]) use linear combinations of input dimensions as embedding dimensions, which means that distances in $s$ directly relate to distances in $x$.
+Nonlinear methods such as t-Stochastic Neighborhood Embedding (t-SNE, \inlinecite[vandermaaten2008]), Uniform Manifold Approximation and Projection (UMAP, \inlinecite[mcinnes2018], or diffusion maps \cite[coifman2005] attempt to maintain locality in the data.
 This means that local neighborhoods of samples in $x$ are still close neighbors in $s$ (red circles in \bold{b}).
 Some nonlinear dimensionality reduction methods also maintain global distances to a degree (UMAP and diffusion maps, not t-SNE).
 
@@ -89,27 +89,28 @@ If we know that gene $a$ is e.\,g. a marker for early development, this indicate
 
 \startsubsection[reference=sec:spectral,title={Spectral decomposition}]
 
-Spectral decomposition is the act of transforming the data into components that each capture a different source of variance in the data.
+Spectral decomposition is the act of transforming data into components that each capture a different source of variance in the data.
 These components are scored by their ability to explain the data’s structure.
-By keeping components with high enough scores as embedding dimensions, spectral decompositions can therefore be used as dimensionality reduction methods.
+By keeping components with high enough scores as embedding dimensions, spectral decompositions can be used as dimensionality reduction methods.
 This is most useful as a preprocessing step to define a less noisy latent space reflecting the inherent dimensionality of the data, but components can also be directly visualized.
+\TODO[ref]
 
 \startsubsubsection[title={Principal Component Analysis}]
-PCA is a simple spectral decomposition.
-Its principal components (PCs) are weighted products of input features (such as transcripts), scored by the variance each PC explains.
-As each PC ideally represents one source of variation, data with up to around 4 linearly separable sources of variation can be interpreted by visualizing the corresponding number of PCs.
-As mentioned before as an example, while the intrinsic dimensionality of transcriptomic data is low, the number of PCs necessary to faithfully represent all biological processes one might care about is around 50-100 \cite[lenz2016].
-Picking a number of PCs in this range, for example using the jackstraw algorithm \cite[chung2015] is a popular a preprocessing step for downstream analysis.
+\TODO[equations]
+PCA is a simple spectral decomposition \cite[abdi2010].
+Principal components (PCs) are weighted products of input features (such as transcripts), scored by the variance each PC explains.
+As each PC ideally represents one source of variation, data with up to around four linearly separable sources of variation can realistically be interpreted using all PC combinations as coordinates for a series of 2D scatter plots.
+While the intrinsic dimensionality of transcriptomic data is low, the number of PCs necessary to faithfully represent all biological processes is around 50-100 \cite[lenz2016].
+Picking a number of PCs in this range, for example using the jackstraw algorithm \cite[chung2015] is a popular preprocessing step for downstream analysis.
 
 There are a number of related methods that can serve a similar purpose, such as independent component analysis \cite[bell1995] or factor analysis \cite[stephenson1935].
-\TODO[I don’t use them but mention them for completeness, is that wrong?]
-Furthermore, single cell transcriptomics specific extensions exist, such as ZINB-WaVE \cite[risso2018], which addresses zero inflation and over-dispersion of scRNASeq-data in its dimensionality reduction.
+Furthermore, single cell transcriptomics specific extensions exist, such as ZINB-WaVE \cite[risso2018], which accounts for zero inflation and over-dispersion of scRNASeq-data.
 \stopsubsubsection
 
 \startsubsubsection[title={Diffusion Maps}]
 Diffusion maps provide another spectral decomposition of data.
 Their practicality for data analysis was first shown by \inlinecite[coifman2005].
-Compared to some \about[sec:learned-embeddings] like t-SNE \cite[vandermaaten2008], diffusion maps preserve global structures and the pseudo-temporal ordering of cells better \cite[haghverdi2015], and the first diffusion components are often sufficient to directly capture and visualize bifurcation events in differentiating cells.
+Compared to some \about[sec:learned-embeddings] like t-SNE, diffusion maps preserve global structures and the pseudo-temporal ordering of cells better \cite[haghverdi2015], and the first diffusion components are often sufficient to directly capture and visualize bifurcation events in differentiating cells.
 
 %https://static-content.springer.com/esm/art%3A10.1038%2Fnmeth.3971/MediaObjects/41592_2016_BFnmeth3971_MOESM373_ESM.pdf
 
@@ -207,8 +208,8 @@ I pioneered the use of a symmetrized kNN graph represented as a symmetric sparse
 In order to optimize the embedding for certain use cases, machine learning can be employed to learn an optimal embedding directly or a function to optimally embed the expression profiles.
 A common goal is to represent relationships in the data as faithfully as possible in a 2- or 3-dimensional embedding that can be displayed on a screen or paper.
 
-One such machine learning driven method, t-distributed stochastic neighborhood embedding (t-SNE, \inlinecite[vandermaaten2008]), remains the most popular dimensionality reduction method \cite[kobak2019].
-The more recent method UMAP \cite[mcinnes2018] works similarly, while representing global structures in the data more faithfully \cite[becht2018].
+One such machine learning driven method, t-SNE, remains the most popular dimensionality reduction method \cite[kobak2019].
+The more recent method UMAP works similarly, while representing global structures in the data more faithfully \cite[becht2018].
 Moreover it is claimed to be viable as a preprocessing dimensionality reduction method like the aforementioned \about[sec:spectral].
 \inlinecite[kobak2019] showed that t-SNE with a data-driven selection of meta-parameters still outperforms UMAP under some circumstances.
 \TODO[put the above into relation: can’t UMAP be tuned to be like t-SNE?]
