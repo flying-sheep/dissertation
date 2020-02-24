@@ -17,11 +17,8 @@ To this end, it can be colored or annotated using input features and statistics 
 In the context of scRNA-Seq data, the high dimensional data are represented as a gene expression matrix $x_{gc}$ with tens of thousands of genes $g∈\{1,…,G\}$, measured for up to approximately one million cells $c∈\{1,…,C\}$ at once \cite[zheng2017].
 %Matrices this big are very sparse due to the ubiquity of high dropout in protocols able to capture this many cells.
 %\TODO[cite. only dropout makes them sparse?]
-The intrinsic dimensionality of transcriptomic data is low when compared to this number of genes.
+The intrinsic dimensionality of transcriptomic data is low when compared to this number of genes \cite[heimberg2016].
 Embeddings $s_{pc}$ ($p∈\{1,…,P\}$) of most datasets therefore only require a comparatively low number of dimensions $50≤P≤100$ to capture all information necessary to reconstruct all known biological processes \cite[ding2018,lenz2016].
-\TODO[lessen breadth of claim – most datasets & all information]
-Global structures of the data such as strongly differing cell types or differentiation can often be faithfully reflected in a 2 or 3 dimensional embedding.
-\TODO[ref]
 
 Dimensionality reduction methods can also be categorized into linear and nonlinear.
 Linear methods such as Principal component analysis (PCA, \inlinecite[abdi2010]) use linear combinations of input dimensions as embedding dimensions, which means that distances in $s$ directly relate to distances in $x$.
@@ -110,19 +107,15 @@ Furthermore, single cell transcriptomics specific extensions exist, such as ZINB
 \startsubsubsection[title={Diffusion Maps}]
 Diffusion maps provide another spectral decomposition of data.
 Their practicality for data analysis was first shown by \inlinecite[coifman2005].
-Compared to some \about[sec:learned-embeddings] like t-SNE, diffusion maps preserve global structures and the pseudo-temporal ordering of cells better \cite[haghverdi2015], and the first diffusion components are often sufficient to directly capture and visualize bifurcation events in differentiating cells.
 
 %https://static-content.springer.com/esm/art%3A10.1038%2Fnmeth.3971/MediaObjects/41592_2016_BFnmeth3971_MOESM373_ESM.pdf
 
-A diffusion map $s_{pc}$ has as components $p$ the eigenvectors of a matrix of transition probabilities $T_{cd}$ between cells $c$ and $d ∈ \{1, …, C\} ∖ \{c\}$.
-\TODO[I already define s, x, g, p, c above. Is it correct to name the used variables again in the context they’re now being used in?]
+A diffusion map $s_{pc}$ has as components $p$ the eigenvectors of a matrix of transition probabilities $T_{cd}$ between cells $c$ and $d$.
 The transition probabilities are derived from a diffusion model applied to the cells’ expression profiles $x_{gc}$.
-There are several flavors of diffusion models, parametrized over the chosen distance function $dist$ and the kernel width $σ$ (square root of the Gaussian function $Y(c)$’s variance).
-\TODO[You underlined Y(c) here, but I define it as the next formula!]
-
-The most useful set of flavors is the ones independent of local density.
-These flavors parametrize their Gaussian kernel with a cell-dependent kernel width $σ_c$ set to the local density.
-Those flavors’ Gaussian function is:
+There are several flavors of diffusion models, parametrized over the chosen distance function $dist$ and the kernel width $σ$.
+Using a common $σ$ for all cells can lead to $T_{cd}$ becoming disjunct, rendering its Eigen decomposition undefined.
+This led to the development of locally scaled diffusion maps, in which the kernel width $σ_c$ is locally inferred for each cell.
+A locally scaled Gaussian function is:
 
 \placeformula
 \startformula
@@ -135,7 +128,7 @@ Y_c\left(c'\right) =
 	}\right)
 \stopformula
 
-Where $σ_c$ can be estimated from $c$’s $k$th-nearest neighbor $\text{NN}_k(c)$:
+Where $σ_c$ is an estimate of the local density of $x_{gc}$ around $c$ using $c$’s $k$th-nearest neighbor $\text{NN}_k(c)$:
 
 \placeformula
 \startformula
@@ -173,7 +166,7 @@ W_{cd} = {K(c, d) \over Z(c) Z(d)}
 Z(c) = ∑_{d ∈ \{1,…,C\}} K(c, d)
 \stopformula
 
-More commonly today, $W$ is approximated. One approach is to only define $W_{cd}$ for $d∈\{\text{NN}_k(c)\}$ instead of all $d∈\{1,…,C\}$, another is employed by UMAP, which uses fuzzy simplical sets derived from $σ_c$ instead of discrete sets of nearest neighbors.
+More commonly today, $W$ is approximated. One approach is to only define $W_{cd}$ for $d∈\{\text{NN}_k(c)\}$ instead of all $d∈\{1,…,C\}$, another is employed by UMAP (see \in[sec:learned-embeddings]), which uses fuzzy simplical sets derived from $σ_c$ instead of discrete sets of nearest neighbors.
 
 In any case, a transition probability matrix $T$ can be obtained by row-normalizing $W$:
 
@@ -182,22 +175,18 @@ In any case, a transition probability matrix $T$ can be obtained by row-normaliz
 \tilde{Z}(c) = ∑_{d∈\{1,…,C\}} W_{cd}
 \stopformula
 
-The traditional variant $T_{cd}^{\mathword{asym}}$, mentioned for completeness, is defined as:
+There are different possible definitions for $T_{cd}$ has several advantages, including computational performance and the ability to reuse the sparsity structure of $W$: 
 
 \placeformula
 \startformula
-T_{cd}^{\mathword{asym}} = \tilde{Z}(c)^{-1} W_{cd}
+T_{cd} = √{\tilde{Z}(c)}^{-1} W_{cd} √{\tilde{Z}(y)}^{-1}
 \stopformula
 
-The symmetrical variant $T_{cd}^{\mathword{sym}}$ has several advantages, including computational performance and the ability to reuse the sparsity structure of $W$: 
-
-\placeformula
-\startformula
-T_{cd}^{\mathword{sym}} = √{\tilde{Z}(c)}^{-1} W_{cd} √{\tilde{Z}(y)}^{-1}
-\stopformula
+Compared to learned embeddings like t-SNE (see \in[sec:learned-embeddings]), diffusion maps preserve global structures and the pseudo-temporal ordering of cells better \cite[haghverdi2015], and the first diffusion components are often sufficient to directly capture and visualize bifurcation events in differentiating cells.
 
 During the parallel development of destiny \cite[angerer2016] and diffusion pseudo time \cite[haghverdi2016], I helped shape the efficient flavor of diffusion maps most used today \TODO[data].
 I pioneered the use of a symmetrized kNN graph represented as a symmetric sparse matrix, using this kNN information as a density estimate for the locally scaled kernel $K$ and its sparsity structure for efficient calculation of the symmetric transition probability matrix $T$.
+\TODO[move to ??? (carsten answer)]
 
 \stopsubsubsection
 
@@ -205,17 +194,25 @@ I pioneered the use of a symmetrized kNN graph represented as a symmetric sparse
 
 \startsubsection[reference=sec:learned-embeddings,title={Learned embeddings}]
 % https://nbisweden.github.io/workshop-scRNAseq/slides2019/Dimensionality_reduction_P_Czarnewski_2019.pdf
-In order to optimize the embedding for certain use cases, machine learning can be employed to learn an optimal embedding directly or a function to optimally embed the expression profiles.
-A common goal is to represent relationships in the data as faithfully as possible in a 2- or 3-dimensional embedding that can be displayed on a screen or paper.
+Machine learning based dimensionality reduction methods use optimization to either learn an embedding directly, or a function mapping high-dimensional data to embedding coordinates.
+A common optimization target is to represent high-dimensional relationships in the data as faithfully as possible in a 2D or 3D embedding that can be displayed on a screen or paper.
 
 One such machine learning driven method, t-SNE, remains the most popular dimensionality reduction method \cite[kobak2019].
-The more recent method UMAP works similarly, while representing global structures in the data more faithfully \cite[becht2018].
-Moreover it is claimed to be viable as a preprocessing dimensionality reduction method like the aforementioned \about[sec:spectral].
-\inlinecite[kobak2019] showed that t-SNE with a data-driven selection of meta-parameters still outperforms UMAP under some circumstances.
-\TODO[put the above into relation: can’t UMAP be tuned to be like t-SNE?]
+\TODO[defined it earlier, is it OK to not spell it out here?]
+T-SNE optimizes an embedding so that similarities in the high-dimensional space $x_{gc}$ are maintained in the low-dimensional embedding $s_{pc}$.
+Similarly to locally scaled diffusion maps, it uses a kernel with a width based on local density in $x_{gc}$ to calculate similarities between cells while exaggerating short distances and de-emphasizing long distances.
+It randomly initializes the embedding matrix and iterates as follows:
+It first calculates the similarities in the high dimensional data using a Gaussian distribution, and the ones in the embedding using a t-distribution.
+Then it modifies the embedding a way that brings its similarity matrix closer to the similarity matrix of the high dimensional data.
+It stops iterating if the similarity matrices converge sufficiently or a maximum number of iterations is reached.
+\TODO[more formal]
+
+The more recent method UMAP works similarly, while claiming to represent global structures in the data more faithfully \cite[becht2018].
+Moreover it is claimed to be viable as a preprocessing dimensionality reduction method like the aforementioned spectral decomposition methods (see \in[sec:spectral]).
+\inlinecite[kobak2019] however showed that t-SNE and UMAP perform very similarly with the same data-driven initialization and selection of meta-parameters.
 
 A disadvantages of machine learning based methods is their nondeterministic nature:
-the optimization converging to local optima can result in unstable inference of certain cells’ neighborhoods in the embedding.
+due to the non-convex nature of the optimization, its converging to local optima can result in unstable inference of certain cells’ neighborhoods in the embedding \cite[hinton2003].
 Another problem is that most common machine learning methods learn an embedding directly instead of an embedding function, making it impossible to project new data into an existing embedding.
 There are approaches to remedy this for UMAP and t-SNE \TODO[cite].
 \stopsubsection
