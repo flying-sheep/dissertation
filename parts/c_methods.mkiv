@@ -5,31 +5,40 @@
 
 \startsection[title={Dimensionality Reduction Methods}]
 
+\TODO[carsten comment “????ding: general idea (e.g.)”]
 Dimensionality reduction methods embed high dimensional data into a low dimensional space.
-They are designed around the resulting space’s purpose, which includes 2-3 dimensional spaces for visualization or a latent space for further processing.
-Some methods also assign scores to each result dimension, which can e.\,g. be used to decide which dimensions to discard and which ones to keep for visualization or as latent space.
+They generally aim to reduce technical sources of variation (noise) while retaining variation produced by processes of interest.
+Dimensionality reduction methods can broadly be categorized by the resulting space’s purpose, which is usually a 2D or 3D space for visualization or a latent space for further processing.
+Some methods also assign scores to each result dimension, which can e.\,g. be used to decide which dimensions to discard and which ones to keep for visualization or further processing.
+An ideal latent space embedding would exclusively capture all underlying processes’ variability present in the data, and therefore match the intrinsic dimensionality of the data.
+A 2D or 3D embedding used as as scatter plot coordinates serves as the basis of visualizations interpretable by humans.
+To this end, it can be colored or annotated using input features and statistics to analyze static relations or dynamic processes of the data.
 
-In the context of scRNA-Seq data, the high dimensional data are represented as a gene expression matrix $x_{gc}$ with tens of thousands of genes $g∈\{1,…,G\}$, measured for up to approximately one million cells $c∈\{1,…,C\}$ at once.
+In the context of scRNA-Seq data, the high dimensional data are represented as a gene expression matrix $x_{gc}$ with tens of thousands of genes $g∈\{1,…,G\}$, measured for up to approximately one million cells $c∈\{1,…,C\}$ at once \cite[zheng2017].
 %Matrices this big are very sparse due to the ubiquity of high dropout in protocols able to capture this many cells.
 %\TODO[cite. only dropout makes them sparse?]
-The intrinsic dimensionality of transcriptomic data is low when compared to these numbers of genes, so an embedding $s_{pc}$ with a comparatively low number of dimensions $p∈\{1,…,P\}$ is enough to capture nearly all biologically relevant variation and structure in the data.
-As an example of such a latent space, about $50≤P≤100$ linear combinations of genes are sufficient to capture all information necessary to reconstruct all known biological processes \cite[ding2018].
+The intrinsic dimensionality of transcriptomic data is low when compared to this number of genes.
+Embeddings $s_{pc}$ ($p∈\{1,…,P\}$) of most datasets therefore only require a comparatively low number of dimensions $50≤P≤100$ to capture all information necessary to reconstruct all known biological processes \cite[ding2018].
+\TODO[lessen breadth of claim – most datasets & all information]
 Global structures of the data such as strongly differing cell types or differentiation can often be faithfully reflected in a 2 or 3 dimensional embedding.
-Using such embeddings as scatter plot coordinates serves as the basis of visualizations interpretable by humans.
+\TODO[ref]
+
+Dimensionality reduction methods can also be categorized into linear and nonlinear.
+Linear methods such as Principal component analysis (PCA) use linear combinations of input dimensions as embedding dimensions, which means that distances in $s$ directly relate to distances in $x$.
+Nonlinear methods such as t-SNE, UMAP, or diffusion maps attempt to maintain locality in the data.
+This means that local neighborhoods of samples in $x$ are still close neighbors in $s$ (red circles in \bold{b}).
+Some nonlinear dimensionality reduction methods also maintain global distances to a degree (UMAP and diffusion maps, not t-SNE).
 
 \startplacefigure[title={
 Reducing dimensions using global and local distances.
 \bold{(a)}
-Dimensionality reduction methods embed samples (such as cells $c$) from a high dimensional space (such as gene expressions $g$) to a low dimensional space ($x_{gc} ↪ s_{pc}$, $G>>P$).
-They can be used in data preprocessing or as coordinates in visualizations:
+Dimensionality reduction methods embed samples (such as cells) from a high dimensional space (such as gene expressions) to a low dimensional space ($x_{gc} ↪ s_{pc}$, $G>>P$).
+They can be used in data preprocessing or as coordinates in visualizations.
 \bold{(b)}
-This kind of visualization can be colored with any kind of label to see it in context.
-Here, the embedding shows a bifurcation of the cells and a gradual  change of gene $a$’s expression along the branches.
+A scatter plot using embedding coordinates visualizes similarities between cells’ gene expression profiles $x_{a·}$ and serves as a reference frame for visualizing further information.
+It can be annotated to explain processes and label cell groups or colored with any kind of cell label to see it in context.
+Here, the embedding shows a bifurcation of the cells and a gradual change of gene $a$’s expression $x_{a·}$ along the branches.
 If we know that gene $a$ is e.\,g. a marker for early development, this indicates that cells in the bottom left branch are young and undifferentiated, and the two other branches are differentiated.
-Linear dimensionality reduction methods such as PCA use linear combinations of input dimensions as embedding dimensions, which means that distances in $s$ directly relate to distances in $x$.
-Nonlinear dimensionality reduction methods such as t-SNE, UMAP, or diffusion maps attempt to maintain locality in the data.
-This means that local neighborhoods of samples in $x$ are still close neighbors in $s$ (red circles in \bold{b}).
-Some nonlinear dimensionality reduction methods also maintain global distances to a degree (UMAP and diffusion maps, not t-SNE).
 }]
 \startcombination[2*1]
 {
@@ -86,7 +95,7 @@ By keeping components with high enough scores as embedding dimensions, spectral 
 This is most useful as a preprocessing step to define a less noisy latent space reflecting the inherent dimensionality of the data, but components can also be directly visualized.
 
 \startsubsubsection[title={Principal Component Analysis}]
-Principal component analysis (PCA) is a simple spectral decomposition.
+PCA is a simple spectral decomposition.
 Its principal components (PCs) are weighted products of input features (such as transcripts), scored by the variance each PC explains.
 As each PC ideally represents one source of variation, data with up to around 4 linearly separable sources of variation can be interpreted by visualizing the corresponding number of PCs.
 As mentioned before as an example, while the intrinsic dimensionality of transcriptomic data is low, the number of PCs necessary to faithfully represent all biological processes one might care about is around 50-100 \cite[lenz2016].
@@ -341,7 +350,7 @@ This allows analyzing of up to a million cells in reasonable time in a familiar 
 
 \startsection[title={BART-Seq (demultiplexing and quantification)}]
 
-\TODO[Is the RNA-Seq explanation in the intro sufficient for this chapter?]
+\TODO[methods should be self contained. repeat intro with mre details if necessary]
 BART-Seq is a targeted RNA sequencing protocol able to sensitively and inexpensively measure expressions of thousands of samples per experiment, such as single cells or cell groups \cite[uzbas2019].
 It consists of three steps; design, experiment, and quantification.
 
@@ -361,7 +370,6 @@ Separately for each barcode, all combinations of forward primers and forwards ba
 Analogously all possible reverse barcode-linker-primer strands are synthesized per reverse barcode.
 Each well of a sequencing plate receives a different combination of forward and reverse barcode-linker-primer assemblies, allowing to address $(\frac12\text{\#barcodes})^2$ wells.
 The experiment concludes like a regular paired-end sequencing run \cite[fullwood2009], resulting in a raw read library containing strands of barcode-linker-read.
-\TODO[understandable? “read” is a fragment later aligned to amplicons, while “raw read” is the whole thing and only has to carry us to the next line]
 
 % quantification: sequencing and multiplexing
 In the quantification step, the barcodes, linkers and low-quality bases are cut off the raw read sequence.
