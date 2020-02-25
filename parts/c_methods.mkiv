@@ -5,7 +5,7 @@
 
 \startsection[title={Dimensionality Reduction Methods}]
 
-\TODO[carsten comment “????ding: general idea (e.g.)”]
+\TODO[do carsten comment? “heading: general idea (e.g.)”]
 Dimensionality reduction methods embed high dimensional data into a low dimensional space.
 They generally aim to reduce technical sources of variation (noise) while retaining variation produced by processes of interest.
 Dimensionality reduction methods can broadly be categorized by the resulting space’s purpose, which is usually a 2D or 3D space for visualization or a latent space for further processing.
@@ -183,11 +183,6 @@ T_{cd} = √{\tilde{Z}(c)}^{-1} W_{cd} √{\tilde{Z}(y)}^{-1}
 \stopformula
 
 Compared to learned embeddings like t-SNE (see \in[sec:learned-embeddings]), diffusion maps preserve global structures and the pseudo-temporal ordering of cells better \cite[haghverdi2015], and the first diffusion components are often sufficient to directly capture and visualize bifurcation events in differentiating cells.
-
-During the parallel development of destiny \cite[angerer2016] and diffusion pseudo time \cite[haghverdi2016], I helped shape the efficient flavor of diffusion maps most used today \TODO[data].
-I pioneered the use of a symmetrized kNN graph represented as a symmetric sparse matrix, using this kNN information as a density estimate for the locally scaled kernel $K$ and its sparsity structure for efficient calculation of the symmetric transition probability matrix $T$.
-\TODO[move to ??? (carsten answer)]
-
 \stopsubsubsection
 
 \stopsubsection
@@ -219,40 +214,41 @@ There are approaches to remedy this for UMAP and t-SNE \TODO[cite].
 
 \stopsection
 
-\startsection[title={Gene relevance}]
+\startsubsection[title={Gene relevance}]
 
 \definemathcommand[lr][nolop]{\mfunction{LR}}
 \definemathcommand[gr][nolop]{\mfunction{GR}}
 \definemathcommand[rank][nolop]{\mfunction{rank}}
 
-Due to their lesser expressivity, basic dimensionality reduction methods based on linear combinations like PCA are rarely used for visualizing scRNA-Seq data anymore.
-The nonlinear methods used instead however lack the linear methods’ intrinsic relation from reduced dimensions to input genes.
-We developed the gene relevance method in order to derive this relation from scRNA-Seq data and a given embedding \cite[angerer2020].
-The method defines a gene relevance score $R_{gc}$, as well as summary scores called local gene relevance $\lr_r(g, Ψ)$ and global gene relevance $\gr_r(g)$.
-\TODO[mention GR map ($l^m_c$) as well?]
-The gene relevance score is a measure of the extent in which a gene drives the embedding coordinates of a specific cell.
-It can be derived from the gradient $∇_{gc}$ of the function mapping a embedding $s_{pc}$ to the gene expression $x_{gc}$:
-\TODO[∇f is the gradient of the function f, and I think that’s in our case the function mapping the embedding to the gene expressions, so the inverse of the embedding function. Does that make sense?]
+Linear dimensionality reduction methods like PCA are rarely used for visualizing scRNA-Seq data anymore.
+Nonlinear methods are preferred as their flexibility allows them visualize more information at once in 2D or 3D plots.
+They however lack the linear methods’ intrinsic relation from reduced dimensions to input genes.
+Such knowledge about which genes drive an embedding allows to identify target genes for subsequent analysis.
+The gene relevance method was developed in order to derive this relation from scRNA-Seq data and any given embedding \cite[angerer2020].
+It requires no previous cluster detection algorithm and is able to find genes that cannot be identified using differential expression analysis.
+The method defines a gene relevance score $R_{gc}$ for gene $g$ and cell $c$, as well as summary scores called global gene relevance $\gr_r(g)$ and local gene relevance $\lr_r(g, Ψ)$ for any given set of cells $Ψ$.
+It also defines a gene relevance map as a scatter plot using the embedding coordinates and coloring each cell by its label $l_c$, which denotes the gene driving $c$’s embedding location most.
+The gene relevance score $R_{gc}$ is a measure of the extent in which a gene $g$ drives the embedding coordinates $s_{pc}$ of a specific cell $c$.
+It can be derived from the gradient $∇f_{gc}$ of the function $f$ mapping a embedding $s_{pc}$ to the gene expression $x_{gc}$:
 
 % https://de.wikipedia.org/wiki/Nabla-Operator
 % use the ∇ operator like a vector, where the “product” of e.g. $∂ / ∂x_i$ with a function f on the right is interpreted as the partial derivative $∂f / ∂x_i$. 
 
 \placeformula
 \startformula
-∇_{gc} = \left(\frac{∂ x_{gc}}{∂ s_{1c}}, …, \frac{∂ x_{gc}}{∂ s_{Pc}}\right)
+∇f_{gc} = \left(\frac{∂ x_{gc}}{∂ s_{1c}}, …, \frac{∂ x_{gc}}{∂ s_{Pc}}\right)
 \stopformula
 
-This gradient can be estimated using local differences.
-\TODO[is it called that?]
+This gradient can be estimated using local differences $\frac{∂x}{∂s} ≈ \frac{Δx}{Δs}$ within each cell $c$’s kNN neighborhood $\text{NN}_k(c) ∧ n≠c$.
 To address zero inflation, the gradient is only defined for $x_{gc}≠0$:
 \TODO[introduce zero inflation in intro]
 
 \placeformula
 \startformula
-\widehat{∇_{gc}} = \left(
+\widehat{∇f_{gc}} = \left(
 \startcases[left={\left.}, style=\displaystyle]
-\NC \mathit{NA}, \NC \text{if } x_{gc} = 0 \NR
-\NC \underset{n ∈ \text{NN}_k(c) ∧ n≠c}\median \frac{x_{gc}-x_{gn}}{s_{pn}-s_{pc}}, \NC \text{otherwise} \NR
+\NC \mathit{NA}, \NC if $x_{gc} = 0$ \NR
+\NC \underset{n ∈ \text{NN}_k(c) ∧ n≠c}\median \frac{x_{gn}-x_{gc}}{s_{pn}-s_{pc}}, \NC otherwise \NR
 \stopcases
 \right)
 \stopformula
@@ -261,11 +257,11 @@ The gene relevance score $R_{gc}$ is defined as the euclidean norm of this gradi
 
 \placeformula
 \startformula
-R_{gc} = \left|\left|∇_{gc}\right|\right|_2 = \sqrt{∑_{p=1}^P \left(∇_{gc}\right)_p^2}
+R_{gc} = \left|\left|∇f_{gc}\right|\right|_2 = \sqrt{∑_{p=1}^P \left(∇f_{gc}\right)_p^2}
 \stopformula
 
 Local gene relevance $\lr_r(g, Ψ)$ is a measure of how much a gene $g$ is driving the embedding given a set of cells $Ψ⊆\{1,…,C\}$.
-Local gene relevance is defined depending on a rank cutoff $r∈\{2,…,|Ψ|\}$.
+Local gene relevance depends on a rank cutoff $r∈\{2,…,|Ψ|\}$.
 
 \placeformula
 \startformula
@@ -280,41 +276,43 @@ With the \inlinecite[iverson1962] bracket notation:
 \startformula
 \left[P\right] =
 \startcases
-\NC 1, \NC \text{if $P$ is true} \NR
-\NC 0, \NC \text{otherwise} \NR
+\NC 1, \NC if $P$ is true \NR
+\NC 0, \NC otherwise \NR
 \stopcases
-\text{, for any predicate $P$}
+\text{, where $P$ is any predicate.}
 \stopformula
 
 The set of cells of interest $Ψ$ can be obtained by metadata such as experimental markers or the labels from a clustering algorithm.
 Another alternative is the visualization of local relevance by dividing the embedding into shaped bins, which can be colored according to their respective local relevance.
+\TODO[add figure]
 
-Global gene relevance $\gr_r(g)$ is the local relevance of the set of all genes $\{1,…,C\}$:
+Global gene relevance $\gr_r(g)$ is a score that emphasizes genes driving the embedding for large parts of the data.
+It is defined as the local relevance of genes $\{1,…,C\}$:
 
 \placeformula
 \startformula
 \gr_r\left(g\right) = \lr_r(g, \{1,…,C\})
 \stopformula
 
-Gene relevance maps label each cell with the gene having the highest gene relevance score for that cell.
-Because this labeling is subject to noise, $m$ smoothing steps over the scores of each cells’ neighborhood are employed to obtain less and more stable labels.
+Using it as a global gene score yields a similar result as PCA loadings.
+
+Gene relevance maps were developed since global relevance cannot be used to detect genes driving the embedding of small subpopulations, and local relevance requires defining discrete sets of cells to score.
+They label each cell with the gene having the highest gene relevance score for that cell.
+Because this labeling is subject to noise, $m$ smoothing steps over the scores of each cells’ neighborhood are employed to obtain less and more stable labels $l_c^m$.
 
 \placeformula
 \startformula
 l_c^m = \argmax_{g∈Ω ∧ x_{gc}≠0} 
 \startcases[style=\displaystyle]
-\NC R_{gc}, \NC \text{if $m=0$} \NR
-\NC {\textstyle \frac1k} ∑_{n ∈ \text{NN}_k(c)} \left[ l_n^{m-1} = g \right], \NC \text{otherwise} \NR
+\NC R_{gc}, \NC if $m=0$ \NR
+\NC {\textstyle \frac1k} ∑_{n ∈ \text{NN}_k(c)} \left[ l_n^{m-1} = g \right], \NC otherwise \NR
 \stopcases
 \stopformula
 
 Gene relevance is robust towards its rank cutoff parameter $r$ and reasonably robust towards its smoothing parameter $m$ \cite[angerer2020], given that strong smoothing $m≥3$ often results in all cells sharing the single most globally relevant gene as label.
-The implementation is sufficiently efficient in terms of computational time and memory that quick iteration is possible.
+The implementation as part of the R package destiny \cite[angerer2016] is sufficiently efficient in terms of computational time and memory so that quick iterations are possible.
 
-I developed and implemented all of the mentioned concepts as part of destiny.
-The implementation offers a rich and user friendly API including plotting routines for all concepts.
-
-\stopsection
+\stopsubsection
 
 \startsection[title={Scanpy and AnnData}]
 
@@ -378,8 +376,6 @@ Amplicons are counted per barcode combination according to one of two strategies
 The conservative strategy only counts where both reads aligned to the same amplicon, while the sensitive strategy also counts when one of both is unaligned.
 Neither strategy counts one of the aligned amplicons when there is a mismatch.
 The count of overall full matches, half matches, and mismatches is included in the various statistics collected about the demultiplexing and quantification process.
-
-I designed the quantification step in collaboration with Fatma Uzbas and Micha Drucker, and implemented a Python library and pipeline executing it.
 
 \stopsection
 

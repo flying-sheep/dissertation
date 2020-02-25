@@ -245,6 +245,10 @@ Destiny also contained a perceptually continuous color-map before they found the
 Apart from diffusion maps, Destiny also supports using its diffusion space to calculate diffusion pseudo time between cells as well as to project new data into the diffusion space of the data used to create the diffusion space.
 Destiny supports Bioconductor’s annotated expression matrix classes and directly integrates into the popular plotting library GGplot2.
 It contains dedicated plotting routines for diffusion maps and diffusion pseudo time.
+
+\TODO[integrate]
+During the parallel development of destiny \cite[angerer2016] and diffusion pseudo time \cite[haghverdi2016], I helped shape the efficient flavor of diffusion maps most used today \TODO[data].
+I pioneered the use of a symmetrized kNN graph represented as a symmetric sparse matrix, using this kNN information as a density estimate for the locally scaled kernel $K$ and its sparsity structure for efficient calculation of the symmetric transition probability matrix $T$.
 \stopsubsection
 
 \startsubsection[title={Gene Relevance}]
@@ -255,6 +259,10 @@ It allows to identify genes that drive the local positioning of a cell in an emb
 The initial idea comes from Fabian Theis, while I implemented it and iterated on the design until it was applicable to real data.
 I also extended the idea to include scores for defined groups of cells such as clusters or the whole data for a global relevance score per gene.
 Destiny includes several plotting routines designed for the different gene relevance concepts.
+
+\TODO[integrate]
+I developed and implemented all of the mentioned concepts as part of the destiny R package \cite[angerer2016].
+The implementation offers a rich and user friendly API including plotting routines for all concepts.
 \stopsubsection
 
 \startsubsection[title={Scanpy and AnnData}]
@@ -281,6 +289,9 @@ It is set apart from untargeted single cell and bulk RNA-Seq protocols due to it
 I designed a demultiplexing and counting strategy for BART-Seq together with Fatma Uzbas and Micha Drucker.
 I implemented those strategies as well as visualization routines for the protocol as a Python package.
 Part of this package is a pipeline based on Snakemake that performs all steps of the protocol to create count matrices, statistics and visualizations.
+
+\TODO[integrate]
+I designed the quantification step in collaboration with Fatma Uzbas and Micha Drucker, and implemented a Python library and pipeline executing it.
 \stopsubsection
 
 \stopsection
