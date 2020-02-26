@@ -177,7 +177,7 @@ Furthermore, no data structures and file exchange formats suitable for scRNA-Seq
 Existing workflows dealt with raw matrices and data frames that needed to be kept in sync manually across filtering steps, increasing the potential for error.
 Furthermore, reproducibility was hard to guarantee in the presence of nondeterministic methods and a multitude of tool versions with subtly different defaults and behavior.
 % - pre-Destiny: DM creation in R
-In the R landscape, the Bioconductor project provided tools for preprocessing, and basic analysis, but little in the way of embeddings.
+In the R landscape, the Bioconductor project \cite[huber2015] provided tools for preprocessing, and basic analysis, but little in the way of embeddings.
 The only available option for diffusion map embedding at the time did not offer features necessary for scRNA-Seq analysis and was impractically slow.
 \TODO[can’t introduce PCA and DMs here…]
 % - pre-GR: differential expression and Trendsceek
@@ -272,10 +272,8 @@ AnnData is a data structure for annotated observation data including scRNA-Seq c
 With F. Alexander Wolf we implemented the initial version, where he focused on performance while I focused on API and data structure design.
 Scanpy is designed around AnnData, storing the results of each processing step in an expression matrix layer or an aligned annotation (see \infig[fig:anndata]).
 This data structure enables Scanpy’s flexibility.
-% Loom, SingleCellExperiment, AnnData2ri
-It can be held in memory for fast operations and in-memory conversion to R’s SingleCellExperiment \cite[lun2017,angerer2019].
-It can also be persisted to disk in various formats such as Loom \cite[linnarson2017] for pipeline checkpoints, result archiving, and interoperability with command line tools.
-AnnData’s native “h5ad” is an efficient, HDF5-backed format that allows disk-backed operations for data too large to hold in memory.
+It can be persisted to disk in various formats for interoperability and storage.
+AnnData supports disk-backed operations for data too large to hold in memory.
 \TODO[already mentioned above. Draw connection to microfluidics]
 AnnData’s structure allows close interoperability between Scanpy and other tools using AnnData.
 For example, after storing an dimension reduction algorithm’s embedding coordinates into an AnnData object’s 2D annotations, they can be used from Scanpy’s plotting routines.

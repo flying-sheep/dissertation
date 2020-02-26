@@ -17,6 +17,7 @@ kNN
 UMI
 qPCR
 PCR
+FACS
 
 Kallisto
 Bioconductor
@@ -60,3 +61,4 @@ ZINB-WaVE
 ½
 →
 ∇
+cytometry

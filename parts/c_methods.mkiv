@@ -224,6 +224,7 @@ Linear dimensionality reduction methods like PCA are rarely used for visualizing
 Nonlinear methods are preferred as their flexibility allows them visualize more information at once in 2D or 3D plots.
 They however lack the linear methods’ intrinsic relation from reduced dimensions to input genes.
 Such knowledge about which genes drive an embedding allows to identify target genes for subsequent analysis.
+
 The gene relevance method was developed in order to derive this relation from scRNA-Seq data and any given embedding \cite[angerer2020].
 It requires no previous cluster detection algorithm and is able to find genes that cannot be identified using differential expression analysis.
 The method defines a gene relevance score $R_{gc}$ for gene $g$ and cell $c$, as well as summary scores called global gene relevance $\gr_r(g)$ and local gene relevance $\lr_r(g, Ψ)$ for any given set of cells $Ψ$.
@@ -318,28 +319,38 @@ The implementation as part of the R package destiny \cite[angerer2016] is suffic
 
 \TODO[Efficiency (PCA, sparse, …) and APIs]
 Scanpy is a Python library providing functions and classes for scRNA-Seq preprocessing, analysis, and visualization.
-It is designed and developed in tandem with AnnData, a general purpose data structure for homogeneous, annotated two dimensional data (see \infig[fig:anndata]).
+It is designed and developed in parallel with AnnData, a general purpose data structure for annotated two dimensional data (see \infig[fig:anndata]).
 AnnData’s structure matches the annotated observations-by-features ($c×g$) matrix format most biological snapshot data is analyzed in.
-For example in single cell imaging, such a matrix can be constructed containing each segmented cell $c$’s average fluorescent channel $g$ value.
-Further examples include data from RNA-Seq or quantitative real-time polymerase chain reaction (qRT-PCR, \inlinecite[nurmi2002]), where $g$ stands for gene expression.
-In bulk protocols, $c$ is a tissue sample, and in single cell protocols $c$ is a cell.
-In any case, further information per sample or feature can exist, for example from other experiments or by classifying cells according to shape or other characteristics that are not represented directly in $g$ or $c$.
+This includes single cell imaging, where this matrix contains each segmented cell $c$’s average fluorescent channel $g$ value.
+In RNA-Seq or quantitative real-time polymerase chain reaction (qRT-PCR, \inlinecite[nurmi2002]), $g$ stands for a gene’s expression in a tissue sample or a single cell.
+Each observation $c$ or feature $g$ can be annotated with different labels used in any step of the Scanpy analysis.
+Annotations that exist from the start can stem from technical sources such as experimental batches or different data sources such as images from flow cytometry \cite[fulwyler1965].
+They can also be derived from knowledge about origin like the genome a gene exists in or the tissue sample a cell came from.
+Other annotations can be added by preprocessing and analysis steps such as cell classification \cite[li2017].
 
-The central element of each AnnData object \type{adata} is consequently a stack of named layers \type{adata.layers}, each holding all features $g$ measured for all observations $c$.
+The central element of each AnnData object is consequently a stack of named 2D matrix layers \type{.layers}, each holding all features $g$ measured for all observations $c$.
 \footnote{Missing observations can be represented by the special pseudo-value \emph{NA}.}
-The default layer can be accessed via \type{adata.X}.
-For each observation and feature, an unique name is stored by which it can be addressed (\type{adata.obs_names}, \type{adata.var_names}).
 Each layer has one homogeneous scalar type able to represent it in sufficient IEEE 754 floating-point precision or integer size.
-The layers can be dense Numpy arrays \cite[vanderwalt2011] for normalized or densely measured data or Scipy sparse matrices \cite[virtanen2020] for zero-inflated scRNA-Seq data.
+The layer operations default to can be accessed via \type{.X}.
+For each dimension, unique names are stored in \type{.obs_names} or \type{.var_names} for addressing observations and features, respectively.
+The layers can be dense Numpy arrays \cite[vanderwalt2011] for normalized or densely measured data, as well as Scipy sparse matrices \cite[virtanen2020] for zero-inflated scRNA-Seq data.
 \TODO[mention zero inflation in intro]
-Named one dimensional annotations such as cluster labels, gene IDs alternative to the feature name, or ranking indices are stored in their respective AnnData dimension’s Pandas data frame \cite[mckinney2010] (\type{adata.obs}, \type{adata.var}).
+Named 1D annotations such as cluster labels, alternative gene IDs besides \type{.var_names}, or ranking indices are stored in their respective AnnData dimension’s Pandas data frame \cite[mckinney2010] \type{.obs} or \type{.var}.
 \TODO[mention clustering in intro]
-Further, AnnData stores named multidimensional annotations (\type{adata.obsm}, \type{adata.varm}) and square sparse matrices representing weighted graphs (\type{adata.obsp}, \type{adata.varp}), each aligned to an AnnData dimension.
-AnnData maintains relations between data and annotations, keeping them in sync through filtering and concatenation.
-Due to the generic structure, Scanpy and other tools can interact by adding and reading annotations, as well as reading, modifying and adding layers.
+AnnData stores named 2D annotations for experimentally determined cell coordinates or dimension reduction coordinates in \type{.obsm} and \type{.varm}.
+Represented as square sparse matrices, weighted graphs are stored in \type{.obsp} and \type{.varp}.
+AnnData maintains relations between layers and annotations, keeping them in sync when filtering and concatenating AnnData objects.
+AnnData supports several file formats it can read and write to for long term result storage, pipeline checkpoints, file exchange, and compatibility with existing experimental protocols and other tools and pipelines.
+This includes its own \type{.h5ad} format based on HDF5 \cite[folk2011], Loom \cite[linnarson2017], UMI-Tools \cite[smith2017], Matrix Market \cite[boisvert1996], as well as Microsoft Excel and textual spreadsheets.
+AnnData supports disk-backed operations in its native format, allowing operations on data too big to hold in memory.
+For quick integration of AnnData with Bioconductor packages \cite[huber2015] or Seurat \cite[butler2018], AnnData can be converted to and from SingleCellExperiment \cite[lun2017] using AnnData2ri \cite[angerer2019].
+Due to AnnData’s generic structure, and its conversion and serialization options, it serves as a backbone for analysis pipelines:
+Scanpy and other tools can interact by adding and reading annotations, as well as reading, modifying and adding layers.
 
-Scanpy’s design is structured around ease of use without compromising performance.
-This allows analyzing of up to a million cells in reasonable time in a familiar interactive environment.
+Scanpy itself is designed around ease of use without compromising performance.
+This allows analyzing of up to a million cells in reasonable time in a familiar interactive environment \cite[wolf2018].
+
+
 \TODO[Jupyter]
 
 \stopsection
