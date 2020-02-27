@@ -350,7 +350,7 @@ Scanpy and other tools can interact by adding and reading annotations, as well a
 
 Scanpy itself is designed around ease of use without compromising performance.
 This allows analyzing of up to a million cells in reasonable time \cite[wolf2018].
-Scanpy integrates well with the popular Jupyterlab, allowing to iterate on an analysis in an interactive environment that preserves code, plots, and output as a report file called “notebook” \cite[Jupyter pub].
+Scanpy integrates well with the popular Jupyterlab, allowing to iterate on an analysis in an interactive environment that preserves code, plots, and output as a report file called “notebook” \cite[kluyver2016].
 Combined with disk-backed operations or saving of snapshots, this allows to interrupt a workflow at any point or move it to a different machine.
 A basic Scanpy workflow utilizes all aforementioned features of AnnData, establishing naming conventions by which subsequent steps interact.
 For example it stores read batch labels the \type{.obs} column that Scanpy’s batch correction algorithms default to, and stores dimensionality reduction coordinates as \type{.obsm['X_<method>']}.
