@@ -5,7 +5,6 @@
 
 \startsection[title={Dimensionality Reduction Methods}]
 
-\TODO[do carsten comment? “heading: general idea (e.g.)”]
 Dimensionality reduction methods embed high dimensional data into a low dimensional space.
 They generally aim to reduce technical sources of variation (noise) while retaining variation produced by processes of interest.
 Dimensionality reduction methods can broadly be categorized by the resulting space’s purpose, which is usually a 2D or 3D space for visualization or a latent space for further processing.
@@ -16,7 +15,6 @@ To this end, it can be colored or annotated using input features and statistics 
 
 In the context of scRNA-Seq data, the high dimensional data are represented as a gene expression matrix $x_{gc}$ with tens of thousands of genes $g∈\{1,…,G\}$, measured for up to approximately one million cells $c∈\{1,…,C\}$ at once \cite[zheng2017].
 %Matrices this big are very sparse due to the ubiquity of high dropout in protocols able to capture this many cells.
-%\TODO[cite. only dropout makes them sparse?]
 The intrinsic dimensionality of transcriptomic data is low when compared to this number of genes \cite[heimberg2016].
 Embeddings $s_{pc}$ ($p∈\{1,…,P\}$) of most datasets therefore only require a comparatively low number of dimensions $50≤P≤100$ to capture all information necessary to reconstruct all known biological processes \cite[ding2018,lenz2016].
 
@@ -93,9 +91,25 @@ This is most useful as a preprocessing step to define a less noisy latent space 
 \TODO[ref]
 
 \startsubsubsection[title={Principal Component Analysis}]
-\TODO[equations]
 PCA is a simple spectral decomposition \cite[abdi2010].
-Principal components (PCs) are weighted products of input features (such as transcripts), scored by the variance each PC explains.
+Principal components (PCs) $p$ are weighted products of input features (such as gene transcripts $g$), scored by the variance each PC explains.
+A PCA embedding $s_{pc}$ can be defined in multiple ways, one of which is based on the singular value decomposition of a centered data matrix $Z$ derived from the raw data $x_{gc}$:
+
+%https://stats.stackexchange.com/questions/134282/relationship-between-svd-and-pca-how-to-use-svd-to-perform-pca
+\placeformula
+\startformula
+Z = \left(z_{gc}\right) = \left( x_{gc} - \frac1C ∑_{c=1}^C x_{gc} \right)
+\stopformula
+
+After performing a singular component decomposition $Z = USV^T$, the embedding $s_{pc}$ can be defined as:
+
+\placeformula
+\startformula
+s_{pc} = S = (US)^T
+\stopformula
+
+\TODO[understandable mixing matrix syntax with element syntax? Should I add loadings?]
+
 As each PC ideally represents one source of variation, data with up to around four linearly separable sources of variation can realistically be interpreted using all PC combinations as coordinates for a series of 2D scatter plots.
 While the intrinsic dimensionality of transcriptomic data is low, the number of PCs necessary to faithfully represent all biological processes is around 50-100 \cite[lenz2016].
 Picking a number of PCs in this range, for example using the jackstraw algorithm \cite[chung2015] is a popular preprocessing step for downstream analysis.
@@ -317,7 +331,6 @@ The implementation as part of the R package destiny \cite[angerer2016] is suffic
 
 \startsection[title={Scanpy and AnnData}]
 
-\TODO[Efficiency (PCA, sparse, …) and APIs]
 Scanpy is a Python library providing functions and classes for scRNA-Seq preprocessing, analysis, and visualization.
 It is designed and developed in parallel with AnnData, a general purpose data structure for annotated two dimensional data (see \infig[fig:anndata]).
 AnnData’s structure matches the annotated observations-by-features ($c×g$) matrix format most biological snapshot data is analyzed in.
@@ -355,7 +368,6 @@ Combined with disk-backed operations or saving of snapshots, this allows to inte
 A basic Scanpy workflow utilizes all aforementioned features of AnnData, establishing naming conventions by which subsequent steps interact.
 For example it stores read batch labels the \type{.obs} column that Scanpy’s batch correction algorithms default to, and stores dimensionality reduction coordinates as \type{.obsm['X_<method>']}.
 Scanpy reads data either directly from an experimental protocol format like 10x Chromium \cite[zheng2017] or a generic interchange format supported by AnnData’s read functions.
-\TODO[how much of the following in intro and how much here?]
 
 \startplacefigure[reference=fig:jupyter, title={
 	Scanpy flexibly computes annotations from scRNA-Seq data and visualizes results combined with previous knowledge:\crlf
@@ -376,6 +388,7 @@ Scanpy reads data either directly from an experimental protocol format like 10x 
 }
 \stopplacefigure
 
+\TODO[how much of the following in intro and how much here?]
 % preprocessing
 It allows to preprocess data using a variety of quality control models and visualizations.
 Those help to filter low quality cells and genes, and to transform raw transcript counts into expression profiles matching the expectations of subsequently applied analysis tools.
@@ -392,7 +405,6 @@ This includes certain dimensionality reduction methods like UMAP, graph layout \
 \TODO[cite UMAP every time?]
 Scanpy also offers data integration similar to \inlinecite[polanski2020], and several gene scores.
 These allow analyzing either the influence of given known gene groups such as cell cycle genes \cite[satija2015] and the differential expression between clusters in one of different flavors such as the variance adjusted t-test or Wilcoxon rank-sum test \cite[wilcoxon1945,soneson2018].
-\TODO[cite]
 % viz
 Scanpy has rich visualizations based on Matplotlib \cite[hunter2007] for each step from basic quality control to complex analysis.
 Their flexibility is rooted in them being generic over the annotation column used for coloring or statistic summarization (see \infig[fig:jupyter]).
@@ -402,7 +414,7 @@ The final step of scanpy analyses consists of converting the complete Jupyter no
 
 \startsection[title={BART-Seq (demultiplexing and quantification)}]
 
-\TODO[methods should be self contained. repeat intro with mre details if necessary]
+\TODO[methods should be self contained. repeat intro with more details if necessary]
 BART-Seq is a targeted RNA sequencing protocol able to sensitively and inexpensively measure expressions of thousands of samples per experiment, such as single cells or cell groups \cite[uzbas2019].
 It consists of three steps; design, experiment, and quantification.
 
