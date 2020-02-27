@@ -6,6 +6,7 @@ Micha
 Drucker
 Theis
 Iverson
+Wilcoxon
 
 HISAT2
 HDF
@@ -18,6 +19,7 @@ UMI
 qPCR
 PCR
 FACS
+PAGA
 
 Kallisto
 Bioconductor
@@ -29,6 +31,9 @@ Trendsceek
 Snakemake
 Scran
 Eigen
+Jupyter
+Jupyterlab
+Matplotlib
 
 amplicon
 amplicons
@@ -36,6 +41,7 @@ barcode
 barcodes
 checksums
 connectivities
+cytometry
 dataset
 datasets
 demultiplexing
@@ -45,6 +51,7 @@ preprocessing
 logarithmized
 misassign
 misassigning
+performant
 pluripotent
 simplical
 in-silico
@@ -61,4 +68,3 @@ ZINB-WaVE
 ½
 →
 ∇
-cytometry

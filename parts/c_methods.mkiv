@@ -335,11 +335,12 @@ The layer operations default to can be accessed via \type{.X}.
 For each dimension, unique names are stored in \type{.obs_names} or \type{.var_names} for addressing observations and features, respectively.
 The layers can be dense Numpy arrays \cite[vanderwalt2011] for normalized or densely measured data, as well as Scipy sparse matrices \cite[virtanen2020] for zero-inflated scRNA-Seq data.
 \TODO[mention zero inflation in intro]
-Named 1D annotations such as cluster labels, alternative gene IDs besides \type{.var_names}, or ranking indices are stored in their respective AnnData dimension’s Pandas data frame \cite[mckinney2010] \type{.obs} or \type{.var}.
+Named 1D annotations such as cluster labels, alternative gene IDs besides \type{.var_names}, or ranking indices are stored as columns of their respective AnnData dimension’s Pandas data frame \cite[mckinney2010] \type{.obs} or \type{.var}.
 \TODO[mention clustering in intro]
-AnnData stores named 2D annotations for experimentally determined cell coordinates or dimension reduction coordinates in \type{.obsm} and \type{.varm}.
+AnnData stores named 2D annotations in \type{.obsm} and \type{.varm}, such as experimentally determined cell coordinates or dimensionality reduction coordinates.
 Represented as square sparse matrices, weighted graphs are stored in \type{.obsp} and \type{.varp}.
 AnnData maintains relations between layers and annotations, keeping them in sync when filtering and concatenating AnnData objects.
+Only the unstructured hierarchical annotations \type{.uns} are not modified when filtering observations or features.
 AnnData supports several file formats it can read and write to for long term result storage, pipeline checkpoints, file exchange, and compatibility with existing experimental protocols and other tools and pipelines.
 This includes its own \type{.h5ad} format based on HDF5 \cite[folk2011], Loom \cite[linnarson2017], UMI-Tools \cite[smith2017], Matrix Market \cite[boisvert1996], as well as Microsoft Excel and textual spreadsheets.
 AnnData supports disk-backed operations in its native format, allowing operations on data too big to hold in memory.
@@ -348,10 +349,54 @@ Due to AnnData’s generic structure, and its conversion and serialization optio
 Scanpy and other tools can interact by adding and reading annotations, as well as reading, modifying and adding layers.
 
 Scanpy itself is designed around ease of use without compromising performance.
-This allows analyzing of up to a million cells in reasonable time in a familiar interactive environment \cite[wolf2018].
+This allows analyzing of up to a million cells in reasonable time \cite[wolf2018].
+Scanpy integrates well with the popular Jupyterlab, allowing to iterate on an analysis in an interactive environment that preserves code, plots, and output as a report file called “notebook” \cite[Jupyter pub].
+Combined with disk-backed operations or saving of snapshots, this allows to interrupt a workflow at any point or move it to a different machine.
+A basic Scanpy workflow utilizes all aforementioned features of AnnData, establishing naming conventions by which subsequent steps interact.
+For example it stores read batch labels the \type{.obs} column that Scanpy’s batch correction algorithms default to, and stores dimensionality reduction coordinates as \type{.obsm['X_<method>']}.
+Scanpy reads data either directly from an experimental protocol format like 10x Chromium \cite[zheng2017] or a generic interchange format supported by AnnData’s read functions.
+\TODO[how much of the following in intro and how much here?]
 
+\startplacefigure[reference=fig:jupyter, title={
+	Scanpy flexibly computes annotations from scRNA-Seq data and visualizes results combined with previous knowledge:\crlf
+	\bold{a)} \type{sc.tl.leiden(adata); adata.rename_categories('leiden', names)}\crlf
+	\type{sc.pl.umap(adata, color='leiden', legend_loc='on data')}\crlf
+	An UMAP embedding colored by manually labelled Leiden-detected communities.\crlf
+	\bold{b)} \type{sc.tl.rank_genes_groups(adata, 'leiden', method='wilcoxon')}\crlf
+	\type{sc.pl.dotplot(adata, marker_genes, groupby='leiden')}\crlf
+	A dotplot of the clusters and marker genes recovered using a Wilcoxon rank-sum test. \TODO[maybe change plots. Maybe PAGA?]
+}]
+\hbox{
+\starttikzpicture
+\node (left) {\externalfigure[pbmc3k-umap.pdf][height=.25\textwidth]};
+\node[right=of left] (right) {\externalfigure[pbmc3k-dotplot.pdf][height=.25\textwidth]};
+\node[font=\bf, anchor=base, yshift=-1em] at (left.north west) {a};
+\node[font=\bf, anchor=base, yshift=-1em] at (right.north west) {b};
+\stoptikzpicture
+}
+\stopplacefigure
 
-\TODO[Jupyter]
+% preprocessing
+It allows to preprocess data using a variety of quality control models and visualizations.
+Those help to filter low quality cells and genes, and to transform raw transcript counts into expression profiles matching the expectations of subsequently applied analysis tools.
+Filters are based based on count and mitochondrial gene content \cite[islam2014,ilicic2016], while transforms reduce batch effect and library size biases \cite[luecken2019].
+\TODO[didn’t find a specific source for library size correction, so I quoted a review by us]
+The sufficiently high variability of genes \cite[satija2015,zheng2017] can be stored as annotation and either used as further, rigorous filtering or by specific processing steps.
+Otherwise, preprocessing generally modifies the default layer \type{.X} and removes genes and cells from layers and aligned annotations.
+% analysis
+After finalized preprocessing, Scanpy analyses generally start by pre-computing commonly used information.
+This includes a PCA with usually 50-100 components to be used as basis for distance calculations within the data and from reference data to new data.
+For highly performant access of distances within the data, a nearest neighbor graph is calculated.
+The graph serves as the basis of several different nonlinear, locality based analyses.
+This includes certain dimensionality reduction methods like UMAP, graph layout \cite[islam2011,weinreb2018b] and diffusion maps, as well as clustering algorithms such as Leiden \cite[traag2019], diffusion pseudo time \cite[haghverdi2016] and PAGA \cite[wolf2019].
+\TODO[cite UMAP every time?]
+Scanpy also offers data integration similar to \inlinecite[polanski2020], and several gene scores.
+These allow analyzing either the influence of given known gene groups such as cell cycle genes \cite[satija2015] and the differential expression between clusters in one of different flavors such as the variance adjusted t-test or Wilcoxon rank-sum test \cite[wilcoxon1945,soneson2018].
+\TODO[cite]
+% viz
+Scanpy has rich visualizations based on Matplotlib \cite[hunter2007] for each step from basic quality control to complex analysis.
+Their flexibility is rooted in them being generic over the annotation column used for coloring or statistic summarization (see \infig[fig:jupyter]).
+The final step of scanpy analyses consists of converting the complete Jupyter notebook, select visualizations, and the final data to publishable formats using few simple commands.
 
 \stopsection
 

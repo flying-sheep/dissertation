@@ -269,15 +269,13 @@ The implementation offers a rich and user friendly API including plotting routin
 % reusable and remix-able workflow building blocks and data structures
 Scanpy is a framework for scRNA-Seq preprocessing, analysis, and visualization in Python.
 AnnData is a data structure for annotated observation data including scRNA-Seq counts and expressions.
-With F. Alexander Wolf we implemented the initial version, where he focused on performance while I focused on API and data structure design.
+With F. Alexander Wolf I implemented the initial version of both, where he focused on performance while I focused on API and data structure design.
 Scanpy is designed around AnnData, storing the results of each processing step in an expression matrix layer or an aligned annotation (see \infig[fig:anndata]).
 This data structure enables Scanpy’s flexibility.
-It can be persisted to disk in various formats for interoperability and storage.
-AnnData supports disk-backed operations for data too large to hold in memory.
-\TODO[already mentioned above. Draw connection to microfluidics]
-AnnData’s structure allows close interoperability between Scanpy and other tools using AnnData.
-For example, after storing an dimension reduction algorithm’s embedding coordinates into an AnnData object’s 2D annotations, they can be used from Scanpy’s plotting routines.
-This modular design philosophy allows Scanpy routines to be effortlessly interspersed with preprocessing and analysis steps of other tools.
+It can be persisted to disk in various formats for storage and interoperability with command line tools.
+AnnData’s structure allows close interoperability between Scanpy and other tools that use AnnData, including R tools via SingleCellExperiment \cite[lun2017,angerer2019].
+For data too large to hold in memory, AnnData supports disk-backed operations.
+AnnData’s modular and flexible design philosophy allows Scanpy routines to be effortlessly interspersed with preprocessing and analysis steps of other tools.
 \stopsubsection
 
 \startsubsection[title={BART-Seq}]
