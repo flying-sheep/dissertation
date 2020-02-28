@@ -20,14 +20,16 @@ This includes diseases like cancer, caused by mutated cells, or diseases caused 
 All those diseases have in common that they cannot be understood without knowing the cellular mechanisms involved.
 
 % motivate RNA-Seq
-All inner workings of a cell are performed directly or indirectly through proteins.
+All inner workings of a cell are performed directly or indirectly through proteins reshaping themselves while binding to each other and to metabolites.
+Proteins achieve this complex interaction through their twenty different constituent amino acids.
 Knowing what proteins are being produced in a cell at a given moment allows to draw conclusions about its purpose and health.
-Measuring proteins directly however is not always possible and otherwise requires expensive \cite[manzoni2018].
-The central dogma of molecular biology says that genes on our chromosomes are transcribed to short lived messenger RNA (mRNA), which are then translated to proteins.
+Proteomics, the measurement of proteins directly, is however made difficult by the complex behavior of their long amino acid chains.
+This results in proteomics being limited to targeted analysis of a small number of known proteins \cite[manzoni2018].
+The central dogma of molecular biology states that genes on our chromosomes are transcribed to short lived messenger RNA (mRNA), which are then translated to proteins.
 The presence of mRNA in a cell therefore indicates that its respective protein is currently being produced.
 \footnote{Or rather a class of proteins: Similar proteins come from the same gene which is transcribed into a pre-mRNA and then spliced into one of several possible final mRNAs encoding a different protein each.}
-It is possible to quantify and subsequently analyze snapshots of all mRNA molecules in flight using RNA sequencing (RNA-Seq).
-This is called gene expression analysis.
+It is possible to quantify and subsequently analyze snapshots of all mRNA molecules in flight using RNA sequencing (RNA-Seq) \cite[morin2008].
+This untargeted large-scale process is called gene expression analysis.
 Decades of biological research made due with averaged RNA profiles of cell samples (bulk RNA-Seq).
 Those allow to capture the gene expression of a tissue or fluid sample without accounting for cell-to-cell variability.
 
@@ -36,17 +38,20 @@ Those allow to capture the gene expression of a tissue or fluid sample without a
 \stopplacefigure
 
 % SC revolution
-\TODO[carsten says “cite nature methods of the year 20xx”, but which? this? https://www.nature.com/articles/nmeth.1557]
-But Biology is immensely complex, so every answer seems to only bring forth new questions:
-e.\,g. the confidently named central dogma of molecular biology continues to accumulate exceptions and neither genes nor cell types are considered discrete, enumerable entities anymore (see \infig[fig:dogma]).
-More complex diseases require a more intricate understanding of cellular processes and inter-cellular variation.
+Biology is immensely complex, so every answer seems to only bring forth new questions:
+neither genes nor cell types are considered discrete, enumerable entities anymore, and
+even the confidently named central dogma of molecular biology has accumulated exception such as reverse transcription from RNA to DNA in viruses (see \infig[fig:dogma]).
+Complex diseases require an intricate understanding of cellular processes and inter-cellular variation.
 Advances in experimental technology of the last decade allow to tackle these challenges.
-Single-cell RNA-Seq (scRNA-Seq) can measure extremely small expression values down to a single mRNA molecule.
-\TODO[the following two are a bit redundant, make clear what you mean]
-This data comes not without its own challenges, but enables the study of heterogeneous tissues like cancer, where expression averages from bulk RNA-Seq are not meaningful.
+Single-cell RNA-Seq (scRNA-Seq) can measure extremely small expression values down to a single mRNA molecule \cite[tang2011].
+\TODO[is this the “nature methods paper of the year 20xx” you meant, carsten?]
+This data comes not without its own challenges, but enables the study of heterogeneous tissues like cancer, where expression averages from bulk RNA-Seq are not meaningful \cite[patel2014].
 The second great advantage is that the amounts of data present in scRNA-Seq lend themselves to machine learning approaches:
-patterns that no human can detect by hand and careful choice of samples can be derived from the ample variation between hundreds to millions of individual cells.
-\TODO[highlight a few: m. rajewsky work, teichman & regev papers]
+patterns that no human can detect by manual and careful isolation of samples can be derived from the ample variation between hundreds to millions of individual cells.
+This way \inlinecite[plass2018] have determined the developmental lineage of every cell in a planarian, a regenerative species whose cellular mechanisms could be the key to prevent scarring or delay aging in humans.
+The international community of scientists working on transcriptomics is coming together to create the Human Cell Atlas \cite[regev2017].
+%\cite[vento-tormo2018]
+\TODO[what else to cite here? other teichman/regev stuff? maybe vento-tormo2018 “Single-cell reconstruction of the early maternal-fetal interface in humans”]
 
 %challenges, different protocols
 All these opportunities come at the cost of additional complexity and more confounding variables (biases).

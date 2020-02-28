@@ -36,6 +36,7 @@ Eigen
 Jupyter
 Jupyterlab
 Matplotlib
+AnnData2ri
 
 amplicon
 amplicons
@@ -66,7 +67,7 @@ unrepresentable
 pre
 microfluidic
 transcriptomics
-AnnData2ri
+proteomics
 
 ½
 →
