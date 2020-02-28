@@ -839,6 +839,23 @@
   year		= {2010}
 }
 
+@Article{	  hafemeister2019,
+  abstract	= {Single-cell RNA-seq (scRNA-seq) data exhibits significant cell-to-cell variation due to technical factors, including the number of molecules detected in each cell, which can confound biological heterogeneity with technical effects. To address this, we present a modeling framework for the normalization and variance stabilization of molecular count data from scRNA-seq experiments. We propose that the Pearson residuals from "regularized negative binomial regression," where cellular sequencing depth is utilized as a covariate in a generalized linear model, successfully remove the influence of technical characteristics from downstream analyses while preserving biological heterogeneity. Importantly, we show that an unconstrained negative binomial model may overfit scRNA-seq data, and overcome this by pooling information across genes with similar abundances to obtain stable parameter estimates. Our procedure omits the need for heuristic steps including pseudocount addition or log-transformation and improves common downstream analytical tasks such as variable gene selection, dimensional reduction, and differential expression. Our approach can be applied to any UMI-based scRNA-seq dataset and is freely available as part of the R package sctransform, with a direct interface to our single-cell toolkit Seurat.},
+  author	= {Hafemeister, Christoph and Satija, Rahul},
+  doi		= {10.1186/s13059-019-1874-1},
+  issn		= {1474760X},
+  journal	= {Genome Biology},
+  keywords	= {Normalization,Single-cell RNA-seq},
+  month		= {dec},
+  number	= {1},
+  pages		= {296},
+  publisher	= {BioMed Central Ltd.},
+  title		= {{Normalization and variance stabilization of single-cell RNA-seq data using regularized negative binomial regression}},
+  url		= {https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1874-1},
+  volume	= {20},
+  year		= {2019}
+}
+
 @Article{	  haghverdi2015,
   abstract	= {MOTIVATION: Single-cell technologies have recently gained popularity in cellular differentiation studies regarding their ability to resolve potential heterogeneities in cell populations. Analyzing such high-dimensional single-cell data has its own statistical and computational challenges. Popular multivariate approaches are based on data normalization, followed by dimension reduction and clustering to identify subgroups. However, in the case of cellular differentiation, we would not expect clear clusters to be present but instead expect the cells to follow continuous branching lineages.$\backslash$n$\backslash$nRESULTS: Here, we propose the use of diffusion maps to deal with the problem of defining differentiation trajectories. We adapt this method to single-cell data by adequate choice of kernel width and inclusion of uncertainties or missing measurement values, which enables the establishment of a pseudotemporal ordering of single cells in a high-dimensional gene expression space. We expect this output to reflect cell differentiation trajectories, where the data originates from intrinsic diffusion-like dynamics. Starting from a pluripotent stage, cells move smoothly within the transcriptional landscape towards more differentiated states with some stochasticity along their path. We demonstrate the robustness of our method with respect to extrinsic noise (e.g. measurement noise) and sampling density heterogeneities on simulated toy data as well as two single-cell quantitative polymerase chain reaction datasets (i.e. mouse haematopoietic stem cells and mouse embryonic stem cells) and an RNA-Seq data of human pre-implantation embryos. We show that diffusion maps perform considerably better than Principal Component Analysis and are advantageous over other techniques for non-linear dimension reduction such as t-distributed Stochastic Neighbour Embedding for preserving the global structures and pseudotemporal ordering of cells.$\backslash$n$\backslash$nAVAILABILITY AND IMPLEMENTATION: The Matlab implementation of diffusion maps for single-cell data is available at https://www.helmholtz-muenchen.de/icb/single-cell-diffusion-map.$\backslash$n$\backslash$nCONTACT: fbuettner.phys@gmail.com, fabian.theis@helmholtz-muenchen.de$\backslash$n$\backslash$nSUPPLEMENTARY INFORMATION: Supplementary data are available at Bioinformatics online.},
   author	= {Haghverdi, Laleh and Buettner, Florian and Theis, Fabian J},
@@ -1206,20 +1223,23 @@
   year		= {2016}
 }
 
-@Article{	  kobak2019,
+@Article{	  kobak2019a,
   abstract	= {Single-cell transcriptomics yields ever growing data sets containing RNA expression levels for thousands of genes from up to millions of cells. Common data analysis pipelines include a dimensionality reduction step for visualising the data in two dimensions, most frequently performed using t-distributed stochastic neighbour embedding (t-SNE). It excels at revealing local structure in high-dimensional data, but naive applications often suffer from severe shortcomings, e.g. the global structure of the data is not represented accurately. Here we describe how to circumvent such pitfalls, and develop a protocol for creating more faithful t-SNE visualisations. It includes PCA initialisation, a high learning rate, and multi-scale similarity kernels; for very large data sets, we additionally use exaggeration and downsampling-based initialisation. We use published single-cell RNA-seq data sets to demonstrate that this protocol yields superior results compared to the naive application of t-SNE.},
   author	= {Kobak, Dmitry and Berens, Philipp},
-  doi		= {10.1101/453449},
-  journal	= {bioRxiv},
-  month		= {may},
-  pages		= {453449},
-  publisher	= {Cold Spring Harbor Laboratory},
+  doi		= {10.1038/s41467-019-13056-x},
+  issn		= {20411723},
+  journal	= {Nature Communications},
+  keywords	= {RNA sequencing,Statistics},
+  month		= {dec},
+  number	= {1},
+  pages		= {1--14},
+  publisher	= {Nature Research},
   title		= {{The art of using t-SNE for single-cell transcriptomics}},
-  url		= {https://www.biorxiv.org/node/741150.full},
+  volume	= {10},
   year		= {2019}
 }
 
-@Article{	  kobak2019,
+@Article{	  kobak2019b,
   abstract	= {One of the most ubiquitous analysis tools employed in single-cell transcriptomics and cytometry is t-distributed stochastic neighbor embedding (t-SNE), used to visualize individual cells as points on a 2D scatter plot such that similar cells are positioned close together. Recently, a related algorithm, called uniform manifold approximation and projection (UMAP) has attracted substantial attention in the single-cell community. In Nature Biotechnology, Becht et al. argued that UMAP is preferable to t-SNE because it better preserves the global structure of the data and is more consistent across runs. Here we show that this alleged superiority of UMAP can be entirely attributed to different choices of initialization in the implementations used by Becht et al.: t-SNE implementations by default used random initialization, while the UMAP implementation used a technique called Laplacian eigenmaps to initialize the embedding. We show that UMAP with random initialization preserves global structure as poorly as t-SNE with random initialization, while t-SNE with informative initialization performs as well as UMAP with informative initialization. Hence, contrary to the claims of Becht et al., their experiments do not demonstrate any advantage of the UMAP algorithm per se, but rather warn against using random initialization.},
   author	= {Kobak, Dmitry and Linderman, George C},
   doi		= {10.1101/2019.12.19.877522},
@@ -1552,6 +1572,13 @@
   year		= {2015}
 }
 
+@Article{	  manzoni2018,
+  author	= {Manzoni, C and Kia, DA and in {\ldots}, J Vandrovcova - Briefings and 2018, Undefined},
+  journal	= {academic.oup.com},
+  title		= {{Genome, transcriptome and proteome: the rise of omics data and their integration in biomedical sciences}},
+  url		= {https://academic.oup.com/bib/article-abstract/19/2/286/2562648}
+}
+
 @Article{	  mcinnes2018,
   abstract	= {UMAP (Uniform Manifold Approximation and Projection) is a novel manifold learning technique for dimension reduction. UMAP is constructed from a theoretical framework based in Riemannian geometry and algebraic topology. The result is a practical scalable algorithm that applies to real world data. The UMAP algorithm is competitive with t-SNE for visualization quality, and arguably preserves more of the global structure with superior run time performance. Furthermore, UMAP has no computational restrictions on embedding dimension, making it viable as a general purpose dimension reduction technique for machine learning.},
   archiveprefix	= {arXiv},
@@ -1684,20 +1711,6 @@
   pages		= {70},
   title		= {{Comparative analysis of sequencing technologies for single-cell transcriptomics}},
   url		= {https://doi.org/10.1186/s13059-019-1676-5 files/204/Natarajan et al. - 2019 - Comparative analysis of sequencing technologies fo.pdf files/205/s13059-019-1676-5.html},
-  volume	= {20},
-  year		= {2019}
-}
-
-@Article{	  natarajan2019a,
-  author	= {Natarajan, Kedar Nath and Miao, Zhichao and Jiang, Miaomiao and Huang, Xiaoyun and Zhou, Hongpo and Xie, Jiarui and Wang, Chunqing and Qin, Shishang and Zhao, Zhikun and Wu, Liang and Yang, Naibo and Li, Bo and Hou, Yong and Liu, Shiping and Teichmann, Sarah A.},
-  doi		= {10.1186/s13059-019-1676-5},
-  issn		= {1474-760X},
-  journal	= {Genome Biology},
-  month		= {dec},
-  number	= {1},
-  pages		= {70},
-  title		= {{Comparative analysis of sequencing technologies for single-cell transcriptomics}},
-  url		= {https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1676-5},
   volume	= {20},
   year		= {2019}
 }
@@ -2131,21 +2144,6 @@
   year		= {2008}
 }
 
-@Article{	  soneson2017,
-  abstract	= {Background: As single-cell RNA-seq (scRNA-seq) is becoming increasingly common, the amount of publicly available data grows rapidly, generating a useful resource for computational method development and extension of published results. Although processed data matrices are typically made available in public repositories, the procedure to obtain these varies widely between data sets, which may complicate reuse and cross-data set comparison. Moreover, while many statistical methods for performing differential expression analysis of scRNA-seq data are becoming available, their relative merits and the performance compared to methods developed for bulk RNA-seq data are not sufficiently well understood. Results: We present conquer, a collection of consistently processed, analysis-ready public single-cell RNA-seq data sets. Each data set has count and transcripts per million (TPM) estimates for genes and transcripts, as well as quality control and exploratory analysis reports. We use a subset of the data sets available in conquer to perform an extensive evaluation of the performance and characteristics of statistical methods for differential gene expression analysis, evaluating a total of 30 statistical approaches on both experimental and simulated scRNA-seq data. Conclusions: Considerable differences are found between the methods in terms of the number and characteristics of the genes that are called differentially expressed. Pre-filtering of lowly expressed genes can have important effects on the results, particularly for some of the methods originally developed for analysis of bulk RNA-seq data. Generally, however, methods developed for bulk RNA-seq analysis do not perform notably worse than those developed specifically for scRNA-seq.},
-  author	= {Soneson, Charlotte},
-  doi		= {10.1038/nmeth.4612},
-  issn		= {1548-7091},
-  journal	= {Nature Publishing Group},
-  keywords	= {comparison,differential expression,single-cell rna-seq},
-  language	= {en},
-  number	= {January},
-  pages		= {143289},
-  title		= {{Bias , robustness and scalability in differential expression analysis of single-cell RNA-seq data}},
-  url		= {https://www.biorxiv.org/content/early/2017/05/28/143289 files/145/Soneson and Robinson - 2017 - Bias, Robustness And Scalability In Differential E.pdf files/146/Soneson and Robinson - 2017 - Bias, Robustness And Scalability In Differential E.html http://d},
-  year		= {2017}
-}
-
 @Article{	  soneson2018,
   abstract	= {Many methods have been used to determine differential gene expression from single-cell RNA (scRNA)-seq data. We evaluated 36 approaches using experimental and synthetic data and found considerable differences in the number and characteristics of the genes that are called differentially expressed. Prefiltering of lowly expressed genes has important effects, particularly for some of the methods developed for bulk RNA-seq data analysis. However, we found that bulk RNA-seq analysis methods do not generally perform worse than those developed specifically for scRNA-seq. We also present conquer, a repository of consistently processed, analysis-ready public scRNA-seq data sets that is aimed at simplifying method evaluation and reanalysis of published results. Each data set provides abundance estimates for both genes and transcripts, as well as quality control and exploratory analysis reports.},
   author	= {Soneson, Charlotte and Robinson, Mark D.},
@@ -2329,6 +2327,21 @@
   year		= {2018}
 }
 
+@Misc{		  svensson2020,
+  author	= {Svensson, Valentine},
+  booktitle	= {Nature Biotechnology},
+  doi		= {10.1038/s41587-019-0379-5},
+  issn		= {15461696},
+  keywords	= {Bioinformatics,Gene expression analysis,Transcriptomics},
+  month		= {feb},
+  number	= {2},
+  pages		= {147--150},
+  publisher	= {Nature Research},
+  title		= {{Droplet scRNA-seq is not zero-inflated}},
+  volume	= {38},
+  year		= {2020}
+}
+
 @Article{	  thoen2013,
   abstract	= {RNA sequencing is an increasingly popular technology for genome-wide analysis of transcript sequence and abundance. However, understanding of the sources of technical and interlaboratory variation is still limited. To address this, the GEUVADIS consortium sequenced mRNAs and small RNAs of lymphoblastoid cell lines of 465 individuals in seven sequencing centers, with a large number of replicates. The variation between laboratories appeared to be considerably smaller than the already limited biological variation. Laboratory effects were mainly seen in differences in insert size and GC content and could be adequately corrected for. In small-RNA sequencing, the microRNA (miRNA) content differed widely between samples owing to competitive sequencing of rRNA fragments. This did not affect relative quantification of miRNAs. We conclude that distributing RNA sequencing among different laboratories is feasible, given proper standardization and randomization procedures. We provide a set of quality measures and guidelines for assessing technical biases in RNA-seq data.},
   author	= {T'Hoen, Peter A.C. and Friedl{\"{a}}nder, Marc R and Alml{\"{o}}f, Jonas and Sammeth, Michael and Pulyakhina, Irina and Anvar, Seyed Yahya and Laros, Jeroen F.J. and Buermans, Henk P.J. and Karlberg, Olof and Br{\"{a}}nnvall, Mathias and {Den Dunnen}, Johan T. and {Van Ommen}, Gert Jan B. and Gut, Ivo G and Guig{\'{o}}, Roderic and Estivill, Xavier and Syv{\"{a}}nen, Ann Christine and Dermitzakis, Emmanouil T and Lappalainen, Tuuli},
@@ -2360,6 +2373,23 @@
   title		= {{scRNA-seq mixology: towards better benchmarking of single cell RNA-seq protocols and analysis methods}},
   url		= {https://www.biorxiv.org/content/early/2018/10/08/433102},
   year		= {2018}
+}
+
+@Article{	  townes2019,
+  abstract	= {Single-cell RNA-Seq (scRNA-Seq) profiles gene expression of individual cells. Recent scRNA-Seq datasets have incorporated unique molecular identifiers (UMIs). Using negative controls, we show UMI counts follow multinomial sampling with no zero inflation. Current normalization procedures such as log of counts per million and feature selection by highly variable genes produce false variability in dimension reduction. We propose simple multinomial methods, including generalized principal component analysis (GLM-PCA) for non-normal distributions, and feature selection using deviance. These methods outperform the current practice in a downstream clustering assessment using ground truth datasets.},
+  author	= {Townes, F. William and Hicks, Stephanie C. and Aryee, Martin J. and Irizarry, Rafael A.},
+  doi		= {10.1186/s13059-019-1861-6},
+  issn		= {1474760X},
+  journal	= {Genome Biology},
+  keywords	= {Dimension reduction,GLM-PCA,Gene expression,Principal component analysis,RNA-Seq,Single cell,Variable genes},
+  month		= {dec},
+  number	= {1},
+  pages		= {295},
+  publisher	= {BioMed Central Ltd.},
+  title		= {{Feature selection and dimension reduction for single-cell RNA-Seq based on a multinomial model}},
+  url		= {https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1861-6},
+  volume	= {20},
+  year		= {2019}
 }
 
 @Article{	  traag2019,

@@ -206,7 +206,7 @@ Compared to learned embeddings like t-SNE (see \in[sec:learned-embeddings]), dif
 Machine learning based dimensionality reduction methods use optimization to either learn an embedding directly, or a function mapping high-dimensional data to embedding coordinates.
 A common optimization target is to represent high-dimensional relationships in the data as faithfully as possible in a 2D or 3D embedding that can be displayed on a screen or paper.
 
-One such machine learning driven method, t-SNE, remains the most popular dimensionality reduction method \cite[kobak2019].
+One such machine learning driven method, t-SNE, remains the most popular dimensionality reduction method \cite[kobak2019a].
 \TODO[defined it earlier, is it OK to not spell it out here?]
 T-SNE optimizes an embedding so that similarities in the high-dimensional space $x_{gc}$ are maintained in the low-dimensional embedding $s_{pc}$.
 Similarly to locally scaled diffusion maps, it uses a kernel with a width based on local density in $x_{gc}$ to calculate similarities between cells while exaggerating short distances and de-emphasizing long distances.
@@ -218,7 +218,7 @@ It stops iterating if the similarity matrices converge sufficiently or a maximum
 
 The more recent method UMAP works similarly, while claiming to represent global structures in the data more faithfully \cite[becht2018].
 Moreover it is claimed to be viable as a preprocessing dimensionality reduction method like the aforementioned spectral decomposition methods (see \in[sec:spectral]).
-\inlinecite[kobak2019] however showed that t-SNE and UMAP perform very similarly with the same data-driven initialization and selection of meta-parameters.
+\inlinecite[kobak2019b] however showed that t-SNE and UMAP perform very similarly with the same data-driven initialization and selection of meta-parameters.
 
 A disadvantages of machine learning based methods is their nondeterministic nature:
 due to the non-convex nature of the optimization, its converging to local optima can result in unstable inference of certain cells’ neighborhoods in the embedding \cite[hinton2003].
