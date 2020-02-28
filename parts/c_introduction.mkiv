@@ -55,15 +55,21 @@ The international community of scientists working on transcriptomics is coming t
 
 %challenges, different protocols
 All these opportunities come at the cost of additional complexity and more confounding variables (biases).
-Experimental protocols used to measure the data have different tradeoffs between sensitivity, biases, cost, and time investment.
-The number of cells that can be measured at once with a certain quality is therefore practically limited \cite[vieth2019].
-The small amount of mRNA molecules in single cells results in noisier measurements and high numbers of zeros.
+For one, the small amount of mRNA molecules in single cells results in noisier measurements in general, since adding up the contents of multiple cells averages out noise.
+Experimental protocols used to measure the data have different tradeoffs between sensitivity, biases, cost, and time investment \cite[vieth2019].
+The number of cells that can be measured at once with a certain quality is therefore practically limited.
+A desire to measure thousands or more cells without exploding costs leads to shallow sequencing depths and increased computational demands \cite[angerer2017].
 Figuring out the right way to tackle challenges like this is not easy.
 In past years for example, studies have suggested that droplet-based protocols inflate the number of zeros in the data due to technical reasons.
+\TODO[more intro for protocols, or is a footnote or so sufficient?]
 \inlinecite[svensson2020] however asserts that the high number of zeros stems from biological variation.
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% continue here
+%%%%%%%%%%%%%%%%%%%%%%
 Increased complexity in analysis can be conquered with improved modeling or more sophisticated preprocessing.
 The modeling approach is more correct, but less flexible, as it requires careful informed design across the whole analysis process.
 Each new analysis that significantly deviates from previous analyses requires a re-thinking and re-building of the model almost from the ground up.
+There are however also modeling approaches that replace several preprocessing steps without also involving analysis \cite[lopez2018,townes2019].
 
 % my work
 The more practical approach is to start with careful improvements in preprocessing that allow to shape the data in a way that fulfills the assumptions of subsequent analysis.
@@ -121,8 +127,8 @@ In order to model or otherwise analyze count data, it is almost always necessary
 Since distance measures usually expect data with no mean–variance dependency (i.\,e. normally distributed data), expressions are commonly logarithmized.
 The intuition is that in in log-space, distances represent log-fold changes, an usual way to compare expression level \cite[brennecke2013,eling2018].
 \inlinecite[svensson2020] however suggested that log-transforming data is a possible cause for observing zero-inflation in data.
-With single cell data specific transforms like SCTransform \cite[hafemeister2019] or embeddings like GLM-PCA \cite[townes2019], promising alternatives are emerging.
-\TODO[is this a good location or should I move it somewhere?]
+With single cell data specific transforms like SCTransform \cite[hafemeister2019] or embeddings like scVI \cite[lopez2018] or GLM-PCA \cite[townes2019], promising alternatives are emerging.
+\TODO[introduce embeddings or rephrase. is this a good location at all or should I move it somewhere?]
 A final common preprocessing step is reduction of the data by discarding genes with low variability that are assumed to contribute little to the data’s variability (highly variable gene selection).
 \TODO[mention quality control as part of counting and preprocessing]
 
