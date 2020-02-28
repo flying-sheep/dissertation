@@ -45,11 +45,15 @@ The second great advantage is that the amounts of data present in scRNA-Seq lend
 patterns that no human can detect by hand and careful choice of samples can be derived from the ample variation between hundreds to millions of individual cells.
 \TODO[highlight a few: m. rajewsky work, teichman & regev papers]
 
-%challenges
-All these opportunities come at the cost of additional complexity and more confounding variables.
-The small amount of mRNA molecules in single cells results in noisier measurements and the so-called drop-out or zero inflation effect:
-genes with the smallest counts tend to appear as zeros the data.
-The increased complexity can be conquered with improved modeling or more sophisticated preprocessing.
+%challenges, different protocols
+All these opportunities come at the cost of additional complexity and more confounding variables (biases).
+Experimental protocols used to measure the data have different tradeoffs between sensitivity, biases, cost, and time investment.
+The number of cells that can be measured at once with a certain quality is therefore practically limited \cite[vieth2019].
+The small amount of mRNA molecules in single cells results in noisier measurements and high numbers of zeros.
+Figuring out the right way to tackle challenges like this is not easy.
+In past years for example, studies have suggested that droplet-based protocols inflate the number of zeros in the data due to technical reasons.
+\inlinecite[svensson2020] however asserts that the high number of zeros stems from biological variation.
+Increased complexity in analysis can be conquered with improved modeling or more sophisticated preprocessing.
 The modeling approach is more correct, but less flexible, as it requires careful informed design across the whole analysis process.
 Each new analysis that significantly deviates from previous analyses requires a re-thinking and re-building of the model almost from the ground up.
 
@@ -105,8 +109,12 @@ Another common preprocessing step is normalization:
 correction for common cell variation caused by known processes such as the cell cycle, if one isn’t interested in studying this process.
 If multiple runs of the sequencer were used to obtain the full data, there will be biases per run that can be reduced by using a dedicated batch effect correction algorithm (see \infig[fig:batch-effect]).
 Preprocessing can also involve scaling count values using a per-cell function derived from the aforementioned spike-ins.
-Usually, count data is logarithmized, as in log-space, distances represent log-fold changes, the usual way to compare expression level.
-Many downstream analyses expect this property, as they model normal distributions or use a distance metric designed for data with no mean–variance dependency. \cite[brennecke2013,eling2018]
+In order to model or otherwise analyze count data, it is almost always necessary to calculate distances between expression profiles.
+Since distance measures usually expect data with no mean–variance dependency (i.\,e. normally distributed data), expressions are commonly logarithmized.
+The intuition is that in in log-space, distances represent log-fold changes, an usual way to compare expression level \cite[brennecke2013,eling2018].
+\inlinecite[svensson2020] however suggested that log-transforming data is a possible cause for observing zero-inflation in data.
+With single cell data specific transforms like SCTransform \cite[hafemeister2019] or embeddings like GLM-PCA \cite[townes2019], promising alternatives are emerging.
+\TODO[is this a good location or should I move it somewhere?]
 A final common preprocessing step is reduction of the data by discarding genes with low variability that are assumed to contribute little to the data’s variability (highly variable gene selection).
 \TODO[mention quality control as part of counting and preprocessing]
 

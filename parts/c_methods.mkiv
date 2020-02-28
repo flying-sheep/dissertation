@@ -14,7 +14,7 @@ A 2D or 3D embedding used as as scatter plot coordinates serves as the basis of 
 To this end, it can be colored or annotated using input features and statistics to analyze static relations or dynamic processes of the data.
 
 In the context of scRNA-Seq data, the high dimensional data are represented as a gene expression matrix $x_{gc}$ with tens of thousands of genes $g∈\{1,…,G\}$, measured for up to approximately one million cells $c∈\{1,…,C\}$ at once \cite[zheng2017].
-%Matrices this big are very sparse due to the ubiquity of high dropout in protocols able to capture this many cells.
+Single cell expression matrices are very sparse since cells express a limited amount of genes at a time \cite[svensson2020].
 The intrinsic dimensionality of transcriptomic data is low when compared to this number of genes \cite[heimberg2016].
 Embeddings $s_{pc}$ ($p∈\{1,…,P\}$) of most datasets therefore only require a comparatively low number of dimensions $50≤P≤100$ to capture all information necessary to reconstruct all known biological processes \cite[ding2018,lenz2016].
 
@@ -115,7 +115,7 @@ While the intrinsic dimensionality of transcriptomic data is low, the number of 
 Picking a number of PCs in this range, for example using the jackstraw algorithm \cite[chung2015] is a popular preprocessing step for downstream analysis.
 
 There are a number of related methods that can serve a similar purpose, such as independent component analysis \cite[bell1995] or factor analysis \cite[stephenson1935].
-Furthermore, single cell transcriptomics specific extensions exist, such as ZINB-WaVE \cite[risso2018], which accounts for zero inflation and over-dispersion of scRNASeq-data.
+Furthermore, single cell transcriptomics specific extensions exist, such as ZINB-WaVE \cite[risso2018] and GLM-PCA \cite[townes2019], which account for high numbers of zeros and over-dispersion of scRNASeq-data.
 \stopsubsubsection
 
 \startsubsubsection[title={Diffusion Maps}]
@@ -255,8 +255,7 @@ It can be derived from the gradient $∇f_{gc}$ of the function $f$ mapping a em
 \stopformula
 
 This gradient can be estimated using local differences $\frac{∂x}{∂s} ≈ \frac{Δx}{Δs}$ within each cell $c$’s kNN neighborhood $\text{NN}_k(c) ∧ n≠c$.
-To address zero inflation, the gradient is only defined for $x_{gc}≠0$:
-\TODO[introduce zero inflation in intro]
+To address the high number of zeroes in scRNA-Seq data, the gradient is only defined for $x_{gc}≠0$:
 
 \placeformula
 \startformula
@@ -346,8 +345,7 @@ The central element of each AnnData object is consequently a stack of named 2D m
 Each layer has one homogeneous scalar type able to represent it in sufficient IEEE 754 floating-point precision or integer size.
 The layer operations default to can be accessed via \type{.X}.
 For each dimension, unique names are stored in \type{.obs_names} or \type{.var_names} for addressing observations and features, respectively.
-The layers can be dense Numpy arrays \cite[vanderwalt2011] for normalized or densely measured data, as well as Scipy sparse matrices \cite[virtanen2020] for zero-inflated scRNA-Seq data.
-\TODO[mention zero inflation in intro]
+The layers can be dense Numpy arrays \cite[vanderwalt2011] for normalized or densely measured data, as well as Scipy sparse matrices \cite[virtanen2020] for scRNA-Seq data with many zeros.
 Named 1D annotations such as cluster labels, alternative gene IDs besides \type{.var_names}, or ranking indices are stored as columns of their respective AnnData dimension’s Pandas data frame \cite[mckinney2010] \type{.obs} or \type{.var}.
 \TODO[mention clustering in intro]
 AnnData stores named 2D annotations in \type{.obsm} and \type{.varm}, such as experimentally determined cell coordinates or dimensionality reduction coordinates.

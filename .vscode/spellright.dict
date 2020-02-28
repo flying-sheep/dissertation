@@ -20,6 +20,8 @@ qPCR
 PCR
 FACS
 PAGA
+GLM-PCA
+ZINB-WaVE
 
 Kallisto
 Bioconductor
@@ -55,6 +57,8 @@ performant
 pluripotent
 simplical
 in-silico
+tradeoff
+tradeoffs
 transcriptomic
 unspliced
 untargeted
@@ -63,7 +67,6 @@ pre
 microfluidic
 transcriptomics
 AnnData2ri
-ZINB-WaVE
 
 ½
 →
