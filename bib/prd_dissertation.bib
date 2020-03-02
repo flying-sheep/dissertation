@@ -560,6 +560,21 @@
   year		= {2018}
 }
 
+@Article{	  dobin2013,
+  abstract	= {Motivation: Accurate alignment of high-throughput RNA-seq data is a challenging and yet unsolved problem because of the non-contiguous transcript structure, relatively short read lengths and constantly increasing throughput of the sequencing technologies. Currently available RNA-seq aligners suffer from high mapping error rates, low mapping speed, read length limitation and mapping biases.Results: To align our large ({\textgreater}80 billon reads) ENCODE Transcriptome RNA-seq dataset, we developed the Spliced Transcripts Alignment to a Reference (STAR) software based on a previously undescribed RNA-seq alignment algorithm that uses sequential maximum mappable seed search in uncompressed suffix arrays followed by seed clustering and stitching procedure. STAR outperforms other aligners by a factor of {\textgreater}50 in mapping speed, aligning to the human genome 550 million 2 × 76 bp paired-end reads per hour on a modest 12-core server, while at the same time improving alignment sensitivity and precision. In addition to unbiased de novo detection of canonical junctions, STAR can discover non-canonical splices and chimeric (fusion) transcripts, and is also capable of mapping full-length RNA sequences. Using Roche 454 sequencing of reverse transcription polymerase chain reaction amplicons, we experimentally validated 1960 novel intergenic splice junctions with an 80-90{\%} success rate, corroborating the high precision of the STAR mapping strategy. {\textcopyright} The Author(s) 2012. Published by Oxford University Press.},
+  author	= {Dobin, Alexander and Davis, Carrie A. and Schlesinger, Felix and Drenkow, Jorg and Zaleski, Chris and Jha, Sonali and Batut, Philippe and Chaisson, Mark and Gingeras, Thomas R.},
+  doi		= {10.1093/bioinformatics/bts635},
+  issn		= {13674803},
+  journal	= {Bioinformatics},
+  number	= {1},
+  pages		= {15--21},
+  pmid		= {23104886},
+  title		= {{STAR: Ultrafast universal RNA-seq aligner}},
+  url		= {https://academic.oup.com/bioinformatics/article-abstract/29/1/15/272537},
+  volume	= {29},
+  year		= {2013}
+}
+
 @Article{	  duo2018,
   abstract	= {{\textless}p{\textgreater} Subpopulation identification, usually via some form of unsupervised clustering, is a fundamental step in the analysis of many single-cell RNA-seq data sets. This has motivated the development and application of a broad range of clustering methods, based on various underlying algorithms. Here, we provide a systematic and extensible performance evaluation of 12 clustering algorithms, including both methods developed explicitly for scRNA-seq data and more general-purpose methods. The methods were evaluated using 9 publicly available scRNA-seq data sets as well as three simulations with varying degree of cluster separability. The same feature selection approaches were used for all methods, allowing us to focus on the investigation of the performance of the clustering algorithms themselves. We evaluated the ability of recovering known subpopulations, the stability and the run time of the methods. Additionally, we investigated whether the performance could be improved by generating consensus partitions from multiple individual clustering methods. We found substantial differences in the performance, run time and stability between the methods, with SC3 and Seurat showing the most favorable results. Additionally, we found that consensus clustering typically did not improve the performance compared to the best of the combined methods, but that several of the top-performing methods already perform some type of consensus clustering. The R scripts providing an extensible framework for the evaluation of new methods and data sets are available on GitHub ( {\textless}ext-link ext-link-type="uri" href="https://github.com/markrobinsonuzh/scRNAseq{\_}clustering{\_}comparison"{\textgreater}https://github.com/markrobinsonuzh/scRNAseq{\_}clustering{\_}comparison{\textless}/ext-link{\textgreater} ). {\textless}/p{\textgreater}},
   author	= {Du{\`{o}}, Angelo and Robinson, Mark D. and Soneson, Charlotte},
@@ -1382,6 +1397,41 @@
   year		= {2018}
 }
 
+@Article{	  langmead2009,
+  abstract	= {Bowtie is an ultrafast, memory-efficient alignment program for aligning short DNA sequence reads to large genomes. For the human genome, Burrows-Wheeler indexing allows Bowtie to align more than 25 million reads per CPU hour with a memory footprint of approximately 1.3 gigabytes. Bowtie extends previous Burrows-Wheeler techniques with a novel quality-aware backtracking algorithm that permits mismatches. Multiple processor cores can be used simultaneously to achieve even greater alignment speeds. Bowtie is open source http://bowtie.cbcb.umd.edu. {\textcopyright} 2009 Langmead et al.; licensee BioMed Central Ltd.},
+  author	= {Langmead, Ben and Trapnell, Cole and Pop, Mihai and Salzberg, Steven L.},
+  doi		= {10.1186/gb-2009-10-3-r25},
+  issn		= {14747596},
+  journal	= {Genome Biology},
+  keywords	= {Animal Genetics and Genomics,Bioinformatics,Evolutionary Biology,Human Genetics,Microbial Genetics and Genomics,Plant Genetics and Genomics},
+  month		= {mar},
+  number	= {3},
+  pages		= {R25},
+  pmid		= {19261174},
+  publisher	= {BioMed Central},
+  title		= {{Ultrafast and memory-efficient alignment of short DNA sequences to the human genome}},
+  url		= {http://genomebiology.biomedcentral.com/articles/10.1186/gb-2009-10-3-r25},
+  volume	= {10},
+  year		= {2009}
+}
+
+@Article{	  langmead2012,
+  abstract	= {As the rate of sequencing increases, greater throughput is demanded from read aligners. The full-text minute index is often used to make alignment very fast and memory-efficient, but the approach is ill-suited to finding longer, gapped alignments. Bowtie 2 combines the strengths of the full-text minute index with the flexibility and speed of hardware-accelerated dynamic programming algorithms to achieve a combination of high speed, sensitivity and accuracy. {\textcopyright} 2012 Nature America, Inc. All rights reserved.},
+  author	= {Langmead, Ben and Salzberg, Steven L.},
+  doi		= {10.1038/nmeth.1923},
+  issn		= {15487091},
+  journal	= {Nature Methods},
+  keywords	= {Bioinformatics,Genomics,Sequencing},
+  month		= {apr},
+  number	= {4},
+  pages		= {357--359},
+  pmid		= {22388286},
+  publisher	= {Nature Publishing Group},
+  title		= {{Fast gapped-read alignment with Bowtie 2}},
+  volume	= {9},
+  year		= {2012}
+}
+
 @Article{	  latinkic2001-hh,
   abstract	= {Abstract. The cysteine-rich angiogenic protein 61 (Cyr61) is an extracellular matrix-associated, heparin-binding protein that mediates cell adhesion, stimulate},
   author	= {Latinki{\'{c}}, Branko V and Mo, Fan-E and Greenspan, Jeffrey A and Copeland, Neal G and Gilbert, Debra J and Jenkins, Nancy A and Ross, Susan R and Lau, Lester F},
@@ -1525,12 +1575,27 @@
   year		= {2016}
 }
 
-@Misc{		  lun2017,
+@Misc{		  lun2017a,
   abstract	= {Defines a S4 class for storing data from single-cell experiments. This includes specialized methods to store and retrieve spike-in information, dimensionality reduction coordinates and size factors for each cell, along with the usual metadata for genes and libraries.},
   author	= {Lun, Aaron and Risso, Davide and Korthauer, Keegan},
   doi		= {10.18129/B9.bioc.SingleCellExperiment},
   title		= {{SingleCellExperiment: S4 Classes for Single Cell Data}},
   url		= {https://doi.org/doi:10.18129/B9.bioc.SingleCellExperiment},
+  year		= {2017}
+}
+
+@Article{	  lun2017b,
+  abstract	= {By profiling the transcriptomes of individual cells, single-cell RNA sequencing provides unparalleled resolution to study cellular heterogeneity. However, this comes at the cost of high technical noise, including cell-specific biases in capture efficiency and library generation. One strategy for removing these biases is to add a constant amount of spike-in RNA to each cell and to scale the observed expression values so that the coverage of spike-in transcripts is constant across cells. This approach has previously been criticized as its accuracy depends on the precise addition of spike-in RNA to each sample. Here, we perform mixture experiments using two different sets of spike-in RNA to quantify the variance in the amount of spike-in RNA added to each well in a plate-based protocol. We also obtain an upper bound on the variance due to differences in behavior between the two spike-in sets. We demonstrate that both factors are small contributors to the total technical variance and have only minor effects on downstream analyses, such as detection of highly variable genes and clustering. Our results suggest that scaling normalization using spike-in transcripts is reliable enough for routine use in single-cell RNA sequencing data analyses.},
+  author	= {Lun, Aaron T.L. and Calero-Nieto, Fernando J. and Haim-Vilmovsky, Liora and G{\"{o}}ttgens, Berthold and Marioni, John C.},
+  doi		= {10.1101/gr.222877.117},
+  issn		= {15495469},
+  journal	= {Genome Research},
+  month		= {nov},
+  number	= {11},
+  pages		= {1795--1806},
+  publisher	= {Cold Spring Harbor Laboratory Press},
+  title		= {{Assessing the reliability of spike-in normalization for analyses of single-cell RNA sequencing data}},
+  volume	= {27},
   year		= {2017}
 }
 
@@ -1822,6 +1887,21 @@
   title		= {{Single-cell RNA-seq highlights intratumoral heterogeneity in primary glioblastoma}},
   volume	= {344},
   year		= {2014}
+}
+
+@Article{	  patro2017,
+  abstract	= {We introduce Salmon, a lightweight method for quantifying transcript abundance from RNARNARNA-seq reads. Salmon combines a new dual-phase parallel inference algorithm and feature-rich bias models with an ultra-fast read mapping procedure. It is the first transcriptome-wide quantifier to correct for fragment GC-content bias, which, as we demonstrate here, substantially improves the accuracy of abundance estimates and the sensitivity of subsequent differential expression analysis.},
+  author	= {Patro, Rob and Duggal, Geet and Love, Michael I. and Irizarry, Rafael A. and Kingsford, Carl},
+  doi		= {10.1038/nmeth.4197},
+  issn		= {15487105},
+  journal	= {Nature Methods},
+  number	= {4},
+  pages		= {417--419},
+  pmid		= {28263959},
+  publisher	= {Nature Publishing Group},
+  title		= {{Salmon provides fast and bias-aware quantification of transcript expression}},
+  volume	= {14},
+  year		= {2017}
 }
 
 @Article{	  plass2018,
@@ -2323,6 +2403,23 @@
   title		= {{Technique of Factor Analysis}},
   volume	= {136},
   year		= {1935}
+}
+
+@Article{	  stuart2019,
+  abstract	= {Single-cell transcriptomics has transformed our ability to characterize cell states, but deep biological understanding requires more than a taxonomic listing of clusters. As new methods arise to measure distinct cellular modalities, a key analytical challenge is to integrate these datasets to better understand cellular identity and function. Here, we develop a strategy to “anchor” diverse datasets together, enabling us to integrate single-cell measurements not only across scRNA-seq technologies, but also across different modalities. After demonstrating improvement over existing methods for integrating scRNA-seq data, we anchor scRNA-seq experiments with scATAC-seq to explore chromatin differences in closely related interneuron subsets and project protein expression measurements onto a bone marrow atlas to characterize lymphocyte populations. Lastly, we harmonize in situ gene expression and scRNA-seq datasets, allowing transcriptome-wide imputation of spatial gene expression patterns. Our work presents a strategy for the assembly of harmonized references and transfer of information across datasets.},
+  author	= {Stuart, Tim and Butler, Andrew and Hoffman, Paul and Hafemeister, Christoph and Papalexi, Efthymia and Mauck, William M. and Hao, Yuhan and Stoeckius, Marlon and Smibert, Peter and Satija, Rahul},
+  doi		= {10.1016/j.cell.2019.05.031},
+  issn		= {10974172},
+  journal	= {Cell},
+  keywords	= {integration,multi-modal,scATAC-seq,scRNA-seq,single cell,single-cell ATAC sequencing,single-cell RNA sequencing},
+  month		= {jun},
+  number	= {7},
+  pages		= {1888--1902.e21},
+  pmid		= {31178118},
+  publisher	= {Cell Press},
+  title		= {{Comprehensive Integration of Single-Cell Data}},
+  volume	= {177},
+  year		= {2019}
 }
 
 @Article{	  svensson2017,

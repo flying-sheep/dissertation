@@ -357,7 +357,7 @@ Only the unstructured hierarchical annotations \type{.uns} are not modified when
 AnnData supports several file formats it can read and write to for long term result storage, pipeline checkpoints, file exchange, and compatibility with existing experimental protocols and other tools and pipelines.
 This includes its own \type{.h5ad} format based on HDF5 \cite[folk2011], Loom \cite[linnarson2017], UMI-Tools \cite[smith2017], Matrix Market \cite[boisvert1996], as well as Microsoft Excel and textual spreadsheets.
 AnnData supports disk-backed operations in its native format, allowing operations on data too big to hold in memory.
-For quick integration of AnnData with Bioconductor packages \cite[huber2015] or Seurat \cite[butler2018], AnnData can be converted to and from SingleCellExperiment \cite[lun2017] using AnnData2ri \cite[angerer2019].
+For quick integration of AnnData with Bioconductor packages \cite[huber2015] or Seurat \cite[butler2018], AnnData can be converted to and from SingleCellExperiment \cite[lun2017a] using AnnData2ri \cite[angerer2019].
 Due to AnnData’s generic structure, and its conversion and serialization options, it serves as a backbone for analysis pipelines:
 Scanpy and other tools can interact by adding and reading annotations, as well as reading, modifying and adding layers.
 
