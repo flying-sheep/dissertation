@@ -64,6 +64,7 @@ A desire to measure thousands or more cells without exploding costs leads to sha
 Scientists in the field continue to discuss possible origins of the effects and the best approaches to tackle the arising challenges.
 In past years for example, studies have suggested that droplet-based protocols inflate the number of zeros in the data due to technical reasons.
 \inlinecite[svensson2020] however asserts that the high number of zeros stems from biological variation.
+Microfluidic protocols come with their own unique challenges, as they for example cannot completely avoid lysing and sequencing two cells in the same droplet (doublets).
 Increased complexity in analysis can be conquered with improved modeling or more sophisticated preprocessing.
 The modeling approach is more correct, but less flexible, as it requires careful informed design across the whole analysis process.
 Each new analysis that significantly deviates from previous analyses requires a re-thinking and re-building of the model almost from the ground up.
@@ -83,8 +84,12 @@ I improved interoperability and modularity of existing tools, pioneered technolo
 
 % Overview:Describe how the workflows work and why the aforementioned is important.
 The general workflow of scRNA-Seq data processing consists of five steps.
+The first step, library preparation, is experimental and takes place in a biological laboratory.
+The second step, quantification, creates a cell × gene matrix from raw data produced in step one.
+The remaining steps are preprocessing, analysis and visualization of this matrix.
 
-% 1. library preparation (cells → transcript library) and sequencing (transcript library t reads)
+\startsubsection[title={Library Preparation and sequencing}]
+% 1. (cells → transcript library) and sequencing (transcript library → reads)
 \startplacefigure[reference=fig:rna-seq,title={Library preparation, sequencing, and mapping}]
 % https://upload.wikimedia.org/wikipedia/commons/f/f3/Summary_of_RNA-Seq.svg
 \externalfigure[Summary_of_RNA-Seq.svg][width=.7\textwidth]
@@ -99,41 +104,66 @@ The sequencing machine finally digitizes the fragments and allows all further pr
 Additional to the cell barcode, some protocols allow to enrich the library with information that can be used to reduce sources of noise or bias.
 This includes e.\,g. unique molecular identifiers (UMIs), which allow to count each transcript only once despite a common protocol step involving multiple incomplete duplications of all transcripts \cite[islam2014].
 A second example is adding known quantities of RNA from a foreign organism (spike-in RNA) to each cell library, which later allows to correct for nonlinear per-cell biases in transcript counts \cite[lun2017b].
+\stopsubsection
 
-% 2. counting (reads → counts)
+\startsubsection[title={Counting}]
+% 2. (reads → counts)
+\TODO[or quantification?]
 Counting starts from the paired sequences read from both ends of a fragment (paired-end reads) or the 3′ end sequences (single-end reads).
 The read or read pair includes a cell barcode and possibly a UMI barcode.
 \footnote{\inlinecite[uzbas2019] developed BART-Seq, a protocol that combines paired-end reads with two cell barcodes to address a high number of cells.}
 Classic counting uses specialized short read alignment tools like BOWTIE \cite[langmead2009,langmead2012] or STAR \cite[dobin2013] to match reads to a reference genome annotated with information about where genes start, end, and can be spliced.
 Aligned reads are counted per splicing configuration that translates to a protein, while collapsing the counts for reads with identical UMIs – if available (see \infig[fig:rna-seq]c).
 Since only the resulting count matrix is needed for many kinds of downstream analysis, there have been advances in pseudo-alignment algorithms like Kallisto \cite[ntranos2016] or Salmon \cite[patro2017], which efficiently count without a separate alignment step.
+For ease of use, pipelines wrapping those tools for certain experimental protocols exist.
+Those include Cell Ranger for 10x Genomics’ Chromium protocol \cite[zheng2017] or zUMIs for several protocols involving UMIs \cite[parekh2018].
+\TODO[mention my bartseq pipeline here?]
+\stopsubsection
 
-% 3. preprocessing (counts → expressions)
+\startsubsection[title={Preprocessing}]
+% 3. (counts → expressions)
 % generally \cite[luecken2018]: https://www.embopress.org/doi/10.15252/msb.20188746
 \startplacefigure[reference=fig:batch-effect,location=right,title={
 Batch effect correction reduces biases between data gathered in multiple sequencer runs.
 Cells from well-normalized data will have similar expression profiles to cells from the other sequencer runs.
+\small{(Figure reproduced with friendly permission from \inlinecite[buttner2019])}
 }]
 \externalfigure[batch-effect-correction.svg][width=.5\textwidth]
 \stopplacefigure
 
 In order to obtain comparable quantities, raw counts have to be preprocessed to correct for various technical biases.
-Commonly one starts by eliminating rows and columns from the count matrix that contain uncharacteristically low counts: No gene or cell is likely to only contain a single read.
-Another common preprocessing step is normalization:
-correction for common cell variation caused by known processes such as the cell cycle, if one isn’t interested in studying this process.
+Commonly one starts by eliminating rows and columns from the count matrix that are unlikely to be (living) cells or important genes.
+This filtering removes rows and columns containing a low count sum or very few entries.
+Rows like this are assumed to be empty droplets or wells, while columns like this are genes that are not informative of the observed cell variation.
+It also removes cells containing a high fraction of mitochondrial counts, indicative of dead or dying cells \cite[ilicic2016].
+Doublets cannot be detected reliably by a simple count threshold, as a pair of small cells can have similar numbers of expressed genes and counts as single large cell, but more sophisticated solutions are emerging \cite[mcginnis2019,wolock2019].
+\inlinecite[luecken2019] point out that each of those filtering covariates in isolation is not sufficient to identify a non-cell row, and suggests conservative joint scoring using more than one covariate.
+
+Another common preprocessing step is normalization.
+It entails correction for common technical sources of cell variation, as well as biological sources with a strong effect, such as the cell cycle:
+when not studying the cell cycle itself, its variation can obscure the processes under investigation \cite[buettner2015].
 If multiple runs of the sequencer were used to obtain the full data, there will be biases per run that can be reduced by using a dedicated batch effect correction algorithm (see \infig[fig:batch-effect]).
+While older bulk correction effects such as ComBat \cite[johnson2007] have proven to be successful in the last years, a growing number of dedicated scRNA-Seq batch effect correction tools is becoming available \cite[haghverdi2018,lotfollahi2018,korsunsky2019,polanski2020].
 Preprocessing can also involve scaling count values using a per-cell function derived from the aforementioned spike-ins.
+All the aforementioned transformation have to be carefully balanced with their potential to over-correct and remove relevant biological variation.
+
 In order to model or otherwise analyze count data, it is almost always necessary to calculate distances between expression profiles.
 Since distance measures usually expect data with no mean–variance dependency (i.\,e. normally distributed data), expressions are commonly logarithmized.
 The intuition is that in in log-space, distances represent log-fold changes, an usual way to compare expression level \cite[brennecke2013,eling2018].
 \inlinecite[svensson2020] however suggested that log-transforming data is a possible cause for observing zero-inflation in data.
 With single cell data specific transforms like SCTransform \cite[hafemeister2019] or embeddings like scVI \cite[lopez2018] or GLM-PCA \cite[townes2019], promising alternatives are emerging.
 \TODO[introduce embeddings or rephrase: is this a good location at all or should I move it somewhere?]
-A final common preprocessing step is reduction of the data by discarding genes with low variability that are assumed to contribute little to the data’s variability (highly variable gene selection).
-\TODO[mention quality control as part of counting and preprocessing]
 
-% 4. analysis: uncover dynamics, heterogeneity structure, feature importance and role
-\startplacefigure[reference=fig:waddington,location=left,title={Cells differentiate smoothly, in stochasically diverging paths, and not always in the same general direction.}]
+A final common preprocessing step is reduction of the data by discarding genes with low variability that are assumed to contribute little to the data’s variability.
+This highly variable gene selection is performed with differently rigorous algorithms \cite[brennecke2013,yip2018].
+This more complex filtering is performed in addition to the aforementioned quality-based gene filtering, reducing the retained number of genes to the low thousands \cite[luecken2019].
+\stopsubsection
+
+\startsubsection[title={Analysis}]
+% 4. uncover dynamics, heterogeneity structure, feature importance and role
+\startplacefigure[reference=fig:waddington,location=left,title={
+Cells differentiate smoothly, in stochasically diverging paths, and not always in the same general direction.
+}]
 %https://anatomypubs.onlinelibrary.wiley.com/doi/full/10.1002/dvdy.24678
 \externalfigure[https://anatomypubs.onlinelibrary.wiley.com/cms/asset/aafdf349-9324-496d-822d-183edae5d947/dvdy24678-fig-0001-m.jpg][width=.5\textwidth]
 \stopplacefigure
@@ -155,8 +185,14 @@ This results in cells temporarily or sometimes permanently stuck as intermediate
 While marker genes for certain cell roles or developmental steps exist, this complex and gradual nature of most tissues requires more sophisticated analysis and visualization.
 Further analyses can also depend on the availability of other kinds of data.
 For example an indication of the direction in which cells differentiate are RNA velocities, which can be reconstructed from the relation of spliced and unspliced mRNA \cite[lamanno2018].
+\TODO[
+mention problem of data reuse, discrete clustering, … as setup for GR later.
+Check “Zhang et al, 2018” part of Lücken 2019
+]
+\stopsubsection
 
-% 5. visualization (results often too complex to understand as numbers)
+\startsubsection[title={Visualization}]
+% 5. (results often too complex to understand as numbers)
 % talk about dim red here and the fact that it’s hard to reason about how the input features relate back to output – make path for GR coming to the rescue
 \startplacefigure[reference=fig:embeddings, title={
 Four increasingly complex two dimensional embeddings of the same cells.
@@ -180,6 +216,7 @@ with no ability to validate the embedding, any arbitrary arrangement would be eq
 The above sequence of steps should be a generic overview of scRNA-Seq analysis able to serve as a framework in which to place my specific contributions.
 While I worked on every in-silico section \TODO[better term] of the process except for alignment, my contributions are focused on the steps after counting.
 To provide further context for my work, I would like to contrast the ways people used to work before and after the creation of my tools.
+\stopsubsection
 
 \startsubsection[title={The old way}]
 % People often need to cobble together their own pipelines and use default parameters without knowing what they do.
@@ -197,7 +234,7 @@ In practice, the lack of frameworks led to very application-specific code that w
 Redundant solving of problems already solved elsewhere is not only wasteful, but also error prone.
 No scRNA-Seq analysis framework in Python existed, despite more and more people in the field working with machine learning algorithms implemented in Python.
 Existing tools in R were opinionated and offered little extensibility, limiting their scope of application.
-Their performance was inconsistent and often not sufficient for upcoming large datasets from the upcoming microfluidic protocols.
+Their performance was inconsistent and often not sufficient for upcoming large datasets from microfluidic protocols.
 Similarly, their code quality and error reporting varied greatly.
 For example, many common differential expression tools used to simply process data being put in, with no errors reported in the case of non-converging models or other detectable degenerate cases \cite[luecken2019].
 \TODO[Check if *this* Lücken citation says that]
@@ -301,7 +338,7 @@ With F. Alexander Wolf I implemented the initial version of both, where he focus
 Scanpy is designed around AnnData, storing the results of each processing step in an expression matrix layer or an aligned annotation (see \infig[fig:anndata]).
 This data structure enables Scanpy’s flexibility.
 It can be persisted to disk in various formats for storage and interoperability with command line tools.
-AnnData’s structure allows close interoperability between Scanpy and other tools that use AnnData, including R tools via SingleCellExperiment \cite[lun2017a,angerer2019].
+AnnData’s structure allows close interoperability between Scanpy and other tools that use AnnData, including R tools via SingleCellExperiment \cite[lun2017a,angerer2019b].
 For data too large to hold in memory, AnnData supports disk-backed operations.
 AnnData’s modular and flexible design philosophy allows Scanpy routines to be effortlessly interspersed with preprocessing and analysis steps of other tools.
 \stopsubsection
@@ -312,7 +349,8 @@ Beyond processing count matrices, I also contributed to a new, targeted RNA-Seq 
 It is set apart from untargeted single cell and bulk RNA-Seq protocols due to its high sensitivity and low cost.
 I designed a demultiplexing and counting strategy for BART-Seq together with Fatma Uzbas and Micha Drucker.
 I implemented those strategies as well as visualization routines for the protocol as a Python package.
-Part of this package is a pipeline based on Snakemake that performs all steps of the protocol to create count matrices, statistics and visualizations.
+Part of this package is the BART-Seq equivalent to Cell Ranger or zUMIs:
+a pipeline based on Snakemake that performs all steps of the protocol to create count matrices, statistics and visualizations \cite[angerer2019a].
 
 \TODO[integrate]
 I designed the quantification step in collaboration with Fatma Uzbas and Micha Drucker, and implemented a Python library and pipeline executing it.

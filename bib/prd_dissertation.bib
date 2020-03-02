@@ -105,7 +105,15 @@
   year		= {2017}
 }
 
-@Misc{		  angerer2019,
+@Article{	  angerer2019a,
+  author	= {Angerer, Philipp},
+  doi		= {10.5281/ZENODO.3251773},
+  month		= {jun},
+  title		= {theislab/bartseq-pipeline v1.0.0},
+  year		= {2019}
+}
+
+@Misc{		  angerer2019b,
   author	= {Angerer, Philipp},
   doi		= {10.5281/ZENODO.3673035},
   month		= {aug},
@@ -901,6 +909,23 @@
   year		= {2016}
 }
 
+@Article{	  haghverdi2018,
+  abstract	= {Large-scale single-cell RNA sequencing (scRNA-seq) data sets that are produced in different laboratories and at different times contain batch effects that may compromise the integration and interpretation of the data. Existing scRNA-seq analysis methods incorrectly assume that the composition of cell populations is either known or identical across batches. We present a strategy for batch correction based on the detection of mutual nearest neighbors (MNNs) in the high-dimensional expression space. Our approach does not rely on predefined or equal population compositions across batches; instead, it requires only that a subset of the population be shared between batches. We demonstrate the superiority of our approach compared with existing methods by using both simulated and real scRNA-seq data sets. Using multiple droplet-based scRNA-seq data sets, we demonstrate that our MNN batch-effect-correction method can be scaled to large numbers of cells.},
+  author	= {Haghverdi, Laleh and Lun, Aaron T.L. and Morgan, Michael D. and Marioni, John C.},
+  doi		= {10.1038/nbt.4091},
+  issn		= {15461696},
+  journal	= {Nature Biotechnology},
+  keywords	= {Data integration,Statistical methods,Transcriptomics},
+  month		= {jun},
+  number	= {5},
+  pages		= {421--427},
+  pmid		= {29608177},
+  publisher	= {Nature Publishing Group},
+  title		= {{Batch effects in single-cell RNA-sequencing data are corrected by matching mutual nearest neighbors}},
+  volume	= {36},
+  year		= {2018}
+}
+
 @Article{	  haque2017,
   abstract	= {RNA sequencing (RNA-seq) is a genomic approach for the detection and quantitative analysis of messenger RNA molecules in a biological sample and is useful for studying cellular responses. RNA-seq has fueled much discovery and innovation in medicine over recent years. For practical reasons, the technique is usually conducted on samples comprising thousands to millions of cells. However, this has hindered direct assessment of the fundamental unit of biology-the cell. Since the first single-cell RNA-sequencing (scRNA-seq) study was published in 2009, many more have been conducted, mostly by specialist laboratories with unique skills in wet-lab single-cell genomics, bioinformatics, and computation. However, with the increasing commercial availability of scRNA-seq platforms, and the rapid ongoing maturation of bioinformatics approaches, a point has been reached where any biomedical researcher or clinician can use scRNA-seq to make exciting discoveries. In this review, we present a practical guide to help researchers design their first scRNA-seq studies, including introductory information on experimental hardware, protocol choice, quality control, data analysis and biological interpretation.},
   author	= {Haque, Ashraful and Engel, Jessica and Teichmann, Sarah A. and L{\"{o}}nnberg, Tapio},
@@ -1134,6 +1159,21 @@
   year		= {2007}
 }
 
+@Article{	  johnson2007,
+  abstract	= {Non-biological experimental variation or "batch effects" are commonly observed across multiple batches of microarray experiments, often rendering the task of combining data from these batches difficult. The ability to combine microarray data sets is advantageous to researchers to increase statistical power to detect biological phenomena from studies where logistical considerations restrict sample size or in studies that require the sequential hybridization of arrays. In general, it is inappropriate to combine data sets without adjusting for batch effects. Methods have been proposed to filter batch effects from data, but these are often complicated and require large batch sizes (≥ 25) to implement. Because the majority of microarray studies are conducted using much smaller sample sizes, existing methods are not sufficient. We propose parametric and non-parametric empirical Bayes frameworks for adjusting data for batch effects that is robust to outliers in small sample sizes and performs comparable to existing methods for large samples. We illustrate our methods using two example data sets and show that our methods are justifiable, easy to apply, and useful in practice. Software for our method is freely available at: http://biosun1.harvard.edu/complab/batch/.},
+  author	= {Johnson, W. Evan and Li, Cheng and Rabinovic, Ariel},
+  doi		= {10.1093/biostatistics/kxj037},
+  issn		= {14654644},
+  journal	= {Biostatistics},
+  keywords	= {Batch effects,Empirical Bayes,Microarrays,Monte Carlo},
+  number	= {1},
+  pages		= {118--127},
+  pmid		= {16632515},
+  title		= {{Adjusting batch effects in microarray expression data using empirical Bayes methods}},
+  volume	= {8},
+  year		= {2007}
+}
+
 @Article{	  kharchenko2014,
   abstract	= {Single-cell data provide a means to dissect the composition of complex tissues and specialized cellular environments. However, the analysis of such measurements is complicated by high levels of technical noise and intrinsic biological variability. We describe a probabilistic model of expression-magnitude distortions typical of single-cell RNA-sequencing measurements, which enables detection of differential expression signatures and identification of subpopulations of cells in a way that is more tolerant of noise.},
   author	= {Kharchenko, Peter V and Silberstein, Lev and Scadden, David T},
@@ -1326,6 +1366,23 @@
   title		= {{Fast, sensitive, and flexible integration of single cell data with Harmony}},
   url		= {https://www.biorxiv.org/content/10.1101/461954v2 files/196/Korsunsky et al. - 2018 - Fast, sensitive, and accurate integration of singl.pdf files/195/Korsunsky et al. - 2018 - Fast, sensitive, and accurate integration of singl.html https://www.biorxiv.org},
   year		= {2018}
+}
+
+@Article{	  korsunsky2019,
+  abstract	= {The emerging diversity of single-cell RNA-seq datasets allows for the full transcriptional characterization of cell types across a wide variety of biological and clinical conditions. However, it is challenging to analyze them together, particularly when datasets are assayed with different technologies, because biological and technical differences are interspersed. We present Harmony (https://github.com/immunogenomics/harmony), an algorithm that projects cells into a shared embedding in which cells group by cell type rather than dataset-specific conditions. Harmony simultaneously accounts for multiple experimental and biological factors. In six analyses, we demonstrate the superior performance of Harmony to previously published algorithms while requiring fewer computational resources. Harmony enables the integration of {\~{}}106 cells on a personal computer. We apply Harmony to peripheral blood mononuclear cells from datasets with large experimental differences, five studies of pancreatic islet cells, mouse embryogenesis datasets and the integration of scRNA-seq with spatial transcriptomics data.},
+  author	= {Korsunsky, Ilya and Millard, Nghia and Fan, Jean and Slowikowski, Kamil and Zhang, Fan and Wei, Kevin and Baglaenko, Yuriy and Brenner, Michael and ru Loh, Po and Raychaudhuri, Soumya},
+  doi		= {10.1038/s41592-019-0619-0},
+  issn		= {15487105},
+  journal	= {Nature Methods},
+  keywords	= {Computational models,Data integration,Statistical methods},
+  month		= {dec},
+  number	= {12},
+  pages		= {1289--1296},
+  pmid		= {31740819},
+  publisher	= {Nature Research},
+  title		= {{Fast, sensitive and accurate integration of single-cell data with Harmony}},
+  volume	= {16},
+  year		= {2019}
 }
 
 @Article{	  korthauer2018,
@@ -1528,6 +1585,19 @@
   year		= {2018}
 }
 
+@Article{	  lotfollahi2018,
+  abstract	= {Accurately modeling cellular response to perturbations is a central goal of computational biology. While such modeling has been proposed based on statistical, mechanistic and machine learning models in specific settings, no generalization of predictions to phenomena absent from training data (‘out-of-sample') has yet been demonstrated. Here, we present scGen, a model combining variational autoencoders and latent space vector arithmetics for high-dimensional single-cell gene expression data. In benchmarks across a broad range of examples, we show that scGen accurately models dose and infection response of cells across cell types, studies and species. In particular, we demonstrate that scGen learns cell type and species specific response implying that it captures features that distinguish responding from non-responding genes and cells. With the upcoming availability of large-scale atlases of organs in healthy state, we envision scGen to become a tool for experimental design through in silico screening of perturbation response in the context of disease and drug treatment.},
+  author	= {Lotfollahi, M. and Wolf, F. Alexander and Theis, Fabian J.},
+  doi		= {10.1101/478503},
+  journal	= {bioRxiv},
+  month		= {dec},
+  pages		= {478503},
+  publisher	= {Cold Spring Harbor Laboratory},
+  title		= {{Generative modeling and latent space arithmetics predict single-cell perturbation response across cell types, studies and species}},
+  url		= {https://www.biorxiv.org/content/10.1101/478503v2},
+  year		= {2018}
+}
+
 @Article{	  luecken2019,
   abstract	= {Single-cell RNA-seq has enabled gene expression to be studied at an unprecedented resolution. The promise of this technology is attracting a growing user base for single-cell analysis methods. As more analysis tools are becoming available, it is becoming increasingly difficult to navigate this landscape and produce an up-to-date workflow to analyse one's data. Here, we detail the steps of a typical single-cell RNA-seq analysis, including pre-processing (quality control, normalization, data correction, feature selection, and dimensionality reduction) and cell- and gene-level downstream analysis. We formulate current best-practice recommendations for these steps based on independent comparison studies. We have integrated these best-practice recommendations into a workflow, which we apply to a public dataset to further illustrate how these steps work in practice. Our documented case study can be found at https://www.github.com/theislab/single-cell-tutorial This review will serve as a workflow tutorial for new entrants into the field, and help established users update their analysis pipelines.},
   author	= {Luecken, Malte D and Theis, Fabian J},
@@ -1670,6 +1740,22 @@
   url		= {https://academic.oup.com/bib/article-abstract/19/2/286/2562648},
   volume	= {19},
   year		= {2018}
+}
+
+@Article{	  mcginnis2019,
+  abstract	= {Single-cell RNA sequencing (scRNA-seq) data are commonly affected by technical artifacts known as “doublets,” which limit cell throughput and lead to spurious biological conclusions. Here, we present a computational doublet detection tool—DoubletFinder—that identifies doublets using only gene expression data. DoubletFinder predicts doublets according to each real cell's proximity in gene expression space to artificial doublets created by averaging the transcriptional profile of randomly chosen cell pairs. We first use scRNA-seq datasets where the identity of doublets is known to show that DoubletFinder identifies doublets formed from transcriptionally distinct cells. When these doublets are removed, the identification of differentially expressed genes is enhanced. Second, we provide a method for estimating DoubletFinder input parameters, allowing its application across scRNA-seq datasets with diverse distributions of cell types. Lastly, we present “best practices” for DoubletFinder applications and illustrate that DoubletFinder is insensitive to an experimentally validated kidney cell type with “hybrid” expression features.},
+  author	= {McGinnis, Christopher S. and Murrow, Lyndsay M. and Gartner, Zev J.},
+  doi		= {10.1016/j.cels.2019.03.003},
+  issn		= {24054720},
+  journal	= {Cell Systems},
+  keywords	= {doublet detection,machine learning,quality-control,single-cell RNA sequencing},
+  month		= {apr},
+  number	= {4},
+  pages		= {329--337.e4},
+  publisher	= {Cell Press},
+  title		= {{DoubletFinder: Doublet Detection in Single-Cell RNA Sequencing Data Using Artificial Nearest Neighbors}},
+  volume	= {8},
+  year		= {2019}
 }
 
 @Article{	  mcinnes2018,
@@ -1874,6 +1960,20 @@
   year		= {2018}
 }
 
+@Article{	  parekh2018,
+  abstract	= {Background Single-cell RNA-sequencing (scRNA-seq) experiments typically analyze hundreds or thousands of cells after amplification of the cDNA. The high throughput is made possible by the early introduction of sample-specific bar codes (BCs), and the amplification bias is alleviated by unique molecular identifiers (UMIs). Thus, the ideal analysis pipeline for scRNA-seq data needs to efficiently tabulate reads according to both BC and UMI. Findings zUMIs is a pipeline that can handle both known and random BCs and also efficiently collapse UMIs, either just for exon mapping reads or for both exon and intron mapping reads. If BC annotation is missing, zUMIs can accurately detect intact cells from the distribution of sequencing reads. Another unique feature of zUMIs is the adaptive downsampling function that facilitates dealing with hugely varying library sizes but also allows the user to evaluate whether the library has been sequenced to saturation. To illustrate the utility of zUMIs, we analyzed a single-nucleus RNA-seq dataset and show that more than 35{\%} of all reads map to introns. Also, we show that these intronic reads are informative about expression levels, significantly increasing the number of detected genes and improving the cluster resolution. Conclusions zUMIs flexibility makes if possible to accommodate data generated with any of the major scRNA-seq protocols that use BCs and UMIs and is the most feature-rich, fast, and user-friendly pipeline to process such scRNA-seq data.},
+  author	= {Parekh, Swati and Ziegenhain, Christoph and Vieth, Beate and Enard, Wolfgang and Hellmann, Ines},
+  doi		= {10.1093/gigascience/giy059},
+  issn		= {2047-217X},
+  journal	= {GigaScience},
+  number	= {6},
+  pmid		= {29846586},
+  title		= {{zUMIs - A fast and flexible pipeline to process RNA sequencing data with UMIs.}},
+  url		= {http://www.ncbi.nlm.nih.gov/pubmed/29846586 http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=PMC6007394},
+  volume	= {7},
+  year		= {2018}
+}
+
 @Article{	  patel2014,
   abstract	= {Human cancers are complex ecosystems composed of cells with distinct phenotypes, genotypes, and epigenetic states, but current models do not adequately reflect tumor composition in patients. We used single-cell RNA sequencing (RNA-seq) to profile 430 cells from five primary glioblastomas, which we found to be inherently variable in their expression of diverse transcriptional programs related to oncogenic signaling, proliferation, complement/immune response, and hypoxia. We also observed a continuum of stemness-related expression states that enabled us to identify putative regulators of stemness in vivo. Finally, we show that established glioblastoma subtype classifiers are variably expressed across individual cells within a tumor and demonstrate the potential prognostic implications of such intratumoral heterogeneity. Thus, we reveal previously unappreciated heterogeneity in diverse regulatory programs central to glioblastoma biology, prognosis, and therapy.},
   author	= {Patel, Anoop P. and Tirosh, Itay and Trombetta, John J. and Shalek, Alex K. and Gillespie, Shawn M. and Wakimoto, Hiroaki and Cahill, Daniel P. and Nahed, Brian V. and Curry, William T. and Martuza, Robert L. and Louis, David N. and Rozenblatt-Rosen, Orit and Suv{\`{a}}, Mario L. and Regev, Aviv and Bernstein, Bradley E.},
@@ -1944,6 +2044,20 @@
   url		= {https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5030210/pdf/fgene-07-00163.pdf},
   volume	= {7},
   year		= {2016}
+}
+
+@Article{	  polanski2020,
+  abstract	= {MOTIVATION: Increasing numbers of large scale single cell RNA-Seq projects are leading to a data explosion, which can only be fully exploited through data integration. A number of methods have been developed to combine diverse datasets by removing technical batch effects, but most are computationally intensive. To overcome the challenge of enormous datasets, we have developed BBKNN, an extremely fast graph-based data integration algorithm. We illustrate the power of BBKNN on large scale mouse atlasing data, and favourably benchmark its run time against a number of competing methods. AVAILABILITY AND IMPLEMENTATION: BBKNN is available at https://github.com/Teichlab/bbknn, along with documentation and multiple example notebooks, and can be installed from pip. SUPPLEMENTARY INFORMATION: Supplementary data are available at Bioinformatics online.},
+  author	= {Pola{\'{n}}ski, Krzysztof and Young, Matthew D. and Miao, Zhichao and Meyer, Kerstin B. and Teichmann, Sarah A. and Park, Jong Eun},
+  doi		= {10.1093/bioinformatics/btz625},
+  issn		= {13674811},
+  journal	= {Bioinformatics (Oxford, England)},
+  number	= {3},
+  pages		= {964--965},
+  title		= {{BBKNN: fast batch alignment of single cell transcriptomes}},
+  url		= {https://academic.oup.com/bioinformatics/article-abstract/36/3/964/5545955},
+  volume	= {36},
+  year		= {2020}
 }
 
 @Article{	  polanski2020,
@@ -2965,6 +3079,23 @@
   year		= {2019}
 }
 
+@Article{	  wolock2019,
+  abstract	= {Single-cell RNA-sequencing has become a widely used, powerful approach for studying cell populations. However, these methods often generate multiplet artifacts, where two or more cells receive the same barcode, resulting in a hybrid transcriptome. In most experiments, multiplets account for several percent of transcriptomes and can confound downstream data analysis. Here, we present Single-Cell Remover of Doublets (Scrublet), a framework for predicting the impact of multiplets in a given analysis and identifying problematic multiplets. Scrublet avoids the need for expert knowledge or cell clustering by simulating multiplets from the data and building a nearest neighbor classifier. To demonstrate the utility of this approach, we test Scrublet on several datasets that include independent knowledge of cell multiplets. Scrublet is freely available for download at github.com/AllonKleinLab/scrublet.},
+  author	= {Wolock, Samuel L. and Lopez, Romain and Klein, Allon M.},
+  doi		= {10.1016/j.cels.2018.11.005},
+  issn		= {24054720},
+  journal	= {Cell Systems},
+  keywords	= {RNA-seq,artifact detection,bioinformatics,cell doublets,decoy classifier,high dimensional data analysis,single-cell},
+  month		= {apr},
+  number	= {4},
+  pages		= {281--291.e9},
+  pmid		= {30954476},
+  publisher	= {Cell Press},
+  title		= {{Scrublet: Computational Identification of Cell Doublets in Single-Cell Transcriptomic Data}},
+  volume	= {8},
+  year		= {2019}
+}
+
 @Article{	  xavierdasilveiradossantos2018,
   author	= {{Xavier da Silveira dos Santos}, Aline and Liberali, Prisca},
   doi		= {10.1111/febs.14694},
@@ -2987,6 +3118,21 @@
   title		= {{Cloning of mouse Cited4, a member of the {\{}CITED{\}} family {\{}p300/CBP-binding{\}} transcriptional coactivators: induced expression in mammary epithelial cells}},
   volume	= {80},
   year		= {2002}
+}
+
+@Article{	  yip2018,
+  abstract	= {Traditional RNA sequencing (RNA-seq) allows the detection of gene expression variations between two or more cell populations through differentially expressed gene (DEG) analysis. However, genes that contribute to cell-to-cell differences are not discoverable with RNA-seq because RNA-seq samples are obtained from a mixture of cells. Single-cell RNA-seq (scRNA-seq) allows the detection of gene expression in each cell. With scRNA-seq, highly variable gene (HVG) discovery allows the detection of genes that contribute strongly to cell-to-cell variation within a homogeneous cell population, such as a population of embryonic stem cells. This analysis is implemented in many software packages. In this study, we compare seven HVG methods from six software packages, including BASiCS, Brennecke, scLVM, scran, scVEGs and Seurat. Our results demonstrate that reproducibility in HVG analysis requires a larger sample size than DEG analysis. Discrepancies between methods and potential issues in these tools are discussed and recommendations are made.},
+  author	= {Yip, Shun H. and Sham, Pak Chung and Wang, Junwen},
+  doi		= {10.1093/bib/bby011},
+  issn		= {14774054},
+  journal	= {Briefings in Bioinformatics},
+  keywords	= {DEG analysis,highly variable gene,scRNA-seq,single-cell RNA seq,software},
+  number	= {4},
+  pages		= {1583--1589},
+  title		= {{Evaluation of tools for highly variable gene discovery from single-cell RNA-seq data}},
+  url		= {https://academic.oup.com/bib/article-abstract/20/4/1583/4898116},
+  volume	= {20},
+  year		= {2018}
 }
 
 @Article{	  yip2018,
