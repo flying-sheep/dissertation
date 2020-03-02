@@ -47,41 +47,39 @@ Single-cell RNA-Seq (scRNA-Seq) can measure extremely small expression values do
 \TODO[is this the “nature methods paper of the year 20xx” you meant, carsten?]
 This data comes not without its own challenges, but enables the study of heterogeneous tissues like cancer, where expression averages from bulk RNA-Seq are not meaningful \cite[patel2014].
 The second great advantage is that the amounts of data present in scRNA-Seq lend themselves to machine learning approaches:
-patterns that no human can detect by manual and careful isolation of samples can be derived from the ample variation between hundreds to millions of individual cells.
+Advances in microfluidic devices have led to experimental protocols able to sequence up to 1.3 million cells \cite[macosko2015,klein2015,zheng2017].
+\TODO[more intro for droplet based protocols (footnote? paragraph?), or is this sufficient?]
+The ample variation between this multitude of individual cells allows to derive patterns no human can detect by manual and careful isolation of bulk samples \cite[huang2018].
 This way \inlinecite[plass2018] have determined the developmental lineage of every cell in a planarian, a regenerative species whose cellular mechanisms could be the key to prevent scarring or delay aging in humans.
 The international community of scientists working on transcriptomics is coming together to create the Human Cell Atlas \cite[regev2017].
 %\cite[vento-tormo2018]
 \TODO[what else to cite here? other teichman/regev stuff? maybe vento-tormo2018 “Single-cell reconstruction of the early maternal-fetal interface in humans”]
 
-%challenges, different protocols
+%challenges: different sources of biases and noise, preprocessing or modeling as approach
 All these opportunities come at the cost of additional complexity and more confounding variables (biases).
-For one, the small amount of mRNA molecules in single cells results in noisier measurements in general, since adding up the contents of multiple cells averages out noise.
-Experimental protocols used to measure the data have different tradeoffs between sensitivity, biases, cost, and time investment \cite[vieth2019].
+For one, scRNA-Seq has by far fewer mRNA molecules per sample than bulk RNA-seq, which results in noisier measurements in general \cite[brennecke2013].
+Experimental protocols used for sequencing single cell transcriptomes have different tradeoffs between sensitivity, biases, cost, and time investment \cite[ziegenhain2017,vieth2019].
 The number of cells that can be measured at once with a certain quality is therefore practically limited.
 A desire to measure thousands or more cells without exploding costs leads to shallow sequencing depths and increased computational demands \cite[angerer2017].
-Figuring out the right way to tackle challenges like this is not easy.
+Scientists in the field continue to discuss possible origins of the effects and the best approaches to tackle the arising challenges.
 In past years for example, studies have suggested that droplet-based protocols inflate the number of zeros in the data due to technical reasons.
-\TODO[more intro for protocols, or is a footnote or so sufficient?]
 \inlinecite[svensson2020] however asserts that the high number of zeros stems from biological variation.
-%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%% continue here
-%%%%%%%%%%%%%%%%%%%%%%
 Increased complexity in analysis can be conquered with improved modeling or more sophisticated preprocessing.
 The modeling approach is more correct, but less flexible, as it requires careful informed design across the whole analysis process.
 Each new analysis that significantly deviates from previous analyses requires a re-thinking and re-building of the model almost from the ground up.
 There are however also modeling approaches that replace several preprocessing steps without also involving analysis \cite[lopez2018,townes2019].
 
 % my work
-The more practical approach is to start with careful improvements in preprocessing that allow to shape the data in a way that fulfills the assumptions of subsequent analysis.
+The more practical approach is to start with careful preprocessing transforming data in a way that fulfills the assumptions of subsequent analysis \cite[vieth2019].
 The second step is to create and use streamlined building blocks for pipelines to preprocess and analyze the data, and to then then visualize the insights gained.
-Until few years ago, there were no freely available programming and environments that allowed this approach for single cell data analysis.
+Until few years ago, there were no freely available programming environments that allowed this approach for single cell data analysis \cite[wolf2018,stuart2019].
 Analysis pipelines came custom-built for a certain publication, just as hard to take apart and reuse as a holistic model would have been.
 Every graduate student and postdoctoral researcher had to start from scratch.
 The thesis at hand is a slice of the author’s continued efforts to change this.
 I improved interoperability and modularity of existing tools, pioneered technologies and software development processes in a research environment, and developed some of the missing building blocks for the resulting toolkit.
 
 \startsection[title=Workflow]
-% story: new challenges by sc data. old way to deal with data (workflows) are not efficient. new approaches needed → me
+% story: new challenges by sc data; old way to deal with data (workflows) are not efficient → new approaches needed → me
 
 \startsubsection[title=Overview]
 % Describe how the workflows work and why the aforementioned is important.
@@ -95,17 +93,16 @@ The general workflow of scRNA-Seq data processing consists of five steps.
 
 It begins with an experiment to prepare and sequence a transcript library containing mostly mature mRNA but also unspliced mRNA and other RNA (see \infig[fig:rna-seq]a).
 There are different kinds of library preparation protocols, all of which have in common that they isolate and fragment the RNA per single cell, then tag each fragment with a cell specific barcode for later assignment to their origin cell.
-The most important differences between protocols manifest in cost, sensitivity and the distinction between those capturing paired fragments starting at both ends of the RNA and those capturing only the RNA end where translation into proteins starts (the 3’ end).
+The most important differences between protocols manifest in cost, sensitivity and the distinction between those capturing paired fragments starting at both ends of the RNA and those capturing only the RNA end where translation into proteins starts (the 3′ end) \cite[ziegenhain2018].
 The sequencing machine finally digitizes the fragments and allows all further processing to happen on a computer (see \infig[fig:rna-seq]b).
-\TODO[give figure an a, b, c. Mention droplet stuff here?]
-\cite[ziegenhain2017,haque2017,huang2018]
+\TODO[give figure an a, b, c; Mention droplet stuff here?]
 % 1½. protocol specific bias correction
 Additional to the cell barcode, some protocols allow to enrich the library with information that can be used to reduce sources of noise or bias.
 This includes e.\,g. unique molecular identifiers (UMIs), which allows to count each transcript only once despite a common protocol step involving several duplications of all transcripts.
 A second example is adding known quantities of RNA from a foreign organism (spike-in RNA) to each cell library, which later allows to correct for nonlinear per-cell biases in transcript counts.
 
 % 2. counting (reads → counts)
-Counting starts from the paired sequences read from both ends of a fragment (paired reads) or the 3’ end sequences (single reads),
+Counting starts from the paired sequences read from both ends of a fragment (paired reads) or the 3′ end sequences (single reads),
 as well as the read’s or read pair’s cell barcode and – if available – its UMI barcode.
 Classic counting uses specialized short read alignment tools like BOWTIE or STAR to match reads to a reference genome annotated with information about where genes start, end, and can be spliced.
 For each known splicing configuration translating to a protein, the reads aligned to it are then counted, while collapsing the counts for reads with identical UMIs – if available (see \infig[fig:rna-seq]c).
@@ -113,7 +110,10 @@ Since only the resulting count matrix is needed for many kinds of downstream ana
 
 % 3. preprocessing (counts → expressions)
 % generally \cite[luecken2018]: https://www.embopress.org/doi/10.15252/msb.20188746
-\startplacefigure[reference=fig:batch-effect,location=right,title={Batch effect correction reduces biases between data gathered in multiple sequencer runs. Cells from well-normalized data will not only have similar expression profiles to cells from the same run.}]
+\startplacefigure[reference=fig:batch-effect,location=right,title={
+Batch effect correction reduces biases between data gathered in multiple sequencer runs.
+Cells from well-normalized data will not only have similar expression profiles to cells from the same run.
+}]
 \externalfigure[batch-effect-correction.svg][width=.5\textwidth]
 \stopplacefigure
 
@@ -128,7 +128,7 @@ Since distance measures usually expect data with no mean–variance dependency (
 The intuition is that in in log-space, distances represent log-fold changes, an usual way to compare expression level \cite[brennecke2013,eling2018].
 \inlinecite[svensson2020] however suggested that log-transforming data is a possible cause for observing zero-inflation in data.
 With single cell data specific transforms like SCTransform \cite[hafemeister2019] or embeddings like scVI \cite[lopez2018] or GLM-PCA \cite[townes2019], promising alternatives are emerging.
-\TODO[introduce embeddings or rephrase. is this a good location at all or should I move it somewhere?]
+\TODO[introduce embeddings or rephrase: is this a good location at all or should I move it somewhere?]
 A final common preprocessing step is reduction of the data by discarding genes with low variability that are assumed to contribute little to the data’s variability (highly variable gene selection).
 \TODO[mention quality control as part of counting and preprocessing]
 
@@ -158,7 +158,12 @@ For example an indication of the direction in which cells differentiate are RNA 
 
 % 5. visualization (results often too complex to understand as numbers)
 % talk about dim red here and the fact that it’s hard to reason about how the input features relate back to output – make path for GR coming to the rescue
-\startplacefigure[reference=fig:embeddings, title={Four increasingly complex two dimensional embeddings of the same cells. The differentiating cells are colored by age in days. (a) Two genes, even carefully selected markers, are not able to separate the differentiation paths (b) A PCA is able to differentiate clusters, but not like (c) diffusion maps, bifurcations and smooth transitions. (d) UMAPs use machine learning, allowing here to flatten multiple kinds of differences into a 2D plot, as in this case both bifurcation events present in the data.}]
+\startplacefigure[reference=fig:embeddings, title={
+Four increasingly complex two dimensional embeddings of the same cells.
+The differentiating cells are colored by age in days.
+\bold{(a)} Two genes, even carefully selected markers, are not able to separate the differentiation paths \bold{(b)} A PCA is able to differentiate clusters, but not like \bold{(c)} diffusion maps, bifurcations and smooth transitions.
+\bold{(d)} UMAPs use machine learning, allowing here to flatten multiple kinds of differences into a 2D plot, as in this case both bifurcation events present in the data.
+}]
 \externalfigure[dim-red.pdf][width=\textwidth]
 %\input{imgs/dim-red.tikz}
 \stopplacefigure
@@ -178,7 +183,9 @@ While I worked on every in-silico section \TODO[better term] of the process exce
 To provide further context for my work, I would like to contrast the ways people used to work before and after the creation of my tools.
 
 \startsubsection[title={The old way}]
-% People often need to cobble together their own pipelines and use default parameters without knowing what they do. Existing methods are not focused on interoperability. Mention specifically the flaws fixed by what I do:
+% People often need to cobble together their own pipelines and use default parameters without knowing what they do.
+% Existing methods are not focused on interoperability.
+% Mention specifically the flaws fixed by what I do:
 Without publicly available analysis frameworks, the most common way to operate was writing scripts that invoked command line tools.
 Each step invoked reading text files from a file system, processing them, and writing them back to disk.
 % - pre-Scanpy: Integrated solution of everything helps save time and eliminate invalid states (type theory: make invalid states unrepresentable)
