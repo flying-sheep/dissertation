@@ -120,7 +120,7 @@ Those include Cell Ranger for 10x Genomics’ Chromium protocol \cite[zheng2017]
 \TODO[mention my bartseq pipeline here?]
 \stopsubsection
 
-\startsubsection[title={Preprocessing}]
+\startsubsection[reference=sec:preprocessing,title={Preprocessing}]
 % 3. (counts → expressions)
 % generally \cite[luecken2018]: https://www.embopress.org/doi/10.15252/msb.20188746
 \startplacefigure[reference=fig:batch-effect,location=right,title={
@@ -147,28 +147,31 @@ While older bulk correction effects such as ComBat \cite[johnson2007] have prove
 Preprocessing can also involve scaling count values using a per-cell function derived from the aforementioned spike-ins.
 All the aforementioned transformation have to be carefully balanced with their potential to over-correct and remove relevant biological variation.
 
-In order to model or otherwise analyze count data, it is almost always necessary to calculate distances between expression profiles.
-Since distance measures usually expect data with no mean–variance dependency (i.\,e. normally distributed data), expressions are commonly logarithmized.
-The intuition is that in in log-space, distances represent log-fold changes, an usual way to compare expression level \cite[brennecke2013,eling2018].
-\inlinecite[svensson2020] however suggested that log-transforming data is a possible cause for observing zero-inflation in data.
-With single cell data specific transforms like SCTransform \cite[hafemeister2019] or embeddings like scVI \cite[lopez2018] or GLM-PCA \cite[townes2019], promising alternatives are emerging.
-\TODO[introduce embeddings or rephrase: is this a good location at all or should I move it somewhere?]
-
-A final common preprocessing step is reduction of the data by discarding genes with low variability that are assumed to contribute little to the data’s variability.
+A final common count matrix preprocessing step is to reduce data by discarding genes with low variability, as they contribute little to the data’s variability.
 This highly variable gene selection is performed with differently rigorous algorithms \cite[brennecke2013,yip2018].
 This more complex filtering is performed in addition to the aforementioned quality-based gene filtering, reducing the retained number of genes to the low thousands \cite[luecken2019].
+
+One step occupies the area between preprocessing and analysis.
+In order to model or otherwise analyze count data, it is almost always necessary to calculate distances between cells’ expression profiles.
+Distance measures usually expect data with no mean–variance dependency (i.\,e. normally distributed data), which can be fulfilled in two ways.
+One is to transform expressions into a space where those expectations hold, commonly by logarithmizing it.
+The intuition is that in in log-space, distances represent log-fold changes, an usual way to compare expression levels \cite[brennecke2013,eling2018].
+Another way is to employ dimensional reduction methods to embed the data into a lower-dimensional space with the desired properties.
+An advantage of this method are the reduced computational and memory costs of operating on a low-dimensional embedding.
+\inlinecite[svensson2020] suggested that log-transforming data is a possible cause for distorting data by zero-inflation.
+With single cell data specific transforms like SCTransform \cite[hafemeister2019], as well as embeddings like scVI \cite[lopez2018] or GLM-PCA \cite[townes2019], promising alternatives are emerging, despite them losing the log-fold interpretability.
 \stopsubsection
 
 \startsubsection[title={Analysis}]
 % 4. uncover dynamics, heterogeneity structure, feature importance and role
 \startplacefigure[reference=fig:waddington,location=left,title={
 Cells differentiate smoothly, in stochasically diverging paths, and not always in the same general direction.
+\TODO[better use linear discrimination using marker genes? or smoothly diverging developmental markers?]
 }]
 %https://anatomypubs.onlinelibrary.wiley.com/doi/full/10.1002/dvdy.24678
 \externalfigure[https://anatomypubs.onlinelibrary.wiley.com/cms/asset/aafdf349-9324-496d-822d-183edae5d947/dvdy24678-fig-0001-m.jpg][width=.5\textwidth]
 \stopplacefigure
 
-\TODO[Figure: better use linear discrimination using marker genes? or smoothly diverging developmental markers?]
 With unwanted sources of noise and variability removed or reduced, the data can be analyzed.
 Analysis of single cell data focuses on heterogeneity, as its presence separates single cell data from bulk data.
 The kind of heterogeneity to uncover depends on the kind of data available:
@@ -207,7 +210,7 @@ The differentiating cells are colored by age in days.
 The complexity of the heterogeneity being uncovered not only reflects in analysis methods but also the visualizations of their results.
 Complex developmental hierarchies and other relations in the data need to be faithfully represented.
 This commonly involves laying out points representing the cells in a flat plane while trying to maintain relationships such as developmental closeness (see \infig[fig:embeddings]).
-This process and its end result is called embedding.
+This general process also employs more complex dimensional reduction methods than the ones used for distance calculations (see \in{section}[sec:preprocessing]).
 And the more complex a process is, the more likely it is that this process contains steps that cannot be traced back.
 This presents a challenge for one’s visualizations and any insights one wants to derive from it:
 with no ability to validate the embedding, any arbitrary arrangement would be equally valid.
@@ -246,7 +249,7 @@ In the R landscape, the Bioconductor project \cite[huber2015] provided tools for
 The only available option for diffusion map embedding at the time did not offer features necessary for scRNA-Seq analysis and was impractically slow.
 \TODO[can’t introduce PCA and DMs here…]
 % - pre-GR: differential expression and Trendsceek
-No dimension reduction method except for the simplistic PCA provides a way to relate embedding location back to input features.
+No dimensionality reduction method except for the simplistic PCA provides a way to relate embedding location back to input features.
 The existing and popular differential expression analysis requires discrete partitioning of the data, which is not well defined for data containing gradual transition of gene expression profiles between cells.
 \stopsubsection
 
