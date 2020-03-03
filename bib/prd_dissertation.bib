@@ -586,6 +586,22 @@
   year		= {2018}
 }
 
+@Article{	  ditommaso2015,
+  abstract	= {Genomic pipelines consist of several pieces of third party software and, because of their experimental nature, frequent changes and updates are commonly necessary thus raising serious deployment and reproducibility issues. Docker containers are emerging as a possible solution for many of these problems, as they allow the packaging of pipelines in an isolated and self-contained manner. This makes it easy to distribute and execute pipelines in a portable manner across a wide range of computing platforms. Thus, the question that arises is to what extent the use of Docker containers might affect the performance of these pipelines. Here we address this question and conclude that Docker containers have only a minor impact on the performance of common genomic pipelines, which is negligible when the executed jobs are long in terms of computational time.},
+  author	= {{Di Tommaso}, Paolo and Palumbo, Emilio and Chatzou, Maria and Prieto, Pablo and Heuer, Michael L. and Notredame, Cedric},
+  doi		= {10.7717/peerj.1273},
+  issn		= {21678359},
+  journal	= {PeerJ},
+  keywords	= {Bioinformatics,Docker,Pipelines,Virtualisation,Workflow},
+  month		= {sep},
+  number	= {9},
+  pages		= {e1273},
+  publisher	= {PeerJ Inc.},
+  title		= {{The impact of Docker containers on the performance of genomic pipelines}},
+  volume	= {2015},
+  year		= {2015}
+}
+
 @Article{	  dobin2013,
   abstract	= {Motivation: Accurate alignment of high-throughput RNA-seq data is a challenging and yet unsolved problem because of the non-contiguous transcript structure, relatively short read lengths and constantly increasing throughput of the sequencing technologies. Currently available RNA-seq aligners suffer from high mapping error rates, low mapping speed, read length limitation and mapping biases.Results: To align our large ({\textgreater}80 billon reads) ENCODE Transcriptome RNA-seq dataset, we developed the Spliced Transcripts Alignment to a Reference (STAR) software based on a previously undescribed RNA-seq alignment algorithm that uses sequential maximum mappable seed search in uncompressed suffix arrays followed by seed clustering and stitching procedure. STAR outperforms other aligners by a factor of {\textgreater}50 in mapping speed, aligning to the human genome 550 million 2 × 76 bp paired-end reads per hour on a modest 12-core server, while at the same time improving alignment sensitivity and precision. In addition to unbiased de novo detection of canonical junctions, STAR can discover non-canonical splices and chimeric (fusion) transcripts, and is also capable of mapping full-length RNA sequences. Using Roche 454 sequencing of reverse transcription polymerase chain reaction amplicons, we experimentally validated 1960 novel intergenic splice junctions with an 80-90{\%} success rate, corroborating the high precision of the STAR mapping strategy. {\textcopyright} The Author(s) 2012. Published by Oxford University Press.},
   author	= {Dobin, Alexander and Davis, Carrie A. and Schlesinger, Felix and Drenkow, Jorg and Zaleski, Chris and Jha, Sonali and Batut, Philippe and Chaisson, Mark and Gingeras, Thomas R.},
@@ -668,6 +684,23 @@
   title		= {{Correcting the Mean-Variance Dependency for Differential Variability Testing Using Single-Cell RNA Sequencing Data}},
   volume	= {7},
   year		= {2018}
+}
+
+@Article{	  eraslan2019,
+  abstract	= {Single-cell RNA sequencing (scRNA-seq) has enabled researchers to study gene expression at a cellular resolution. However, noise due to amplification and dropout may obstruct analyses, so scalable denoising methods for increasingly large but sparse scRNA-seq data are needed. We propose a deep count autoencoder network (DCA) to denoise scRNA-seq datasets. DCA takes the count distribution, overdispersion and sparsity of the data into account using a negative binomial noise model with or without zero-inflation, and nonlinear gene-gene dependencies are captured. Our method scales linearly with the number of cells and can, therefore, be applied to datasets of millions of cells. We demonstrate that DCA denoising improves a diverse set of typical scRNA-seq data analyses using simulated and real datasets. DCA outperforms existing methods for data imputation in quality and speed, enhancing biological discovery.},
+  author	= {Eraslan, G{\"{o}}kcen and Simon, Lukas M. and Mircea, Maria and Mueller, Nikola S. and Theis, Fabian J.},
+  doi		= {10.1038/s41467-018-07931-2},
+  issn		= {20411723},
+  journal	= {Nature Communications},
+  keywords	= {Computational models,Machine learning,Statistical methods},
+  month		= {dec},
+  number	= {1},
+  pages		= {1--14},
+  pmid		= {30674886},
+  publisher	= {Nature Publishing Group},
+  title		= {{Single-cell RNA-seq denoising using a deep count autoencoder}},
+  volume	= {10},
+  year		= {2019}
 }
 
 @Article{	  erhard2019,
@@ -1223,6 +1256,22 @@
   year		= {2014}
 }
 
+@InProceedings{	  kim2015,
+  abstract	= {We examine the learning curves of individual software developers in Open-Source Software (OSS) Development. We collected the dataset of multi-year code change histories from the repositories for 20 open source software projects involving more than 200 developers. We build and estimate regression models to assess individual developers' learning progress (in reducing the likelihood they make a bug). Our estimation results show that developer's coding and indirect bug-fixing experiences do not decrease bug ratios while bug-fixing experience can lead to the decrease of bug ratio of learning progress. We also find that developer's coding and bug-fixing experiences in other projects do not decrease the developer's bug ratio in a focal project. We empirically confirm the moderating effects of bug types on learning progress. Developers exhibit learning effects for some simple bug types (e.g., Wrong literals) or bug types with many instances (e.g., Wrong if conditionals). The results may have managerial implications and provoke future research on project management about allocating resources on tasks that add new code versus tasks that debug and fix existing code.},
+  author	= {Kim, Youngsoo and Jiang, Lingxiao},
+  booktitle	= {Proceedings of the Annual Hawaii International Conference on System Sciences},
+  doi		= {10.1109/HICSS.2015.458},
+  isbn		= {9781479973675},
+  issn		= {15301605},
+  keywords	= {Knowledge transfer,Learning effects,Open-source software,Software developer},
+  month		= {mar},
+  pages		= {3811--3820},
+  publisher	= {IEEE Computer Society},
+  title		= {{The knowledge accumulation and transfer in open-source software (OSS) development}},
+  volume	= {2015-March},
+  year		= {2015}
+}
+
 @Article{	  kim2018,
   annote	= {Comparison of similarity metrics for scRNA-seq clustering. The authors use k-means and SIMLR with k-means as a clsutering method and change the distance metrics to be used as a basis. There is a battery of tests to see when the clustering performs well. Pearson correlation distance seems to work best.},
   author	= {Kim, Taiyun and Chen, Irene Rui and Lin, Yingxin and Wang, Andy Yi-Yang and Yang, Jean Yee Hwa and Yang, Pengyi},
@@ -1775,6 +1824,21 @@
   year		= {2018}
 }
 
+@Article{	  mccarthy2017,
+  abstract	= {Motivation: Single-cell RNA sequencing (scRNA-seq) is increasingly used to study gene expression at the level of individual cells. However, preparing raw sequence data for further analysis is not a straightforward process. Biases, artifacts and other sources of unwanted variation are present in the data, requiring substantial time and effort to be spent on pre-processing, quality control (QC) and normalization. Results: We have developed the R/Bioconductor package scater to facilitate rigorous pre-processing, quality control, normalization and visualization of scRNA-seq data. The package provides a convenient, flexible workflow to process raw sequencing reads into a high-quality expression dataset ready for downstream analysis. scater provides a rich suite of plotting tools for single-cell data and a flexible data structure that is compatible with existing tools and can be used as infrastructure for future software development.},
+  author	= {McCarthy, Davis J. and Campbell, Kieran R. and Lun, Aaron T.L. and Wills, Quin F.},
+  doi		= {10.1093/bioinformatics/btw777},
+  issn		= {14602059},
+  journal	= {Bioinformatics},
+  number	= {8},
+  pages		= {1179--1186},
+  pmid		= {28088763},
+  title		= {{Scater: Pre-processing, quality control, normalization and visualization of single-cell RNA-seq data in R}},
+  url		= {https://academic.oup.com/bioinformatics/article-abstract/33/8/1179/2907823},
+  volume	= {33},
+  year		= {2017}
+}
+
 @Article{	  mcginnis2019,
   abstract	= {Single-cell RNA sequencing (scRNA-seq) data are commonly affected by technical artifacts known as “doublets,” which limit cell throughput and lead to spurious biological conclusions. Here, we present a computational doublet detection tool—DoubletFinder—that identifies doublets using only gene expression data. DoubletFinder predicts doublets according to each real cell's proximity in gene expression space to artificial doublets created by averaging the transcriptional profile of randomly chosen cell pairs. We first use scRNA-seq datasets where the identity of doublets is known to show that DoubletFinder identifies doublets formed from transcriptionally distinct cells. When these doublets are removed, the identification of differentially expressed genes is enhanced. Second, we provide a method for estimating DoubletFinder input parameters, allowing its application across scRNA-seq datasets with diverse distributions of cell types. Lastly, we present “best practices” for DoubletFinder applications and illustrate that DoubletFinder is insensitive to an experimentally validated kidney cell type with “hybrid” expression features.},
   author	= {McGinnis, Christopher S. and Murrow, Lyndsay M. and Gartner, Zev J.},
@@ -1910,6 +1974,20 @@
   url		= {https://www.sciencedirect.com/science/article/pii/S2452310017301877},
   volume	= {7},
   year		= {2018}
+}
+
+@Article{	  morin2008,
+  abstract	= {Sequence-based methods for transcriptome characterization have typically relied on generation of either serial analysis of gene expression tags or expressed sequence tags. Although such approaches have the potential to enumerate transcripts by counting sequence tags derived from them, they typically do not robustly survey the majority of transcripts along their entire length. Here we show that massively parallel sequencing of randomly primed cDNAs, using a next-generation sequencing-by-synthesis technology, offers the potential to generate relative measures of mRNA and individual exon abundance while simultaneously profiling the prevalence of both annotated and novel exons and exon-splicing events. This technique identifies known single nucleotide polymorphisms (SNPs) as well as novel single-base variants. Analysis of these variants, and previously unannotated splicing events in the HeLa S3 cell line, reveals an overrepresentation of gene categories including those previously implicated in cancer.},
+  author	= {Morin, Ryan D. and Bainbridge, Matthew and Fejes, Anthony and Hirst, Martin and Krzywinski, Martin and Pugh, Trevor J. and McDonald, Helen and Varhol, Richard and Jones, Steven J.M. and Marra, Marco A.},
+  doi		= {10.2144/000112900},
+  issn		= {07366205},
+  journal	= {BioTechniques},
+  month		= {jul},
+  number	= {1},
+  pages		= {81--94},
+  title		= {{Profiling the HeLa S3 transcriptome using randomly primed cDNA and massively parallel short-read sequencing}},
+  volume	= {45},
+  year		= {2008}
 }
 
 @Article{	  natarajan2019,

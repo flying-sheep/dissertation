@@ -43,6 +43,7 @@ Jupyter
 Jupyterlab
 Matplotlib
 AnnData2ri
+Scater
 
 amplicon
 amplicons

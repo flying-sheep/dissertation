@@ -28,7 +28,7 @@ This results in proteomics being limited to targeted analysis of a small number 
 The central dogma of molecular biology states that genes on our chromosomes are transcribed to short lived messenger RNA (mRNA), which are then translated to proteins.
 The presence of mRNA in a cell therefore indicates that its respective protein is currently being produced.
 \footnote{Or rather a class of proteins: Similar proteins come from the same gene which is transcribed into a pre-mRNA and then spliced into one of several possible final mRNAs encoding a different protein each.}
-It is possible to quantify and subsequently analyze snapshots of all mRNA molecules in flight using RNA sequencing (RNA-Seq) \cite[morin2008].
+It is possible to quantify and subsequently analyze snapshots of all mRNA molecules in flight using RNA sequencing (RNA-Seq, \inlinecite[morin2008]).
 This untargeted large-scale process is called gene expression analysis.
 Decades of biological research made due with averaged RNA profiles of cell samples (bulk RNA-Seq).
 Those allow to capture the gene expression of a tissue or fluid sample without accounting for cell-to-cell variability.
@@ -156,7 +156,7 @@ In order to model or otherwise analyze count data, it is almost always necessary
 Distance measures usually expect data with no mean–variance dependency (i.\,e. normally distributed data), which can be fulfilled in two ways.
 One is to transform expressions into a space where those expectations hold, commonly by logarithmizing it.
 The intuition is that in in log-space, distances represent log-fold changes, an usual way to compare expression levels \cite[brennecke2013,eling2018].
-Another way is to employ dimensional reduction methods to embed the data into a lower-dimensional space with the desired properties.
+Another way is to employ dimensional reduction methods to embed the data into a lower-dimensional space with the desired properties, such as Principal Component Analysis (PCA, \inlinecite[abdi2010]) or diffusion maps \cite[coifman2005].
 An advantage of this method are the reduced computational and memory costs of operating on a low-dimensional embedding.
 \inlinecite[svensson2020] suggested that log-transforming data is a possible cause for distorting data by zero-inflation.
 With single cell data specific transforms like SCTransform \cite[hafemeister2019], as well as embeddings like scVI \cite[lopez2018] or GLM-PCA \cite[townes2019], promising alternatives are emerging, despite them losing the log-fold interpretability.
@@ -231,39 +231,37 @@ An upcoming way to simplify the process are cell transcriptome atlases \cite[reg
 \stopsubsection
 
 The above sequence of steps should be a generic overview of scRNA-Seq analysis able to serve as a framework in which to place my specific contributions.
-While I worked on every in-silico section \TODO[better term] of the process except for alignment, my contributions are focused on the steps after counting.
-To provide further context for my work, I would like to contrast the ways people used to work before and after the creation of my tools.
+While I worked on every computational step of the process except for alignment, my contributions are focused on steps involving a count matrix.
+To provide further context for my work, I would like to outline the relevant changes in the process of scRNA-Seq analysis.
 
 \startsubsection[title={The old way}]
-% People often need to cobble together their own pipelines and use default parameters without knowing what they do.
-% Existing methods are not focused on interoperability.
-% Mention specifically the flaws fixed by what I do:
-Without publicly available analysis frameworks, the most common way to operate was writing scripts that invoked command line tools.
-Each step invoked reading text files from a file system, processing them, and writing them back to disk.
-% - pre-Scanpy: Integrated solution of everything helps save time and eliminate invalid states (type theory: make invalid states unrepresentable)
-%               Scran+Seurat are more opinionated and offer less choice (host code problem).
-%               Seurat has very Seurat-specific object, Scanpy’s AnnData is generic
+% Generally: People often need to cobble together their own pipelines and use default parameters without knowing what they do.
+% scripts and binaries
+Without publicly available analysis frameworks, the most common way to operate was writing R scripts that invoked R tools in memory and tools from other languages as command line processes.
+Despite the field’s increasing investment into machine learning algorithms implemented in Python, few tools were available in the language.
+
+% communication
+Communication with other languages or between pipeline steps involved reading a textual representation of the data from a file system, processing it, and writing it back to disk.
 This process involved long run times due to slow reading and writing, high storage space requirements and little resilience to errors.
 File corruption introduced e.\,g. via unreliable access to network storage could not be detected in text files, which lack checksums and other resilience precautions.
-All those problems can be circumvented by a sufficient investment of effort and time.
-In practice, the lack of frameworks led to very application-specific code that was hard to generalize and share.
-Redundant solving of problems already solved elsewhere is not only wasteful, but also error prone.
-No scRNA-Seq analysis framework in Python existed, despite more and more people in the field working with machine learning algorithms implemented in Python.
-Existing tools in R were opinionated and offered little extensibility, limiting their scope of application.
-Their performance was inconsistent and often not sufficient for upcoming large datasets from microfluidic protocols.
-Similarly, their code quality and error reporting varied greatly.
-For example, many common differential expression tools used to simply process data being put in, with no errors reported in the case of non-converging models or other detectable degenerate cases \cite[luecken2019].
-\TODO[Check if *this* Lücken citation says that]
-Furthermore, no data structures and file exchange formats suitable for scRNA-Seq existed.
-Existing workflows dealt with raw matrices and data frames that needed to be kept in sync manually across filtering steps, increasing the potential for error.
+All those problems can be circumvented when hardening a file-based pipeline by investing sufficient effort and time.
+In practice, the lack of frameworks meant that each tool or pipeline had to solve common problems by itself, which further wasted resources and increased potential for errors.
+The resulting pipeline code published with papers was very application-specific and hard to generalize or share.
+
+% Existing methods are not focused on interoperability.
+Even within analysis pipelines operating entirely in memory, individual tools were not necessarily designed to be compatible.
+Single tools could halt progress if they had insufficient performance for upcoming large datasets from microfluidic protocols.
+The tools’ varying code quality, choice of default values and error reporting led to subtle incompatibility bugs.
+Furthermore, no data structures and file exchange formats suitable for scRNA-Seq existed, so workflows manually kept count matrices and annotation data frames in sync across filtering steps, increasing the potential for error.
 Furthermore, reproducibility was hard to guarantee in the presence of nondeterministic methods and a multitude of tool versions with subtly different defaults and behavior.
-% - pre-Destiny: DM creation in R
-In the R landscape, the Bioconductor project \cite[huber2015] provided tools for preprocessing, and basic analysis, but little in the way of embeddings.
-The only available option for diffusion map embedding at the time did not offer features necessary for scRNA-Seq analysis and was impractically slow.
-\TODO[can’t introduce PCA and DMs here…]
+
+% DM creation in R
+In the R landscape, the Bioconductor project \cite[huber2015] provided tools for preprocessing and basic analysis, but little in the way of embeddings.
+The only available option for diffusion map embedding at the time did not offer features necessary for scRNA-Seq analysis and was impractically slow \cite[angerer2016].
 % - pre-GR: differential expression and Trendsceek
 No dimensionality reduction method except for the simplistic PCA provides a way to relate embedding location back to input features.
-The existing and popular differential expression analysis requires discrete partitioning of the data, which is not well defined for data containing gradual transition of gene expression profiles between cells.
+The existing and popular differential expression analysis requires discrete partitioning of the data, which is not well defined for data containing gradual transition of gene expression profiles between cells, and has the aforementioned issues with uncertainty propagation.
+\TODO[mention the destiny-related stuff here? If not: just in “own contributions” and methods?]
 \stopsubsection
 
 \startsubsection[title={The new way}]
@@ -272,42 +270,50 @@ The existing and popular differential expression analysis requires discrete part
 \stopplacefigure
 
 % - Through frameworks, data interchange formats and containers we get interoperability and reproducibility.
-Today, Python and R have viable frameworks for scRNA-Seq analysis based on annotated expression matrix data structures.
-These data structures allow keeping gene and cell annotations and graphs in sync with the expression matrix while filtering and concatenating data.
+Today, both R and Python have viable frameworks for scRNA-Seq analysis: Seurat\footnote{
+Note that Seurat in its original publication 2015 was no general purpose scRNA-Seq analysis framework yet, but a data alignment algorithm with additional helper routines.
+} \cite[satija2015,butler2018], Scater \cite[mccarthy2017], and Scanpy \cite[wolf2018].
+Their data structures allow keeping gene and cell annotations and graphs in sync with the expression matrix while filtering and concatenating data.
+Conversion between the R and Python world is possible via common serialization formats and in-memory conversion \cite[angerer2019b].
+%reproducibility
+Reproducibility seems to be largely solved, as widely available container solutions such as Docker allow defining perfectly reproducible environments \cite[ditommaso2015].
+Unlike standalone tools, the frameworks also consistently support random seeding for identical output of nondeterministic processes.
+% - good error reporting / software quality important for good science (Avoid garbage-in garbage-out)
+% - principle of many eyes: less bugs in shared code
+The number of users of a framework or tool contributes to its quality and therefore the quality of studies relying on it, as more people report errors and special use cases, which increases the robustness of the frameworks towards those problems \cite[kim2015].
+Bigger frameworks encompassing many tools have an easier time to test several permutations of their functionality than each tool would be able to when standing alone.
+\TODO[last 2 sentences are almost the inverse of the “old way”: just keep it in one of the sections?]
+
+%R
 In R, the landscape is more fragmented than in Python:
 The Bioconductor ecosystem provides annotated matrix data structures and tools for mainly preprocessing scRNA-Seq data.
-Seurat provides opinionated preprocessing, analysis and plotting routines but is not integrated into the Bioconductor ecosystem.
+Scater provides extensive quality control and preprocessing but little in the way of analysis \cite[luecken2019].
+Seurat has opinionated preprocessing, analysis and plotting routines but is not integrated into the Bioconductor ecosystem.
 Its data structure is Seurat-specific and needs conversion to the more generic Bioconductor data structures.
-Standalone tools often support Bioconductor data structures or just plain matrices and data frames.
-%reproducibility
-In both language environments, reproducibility seems to be largely possible.
-Container solutions that capture a whole environment of libraries of specific versions are common.
-Frameworks support methods to set random seeds to get identical output of nondeterministic processes for consistent visualizations.
-%AnnData, Scanpy
-In Python, many standalone tools operate on the generic AnnData data structure.
-It was developed alongside Scanpy, which is now in widespread international use and being continuously expanded with new algorithms.
-Scanpy contains wrappers around third party tools which are often slim as they already directly operate on AnnData objects.
-\TODO[already said above, deduplicate]
+Standalone tools in R usually support Bioconductor data structures or even just plain matrices and data frames.
+
+%AnnData
+In Python, many standalone tools start supporting the generic data structure AnnData \cite[zappia2018,eraslan2019,polanski2020].
 AnnData supports reading and writing from and to several language agnostic interchange formats.
 It was the first annotated matrix data structure to support sparse expression matrices and therefore up to millions of cells.
 It provides its own format that supports disk backing for operations on data too large to be performed in memory, sparse or dense.
+% Scanpy
+AnnData was developed alongside Scanpy in order to make the latter a highly modular framework.
+Scanpy is now in widespread international use, continuously expanded with new algorithms, and on its way to become a community governed project \cite[wolf2018,zappia2018].
+Being based on Numpy \cite[vanderwalt2011], Scipy \cite[virtanen2020], and other mature and highly performant Python technologies, Scanpy is very scalable.
 % - serving all MOs: iterative with biologists, manual coding, let it be done as-a-service
-Scanpy lends itself to be used interactively to quickly iterate on analyses with close feedback from biologists.
+Integrating well with Jupyterlab and Jupyter notebooks \cite[kluyver2016], Scanpy lends itself to be used interactively to quickly iterate on analyses with close feedback from biologists.
 It also supports being used as a Python library to back visualization tools, web servers and traditional file-based processing pipelines.
-% - good error reporting / software quality important for good science (Avoid garbage-in garbage-out)
-% - principle of many eyes: less bugs in shared code
-The number of users of a framework or tool contributes to its quality and therefore the quality of studies relying on it.
-Bigger frameworks encompassing many tools have an easier time to test several permutations of their functionality than each tool would be able to when standing alone.
-More people reporting errors and special use cases contribute to the robustness of the frameworks towards those problems.
+
 %Destiny, GR
-New embeddings have been developed, none of which are able to relate embedding dimensions back to the input genes.
-\TODO[really mention here?]
+%New embeddings have been developed, none of which are able to relate embedding dimensions back to the input genes.
+\TODO[as above: mention destiny-related stuff here?]
 \stopsubsection
 
 \stopsection
 
 
-\startsection[title={Own contributions / workflows I contributed / concrete workflows}]
+\startsection[title={Own contributions}]
 
 % (I am the one who can create usable interfaces and/for pipelines and fill in the gaps where “cobblestones” are missing)
 
