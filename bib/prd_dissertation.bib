@@ -695,6 +695,21 @@
   year		= {2014}
 }
 
+@Article{	  finak2015,
+  abstract	= {Single-cell transcriptomics reveals gene expression heterogeneity but suffers from stochastic dropout and characteristic bimodal expression distributions in which expression is either strongly non-zero or non-detectable. We propose a two-part, generalized linear model for such bimodal data that parameterizes both of these features. We argue that the cellular detection rate, the fraction of genes expressed in a cell, should be adjusted for as a source of nuisance variation. Our model provides gene set enrichment analysis tailored to single-cell data. It provides insights into how networks of co-expressed genes evolve across an experimental treatment. MAST is available at https://github.com/RGLab/MAST.},
+  author	= {Finak, Greg and McDavid, Andrew and Yajima, Masanao and Deng, Jingyuan and Gersuk, Vivian and Shalek, Alex K. and Slichter, Chloe K. and Miller, Hannah W. and McElrath, M. Juliana and Prlic, Martin and Linsley, Peter S. and Gottardo, Raphael},
+  doi		= {10.1186/s13059-015-0844-5},
+  issn		= {1474760X},
+  journal	= {Genome Biology},
+  keywords	= {Bimodality,Cellular detection rate,Co-expression,Empirical Bayes,Gene set enrichment analysis,Generalized linear model},
+  month		= {dec},
+  number	= {1},
+  publisher	= {BioMed Central Ltd.},
+  title		= {{MAST: A flexible statistical framework for assessing transcriptional changes and characterizing heterogeneity in single-cell RNA sequencing data}},
+  volume	= {16},
+  year		= {2015}
+}
+
 @InProceedings{	  folk2011,
   abstract	= {In this paper, we give an overview of the HDF5 technology suite and some of its applications. We discuss the HDF5 data model, the HDF5 software architecture and some of its performance enhancing capabilities. Copyright 2011 ACM.},
   author	= {Folk, Mike and Heber, Gerd and Koziol, Quincey and Pourmal, Elena and Robinson, Dana},
@@ -1145,21 +1160,6 @@
 }
 
 @Article{	  johnson2007,
-  abstract	= {Non-biological experimental variation or "batch effects" are commonly observed across multiple batches of microarray experiments, often rendering the task of combining data from these batches difficult. The ability to combine microarray data sets is advantageous to researchers to increase statistical power to detect biological phenomena from studies where logistical considerations restrict sample size or in studies that require the sequential hybridization of arrays. In general, it is inappropriate to combine data sets without adjusting for batch effects. Methods have been proposed to filter batch effects from data, but these are often complicated and require large batch sizes ( {\textgreater} 25) to implement. Because the majority of microarray studies are conducted using much smaller sample sizes, existing methods are not sufficient. We propose parametric and non-parametric empirical Bayes frameworks for adjusting data for batch effects that is robust to outliers in small sample sizes and performs comparable to existing methods for large samples. We illustrate our methods using two example data sets and show that our methods are justifiable, easy to apply, and useful in practice. Software for our method is freely available at: http://biosun1.harvard.edu/complab/batch/.},
-  author	= {Johnson, W Evan and Li, Cheng and Rabinovic, Ariel},
-  doi		= {10.1093/biostatistics/kxj037},
-  issn		= {14654644},
-  journal	= {Biostatistics},
-  keywords	= {Batch effects,Empirical Bayes,Microarrays,Monte Carlo},
-  number	= {1},
-  pages		= {118--127},
-  title		= {{Adjusting batch effects in microarray expression data using empirical Bayes methods}},
-  url		= {http://biostatistics.oxfordjournals.org/content/8/1/118.abstract files/44/Johnson et al. - 2007 - Adjusting batch effects in microarray expression d.pdf},
-  volume	= {8},
-  year		= {2007}
-}
-
-@Article{	  johnson2007,
   abstract	= {Non-biological experimental variation or "batch effects" are commonly observed across multiple batches of microarray experiments, often rendering the task of combining data from these batches difficult. The ability to combine microarray data sets is advantageous to researchers to increase statistical power to detect biological phenomena from studies where logistical considerations restrict sample size or in studies that require the sequential hybridization of arrays. In general, it is inappropriate to combine data sets without adjusting for batch effects. Methods have been proposed to filter batch effects from data, but these are often complicated and require large batch sizes (≥ 25) to implement. Because the majority of microarray studies are conducted using much smaller sample sizes, existing methods are not sufficient. We propose parametric and non-parametric empirical Bayes frameworks for adjusting data for batch effects that is robust to outliers in small sample sizes and performs comparable to existing methods for large samples. We illustrate our methods using two example data sets and show that our methods are justifiable, easy to apply, and useful in practice. Software for our method is freely available at: http://biosun1.harvard.edu/complab/batch/.},
   author	= {Johnson, W. Evan and Li, Cheng and Rabinovic, Ariel},
   doi		= {10.1093/biostatistics/kxj037},
@@ -1170,6 +1170,21 @@
   pages		= {118--127},
   pmid		= {16632515},
   title		= {{Adjusting batch effects in microarray expression data using empirical Bayes methods}},
+  volume	= {8},
+  year		= {2007}
+}
+
+@Article{	  johnson2007,
+  abstract	= {Non-biological experimental variation or "batch effects" are commonly observed across multiple batches of microarray experiments, often rendering the task of combining data from these batches difficult. The ability to combine microarray data sets is advantageous to researchers to increase statistical power to detect biological phenomena from studies where logistical considerations restrict sample size or in studies that require the sequential hybridization of arrays. In general, it is inappropriate to combine data sets without adjusting for batch effects. Methods have been proposed to filter batch effects from data, but these are often complicated and require large batch sizes ( {\textgreater} 25) to implement. Because the majority of microarray studies are conducted using much smaller sample sizes, existing methods are not sufficient. We propose parametric and non-parametric empirical Bayes frameworks for adjusting data for batch effects that is robust to outliers in small sample sizes and performs comparable to existing methods for large samples. We illustrate our methods using two example data sets and show that our methods are justifiable, easy to apply, and useful in practice. Software for our method is freely available at: http://biosun1.harvard.edu/complab/batch/.},
+  author	= {Johnson, W Evan and Li, Cheng and Rabinovic, Ariel},
+  doi		= {10.1093/biostatistics/kxj037},
+  issn		= {14654644},
+  journal	= {Biostatistics},
+  keywords	= {Batch effects,Empirical Bayes,Microarrays,Monte Carlo},
+  number	= {1},
+  pages		= {118--127},
+  title		= {{Adjusting batch effects in microarray expression data using empirical Bayes methods}},
+  url		= {http://biostatistics.oxfordjournals.org/content/8/1/118.abstract files/44/Johnson et al. - 2007 - Adjusting batch effects in microarray expression d.pdf},
   volume	= {8},
   year		= {2007}
 }
@@ -3249,15 +3264,18 @@
 }
 
 @Article{	  zhang2019,
-  abstract	= {Single-cell computational pipelines involve two critical steps: organizing cells (clustering) and identifying the markers driving this organization (differential expression analysis). State-of-the-art pipelines perform differential analysis after clustering on the same dataset. We observe that because clustering forces separation, reusing the same dataset generates artificially low p -values and hence false discoveries. We introduce a valid post-clustering differential analysis framework which corrects for this problem. We provide software at {\textless}https://github.com/jessemzhang/tn{\_}test{\textgreater}.},
+  abstract	= {Single-cell computational pipelines involve two critical steps: organizing cells (clustering) and identifying the markers driving this organization (differential expression analysis). State-of-the-art pipelines perform differential analysis after clustering on the same dataset. We observe that because clustering “forces” separation, reusing the same dataset generates artificially low p values and hence false discoveries. We introduce a valid post-clustering differential analysis framework, which corrects for this problem. We provide software at https://github.com/jessemzhang/tn{\_}test.},
   author	= {Zhang, Jesse M. and Kamath, Govinda M. and Tse, David N.},
-  doi		= {10.1101/463265},
-  journal	= {bioRxiv},
-  month		= {jun},
-  pages		= {463265},
-  publisher	= {Cold Spring Harbor Laboratory},
-  title		= {{Valid post-clustering differential analysis for single-cell RNA-Seq}},
-  url		= {https://www.biorxiv.org/content/10.1101/463265v3},
+  doi		= {10.1016/j.cels.2019.07.012},
+  issn		= {24054720},
+  journal	= {Cell Systems},
+  keywords	= {differential expression,p value,selective inference,single-cell RNA-seq},
+  month		= {oct},
+  number	= {4},
+  pages		= {383--392.e6},
+  publisher	= {Cell Press},
+  title		= {{Valid Post-clustering Differential Analysis for Single-Cell RNA-Seq}},
+  volume	= {9},
   year		= {2019}
 }
 

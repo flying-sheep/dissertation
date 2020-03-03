@@ -45,7 +45,7 @@ Complex diseases require an intricate understanding of cellular processes and in
 Advances in experimental technology of the last decade allow to tackle these challenges.
 Single-cell RNA-Seq (scRNA-Seq) can measure extremely small expression values down to a single mRNA molecule \cite[tang2011].
 \TODO[is this the “nature methods paper of the year 20xx” you meant, carsten?]
-This data comes not without its own challenges, but enables the study of heterogeneous tissues like cancer, where expression averages from bulk RNA-Seq are not meaningful \cite[patel2014].
+This data comes not without its own challenges, but enables the study of heterogeneous tissues like cancerous tumors, where expression averages from bulk RNA-Seq are not meaningful \cite[patel2014,qian2017].
 The second great advantage is that the amounts of data present in scRNA-Seq lend themselves to machine learning approaches:
 Advances in microfluidic devices have led to experimental protocols able to sequence up to 1.3 million cells \cite[macosko2015,klein2015,zheng2017].
 \TODO[more intro for droplet based protocols (footnote? paragraph?), or is this sufficient?]
@@ -173,25 +173,35 @@ Cells differentiate smoothly, in stochasically diverging paths, and not always i
 \stopplacefigure
 
 With unwanted sources of noise and variability removed or reduced, the data can be analyzed.
-Analysis of single cell data focuses on heterogeneity, as its presence separates single cell data from bulk data.
+Analysis of single cell data generally focuses on uncovering previously unknown heterogeneity and its sources \cite[patel2014,poirion2016,angerer2017a].
 The kind of heterogeneity to uncover depends on the kind of data available:
-the simplest case is discrimination between treatments or other conditions.
-A possible goal is to find a small number of marker genes able to distinguish the same condition with a less expensive targeted approach.
-Methods performing this search are called differential gene expression analyses.
+the simplest case is discrimination between two discrete subpopulations from different experimental conditions.
+A common goal there is to find a small number of marker genes able to reliably distinguish a subpopulation that is sufficiently distinct from the rest of the cells.
+Methods performing this search are called differential gene expression (DE) analyses \cite[soneson2018].
+While DE analysis methods stem from bulk RNA-Seq, single-cell specific methods such as SCDE \cite[kharchenko2014], MAST \cite[finak2015], and BASiCS \cite[vallejos2016] outperform bulk methods due to the additional information in single cell data.
+
 Another source of heterogeneity is the composition of the studied tissue.
-Tumors as well as many kinds of healthy tissue are composed of cells fulfilling different roles.
+Tumors as well as many kinds of healthy tissue are composed of cells fulfilling a multitude of different roles that can only be uncovered using single cell analysis \cite[patel2014,zhang2016,qian2017].
+A common method to make sense of complex heterogeneous data is cluster analysis.
+For single cell data, the multi-resolution community detection algorithm Leiden \cite[traag2019] and its predecessor Louvain is used most commonly, despite \inlinecite[kiselev2019] arguing its lack of performance for smaller datasets.
+A general problem of clustering is data reuse.
+Clusters are commonly the basis for further analysis like inter-cluster DE analysis – a task the aforementioned single cell specific DE tools are specifically designed for.
+However, this leads to both clusters and markers being derived from the same data, and treating clusters as ground truth in this settings leads to inflated confidence in the found markers.
+The problem can be circumvented by joint clustering and DE analysis, manually propagating uncertainties \cite[zhang2019], or not relying on clustering to detect genes \cite[angerer2020].
+
+While cluster analysis is greatly enriched by scRNA-Seq analysis, the field of trajectory analysis can only exist due to this kind of data.
 Traditionally, cells were thought of exhibiting a discrete cell type, which still applies to cells that are dramatically specialized for their roles.
-There are also tissues consisting of less discrete cell types, like the pluripotent stem cells from which all cells derive.
-During their path of development, cells usually get increasingly specialized, but the reverse direction (dedifferentiation) can also be observed (see \infig[fig:waddington]).
+Most tissues however contain less discrete cell types, like the pluripotent stem cells from which all cells derive \cite[haghverdi2015].
+While marker genes for certain cell roles or developmental steps exist, this complex and gradual nature of most tissues requires sophisticated analysis and visualization of single cell data.
+Early trajectory analysis tools like Wanderlust \cite[bendall2014], or DPT \cite[haghverdi2016] can effectively applied to simple developmental data.
+But while cells usually get increasingly specialized during their path of development, the reverse direction (dedifferentiation) can also be observed (see \infig[fig:waddington]).
 Furthermore, developing cells do not necessarily follow all steps of differentiation in the same order or magnitude.
 This results in cells temporarily or sometimes permanently stuck as intermediate types.
-While marker genes for certain cell roles or developmental steps exist, this complex and gradual nature of most tissues requires more sophisticated analysis and visualization.
+The field of trajectory analysis is therefore constantly evolving to enable the analysis of complex tissues up to whole animals \cite[plass2018] using tools like SPRING \cite[weinreb2018a] or PAGA \cite[wolf2019].
+
 Further analyses can also depend on the availability of other kinds of data.
-For example an indication of the direction in which cells differentiate are RNA velocities, which can be reconstructed from the relation of spliced and unspliced mRNA \cite[lamanno2018].
-\TODO[
-mention problem of data reuse, discrete clustering, … as setup for GR later.
-Check “Zhang et al, 2018” part of Lücken 2019
-]
+RNA velocity is an indication of the direction in which cells differentiate.
+It can be reconstructed from the relation of spliced and unspliced mRNA \cite[lamanno2018].
 \stopsubsection
 
 \startsubsection[title={Visualization}]
