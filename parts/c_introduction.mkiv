@@ -88,7 +88,7 @@ The first step, library preparation, is experimental and takes place in a biolog
 The second step, quantification, creates a cell × gene matrix from raw data produced in step one.
 The remaining steps are preprocessing, analysis and visualization of this matrix.
 
-\startsubsection[title={Library Preparation and sequencing}]
+\startsubsection[title={Library Preparation and Sequencing}]
 % 1. (cells → transcript library) and sequencing (transcript library → reads)
 \startplacefigure[reference=fig:rna-seq,title={Library preparation, sequencing, and mapping}]
 % https://upload.wikimedia.org/wikipedia/commons/f/f3/Summary_of_RNA-Seq.svg
@@ -120,7 +120,7 @@ Those include Cell Ranger for 10x Genomics’ Chromium protocol \cite[zheng2017]
 \TODO[mention my bartseq pipeline here?]
 \stopsubsection
 
-\startsubsection[reference=sec:preprocessing,title={Preprocessing}]
+\startsubsection[reference=sec:preprocessing, title={Preprocessing}]
 % 3. (counts → expressions)
 % generally \cite[luecken2018]: https://www.embopress.org/doi/10.15252/msb.20188746
 \startplacefigure[reference=fig:batch-effect,location=right,title={
@@ -234,7 +234,7 @@ The above sequence of steps should be a generic overview of scRNA-Seq analysis a
 While I worked on every computational step of the process except for alignment, my contributions are focused on steps involving a count matrix.
 To provide further context for my work, I would like to outline the relevant changes in the process of scRNA-Seq analysis.
 
-\startsubsection[title={The old way}]
+\startsubsection[title={The Old Way}]
 % Generally: People often need to cobble together their own pipelines and use default parameters without knowing what they do.
 % scripts and binaries
 Without publicly available analysis frameworks, the most common way to operate was writing R scripts that invoked R tools in memory and tools from other languages as command line processes.
@@ -264,7 +264,7 @@ The existing and popular differential expression analysis requires discrete part
 \TODO[mention the destiny-related stuff here? If not: just in “own contributions” and methods?]
 \stopsubsection
 
-\startsubsection[title={The new way}]
+\startsubsection[title={The New Way}]
 \startplacefigure[reference=fig:anndata, title={AnnData structure}]
 \hbox{\input{imgs/anndata.tikz}}
 \stopplacefigure
@@ -317,7 +317,7 @@ It also supports being used as a Python library to back visualization tools, web
 
 % (I am the one who can create usable interfaces and/for pipelines and fill in the gaps where “cobblestones” are missing)
 
-\startsubsection[title=Destiny]
+\startsubsection[title={Destiny}]
 % efficient and flexible diffusion maps for R
 Destiny is a flexible and fast tool for the creation and visualization of diffusion maps in R.
 It can utilize a number of distance metrics to create a distance matrix with, as well as sparse distance matrices, including euclidean, cosine, and rank correlation distance.
