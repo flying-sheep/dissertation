@@ -163,7 +163,7 @@ With single cell data specific transforms like SCTransform \cite[hafemeister2019
 \stopsubsection
 
 \startsubsection[title={Analysis}]
-% 4. uncover dynamics, heterogeneity structure, feature importance and role
+% 4. uncover dynamics, heterogeneity structure, variable importance and role
 \startplacefigure[reference=fig:waddington,location=left,title={
 Cells differentiate smoothly, in stochasically diverging paths, and not always in the same general direction.
 \TODO[better use linear discrimination using marker genes? or smoothly diverging developmental markers?]
@@ -206,7 +206,7 @@ It can be reconstructed from the relation of spliced and unspliced mRNA \cite[la
 
 \startsubsection[title={Visualization}]
 % 5. (results often too complex to understand as numbers)
-% talk about dim red here and the fact that it’s hard to reason about how the input features relate back to output – make path for GR coming to the rescue
+% talk about dim red here and the fact that it’s hard to reason about how the input variables relate back to output – make path for GR coming to the rescue
 \startplacefigure[reference=fig:embeddings, title={
 Four increasingly complex two dimensional embeddings of the same cells.
 The differentiating cells are colored by age in days.
@@ -259,7 +259,7 @@ Furthermore, reproducibility was hard to guarantee in the presence of nondetermi
 In the R landscape, the Bioconductor project \cite[huber2015] provided tools for preprocessing and basic analysis, but little in the way of embeddings.
 The only available option for diffusion map embedding at the time did not offer features necessary for scRNA-Seq analysis and was impractically slow \cite[angerer2016].
 % - pre-GR: differential expression and Trendsceek
-No dimensionality reduction method except for the simplistic PCA provides a way to relate embedding location back to input features.
+No dimensionality reduction method except for the simplistic PCA provides a way to relate embedding location back to input variables.
 The existing and popular differential expression analysis requires discrete partitioning of the data, which is not well defined for data containing gradual transition of gene expression profiles between cells, and has the aforementioned issues with uncertainty propagation.
 \TODO[mention the destiny-related stuff here? If not: just in “own contributions” and methods?]
 \stopsubsection

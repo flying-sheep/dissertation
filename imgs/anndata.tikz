@@ -53,7 +53,7 @@
 	\draw (0, 0) rectangle (\varw, \colw);
 	\stopscope
 }
-\node at (\varw/2, \obsh + \gap + \varcols/2*\colw) {1D feature annotations};
+\node at (\varw/2, \obsh + \gap + \varcols/2*\colw) {1D variable annotations};
 
 % varm
 \foreach \shift/\h in {\offset/0.8, 0/\varmh} {
@@ -61,7 +61,7 @@
 	\draw (0, 0) rectangle (\varw, \h);
 	\stopscope
 }
-\node at (\varw/2, \obsh + 2*\gap + \varcols*\colw + \varmh/2) {2D feature annotations};
+\node at (\varw/2, \obsh + 2*\gap + \varcols*\colw + \varmh/2) {2D variable annotations};
 
 % varp
 \foreach \shift in {\offset, 0} {
@@ -70,7 +70,7 @@
 	\draw[path fading = south] (0, \shift - \varfaded) -- (0, 0) -| (\varw, \shift - \varfaded);
 	\stopscope
 }
-\node at (\varw/2, -\gap - \varfaded/2) {Graph annotations\\feature×feature};
+\node at (\varw/2, -\gap - \varfaded/2) {Graph annotations\\variable×variable};
 
 % uns
 

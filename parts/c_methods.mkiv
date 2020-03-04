@@ -11,7 +11,7 @@ Dimensionality reduction methods can broadly be categorized by the resulting spa
 Some methods also assign scores to each result dimension, which can e.\,g. be used to decide which dimensions to discard and which ones to keep for visualization or further processing.
 An ideal latent space embedding would exclusively capture all underlying processes’ variability present in the data, and therefore match the intrinsic dimensionality of the data.
 A 2D or 3D embedding used as as scatter plot coordinates serves as the basis of visualizations interpretable by humans.
-To this end, it can be colored or annotated using input features and statistics to analyze static relations or dynamic processes of the data.
+To this end, it can be colored or annotated using input variables and statistics to analyze static relations or dynamic processes of the data.
 
 In the context of scRNA-Seq data, the high dimensional data are represented as a gene expression matrix $x_{gc}$ with tens of thousands of genes $g∈\{1,…,G\}$, measured for up to approximately one million cells $c∈\{1,…,C\}$ at once \cite[zheng2017].
 Single cell expression matrices are very sparse since cells express a limited amount of genes at a time \cite[svensson2020].
@@ -92,7 +92,7 @@ This is most useful as a preprocessing step to define a less noisy latent space 
 
 \startsubsubsection[title={Principal Component Analysis}]
 PCA is a simple spectral decomposition \cite[abdi2010].
-Principal components (PCs) $p$ are weighted products of input features (such as gene transcripts $g$), scored by the variance each PC explains.
+Principal components (PCs) $p$ are weighted products of input variables (such as gene transcripts $g$), scored by the variance each PC explains.
 A PCA embedding $s_{pc}$ can be defined in multiple ways, one of which is based on the singular value decomposition of a centered data matrix $Z$ derived from the raw data $x_{gc}$:
 
 %https://stats.stackexchange.com/questions/134282/relationship-between-svd-and-pca-how-to-use-svd-to-perform-pca
@@ -333,32 +333,63 @@ The implementation as part of the R package destiny \cite[angerer2016] is suffic
 \startsection[title={AnnData}]
 
 AnnData is a general purpose data structure for annotated two dimensional data (see \infig[fig:anndata]).
-AnnData’s structure matches the annotated observations-by-features ($c×g$) matrix format most biological snapshot data is analyzed in.
+% rectangular vs tidy data
+This is in contrast to tidy data, where each variable type has its own column: in our case that would mean one column each for gene ID, cell ID, expression value, and each annotation \cite[wickham2014].
+Tidy data is useful for small datasets, but redundant and therefore memory-expensive for data with large amounts of variables.
+It would also be computationally wasteful to use the tidy format for data is commonly analyzed using matrix operations on a observation × main-variable matrix.
+
+% What AnnData can represent
+AnnData’s structure therefore matches the annotated observations-by-variables ($c×g$) matrix format most biological snapshot data is analyzed in.
+\footnote{In the R world, R’s native data frame matches this orientation, while count matrices are its transpose: $g×c$}
 This includes single cell imaging, where this matrix contains each segmented cell $c$’s average fluorescent channel $g$ value.
 In RNA-Seq or quantitative real-time polymerase chain reaction (qRT-PCR, \inlinecite[nurmi2002]), $g$ stands for a gene’s expression in a tissue sample or a single cell.
-Each observation $c$ or feature $g$ can be annotated with different labels used in any step of an analysis pipeline.
+% annotations from start or later
+Each observation $c$ or variable $g$ can be annotated with different labels used in any step of an analysis pipeline.
 Annotations that exist from the start can stem from technical sources such as experimental batches or different data sources such as images from flow cytometry \cite[fulwyler1965].
-They can also be derived from knowledge about origin like the genome a gene exists in or the tissue sample a cell came from.
+They can also be derived from knowledge about a variable’s or observation’s origin like the genome a gene exists in or the tissue sample a cell came from.
 Other annotations can be added by preprocessing and analysis steps such as cell classification \cite[li2017].
 
-The central element of each AnnData object is consequently a stack of named 2D matrix layers \type{.layers}, each holding all features $g$ measured for all observations $c$.
-\footnote{Missing observations can be represented by the special pseudo-value \emph{NA}.}
-Each layer has one homogeneous scalar type able to represent it in sufficient IEEE 754 floating-point precision or integer size.
-The layer operations default to can be accessed via \type{.X}.
-For each dimension, unique names are stored in \type{.obs_names} or \type{.var_names} for addressing observations and features, respectively.
+AnnData can best be understood as its set of attributes.
+Each aligned attribute denoted with \type{[]} is Python mapping of names to aligned arrays.
+AnnData maintains this alignment, keeping matrices and annotations in sync when filtering and concatenating AnnData objects.
+
+\desc{\type{.obs_names} and \type{.var_names}}
+are arrays of unique names or IDs for for each AnnData dimension.
+Names for observations $c$ are stored in \type{.obs_names}, and variable $g$ names in \type{.var_names}.
+
+\desc{\type{.layers[]}}
+is the central element of each AnnData object, a mapping of names to 2D matrix layers, each holding all variables $g$ measured for all observations $c$.
+Missing values in an observation can be represented by the special pseudo-value \emph{NA}.
+Each layer has one homogeneous scalar type able to represent it in sufficient IEEE 754 floating-point precision or integer size \cite[ieee754-2019].
 The layers can be dense Numpy arrays \cite[vanderwalt2011] for normalized or densely measured data, as well as Scipy sparse matrices \cite[virtanen2020] for scRNA-Seq data with many zeros.
-Named 1D annotations such as cluster labels, alternative gene IDs besides \type{.var_names}, or ranking indices are stored as columns of their respective AnnData dimension’s Pandas data frame \cite[mckinney2010] \type{.obs} or \type{.var}.
-\TODO[mention clustering in intro]
-AnnData stores named 2D annotations in \type{.obsm} and \type{.varm}, such as experimentally determined cell coordinates or dimensionality reduction coordinates.
-Represented as square sparse matrices, weighted graphs are stored in \type{.obsp} and \type{.varp}.
-AnnData maintains relations between layers and annotations, keeping them in sync when filtering and concatenating AnnData objects.
-Only the unstructured hierarchical annotations \type{.uns} are not modified when filtering observations or features.
+
+\desc{\type{.X}}
+is an accessor for the layer that is used by default in preprocessing or analysis operations.
+
+\desc{\type{.obs[]} and \type{.var[]}}
+are Pandas data frames \cite[mckinney2010].
+Their columns hold 1D annotations such as cluster labels, alternative gene IDs besides \type{.var_names}, or ranking indices.
+
+\desc{\type{.obsm[]} and \type{.varm[]}}
+hold 2D annotations, such as experimentally determined cell coordinates or dimensionality reduction coordinates.
+
+\desc{\type{.obsp[]} and \type{.varp[]}}
+hold weighted graphs, represented as sparse square matrices.
+An example is neighborhood graphs containing cell-cell distances calculated with a specific distance metric.
+
+\desc{\type{.uns[]}}
+holds unstructured hierarchical annotations, such as analysis algorithm parameters.
+They are the only kind of annotation not modified when filtering observations or variables.
+
 AnnData supports several file formats it can read and write to for long term result storage, pipeline checkpoints, file exchange, and compatibility with existing experimental protocols and other tools and pipelines.
 This includes its own \type{.h5ad} format based on HDF5 \cite[folk2011], Loom \cite[linnarson2017], UMI-Tools \cite[smith2017], Matrix Market \cite[boisvert1996], as well as Microsoft Excel and textual spreadsheets.
 AnnData supports disk-backed operations in its native format, allowing operations on data too big to hold in memory.
 For quick integration of AnnData with Bioconductor packages \cite[huber2015] or Seurat \cite[satija2015,butler2018], AnnData can be converted to and from SingleCellExperiment \cite[lun2017a] using AnnData2ri \cite[angerer2019b].
-Due to AnnData’s generic structure, and its conversion and serialization options, it serves as a backbone for analysis pipelines:
+Due to AnnData’s generic structure, and its conversion and serialization options, it serves as a backbone for analysis pipelines.
 Scanpy and other tools can interact by adding and reading annotations, as well as reading, modifying and adding layers.
+
+AnnData has been used for this purpose by several scRNA-Seq analysis tools since the publication of Scanpy, such as scVI \cite[lopez2018], DCA \cite[eraslan2019], DESC \cite[li2019], or BBKNN \cite[polanski2020].
+Its \type{.h5ad} format is supported by visual analysis pipelines like Galaxy \cite[afgan2018] or Cellxgene \cite[megill2020].
 
 \stopsection
 
@@ -371,18 +402,40 @@ Scanpy’s ease of interaction with other tools was ensured by developing and de
 Scanpy also integrates well with the popular Jupyterlab, allowing to iterate on an analysis in an interactive environment that preserves code, plots, and output as a report file called “notebook” \cite[kluyver2016].
 Combined with disk-backed operations or saving of snapshots, this allows to interrupt a workflow at any point or move it to a different machine.
 A basic Scanpy workflow utilizes all aforementioned features of AnnData, establishing naming conventions by which subsequent steps interact.
-For example it stores read batch labels the \type{.obs} column that Scanpy’s batch correction algorithms default to, and stores dimensionality reduction coordinates as \type{.obsm['X_<method>']}.
+For example, storing batch labels as \type{.obs['batch']} will make sure that Scanpy’s batch correction algorithms use them by default.
+Scanpy’s dimensionality reduction methods store their coordinates as \type{.obsm['X_<method>']}, while Scanpy provides an \type{embedding} plotting function with a parameter to choose the coordinate basis, as well as a plotting function for each method with sensible defaults.
 Scanpy reads data either directly from an experimental protocol format like 10x Genomics’ Chromium \cite[zheng2017] or a generic interchange format supported by AnnData’s read functions.
 
+\startsubsection[title={Preprocessing}]
+It allows to preprocess data using a variety of quality control models and visualizations.
+Those help to filter low quality cells and genes, and to transform raw transcript counts into expression profiles matching the expectations of subsequently applied analysis tools.
+Filters are based based on count and mitochondrial gene content \cite[islam2014,ilicic2016], while transforms reduce batch effect and library size biases \cite[luecken2019].
+The variability score of each gene \cite[satija2015,zheng2017] can be stored as annotation and either used as further, rigorous filtering or by specific processing steps.
+Otherwise, preprocessing generally modifies the default layer \type{.X} and removes genes and cells from layers and aligned annotations.
+\stopsubsection
+
+\startsubsection[title={Analysis}]
+After finalized preprocessing, Scanpy analyses generally start by pre-computing commonly used information.
+This includes a PCA with usually 50-100 components to be used as basis for distance calculations within the data and from reference data to new data.
+For highly performant access of distances within the data, a nearest neighbor graph is calculated.
+The graph serves as the basis of several different nonlinear, locality based analyses.
+This includes certain dimensionality reduction methods like UMAP, graph layout \cite[islam2011,weinreb2018b] and diffusion maps, as well as clustering algorithms such as Leiden \cite[traag2019], diffusion pseudo time \cite[haghverdi2016] and PAGA \cite[wolf2019].
+\TODO[cite UMAP every time?]
+Scanpy also offers data integration similar to \inlinecite[polanski2020], and several gene scores.
+These allow analyzing either the influence of given known gene groups such as cell cycle genes \cite[satija2015] and the differential expression between clusters in one of different flavors such as the variance adjusted t-test or Wilcoxon rank-sum test \cite[wilcoxon1945,soneson2018].
+\stopsubsection
+
 \startplacefigure[reference=fig:jupyter, title={
-	Scanpy flexibly computes annotations from scRNA-Seq data and visualizes results combined with previous knowledge:\crlf
-	\bold{a)} \type{sc.tl.leiden(adata); adata.rename_categories('leiden', names)}\crlf
-	\type{sc.pl.umap(adata, color='leiden', legend_loc='on data')}\crlf
-	An UMAP embedding colored by manually labelled Leiden-detected communities.\crlf
-	\bold{b)} \type{sc.tl.rank_genes_groups(adata, 'leiden', method='wilcoxon')}\crlf
-	\type{sc.pl.dotplot(adata, marker_genes, groupby='leiden')}\crlf
-	A dotplot of the clusters and marker genes recovered using a Wilcoxon rank-sum test.
-	\TODO[maybe change plots; Maybe PAGA?]
+Scanpy flexibly computes annotations from scRNA-Seq data and visualizes results combined with previous knowledge:\crlf
+\bold{a)} \type{sc.tl.leiden(adata); adata.rename_categories('leiden', names)}\crlf
+\TODO[carsten: explain code; capitalization of “Leiden” in axis vs text]
+\type{sc.pl.umap(adata, color='leiden', legend_loc='on data')}\crlf
+An UMAP embedding colored by manually labelled Leiden-detected communities.\crlf
+\bold{b)} \type{sc.tl.rank_genes_groups(adata, 'leiden', method='wilcoxon')}\crlf
+\type{sc.pl.dotplot(adata, marker_genes, groupby='leiden')}\crlf
+A dotplot of the clusters and marker genes recovered using a Wilcoxon rank-sum test.
+\TODO[carsten: where’s the test; plot legend]
+\TODO[me: maybe change plots; Maybe PAGA?]
 }]
 \hbox{
 \starttikzpicture
@@ -394,27 +447,11 @@ Scanpy reads data either directly from an experimental protocol format like 10x 
 }
 \stopplacefigure
 
-\TODO[how much of the following in intro and how much here?]
-% preprocessing
-It allows to preprocess data using a variety of quality control models and visualizations.
-Those help to filter low quality cells and genes, and to transform raw transcript counts into expression profiles matching the expectations of subsequently applied analysis tools.
-Filters are based based on count and mitochondrial gene content \cite[islam2014,ilicic2016], while transforms reduce batch effect and library size biases \cite[luecken2019].
-\TODO[didn’t find a specific source for library size correction, so I quoted a review by us]
-The sufficiently high variability of genes \cite[satija2015,zheng2017] can be stored as annotation and either used as further, rigorous filtering or by specific processing steps.
-Otherwise, preprocessing generally modifies the default layer \type{.X} and removes genes and cells from layers and aligned annotations.
-% analysis
-After finalized preprocessing, Scanpy analyses generally start by pre-computing commonly used information.
-This includes a PCA with usually 50-100 components to be used as basis for distance calculations within the data and from reference data to new data.
-For highly performant access of distances within the data, a nearest neighbor graph is calculated.
-The graph serves as the basis of several different nonlinear, locality based analyses.
-This includes certain dimensionality reduction methods like UMAP, graph layout \cite[islam2011,weinreb2018b] and diffusion maps, as well as clustering algorithms such as Leiden \cite[traag2019], diffusion pseudo time \cite[haghverdi2016] and PAGA \cite[wolf2019].
-\TODO[cite UMAP every time?]
-Scanpy also offers data integration similar to \inlinecite[polanski2020], and several gene scores.
-These allow analyzing either the influence of given known gene groups such as cell cycle genes \cite[satija2015] and the differential expression between clusters in one of different flavors such as the variance adjusted t-test or Wilcoxon rank-sum test \cite[wilcoxon1945,soneson2018].
-% viz
+\startsubsection[title={Visualization}]
 Scanpy has rich visualizations based on Matplotlib \cite[hunter2007] for each step from basic quality control to complex analysis.
 Their flexibility is rooted in them being generic over the annotation column used for coloring or statistic summarization (see \infig[fig:jupyter]).
-The final step of scanpy analyses consists of converting the complete Jupyter notebook, select visualizations, and the final data to publishable formats using few simple commands.
+The final step of scanpy analyses consists of converting the complete Jupyter notebook, select visualizations, and the final data to publishable formats using few simple commands \cite[wolf2018].
+\stopsubsection
 
 \stopsection
 
