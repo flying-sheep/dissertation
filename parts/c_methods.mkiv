@@ -330,14 +330,13 @@ The implementation as part of the R package destiny \cite[angerer2016] is suffic
 
 \stopsubsection
 
-\startsection[title={Scanpy and AnnData}]
+\startsection[title={AnnData}]
 
-Scanpy is a Python library providing functions and classes for scRNA-Seq preprocessing, analysis, and visualization.
-It is designed and developed in parallel with AnnData, a general purpose data structure for annotated two dimensional data (see \infig[fig:anndata]).
+AnnData is a general purpose data structure for annotated two dimensional data (see \infig[fig:anndata]).
 AnnData’s structure matches the annotated observations-by-features ($c×g$) matrix format most biological snapshot data is analyzed in.
 This includes single cell imaging, where this matrix contains each segmented cell $c$’s average fluorescent channel $g$ value.
 In RNA-Seq or quantitative real-time polymerase chain reaction (qRT-PCR, \inlinecite[nurmi2002]), $g$ stands for a gene’s expression in a tissue sample or a single cell.
-Each observation $c$ or feature $g$ can be annotated with different labels used in any step of the Scanpy analysis.
+Each observation $c$ or feature $g$ can be annotated with different labels used in any step of an analysis pipeline.
 Annotations that exist from the start can stem from technical sources such as experimental batches or different data sources such as images from flow cytometry \cite[fulwyler1965].
 They can also be derived from knowledge about origin like the genome a gene exists in or the tissue sample a cell came from.
 Other annotations can be added by preprocessing and analysis steps such as cell classification \cite[li2017].
@@ -361,9 +360,15 @@ For quick integration of AnnData with Bioconductor packages \cite[huber2015] or 
 Due to AnnData’s generic structure, and its conversion and serialization options, it serves as a backbone for analysis pipelines:
 Scanpy and other tools can interact by adding and reading annotations, as well as reading, modifying and adding layers.
 
-Scanpy itself is designed around ease of use without compromising performance.
+\stopsection
+
+\startsection[title={Scanpy}]
+
+Scanpy is a Python library providing functions and classes for scRNA-Seq preprocessing, analysis, and visualization.
+Its main design philosophy is ease of use without compromising performance or interaction with other tools.
 This allows analyzing of up to a million cells in reasonable time \cite[wolf2018].
-Scanpy integrates well with the popular Jupyterlab, allowing to iterate on an analysis in an interactive environment that preserves code, plots, and output as a report file called “notebook” \cite[kluyver2016].
+Scanpy’s ease of interaction with other tools was ensured by developing and designing it in parallel with AnnData and avoiding a Scanpy-specific data structure.
+Scanpy also integrates well with the popular Jupyterlab, allowing to iterate on an analysis in an interactive environment that preserves code, plots, and output as a report file called “notebook” \cite[kluyver2016].
 Combined with disk-backed operations or saving of snapshots, this allows to interrupt a workflow at any point or move it to a different machine.
 A basic Scanpy workflow utilizes all aforementioned features of AnnData, establishing naming conventions by which subsequent steps interact.
 For example it stores read batch labels the \type{.obs} column that Scanpy’s batch correction algorithms default to, and stores dimensionality reduction coordinates as \type{.obsm['X_<method>']}.
