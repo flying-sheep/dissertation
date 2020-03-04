@@ -1,5 +1,9 @@
 /prd_dissertation.pgf
 /bib/library.bib
+*.tar.gz
+*.tsv
+*.mtx
+*.h5ad
 
 # TeX stuff
 *.aux

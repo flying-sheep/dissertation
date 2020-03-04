@@ -72,12 +72,14 @@
 \setbreakpoints[compound] % Allow breaking after dashes
 
 % Font settings, need to be after typography
-%\usetypescript[pagella-euler]
-%\setupbodyfont[pagella-euler, 12pt]
-\definefontfamily[myfonts][serif][TeX Gyre Pagella] %Palatino
-\definefontfamily[myfonts][math][TeX Gyre Pagella Math] % alternative: AMS Euler
+%\usetypescriptfile[type-imp-euler.mkiv]
+%\usetypescript[eulernova]
+\usetypescriptfile[type-luxi]
+%\usetypescript[type-luxi]
+\definefontfamily[myfonts][serif][TeX Gyre Pagella] % Palatino
+\definefontfamily[myfonts][math][TeX Gyre Pagella Math] % AMS Euler or TeX Gyre Pagella Math or XITS Math
 \definefontfamily[myfonts][sans][TeX Gyre Heros]   %Helvetica
-\definefontfamily[myfonts][mono][Source Code Pro]
+\definefontfamily[myfonts][mono][luxi]
 \setupbodyfont[myfonts, 12pt]
 
 % Heading style

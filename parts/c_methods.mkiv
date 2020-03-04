@@ -425,31 +425,32 @@ Scanpy also offers data integration similar to \inlinecite[polanski2020], and se
 These allow analyzing either the influence of given known gene groups such as cell cycle genes \cite[satija2015] and the differential expression between clusters in one of different flavors such as the variance adjusted t-test or Wilcoxon rank-sum test \cite[wilcoxon1945,soneson2018].
 \stopsubsection
 
-\startplacefigure[reference=fig:jupyter, title={
-Scanpy flexibly computes annotations from scRNA-Seq data and visualizes results combined with previous knowledge:\crlf
-\bold{a)} \type{sc.tl.leiden(adata); adata.rename_categories('leiden', names)}\crlf
-\TODO[carsten: explain code; capitalization of “Leiden” in axis vs text]
+\startplacefigure[reference=fig:scanpy, title={
+Scanpy flexibly computes annotations from scRNA-Seq data and visualizes results combined with previous knowledge. A example cluster analysis starts by determining cell clusters with the Leiden algorithm: \type{sc.tl.leiden(adata)}\crlf
+\bold{a)} Marker genes for clusters are determined with a Wilcoxon rank-sum test.\crlf
+\type{sc.tl.rank_genes_groups(adata, 'leiden', method='wilcoxon')}\crlf
+Violin plots show how well each gene’s expression profile distinguishes the cluster.\crlf
+\type{sc.pl.rank_genes_groups_violin(adata, groups='0', n_genes=8)}\crlf
+\bold{b)} The clusters are renamed according to literature research of their marker genes.\crlf
+\type{adata.rename_categories('leiden', cluster_names)}\crlf
+Violin plots show the clusters’ expression profiles for each marker gene.\crlf
 \type{sc.pl.umap(adata, color='leiden', legend_loc='on data')}\crlf
-An UMAP embedding colored by manually labelled Leiden-detected communities.\crlf
-\bold{b)} \type{sc.tl.rank_genes_groups(adata, 'leiden', method='wilcoxon')}\crlf
+\bold{c)} An UMAP embedding colored by the manually labelled Leiden-detected clusters.\crlf
 \type{sc.pl.dotplot(adata, marker_genes, groupby='leiden')}\crlf
-A dotplot of the clusters and marker genes recovered using a Wilcoxon rank-sum test.
-\TODO[carsten: where’s the test; plot legend]
-\TODO[me: maybe change plots; Maybe PAGA?]
 }]
 \hbox{
 \starttikzpicture
-\node (left) {\externalfigure[pbmc3k-umap.pdf][height=.25\textwidth]};
-\node[right=of left] (right) {\externalfigure[pbmc3k-dotplot.pdf][height=.25\textwidth]};
-\node[font=\bf, anchor=base, yshift=-1em] at (left.north west) {a};
-\node[font=\bf, anchor=base, yshift=-1em] at (right.north west) {b};
+\node[anchor=north west] (image) {\externalfigure[scanpy.pdf][height=.3\textwidth]};
+\node[font=\bf, anchor=base, yshift=-1em] at (0, 0) {a};
+\node[font=\bf, anchor=base, yshift=-1em] at (4.7, 0) {b};
+\node[font=\bf, anchor=base, yshift=-1em] at (10, 0) {c};
 \stoptikzpicture
 }
 \stopplacefigure
 
 \startsubsection[title={Visualization}]
 Scanpy has rich visualizations based on Matplotlib \cite[hunter2007] for each step from basic quality control to complex analysis.
-Their flexibility is rooted in them being generic over the annotation column used for coloring or statistic summarization (see \infig[fig:jupyter]).
+Their flexibility is rooted in them being generic over the annotation column used for coloring or statistic summarization (see \infig[fig:scanpy]).
 The final step of scanpy analyses consists of converting the complete Jupyter notebook, select visualizations, and the final data to publishable formats using few simple commands \cite[wolf2018].
 \stopsubsection
 
