@@ -18,7 +18,8 @@
             "/\\\\starttikzpicture[^]*?\\\\stoptikzpicture/gm",
             "/\\\\startformula[^]*?\\\\stopformula/gm",
             "/\\\\startluacode[^]*?\\\\stopluacode/gm",
-            "/\\$[^\\$]+?\\$(’s|th)/g"
+            "/\\$[^\\$]+?\\$(’s|th)/g",
+            "/\\{[^\\}]+?\\}(’s|th)/g"
         ]
     },
     "gitlens.codeLens.enabled": false,

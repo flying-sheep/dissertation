@@ -51,7 +51,7 @@ Advances in microfluidic devices have led to experimental protocols able to sequ
 \TODO[more intro for droplet based protocols (footnote? paragraph?), or is this sufficient?]
 The ample variation between this multitude of individual cells allows to derive patterns no human can detect by manual and careful isolation of bulk samples \cite[huang2018].
 This way \inlinecite[plass2018] have determined the developmental lineage of every cell in a planarian, a regenerative species whose cellular mechanisms could be the key to prevent scarring or delay aging in humans.
-The international community of scientists working on transcriptomics is coming together to create the Human Cell Atlas \cite[regev2017].
+The international community of scientists working on transcriptomics is coming together to create the \n{Human Cell Atlas} \cite[regev2017].
 %\cite[vento-tormo2018]
 \TODO[what else to cite here? other teichman/regev stuff? maybe vento-tormo2018 “Single-cell reconstruction of the early maternal-fetal interface in humans”]
 
@@ -78,6 +78,7 @@ Analysis pipelines came custom-built for a certain publication, just as hard to 
 Every graduate student and postdoctoral researcher had to start from scratch.
 The thesis at hand is a slice of the author’s continued efforts to change this.
 I improved interoperability and modularity of existing tools, pioneered technologies and software development processes in a research environment, and developed some of the missing building blocks for the resulting toolkit.
+\TODO[move prev. 2 sentences to “own contribs”?]
 
 \startsection[title=Workflow]
 % story: new challenges by sc data; old way to deal with data (workflows) are not efficient → new approaches needed → me
@@ -112,11 +113,11 @@ A second example is adding known quantities of RNA from a foreign organism (spik
 Counting starts from the paired sequences read from both ends of a fragment (paired-end reads) or the 3′ end sequences (single-end reads).
 The read or read pair includes a cell barcode and possibly a UMI barcode.
 \footnote{\inlinecite[uzbas2019] developed BART-Seq, a protocol that combines paired-end reads with two cell barcodes to address a high number of cells.}
-Classic counting uses specialized short read alignment tools like BOWTIE \cite[langmead2009,langmead2012] or STAR \cite[dobin2013] to match reads to a reference genome annotated with information about where genes start, end, and can be spliced.
+Classic counting uses specialized short read alignment tools like \n{Bowtie} \cite[langmead2009,langmead2012] or \n{STAR} \cite[dobin2013] to match reads to a reference genome annotated with information about where genes start, end, and can be spliced.
 Aligned reads are counted per splicing configuration that translates to a protein, while collapsing the counts for reads with identical UMIs – if available (see \infig[fig:rna-seq]c).
-Since only the resulting count matrix is needed for many kinds of downstream analysis, there have been advances in pseudo-alignment algorithms like Kallisto \cite[ntranos2016] or Salmon \cite[patro2017], which efficiently count without a separate alignment step.
+Since only the resulting count matrix is needed for many kinds of downstream analysis, there have been advances in pseudo-alignment algorithms like \n{kallisto} \cite[ntranos2016] or \n{Salmon} \cite[patro2017], which efficiently count without a separate alignment step.
 For ease of use, pipelines wrapping those tools for certain experimental protocols exist.
-Those include Cell Ranger for 10x Genomics’ Chromium protocol \cite[zheng2017] or zUMIs for several protocols involving UMIs \cite[parekh2018].
+Those include \n{Cell Ranger} for \n{10x Genomics}’ \n{Chromium} protocol \cite[zheng2017] or \n{zUMIs} \TODO[cite] for several protocols involving UMIs \cite[parekh2018].
 \TODO[mention my bartseq pipeline here?]
 \stopsubsection
 
@@ -143,7 +144,7 @@ Another common preprocessing step is normalization.
 It entails correction for common technical sources of cell variation, as well as biological sources with a strong effect, such as the cell cycle:
 when not studying the cell cycle itself, its variation can obscure the processes under investigation \cite[buettner2015].
 If multiple runs of the sequencer were used to obtain the full data, there will be biases per run that can be reduced by using a dedicated batch effect correction algorithm (see \infig[fig:batch-effect]).
-While older bulk correction effects such as ComBat \cite[johnson2007] have proven to be successful in the last years, a growing number of dedicated scRNA-Seq batch effect correction tools is becoming available \cite[haghverdi2018,lotfollahi2018,korsunsky2019,polanski2020].
+While older bulk correction effects such as \n{ComBat} \cite[johnson2007] have proven to be successful in the last years, a growing number of dedicated scRNA-Seq batch effect correction tools is becoming available \cite[haghverdi2018,lotfollahi2018,korsunsky2019,polanski2020].
 Preprocessing can also involve scaling count values using a per-cell function derived from the aforementioned spike-ins.
 All the aforementioned transformation have to be carefully balanced with their potential to over-correct and remove relevant biological variation.
 
@@ -159,7 +160,7 @@ The intuition is that in in log-space, distances represent log-fold changes, an 
 Another way is to employ dimensional reduction methods to embed the data into a lower-dimensional space with the desired properties, such as Principal Component Analysis (PCA, \inlinecite[abdi2010]) or diffusion maps \cite[coifman2005].
 An advantage of this method are the reduced computational and memory costs of operating on a low-dimensional embedding.
 \inlinecite[svensson2020] suggested that log-transforming data is a possible cause for distorting data by zero-inflation.
-With single cell data specific transforms like SCTransform \cite[hafemeister2019], as well as embeddings like scVI \cite[lopez2018] or GLM-PCA \cite[townes2019], promising alternatives are emerging, despite them losing the log-fold interpretability.
+With single cell data specific transforms like \n{SCTransform} \cite[hafemeister2019], as well as embeddings like \n{scVI} \cite[lopez2018] or \n{GLM-PCA} \cite[townes2019], promising alternatives are emerging, despite them losing the log-fold interpretability.
 \stopsubsection
 
 \startsubsection[title={Analysis}]
@@ -183,7 +184,7 @@ While DE analysis methods stem from bulk RNA-Seq, single-cell specific methods s
 Another source of heterogeneity is the composition of the studied tissue.
 Tumors as well as many kinds of healthy tissue are composed of cells fulfilling a multitude of different roles that can only be uncovered using single cell analysis \cite[patel2014,zhang2016,qian2017].
 A common method to make sense of complex heterogeneous data is cluster analysis.
-For single cell data, the multi-resolution community detection algorithm Leiden \cite[traag2019] and its predecessor Louvain is used most commonly, despite \inlinecite[kiselev2019] arguing its lack of performance for smaller datasets.
+For single cell data, the multi-resolution community detection algorithm \n{Leiden} \cite[traag2019] and its predecessor \n{Louvain} is used most commonly, despite \inlinecite[kiselev2019] arguing its lack of performance for smaller datasets.
 A general problem of clustering is data reuse.
 Clusters are commonly the basis for further analysis like inter-cluster DE analysis – a task the aforementioned single cell specific DE tools are specifically designed for.
 However, this leads to both clusters and markers being derived from the same data, and treating clusters as ground truth in this settings leads to inflated confidence in the found markers.
@@ -193,7 +194,7 @@ While cluster analysis is greatly enriched by scRNA-Seq analysis, the field of t
 Traditionally, cells were thought of exhibiting a discrete cell type, which still applies to cells that are dramatically specialized for their roles.
 Most tissues however contain less discrete cell types, like the pluripotent stem cells from which all cells derive \cite[haghverdi2015].
 While marker genes for certain cell roles or developmental steps exist, this complex and gradual nature of most tissues requires sophisticated analysis and visualization of single cell data.
-Early trajectory analysis tools like Wanderlust \cite[bendall2014], or DPT \cite[haghverdi2016] can effectively applied to simple developmental data.
+Early trajectory analysis tools like \n{Wanderlust} \cite[bendall2014], or DPT \cite[haghverdi2016] can effectively applied to simple developmental data.
 But while cells usually get increasingly specialized during their path of development, the reverse direction (dedifferentiation) can also be observed (see \infig[fig:waddington]).
 Furthermore, developing cells do not necessarily follow all steps of differentiation in the same order or magnitude.
 This results in cells temporarily or sometimes permanently stuck as intermediate types.
@@ -233,6 +234,7 @@ An upcoming way to simplify the process are cell transcriptome atlases \cite[reg
 The above sequence of steps should be a generic overview of scRNA-Seq analysis able to serve as a framework in which to place my specific contributions.
 While I worked on every computational step of the process except for alignment, my contributions are focused on steps involving a count matrix.
 To provide further context for my work, I would like to outline the relevant changes in the process of scRNA-Seq analysis.
+\TODO[I like this framing. does this *have* to go to “own contribs”?]
 
 \startsubsection[title={The Old Way}]
 % Generally: People often need to cobble together their own pipelines and use default parameters without knowing what they do.
@@ -256,9 +258,9 @@ Furthermore, no data structures and file exchange formats suitable for scRNA-Seq
 Furthermore, reproducibility was hard to guarantee in the presence of nondeterministic methods and a multitude of tool versions with subtly different defaults and behavior.
 
 % DM creation in R
-In the R landscape, the Bioconductor project \cite[huber2015] provided tools for preprocessing and basic analysis, but little in the way of embeddings.
+In the R landscape, the \n{Bioconductor} project \cite[huber2015] provided tools for preprocessing and basic analysis, but little in the way of embeddings.
 The only available option for diffusion map embedding at the time did not offer features necessary for scRNA-Seq analysis and was impractically slow \cite[angerer2016].
-% - pre-GR: differential expression and Trendsceek
+% - pre-GR: differential expression and \TODO?[trendsceek]
 No dimensionality reduction method except for the simplistic PCA provides a way to relate embedding location back to input variables.
 The existing and popular differential expression analysis requires discrete partitioning of the data, which is not well defined for data containing gradual transition of gene expression profiles between cells, and has the aforementioned issues with uncertainty propagation.
 \TODO[mention the destiny-related stuff here? If not: just in “own contributions” and methods?]
@@ -270,13 +272,13 @@ The existing and popular differential expression analysis requires discrete part
 \stopplacefigure
 
 % - Through frameworks, data interchange formats and containers we get interoperability and reproducibility.
-Today, both R and Python have viable frameworks for scRNA-Seq analysis: Seurat\footnote{
-Note that Seurat in its original publication 2015 was no general purpose scRNA-Seq analysis framework yet, but a data alignment algorithm with additional helper routines.
-} \cite[satija2015,butler2018], Scater \cite[mccarthy2017], and Scanpy \cite[wolf2018].
+Today, both R and Python have viable frameworks for scRNA-Seq analysis: \n{Seurat}\footnote{
+Note that \n{Seurat} in its original publication 2015 was no general purpose scRNA-Seq analysis framework yet, but a data alignment algorithm with additional helper routines.
+} \cite[satija2015,butler2018], \n{scater} \cite[mccarthy2017], and \n{scanpy} \cite[wolf2018].
 Their data structures allow keeping gene and cell annotations and graphs in sync with the expression matrix while filtering and concatenating data.
 Conversion between the R and Python world is possible via common serialization formats and in-memory conversion \cite[angerer2019b].
 %reproducibility
-Reproducibility seems to be largely solved, as widely available container solutions such as Docker allow defining perfectly reproducible environments \cite[ditommaso2015].
+Reproducibility seems to be largely solved, as widely available container solutions such as \n{Docker} allow defining perfectly reproducible environments \cite[ditommaso2015].
 Unlike standalone tools, the frameworks also consistently support random seeding for identical output of nondeterministic processes.
 % - good error reporting / software quality important for good science (Avoid garbage-in garbage-out)
 % - principle of many eyes: less bugs in shared code
@@ -286,26 +288,26 @@ Bigger frameworks encompassing many tools have an easier time to test several pe
 
 %R
 In R, the landscape is more fragmented than in Python:
-The Bioconductor ecosystem provides annotated matrix data structures and tools for mainly preprocessing scRNA-Seq data.
-Scater provides extensive quality control and preprocessing but little in the way of analysis \cite[luecken2019].
-Seurat has opinionated preprocessing, analysis and plotting routines but is not integrated into the Bioconductor ecosystem.
-Its data structure is Seurat-specific and needs conversion to the more generic Bioconductor data structures.
-Standalone tools in R usually support Bioconductor data structures or even just plain matrices and data frames.
+The \n{Bioconductor} ecosystem provides annotated matrix data structures and tools for mainly preprocessing scRNA-Seq data.
+\n{Scater} provides extensive quality control and preprocessing but little in the way of analysis \cite[luecken2019].
+\n{Seurat} has opinionated preprocessing, analysis and plotting routines but is not integrated into the \n{Bioconductor} ecosystem.
+Its data structure is \n{Seurat}-specific and needs conversion to the more generic \n{Bioconductor} data structures.
+Standalone tools in R usually support \n{Bioconductor} data structures or even just plain matrices and data frames.
 
 %AnnData
-In Python, many standalone tools start supporting the generic data structure AnnData \cite[zappia2018,eraslan2019,polanski2020].
-AnnData supports reading and writing from and to several language agnostic interchange formats.
+In Python, many standalone tools start supporting the generic data structure \n{AnnData} \cite[zappia2018,eraslan2019,polanski2020].
+\n{AnnData} supports reading and writing from and to several language agnostic interchange formats.
 It was the first annotated matrix data structure to support sparse expression matrices and therefore up to millions of cells.
 It provides its own format that supports disk backing for operations on data too large to be performed in memory, sparse or dense.
 % Scanpy
-AnnData was developed alongside Scanpy in order to make the latter a highly modular framework.
-Scanpy is now in widespread international use, continuously expanded with new algorithms, and on its way to become a community governed project \cite[wolf2018,zappia2018].
-Being based on Numpy \cite[vanderwalt2011], Scipy \cite[virtanen2020], and other mature and highly performant Python technologies, Scanpy is very scalable.
+\n{AnnData} was developed alongside \n{scanpy} in order to make the latter a highly modular framework.
+\n{Scanpy} is now in widespread international use, continuously expanded with new algorithms, and on its way to become a community governed project \cite[wolf2018,zappia2018].
+Being based on \n{NumPy} \cite[vanderwalt2011], \n{SciPy} \cite[virtanen2020], and other mature and highly performant Python technologies, \n{scanpy} is very scalable.
 % - serving all MOs: iterative with biologists, manual coding, let it be done as-a-service
-Integrating well with Jupyterlab and Jupyter notebooks \cite[kluyver2016], Scanpy lends itself to be used interactively to quickly iterate on analyses with close feedback from biologists.
+Integrating well with \n{JupyterLab} and \n{Jupyter} notebooks \cite[kluyver2016], \n{scanpy} lends itself to be used interactively to quickly iterate on analyses with close feedback from biologists.
 It also supports being used as a Python library to back visualization tools, web servers and traditional file-based processing pipelines.
 
-%Destiny, GR
+%destiny, GR
 %New embeddings have been developed, none of which are able to relate embedding dimensions back to the input genes.
 \TODO[as above: mention destiny-related stuff here?]
 \stopsubsection
@@ -317,52 +319,52 @@ It also supports being used as a Python library to back visualization tools, web
 
 % (I am the one who can create usable interfaces and/for pipelines and fill in the gaps where “cobblestones” are missing)
 
-\startsubsection[title={Destiny}]
+\startsubsection[title={\n{destiny}}]
 % efficient and flexible diffusion maps for R
-Destiny is a flexible and fast tool for the creation and visualization of diffusion maps in R.
-It can utilize a number of distance metrics to create a distance matrix with, as well as sparse distance matrices, including euclidean, cosine, and rank correlation distance.
-I achieved Destiny’s high performance by reusing this sparsity structure using sparse distance matrices with larger distances removed.
-To this end, Destiny starts with symmetric kNN matrices and uses the symmetric variant of diffusion maps.
-This tactic has later been used by Scanpy and other tools using a kNN search as simplifying preprocessing step.
-For Destiny’s stability, I also helped develop the concept of locally scaled diffusion maps as first described in the supplementary materials of \inlinecite[haghverdi2016].
-I contributed to and developed a number of independent building blocks for use in Destiny.
+\n{Destiny} is a flexible and fast tool for the creation and visualization of diffusion maps in R \cite[angerer2016].
+Unlike most, \n{destiny} can utilize a number of distance metrics including euclidean, cosine, and rank correlation distance.
+I achieved \n{destiny}’s high performance by reusing this sparsity structure using sparse distance matrices with larger distances removed.
+To this end, \n{destiny} starts with symmetric kNN matrices and uses the symmetric variant of diffusion maps.
+This tactic has later been used by \n{scanpy} and other tools using a kNN search as simplifying preprocessing step.
+For \n{destiny}’s stability, I also helped develop the concept of locally scaled diffusion maps as first described in the supplementary materials of \inlinecite[haghverdi2016].
+I contributed to and developed a number of independent building blocks for use in \n{destiny}.
 This includes a nearest neighbor search operating in the same space the diffusion kernel is applied to.
-For Destiny, I contributed to a few projects it depends on to support determinism if a random seed is set.
-Destiny also contained a perceptually continuous color-map before they found their way into the major plotting libraries of Python or R.
-Apart from diffusion maps, Destiny also supports using its diffusion space to calculate diffusion pseudo time between cells as well as to project new data into the diffusion space of the data used to create the diffusion space.
-Destiny supports Bioconductor’s annotated expression matrix classes and directly integrates into the popular plotting library GGplot2.
+For \n{destiny}, I contributed to a few projects it depends on to support determinism if a random seed is set.
+\n{Destiny} also contained a perceptually continuous color-map before they found their way into the major plotting libraries of Python or R.
+Apart from diffusion maps, \n{destiny} also supports using its diffusion space to calculate diffusion pseudo time between cells as well as to project new data into the diffusion space of the data used to create the diffusion space.
+\n{Destiny} supports \n{Bioconductor}’s annotated expression matrix classes and directly integrates into the popular plotting library \n{ggplot2}.
 It contains dedicated plotting routines for diffusion maps and diffusion pseudo time.
 
 \TODO[integrate]
-During the parallel development of destiny \cite[angerer2016] and diffusion pseudo time \cite[haghverdi2016], I helped shape the efficient flavor of diffusion maps most used today \TODO[data].
+During the parallel development of \n{Destiny} and diffusion pseudo time (DPT, \inlinecite[haghverdi2016]), I helped shape the efficient flavor of diffusion maps most used today \TODO[data].
 I pioneered the use of a symmetrized kNN graph represented as a symmetric sparse matrix, using this kNN information as a density estimate for the locally scaled kernel $K$ and its sparsity structure for efficient calculation of the symmetric transition probability matrix $T$.
 \stopsubsection
 
 \startsubsection[title={Gene Relevance}]
 % combines gene-level with cell-level analysis
-The most recent addition to Destiny is the gene relevance algorithm.
+The most recent addition to \n{destiny} is the gene relevance algorithm.
 Gene relevance is a scoring algorithm designed to combine gene level analysis with cell level analysis.
 It allows to identify genes that drive the local positioning of a cell in an embedding.
 The initial idea comes from Fabian Theis, while I implemented it and iterated on the design until it was applicable to real data.
 I also extended the idea to include scores for defined groups of cells such as clusters or the whole data for a global relevance score per gene.
-Destiny includes several plotting routines designed for the different gene relevance concepts.
+\n{Destiny} includes several plotting routines designed for the different gene relevance concepts.
 
 \TODO[integrate]
-I developed and implemented all of the mentioned concepts as part of the destiny R package \cite[angerer2016].
+I developed and implemented all of the mentioned concepts as part of the \n{destiny} R package \cite[angerer2016].
 The implementation offers a rich and user friendly API including plotting routines for all concepts.
 \stopsubsection
 
-\startsubsection[title={Scanpy and AnnData}]
+\startsubsection[title={\n{scanpy} and \n{AnnData}}]
 % reusable and remix-able workflow building blocks and data structures
-Scanpy is a framework for scRNA-Seq preprocessing, analysis, and visualization in Python.
-AnnData is a data structure for annotated observation data including scRNA-Seq counts and expressions.
+\n{Scanpy} is a framework for scRNA-Seq preprocessing, analysis, and visualization in Python.
+\n{AnnData} is a data structure for annotated observation data including scRNA-Seq counts and expressions.
 With F. Alexander Wolf I implemented the initial version of both, where he focused on performance while I focused on API and data structure design.
-Scanpy is designed around AnnData, storing the results of each processing step in an expression matrix layer or an aligned annotation (see \infig[fig:anndata]).
-This data structure enables Scanpy’s flexibility.
+\n{Scanpy} is designed around \n{AnnData}, storing the results of each processing step in an expression matrix layer or an aligned annotation (see \infig[fig:anndata]).
+This data structure enables \n{scanpy}’s flexibility.
 It can be persisted to disk in various formats for storage and interoperability with command line tools.
-AnnData’s structure allows close interoperability between Scanpy and other tools that use AnnData, including R tools via SingleCellExperiment \cite[lun2017a,angerer2019b].
-For data too large to hold in memory, AnnData supports disk-backed operations.
-AnnData’s modular and flexible design philosophy allows Scanpy routines to be effortlessly interspersed with preprocessing and analysis steps of other tools.
+\n{AnnData}’s structure allows close interoperability between \n{scanpy} and other tools that use \n{AnnData}, including R tools via \n{SingleCellExperiment} \cite[lun2017a,angerer2019b].
+For data too large to hold in memory, \n{AnnData} supports disk-backed operations.
+\n{AnnData}’s modular and flexible design philosophy allows \n{scanpy} routines to be effortlessly interspersed with preprocessing and analysis steps of other tools.
 \stopsubsection
 
 \startsubsection[title={BART-Seq}]
@@ -371,8 +373,8 @@ Beyond processing count matrices, I also contributed to a new, targeted RNA-Seq 
 It is set apart from untargeted single cell and bulk RNA-Seq protocols due to its high sensitivity and low cost.
 I designed a demultiplexing and counting strategy for BART-Seq together with Fatma Uzbas and Micha Drucker.
 I implemented those strategies as well as visualization routines for the protocol as a Python package.
-Part of this package is the BART-Seq equivalent to Cell Ranger or zUMIs:
-a pipeline based on Snakemake that performs all steps of the protocol to create count matrices, statistics and visualizations \cite[angerer2019a].
+Part of this package is the BART-Seq equivalent to \n{Cell Ranger} or \n{zUMIs}:
+a pipeline based on \n{Snakemake} that performs all steps of the protocol to create count matrices, statistics and visualizations \cite[angerer2019a].
 
 \TODO[integrate]
 I designed the quantification step in collaboration with Fatma Uzbas and Micha Drucker, and implemented a Python library and pipeline executing it.

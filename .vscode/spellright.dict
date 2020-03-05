@@ -11,10 +11,10 @@ Micha
 Drucker
 Theis
 Iverson
+Eigen
 Wilcoxon
 
 BBKNN
-BOWTIE
 DCA
 FACS
 GLM-PCA
@@ -26,27 +26,33 @@ PCA
 PCR
 qPCR
 SCDE
+scVI
+STAR
 t-SNE
 UMAP
 UMI
 ZINB-WaVE
 
-AnnData2ri
+anndata2ri
 Bioconductor
-Cellxgene
-Eigen
-GGplot2
+Bowtie
+cellxgene
+ComBat
+ggplot2
 Jupyter
-Jupyterlab
-Kallisto
+JupyterLab
+kallisto
+Loom
 Matplotlib
-Numpy
+NumPy
+Salmon
 Scanpy
-Scater
-Scipy
-Scran
+scater
+SciPy
+scran
+SCTransform
 Snakemake
-Trendsceek
+trendsceek
 
 amplicon
 amplicons
@@ -65,6 +71,7 @@ preprocess
 preprocessing
 logarithmized
 logarithmizing
+lysing
 misassign
 misassigning
 performant
