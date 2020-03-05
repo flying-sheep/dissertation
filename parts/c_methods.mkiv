@@ -118,7 +118,7 @@ There are a number of related methods that can serve a similar purpose, such as 
 Furthermore, single cell transcriptomics specific extensions exist, such as ZINB-WaVE \cite[risso2018] and GLM-PCA \cite[townes2019], which account for high numbers of zeros and over-dispersion of scRNASeq-data.
 \stopsubsubsection
 
-\startsubsubsection[title={Diffusion Maps}]
+\startsubsubsection[reference=sec:diffmaps, title={Diffusion Maps}]
 Diffusion maps provide another spectral decomposition of data.
 Their practicality for data analysis was first shown by \inlinecite[coifman2005].
 
@@ -230,7 +230,7 @@ There are approaches to remedy this for UMAP and t-SNE \TODO[cite. /edit: damn, 
 
 \stopsection
 
-\startsubsection[title={Gene Relevance}]
+\startsubsection[reference=sec:generelevance, title={Gene Relevance}]
 
 \definemathcommand[lr][nolop]{\mfunction{LR}}
 \definemathcommand[gr][nolop]{\mfunction{GR}}
@@ -330,7 +330,7 @@ The implementation as part of the R package \n{destiny} \cite[angerer2016] is su
 
 \stopsubsection
 
-\startsection[title={\n{AnnData}}]
+\startsection[reference=sec:anndata, title={\n{AnnData}}]
 
 \n{AnnData} is a general purpose data structure for annotated two dimensional data (see \infig[fig:anndata]).
 % rectangular vs tidy data
@@ -388,12 +388,9 @@ For quick integration of \n{AnnData} with \n{Bioconductor} packages \cite[huber2
 Due to \n{AnnData}’s generic structure, and its conversion and serialization options, it serves as a backbone for analysis pipelines.
 \n{Scanpy} and other tools can interact by adding and reading annotations, as well as reading, modifying and adding layers.
 
-\n{AnnData} has been used for this purpose by several scRNA-Seq analysis tools since the publication of \n{scanpy}, such as \n{scVI} \cite[lopez2018], \n{DCA} \cite[eraslan2019], \n{DESC} \cite[li2019], or \n{BBKNN} \cite[polanski2020].
-Its \type{.h5ad} format is supported by visual analysis pipelines like \n{Galaxy} \cite[afgan2018] or \n{cellxgene} \cite[megill2020].
-
 \stopsection
 
-\startsection[title={\n{scanpy}}]
+\startsection[reference=sec:scanpy, title={\n{scanpy}}]
 
 \n{Scanpy} is a Python library providing functions and classes for scRNA-Seq preprocessing, analysis, and visualization.
 Its main design philosophy is ease of use without compromising performance or interaction with other tools.
@@ -456,7 +453,7 @@ The final step of \n{scanpy} analyses consists of converting the complete \n{Jup
 
 \stopsection
 
-\startsection[title={BART-Seq (demultiplexing and quantification)}]
+\startsection[reference=sec:bartseq, title={BART-Seq (demultiplexing and quantification)}]
 
 \TODO[methods should be self contained: repeat intro with more details if necessary]
 BART-Seq is a targeted RNA sequencing protocol able to sensitively and inexpensively measure expressions of thousands of samples per experiment, such as single cells or cell groups \cite[uzbas2019].

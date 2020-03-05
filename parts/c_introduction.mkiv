@@ -117,7 +117,7 @@ Classic counting uses specialized short read alignment tools like \n{Bowtie} \ci
 Aligned reads are counted per splicing configuration that translates to a protein, while collapsing the counts for reads with identical UMIs – if available (see \infig[fig:rna-seq]c).
 Since only the resulting count matrix is needed for many kinds of downstream analysis, there have been advances in pseudo-alignment algorithms like \n{kallisto} \cite[ntranos2016] or \n{Salmon} \cite[patro2017], which efficiently count without a separate alignment step.
 For ease of use, pipelines wrapping those tools for certain experimental protocols exist.
-Those include \n{Cell Ranger} for \n{10x Genomics}’ \n{Chromium} protocol \cite[zheng2017] or \n{zUMIs} \TODO[cite] for several protocols involving UMIs \cite[parekh2018].
+Those include \n{Cell Ranger} for \n{10x Genomics}’ \n{Chromium} protocol \cite[zheng2017] or \n{zUMIs} \cite[parekh2018] for several protocols involving UMIs.
 \TODO[mention my bartseq pipeline here?]
 \stopsubsection
 
@@ -221,7 +221,7 @@ The differentiating cells are colored by age in days.
 The complexity of the heterogeneity being uncovered not only reflects in analysis methods but also the visualizations of their results.
 Complex developmental hierarchies and other relations in the data need to be faithfully represented.
 This commonly involves laying out points representing the cells in a flat plane while trying to maintain relationships such as developmental closeness (see \infig[fig:embeddings]).
-This general process also employs more complex dimensional reduction methods than the ones used for distance calculations (see \in{section}[sec:preprocessing]).
+This general process also employs more complex dimensional reduction methods than the ones used for distance calculations (see \insec[sec:preprocessing]).
 And the more complex a process is, the more likely it is that this process contains steps that cannot be traced back.
 
 Without additional data providing a ground truth about subpopulation identity, or clearly separated clusters that are inherently assigned genes driving their embedding, the process of validating an embedding is manual.
@@ -321,63 +321,75 @@ It also supports being used as a Python library to back visualization tools, web
 
 \startsubsection[title={\n{destiny}}]
 % efficient and flexible diffusion maps for R
-\n{Destiny} is a flexible and fast tool for the creation and visualization of diffusion maps in R \cite[angerer2016].
-Unlike most, \n{destiny} can utilize a number of distance metrics including euclidean, cosine, and rank correlation distance.
-I achieved \n{destiny}’s high performance by reusing this sparsity structure using sparse distance matrices with larger distances removed.
-To this end, \n{destiny} starts with symmetric kNN matrices and uses the symmetric variant of diffusion maps.
-This tactic has later been used by \n{scanpy} and other tools using a kNN search as simplifying preprocessing step.
-For \n{destiny}’s stability, I also helped develop the concept of locally scaled diffusion maps as first described in the supplementary materials of \inlinecite[haghverdi2016].
-I contributed to and developed a number of independent building blocks for use in \n{destiny}.
-This includes a nearest neighbor search operating in the same space the diffusion kernel is applied to.
-For \n{destiny}, I contributed to a few projects it depends on to support determinism if a random seed is set.
-\n{Destiny} also contained a perceptually continuous color-map before they found their way into the major plotting libraries of Python or R.
-Apart from diffusion maps, \n{destiny} also supports using its diffusion space to calculate diffusion pseudo time between cells as well as to project new data into the diffusion space of the data used to create the diffusion space.
-\n{Destiny} supports \n{Bioconductor}’s annotated expression matrix classes and directly integrates into the popular plotting library \n{ggplot2}.
-It contains dedicated plotting routines for diffusion maps and diffusion pseudo time.
+\n{Destiny} is a user-friendly, flexible and fast R tool for the creation and visualization of diffusion maps, diffusion pseudo time, and gene relevance \cite[angerer2016].
+It performs a kNN search on reference data to define a sparse distance matrix, in which the missing values stand for infinite distances instead of zeroes.
+From this matrix, \n{destiny} derives a transition probability matrix.
+That matrix’s Eigen decomposition is a diffusion map embedding of the reference data.
+Further, \n{destiny} uses the matrix to calculate diffusion pseudo time between cells as well as to project new data into the diffusion map of the reference data.
+For a more in-depth explanation of diffusion maps, see \insec[sec:diffmaps].
 
-\TODO[integrate]
-During the parallel development of \n{Destiny} and diffusion pseudo time (DPT, \inlinecite[haghverdi2016]), I helped shape the efficient flavor of diffusion maps most used today \TODO[data].
-I pioneered the use of a symmetrized kNN graph represented as a symmetric sparse matrix, using this kNN information as a density estimate for the locally scaled kernel $K$ and its sparsity structure for efficient calculation of the symmetric transition probability matrix $T$.
+%efficiency
+\n{Destiny}’s high performance is mainly achieved emphasizing element-wise operations by reusing the sparsity structure of the sparse distance matrix.
+To this end, \n{destiny} symmetrizes its kNN matrix and uses the symmetric variant of diffusion maps.
+This efficient design is since used by \n{scanpy} for its many tools that use a kNN search as preprocessing step.
+
+% user friendly: defaults, no sigma
+To guarantee user friendliness, \n{destiny} has sensible defaults and compatibility to best-practice data structures and conventions.
+It is able to run without specifying parameters, as by default it obtains a number of nearest neighbors with a heuristic and uses locally scaled diffusion maps.
+I helped develop this nonparametric diffusion map flavor, which is also used by \n{scanpy} today, during the parallel development of \n{destiny} and diffusion pseudo time (DPT, \inlinecite[haghverdi2016]).
+
+% plotting and color maps
+\n{Destiny} contains dedicated plotting routines for diffusion maps and diffusion pseudo time that directly integrate into the popular plotting library \n{ggplot2}.
+Destiny started providing perceptually continuous color-maps before they have been included in the major plotting libraries of Python and R.
+Without them, accurate assessment of any kind of color-mapped visualizations can not be guaranteed \cite[borkin2011,moreland2017].
+\n{Destiny} supports \n{Bioconductor}’s annotated expression matrix classes as well as plain matrices and data frames.
+
+% flexibility
+\n{Destiny} can utilize a number of distance metrics including euclidean, cosine, and rank correlation distance.
+Unlike other available R tools, \n{destiny} uses the chosen distance metric also for kNN search, which has been shown to improve results \cite[hu2016].
+To make \n{destiny} deterministic, I contributed to a few of its dependencies to support random seeds.
+
+Destiny has been cited 170 times at the time of writing.
+\TODO[where to put?]
 \stopsubsection
 
 \startsubsection[title={Gene Relevance}]
 % combines gene-level with cell-level analysis
 The most recent addition to \n{destiny} is the gene relevance algorithm.
-Gene relevance is a scoring algorithm designed to combine gene level analysis with cell level analysis.
-It allows to identify genes that drive the local positioning of a cell in an embedding.
-The initial idea comes from Fabian Theis, while I implemented it and iterated on the design until it was applicable to real data.
+It is designed to identify genes that drive the local positioning of a cell in an embedding.
+This allows to detect locally relevant genes without a discrete clustering step and the associated problems discussed before.
+The initial idea comes from Fabian Theis, while I designed and implemented a variant applicable to real data.
 I also extended the idea to include scores for defined groups of cells such as clusters or the whole data for a global relevance score per gene.
-\n{Destiny} includes several plotting routines designed for the different gene relevance concepts.
-
-\TODO[integrate]
-I developed and implemented all of the mentioned concepts as part of the \n{destiny} R package \cite[angerer2016].
-The implementation offers a rich and user friendly API including plotting routines for all concepts.
+The method is described in detail in \insec[sec:generelevance].
+\n{Destiny} offers a rich and user friendly API for all gene relevance concepts, including plotting routines.
 \stopsubsection
 
 \startsubsection[title={\n{scanpy} and \n{AnnData}}]
 % reusable and remix-able workflow building blocks and data structures
 \n{Scanpy} is a framework for scRNA-Seq preprocessing, analysis, and visualization in Python.
 \n{AnnData} is a data structure for annotated observation data including scRNA-Seq counts and expressions.
+It is designed to be generic and independent of \n{scanpy}
 With F. Alexander Wolf I implemented the initial version of both, where he focused on performance while I focused on API and data structure design.
 \n{Scanpy} is designed around \n{AnnData}, storing the results of each processing step in an expression matrix layer or an aligned annotation (see \infig[fig:anndata]).
-This data structure enables \n{scanpy}’s flexibility.
-It can be persisted to disk in various formats for storage and interoperability with command line tools.
-\n{AnnData}’s structure allows close interoperability between \n{scanpy} and other tools that use \n{AnnData}, including R tools via \n{SingleCellExperiment} \cite[lun2017a,angerer2019b].
+\n{AnnData} can be persisted to disk in various formats for storage and interoperability with command line tools.
 For data too large to hold in memory, \n{AnnData} supports disk-backed operations.
-\n{AnnData}’s modular and flexible design philosophy allows \n{scanpy} routines to be effortlessly interspersed with preprocessing and analysis steps of other tools.
+For details about the implementation of \n{AnnData} and \n{scanpy}, see \in{Sections}[sec:anndata] and \in{}[sec:scanpy]
+
+\n{AnnData}’s and \n{scanpy}’s modular and flexible design philosophies allows \n{scanpy} routines to be effortlessly interspersed with preprocessing and analysis steps of other tools, including R tools via \n{SingleCellExperiment} \cite[lun2017a,angerer2019b].
+\n{AnnData} has been used for this purpose by several scRNA-Seq analysis tools since the publication of \n{scanpy}, such as \n{scVI} \cite[lopez2018], \n{DCA} \cite[eraslan2019], \n{DESC} \cite[li2019], or \n{BBKNN} \cite[polanski2020].
+Its \type{.h5ad} format is supported by visual analysis pipelines like \n{Galaxy} \cite[afgan2018] or \n{cellxgene} \cite[megill2020].
+\n{Scanpy} is widely used and popular in the scRNA-Seq analysis community \cite[zappia2018].
+It is integrated in \n{Galaxy}, used for the \n{Human Cell Atlas}, and at the time of writing cited by over 300 studies, review papers and tools.
 \stopsubsection
 
 \startsubsection[title={BART-Seq}]
 % flexible processing pipeline and Python library
 Beyond processing count matrices, I also contributed to a new, targeted RNA-Seq protocol called BART-Seq \cite[uzbas2019].
 It is set apart from untargeted single cell and bulk RNA-Seq protocols due to its high sensitivity and low cost.
-I designed a demultiplexing and counting strategy for BART-Seq together with Fatma Uzbas and Micha Drucker.
+I designed a demultiplexing and counting strategy for BART-Seq together with Fatma Uzbas and Micha Drucker (see \insec[sec:bartseq]).
 I implemented those strategies as well as visualization routines for the protocol as a Python package.
 Part of this package is the BART-Seq equivalent to \n{Cell Ranger} or \n{zUMIs}:
-a pipeline based on \n{Snakemake} that performs all steps of the protocol to create count matrices, statistics and visualizations \cite[angerer2019a].
-
-\TODO[integrate]
-I designed the quantification step in collaboration with Fatma Uzbas and Micha Drucker, and implemented a Python library and pipeline executing it.
+a \n{Snakemake} pipeline \cite[köster2012] that performs all steps of the protocol to create count matrices, statistics and visualizations \cite[angerer2019a].
 \stopsubsection
 
 \stopsection
