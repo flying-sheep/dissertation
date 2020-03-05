@@ -1,0 +1,37 @@
+\usetikzlibrary[positioning,shapes]
+\starttikzpicture
+
+\tikzstyle{form}=[ellipse, inner sep=1mm]
+
+\node[form] (dna) {DNA};
+\node[form, below=of dna] (rna) {RNA};
+\node[form, below=of rna] (prot) {Protein};
+
+\tikzstyle{every to}=[bend left=45]
+\tikzstyle{rdesc}=[anchor=west, align=left]
+\tikzstyle{ldesc}=[anchor=east, align=right, opacity=.4]
+
+\draw[->]
+    (dna)
+    edge[in=110, out=70, looseness=8]
+    node[rdesc, pos=.2] {replication}
+    (dna);
+\draw[->]
+    (dna)
+    to node[rdesc] {transcription}
+    (rna);
+\draw[->]
+    (rna)
+    to node[rdesc] {translation}
+    (prot);
+
+\draw[->, ldesc]
+    (rna)
+    edge[in=200, out=240, looseness=5] node[ldesc] {replication}
+    (rna);
+\draw[->, ldesc]
+    (rna)
+    to node[ldesc] {reverse\\transcription}
+    (dna);
+
+\stoptikzpicture
