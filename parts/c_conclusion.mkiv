@@ -2,16 +2,55 @@
 \project project_dissertation
 
 \startchapter[reference=conclusion, title={Conclusion}]
+% extensibility
+As demands on reliability and interaction grow, more practices from software engineering are finding their way into biological science.
+Instead of ad-hoc text-based formats incompatibly modified to suit situational needs, standards arise that are designed to be extensible.
 
-\TODO[The future is bright (Cell atlases, new breakthroughs like RNA velocity)]
+% The future is bright (Cell atlases, new breakthroughs like RNA velocity)
+%\n{Human Cell Atlas} \cite[regev2017]
+%expression atlas?
+
+\startsection[title={Multiscale Analysis}]
+smooth transitions in data
+first PCA -> t-SNE -> UMAP,
+then pseudotime and PAGA
+and parallelly
+trendsceek, SpatialDE, and gene relevance
+\stopsection
+
+\startsection[title={Beyond scRNA-Seq Analysis}]
+%RNA velocity already integrated
+\cite[danese2019] %https://doi.org/10.1101/648097
 
 \TODO[Temporal & spatial dimensions come in through RNA velocity and new FISH and ST methods (10x Visium) → Spatial extension of Scanpy]
+trendsceek \cite[edsgärd2018]
+SpatialDE \cite[svensson2018] \TODO[rename refkey]
 
-\TODO[Community building around Scanpy]
+recurrence of targeted: BART-Seq and 3D spatial STARmap \cite[wang2018] %https://doi.org/10.1126/science.aat5691
 
-\TODO[FASTGenomics-like analysis-as-a-service to reduce friction (actually is 100\% FASTGenomics, scratch that)]
+Multimodal \n{AnnData}.
+\TODO[maybe: Optical reconstruction of chromatin architecture (ORCA), CRISPR single-cell lineage tracing]
+\cite[nmeth2020]
+\cite[efremova2020] %https://doi.org/10.1038/s41592-019-0692-4
+\stopsection
 
-\TODO[multimodal https://www.nature.com/articles/s41592-019-0692-4]
+\startsection[title={Scalability}]
+
+% Scanpy community building
+Community standards: steering committee
+Openness and inclusivity: CoC, mission statement
+Transparent inclusion process for external tools
+talking with the R world about data interchange
+
+% performance
+Friendly for new contributors: Maintain performance through benchmarks
+NVIDIA helps with GPU stuff
+Expand GPU and backed operations
+
+% as-a-service
+\TODO
+\cite[scholz2018] %https://doi.org/10.1101/272476
+\stopsection
 
 \stopchapter
 

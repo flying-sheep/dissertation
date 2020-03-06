@@ -45,7 +45,7 @@ Complex diseases require an intricate understanding of cellular processes and in
 Advances in experimental technology of the last decade allow to tackle these challenges.
 Single-cell RNA-Seq (scRNA-Seq) can measure extremely small expression values down to a single mRNA molecule \cite[tang2011].
 \TODO[is this the “nature methods paper of the year 20xx” you meant, carsten?]
-This data comes not without its own challenges, but enables the study of heterogeneous tissues like cancerous tumors, where expression averages from bulk RNA-Seq are not meaningful \cite[patel2014,qian2017].
+This data comes not without its own challenges, but enables the study of heterogeneous tissues like cancerous tumors, where expression averages from bulk RNA-Seq are not meaningful \cite[patel2014,qian2017,svensson2018b]. %svensson: Exponential scaling ...
 The second great advantage is that the amounts of data present in scRNA-Seq lend themselves to machine learning approaches:
 Advances in microfluidic devices have led to experimental protocols able to sequence up to 1.3 million cells \cite[macosko2015,klein2015,zheng2017].
 \TODO[more intro for droplet based protocols (footnote? paragraph?), or is this sufficient?]
@@ -380,7 +380,8 @@ For details about the implementation of \n{AnnData} and \n{scanpy}, see \in{Sect
 \n{AnnData} has been used for this purpose by several scRNA-Seq analysis tools since the publication of \n{scanpy}, such as \n{scVI} \cite[lopez2018], \n{DCA} \cite[eraslan2019], \n{DESC} \cite[li2019], or \n{BBKNN} \cite[polanski2020].
 Its \type{.h5ad} format is supported by visual analysis pipelines like \n{Galaxy} \cite[afgan2018] or \n{cellxgene} \cite[megill2020].
 \n{Scanpy} is widely used and popular in the scRNA-Seq analysis community \cite[zappia2018].
-It is integrated in \n{Galaxy}, used for the \n{Human Cell Atlas}, and at the time of writing cited by over 300 studies, review papers and tools.
+It is integrated in \n{Galaxy}, used for large projects like \n{Human Cell Atlas} or \n{Tabula Muris} \cite[schaum2018], and at the time of writing cited by over 300 studies, review papers and tools.
+\TODO[also mention EBI expression atlas?]
 \stopsubsection
 
 \startsubsection[title={BART-Seq}]
