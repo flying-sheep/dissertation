@@ -20,18 +20,27 @@ trendsceek, SpatialDE, and gene relevance
 
 \startsection[title={Beyond scRNA-Seq Analysis}]
 %RNA velocity already integrated
-\cite[danese2019] %https://doi.org/10.1101/648097
-
-\TODO[Temporal & spatial dimensions come in through RNA velocity and new FISH and ST methods (10x Visium) → Spatial extension of Scanpy]
-trendsceek \cite[edsgärd2018]
-SpatialDE \cite[svensson2018] \TODO[rename refkey]
-
-recurrence of targeted: BART-Seq and 3D spatial STARmap \cite[wang2018] %https://doi.org/10.1126/science.aat5691
 
 Multimodal \n{AnnData}.
-\TODO[maybe: Optical reconstruction of chromatin architecture (ORCA), CRISPR single-cell lineage tracing]
+expression +=
+- spatial: ST/Visium or scFISH
+trendsceek \cite[edsgärd2018], SpatialDE \cite[svensson2018] \TODO[rename refkey]
+- Genome
+
+Protocols generating epigenetic data have been extended to the single cell level.
+Chromatin accessibility on single cell genomes can be measured using single-cell Assay for Transposase-Accessible Chromatin using Sequencing (scATAC-Seq, \inlinecite[buenrostro2013]).
+%https://doi.org/10.1038/nmeth.2688
+DNA methylation can be measured using the recently developed single cell Cleavage Under Targets and Tagmentation (scCUT&Tag, \inlinecite[kaya-okur2019]).
+%https://doi.org/10.1038/s41467-019-09982-5
+For analysis of scRNA-Seq data combined with both kinds of data, \n{epiScanpy} offers a \n{scanpy}-integrated workflow \cite[danese2019].
+%https://doi.org/10.1101/648097
+Since it uses the current version of \n{AnnData}, its API will benefit from the upcoming multimodal extension of \n{AnnData}.
+
+- protein abundance
 \cite[nmeth2020]
 \cite[efremova2020] %https://doi.org/10.1038/s41592-019-0692-4
+
+recurrence of targeted: BART-Seq and 3D spatial STARmap \cite[wang2018] %https://doi.org/10.1126/science.aat5691
 \stopsection
 
 \startsection[title={Scalability}]
