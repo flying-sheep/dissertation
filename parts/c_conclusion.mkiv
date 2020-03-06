@@ -3,20 +3,16 @@
 
 \startchapter[reference=conclusion, title={Conclusion}]
 
-Single-cell RNA-Seq has grown to be an extensive and active field of science, with new challenges coming up through integration of different kinds of data and the possibilities of ever-growing dataset sizes.
-Going up to the hundreds of thousands, they allow to abandon the notion of discrete cell types and to explore the continuous processes at play.
-Destiny and the gene relevance method presented in this thesis prove to be a valuable contributions in this direction.
+Single-cell RNA-Seq has grown to be an extensive and active field of science, with new challenges coming up through integration of different kinds of data and as consequence of ever-growing dataset sizes.
+Going up to hundreds of thousands of cells, the data allows us to abandon the notion of discrete cell types and to explore the continuous processes at play.
+Destiny and the gene relevance method presented in this thesis prove to be valuable contributions in this direction.
 \TODO[can I write that?!]
 
 % extensibility and openness
 As demands on reliability at scale grow along demands posed to algorithms, more practices from software engineering are finding their way into biological science.
-For example instead of ad-hoc text-based formats, incompatibly modified to suit situational needs, extensible standards are born from collaboration of scientists.
+For example, extensible and efficient data format standards are born from collaboration of scientists to supplant the ad-hoc text-based formats we used to incompatibly modify to suit situational needs.
 Open source analysis frameworks have been designed to offer an open and welcoming environment for new as well as established analysts and method developers.
-My contributions towards more reproducible, scalable and interconnectible scientific programming have helped to bring these changes along.
-
-% The future is bright (Cell atlases, new breakthroughs like RNA velocity)
-%\n{Human Cell Atlas} \cite[regev2017]
-%expression atlas?
+My contributions towards more reproducible, scalable and interconnectible scientific programming have furthered these changes along.
 
 \startsection[title={Multiscale Analysis}]
 smooth transitions in data
@@ -27,13 +23,21 @@ trendsceek, SpatialDE, and gene relevance
 \stopsection
 
 \startsection[title={Beyond scRNA-Seq Analysis}]
-%RNA velocity already integrated
 
-Multimodal \n{AnnData}.
-expression +=
-- spatial: ST/Visium or scFISH
+Integrating different data types has started to become reality.
+\cite[nmeth2020]
+\cite[efremova2020] %https://doi.org/10.1038/s41592-019-0692-4
+\n{Human Cell Atlas} \cite[regev2017]
+%expression atlas?
+\TODO[transfer learning]
+
+\TODO[RNA velocity already integrated]
+Multimodal \n{AnnData} extension upcoming
+
+\TODO[spatial: ST/Visium or scFISH]
 trendsceek \cite[edsgärd2018], SpatialDE \cite[svensson2018] \TODO[rename refkey]
-- Genome
+
+\TODO[Genome]
 
 Protocols generating epigenetic data have been extended to the single cell level.
 Chromatin accessibility on single cell genomes can be measured using single-cell Assay for Transposase-Accessible Chromatin using Sequencing (scATAC-Seq, \inlinecite[buenrostro2013]).
@@ -44,11 +48,11 @@ For analysis of scRNA-Seq data combined with both kinds of data, \n{epiScanpy} o
 %https://doi.org/10.1101/648097
 Since it uses the current version of \n{AnnData}, its API will benefit from the upcoming multimodal extension of \n{AnnData}.
 
-- protein abundance
-\cite[nmeth2020]
-\cite[efremova2020] %https://doi.org/10.1038/s41592-019-0692-4
+\TODO[protein abundance]
 
-recurrence of targeted: BART-Seq and 3D spatial STARmap \cite[wang2018] %https://doi.org/10.1126/science.aat5691
+\TODO[recurrence of targeted: BART-Seq and 3D spatial STARmap]
+\cite[wang2018] %https://doi.org/10.1126/science.aat5691
+
 \stopsection
 
 \startsection[title={Scalability}]
