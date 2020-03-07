@@ -14,6 +14,7 @@ Iverson
 Eigen
 Wilcoxon
 
+ATAC
 BBKNN
 DCA
 FACS
@@ -54,6 +55,7 @@ SCTransform
 Snakemake
 trendsceek
 
+ad-hoc
 amplicon
 amplicons
 barcode
@@ -67,27 +69,34 @@ dataset
 datasets
 demultiplexing
 dimerize
+epigenetic
 preprocess
 preprocessing
 logarithmized
 logarithmizing
 lysing
+methylation
+microfluidic
 misassign
 misassigning
+parallelly
 performant
 pluripotent
+pre
+proteomics
 simplical
 in-silico
+inclusivity
+interconnectible
 interpretability
+tagmentation
 tradeoff
 tradeoffs
 transcriptomic
-unspliced
-untargeted
-unrepresentable
-pre
-microfluidic
 transcriptome
 transcriptomes
 transcriptomics
-proteomics
+transposase
+unrepresentable
+unspliced
+untargeted
