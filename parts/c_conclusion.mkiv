@@ -62,20 +62,27 @@ Measuring those abundances together with scRNA-Seq data has become possible thro
 \TODO[maybe? recurrence of targeted: BART-Seq and 3D spatial STARmap \cite wang2018]
 \stopsection
 
-\startsection[title={Scalability}]
+\startsection[title={New dimensions of \n{scanpy} Scalability}]
+\n{Scanpy} has proven to be scalable in terms of CPU and memory efficiency through its efficient implementation, multiprocessing capabilities and \n{AnnData}’s disk-backed mode.
+For a successful open source project, more is necessary than just performance and ease of use.
+Open source projects need to be scalable in terms of maintainers and trust.
+
 % Scanpy community building
-Community standards: steering committee
-Openness and inclusivity: CoC, mission statement
-Transparent inclusion process for external tools
-talking with the R world about data interchange
+The next steps of the \n{scanpy} project in this regard will focus on community building.
+To foster openness and inclusivity, \n{scanpy} will adopt a code of conduct (CoC).
+CoCs have been shown to increase diversity in a project, while higher diversity is linked to increased productivity \cite[tourani2017].
+To uncouple progress with the available amount of free time of the de-facto decision makers of the project, a steering committee will be formed.
+Its membership will be open to long-term contributors, and its meeting notes publicly available.
+Automations for quality and performance criteria similarly streamline the contribution process and will be extended.
+This will make friendly and helpful information available regardless of the available free time of experienced contributors.
+Additionally, inclusion criteria of external tools to the scanpy website and the \type{scanpy.external} module will be formalized and made transparent.
+Communication channels with the main projects of the R world about data interchange are similarly established.
 
 % performance
-Friendly for new contributors: Maintain performance through benchmarks
-NVIDIA helps with GPU stuff
-Expand GPU and backed operations
+\TODO[maybe mention GPU enhancements?]
 % as-a-service
-\TODO
-\cite[scholz2018]
+\TODO[maybe mention as-a-service a la FASTGenomics? No real plans though …]
+%\cite[scholz2018]
 \stopsection
 
 \stopchapter
