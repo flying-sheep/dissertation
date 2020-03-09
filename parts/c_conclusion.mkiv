@@ -29,38 +29,40 @@ Of all methods known to the author, only \n{PAGA} so far distinctively dissects 
 To analyze this foundational attribute of cellular processes, a multi-resolution variant of gene relevance would be of great use.
 \stopsection
 
-\startsection[title={Beyond scRNA-Seq Analysis}]
+\startsection[title={\n{Scanpy} Beyond scRNA-Seq Analysis}]
+Recent developments in the joint measurement of scRNA-Seq data and multiple other data types at single cell resolution have enabled multimodal analysis.
+With this ripe opportunity for analysis development, Nature Methods has named single-cell multimodal omics its method of the year 2019 \cite[nmeth2020].
+\inlinecite[efremova2020] provide a review of the different kinds of single cell data that became available in short succession.
 
-Integrating different data types has started to become reality.
-\cite[nmeth2020]
-\cite[efremova2020]
-\n{Human Cell Atlas} \cite[regev2017]
-%expression atlas?
-\TODO[transfer learning]
+\n{Scanpy} and \n{AnnData} have partial support for these kinds of data, but lack a true multimodal mode where different kinds of features can be stored for one set of observations.
+Analyses not relying on a mode like this are already supported.
+% transfer learning
+If there is no 1:1 relation between samples, transfer learning can be used to migrate labels from one dataset to another \cite[abdelaal2019].
+This technique has been successfully employed to link data in and to the \n{Human Cell Atlas} \cite[regev2017].
+% RNA Velocity
+RNA Velocity is the method of using information from unspliced pre-mRNA to infer trajectories of cell differentiation \cite[lamanno2018].
+With \n{scVelo}, an user friendly implementation and extension of the model based on \n{Scanpy} and \n{AnnData} exists \cite[bergen2019].
+% spatial
+Spatial analysis in \n{Scanpy} is similarly straightforward.
+The current development of spatial conventions and plotting routines will encourage the development of \n{Scanpy} based spatial algorithms similar to the R tools trendsceek \cite[edsgärd2018] and SpatialDE \cite[svensson2018].
+\TODO[mention the already-supported data types in methods/intro instead?]
 
-\TODO[RNA velocity already integrated]
-Multi-modal \n{AnnData} extension upcoming
-
-\TODO[spatial: ST/Visium or scFISH]
-trendsceek \cite[edsgärd2018], SpatialDE \cite[svensson2018] \TODO[rename refkey]
-
-\TODO[Genome]
-
-Protocols generating epigenetic data have been extended to the single cell level.
-Chromatin accessibility on single cell genomes can be measured using single-cell Assay for Transposase-Accessible Chromatin using Sequencing (scATAC-Seq, \inlinecite[buenrostro2013]).
-DNA methylation can be measured using the recently developed single cell Cleavage Under Targets and Tagmentation (scCUT&Tag, \inlinecite[kaya-okur2019]).
+For data containing multiple high-dimensional feature modes for the same cells, a multimodal \n{AnnData} will substantially increase usability.
+% epigenetics
+This includes epigenetic data \cite[henriksson2019].
+Chromatin accessibility on single cell genomes has been possible to measure for some years already using single-cell Assay for Transposase-Accessible Chromatin using Sequencing (scATAC-Seq, \inlinecite[buenrostro2013]).
+DNA methylation can be measured now using the recently developed single cell Cleavage Under Targets and Tagmentation (scCUT&Tag, \inlinecite[kaya-okur2019]).
 For analysis of scRNA-Seq data combined with both kinds of data, \n{epiScanpy} offers a \n{scanpy}-integrated workflow \cite[danese2019].
-Since it uses the current version of \n{AnnData}, its API will benefit from the upcoming multi-modal extension of \n{AnnData}.
+Since it uses the current version of \n{AnnData}, its API will benefit from the upcoming multimodal extension of \n{AnnData}.
 
-\TODO[protein abundance]
+Another multimodal data type is scRNA-Seq with surface protein abundances.
+Despite the difficulties in measuring proteins, it is necessary in cases where transcriptomics and proteomics are poorly correlated, such as with posttranslationally modified proteins.
+Measuring those abundances together with scRNA-Seq data has become possible through Cellular Indexing of Transcriptomes and Epitopes by sequencing (CITE-seq) \cite[gayoso2019].
 
-\TODO[recurrence of targeted: BART-Seq and 3D spatial STARmap]
-\cite[wang2018]
-
+\TODO[maybe? recurrence of targeted: BART-Seq and 3D spatial STARmap \cite wang2018]
 \stopsection
 
 \startsection[title={Scalability}]
-
 % Scanpy community building
 Community standards: steering committee
 Openness and inclusivity: CoC, mission statement
@@ -71,7 +73,6 @@ talking with the R world about data interchange
 Friendly for new contributors: Maintain performance through benchmarks
 NVIDIA helps with GPU stuff
 Expand GPU and backed operations
-
 % as-a-service
 \TODO
 \cite[scholz2018]

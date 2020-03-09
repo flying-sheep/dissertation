@@ -70,6 +70,9 @@ datasets
 demultiplexing
 dimerize
 epigenetic
+epigenetics
+epitope
+epitopes
 preprocess
 preprocessing
 logarithmized
@@ -79,9 +82,13 @@ methylation
 microfluidic
 misassign
 misassigning
+multimodal
+omics
 parallelly
 performant
 pluripotent
+posttranslational
+posttranslationally
 pre
 proteomics
 simplical

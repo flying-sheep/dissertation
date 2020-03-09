@@ -271,6 +271,19 @@
   year		= {2014}
 }
 
+@Article{	  bergen2019,
+  abstract	= {The introduction of RNA velocity in single cells has opened up new ways of studying cellular differentiation. The originally proposed framework obtains velocities as the deviation of the observed ratio of spliced and unspliced mRNA from an inferred steady state. Errors in velocity estimates arise if the central assumptions of a common splicing rate and the observation of the full splicing dynamics with steady-state mRNA levels are violated. With scVelo ({\textless}https://scvelo.org{\textgreater}), we address these restrictions by solving the full transcriptional dynamics of splicing kinetics using a likelihood-based dynamical model. This generalizes RNA velocity to a wide variety of systems comprising transient cell states, which are common in development and in response to perturbations. We infer gene-specific rates of transcription, splicing and degradation, and recover the latent time of the underlying cellular processes. This latent time represents the cell's internal clock and is based only on its transcriptional dynamics. Moreover, scVelo allows us to identify regimes of regulatory changes such as stages of cell fate commitment and, therein, systematically detects putative driver genes. We demonstrate that scVelo enables disentangling heterogeneous subpopulation kinetics with unprecedented resolution in hippocampal dentate gyrus neurogenesis and pancreatic endocrinogenesis. We anticipate that scVelo will greatly facilitate the study of lineage decisions, gene regulation, and pathway activity identification.},
+  author	= {Bergen, Volker and Lange, Marius and Peidli, Stefan and Wolf, F. Alexander and Theis, Fabian J.},
+  doi		= {10.1101/820936},
+  journal	= {bioRxiv},
+  month		= {oct},
+  pages		= {820936},
+  publisher	= {Cold Spring Harbor Laboratory},
+  title		= {{Generalizing RNA velocity to transient cell states through dynamical modeling}},
+  url		= {https://www.biorxiv.org/content/10.1101/820936v1},
+  year		= {2019}
+}
+
 @Article{	  boisvert1996,
   author	= {Boisvert, RF and Remington, KA},
   title		= {{The matrix market exchange formats: Initial design}},
@@ -929,6 +942,19 @@
   year		= {2016}
 }
 
+@Article{	  gayoso2019,
+  abstract	= {Cellular indexing of transcriptomes and epitopes by sequencing (CITE-seq) combines unbiased single-cell transcriptome measurements with surface protein quantification comparable to flow cytometry, the gold standard for cell type identification. However, current analysis pipelines cannot address the two primary challenges of CITE-seq data: combining both modalities in a shared latent space that harnesses the power of the paired measurements, and handling the technical artifacts of the protein measurement, which is obscured by non-negligible background noise. Here we present Total Variational Inference (totalVI), a fully probabilistic end-to-end framework for normalizing and analyzing CITE-seq data, based on a hierarchical Bayesian model. In totalVI, the mRNA and protein measurements for each cell are generated from a low-dimensional latent random variable unique to that cell, representing its cellular state. totalVI uses deep neural networks to specify conditional distributions. By leveraging advances in stochastic variational inference, it scales easily to millions of cells. Explicit modeling of nuisance factors enables totalVI to produce denoised data in both domains, as well as a batch-corrected latent representation of cells for downstream analysis tasks.},
+  author	= {Gayoso, Adam and Lopez, Romain and Steier, Zo{\"{e}} R and Regier, Jeffrey and Streets, Aaron M and Yosef, Nir},
+  doi		= {10.1101/791947},
+  journal	= {bioRxiv},
+  month		= {oct},
+  pages		= {791947},
+  publisher	= {Cold Spring Harbor Laboratory},
+  title		= {{A Joint Model of RNA Expression and Surface Protein Abundance in Single Cells}},
+  url		= {https://www.biorxiv.org/content/10.1101/791947v1},
+  year		= {2019}
+}
+
 @Article{	  goldberg2014,
   abstract	= {The prediction of protein sub-cellular localization is an important step toward elucidating protein function. For each query protein sequence, LocTree2 applies machine learning (profile kernel SVM) to predict the native sub-cellular localization in 18 classes for eukaryotes, in six for bacteria and in three for archaea. The method outputs a score that reflects the reliability of each prediction. LocTree2 has performed on par with or better than any other state-of-the-art method. Here, we report the availability of LocTree3 as a public web server. The server includes the machine learning-based LocTree2 and improves over it through the addition of homology-based inference. Assessed on sequence-unique data, LocTree3 reached an 18-state accuracy Q18 = 80 ± 3{\%} for eukaryotes and a six-state accuracy Q6 = 89 ± 4{\%} for bacteria. The server accepts submissions ranging from single protein sequences to entire proteomes. Response time of the unloaded server is about 90 s for a 300-residue eukaryotic protein and a few hours for an entire eukaryotic proteome not considering the generation of the alignments. For over 1000 entirely sequenced organisms, the predictions are directly available as downloads. The web server is available at http://www.rostlab.org/services/loctree3.},
   author	= {Goldberg, Tatyana and Hecht, Maximilian and Hamp, Tobias and Karl, Timothy and Yachdav, Guy and Ahmed, Nadeem and Altermann, Uwe and Angerer, Philipp and Ansorge, Sonja and Balasz, Kinga and Bernhofer, Michael and Betz, Alexander and Cizmadija, Laura and Do, Kieu Trinh and Gerke, Julia and Greil, Robert and Joerdens, Vadim and Hastreiter, Maximilian and Hembach, Katharina and Herzog, Max and Kalemanov, Maria and Kluge, Michael and Meier, Alice and Nasir, Hassan and Neumaier, Ulrich and Prade, Verena and Reeb, Jonas and Sorokoumov, Aleksandr and Troshani, Ilira and Vorberg, Susann and Waldraff, Sonja and Zierer, Jonas and Nielsen, Henrik and Rost, Burkhard},
@@ -1106,6 +1132,20 @@
   publisher	= {Cold Spring Harbor Laboratory},
   title		= {{A quantitative framework for evaluating single-cell data structure preservation by dimensionality reduction techniques}},
   url		= {https://www.biorxiv.org/content/10.1101/684340v1?ct=},
+  year		= {2019}
+}
+
+@InCollection{	  henriksson2019,
+  abstract	= {The combination of single-cell RNA-seq and CRISPR allows for efficient interrogation of possibly any number of genes, only limited by the sequencing capability. Here we describe the current protocols for CRISPR screening in single cells, from cloning and virus production to generating sequencing data.},
+  author	= {Henriksson, Johan},
+  booktitle	= {Methods in Molecular Biology},
+  doi		= {10.1007/978-1-4939-9240-9_23},
+  issn		= {19406029},
+  keywords	= {10×,CRISPR,CRISPRi,Cloning,Droplets,Lentivirus,Multiplexing,Pooling,RNA-seq,Single-cell,Transduction,Transfection,Virus production},
+  pages		= {395--406},
+  publisher	= {Humana Press Inc.},
+  title		= {{CRISPR screening in single cells}},
+  volume	= {1979},
   year		= {2019}
 }
 
@@ -1317,21 +1357,6 @@
 }
 
 @Article{	  johnson2007,
-  abstract	= {Non-biological experimental variation or "batch effects" are commonly observed across multiple batches of microarray experiments, often rendering the task of combining data from these batches difficult. The ability to combine microarray data sets is advantageous to researchers to increase statistical power to detect biological phenomena from studies where logistical considerations restrict sample size or in studies that require the sequential hybridization of arrays. In general, it is inappropriate to combine data sets without adjusting for batch effects. Methods have been proposed to filter batch effects from data, but these are often complicated and require large batch sizes (≥ 25) to implement. Because the majority of microarray studies are conducted using much smaller sample sizes, existing methods are not sufficient. We propose parametric and non-parametric empirical Bayes frameworks for adjusting data for batch effects that is robust to outliers in small sample sizes and performs comparable to existing methods for large samples. We illustrate our methods using two example data sets and show that our methods are justifiable, easy to apply, and useful in practice. Software for our method is freely available at: http://biosun1.harvard.edu/complab/batch/.},
-  author	= {Johnson, W. Evan and Li, Cheng and Rabinovic, Ariel},
-  doi		= {10.1093/biostatistics/kxj037},
-  issn		= {14654644},
-  journal	= {Biostatistics},
-  keywords	= {Batch effects,Empirical Bayes,Microarrays,Monte Carlo},
-  number	= {1},
-  pages		= {118--127},
-  pmid		= {16632515},
-  title		= {{Adjusting batch effects in microarray expression data using empirical Bayes methods}},
-  volume	= {8},
-  year		= {2007}
-}
-
-@Article{	  johnson2007,
   abstract	= {Non-biological experimental variation or "batch effects" are commonly observed across multiple batches of microarray experiments, often rendering the task of combining data from these batches difficult. The ability to combine microarray data sets is advantageous to researchers to increase statistical power to detect biological phenomena from studies where logistical considerations restrict sample size or in studies that require the sequential hybridization of arrays. In general, it is inappropriate to combine data sets without adjusting for batch effects. Methods have been proposed to filter batch effects from data, but these are often complicated and require large batch sizes ( {\textgreater} 25) to implement. Because the majority of microarray studies are conducted using much smaller sample sizes, existing methods are not sufficient. We propose parametric and non-parametric empirical Bayes frameworks for adjusting data for batch effects that is robust to outliers in small sample sizes and performs comparable to existing methods for large samples. We illustrate our methods using two example data sets and show that our methods are justifiable, easy to apply, and useful in practice. Software for our method is freely available at: http://biosun1.harvard.edu/complab/batch/.},
   author	= {Johnson, W Evan and Li, Cheng and Rabinovic, Ariel},
   doi		= {10.1093/biostatistics/kxj037},
@@ -1342,6 +1367,21 @@
   pages		= {118--127},
   title		= {{Adjusting batch effects in microarray expression data using empirical Bayes methods}},
   url		= {http://biostatistics.oxfordjournals.org/content/8/1/118.abstract files/44/Johnson et al. - 2007 - Adjusting batch effects in microarray expression d.pdf},
+  volume	= {8},
+  year		= {2007}
+}
+
+@Article{	  johnson2007,
+  abstract	= {Non-biological experimental variation or "batch effects" are commonly observed across multiple batches of microarray experiments, often rendering the task of combining data from these batches difficult. The ability to combine microarray data sets is advantageous to researchers to increase statistical power to detect biological phenomena from studies where logistical considerations restrict sample size or in studies that require the sequential hybridization of arrays. In general, it is inappropriate to combine data sets without adjusting for batch effects. Methods have been proposed to filter batch effects from data, but these are often complicated and require large batch sizes (≥ 25) to implement. Because the majority of microarray studies are conducted using much smaller sample sizes, existing methods are not sufficient. We propose parametric and non-parametric empirical Bayes frameworks for adjusting data for batch effects that is robust to outliers in small sample sizes and performs comparable to existing methods for large samples. We illustrate our methods using two example data sets and show that our methods are justifiable, easy to apply, and useful in practice. Software for our method is freely available at: http://biosun1.harvard.edu/complab/batch/.},
+  author	= {Johnson, W. Evan and Li, Cheng and Rabinovic, Ariel},
+  doi		= {10.1093/biostatistics/kxj037},
+  issn		= {14654644},
+  journal	= {Biostatistics},
+  keywords	= {Batch effects,Empirical Bayes,Microarrays,Monte Carlo},
+  number	= {1},
+  pages		= {118--127},
+  pmid		= {16632515},
+  title		= {{Adjusting batch effects in microarray expression data using empirical Bayes methods}},
   volume	= {8},
   year		= {2007}
 }
@@ -2318,20 +2358,6 @@
 
 @Article{	  polanski2020,
   abstract	= {MOTIVATION: Increasing numbers of large scale single cell RNA-Seq projects are leading to a data explosion, which can only be fully exploited through data integration. A number of methods have been developed to combine diverse datasets by removing technical batch effects, but most are computationally intensive. To overcome the challenge of enormous datasets, we have developed BBKNN, an extremely fast graph-based data integration algorithm. We illustrate the power of BBKNN on large scale mouse atlasing data, and favourably benchmark its run time against a number of competing methods. AVAILABILITY AND IMPLEMENTATION: BBKNN is available at https://github.com/Teichlab/bbknn, along with documentation and multiple example notebooks, and can be installed from pip. SUPPLEMENTARY INFORMATION: Supplementary data are available at Bioinformatics online.},
-  author	= {Pola{\'{n}}ski, Krzysztof and Young, Matthew D. and Miao, Zhichao and Meyer, Kerstin B. and Teichmann, Sarah A. and Park, Jong Eun},
-  doi		= {10.1093/bioinformatics/btz625},
-  issn		= {13674811},
-  journal	= {Bioinformatics (Oxford, England)},
-  number	= {3},
-  pages		= {964--965},
-  title		= {{BBKNN: fast batch alignment of single cell transcriptomes}},
-  url		= {https://academic.oup.com/bioinformatics/article-abstract/36/3/964/5545955},
-  volume	= {36},
-  year		= {2020}
-}
-
-@Article{	  polanski2020,
-  abstract	= {MOTIVATION: Increasing numbers of large scale single cell RNA-Seq projects are leading to a data explosion, which can only be fully exploited through data integration. A number of methods have been developed to combine diverse datasets by removing technical batch effects, but most are computationally intensive. To overcome the challenge of enormous datasets, we have developed BBKNN, an extremely fast graph-based data integration algorithm. We illustrate the power of BBKNN on large scale mouse atlasing data, and favourably benchmark its run time against a number of competing methods. AVAILABILITY AND IMPLEMENTATION: BBKNN is available at https://github.com/Teichlab/bbknn, along with documentation and multiple example notebooks, and can be installed from pip. SUPPLEMENTARY INFORMATION: Supplementary data are available at Bioinformatics online.},
   author	= {Pola{\'{n}}ski, Krzysztof and Young, Matthew D and Miao, Zhichao and Meyer, Kerstin B and Teichmann, Sarah A and Park, Jong Eun},
   doi		= {10.1093/bioinformatics/btz625},
   issn		= {13674811},
@@ -2342,6 +2368,20 @@
   pmid		= {31400197},
   title		= {{BBKNN: fast batch alignment of single cell transcriptomes}},
   url		= {http://www.ncbi.nlm.nih.gov/pubmed/31400197},
+  volume	= {36},
+  year		= {2020}
+}
+
+@Article{	  polanski2020,
+  abstract	= {MOTIVATION: Increasing numbers of large scale single cell RNA-Seq projects are leading to a data explosion, which can only be fully exploited through data integration. A number of methods have been developed to combine diverse datasets by removing technical batch effects, but most are computationally intensive. To overcome the challenge of enormous datasets, we have developed BBKNN, an extremely fast graph-based data integration algorithm. We illustrate the power of BBKNN on large scale mouse atlasing data, and favourably benchmark its run time against a number of competing methods. AVAILABILITY AND IMPLEMENTATION: BBKNN is available at https://github.com/Teichlab/bbknn, along with documentation and multiple example notebooks, and can be installed from pip. SUPPLEMENTARY INFORMATION: Supplementary data are available at Bioinformatics online.},
+  author	= {Pola{\'{n}}ski, Krzysztof and Young, Matthew D. and Miao, Zhichao and Meyer, Kerstin B. and Teichmann, Sarah A. and Park, Jong Eun},
+  doi		= {10.1093/bioinformatics/btz625},
+  issn		= {13674811},
+  journal	= {Bioinformatics (Oxford, England)},
+  number	= {3},
+  pages		= {964--965},
+  title		= {{BBKNN: fast batch alignment of single cell transcriptomes}},
+  url		= {https://academic.oup.com/bioinformatics/article-abstract/36/3/964/5545955},
   volume	= {36},
   year		= {2020}
 }
