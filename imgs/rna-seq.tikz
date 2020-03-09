@@ -1,0 +1,85 @@
+\usetikzlibrary[arrows.meta]
+\usetikzlibrary[fadings]
+\usetikzlibrary[decorations.pathreplacing]
+
+\tikzfading[name=middle, left color=transparent!100, right color=transparent!100, middle color=transparent!0]
+\starttikzpicture[
+    y=-1.5cm,
+    header/.style={rotate=90, anchor=south},
+    headbrace/.style={decorate, decoration={brace, mirror}},
+    desc/.style={anchor=east, color=black},
+    abc/.style={desc, font=\bf, xshift=-.5mm},
+    dna/.style={line width=3mm, -{Triangle[length=1em, width=1.75em]}},
+    rna/.style={dna, color=red},
+    seq/.style={line width=1pt},
+]
+
+% headers
+\draw[headbrace] (-3.5, -.2)
+    node[abc] {a} --
+    node[header] {in-vivo}
+    ++(0, 2.4);
+\draw[headbrace] (-3.5, 2.8)
+    node[abc] {b} --
+    node[header] {in-vitro}
+    ++(0, 2.4);
+\draw[headbrace] (-3.5, 5.8)
+    node[abc] {c} --
+    node[header] {in-silico}
+    ++(0, 3.4);
+
+%transitions
+\fill[path fading=south, top color=black, bottom color=red, opacity=.1] (0, 0) rectangle (10, 1);
+\node at (5, .5) {transcription};
+\fill[red, opacity=.1]
+    (0, 1.1) rectangle ++(4, .8)
+    (5, 1.1) -- ++(2, 0) -- ++(-1, .8) -- ++(-2, 0) -- cycle
+    (7.5, 1.1) -- ++(2.5, -.1) -- ++(-1.5, 1) -- ++(-2.5, -.1) -- cycle
+;
+\node at (4.5, 1.5) {splicing};
+\node at (4.5, 2.5) {fragmentation};
+\node at (4.5, 3.5) {reverse transcription};
+\node at (4.5, 4.5) {high-throughput sequencing};
+\node at (4.5, 5.5) {genome mapping};
+\node at (4.5, 7) {quantification};
+
+% sequences
+\draw[dna, -, path fading=middle] (-1.5, 0) -- (10.5, 0);
+\draw[dna] (0, 0) node[desc] {gene on genome} -- (10, 0);
+\draw[rna]
+    (0, 1) node[desc] {pre-mRNA} -- ++(4, 0)
+    ++(1, 0) -- ++(2, 0)
+    ++(.5, 0) -- ++(2.5, 0)
+;
+\draw[rna, -, opacity=.4]
+      (4, 1) -- ++(1, 0)
+    ++(2, 0) -- ++(2.5, 0)
+;
+\draw[rna] (0, 2) node[desc] {mRNA} -- ++(8.5, 0);
+\foreach \style/\y/\desc in {rna/3/{RNA fragments}, dna/4/cDNA, seq/5/sequences} {
+    \draw[\style]
+        (0, \y) node[desc] {\desc} -- ++(2, 0)
+        ++(.3, 0) -- ++(1.8, 0)
+        ++(.3, 0) -- ++(1, 0)
+        ++(.3, 0) -- ++(2.3, 0)
+        ++(.3, 0) -- ++(1.4, 0)
+    ;
+}
+% alignment
+\foreach \x/\len/\nrep in {0/4/6, 5/2/3, 8/1/4} {
+    \foreach \y in {1,...,\nrep} {
+        \draw[seq, dash pattern=on 20pt off 5pt on 30pt off 5pt on 15pt off 5pt]
+            (\x, 6.5-0.\y) edge[dash phase=random*70pt] ++(\len, 0);
+    }
+}
+\draw[seq, -, path fading=middle] (-1.5, 6.5) -- (10.5, 6.5);
+\node[desc] at (0, 6.25) {alignment};
+% quantification
+\draw (0, 7.5) grid[step=1.5mm] (9, 9);
+\fill[white] (3.755, 7.505) rectangle (5.244, 7.796);
+\node[anchor=north] at (4.5, 7.47) {genes→};
+\fill[white] (.007, 7.805) rectangle (.444, 8.696);
+\node[anchor=north, rotate=90] at (-.1, 8.25) {cells→};
+\node[desc] at (0, 8.25) {count matrix};
+
+\stoptikzpicture
