@@ -97,10 +97,9 @@ The remaining steps are preprocessing, analysis and visualization of this matrix
 \stopplacefigure
 
 It begins with an experiment to prepare and sequence a transcript library containing mostly mature mRNA but also unspliced mRNA and other RNA (see \infig[fig:rna-seq]a).
-There are different kinds of library preparation protocols, all of which have in common that they isolate and fragment the RNA per single cell, then tag each fragment with a cell specific barcode for later assignment to their origin cell.
+There are different kinds of library preparation protocols, all of which have in common that they isolate and fragment the RNA per single cell, then tag each fragment with a cell specific barcode for later assignment to their origin cell (see \infig[fig:rna-seq]b).
 The most important differences between protocols manifest in cost, sensitivity and the distinction between those capturing paired fragments starting at both ends of the RNA and those capturing only the RNA end where translation into proteins starts (the 3′ end) \cite[ziegenhain2018].
-The sequencing machine finally digitizes the fragments and allows all further processing to happen on a computer (see \infig[fig:rna-seq]b).
-\TODO[give figure an a, b, c]
+The sequencing machine finally digitizes the fragments and allows all further processing to happen on a computer (see \infig[fig:rna-seq]c).
 % 1½. protocol specific bias correction
 Additional to the cell barcode, some protocols allow to enrich the library with information that can be used to reduce sources of noise or bias.
 This includes e.\,g. unique molecular identifiers (UMIs), which allow to count each transcript only once despite a common protocol step involving multiple incomplete duplications of all transcripts \cite[islam2014].
