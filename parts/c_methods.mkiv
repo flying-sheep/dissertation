@@ -226,8 +226,8 @@ Other learned embeddings are modeled explicitly to perform scRNA-Seq preprocessi
 
 A disadvantages of machine learning based methods is their nondeterministic nature:
 due to the non-convex nature of the optimization, its converging to local optima can result in unstable inference of certain cells’ neighborhoods in the embedding \cite[hinton2003].
-Another problem is that most common machine learning methods learn an embedding directly instead of an embedding function, making it impossible to project new data into an existing embedding.
-There are approaches to remedy this for UMAP and t-SNE \TODO[cite. /edit: damn, I forgot which paper this was in.].
+Another problem is that machine learning methods that learn an embedding directly instead of an embedding function are unable to project new data into an existing embedding.
+There are approaches to remedy this for UMAP and t-SNE \cite[vandermaaten2009b].
 \stopsubsection
 
 \stopsection
