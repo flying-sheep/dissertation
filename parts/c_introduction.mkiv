@@ -91,7 +91,7 @@ The remaining steps are preprocessing, analysis and visualization of this matrix
 
 \startsubsection[title={Library Preparation and Sequencing}]
 % 1. (cells → transcript library) and sequencing (transcript library → reads)
-\startplacefigure[reference=fig:rna-seq,title={Library preparation, sequencing, and mapping}]
+\startplacefigure[reference=fig:rna-seq, title={Library preparation, sequencing, and mapping}]
 % https://upload.wikimedia.org/wikipedia/commons/f/f3/Summary_of_RNA-Seq.svg
 \hbox{\input{imgs/rna-seq.tikz}}
 \stopplacefigure
@@ -123,13 +123,6 @@ Those include \n{Cell Ranger} for \n{10x Genomics}’ \n{Chromium} protocol \cit
 \startsubsection[reference=sec:preprocessing, title={Preprocessing}]
 % 3. (counts → expressions)
 % generally \cite[luecken2018]: https://www.embopress.org/doi/10.15252/msb.20188746
-\startplacefigure[reference=fig:batch-effect,location=right,title={
-Batch effect correction reduces biases between data gathered in multiple sequencer runs.
-Cells from well-normalized data will have similar expression profiles to cells from the other sequencer runs.
-\small{(Figure reproduced with friendly permission from \inlinecite[buttner2019])}
-}]
-\externalfigure[batch-effect-correction.svg][width=.5\textwidth]
-\stopplacefigure
 
 In order to obtain comparable quantities, raw counts have to be preprocessed to correct for various technical biases.
 Commonly one starts by eliminating rows and columns from the count matrix that are unlikely to be (living) cells or important genes.
@@ -138,6 +131,14 @@ Rows like this are assumed to be empty droplets or wells, while columns like thi
 It also removes cells containing a high fraction of mitochondrial counts, indicative of dead or dying cells \cite[ilicic2016].
 Doublets cannot be detected reliably by a simple count threshold, as a pair of small cells can have similar numbers of expressed genes and counts as single large cell, but more sophisticated solutions are emerging \cite[mcginnis2019,wolock2019].
 \inlinecite[luecken2019] point out that each of those filtering covariates in isolation is not sufficient to identify a non-cell row, and suggests conservative joint scoring using more than one covariate.
+
+\startplacefigure[reference=fig:batch-effect, title={
+Batch effect correction reduces biases between data gathered in multiple sequencer runs.
+Cells from well-normalized data will have similar expression profiles to cells from the other sequencer runs.\crlf
+\small{(Figure reproduced with friendly permission from \inlinecite[buttner2019])}
+}]
+\externalfigure[batch-effect-correction.svg][width=.8\textwidth]
+\stopplacefigure
 
 Another common preprocessing step is normalization.
 It entails correction for common technical sources of cell variation, as well as biological sources with a strong effect, such as the cell cycle:
@@ -164,7 +165,7 @@ With single cell data specific transforms like \n{SCTransform} \cite[hafemeister
 
 \startsubsection[title={Analysis}]
 % 4. uncover dynamics, heterogeneity structure, variable importance and role
-\startplacefigure[reference=fig:waddington,location=left,title={
+\startplacefigure[reference=fig:waddington, location=left, title={
 Cells differentiate smoothly, in stochasically diverging paths, and not always in the same general direction.
 \TODO[better use linear discrimination using marker genes? or smoothly diverging developmental markers?]
 }]
