@@ -207,18 +207,20 @@ Compared to learned embeddings like t-SNE (see \in[sec:learned-embeddings]), dif
 Machine learning based dimensionality reduction methods use optimization to either learn an embedding directly, or a function mapping high-dimensional data to embedding coordinates.
 A common optimization target is to represent high-dimensional relationships in the data as faithfully as possible in a 2D or 3D embedding that can be displayed on a screen or paper.
 
-One such machine learning driven method, t-SNE, remains the most popular dimensionality reduction method \cite[kobak2019a].
-\TODO[defined it earlier, is it OK to not spell it out here?]
+The machine learning driven method t-SNE remains the most popular dimensionality reduction \cite[kobak2019a].
 T-SNE optimizes an embedding so that similarities in the high-dimensional space $x_{gc}$ are maintained in the low-dimensional embedding $s_{pc}$.
-Similarly to locally scaled diffusion maps, it uses a kernel with a width based on local density in $x_{gc}$ to calculate similarities between cells while exaggerating short distances and de-emphasizing long distances.
-It randomly initializes the embedding matrix and iterates as follows:
-It first calculates the similarities in the high dimensional data using a Gaussian distribution, and the ones in the embedding using a t-distribution.
-Then it modifies the embedding a way that brings its similarity matrix closer to the similarity matrix of the high dimensional data.
+Similarly to locally scaled diffusion maps, it uses distributions with kernel widths based on $x_{gc}$’s local densities to calculate similarities between cells.
+This process exaggerates short distances and de-emphasizing long distances, resulting in t-SNE’s sensitivity towards its perplexity parameter, which scales local density estimates and therefore kernel widths.
+Similarity between cells is denoted as $p_{j|i}$, which stands for $x_{·j}$’s probability density in a distribution centered at $x_{·i}$.
+T-SNE uses a Gaussian distribution to calculate similarities $p_{j|i}$ within the high dimensional data.
+The iterative optimization process starts with a randomly initialized embedding $s^0_{pc}$.
+For each iteration $k$, it performs the following steps:
+It calculates the similarities $q^k_{j|i}$ within the embedding $s^k_{pc}$ using a t-distribution \cite[student1908].
+Then it performs gradient descent to modify the embedding in a way that the new embedding $s^{k+1}_{pc}$’s similarities $q^{k+1}_{j|i}$ are closer to the similarities $p_{j|i}$ of the high dimensional data $x_{gc}$.
 It stops iterating if the similarity matrices converge sufficiently or a maximum number of iterations is reached.
-\TODO[more formal]
 
 The more recent method UMAP works similarly, while claiming to represent global structures in the data more faithfully \cite[becht2018].
-Moreover it is claimed to be viable as a preprocessing dimensionality reduction method like the aforementioned spectral decomposition methods (see \in[sec:spectral]).
+Its more continuous and global structure also makes it a viable dimensionality reduction for preprocessing similarly to the aforementioned spectral decomposition methods (see \in[sec:spectral]).
 \inlinecite[kobak2019b] however showed that t-SNE and UMAP perform very similarly with the same data-driven initialization and selection of meta-parameters.
 Other learned embeddings are modeled explicitly to perform scRNA-Seq preprocessing, e.\,g. single-cell variational inference (scVI, \inlinecite[lopez2018]).
 
