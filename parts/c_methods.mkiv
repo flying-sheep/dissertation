@@ -439,10 +439,11 @@ Violin plots show the clusters’ expression profiles for each marker gene.\crlf
 }]
 \hbox{
 \starttikzpicture
-\node[anchor=north west] (image) {\externalfigure[scanpy.pdf][height=.3\textwidth]};
-\node[font=\bf, anchor=base, yshift=-1em] at (0, 0) {a};
-\node[font=\bf, anchor=base, yshift=-1em] at (4.7, 0) {b};
-\node[font=\bf, anchor=base, yshift=-1em] at (10, 0) {c};
+\node[anchor=north west] (image) {\externalfigure[scanpy.pdf]};
+\tikzset{subfig/.style={font=\bf, anchor=base, yshift=-1em}}
+\node[subfig] at (1, 0) {a};
+\node[subfig] at (6.9, 0) {b};
+\node[subfig] at (12, 0) {c};
 \stoptikzpicture
 }
 \stopplacefigure
