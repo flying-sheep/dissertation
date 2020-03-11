@@ -236,7 +236,7 @@ While I worked on every computational step of the process except for alignment, 
 To provide further context for my work, I would like to outline the relevant changes in the process of scRNA-Seq analysis.
 \TODO[I like this framing. does this *have* to go to “own contribs”?]
 
-\startsubsection[title={The Old Way}]
+\startsubsection[title={Ad-Hoc pipelines}]
 % Generally: People often need to cobble together their own pipelines and use default parameters without knowing what they do.
 % scripts and binaries
 Without publicly available analysis frameworks, the most common way to operate was writing R scripts that invoked R tools in memory and tools from other languages as command line processes.
@@ -266,7 +266,7 @@ The existing and popular differential expression analysis requires discrete part
 \TODO[mention the destiny-related stuff here? If not: just in “own contributions” and methods?]
 \stopsubsection
 
-\startsubsection[title={The New Way}]
+\startsubsection[title={Frameworks}]
 \startplacefigure[reference=fig:anndata, title={AnnData structure}]
 \hbox{\input{imgs/anndata.tikz}}
 \stopplacefigure
@@ -315,7 +315,7 @@ It also supports being used as a Python library to back visualization tools, web
 \stopsection
 
 
-\startsection[title={Own contributions}]
+\startsection[title={Own Contributions}]
 
 % (I am the one who can create usable interfaces and/for pipelines and fill in the gaps where “cobblestones” are missing)
 
