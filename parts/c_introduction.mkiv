@@ -5,88 +5,84 @@
 % Basic structure: Zoom in; What’s the big field, how to get from there to scRNA-Seq?
 
 % big topic: cell biology and medicine
-Cell biology is the science touching the most existential part of us.
-Every aspect of our health and therefore continued existence as thinking beings touches cell function.
+Every aspect of existence as thinking beings touches cell function.
 Our body consists of cells performing the most varied tasks in order to maintain it:
-even our thinking depends on neurons, our psyche on cellular regulation of our brain chemistry.
+they constitute organs, muscle, and everything else apart from teeth and bone, which are produced by cells.
+We are protected by the complex interplay of the cells in our immune system, and the physical barrier of the dead keratinous cells making up our outer skin layer.
+Even our thinking depends on neurons, our psyche on cellular regulation of our brain chemistry.
 Formed by imperfect evolution, this machinery is not built to last.
-Health, life and death are therefore topics every human has to confront at some point in their life.
+Health, life and death are therefore topics every human has to confront at some point in life.
 
 % complex diseases need better tools
-Modern medicine has performed incredible feats of extending our expected lifespan and living quality.
+Medicine has performed incredible feats of extending our expected span and quality of life.
 In our consequently aging society, it becomes increasingly important to understand the long term effects of living.
 The more diseases we can effectively counter, the more it is possible to shift our focus to rarer or more complex ones.
 This includes diseases like cancer, caused by mutated cells, or diseases caused by malfunctioning cell regulation.
 All those diseases have in common that they cannot be understood without knowing the cellular mechanisms involved.
 
-% motivate RNA-Seq
-All inner workings of a cell are performed directly or indirectly through proteins reshaping themselves while binding to each other and to metabolites.
-Proteins achieve this complex interaction through their twenty different constituent amino acids.
-Knowing what proteins are being produced in a cell at a given moment allows to draw conclusions about its purpose and health.
-Proteomics, the measurement of proteins directly, is however made difficult by the complex behavior of their long amino acid chains.
-This results in proteomics being limited to targeted analysis of a small number of known proteins \cite[manzoni2018].
-The central dogma of molecular biology states that genes on our chromosomes are transcribed to short lived RNA, which is then translated to proteins.
-Genes are transcribed into a pre-messenger RNA (pre-mRNA) and then spliced into one of several possible final mRNAs encoding a different protein each.
-The presence of mRNA in a cell therefore indicates that its respective protein is currently being produced.
-It is possible to quantify and subsequently analyze snapshots of all mRNA molecules in flight using RNA sequencing (RNA-Seq, \inlinecite[morin2008]).
-This untargeted large-scale process is called gene expression analysis.
-Decades of biological research made due with averaged RNA profiles of cell samples (bulk RNA-Seq).
-Those allow to capture the gene expression of a tissue or fluid sample without accounting for cell-to-cell variability.
-
 \startplacefigure[reference=fig:dogma, location=left, title={The central dogma}]
 \hbox{\input{imgs/dogma.tikz}}
 \stopplacefigure
 
+% motivate RNA-Seq
+Each inner process of a cell is performed directly or indirectly through proteins reshaping themselves while binding to metabolic molecules and each other.
+Their tasks range from simply transporting oxygen in red blood cells, over processing food into readily available energy, to complex developmental chain reactions forming our bodies in the womb.
+Proteins achieve their versatility through the binding characteristics of their twenty different constituent amino acids.
+Knowing what proteins are being produced in a cell at a given moment allows to draw conclusions about its purpose and health.
+Proteomics, the measurement of proteins directly, is however made difficult by their complex binding behavior.
+This results in proteomics being limited to targeted analysis of a small number of known proteins \cite[manzoni2018].
+The assembly of proteins in cells is however fairly well understood and measurable.
+The central dogma of molecular biology states that genes on our chromosomes are transcribed to short lived messenger RNA (mRNA) molecules, which are then translated to proteins (seed \infig[fig:dogma]).
+%Genes are transcribed into a pre-messenger RNA (pre-mRNA) and then spliced into one of several possible final mRNAs encoding a different protein each. \TODO[move]
+The presence of mRNA in a cell therefore indicates that its respective protein is currently being produced.
+It is possible to quantify and subsequently analyze snapshots of all mRNA molecules in a cell sample using RNA sequencing (RNA-Seq, \inlinecite[morin2008]).
+This untargeted large-scale process is called gene expression analysis.
+During the past decade, biological research worked with averaged RNA profiles of cell samples called bulk RNA-Seq.
+Those profiles allow to capture the gene expression of a tissue or fluid sample without accounting for cell-to-cell variability.
+
 % SC revolution
-Biology is immensely complex, so every answer seems to only bring forth new questions:
-neither genes nor cell types are considered discrete, enumerable entities anymore, and
-even the confidently named central dogma of molecular biology has accumulated exception such as reverse transcription from RNA to DNA in viruses (see \infig[fig:dogma]).
-Complex diseases require an intricate understanding of cellular processes and inter-cellular variation.
-Advances in experimental technology of the last decade allow to tackle these challenges.
 Single-cell RNA-Seq (scRNA-Seq) can measure extremely small expression values down to a single mRNA molecule \cite[tang2011].
-\TODO[is this the “nature methods paper of the year 20xx” you meant, carsten?]
-This data comes not without its own challenges, but enables the study of heterogeneous tissues like cancerous tumors, where expression averages from bulk RNA-Seq are not meaningful \cite[patel2014,qian2017,svensson2018b].
-The second great advantage is that the amounts of data present in scRNA-Seq lend themselves to machine learning approaches:
-Advances in microfluidic devices have led to experimental protocols able to sequence up to 1.3 million cells \cite[macosko2015,klein2015,zheng2017].
-\TODO[more intro for droplet based protocols (footnote? paragraph?), or is this sufficient?]
+This data comes with its own challenges, but enables the study of heterogeneous tissue, where expression averages from bulk RNA-Seq are not meaningful \cite[svensson2018b].
+The ability to dissect heterogeneity allows for example to improve our understanding of complex cellular diseases like cancer \cite[patel2014,qian2017].
+The second great advantage is that the amounts of data present in scRNA-Seq are necessary for machine learning approaches.
+Advances in microfluidic devices have led to experimental protocols able to sequence more than a million cells \cite[macosko2015,klein2015,zheng2017].
 The ample variation between this multitude of individual cells allows to derive patterns no human can detect by manual and careful isolation of bulk samples \cite[huang2018].
-This way \inlinecite[plass2018] have determined the developmental lineage of every cell in a planarian, a regenerative species whose cellular mechanisms could be the key to prevent scarring or delay aging in humans.
+For example \inlinecite[plass2018] have determined the developmental lineage of every cell in a planarian, a regenerative species whose cellular mechanisms could be the key to prevent scarring or delay aging in humans.
+\inlinecite[vento-tormo2018] have profiled cells from human placentas for regulatory interactions in the maternal-fetal interface, furthering our understanding of pregnancy diseases.
 The international community of scientists working on transcriptomics is coming together to create the \n{Human Cell Atlas} \cite[regev2017].
-%\cite[vento-tormo2018]
-\TODO[what else to cite here? other teichman/regev stuff? maybe vento-tormo2018 “Single-cell reconstruction of the early maternal-fetal interface in humans”]
 
 %challenges: different sources of biases and noise, preprocessing or modeling as approach
 All these opportunities come at the cost of additional complexity and more confounding variables (biases).
 For one, scRNA-Seq has by far fewer mRNA molecules per sample than bulk RNA-seq, which results in noisier measurements in general \cite[brennecke2013].
 Experimental protocols used for sequencing single cell transcriptomes have different tradeoffs between sensitivity, biases, cost, and time investment \cite[ziegenhain2017,vieth2019].
 The number of cells that can be measured at once with a certain quality is therefore practically limited.
-A desire to measure thousands or more cells without exploding costs leads to shallow sequencing depths and increased computational demands \cite[angerer2017].
+The desire to measure thousands or more cells without exploding costs leads to shallow sequencing depths and increased computational demands \cite[angerer2017].
 Scientists in the field continue to discuss possible origins of the effects and the best approaches to tackle the arising challenges.
-In past years for example, studies have suggested that droplet-based protocols inflate the number of zeros in the data due to technical reasons.
+In past years for example, studies have suggested that microfluidic protocols inflate the number of zeros in the data due to technical reasons, where a zero stand for a gene not being detected in a cell at all.
 \inlinecite[svensson2020] however asserts that the high number of zeros stems from biological variation.
 Microfluidic protocols come with their own unique challenges, as they for example cannot completely avoid lysing and sequencing two cells in the same droplet (doublets).
+\TODO[carsten: for the whole paragraph, how about first ??? explain issues+challenges, then computational solutions, then conclude preprocessing super impertant]
 Increased complexity in analysis can be conquered with improved modeling or more sophisticated preprocessing.
-The modeling approach is more correct, but less flexible, as it requires careful informed design across the whole analysis process.
+From-scratch modeling is more correct, but less flexible, as it requires careful informed design across the whole analysis process.
 Each new analysis that significantly deviates from previous analyses requires a re-thinking and re-building of the model almost from the ground up.
-There are however also modeling approaches that replace several preprocessing steps without also involving analysis \cite[lopez2018,townes2019].
+There are however also modeling approaches that instead of performing analysis, replace several preprocessing steps specifically for scRNA-Seq data, like the normalizing single-cell dimensionality reduction methods \n{scVI} \cite[lopez2018] and \n{GLM-PCA} \cite[townes2019].
 
 % my work
-The more practical approach is to start with careful preprocessing transforming data in a way that fulfills the assumptions of subsequent analysis \cite[vieth2019].
-The second step is to create and use streamlined building blocks for pipelines to preprocess and analyze the data, and to then then visualize the insights gained.
+The more practical approach is to start with careful preprocessing, transforming data in a way that fulfills the assumptions of subsequent analysis \cite[vieth2019].
+The second step is then to create and use streamlined building blocks for pipelines to preprocess and analyze the data, and to then visualize the insights gained.
 Until few years ago, there were no freely available programming environments that allowed this approach for single cell data analysis \cite[wolf2018,stuart2019].
 Analysis pipelines came custom-built for a certain publication, just as hard to take apart and reuse as a holistic model would have been.
 Every graduate student and postdoctoral researcher had to start from scratch.
 The thesis at hand is a slice of the author’s continued efforts to change this.
 I improved interoperability and modularity of existing tools, pioneered technologies and software development processes in a research environment, and developed some of the missing building blocks for the resulting toolkit.
-\TODO[move prev. 2 sentences to “own contribs”?]
 
 \startsection[title={Workflow}]
 % story: new challenges by sc data; old way to deal with data (workflows) are not efficient → new approaches needed → me
 
 % Overview:Describe how the workflows work and why the aforementioned is important.
 The general workflow of scRNA-Seq data processing consists of five steps.
-The first step, library preparation, is experimental and takes place in a biological laboratory.
-The second step, quantification, creates a cell × gene matrix from raw data produced in step one.
+The first step, library preparation and sequencing, is experimental and takes place in a biological laboratory.
+The second step, counting, creates a cell × gene matrix from raw data produced in step one.
 The remaining steps are preprocessing, analysis and visualization of this matrix.
 
 \startsubsection[title={Library Preparation and Sequencing}]
@@ -96,7 +92,7 @@ The remaining steps are preprocessing, analysis and visualization of this matrix
 \hbox{\input{imgs/rna-seq.tikz}}
 \stopplacefigure
 
-It begins with an experiment to prepare and sequence a transcript library containing mostly mature mRNA but also unspliced mRNA and other RNA (see \infig[fig:rna-seq]a).
+The first step begins with an experiment to prepare and sequence a transcript library containing mostly mature mRNA but also unspliced mRNA and other RNA (see \infig[fig:rna-seq]a).
 There are different kinds of library preparation protocols, all of which have in common that they isolate and fragment the RNA per single cell, then tag each fragment with a cell specific barcode for later assignment to their origin cell (see \infig[fig:rna-seq]b).
 The most important differences between protocols manifest in cost, sensitivity and the distinction between those capturing paired fragments starting at both ends of the RNA and those capturing only the RNA end where translation into proteins starts (the 3′ end) \cite[ziegenhain2018].
 The sequencing machine finally digitizes the fragments and allows all further processing to happen on a computer (see \infig[fig:rna-seq]c).
