@@ -51,17 +51,19 @@ For example \inlinecite[plass2018] have determined the developmental lineage of 
 \inlinecite[vento-tormo2018] have profiled cells from human placentas for regulatory interactions in the maternal-fetal interface, furthering our understanding of pregnancy diseases.
 The international community of scientists working on transcriptomics is coming together to create the \n{Human Cell Atlas} \cite[regev2017].
 
-%challenges: different sources of biases and noise, preprocessing or modeling as approach
+%challenges: different sources of biases and noise
 All these opportunities come at the cost of additional complexity and more confounding variables (biases).
 For one, scRNA-Seq has by far fewer mRNA molecules per sample than bulk RNA-seq, which results in noisier measurements in general \cite[brennecke2013].
-Experimental protocols used for sequencing single cell transcriptomes have different tradeoffs between sensitivity, biases, cost, and time investment \cite[ziegenhain2017,vieth2019].
+Experimental protocols used for sequencing single cell transcriptomes have different tradeoffs between sensitivity, cost, time investment, and individual biases \cite[ziegenhain2017,vieth2019].
+For example, microfluidic protocols cannot completely avoid lysing and sequencing two cells in the same droplet (doublets).
 The number of cells that can be measured at once with a certain quality is therefore practically limited.
-The desire to measure thousands or more cells without exploding costs leads to shallow sequencing depths and increased computational demands \cite[angerer2017].
-Scientists in the field continue to discuss possible origins of the effects and the best approaches to tackle the arising challenges.
-In past years for example, studies have suggested that microfluidic protocols inflate the number of zeros in the data due to technical reasons, where a zero stand for a gene not being detected in a cell at all.
+Measuring thousands or more cells without exploding costs means that shallow sequencing depths and additional biases are being tackled using computational solutions where applicable \cite[angerer2017].
+% solutions
+For example there are dedicated methods for doublet filtering \cite[mcginnis2019,wolock2019].
+Not all effects however are correctly understood and approached.
+So have studies suggested in past years that microfluidic protocols inflate the number of zeros in the data due to technical reasons, where a zero stands for a gene not being detected in a cell at all.
 \inlinecite[svensson2020] however asserts that the high number of zeros stems from biological variation.
-Microfluidic protocols come with their own unique challenges, as they for example cannot completely avoid lysing and sequencing two cells in the same droplet (doublets).
-\TODO[carsten: for the whole paragraph, how about first ??? explain issues+challenges, then computational solutions, then conclude preprocessing super impertant]
+% preprocessing is important
 Increased complexity in analysis can be conquered with improved modeling or more sophisticated preprocessing.
 From-scratch modeling is more correct, but less flexible, as it requires careful informed design across the whole analysis process.
 Each new analysis that significantly deviates from previous analyses requires a re-thinking and re-building of the model almost from the ground up.
