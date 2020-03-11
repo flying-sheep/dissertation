@@ -13,7 +13,7 @@ An ideal latent space embedding would exclusively capture all underlying process
 A 2D or 3D embedding used as as scatter plot coordinates serves as the basis of visualizations interpretable by humans.
 To this end, it can be colored or annotated using input variables and statistics to analyze static relations or dynamic processes of the data.
 
-In the context of scRNA-Seq data, the high dimensional data are represented as a gene expression matrix $x_{gc}$ with tens of thousands of genes $g∈\{1,…,G\}$, measured for up to approximately one million cells $c∈\{1,…,C\}$ at once \cite[zheng2017].
+In the context of single cell RNA sequencing (scRNA-Seq) data, the high dimensional data are represented as a gene expression matrix $x_{gc}$ with tens of thousands of genes $g∈\{1,…,G\}$, measured for up to approximately one million cells $c∈\{1,…,C\}$ at once \cite[zheng2017].
 Single cell expression matrices are very sparse since cells express a limited amount of genes at a time \cite[svensson2020].
 The intrinsic dimensionality of transcriptomic data is low when compared to this number of genes \cite[heimberg2016].
 Embeddings $s_{pc}$ ($p∈\{1,…,P\}$) of most datasets therefore only require a comparatively low number of dimensions $50≤P≤100$ to capture all information necessary to reconstruct all known biological processes \cite[ding2018,lenz2016].
@@ -464,15 +464,15 @@ The final step of \n{scanpy} analyses consists of converting the complete \n{Jup
 
 \startsection[reference=sec:bartseq, title={BART-Seq (demultiplexing and quantification)}]
 
-\TODO[methods should be self contained: repeat intro with more details if necessary]
-BART-Seq is a targeted RNA sequencing protocol able to sensitively and inexpensively measure expressions of thousands of samples per experiment, such as single cells or cell groups \cite[uzbas2019].
-It consists of three steps; design, experiment, and quantification.
+Compared to classical plate-based RNA sequencing protocols (see \infig[fig:rna-seq]), BART-Seq is targeted.
+It trades the ability to measure all available transcripts in an unbiased way for the ability to inexpensive, highly sensitive measurement of a limited set of target transcripts for thousands of samples \cite[uzbas2019].
+High sensitivity is maintained when using single cells as samples.
+BART-Seq consists of three steps; design, experiment, and quantification.
 
 % primer/barcode design
 The design step involves algorithms to design primer pairs matching amplicons – such as genes – and barcodes identifying samples.
 The primer design algorithm optimizes primer pairs to stably dimerize with their target amplicons.
-Each pair contains two primers binding to the 3′ ends of each strand of the target amplicon, forward and reverse.
-\TODO[check if 3′ or 5′]
+Each pair contains two primers binding to the 5′ ends of each strand of the target amplicon, forward and reverse.
 The set of primer pairs is split up into one set of forward and one of reverse primers.
 The barcode design algorithm minimizes the chance of misassigning barcodes through sequencing errors by maximizing their mutual alignment distances.
 The set of barcodes is split into two halves arbitrarily, one half per primer set.
