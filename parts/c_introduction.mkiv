@@ -178,12 +178,13 @@ Clusters are commonly the basis for further analysis like inter-cluster DE analy
 However, this leads to both clusters and markers being derived from the same data, and treating clusters as ground truth in this settings leads to inflated confidence in the found markers.
 The problem can be circumvented by joint clustering and DE analysis, manually propagating uncertainties \cite[zhang2019], or not relying on clustering to detect genes \cite[angerer2020].
 
-\startplacefigure[reference=fig:waddington, location=left, title={
-Cells differentiate smoothly, in stochasically diverging paths, and not always in the same general direction.
-\TODO[better use linear discrimination using marker genes? or smoothly diverging developmental markers?]
+\startplacefigure[reference=fig:cell-fate, title={
+Cells differentiate smoothly and in stochasically diverging paths, from more potency to more specialization.
+Dedifferentiation occurs naturally in plants and regenerating basal animals, but not humans.
+\crlf\small{(Figure adapted from \inlinecite[gam2019] with permission)}
 }]
-%https://anatomypubs.onlinelibrary.wiley.com/doi/full/10.1002/dvdy.24678
-\externalfigure[https://anatomypubs.onlinelibrary.wiley.com/cms/asset/aafdf349-9324-496d-822d-183edae5d947/dvdy24678-fig-0001-m.jpg][width=.5\textwidth]
+%https://www.mdpi.com/2073-4409/8/10/1189
+\externalfigure[https://www.researchgate.net/publication/336222289/figure/fig1/AS:809726799523847@1570065321789/Cell-fate-plasticity-and-the-epigenetic-landscape-currently-applied-for-direct-cell.jpg][width=.8\textwidth]
 \stopplacefigure
 
 While cluster analysis is greatly enriched by scRNA-Seq analysis, the field of trajectory analysis can only exist due to this kind of data.
@@ -191,7 +192,7 @@ Traditionally, cells were thought of exhibiting a discrete cell type, which stil
 Most tissues however contain less discrete cell types, like the pluripotent stem cells from which all cells derive \cite[haghverdi2015].
 While marker genes for certain cell roles or developmental steps exist, this complex and gradual nature of most tissues requires sophisticated analysis and visualization of single cell data.
 Early trajectory analysis tools like \n{Wanderlust} \cite[bendall2014], or DPT \cite[haghverdi2016] can effectively applied to simple developmental data.
-But while cells usually get increasingly specialized during their path of development, the reverse direction (dedifferentiation) can also be observed (see \infig[fig:waddington]).
+But while cells usually get increasingly specialized during their path of development, the reverse direction (dedifferentiation) can also be observed (see \infig[fig:cell-fate]).
 Furthermore, developing cells do not necessarily follow all steps of differentiation in the same order or magnitude.
 This results in cells temporarily or sometimes permanently stuck as intermediate types.
 The field of trajectory analysis is therefore constantly evolving to enable the analysis of complex tissues up to whole animals \cite[plass2018] using tools like SPRING \cite[weinreb2018a] or PAGA \cite[wolf2019].
