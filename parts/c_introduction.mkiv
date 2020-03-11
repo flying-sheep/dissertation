@@ -161,14 +161,6 @@ With single cell data specific transforms like \n{SCTransform} \cite[hafemeister
 
 \startsubsection[title={Analysis}]
 % 4. uncover dynamics, heterogeneity structure, variable importance and role
-\startplacefigure[reference=fig:waddington, location=left, title={
-Cells differentiate smoothly, in stochasically diverging paths, and not always in the same general direction.
-\TODO[better use linear discrimination using marker genes? or smoothly diverging developmental markers?]
-}]
-%https://anatomypubs.onlinelibrary.wiley.com/doi/full/10.1002/dvdy.24678
-\externalfigure[https://anatomypubs.onlinelibrary.wiley.com/cms/asset/aafdf349-9324-496d-822d-183edae5d947/dvdy24678-fig-0001-m.jpg][width=.5\textwidth]
-\stopplacefigure
-
 With unwanted sources of noise and variability removed or reduced, the data can be analyzed.
 Analysis of single cell data generally focuses on uncovering previously unknown heterogeneity and its sources \cite[patel2014,poirion2016,angerer2017].
 The kind of heterogeneity to uncover depends on the kind of data available:
@@ -185,6 +177,14 @@ A general problem of clustering is data reuse.
 Clusters are commonly the basis for further analysis like inter-cluster DE analysis – a task the aforementioned single cell specific DE tools are specifically designed for.
 However, this leads to both clusters and markers being derived from the same data, and treating clusters as ground truth in this settings leads to inflated confidence in the found markers.
 The problem can be circumvented by joint clustering and DE analysis, manually propagating uncertainties \cite[zhang2019], or not relying on clustering to detect genes \cite[angerer2020].
+
+\startplacefigure[reference=fig:waddington, location=left, title={
+Cells differentiate smoothly, in stochasically diverging paths, and not always in the same general direction.
+\TODO[better use linear discrimination using marker genes? or smoothly diverging developmental markers?]
+}]
+%https://anatomypubs.onlinelibrary.wiley.com/doi/full/10.1002/dvdy.24678
+\externalfigure[https://anatomypubs.onlinelibrary.wiley.com/cms/asset/aafdf349-9324-496d-822d-183edae5d947/dvdy24678-fig-0001-m.jpg][width=.5\textwidth]
+\stopplacefigure
 
 While cluster analysis is greatly enriched by scRNA-Seq analysis, the field of trajectory analysis can only exist due to this kind of data.
 Traditionally, cells were thought of exhibiting a discrete cell type, which still applies to cells that are dramatically specialized for their roles.
