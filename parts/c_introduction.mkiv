@@ -83,7 +83,7 @@ I improved interoperability and modularity of existing tools, pioneered technolo
 
 % Overview:Describe how the workflows work and why the aforementioned is important.
 The general workflow of scRNA-Seq data processing consists of five steps.
-The first step, library preparation and sequencing, is experimental and takes place in a biological laboratory.
+The first step, library preparation and sequencing, is experimental and is performed in a biological laboratory.
 The second step, counting, creates a cell × gene matrix from raw data produced in step one.
 The remaining steps are preprocessing, analysis and visualization of this matrix.
 
@@ -95,38 +95,38 @@ The remaining steps are preprocessing, analysis and visualization of this matrix
 \stopplacefigure
 
 The first step begins with an experiment to prepare and sequence a transcript library containing mostly mature mRNA but also unspliced mRNA and other RNA (see \infig[fig:rna-seq]a).
-There are different kinds of library preparation protocols, all of which have in common that they isolate and fragment the RNA per single cell, then tag each fragment with a cell specific barcode for later assignment to their origin cell (see \infig[fig:rna-seq]b).
-The most important differences between protocols manifest in cost, sensitivity and the distinction between those capturing paired fragments starting at both ends of the RNA and those capturing only the RNA end where translation into proteins starts (the 3′ end) \cite[ziegenhain2018].
+There are different kinds of library preparation protocols, all of which have in common that they isolate and fragment the RNA per single cell, reverse transcribe it into complementary DNA (cDNA) and then tag each fragment with a cell specific barcode (see \infig[fig:rna-seq]b).
+Due to the low amount of RNA in single cells and the protocols’ detection limits, all current protocols also contain contain a step amplifying the available cDNA \cite[islam2014].
+The most important differences between protocols manifest in cost, sensitivity and the distinction between those capturing paired fragments starting at both ends of the RNA and those capturing only the RNA end where translation into proteins starts, called the 3′ end \cite[ziegenhain2018].
 The sequencing machine finally digitizes the fragments and allows all further processing to happen on a computer (see \infig[fig:rna-seq]c).
 % 1½. protocol specific bias correction
 Additional to the cell barcode, some protocols allow to enrich the library with information that can be used to reduce sources of noise or bias.
-This includes e.\,g. unique molecular identifiers (UMIs), which allow to count each transcript only once despite a common protocol step involving multiple incomplete duplications of all transcripts \cite[islam2014].
+This includes e.\,g. unique molecular identifiers (UMIs), which allow to count each transcript only once, despite the amplification step \cite[islam2014].
 A second example is adding known quantities of RNA from a foreign organism (spike-in RNA) to each cell library, which later allows to correct for nonlinear per-cell biases in transcript counts \cite[lun2017b].
 \stopsubsection
 
 \startsubsection[title={Counting}]
 % 2. (reads → counts)
-\TODO[or quantification?]
 Counting starts from the paired sequences read from both ends of a fragment (paired-end reads) or the 3′ end sequences (single-end reads).
-The read or read pair includes a cell barcode and possibly a UMI barcode.
-\footnote{\inlinecite[uzbas2019] developed BART-Seq, a protocol that combines paired-end reads with two cell barcodes to address a high number of cells.}
-Classic counting uses specialized short read alignment tools like \n{Bowtie} \cite[langmead2009,langmead2012] or \n{STAR} \cite[dobin2013] to match reads to a reference genome annotated with information about where genes start, end, and can be spliced.
+The read or read pair includes a cell barcode and possibly a UMI barcode
+(see \inlinecite[uzbas2019] and \insec[sec:bart-seq] for BART-Seq, a protocol that combines paired-end reads with two cell barcodes to address a high number of cells).
+Classic counting uses specialized short read alignment tools like \n{Bowtie} \cite[langmead2009,langmead2012] or \n{STAR} \cite[dobin2013] to match reads to a reference genome annotated with information about where genes start, end, and can be spliced (see \infig[fig:rna-seq]c).
 Aligned reads are counted per splicing configuration that translates to a protein, while collapsing the counts for reads with identical UMIs – if available (see \infig[fig:rna-seq]c).
 Since only the resulting count matrix is needed for many kinds of downstream analysis, there have been advances in pseudo-alignment algorithms like \n{kallisto} \cite[ntranos2016] or \n{Salmon} \cite[patro2017], which efficiently count without a separate alignment step.
 For ease of use, pipelines wrapping those tools for certain experimental protocols exist.
-Those include \n{Cell Ranger} for \n{10x Genomics}’ \n{Chromium} protocol \cite[zheng2017] or \n{zUMIs} \cite[parekh2018] for several protocols involving UMIs.
-\TODO[mention my bartseq pipeline here?]
+Those include \n{Cell Ranger} for the \n{10x Genomics} \n{Chromium} protocol \cite[zheng2017] or \n{zUMIs} \cite[parekh2018] for several protocols involving UMIs.
+See also \insec[sec:bart-seq] for the counting process of the BART-Seq protocol.
 \stopsubsection
 
 \startsubsection[reference=sec:preprocessing, title={Preprocessing}]
 % 3. (counts → expressions)
 % generally \cite[luecken2018]: https://www.embopress.org/doi/10.15252/msb.20188746
 
-In order to obtain comparable quantities, raw counts have to be preprocessed to correct for various technical biases.
+To obtain comparable quantities, counts have to be preprocessed to correct for various technical biases.
 Commonly one starts by eliminating rows and columns from the count matrix that are unlikely to be (living) cells or important genes.
 This filtering removes rows and columns containing a low count sum or very few entries.
-Rows like this are assumed to be empty droplets or wells, while columns like this are genes that are not informative of the observed cell variation.
-It also removes cells containing a high fraction of mitochondrial counts, indicative of dead or dying cells \cite[ilicic2016].
+Rows matching these criteria are assumed to be empty droplets or wells, while matching columns are genes which due to their low counts do not impact later analysis steps.
+It also removes cells containing a high fraction of mitochondrial gene counts, indicative of dead or dying cells \cite[ilicic2016].
 Doublets cannot be detected reliably by a simple count threshold, as a pair of small cells can have similar numbers of expressed genes and counts as single large cell, but more sophisticated solutions are emerging \cite[mcginnis2019,wolock2019].
 \inlinecite[luecken2019] point out that each of those filtering covariates in isolation is not sufficient to identify a non-cell row, and suggests conservative joint scoring using more than one covariate.
 
@@ -142,22 +142,22 @@ Another common preprocessing step is normalization.
 It entails correction for common technical sources of cell variation, as well as biological sources with a strong effect, such as the cell cycle:
 when not studying the cell cycle itself, its variation can obscure the processes under investigation \cite[buettner2015].
 If multiple runs of the sequencer were used to obtain the full data, there will be biases per run that can be reduced by using a dedicated batch effect correction algorithm (see \infig[fig:batch-effect]).
-While older bulk correction effects such as \n{ComBat} \cite[johnson2007] have proven to be successful in the last years, a growing number of dedicated scRNA-Seq batch effect correction tools is becoming available \cite[haghverdi2018,lotfollahi2018,korsunsky2019,polanski2020].
+While older bulk correction effects such as \n{ComBat} \cite[johnson2007] have proven to be effective in the last years, a growing number of dedicated scRNA-Seq batch effect correction tools is becoming available \cite[haghverdi2018,lotfollahi2018,korsunsky2019,polanski2020].
 Preprocessing can also involve scaling count values using a per-cell function derived from the aforementioned spike-ins.
-All the aforementioned transformation have to be carefully balanced with their potential to over-correct and remove relevant biological variation.
+All transformation have to be carefully balanced with their potential to over-correct and remove relevant biological variation.
 
-A final common count matrix preprocessing step is to reduce data by discarding genes with low variability, as they contribute little to the data’s variability.
-This highly variable gene selection is performed with differently rigorous algorithms \cite[brennecke2013,yip2018].
+A final common preprocessing step highly variable gene selection.
+It reduces data by discarding genes with low variability, as they contribute little to the data’s variability using differently rigorous algorithms \cite[brennecke2013,yip2018].
 This more complex filtering is performed in addition to the aforementioned quality-based gene filtering, reducing the retained number of genes to the low thousands \cite[luecken2019].
 
-One step occupies the area between preprocessing and analysis.
-In order to model or otherwise analyze count data, it is almost always necessary to calculate distances between cells’ expression profiles.
-Distance measures usually expect data with no mean–variance dependency (i.\,e. normally distributed data), which can be fulfilled in two ways.
+One step lies between preprocessing and analysis.
+In order to model and analyze count data, it is almost always necessary to calculate distances between cells’ expression profiles.
+Distance measures usually expect data with no mean–variance dependency, i.\,e. normally distributed data, which can be fulfilled in two ways.
 One is to transform expressions into a space where those expectations hold, commonly by logarithmizing it.
 The intuition is that in in log-space, distances represent log-fold changes, an usual way to compare expression levels \cite[brennecke2013,eling2018].
 Another way is to employ dimensional reduction methods to embed the data into a lower-dimensional space with the desired properties, such as Principal Component Analysis (PCA, \inlinecite[abdi2010]) or diffusion maps \cite[coifman2005].
-An advantage of this method are the reduced computational and memory costs of operating on a low-dimensional embedding.
-\inlinecite[svensson2020] suggested that log-transforming data is a possible cause for distorting data by zero-inflation.
+An advantage of operating on a low-dimensional embedding are the reduced computational and memory costs.
+However, \inlinecite[svensson2020] suggested that log-transforming data is a possible cause for distorting data by zero-inflation.
 With single cell data specific transforms like \n{SCTransform} \cite[hafemeister2019], as well as embeddings like \n{scVI} \cite[lopez2018] or \n{GLM-PCA} \cite[townes2019], promising alternatives are emerging, despite them losing the log-fold interpretability.
 \stopsubsection
 
@@ -390,7 +390,7 @@ It is integrated in \n{Galaxy}, used for large projects like \n{Human Cell Atlas
 % flexible processing pipeline and Python library
 Beyond processing count matrices, I also contributed to a new, targeted RNA-Seq protocol called BART-Seq \cite[uzbas2019].
 It is set apart from untargeted single cell and bulk RNA-Seq protocols due to its high sensitivity and low cost.
-I designed a demultiplexing and counting strategy for BART-Seq together with Fatma Uzbas and Micha Drucker (see \insec[sec:bartseq]).
+I designed a demultiplexing and counting strategy for BART-Seq together with Fatma Uzbas and Micha Drucker (see \insec[sec:bart-seq]).
 I implemented those strategies as well as visualization routines for the protocol as a Python package.
 Part of this package is the BART-Seq equivalent to \n{Cell Ranger} or \n{zUMIs}:
 a \n{Snakemake} pipeline \cite[köster2012] that performs all steps of the protocol to create count matrices, statistics and visualizations \cite[angerer2019a].
