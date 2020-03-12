@@ -57,6 +57,7 @@
     ++(2, 0) -- ++(2.5, 0)
 ;
 \draw[rna] (0, 2) node[desc] {mRNA} -- ++(8.5, 0);
+%fragments
 \foreach \style/\y/\desc in {
     rna/3/{RNA fragments},
     dna/4/cDNA,
@@ -65,7 +66,7 @@
 }{
     \node[desc] at (0, \y) {\desc};
     \draw[\style]
-          (.3,\y) node (a) {} -- ++(2, 0)
+         (.15,\y) node (a) {} -- ++(2, 0)
         ++(.3, 0) node (b) {} -- ++(1.8, 0)
         ++(.3, 0) node (c) {} -- ++(1, 0)
         ++(.3, 0) node (d) {} -- ++(2.3, 0)
@@ -73,15 +74,15 @@
     ;
     \doifinstringelse{5}{\y}{
         \foreach \coo in {a,b,c,d,e} {
-            \filldraw[draw=black, fill=white] (\coo) ++(0, -1.5mm+.25pt) rectangle ++(-1mm, 3mm-.5pt);
+            \filldraw[draw=black, fill=white] (\coo) ++(0, -1.5mm+.25pt) rectangle ++(-1.5mm, 3mm-.5pt);
         }
     }{}
 }
 % alignment
 \foreach \x/\len/\nrep in {0/4/6, 5/2/3, 8/1/4} {
     \foreach \y in {1,...,\nrep} {
-        \draw[seq, dash pattern=on 20pt off 5pt on 30pt off 5pt on 15pt off 5pt]
-            (\x, 7.5-0.\y) edge[dash phase=random*70pt] ++(\len, 0);
+        \draw[seq, dash pattern=on 20pt off 2pt on 18pt off 10pt on 10pt off 2pt on 23pt off 5pt on 14pt off 8pt]
+            (\x, 7.5-0.\y) edge[dash phase=random*100pt] ++(\len, 0);
     }
 }
 \draw[seq, -, path fading=middle] (-1.5, 7.5) -- (10.5, 7.5);
