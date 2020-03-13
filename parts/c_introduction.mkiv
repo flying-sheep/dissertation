@@ -163,16 +163,15 @@ With single cell data specific transforms like \n{SCTransform} \cite[hafemeister
 
 \startsubsection[title={Analysis}]
 % 4. uncover dynamics, heterogeneity structure, variable importance and role
-With unwanted sources of noise and variability removed or reduced, the data can be analyzed.
 Analysis of single cell data generally focuses on uncovering previously unknown heterogeneity and its sources \cite[patel2014,poirion2016,angerer2017].
 The kind of heterogeneity to uncover depends on the kind of data available:
-the simplest case is discrimination between two discrete subpopulations from different experimental conditions.
+the simplest case is discrimination between discrete subpopulations of few clearly different cell types.
 A common goal there is to find a small number of marker genes able to reliably distinguish a subpopulation that is sufficiently distinct from the rest of the cells.
 Methods performing this search are called differential gene expression (DE) analyses \cite[soneson2018].
 While DE analysis methods stem from bulk RNA-Seq, single-cell specific methods such as SCDE \cite[kharchenko2014], MAST \cite[finak2015], and BASiCS \cite[vallejos2016] outperform bulk methods due to the additional information in single cell data.
 
 Another source of heterogeneity is the composition of the studied tissue.
-Tumors as well as many kinds of healthy tissue are composed of cells fulfilling a multitude of different roles that can only be uncovered using single cell analysis \cite[patel2014,zhang2016,qian2017].
+Tumors as well as healthy tissue are composed of cells fulfilling a multitude of different roles that can only be uncovered using single cell analysis \cite[patel2014,zhang2016,qian2017].
 A common method to make sense of complex heterogeneous data is cluster analysis.
 For single cell data, the multi-resolution community detection algorithm \n{Leiden} \cite[traag2019] and its predecessor \n{Louvain} is used most commonly, despite \inlinecite[kiselev2019] arguing its lack of performance for smaller datasets.
 A general problem of clustering is data reuse.
@@ -181,59 +180,66 @@ However, this leads to both clusters and markers being derived from the same dat
 The problem can be circumvented by joint clustering and DE analysis, manually propagating uncertainties \cite[zhang2019], or not relying on clustering to detect genes \cite[angerer2020].
 
 \startplacefigure[reference=fig:cell-fate, title={
-Cells differentiate smoothly and in stochasically diverging paths, from more potency to more specialization.
-Dedifferentiation occurs naturally in plants and regenerating basal animals, but not humans.
+Cells differentiate smoothly and in stochasically diverging paths, from high potency (top) to high specialization (bottom).
+Dedifferentiation (blue arrows) occurs naturally in plants and regenerating basal animals, but not humans.
+The natural occurance of transdifferentiation (orange arrows) in humans has only been observed from α to β cells in pancreatic islets.
+Experiments to artificially induce trans- or dedifferentiation have shown promise for regeneration of tissue damage and effects of aging.
 \crlf\small{(Figure adapted from \inlinecite[gam2019] with permission)}
 }]
 %https://www.mdpi.com/2073-4409/8/10/1189
 \externalfigure[https://www.researchgate.net/publication/336222289/figure/fig1/AS:809726799523847@1570065321789/Cell-fate-plasticity-and-the-epigenetic-landscape-currently-applied-for-direct-cell.jpg][width=.8\textwidth]
 \stopplacefigure
 
-While cluster analysis is greatly enriched by scRNA-Seq analysis, the field of trajectory analysis can only exist due to this kind of data.
-Traditionally, cells were thought of exhibiting a discrete cell type, which still applies to cells that are dramatically specialized for their roles.
-Most tissues however contain less discrete cell types, like the pluripotent stem cells from which all cells derive \cite[haghverdi2015].
+While cluster analysis strongly benefits from the availability of scRNA-Seq data, the field of trajectory analysis can only exist because of it.
+Traditionally, cells were thought of exhibiting a discrete cell type each.
+For cells that are dramatically specialized for one main role, this idea still holds.
+Most tissues however contain a multitude of cells fulfilling multiple roles each, without fitting into a discrete and homogeneous type.
+%developmental
+This includes cells in the process of differentiating from a malleable pluripotent state to a more or less specialized mature state \cite[haghverdi2015].
 While marker genes for certain cell roles or developmental steps exist, this complex and gradual nature of most tissues requires sophisticated analysis and visualization of single cell data.
-Early trajectory analysis tools like \n{Wanderlust} \cite[bendall2014], or DPT \cite[haghverdi2016] can effectively applied to simple developmental data.
+An approach that uncovers a developmental direction and hierarchy in developmental snapshot data is called trajectory analysis.
+Early analysis tools like \n{Wanderlust} \cite[bendall2014], or DPT \cite[haghverdi2016] can be effectively applied to simple developmental data.
 But while cells usually get increasingly specialized during their path of development, the reverse direction (dedifferentiation) can also be observed (see \infig[fig:cell-fate]).
 Furthermore, developing cells do not necessarily follow all steps of differentiation in the same order or magnitude.
 This results in cells temporarily or sometimes permanently stuck as intermediate types.
 The field of trajectory analysis is therefore constantly evolving to enable the analysis of complex tissues up to whole animals \cite[plass2018] using tools like SPRING \cite[weinreb2018a] or PAGA \cite[wolf2019].
 
-Further analyses can also depend on the availability of other kinds of data \cite[efremova2020].
-As an example, RNA velocity is an indication of the direction in which cells differentiate and therefore enhances trajectory inference with directionality and more accuracy.
-It can be reconstructed from the relation of spliced and unspliced mRNA \cite[lamanno2018].
+Analyses depend on the availability of informative data.
+Since classic scRNA-Seq is limited to spliced mRNAs, additional data modialities are necessary to infer dynamics like directionality in trajectory inference \cite[efremova2020].
+As an example, RNA velocity indicates the direction in which cells differentiate and therefore enhances trajectory inference with directionality and more accuracy.
+It is reconstructed from the relation of spliced and unspliced mRNA \cite[lamanno2018].
 \stopsubsection
 
 \startsubsection[title={Visualization}]
 % 5. (results often too complex to understand as numbers)
 % talk about dim red here and the fact that it’s hard to reason about how the input variables relate back to output – make path for GR coming to the rescue
 \startplacefigure[reference=fig:embeddings, title={
-Four increasingly complex two dimensional embeddings of the same cells.
-The differentiating cells are colored by age in days.
-\bold{(a)} Two genes, even carefully selected markers, are not able to separate the differentiation paths \bold{(b)} A PCA is able to differentiate clusters, but not like \bold{(c)} diffusion maps, bifurcations and smooth transitions.
-\bold{(d)} UMAPs use machine learning, allowing here to flatten multiple kinds of differences into a 2D plot, as in this case both bifurcation events present in the data.
+Four increasingly complex 2D embeddings of the same differentiating cells colored by age in days \cite[guo2010].
+\bold{a)} Two carefully selected pluripotency markers are not able to separate the differentiation paths.
+\bold{b)} A PCA is able to differentiate distinct clusters.
+\bold{c)} Diffusion maps clearly show bifurcations and smooth transitions.
+\bold{d)} UMAPs use machine learning to flatten multiple kinds of differences into a 2D plot, as in this case both bifurcation events present in the data.
 }]
 \externalfigure[dim-red.pdf]
 %\input{imgs/dim-red.tikz}
 \stopplacefigure
 
-The complexity of the heterogeneity being uncovered not only reflects in analysis methods but also the visualizations of their results.
+Analysis of complex heterogeneity patterns requires methods of matching complexity to visualize their results.
 Complex developmental hierarchies and other relations in the data need to be faithfully represented.
 This commonly involves laying out points representing the cells in a flat plane while trying to maintain relationships such as developmental closeness (see \infig[fig:embeddings]).
 This general process also employs more complex dimensional reduction methods than the ones used for distance calculations (see \insec[sec:preprocessing]).
-And the more complex a process is, the more likely it is that this process contains steps that cannot be traced back.
+Complex transforms are irreversible, so their resulting coordinates of cells in the visualization (the embedding) cannot be directly traced back to the input genes.
 
-Without additional data providing a ground truth about subpopulation identity, or clearly separated clusters that are inherently assigned genes driving their embedding, the process of validating an embedding is manual.
+Without additional data providing a ground truth about subpopulation identity, or clearly separated clusters that are inherently assigned genes driving their embedding, the process of validating an embedding is not automatic, requiring creative reasoning and literature research.
 A panel of marker genes per cluster is derived from the data and cross-referenced with literature to annotate known cell types in the data.
 When discovering novel subpopulations, their adjacency to known ones can be used to make assumptions about their role and test them.
 An upcoming way to simplify the process are cell transcriptome atlases \cite[regev2017,schaum2018] that can be used as references to automatically look up your cells and annotate them \cite[abdelaal2019].
 \TODO[vis. and analysis is pretty close, so is a visualization section a good idea? if so, should other stuff from “Analysis” go in there?]
 \stopsubsection
 
-The above sequence of steps should be a generic overview of scRNA-Seq analysis able to serve as a framework in which to place my specific contributions.
+My specific contributions can be placed in the framework provided by the above overview of scRNA-Seq analysis.
 While I worked on every computational step of the process except for alignment, my contributions are focused on steps involving a count matrix.
-To provide further context for my work, I would like to outline the relevant changes in the process of scRNA-Seq analysis.
-\TODO[I like this framing. does this *have* to go to “own contribs”?]
+To provide further context for my work, I would like to outline the relevant changes in the process of scRNA-Seq analysis in the following sections.
 
 \startsubsection[title={Ad-Hoc pipelines}]
 % Generally: People often need to cobble together their own pipelines and use default parameters without knowing what they do.
