@@ -424,8 +424,7 @@ After finalized preprocessing, \n{scanpy} analyses generally start by pre-comput
 This includes a PCA with usually 50-100 components to be used as basis for distance calculations within the data and from reference data to new data.
 For highly performant access of distances within the data, a nearest neighbor graph is calculated.
 The graph serves as the basis of several different nonlinear, locality based analyses.
-This includes certain dimensionality reduction methods like UMAP, graph layout \cite[islam2011,weinreb2018b] and diffusion maps, as well as clustering algorithms such as \n{Leiden} \cite[traag2019], diffusion pseudo time \cite[haghverdi2016] and PAGA \cite[wolf2019].
-\TODO[cite UMAP every time?]
+This includes certain dimensionality reduction methods like UMAP \cite[mcinnes2018], graph layout \cite[islam2011,weinreb2018b] and diffusion maps, as well as clustering algorithms such as \n{Leiden} \cite[traag2019], diffusion pseudo time \cite[haghverdi2016] and PAGA \cite[wolf2019].
 \n{Scanpy} also offers data integration similar to \inlinecite[polanski2020], and several gene scores.
 These allow analyzing either the influence of given known gene groups such as cell cycle genes \cite[satija2015] and the differential expression between clusters in one of different flavors such as the variance adjusted t-test or Wilcoxon rank-sum test \cite[wilcoxon1945,soneson2018].
 \stopsubsection
