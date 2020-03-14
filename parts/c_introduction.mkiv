@@ -241,34 +241,37 @@ My specific contributions can be placed in the framework provided by the above o
 While I worked on every computational step of the process except for alignment, my contributions are focused on steps involving a count matrix.
 To provide further context for my work, I would like to outline the relevant changes in the process of scRNA-Seq analysis in the following sections.
 
-\startsubsection[title={Ad-Hoc pipelines}]
-% Generally: People often need to cobble together their own pipelines and use default parameters without knowing what they do.
-% scripts and binaries
-Without publicly available analysis frameworks, the most common way to operate was writing R scripts that invoked R tools in memory and tools from other languages as command line processes.
-Despite the field’s increasing investment into machine learning algorithms implemented in Python, few tools were available in the language.
+\startsubsection[title={Custom-built pipelines}]
+% pipelines used scripts and binaries to proceed between snapshots
+The steps necessary to reproduce the preprocessing and analysis of a publication are bundled in an executable bundle of scripts called a pipeline.
+Depending on the performance of the tools performing the individual steps, it is desirable to regularly store files representing a processing state from which to continue in case of errors, called a snapshot.
+Analysis frameworks that are available today are toolkits able to perform each step efficiently in memory, allowing their users to choose when to use snapshots.
+Some years ago however, pipelines written in R or \n{GNU make} often used a command line tool for each step, which by necessity consumed and produced a snapshot.
+Despite the field’s increasing investment into machine learning algorithms implemented in Python, few tools were available in that language.
 
 % communication
 Communication with other languages or between pipeline steps involved reading a textual representation of the data from a file system, processing it, and writing it back to disk.
 This process involved long run times due to slow reading and writing, high storage space requirements and little resilience to errors.
 File corruption introduced e.\,g. via unreliable access to network storage could not be detected in text files, which lack checksums and other resilience precautions.
-All those problems can be circumvented when hardening a file-based pipeline by investing sufficient effort and time.
-In practice, the lack of frameworks meant that each tool or pipeline had to solve common problems by itself, which further wasted resources and increased potential for errors.
+In practice, the lack of frameworks meant that each tool or pipeline had to solve common problems by itself, such as hardening against the aforementioned reliability issues.
+This further wasted resources and increased the potential for errors.
 The resulting pipeline code published with papers was very application-specific and hard to generalize or share.
 
 % Existing methods are not focused on interoperability.
-Even within analysis pipelines operating entirely in memory, individual tools were not necessarily designed to be compatible.
+Even within analysis pipelines operating entirely in memory instead of on slow and unreliable files, individual tools were not necessarily designed to be compatible.
 Single tools could halt progress if they had insufficient performance for upcoming large datasets from microfluidic protocols.
 The tools’ varying code quality, choice of default values and error reporting led to subtle incompatibility bugs.
 Furthermore, no data structures and file exchange formats suitable for scRNA-Seq existed, so workflows manually kept count matrices and annotation data frames in sync across filtering steps, increasing the potential for error.
 Furthermore, reproducibility was hard to guarantee in the presence of nondeterministic methods and a multitude of tool versions with subtly different defaults and behavior.
 
 % DM creation in R
-In the R landscape, the \n{Bioconductor} project \cite[huber2015] provided tools for preprocessing and basic analysis, but little in the way of embeddings.
-The only available option for diffusion map embedding at the time did not offer features necessary for scRNA-Seq analysis and was impractically slow \cite[angerer2016].
+In the R world, the \n{Bioconductor} project \cite[huber2015] provided tools for preprocessing and basic analysis, but little in the way of embeddings.
+The only available option for diffusion map embedding before the creation of \n{destiny} did not offer features necessary for scRNA-Seq analysis and was impractically slow \cite[angerer2016].
+
 % - pre-GR: differential expression and \TODO?[trendsceek]
-No dimensionality reduction method except for the simplistic PCA provides a way to relate embedding location back to input variables.
-The existing and popular differential expression analysis requires discrete partitioning of the data, which is not well defined for data containing gradual transition of gene expression profiles between cells, and has the aforementioned issues with uncertainty propagation.
-\TODO[mention the destiny-related stuff here? If not: just in “own contributions” and methods?]
+No dimensionality reduction method except for the simplistic linear PCA provides a way to relate embedding location back to input variables.
+The popularity of nonlinear dimensionality reductions meant that there was a gap between using them as cell-level analysis tool and the differential expression (DE) analysis \cite[soneson2018] as most popular gene-level analysis tool.
+DE requires discrete partitioning of the data, which is not well defined for data containing gradual transition of gene expression profiles between cells, and has the aforementioned issues with uncertainty propagation.
 \stopsubsection
 
 \startsubsection[title={Frameworks}]
@@ -292,7 +295,7 @@ Bigger frameworks encompassing many tools have an easier time to test several pe
 \TODO[last 2 sentences are almost the inverse of the “old way”: just keep it in one of the sections?]
 
 %R
-In R, the landscape is more fragmented than in Python:
+The R world is more fragmented than in Python:
 The \n{Bioconductor} ecosystem provides annotated matrix data structures and tools for mainly preprocessing scRNA-Seq data.
 \n{Scater} provides extensive quality control and preprocessing but little in the way of analysis \cite[luecken2019].
 \n{Seurat} has opinionated preprocessing, analysis and plotting routines but is not integrated into the \n{Bioconductor} ecosystem.
