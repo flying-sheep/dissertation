@@ -234,7 +234,6 @@ Without additional data providing a ground truth about subpopulation identity, o
 A panel of marker genes per cluster is derived from the data and cross-referenced with literature to annotate known cell types in the data.
 When discovering novel subpopulations, their adjacency to known ones can be used to make assumptions about their role and test them.
 An upcoming way to simplify the process are cell transcriptome atlases \cite[regev2017,schaum2018] that can be used as references to automatically look up your cells and annotate them \cite[abdelaal2019].
-\TODO[vis. and analysis is pretty close, so is a visualization section a good idea? if so, should other stuff from “Analysis” go in there?]
 \stopsubsection
 
 My specific contributions can be placed in the framework provided by the above overview of scRNA-Seq analysis.
@@ -268,7 +267,7 @@ Furthermore, reproducibility was hard to guarantee in the presence of nondetermi
 In the R world, the \n{Bioconductor} project \cite[huber2015] provided tools for preprocessing and basic analysis, but little in the way of embeddings.
 The only available option for diffusion map embedding before the creation of \n{destiny} did not offer features necessary for scRNA-Seq analysis and was impractically slow \cite[angerer2016].
 
-% - pre-GR: differential expression and \TODO?[trendsceek]
+% - pre-GR: differential expression
 No dimensionality reduction method except for the simplistic linear PCA provides a way to relate embedding location back to input variables.
 The popularity of nonlinear dimensionality reductions meant that there was a gap between using them as cell-level analysis tool and the differential expression (DE) analysis \cite[soneson2018] as most popular gene-level analysis tool.
 DE requires discrete partitioning of the data, which is not well defined for data containing gradual transition of gene expression profiles between cells, and has the aforementioned issues with uncertainty propagation.
@@ -276,10 +275,12 @@ DE requires discrete partitioning of the data, which is not well defined for dat
 
 \startsubsection[title={Frameworks}]
 \startplacefigure[reference=fig:anndata, title={
-\n{AnnData} structure \TODO[]
+\n{AnnData} structure
 }]
 \hbox{\input{imgs/anndata.tikz}}
 \stopplacefigure
+
+\TODO[fig caption]
 
 % - Through frameworks, data interchange formats and containers we get interoperability and reproducibility.
 Today, both R and Python have viable frameworks for scRNA-Seq analysis: \n{Seurat}\footnote{
@@ -361,7 +362,8 @@ Without them, accurate assessment of any kind of color-mapped visualizations can
 Unlike other available R tools, \n{destiny} uses the chosen distance metric also for kNN search, which has been shown to improve results \cite[hu2016].
 To make \n{destiny} deterministic, I contributed to a few of its dependencies to support random seeds.
 
-Destiny has been cited 170 times at the time of writing and has been used by \TODO.
+Destiny has been cited 175 times at the time of writing and has for example been used for dimensional reduction and pseudo-time inference in analyses.
+This includes hematopoietic stem and progenitor cell differentiation \cite[nestorowa2016], an immune atlas of clear cell renal cell carcinoma \cite[chevrier2017], development in the human adult brain \cite[blue2018] and an atlas of the aging drosophila brain \cite[davie2018].
 \stopsubsection
 
 \startsubsection[title={Gene Relevance}]
