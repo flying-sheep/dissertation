@@ -41,7 +41,7 @@ During the past decade, biological research worked with averaged RNA profiles of
 Those profiles allow to capture the gene expression of a tissue or fluid sample without accounting for cell-to-cell variability.
 
 % SC revolution
-Single-cell RNA-Seq (scRNA-Seq) can measure extremely small expression values down to a single mRNA molecule \cite[tang2011].
+Single cell RNA-Seq (scRNA-Seq) can measure extremely small expression values down to a single mRNA molecule \cite[tang2011].
 This data comes with its own challenges, but enables the study of heterogeneous tissue, where expression averages from bulk RNA-Seq are not meaningful \cite[svensson2018b].
 The ability to dissect heterogeneity allows for example to improve our understanding of complex cellular diseases like cancer \cite[patel2014,qian2017].
 The second great advantage is that the amounts of data present in scRNA-Seq are necessary for machine learning approaches.
@@ -67,7 +67,7 @@ So have studies suggested in past years that microfluidic protocols inflate the 
 Increased complexity in analysis can be conquered with improved modeling or more sophisticated preprocessing.
 From-scratch modeling is more correct, but less flexible, as it requires careful informed design across the whole analysis process.
 Each new analysis that significantly deviates from previous analyses requires a re-thinking and re-building of the model almost from the ground up.
-There are however also modeling approaches that instead of performing analysis, replace several preprocessing steps specifically for scRNA-Seq data, like the normalizing single-cell dimensionality reduction methods \n{scVI} \cite[lopez2018] and \n{GLM-PCA} \cite[townes2019].
+There are however also modeling approaches that instead of performing analysis, replace several preprocessing steps specifically for scRNA-Seq data, like the normalizing single cell dimensionality reduction methods \n{scVI} \cite[lopez2018] and \n{GLM-PCA} \cite[townes2019].
 
 % my work
 The more practical approach is to start with careful preprocessing, transforming data in a way that fulfills the assumptions of subsequent analysis \cite[vieth2019].
@@ -168,7 +168,7 @@ The kind of heterogeneity to uncover depends on the kind of data available:
 the simplest case is discrimination between discrete subpopulations of few clearly different cell types.
 A common goal there is to find a small number of marker genes able to reliably distinguish a subpopulation that is sufficiently distinct from the rest of the cells.
 Methods performing this search are called differential gene expression (DE) analyses \cite[soneson2018].
-While DE analysis methods stem from bulk RNA-Seq, single-cell specific methods such as SCDE \cite[kharchenko2014], MAST \cite[finak2015], and BASiCS \cite[vallejos2016] outperform bulk methods due to the additional information in single cell data.
+While DE analysis methods stem from bulk RNA-Seq, single cell specific methods such as SCDE \cite[kharchenko2014], MAST \cite[finak2015], and BASiCS \cite[vallejos2016] outperform bulk methods due to the additional information in single cell data.
 
 Another source of heterogeneity is the composition of the studied tissue.
 Tumors as well as healthy tissue are composed of cells fulfilling a multitude of different roles that can only be uncovered using single cell analysis \cite[patel2014,zhang2016,qian2017].
@@ -205,7 +205,7 @@ This results in cells temporarily or sometimes permanently stuck as intermediate
 The field of trajectory analysis is therefore constantly evolving to enable the analysis of complex tissues up to whole animals \cite[plass2018] using tools like SPRING \cite[weinreb2018a] or PAGA \cite[wolf2019].
 
 Analyses depend on the availability of informative data.
-Since classic scRNA-Seq is limited to spliced mRNAs, additional data modialities are necessary to infer dynamics like directionality in trajectory inference \cite[efremova2020].
+Since classic scRNA-Seq is limited to spliced mRNAs, additional data modalities are necessary to infer dynamics like directionality in trajectory inference \cite[efremova2020].
 As an example, RNA velocity indicates the direction in which cells differentiate and therefore enhances trajectory inference with directionality and more accuracy.
 It is reconstructed from the relation of spliced and unspliced mRNA \cite[lamanno2018].
 \stopsubsection
