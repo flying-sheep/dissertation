@@ -3,68 +3,36 @@
 
 \startchapter[reference=conclusion, title={Conclusion}]
 
-Single-cell RNA-Seq has grown to be an extensive and active field of science, with new challenges coming up.
-The largest current trends are ever-growing dataset sizes and integration of different kinds of data \cite[angerer2017,nmeth2020].
+Within \TODO years, Single-cell RNA-Seq has grown to an extensive and active field of science, with new trends and opportunities.
+The largest current challenges are the ever-growing dataset sizes, and the integration of different kinds of data \cite[angerer2017,nmeth2020].
 Going up to hundreds of thousands of cells, the data allows us to abandon the notion of discrete cell types and to explore the continuous processes at play.
-Destiny and the gene relevance method presented in this thesis prove to be valuable contributions in this direction.
-\TODO[can I write that?]
+Destiny \cite[angerer2016] and the gene relevance method presented in this thesis prove to be valuable contributions in this direction.
 
 % extensibility and openness
 As demands on reliability at scale grow along demands posed to algorithms, more practices from software engineering are finding their way into biological science.
-For example, extensible and efficient data format standards are born from collaboration of scientists to supplant the ad-hoc text-based formats we used to incompatibly modify to suit situational needs.
+For example, extensible and efficient data format standards are born from the collaboration of scientists to supplant the ad-hoc text-based formats we used to incompatibly modify to suit situational needs.
 Open source analysis frameworks have been designed to offer an open and welcoming environment for new as well as established analysts and method developers.
-My contributions towards more reproducible, scalable and interconnectible scientific programming have furthered these changes along.
+My contributions towards more reproducible, scalable and interconnectible scientific programming have helped these changes along.
 
-\startsection[title={Multi-resolution scRNA-Seq Analysis}]
+\startsection[title={Multiresolution scRNA-Seq Analysis}]
 The analysis of continuous processes driving cellular heterogeneity has been enabled by fluorescent tagging and single cell imaging.
+Their targeted nature as well as their monetary and time costs however renders them unsuitable for unbiased heterogeneity analysis.
 While careful selection of parameters like sequencing depth is vital, scRNA-Seq is an unbiased and inexpensive method able to detect rare cells \cite[torre2018].
 This makes it uniquely suited for heterogeneity analyses.
-A rarely addressed property of cellular heterogeneity is its multi-resolution nature.
+A rarely addressed property of cellular heterogeneity is its multiresolution nature:
+multiple processes at different scales and locality shape heterogeneity of either subpopulations or all cells.
 
 Analysis algorithms in this area have evolved alongside the protocols able to sequence hundreds of thousands of cells.
 Suitable for the low sample sizes of bulk RNA-Seq, simple linear dimension reduction methods like PCA were used to visualize early single cell studies.
 Nonlinear methods like diffusion maps, t-SNE or later UMAP have been developed and continue being improved to fit the nature of transcriptome data.
 But while they capture both continuity and heterogeneity at multiple resolutions, their output does not contain directly interpretable information about processes at different resolutions.
 Methods like the growing multitude of trajectory inference algorithms or gene relevance complement them within the same constraint \cite[saelens2019].
-Of all methods known to the author, only \n{PAGA} so far distinctively dissects continuous multi-resolution heterogeneity \cite[wolf2019].
-To analyze this foundational attribute of cellular processes, a multi-resolution variant of gene relevance would be of great use.
+Of all methods known to the author, only \n{PAGA} so far distinctively dissects continuous multiresolution heterogeneity \cite[wolf2019].
+To analyze this foundational attribute of cellular processes, a multiresolution variant of gene relevance would be of great use.
 \stopsection
 
-\startsection[title={Multimodal \n{scanpy} and \n{AnnData}}]
-Recent developments in the joint measurement of scRNA-Seq data and multiple other data types at single cell resolution have enabled multimodal analysis.
-With it giving ripe opportunity for analysis development, Nature Methods has named single-cell multimodal omics its method of the year 2019 \cite[nmeth2020].
-\inlinecite[efremova2020] provide a review of the different kinds of single cell data that became available in short succession.
-
-\n{Scanpy} and \n{AnnData} have partial support for these kinds of data, but lack a true multimodal mode where different kinds of features can be stored for one set of observations.
-Analyses without need for a dedicated multi-model data structure are already supported.
-% transfer learning
-If there is no 1:1 relation between samples, transfer learning can be used to migrate labels from one dataset to another \cite[abdelaal2019].
-This technique has been successfully employed to link data in and to the \n{Human Cell Atlas} \cite[regev2017].
-% RNA Velocity
-RNA Velocity is the method of using information from unspliced pre-mRNA to infer trajectories of cell differentiation \cite[lamanno2018].
-With \n{scVelo}, an user friendly implementation and extension of the model based on \n{Scanpy} and \n{AnnData} exists \cite[bergen2019], which uses \n{AnnData}’s \type{.layers} to distinguish between spliced and unspliced transcripts.
-% spatial
-Spatial analysis in \n{Scanpy} is similarly straightforward, as 2D or 3D space can be stored in \n{AnnData}’s \type{.obsm}.
-The current development of spatial conventions and plotting routines will encourage the development of \n{Scanpy} based spatial algorithms similar to the R tools trendsceek \cite[edsgärd2018] and SpatialDE \cite[svensson2018].
-\TODO[move the already-supported data types mentioned above to methods/intro instead?]
-
-For data containing multiple high-dimensional feature modes for the same cells, a multimodal \n{AnnData} will substantially increase usability.
-% epigenetics
-This includes epigenetic data \cite[henriksson2019].
-Chromatin accessibility on single cell genomes has been possible to measure for some years already using single-cell Assay for Transposase-Accessible Chromatin using Sequencing (scATAC-Seq, \inlinecite[buenrostro2013]).
-DNA methylation can be measured now using the recently developed single cell Cleavage Under Targets and Tagmentation (scCUT&Tag, \inlinecite[kaya-okur2019]).
-For analysis of scRNA-Seq data combined with both kinds of data, \n{epiScanpy} offers a \n{scanpy}-integrated workflow \cite[danese2019].
-Since it uses the current version of \n{AnnData}, its API will benefit from the upcoming multimodal extension of \n{AnnData}.
-
-Another multimodal data type is scRNA-Seq with surface protein abundances.
-Despite the difficulties in measuring proteins, it is necessary in cases where transcriptomics and proteomics are poorly correlated, such as with posttranslationally modified proteins.
-Measuring those abundances together with scRNA-Seq data has become possible through Cellular Indexing of Transcriptomes and Epitopes by sequencing (CITE-seq) \cite[gayoso2019].
-
-\TODO[maybe? recurrence of targeted: BART-Seq and 3D spatial STARmap \cite wang2018]
-\stopsection
-
-\startsection[title={New dimensions of \n{scanpy} Scalability}]
-\n{Scanpy} has proven to be scalable in terms of CPU and memory efficiency through its efficient implementation, multiprocessing capabilities and \n{AnnData}’s disk-backed mode.
+\startsection[title={New Dimensions of \n{scanpy} Scalability}]
+\n{Scanpy} has proven to be scalable in terms of CPU and memory through its efficient implementation, multiprocessing capabilities and \n{AnnData}’s disk-backed mode.
 For a successful open source project, more is necessary than just performance and ease of use.
 Open source projects need to be scalable in terms of maintainers and trust \cite[delaat2010].
 
@@ -74,16 +42,58 @@ To foster openness and inclusivity, \n{scanpy} will adopt a code of conduct (CoC
 CoCs have been shown to increase diversity in a project, while higher diversity is linked to increased productivity \cite[tourani2017].
 To uncouple progress with the available amount of free time of the de-facto decision makers of the project, a steering committee will be formed.
 Its membership will be open to long-term contributors, and its meeting notes publicly available.
-Automations for quality and performance criteria similarly streamline the contribution process and will be extended.
+Automations for quality and performance criteria, such as \n{scanpy}’s high performance GPU-driven parts, similarly streamline the contribution process and will be extended.
 This will make friendly and helpful information available regardless of the available free time of experienced contributors.
 Additionally, inclusion criteria of external tools to the scanpy website and the \type{scanpy.external} module will be formalized and made transparent.
 Communication channels with the main projects of the R world are already established and will continue to be used to ensure interoperability.
+\stopsection
 
-% performance
-\TODO[maybe mention GPU enhancements?]
-% as-a-service
-\TODO[maybe mention as-a-service a la FASTGenomics? No real plans though …]
-%\cite[scholz2018]
+\startsection[title={Multimodal \n{scanpy} and \n{AnnData}}]
+Recent developments in the joint measurement of scRNA-Seq data and multiple other data types (modes) at single cell resolution have enabled multimodal analysis.
+With it giving ripe opportunity for analysis development, Nature Methods has named single-cell multimodal omics its method of the year 2019 \cite[nmeth2020].
+\inlinecite[efremova2020] provide a review of the different single cell modes that became jointly measurable with scRNA-Seq in short succession: RNA velocity, spatial coordinates, surface protein abundances, epigenetic modifications, and chromatin accessibility. 
+
+% transfer learning
+If there is no 1:1 relation between samples, transfer learning can be used to migrate labels from one dataset or mode to another \cite[abdelaal2019].
+This technique has been successfully employed to link data in and to the \n{Human Cell Atlas} \cite[regev2017].
+\n{Scanpy}, \n{AnnData} and projects based on them have partial support for multimodal data, using the existing capabilities of \n{AnnData}.
+
+\startdesc{RNA Velocity}
+RNA Velocity is a model to infer trajectories of cell differentiation from the combination of unspliced pre-mRNA with spliced mRNA \cite[lamanno2018].
+With \n{scVelo}, an user friendly implementation and extension of the model based on \n{Scanpy} and \n{AnnData} exists \cite[bergen2019], which uses \n{AnnData}’s \type{.layers} to distinguish between spliced and unspliced transcripts.
+\stopdesc
+
+\startdesc{Spatial coordinates}
+Spatial information allows associating location of cells with transcriptomic heterogeneity, allowing to analyze spatial trends such as the behavior of developmental markers in embryonic development.
+If the success of the \n{10x Genomics} \n{Chromium} platform is an indication, the upcoming \n{Visium} platform will make spatial information ubiquitous in the near feature \cite[maniatis2019].
+Novel approaches like in-situ sequencing also allow capturing 3D spatial coordinates \n{STARmap} \cite[wang2018].
+Spatial analysis in \n{Scanpy} is straightforward, as 2D or 3D space can be stored in \n{AnnData}’s \type{.obsm}.
+The current development of spatial conventions and plotting routines will encourage the development of \n{Scanpy} based spatial algorithms similar to the R tools trendsceek \cite[edsgärd2018] and SpatialDE \cite[svensson2018].
+\stopdesc
+
+\startdesc{Surface protein abundances}
+Another multimodal data type is scRNA-Seq with surface protein abundances.
+Despite the difficulties in measuring proteins, it is necessary in cases where transcriptomics and proteomics are poorly correlated, such as with posttranslationally modified proteins.
+Measuring those abundances together with scRNA-Seq data has become possible through Cellular Indexing of Transcriptomes and Epitopes by sequencing (CITE-seq) \cite[gayoso2019].
+\stopdesc
+
+\startdesc{Epigenetics}
+Two epigenetic modes can be combined with scRNA-Seq data \cite[henriksson2019].
+Chromatin accessibility in single cells has been possible to measure for some years using single-cell Assay for Transposase-Accessible Chromatin using Sequencing (scATAC-Seq, \inlinecite[buenrostro2013]).
+DNA methylation can be measured now using the recently developed single cell Cleavage Under Targets and Tagmentation (scCUT&Tag, \inlinecite[kaya-okur2019]).
+For analysis of scRNA-Seq data combined with both modes, \n{epiScanpy} offers a \n{scanpy}-integrated workflow \cite[danese2019].
+\stopdesc
+
+\noindentation
+\n{AnnData} and \n{scanpy} currently lack true support for multimodal data where different modes can be stored for one set of observations.
+It would allow to store annotations for each mode separately while allowing joint filtering of observations.
+A further feature would be to store connections between features of different modes in a graph, such as which transcript (scRNA-Seq) encodes which surface protein (CITE-Seq).
+The current version of \n{AnnData} substantially increased usability and therefore analysis efficiency for exclusively scRNA-Seq data.
+Therefore a multimodal \n{AnnData} should do the same for the analysis of data like scCUT&Tag or CITE-Seq, which contain a second high-dimensional feature mode in addition to transcriptomic data.
+Existing workflows and libraries that use the current version of \n{AnnData}, like \n{epiScanpy}, will benefit from this upcoming multimodal extension of \n{AnnData}.
+
+\TODO[sagen was mit mit sc und spatial machen kann, zb patient data (histology) und damit welt retten]
+
 \stopsection
 
 \stopchapter
