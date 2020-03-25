@@ -33,7 +33,7 @@ Proteomics, the measurement of proteins directly, is however made difficult by t
 This results in proteomics being limited to targeted analysis of a small number of known proteins \cite[manzoni2018].
 The assembly of proteins in cells is however fairly well understood and measurable.
 The central dogma of molecular biology states that genes on our chromosomes are transcribed to short lived messenger RNA (mRNA) molecules, which are then translated to proteins (seed \infig[fig:dogma]).
-%Genes are transcribed into a pre-messenger RNA (pre-mRNA) and then spliced into one of several possible final mRNAs encoding a different protein each. \TODO[move]
+%Genes are transcribed into a pre-messenger RNA (pre-mRNA) and then spliced into one of several possible final mRNAs encoding a different protein each.
 The presence of mRNA in a cell therefore indicates that its respective protein is currently being produced.
 It is possible to quantify and subsequently analyze snapshots of all mRNA molecules in a cell sample using RNA sequencing (RNA-Seq, \inlinecite[morin2008]).
 This untargeted large-scale process is called gene expression analysis.
@@ -275,12 +275,11 @@ DE requires discrete partitioning of the data, which is not well defined for dat
 
 \startsubsection[title={Frameworks}]
 \startplacefigure[reference=fig:anndata, title={
-\n{AnnData} structure
+\n{AnnData} is structured around a central stack of variable × observation matrices (layers) and a hierarchy of unstructured annotations.
+Each dimension, variables and observations, can be annotated with vectors (1D), matrices (2D) and graphs (2D, square matrices).
 }]
 \hbox{\input{imgs/anndata.tikz}}
 \stopplacefigure
-
-\TODO[fig caption]
 
 % - Through frameworks, data interchange formats and containers we get interoperability and reproducibility.
 Today, both R and Python have viable frameworks for scRNA-Seq analysis: \n{Seurat}\footnote{
@@ -302,7 +301,7 @@ The \n{Bioconductor} ecosystem provides annotated matrix data structures and too
 \n{Scater} provides extensive quality control and preprocessing but little for analysis \cite[luecken2019].
 \n{Seurat} has opinionated preprocessing, analysis and plotting routines but is not integrated into \n{Bioconductor}.
 Its data structure is \n{Seurat}-specific and needs conversion to the more generic \n{Bioconductor} data structures.
-Standalone tools in R like \TODO usually support \n{Bioconductor} data structures or even just plain matrices and data frames.
+Standalone tools in R like \n{destiny} \cite[angerer2016], \n{scmap} \cite[Kiselev2018], BASiCS \cite[eling2018], or \n{velocyto} \cite[lamanno2018] usually support \n{Bioconductor} data structures or even just plain matrices and data frames.
 
 %AnnData
 In Python, many standalone tools start supporting the generic data structure \n{AnnData} \cite[zappia2018,eraslan2019,polanski2020].
@@ -368,11 +367,10 @@ This includes hematopoietic stem and progenitor cell differentiation \cite[nesto
 
 \startsubsection[title={Gene Relevance}]
 % combines gene-level with cell-level analysis
-\TODO[motivate: why needed?]
 The most recent addition to \n{destiny} is the gene relevance algorithm.
 It is designed to identify genes that drive the local positioning of a cell in an embedding.
-This allows to detect locally relevant genes without a discrete clustering step and the associated problems discussed before.
-\TODO[name them]
+This allows to detect locally relevant genes without a discrete clustering step, and therefore without data reuse as a result of using inferred cluster labels as input for gene level analysis.
+
 The initial idea comes from Fabian Theis, while I designed the changes making it applicable to real data with A. Scialdone and C. Marr and implemented it.
 I also extended the idea to include scores for defined groups of cells (such as clusters) or the whole data for a global relevance score per gene.
 The method is described in detail in \insec[sec:generelevance].
