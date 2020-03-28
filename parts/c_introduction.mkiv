@@ -187,7 +187,8 @@ Experiments to artificially induce trans- or dedifferentiation have shown promis
 \crlf\small{(Figure adapted from \inlinecite[gam2019] with permission)}
 }]
 %https://www.mdpi.com/2073-4409/8/10/1189
-\externalfigure[https://www.researchgate.net/publication/336222289/figure/fig1/AS:809726799523847@1570065321789/Cell-fate-plasticity-and-the-epigenetic-landscape-currently-applied-for-direct-cell.jpg][width=.8\textwidth]
+%\externalfigure[https://www.researchgate.net/publication/336222289/figure/fig1/AS:809726799523847@1570065321789/Cell-fate-plasticity-and-the-epigenetic-landscape-currently-applied-for-direct-cell.jpg][width=.8\textwidth]
+\externalfigure[cell-fate.png][width=.8\textwidth]
 \stopplacefigure
 
 While cluster analysis strongly benefits from the availability of scRNA-Seq data, the field of trajectory analysis can only exist because of it.
@@ -301,7 +302,7 @@ The \n{Bioconductor} ecosystem provides annotated matrix data structures and too
 \n{Scater} provides extensive quality control and preprocessing but little for analysis \cite[luecken2019].
 \n{Seurat} has opinionated preprocessing, analysis and plotting routines but is not integrated into \n{Bioconductor}.
 Its data structure is \n{Seurat}-specific and needs conversion to the more generic \n{Bioconductor} data structures.
-Standalone tools in R like \n{destiny} \cite[angerer2016], \n{scmap} \cite[Kiselev2018], BASiCS \cite[eling2018], or \n{velocyto} \cite[lamanno2018] usually support \n{Bioconductor} data structures or even just plain matrices and data frames.
+Standalone tools in R like \n{destiny} \cite[angerer2016], \n{scmap} \cite[kiselev2018], BASiCS \cite[eling2018], or \n{velocyto} \cite[lamanno2018] usually support \n{Bioconductor} data structures or even just plain matrices and data frames.
 
 %AnnData
 In Python, many standalone tools start supporting the generic data structure \n{AnnData} \cite[zappia2018,eraslan2019,polanski2020].
@@ -393,7 +394,7 @@ For details about the implementation of \n{AnnData} and \n{scanpy}, see \in{Sect
 Its \type{.h5ad} format is supported by visual analysis pipelines like \n{Galaxy} \cite[afgan2018] or \n{cellxgene} \cite[megill2020].
 \n{Scanpy} is widely used and popular in the scRNA-Seq analysis community \cite[zappia2018].
 It is integrated in \n{Galaxy}, used for large projects like the \n{Human Cell Atlas} \cite[regev2017] or \n{Tabula Muris} \cite[schaum2018], and at the time of writing cited by over 300 studies, review papers and tools.
-So does EMBL-EBI’s expression atlas use \n{scanpy} for downstream analysis of all single cell experiments \cite[Papatheodorou2020]
+So does EMBL-EBI’s expression atlas use \n{scanpy} for downstream analysis of all single cell experiments \cite[papatheodorou2020]
 \stopsubsection
 
 \startsubsection[title={BART-Seq}]
