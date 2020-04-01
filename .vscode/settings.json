@@ -23,5 +23,6 @@
         ]
     },
     "gitlens.codeLens.enabled": false,
-    "gitlens.currentLine.enabled": false
+    "gitlens.currentLine.enabled": false,
+    "todo-tree.regex.regex": "((//|#|<!--|;|/\\*|^|\\\\)\\s*($TAGS)|^\\s*- \\[ \\])"
 }
