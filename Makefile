@@ -7,7 +7,7 @@ bib/prd_dissertation.bib: bib/library.bib bib/bibtool.rsc
 	cd bib; bibtool -r bibtool.rsc
 
 imgs/%.pdf: imgs/%.ipynb
-	cd imgs; jupyter nbconvert --execute --stdout ../$< >/dev/null
+	cd imgs; jupyter nbconvert --execute --stdout $(notdir $<)
 
 watch: $(src_files) bib/library.bib
 	@echo Making file://$(PWD)/prd_dissertation.pdf
