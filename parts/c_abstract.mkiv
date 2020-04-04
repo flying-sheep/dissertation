@@ -2,7 +2,19 @@
 \project project_dissertation
 
 \starttitle[title={Abstract}]
-\TODO[Abstract]
+Unbiased single cell transcriptome data obtained by RNA sequencing (scRNA-Seq) allows for unprecedented research opportunities for diseases and development.
+Experimental capabilities, data size, and analysis tools are constantly growing since its inception.
+Due to the this combinatoric explosion, arriving at a set of best practices involves both a lot of research and implementation effort.
+This work describes the author’s advances towards a consolidated and accessible scRNA-Seq analysis and visualization experience.
+It focuses on the development of reusable analysis building blocks and algorithms for dimensional reduction.
+
+In the course of this work, a general scRNA-Seq analysis workflow is explained together with the challenges and opportunities related to each step.
+The author’s contributions are placed into the context of this workflow:
+AnnData is a generic Python data structure for annotated matrices such as scRNA-Seq expressions.
+It is used by Scanpy, an efficient Python framework with building blocks for preprocessing, analysis, and visualization of scRNA-Seq data.
+Destiny is an efficient implementation of the diffusion map algorithm for R optimized for biological data.
+It contains gene relevance, an algorithm for detecting genes that drive a given dimensional reduction.
+BART-Seq is an inexpensive protocol for targeted transcriptome quantification for large amounts of samples.
 \stoptitle
 
 \language[de]

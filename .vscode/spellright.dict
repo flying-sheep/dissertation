@@ -17,6 +17,7 @@ Eigen
 Wilcoxon
 
 ATAC
+BART-Seq
 BBKNN
 DCA
 EBI
@@ -30,7 +31,9 @@ PAGA
 PCA
 PCR
 qPCR
+RNA-Seq
 SCDE
+scRNA-Seq
 scVI
 STAR
 t-SNE
@@ -80,6 +83,7 @@ epigenetic
 epigenetics
 epitope
 epitopes
+euclidean
 hematopoietic
 logarithmized
 logarithmizing
