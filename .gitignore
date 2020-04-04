@@ -14,9 +14,6 @@
 *.tuc
 *.synctex
 
-# IDE/Editor stuff
-/.kile/
-*.kate-swp
-
-# Notebook stuff
+# Temp studd
 .ipynb_checkpoints/
+.snakemake/
