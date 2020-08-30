@@ -5,6 +5,7 @@
 *.tsv
 *.mtx
 *.h5ad
+*.gui
 
 # TeX stuff
 *.aux

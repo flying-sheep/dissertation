@@ -19,7 +19,8 @@
             "/\\\\startformula[^]*?\\\\stopformula/gm",
             "/\\\\startluacode[^]*?\\\\stopluacode/gm",
             "/\\$[^\\$]+?\\$(’s|th)/g",
-            "/\\{[^\\}]+?\\}(’s|th)/g"
+            "/\\{[^\\}]+?\\}(’s|th)/g",
+            "/\\\\startproduct.*/g"
         ]
     },
     "gitlens.codeLens.enabled": false,
