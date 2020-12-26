@@ -1,6 +1,7 @@
 /feedback/
 /prd_dissertation.pgf
 /bib/library.bib
+/.venv/
 *.tar.gz
 *.tsv
 *.mtx
@@ -16,6 +17,6 @@
 *.tuc
 *.synctex
 
-# Temp studd
+# Temp stuff
 .ipynb_checkpoints/
 .snakemake/

@@ -144,7 +144,7 @@
 % }
 \def\inlinecite[#1]{\cite[authoryears][#1]}
 
-\usemodule[res-08] \setups[rl:manipulate]
+% \usemodule[res-08] \setups[rl:manipulate]
 \setupexternalfigures[directory=imgs,conversion=pdf] 
 % Modules
 %\usemodule[newmat]
@@ -161,19 +161,17 @@
 \usetikzlibrary[calc]
 %\usetikzlibrary[external]
 %\tikzexternalize[prefix=imgs/]
-\usemodule[pgfplots]
-\usepgfplotslibrary[groupplots]
+% \usemodule[pgfplots]
+% \pgfplotsset{compat=1.14}
+% \usepgfplotslibrary[groupplots]
 \unexpanded\def\startgroupplot{\groupplot}
 \unexpanded\def\stopgroupplot{\endgroupplot}
-
-\usemodule[pgfplots]
-\pgfplotsset{compat=1.14}
-\usemodule[pgfplotstable]
+% \usemodule[pgfplotstable]
 %\usepgfplotslibrary[groupplots]
 
-\pgfplotsset{
-	table/search path={data},
-}
+% \pgfplotsset{
+%	table/search path={data},
+% }
 
 \usemodule[logos]
 

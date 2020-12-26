@@ -1,0 +1,16 @@
+snakemake
+nbconvert
+jupyter-core
+
+attrdict
+
+numpy
+pandas
+scipy
+
+matplotlib
+seaborn
+
+scanpy[leiden]
+anndata
+scvelo

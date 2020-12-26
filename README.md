@@ -1,6 +1,8 @@
 Enabling technologies for visualization and analysis of single cell RNA-Seq data
 ================================================================================
 
+- https://www.gzw.wzw.tum.de/abschluss-der-promotion/
+
 Local Resources
 - file:///home/angerer/Dropbox/Arbeit/lebenslauf/cv.ctx
 - file:///home/angerer/Dropbox/Uni/Masterarbeit/thesis/main.ctx

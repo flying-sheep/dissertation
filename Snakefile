@@ -38,4 +38,4 @@ rule img:
     output:
         'imgs/{name}.pdf',
     run:
-        shell(f'cd imgs && jupyter nbconvert --execute --stdout {Path(input[0]).name}', read=True)
+        shell(f'cd imgs && jupyter nbconvert --execute --to=script --stdout {Path(input[0]).name}', read=True)
