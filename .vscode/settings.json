@@ -1,5 +1,6 @@
 {
     "spellright.language": [
+        "en",
         "en_US"
     ],
     "spellright.documentTypes": [
@@ -25,5 +26,7 @@
     },
     "gitlens.codeLens.enabled": false,
     "gitlens.currentLine.enabled": false,
-    "todo-tree.regex.regex": "((//|#|<!--|;|/\\*|^|\\\\)\\s*($TAGS)|^\\s*- \\[ \\])"
+    "todo-tree.regex.regex": "((//|#|<!--|;|/\\*|^|\\\\)\\s*($TAGS)|^\\s*- \\[ \\])",
+    "python.pythonPath": "/Users/pangerer/Documents/dissertation/.venv/bin/python3",
+    "editor.wordWrap": "on"
 }
