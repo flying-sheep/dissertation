@@ -1,4 +1,5 @@
-/feedback/
+/feedback/**
+!/feedback/**/*.md
 /prd_dissertation.pgf
 /bib/library.bib
 /.venv/
