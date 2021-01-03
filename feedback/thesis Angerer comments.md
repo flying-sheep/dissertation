@@ -67,34 +67,34 @@
 - [ ] but: first a section on single cell bio or so?
 
 ### 1.1 Workflow
-- [ ] workflow for what?
+- [x] workflow for what?
 - [ ] Viz before analysis? Own contrib earlier?
 
 #### 1.1.1 Lib prep and sequencing
 - [ ] fig 1.2 pretty, maybe unclear that you describe a process from top to bottom, with text being next step. caption however UNCLEAR. library prep in general? for scRNA-seq? also in fig unclear where within cell. dude, how about amplification? molecluar barcodes, UMIs? far too much missing
 
 #### 1.1.2 Counting
-- [ ] counting of what
+- [x] counting of what
 
 #### 1.1.3 Preprocessing
-- [ ] preproc of counts? batch etc?
+- [x] preproc of counts? batch etc?
 - [ ] a figure for eveything after count matrix may be nice?
 
 #### 1.1.4 Analysis
-- [ ] analysis of what
-- [ ] here would really make clear what pot questions could be, then enumerate analysis parts
+- [x] analysis of what
+- [ ] here would really make clear what pot. questions could be, then enumerate analysis parts
 - [ ] fig 1.4 somewhat nice, but give legend for arrows, add some refernces and say these things are artificial mostly. but: this is out of place in analysis, this should be in motivating bio questions in the single cell bio part in beginning, no? you'd need a fig for analysis etc
 
 #### 1.1.5 Visualization
-- [ ] really viz AFTER anaylsis? often first step
+- [x] really viz AFTER anaylsis? often first step
 - [ ] at end here you *write about own contrib* -> as reader I am waiting very much for this, then hidden within a detail expl chap -> this needs major reorganization see below
 
 #### 1.1.6 Custom-built pipelines
-- [ ] custom build vs what? dont get this
-- [ ] is this about frameworks? scripts?
+- [x] custom build vs what? dont get this
+- [x] is this about frameworks? scripts?
 
 #### 1.1.7 Frameworks
-- [ ] framework for scrnaseq analysis i guess (title of the overall sec is workflow hm)
+- [x] framework for scrnaseq analysis i guess (title of the overall sec is workflow hm)
 - [ ] for whole section above
   - [ ] you need to end with open challenges in the field that you will address
   - [ ] altogether intro very short and in particular misses biol big questions and then question you can address

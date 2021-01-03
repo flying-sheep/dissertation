@@ -78,7 +78,7 @@ Every graduate student and postdoctoral researcher had to start from scratch.
 The thesis at hand is a slice of the author’s continued efforts to change this.
 I improved interoperability and modularity of existing tools, pioneered technologies and software development processes in a research environment, and developed some of the missing building blocks for the resulting toolkit.
 
-\startsection[title={Workflow}]
+\startsection[title={Workflow for scRNA-Seq Data Processing}]
 % story: new challenges by single cell data; old way to deal with data (workflows) are not efficient → new approaches needed → me
 
 % Overview:Describe how the workflows work and why the aforementioned is important.
@@ -117,7 +117,7 @@ This includes e.\,g. unique molecular identifiers (UMIs), which allow to count e
 A second example is adding known quantities of RNA from a foreign organism (spike-in RNA) to each cell library, which later allows to correct for nonlinear per-cell biases in transcript counts \cite[lun2017b].
 \stopsubsection
 
-\startsubsection[title={Counting}]
+\startsubsection[title={Counting of transcripts or reads}]
 % 2. (reads → counts)
 Counting starts from the paired sequences read from both ends of a fragment (paired-end reads) or the 3′ end sequences (single-end reads).
 The read or read pair includes a cell barcode and possibly a UMI barcode
@@ -130,7 +130,7 @@ Those include \n{Cell Ranger} for the \n{10x Genomics} \n{Chromium} protocol \ci
 See also \insec[sec:bart-seq] for the counting process of the BART-Seq protocol.
 \stopsubsection
 
-\startsubsection[reference=sec:preprocessing, title={Preprocessing}]
+\startsubsection[reference=sec:preprocessing, title={Preprocessing of counts}]
 % 3. (counts → expressions)
 % generally \cite[luecken2018]: https://www.embopress.org/doi/10.15252/msb.20188746
 
@@ -173,8 +173,11 @@ However, \inlinecite[svensson2020] suggested that log-transforming data is a pos
 With single cell data specific transforms like \n{SCTransform} \cite[hafemeister2019], as well as embeddings like \n{scVI} \cite[lopez2018] or \n{GLM-PCA} \cite[townes2019], promising alternatives are emerging, despite them losing the log-fold interpretability.
 \stopsubsection
 
-\startsubsection[title={Analysis}]
+\startsubsection[title={Analysis of cellular dynamics, heterogeneity and gene roles}]
 % 4. uncover dynamics, heterogeneity structure, variable importance and role
+Analysts work interactively, with gradual insight gain shaping further steps.
+To this end, overview statistics and visualizations are employed from the earliest to the last steps of an analysis (see \insec[sec:visualization]).
+
 Analysis of single cell data generally focuses on uncovering previously unknown heterogeneity and its sources \cite[patel2014,poirion2016,angerer2017].
 The kind of heterogeneity to uncover depends on the kind of data available:
 the simplest case is discrimination between discrete subpopulations of few clearly different cell types.
@@ -223,7 +226,7 @@ As an example, RNA velocity indicates the direction in which cells differentiate
 It is reconstructed from the relation of spliced and unspliced mRNA \cite[lamanno2018].
 \stopsubsection
 
-\startsubsection[title={Visualization}]
+\startsubsection[reference=sec:visualization, title={Visualization as Analysis steps and result}]
 % 5. (results often too complex to understand as numbers)
 % talk about dim red here and the fact that it’s hard to reason about how the input variables relate back to output – make path for GR coming to the rescue
 \startplacefigure[reference=fig:embeddings, title={
@@ -253,7 +256,7 @@ My specific contributions can be placed in the framework provided by the above o
 While I worked on every computational step of the process except for alignment, my contributions are focused on steps involving a count matrix.
 To provide further context for my work, I would like to outline the relevant changes in the process of scRNA-Seq analysis in the following sections.
 
-\startsubsection[title={Custom-built Pipelines}]
+\startsubsection[title={Ad-hoc Analysis Pipelines before Frameworks}]
 % pipelines used scripts and binaries to proceed between snapshots
 The steps necessary to reproduce the preprocessing and analysis of a publication are bundled in an executable bundle of scripts called a pipeline.
 Depending on the performance of the tools performing the individual steps, it is desirable to regularly store files representing a processing state from which to continue in case of errors, called a snapshot.
@@ -286,7 +289,7 @@ The popularity of nonlinear dimensionality reductions meant that there was a gap
 DE requires discrete partitioning of the data, which is not well defined for data containing gradual transition of gene expression profiles between cells, and has the aforementioned issues with uncertainty propagation.
 \stopsubsection
 
-\startsubsection[title={Frameworks}]
+\startsubsection[title={Frameworks for modular scRNA-Seq Analysis Pipelines}]
 \startplacefigure[reference=fig:anndata, title={
 \n{AnnData} is structured around a central stack of variable × observation matrices (layers) and a hierarchy of unstructured annotations.
 Each dimension, variables and observations, can be annotated with vectors (1D), matrices (2D) and graphs (2D, square matrices).
