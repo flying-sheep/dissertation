@@ -1,6 +1,19 @@
 Enabling technologies for visualization and analysis of single cell RNA-Seq data
 ================================================================================
 
+Build in docker:
+
+```bash
+docker build -t dissertation .
+docker run -it -v "$PWD:/home/me" dissertation
+```
+
+Build locally (needs all kinds of Python and R stuff)
+
+```bash
+snakemake prd_dissertation.mkiv
+```
+
 - https://www.gzw.wzw.tum.de/abschluss-der-promotion/
 
 Local Resources
