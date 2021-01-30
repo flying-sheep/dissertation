@@ -21,3 +21,8 @@
 # Temp stuff
 .ipynb_checkpoints/
 .snakemake/
+
+# When mounting as ~
+/.ipython/
+/.jupyter/
+/.cache/

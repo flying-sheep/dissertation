@@ -1,5 +1,8 @@
+IRkernel
 import
 destiny
 tidyverse
 cowplot
 ggthemes
+ggplot.multistats
+feather
