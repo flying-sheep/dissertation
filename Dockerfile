@@ -75,7 +75,7 @@ RUN R -s -q --no-save -e 'options(warn=2); install.packages("devtools")'
 RUN R -s -q --no-save -e 'options(warn=2); devtools::install_github("theislab/destiny", upgrade = FALSE)'
 
 # Modules & Fonts
-RUN apt install -y rsync bibtool
+RUN apt install -y rsync bibtool entr
 RUN rsync -rltv --del rsync://contextgarden.net/minimals/current/modules/ /usr/share/tex/texmf-modules
 RUN context --generate
 RUN python3 -m ipykernel install --name dissertation --display-name='Python (diss)'
@@ -85,4 +85,5 @@ RUN R -s -q --no-save -e 'IRkernel::installspec(user = FALSE)'
 RUN useradd -ms /bin/bash me
 WORKDIR /home/me
 USER me
-CMD [ "snakemake", "-j", "4", "prd_dissertation.pdf" ]
+#CMD [ "snakemake", "-j", "4", "prd_dissertation.pdf" ]
+CMD snakemake --detailed-summary -j1 | cut -f 6 | tail -n +2 | tr ',' '\n' | entr snakemake -j 4 prd_dissertation.pdf
