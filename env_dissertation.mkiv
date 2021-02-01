@@ -133,6 +133,8 @@
 \setupbtx[default:cite][alternative=authoryear] % default so the shortcut \cite[ref] can be used
 \usebtxdefinitions[apa] % load apa styles for bib entry and \cite rendering
 \setupbtx[apa:cite][otherstext={ et al.}, etallimit=3]
+\setupbtx[apa:list][etallimit=, etaldisplay=]
+
 \definebtxrendering[main][apa][dataset=main, pagestate=start] % define a bib entry rendering to use with \placebtxrendering (sorting, numbering=no, …)
 % \newbibfield[timestamp]
 % \setuppublicationlayout[electronic]{%
