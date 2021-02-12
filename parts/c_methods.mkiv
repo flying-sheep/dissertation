@@ -100,11 +100,13 @@ A PCA embedding $s_{pc}$ can be defined in multiple ways, one of which is based 
 Z = \left(z_{gc}\right) = \left( x_{gc} - \frac1C ∑_{c=1}^C x_{gc} \right)
 \stopformula
 
-After performing a singular component decomposition $Z = USV^T$, the embedding $s_{pc}$ can be defined as:
+Singular value decomposition is a factorization of the matrix $Z = UΣV^T$,
+where $U^TU=I_g$, $V^TV=I_c$, and $Σ$ is a $g×c$ diagonal matrix with all entries $∈\blackboard{N}_0$.
+The embedding $s_{pc}$ can be defined in terms of the left singular vectors $U$ and the singular value matrix $Σ$:
 
 \placeformula
 \startformula
-s_{pc} = S = (US)^T
+\left(s_{pc}\right) = S = (UΣ)^T
 \stopformula
 
 As each PC ideally represents one source of variation, data with up to around four linearly separable sources of variation can realistically be interpreted using all PC combinations as coordinates for a series of 2D scatter plots.

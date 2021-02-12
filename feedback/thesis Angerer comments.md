@@ -117,12 +117,12 @@
 ## 2 Methods
 - [ ] intro missing before you dive into each topic. goal of this chap? methods, background, own contributions? reads like a random mixture to me
 - [ ] also if this is methods, where is the results chapter?
-- [ ] maybe give some example or data set to visualize? imagine you presented this as a talk -> this would never work to just directly talk about dim red, diff map etc without illustrating a big data set and what you'd look for in that.
+- [ ] maybe give some example or data set to visualize? imagine you presented this as a talk → this would never work to just directly talk about dim red, diff map etc without illustrating a big data set and what you'd look for in that.
 
 ### 2.1 Dimensionality Reduction
 #### Spectral Decompposition
 ##### 2.1.1.1
-- [ ] SVD not defined (U,S,V)
+- [x] SVD not defined (U,S,V)
 - [ ] when talking about extensions of that in our field, please *by all means* cite our own things at least. I expect you to know these and will ask. eg. Buettner GLM with missing values etc
 
 ##### 2.1.1.2
@@ -158,7 +158,7 @@
 - [ ] in particular though does not tie to above; and not clear how comp parts are in there, and what your contrib is.
 
 ## 3 Conclusion
-- [ ] should be concl + outlook (which is what you do anyway)
+- [x] should be concl + outlook (which is what you do anyway)
 - [ ] please go over typos, here capitalization in first sentence
 - [ ] often people include a least short summary
 - [ ] "My contributions towards more reproducible, scalable and interconnectible scientific programming have helped these changes along." -> sounds very differnt from what you wrote before
@@ -168,7 +168,7 @@
 - [ ] multi-layer/omics add too? ah, 3.3 ok :)
 
 ### 3.2 New Dimensions of scanpy Scalability
-- [ ] VERY GOOD, this plays into your strengths. please expand a bit and give clear adivce, we could all profit. draw links to professional softw developement?
+- [ ] VERY GOOD, this plays into your strengths. please expand a bit and give clear advice, we could all profit. draw links to professional software developement?
 
 ### 3.3 Multimodal Scanpy and AnnData
 - [ ] very good, swap with 3.2?
