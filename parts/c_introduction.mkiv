@@ -424,6 +424,7 @@ Beyond processing count matrices, I also contributed to a new, targeted RNA-Seq 
 It is set apart from untargeted single cell and bulk RNA-Seq protocols due to its high sensitivity and low cost.
 BART-Seq tags each of its samples, which can be single cells groups of multiple cells, with a pair of computationally designed barcodes.
 Their combination allows to distinguish high numbers of samples while sensitively measuring the specified target amplicons, such as expressed genes.
+An advantage of the predictable barcoding over randomized barcodes is that sample identity is maintained, allowing for arbitrarily much information attached to each sample of a single batch, such as treatment labels.
 I designed a demultiplexing and counting strategy for BART-Seq together with Fatma Uzbas and Micha Drucker (see \insec[sec:bart-seq]).
 I implemented those strategies as well as visualization routines for the protocol as a Python package.
 Part of this package is the BART-Seq equivalent to \n{Cell Ranger} or \n{zUMIs}:

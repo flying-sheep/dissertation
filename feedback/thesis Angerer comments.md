@@ -27,7 +27,7 @@
 
 - [x] "disease and development research" unclear; maybe more explicit example?
 
-- [x] combinatoric options - explain; also sounds as if you pitch for best practice/optimal workflow, which is *not* your goal -> adapt to your contrib
+- [x] combinatoric options - explain; also sounds as if you pitch for best practice/optimal workflow, which is *not* your goal → adapt to your contrib
 
 - [x] you say what you do, but did not motivate why? in contrary you say there are so many analysis things, and we also did s.t....
 
@@ -58,10 +58,10 @@
 
 ## 1 Introduction
 - [ ] See summary for Abstract re: focus
-- [ ] "Every aspect of existence" -> of OUR exist
+- [ ] "Every aspect of existence" → of OUR exist
 - [ ] not sure central dogma super necessary in BIOinf thesis, but i guess ok
 - [ ] add some viz for HCA? even just overview of state from webpage or rview?
-- [x] text on examples etc good -> please be CAREFUL that you don't do copy&paste from own papers and reviews *without* citation.
+- [x] text on examples etc good → please be CAREFUL that you don't do copy&paste from own papers and reviews *without* citation.
 - [ ] add a subsec
 - [ ] say eg. something on analysis or so
 - [ ] but: first a section on single cell bio or so?
@@ -87,7 +87,7 @@
 
 #### 1.1.5 Visualization
 - [x] really viz AFTER anaylsis? often first step
-- [ ] at end here you *write about own contrib* -> as reader I am waiting very much for this, then hidden within a detail expl chap -> this needs major reorganization see below
+- [ ] at end here you *write about own contrib* → as reader I am waiting very much for this, then hidden within a detail expl chap → this needs major reorganization see below
 
 #### 1.1.6 Custom-built pipelines
 - [x] custom build vs what? dont get this
@@ -147,7 +147,7 @@
 ### 2.3 Scanpy
 - [ ] scanpy, say s.y.a about its popularity
 - [ ] what's diff to intro, like more detail here?
-- [ ] fig 2.3 -> what's the question, the data, the result? not only how but you need to motivate. remember, you submit to WZW faculty, they want to have some of this
+- [ ] fig 2.3 → what's the question, the data, the result? not only how but you need to motivate. remember, you submit to WZW faculty, they want to have some of this
 
 #### 2.3.3 Visualization
 - [ ] ties into diffmaps?
@@ -161,7 +161,7 @@
 - [x] should be concl + outlook (which is what you do anyway)
 - [ ] please go over typos, here capitalization in first sentence
 - [ ] often people include a least short summary
-- [ ] "My contributions towards more reproducible, scalable and interconnectible scientific programming have helped these changes along." -> sounds very differnt from what you wrote before
+- [ ] "My contributions towards more reproducible, scalable and interconnectible scientific programming have helped these changes along." → sounds very differnt from what you wrote before
 
 ### 3.1 Multiresolution scRNA-Seq Analysis
 - [ ] multi-rez? really? don't understand what you mean, can you define?
