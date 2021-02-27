@@ -2,6 +2,13 @@
 
 "Enabling technologies for visualization and analysis of single cell RNA-Seq data"
 
+## Restructuring
+
+maybe fuse summaries / own contribs and integrate sections that confused fabian like
+
+- 2.4 BART-Seq
+- 2.1.3 Gene Relevance
+
 **summary**: good, quite some orga work to be done.
 
 - [ ] rephrase and focus needed. see 3rd, 4th, last points in own contributions:
@@ -108,7 +115,7 @@
 - [ ] I was hoping for this earlier, in particular because it was intertwined in above a bit already
 - [ ] motivation missing though
 - [ ] CRUCIAL: what is your question? you only describe the WHAT+HOW you do things, but not at all the WHY? motivation to assess relevance *totally* unclear. even worse, in 2nd sentence you say, oh btw., i also analyzed sizes of data sets. this is the core thing of your 4year phd work? 
-- [ ] you really need to spend some time on this and exactly state what your goal is, altogether and then in each of the 3 (or 4?) projects, and then what is state of the art and in particular missing (above you described SOTA already INCLUDING your contributions) and therefore what your contrib is (see abstract comments)
+- [ ] you really need to spend some time on this and exactly state what your goal is, altogether and then in each of the 3 (or 4?) projects, and then what is state of the art and in particular missing (above you described SOTA already INCLUDING your contributions) and therefore what your contribution is (see abstract comments)
 - [ ] also tie things together. why the bar-seq? because you had tools to show all this and can use as PoC
 - [ ] often (check other theses) students also shortly write about/summarize other projects they contributed to but do not put into thesis, this is useful and I would recommend this. just looked at rules again from WZW, here you miss points 4 and 5 - 1 page summary for each paper with particular highlighting of your contrib, and 5 inclusion of those papers etc. see WZW
   - [ ] this needs quite some additional work, and I kindly ask you to go over this with Carsten first and then give me short answer to points done ok? thanks!
@@ -137,7 +144,7 @@
   - [x] because it’s a denoising method, not embedding, but I added it anyway.
 
 #### 2.1.3 Gene Relevance
-- [ ] how does this fit at all to rest, hmm. this is now your own contrib part, right 
+- [ ] how does this fit at all to rest, hmm. this is now your own contribution part, right 
 - [ ] fig 2.2 badly inlined; data not explained. question not motivated. not clear what I learn from this. this has a lot of issues, please help reader here.
 - [ ] something on implementation?
 
