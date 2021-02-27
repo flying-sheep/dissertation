@@ -3,7 +3,7 @@
 
 \startchapter[reference=conclusion, title={Conclusion and Outlook}]
 
-Within few years, Single cell RNA-Seq has grown to an extensive and active field of science, with new trends and opportunities.
+Within few years, single cell RNA-Seq has grown to an extensive and active field of science, with new trends and opportunities.
 The largest current challenges are the ever-growing dataset sizes, and the integration of different kinds of data \cite[angerer2017,nmeth2020].
 Going up to hundreds of thousands of cells, the data allows us to abandon the notion of discrete cell types and to explore the continuous processes at play.
 Destiny \cite[angerer2016] and the gene relevance method presented in this thesis prove to be valuable contributions in this direction.
@@ -29,25 +29,6 @@ But while they capture both continuity and heterogeneity at multiple resolutions
 Methods like the growing multitude of trajectory inference algorithms or gene relevance complement them within the same constraint \cite[saelens2019].
 Of all methods known to the author, only \n{PAGA} so far distinctively dissects continuous multiresolution heterogeneity \cite[wolf2019].
 To analyze this foundational attribute of cellular processes, a multiresolution variant of gene relevance would be of great use.
-\stopsection
-
-\startsection[title={New Dimensions of \n{scanpy} Scalability}]
-\n{Scanpy} has proven to be scalable in terms of CPU and memory through its efficient implementation, multiprocessing capabilities and \n{AnnData}’s disk-backed mode.
-For a successful open source project, more is necessary than just performance and ease of use.
-Open source projects need to be scalable in terms of maintainers and trust \cite[delaat2010].
-
-% Scanpy community building
-
-%TODO: https://docs.google.com/document/d/1RtOWhoNqCU8mr_AheZdLOLVOyjEHHeBpE88e2KYsbG4/edit?ts=60374090#
-The next steps of the \n{scanpy} project in this regard will focus on community building.
-To foster openness and inclusivity, \n{scanpy} will adopt a code of conduct (CoC).
-CoCs have been shown to increase diversity in a project, while higher diversity is linked to increased productivity \cite[tourani2017].
-To uncouple progress with the available amount of free time of the de-facto decision makers of the project, a steering committee will be formed.
-Its membership will be open to long-term contributors, and its meeting notes publicly available.
-Automations for quality and performance criteria, such as \n{scanpy}’s high performance GPU-driven parts, similarly streamline the contribution process and will be extended.
-This will make friendly and helpful information available regardless of the available free time of experienced contributors.
-Additionally, inclusion criteria of external tools to the scanpy website and the \type{scanpy.external} module will be formalized and made transparent.
-Communication channels with the main projects of the R world are already established and will continue to be used to ensure interoperability.
 \stopsection
 
 \startsection[title={Multimodal \n{scanpy} and \n{AnnData}}]
@@ -96,6 +77,25 @@ Existing workflows and libraries that use the current version of \n{AnnData}, li
 The combination of different data types within a single experiment enabled unprecedented insight into disease.
 Extending \n{AnnData} and \n{Scanpy} for joint analysis of spatial location and scRNA-Seq data promises to bring their ergonomic benefits and performance to histologic patient data analysis.
 
+\stopsection
+
+\startsection[title={New Dimensions of \n{scanpy} Scalability}]
+\n{Scanpy} has proven to be scalable in terms of CPU and memory through its efficient implementation, multiprocessing capabilities and \n{AnnData}’s disk-backed mode.
+For a successful open source project, more is necessary than just performance and ease of use.
+Open source projects need to be scalable in terms of maintainers and trust \cite[delaat2010].
+
+% Scanpy community building
+
+%TODO: https://docs.google.com/document/d/1RtOWhoNqCU8mr_AheZdLOLVOyjEHHeBpE88e2KYsbG4/edit?ts=60374090#
+The next steps of the \n{scanpy} project in this regard will focus on community building.
+To foster openness and inclusivity, \n{scanpy} will adopt a code of conduct (CoC).
+CoCs have been shown to increase diversity in a project, while higher diversity is linked to increased productivity \cite[tourani2017].
+To uncouple progress with the available amount of free time of the de-facto decision makers of the project, a steering committee will be formed.
+Its membership will be open to long-term contributors, and its meeting notes publicly available.
+Automations for quality and performance criteria, such as \n{scanpy}’s high performance GPU-driven parts, similarly streamline the contribution process and will be extended.
+This will make friendly and helpful information available regardless of the available free time of experienced contributors.
+Additionally, inclusion criteria of external tools to the scanpy website and the \type{scanpy.external} module will be formalized and made transparent.
+Communication channels with the main projects of the R world are already established and will continue to be used to ensure interoperability.
 \stopsection
 
 \stopchapter

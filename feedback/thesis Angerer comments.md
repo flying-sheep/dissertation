@@ -58,8 +58,8 @@
 
 ## 1 Introduction
 - [ ] See summary for Abstract re: focus
-- [ ] "Every aspect of existence" → of OUR exist
-- [ ] not sure central dogma super necessary in Bioinformatics thesis, but i guess OK
+- [x] "Every aspect of existence" → of OUR exist
+- [x] not sure central dogma super necessary in Bioinformatics thesis, but i guess OK
 - [ ] add some viz for HCA? even just overview of state from web page or review?
 - [x] text on examples etc good → please be CAREFUL that you don't do copy&paste from own papers and reviews *without* citation.
 - [ ] add a subsection
@@ -112,7 +112,7 @@
 - [ ] also tie things together. why the bar-seq? because you had tools to show all this and can use as PoC
 - [ ] often (check other theses) students also shortly write about/summarize other projects they contributed to but do not put into thesis, this is useful and I would recommend this. just looked at rules again from WZW, here you miss points 4 and 5 - 1 page summary for each paper with particular highlighting of your contrib, and 5 inclusion of those papers etc. see WZW
   - [ ] this needs quite some additional work, and I kindly ask you to go over this with Carsten first and then give me short answer to points done ok? thanks!
-- [ ] I though the cumulative thesis also needs contribution to papers and your own contributions. should this be here in intro already? usually separate chapter (e.g. with Laleh). please please please by all means look at other theses and talk with currently finished PhDs, OK? thanks!
+- [x] I though the cumulative thesis also needs contribution to papers and your own contributions. should this be here in intro already? usually separate chapter (e.g. with Laleh). please please please by all means look at other theses and talk with currently finished PhDs, OK? thanks!
 
 ## 2 Methods
 - [ ] intro missing before you dive into each topic. goal of this chap? methods, background, own contributions? reads like a random mixture to me
@@ -131,13 +131,15 @@
 
 #### 2.1.2 Learned Embeddings
 - [ ] what is difference of learned embedding to say PCA? of course there is a "learning" formulation of PCA too. this differentiation you try to make up does not exist, adapt
+  - [ ] → distinguish between deterministic and nondeterministic ones
 - [ ] add a few nonlinear ones I guess
-- [ ] and again, you bloody cite scVI but not Gokcen's DCA? why?
+- [x] and again, you bloody cite scVI but not Gokcen's DCA? why?
+  - [x] because it’s a denoising method, not embedding, but I added it anyway.
 
 #### 2.1.3 Gene Relevance
 - [ ] how does this fit at all to rest, hmm. this is now your own contrib part, right 
 - [ ] fig 2.2 badly inlined; data not explained. question not motivated. not clear what I learn from this. this has a lot of issues, please help reader here.
-- [ ] s..t on implementation?
+- [ ] something on implementation?
 
 ### 2.2 AnnData
 - [ ] is there publication for this? shouldn’t you for cumulative contribution chapter do this? i guess separate one, so this is method used below
@@ -153,13 +155,18 @@
 - [ ] ties into diffmaps?
 
 ### 2.4 BART-Seq
-- [ ] in general: need to add 1 page summaries + own contribution as extra section. please check other theses
-- [ ] this is brief, describes method, but does not give any result (maybe ok for this section though)
+- [x] in general: need to add 1 page summaries + own contribution as extra section. please check other theses
+- [ ] this is brief, describes method, but does not give any result (maybe OK for this section though)
 - [ ] in particular though does not tie to above; and not clear how comp parts are in there, and what your contribution is.
 
 ## 3 (new) Summary of papers
 
-- [ ] write them
+- [ ] Destiny: Diffusion maps for large-scale single-cell data in R.
+- [ ] Single cells make big data: New challenges and opportunities in transcriptomics.
+- [ ] SCANPY: large-scale single-cell gene expression data analysis.
+- [ ] BART-Seq: cost-effective massively parallelized targeted sequencing for genomics, transcriptomics, and single-cell analysis
+- [ ] Automatic identification of relevant genes from low-dimensional embeddings of single-cell
+  RNA-seq data
 
 ## 3 Conclusion
 - [x] should be conclusion + outlook (which is what you do anyway)
@@ -169,13 +176,15 @@
 
 ### 3.1 Multi-resolution scRNA-Seq Analysis
 - [ ] multi-res? really? don't understand what you mean, can you define?
-- [ ] multi-layer/omics add too? ah, 3.3 OK :)
-
-### 3.2 New Dimensions of Scanpy Scalability
-- [ ] VERY GOOD, this plays into your strengths. please expand a bit and give clear advice, we could all profit. draw links to professional software development?
+- [x] multi-layer/omics add too? ah, 3.3 OK :)
 
 ### 3.3 Multi-modal Scanpy and AnnData
-- [ ] very good, swap with 3.2?
+- [x] very good, swap with 3.2?
 - [ ] Nature Method of year, nice! add the 2013 one to intro, though.
 - [ ] extend a bit, some timeline?
 - [ ] something on how community can address?
+
+### 3.2 New Dimensions of Scanpy Scalability
+
+- [x] VERY GOOD, this plays into your strengths.
+- [ ] please expand a bit and give clear advice, we could all profit. draw links to professional software development?
