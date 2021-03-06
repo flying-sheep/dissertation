@@ -12,6 +12,16 @@
     dna/.style={line width=3mm, -{Triangle[length=1em, width=1.75em]}},
     rna/.style={dna, color=red},
     seq/.style={line width=1pt},
+    step arrow/.style={
+        name=#1,
+        inner sep=0,
+        text height=1.5ex,
+        text depth=.25ex,
+        append after command={
+            (#1) ++(0, 2mm) edge     ++(0,  2mm)
+            (#1) ++(0,-2mm) edge[->] ++(0, -2mm)
+        },
+    },
 ]
 
 % headers
@@ -30,19 +40,19 @@
 
 %transitions
 \fill[path fading=south, top color=black, bottom color=red, opacity=.1] (0, 0) rectangle (10, 1);
-\node at (5, .5) {transcription};
+\node[step arrow=transcription] at (4.5, .5) {transcription};
 \fill[red, opacity=.1]
     (0, 1.1) rectangle ++(4, .8)
     (5, 1.1) -- ++(2, 0) -- ++(-1, .8) -- ++(-2, 0) -- cycle
     (7.5, 1.1) -- ++(2.5, -.1) -- ++(-1.5, 1) -- ++(-2.5, -.1) -- cycle
 ;
-\node at (4.5, 1.5) {splicing};
-\node at (4.5, 2.5) {fragmentation};
-\node at (4.5, 3.5) {reverse transcription};
-\node at (4.5, 4.5) {cell barcoding};
-\node at (4.5, 5.5) {high-throughput sequencing};
-\node at (4.5, 6.5) {genome mapping};
-\node at (4.5, 8) {quantification};
+\node[step arrow=splicing] at (4.5, 1.5) {splicing};
+\node[step arrow=fragmentation] at (4.5, 2.5) {fragmentation};
+\node[step arrow=reverse transcription] at (4.5, 3.5) {reverse transcription};
+\node[step arrow=cell barcoding] at (4.5, 4.5) {cell barcoding};
+\node[step arrow=ht seq] at (4.5, 5.5) {high-throughput sequencing};
+\node[step arrow=genome mapping] at (4.5, 6.5) {genome mapping};
+\node[step arrow=quantification] at (4.5, 8) {quantification};
 
 % sequences
 \draw[dna, -, path fading=middle] (-1.5, 0) -- (10.5, 0);
