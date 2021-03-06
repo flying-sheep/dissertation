@@ -15,7 +15,7 @@ maybe fuse summaries / own contribs and integrate sections that confused fabian 
   - [x] CRUCIAL: what is your question? you only describe the WHAT+HOW you do things, but not at all the WHY? motivation to assess relevance *totally* unclear.
   - [x] you really need to spend some time on this and exactly state what your **goal** is, **altogether** and then in **each of the 3 (or 4?) projects**, and then what is **state of the art** (without own contributions) and in particular missing and therefore what your **contribution** is (see abstract comments)
   - [x] summaries of papers and contributions to papers (check how Laleh did it)
-    - [ ] first status quo, then “1.3 Geometric diffusions approach for cluster analysis and pseudo-time ordering of single-cell differentiation data”, then paper summaries
+    - [ ] first status quo, then “1.3 Geometric diffusions approach for cluster analysis and pseudo-time ordering of single cell differentiation data”, then paper summaries
 - [ ] really play on your strengths, say data exploding in scRNA-Seq, hence need for good well implemented SOFTWARE, not only theory methods. this is where you excel.
 - [ ] title, not sure, what are "enabling technologies". usually high-level summary term, why needed here? analysis is super broad, what type of analysis? 
 
@@ -79,7 +79,7 @@ maybe fuse summaries / own contribs and integrate sections that confused fabian 
 
 #### 1.1.1 Lib prep and sequencing
 - fig 1.2: pretty!
-  - [ ] maybe unclear that you describe a process from top to bottom, with text being next step.
+  - [x] maybe unclear that you describe a process from top to bottom, with text being next step.
   - [ ] caption UNCLEAR. library prep in general? for scRNA-seq?
   - [ ] in fig unclear where within cell
   - [ ] dude, how about amplification? molecular barcodes, UMIs? far too much missing
@@ -172,12 +172,11 @@ maybe fuse summaries / own contribs and integrate sections that confused fabian 
 
 ## 3 (new) Summary of papers
 
-- [ ] Destiny: Diffusion maps for large-scale single-cell data in R.
+- [ ] Destiny: Diffusion maps for large-scale single cell data in R.
 - [ ] Single cells make big data: New challenges and opportunities in transcriptomics.
-- [ ] SCANPY: large-scale single-cell gene expression data analysis.
-- [ ] BART-Seq: cost-effective massively parallelized targeted sequencing for genomics, transcriptomics, and single-cell analysis
-- [ ] Automatic identification of relevant genes from low-dimensional embeddings of single-cell
-  RNA-seq data
+- [ ] SCANPY: large-scale single cell gene expression data analysis.
+- [ ] BART-Seq: cost-effective massively parallelized targeted sequencing for genomics, transcriptomics, and single cell analysis
+- [ ] Automatic identification of relevant genes from low-dimensional embeddings of single cell RNA-seq data
 
 ## 3 Conclusion
 - [x] should be conclusion + outlook (which is what you do anyway)

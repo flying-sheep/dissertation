@@ -3,10 +3,22 @@
 \usetikzlibrary[decorations.pathreplacing]
 
 \tikzfading[name=middle, left color=transparent!100, right color=transparent!100, middle color=transparent!0]
+\definecolor[tab:1][x=1f77b4]\definecolor[tab:blue][tab:1]
+\definecolor[tab:2][x=ff7f0e]\definecolor[tab:orange][tab:2]
+\definecolor[tab:3][x=2ca02c]\definecolor[tab:green][tab:3]
+\definecolor[tab:4][x=d62728]\definecolor[tab:red][tab:4]
+\definecolor[tab:5][x=9467bd]\definecolor[tab:purple][tab:5]
+\definecolor[tab:6][x=8c564b]\definecolor[tab:brown][tab:6]
+\definecolor[tab:7][x=e377c2]\definecolor[tab:pink][tab:7]
+\definecolor[tab:8][x=7f7f7f]\definecolor[tab:gray][tab:8]
+\definecolor[tab:9][x=bcbd22]\definecolor[tab:olive][tab:9]
+\definecolor[tab:10][x=17becf]\definecolor[tab:cyan][tab:10]
+
 \starttikzpicture[
     y=-1.5cm,
     header/.style={rotate=90, anchor=south},
     headbrace/.style={decorate, decoration={brace, mirror}},
+    legend/.style={line width=2mm},
     desc/.style={anchor=east, color=black},
     abc/.style={desc, font=\bf, xshift=-.5mm},
     dna/.style={line width=3mm, -{Triangle[length=1em, width=1.75em]}},
@@ -25,38 +37,46 @@
 ]
 
 % headers
-\draw[headbrace] (-3.5, -.2)
+\draw[headbrace] (-4.7, -.2)
     node[abc] {a} --
     node[header] {in-vivo}
     ++(0, 2.4);
-\draw[headbrace] (-3.5, 2.8)
+\draw[headbrace] (-4.7, 2.8)
     node[abc] {b} --
     node[header] {in-vitro}
-    ++(0, 3.4);
-\draw[headbrace] (-3.5, 6.8)
+    ++(0, 4.4);
+\draw[headbrace] (-4.7, 7.8)
     node[abc] {c} --
     node[header] {in-silico}
     ++(0, 3.4);
 
+% Legend
+\path (-3.6, -.2) edge[legend, draw=tab:olive] node[header] {per cell} ++ (0, 6.4);
+\path (-3.6, 6.3) edge[legend, draw=tab:gray] node[header] {per library} ++ (0, 4.9);
+
 %transitions
 \fill[path fading=south, top color=black, bottom color=red, opacity=.1] (0, 0) rectangle (10, 1);
-\node[step arrow=transcription] at (4.5, .5) {transcription};
+\node[step arrow=tscn] at (4.5, .5) {transcription};
 \fill[red, opacity=.1]
     (0, 1.1) rectangle ++(4, .8)
     (5, 1.1) -- ++(2, 0) -- ++(-1, .8) -- ++(-2, 0) -- cycle
     (7.5, 1.1) -- ++(2.5, -.1) -- ++(-1.5, 1) -- ++(-2.5, -.1) -- cycle
 ;
-\node[step arrow=splicing] at (4.5, 1.5) {splicing};
-\node[step arrow=fragmentation] at (4.5, 2.5) {fragmentation};
-\node[step arrow=reverse transcription] at (4.5, 3.5) {reverse transcription};
-\node[step arrow=cell barcoding] at (4.5, 4.5) {cell barcoding};
-\node[step arrow=ht seq] at (4.5, 5.5) {high-throughput sequencing};
-\node[step arrow=genome mapping] at (4.5, 6.5) {genome mapping};
-\node[step arrow=quantification] at (4.5, 8) {quantification};
+\node[step arrow=spng] at (4.5, 1.5) {splicing};
+\node[step arrow=fgmn] at (4.5, 2.5) {fragmentation};
+\node[step arrow=rvtn] at (4.5, 3.5) {reverse transcription};
+\node[step arrow=cbcg] at (4.5, 4.5) {cell barcoding (& optionally UMIs)};
+\node[step arrow=mplp] at (4.5, 5.5) {amplification & library preparation};
+\node[step arrow=htsq] at (4.5, 6.5) {high-throughput sequencing};
+\node[step arrow=gnmg] at (4.5, 7.5) {genome mapping};
+\node[step arrow=qntn] at (4.5, 9  ) {quantification};
 
-% sequences
+% Graphics
+
+%DNA
 \draw[dna, -, path fading=middle] (-1.5, 0) -- (10.5, 0);
 \draw[dna] (0, 0) node[desc] {gene on genome} -- (10, 0);
+%RNA
 \draw[rna]
     (0, 1) node[desc] {pre-mRNA} -- ++(4, 0)
     ++(1, 0) -- ++(2, 0)
@@ -67,42 +87,60 @@
     ++(2, 0) -- ++(2.5, 0)
 ;
 \draw[rna] (0, 2) node[desc] {mRNA} -- ++(8.5, 0);
-%fragments
+%Fragments (RNA, cDNA & sequences)
 \foreach \style/\y/\desc in {
     rna/3/{RNA fragments},
     dna/4/cDNA,
     dna/5/{tagged cDNA},
-    seq/6/sequences
+    dna/6/{prepared cDNA},
+    seq/7/sequences
 }{
     \node[desc] at (0, \y) {\desc};
     \draw[\style]
-         (.15,\y) node (a) {} -- ++(2, 0)
-        ++(.3, 0) node (b) {} -- ++(1.8, 0)
-        ++(.3, 0) node (c) {} -- ++(1, 0)
-        ++(.3, 0) node (d) {} -- ++(2.3, 0)
-        ++(.3, 0) node (e) {} -- ++(1.4, 0)
+         (.25,\y) node (a) {} -- ++(1.8, 0)
+        ++(.5, 0) node (b) {} -- ++(1.6, 0)
+        ++(.5, 0) node (c) {} -- ++(0.8, 0)
+        ++(.5, 0) node (d) {} -- ++(2.1, 0)
+        ++(.5, 0) node (e) {} -- ++(1.2, 0)
     ;
-    \doifinstringelse{5}{\y}{
+    \path (e) ++(1.6, 0) coordinate (end);
+    \doifcommon{5,6}{\y}{
         \foreach \coo in {a,b,c,d,e} {
-            \filldraw[draw=black, fill=white] (\coo) ++(0, -1.5mm+.25pt) rectangle ++(-1.5mm, 3mm-.5pt);
+            \fill[fill=tab:olive] (\coo) ++( 0mm, -1.5mm) rectangle ++(-1mm, 3mm);
+        }
+        \foreach \coo [count=\c] in {a,b,c,d,e} {
+            \fill[fill=tab:\c] (\coo) ++(-1mm, -1.5mm) rectangle ++(-1mm, 3mm);
+        }
+    }{}
+    \doifcommon{6}{\y}{
+        \foreach \coo in {a,b,c,d,e} {
+            \fill[fill=tab:gray] (\coo) ++(-2mm, -1.5mm) rectangle ++(-1mm, 3mm);
+        }
+        \foreach \coo in {b,c,d,e,end} {
+            \fill[fill=tab:gray] (\coo) ++(-4mm, -1.5mm) rectangle ++(-1mm, 3mm);
         }
     }{}
 }
-% alignment
+%Alignment
+\startscope[yshift=-12.75cm]  % 8.5 · -1.5
 \foreach \x/\len/\nrep in {0/4/6, 5/2/3, 8/1/4} {
     \foreach \y in {1,...,\nrep} {
         \draw[seq, dash pattern=on 20pt off 2pt on 18pt off 10pt on 10pt off 2pt on 23pt off 5pt on 14pt off 8pt]
-            (\x, 7.5-0.\y) edge[dash phase=random*100pt] ++(\len, 0);
+            (\x, -0.\y) edge[dash phase=random*100pt] ++(\len, 0);
     }
 }
-\draw[seq, -, path fading=middle] (-1.5, 7.5) -- (10.5, 7.5);
-\node[desc] at (0, 7.25) {alignment};
-% quantification
-\draw (0, 8.5) grid[step=1.5mm] (9, 10);
-\fill[white] (3.755, 8.505) rectangle (5.244, 8.796);
-\node[anchor=north] at (4.5, 8.47) {genes→};
-\fill[white] (.007, 8.805) rectangle (.444, 9.696);
-\node[anchor=north, rotate=90] at (-.1, 9.25) {cells→};
-\node[desc] at (0, 9.25) {count matrix};
+%\draw[seq, -, path fading=middle] (-1.5, 0) -- (10.5, 0);
+\draw[seq, -] (-1.5, 0) -- (10.5, 0);
+\node[desc] at (0, -0.25) {alignment};
+\stopscope
+%Quantification
+\startscope[yshift=-14.25cm]  % 9.5 · -1.5
+\draw (0, 0) grid[step=1.5mm] ++(9, 1.5);
+\fill[white] (3.755, 0.005) rectangle (5.244, 0.296);
+\node[anchor=north] at (4.5, -0.03) {genes→};
+\fill[white] (.007, 0.305) rectangle (.444, 1.196);
+\node[anchor=north, rotate=90] at (-.1, 0.75) {cells→};
+\node[desc] at (0, 0.75) {count matrix};
+\stopscope
 
 \stoptikzpicture
