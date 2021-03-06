@@ -80,9 +80,10 @@ maybe fuse summaries / own contribs and integrate sections that confused fabian 
 #### 1.1.1 Lib prep and sequencing
 - fig 1.2: pretty!
   - [x] maybe unclear that you describe a process from top to bottom, with text being next step.
-  - [ ] caption UNCLEAR. library prep in general? for scRNA-seq?
-  - [ ] in fig unclear where within cell
-  - [ ] dude, how about amplification? molecular barcodes, UMIs? far too much missing
+  - [x] caption UNCLEAR. library prep in general? for scRNA-seq?
+  - [x] in fig unclear where within cell
+  - [x] dude, how about amplification? molecular barcodes, UMIs? far too much missing
+  - [ ] fix up caption
 
 #### 1.1.2 Counting
 - [x] counting of what
