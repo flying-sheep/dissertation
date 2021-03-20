@@ -256,12 +256,13 @@ My specific contributions can be placed in the framework provided by the above o
 While I worked on every computational step of the process except for alignment, my contributions are focused on steps involving a count matrix.
 To provide further context for my work, I would like to outline the relevant changes in the process of scRNA-Seq analysis in the following sections.
 
-\startsubsection[title={Ad-hoc Analysis Pipelines before Frameworks}]
+\startsubsection[title={Analysis Pipelines: Status Quo}]
 % pipelines used scripts and binaries to proceed between snapshots
 The steps necessary to reproduce the preprocessing and analysis of a publication are bundled in an executable bundle of scripts called a pipeline.
-Depending on the performance of the tools performing the individual steps, it is desirable to regularly store files representing a processing state from which to continue in case of errors, called a snapshot.
-Analysis frameworks that are available today are toolkits able to perform each step efficiently in memory, allowing their users to choose when to use snapshots.
-Some years ago however, pipelines written in R or \n{GNU make} often used a command line tool for each step, which by necessity consumed and produced a snapshot.
+Pipelines perform transformations on the data, collect statistics, and compile reports.
+Depending on the performance of the individual steps, it is desirable to regularly store files representing a processing state from which to continue in case of errors, called a snapshot.
+\TODO[phrasing]
+Before my work in the area started, pipelines were mostly written in R or \n{GNU make} and often used a command line tool for each step, which by necessity consumed and produced a snapshot.
 Despite the field’s increasing investment into machine learning algorithms implemented in Python, few tools were available in that language.
 
 % communication
@@ -296,6 +297,16 @@ Each dimension, variables and observations, can be annotated with vectors (1D), 
 }]
 \hbox{\input{imgs/anndata.tikz}}
 \stopplacefigure
+
+% - What is a framework?
+Text based file formats and pipeline steps realized as command line interfaces working on these files had their place for a long time.
+The approach allows to inspect intermediate steps in a human readable form, and to use basic text manipulation to work on them.
+Attempting to serve this lowest common denominator lead however to the aforementioned limitations when building pipelines. 
+The alternative is to use a framework, i.\,e. an opinionated set of data structures and routines that are tightly integrated but generic enough to be used as building blocks for pipelines or visualization tools.
+The tight integration allows to rely on information being tracked that allows the framework to provide necessary features, which would have to be rebuilt on a case-by-case basis without a framework.
+
+\TODO[integrate]
+Analysis frameworks that are available today are toolkits able to perform each step efficiently in memory, allowing their users to choose when to use snapshots.
 
 % - Through frameworks, data interchange formats and containers we get interoperability and reproducibility.
 Today, both R and Python have viable frameworks for scRNA-Seq analysis: \n{Seurat}\footnote{
