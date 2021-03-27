@@ -14,6 +14,16 @@ RUN ln -sf luametatex bin/mtxrun && ln -sf luametatex bin/context
 RUN echo -e 'local selfpath = os.selfpath \n if not arg or not selfpath then \n print("invalid stub") \n os.exit() \n end \n arg[0] = "mtxrun" \n table.insert(arg,1,"mtx-context") \n table.insert(arg,1,"--script") \n dofile(selfpath .. "/" .. "mtxrun.lua") \n' > /usr/share/bin/context.lua
 RUN sed -i 's#pdir)#pdir)\n    run("ln -sf %s %s", "/usr/share/bin", binpath)#' /usr/share/bin/mtx-install.lua
 RUN mtxrun --script ./bin/mtx-install.lua --update --server="lmtx.contextgarden.net,lmtx.pragma-ade.com,lmtx.pragma-ade.nl" --instance="install-lmtx" --platform="linux-64" --erase --extras=""
+
+# Nonfree fonts https://www.tug.org/~kotucha/getnonfreefonts/getfont.pl
+# ftpfonts=(eurofont)
+# httpfonts=(arial-urw classico dayroman gandhi garamond garamondx lettergothic literaturnaya luximono vntex-nonfree webomints)
+WORKDIR /usr/share/tex/texmf/fonts/opentype/public/luximono
+RUN wget https://www.ghostscript.com/~tor/stuff/fonts/luximono/LuxiMono.otf
+RUN wget https://www.ghostscript.com/~tor/stuff/fonts/luximono/LuxiMono-Bold.otf
+RUN wget https://www.ghostscript.com/~tor/stuff/fonts/luximono/LuxiMono-Oblique.otf
+RUN wget https://www.ghostscript.com/~tor/stuff/fonts/luximono/LuxiMono-BoldOblique.otf
+
 WORKDIR /
 
 FROM build AS dist
@@ -22,6 +32,7 @@ RUN mkdir -p /usr/share/tex/texmf-modules/doc && mv /usr/share/tex/texmf-modules
 RUN mv /usr/share/tex/texmf-context/doc /usr/share/texmf-context-doc
 RUN mkdir -p /usr/share/texmf-fonts && for dir in opentype truetype type1; do mv "/usr/share/tex/texmf/fonts/$dir/" /usr/share/texmf-fonts/; done
 RUN rm -rf /usr/share/tex/texmf-cache/*
+
 
 FROM debian:buster
 
@@ -37,8 +48,6 @@ COPY --from=dist /usr/share/texmf-fonts/opentype/public/lm /usr/share/tex/texmf/
 RUN mtxrun --generate && context --make en && mtxrun --script fonts --reload \
     && find "$TEXMFCACHE" -type d -exec chmod 777 {} \; \
     && find "$TEXMFCACHE" -type f -exec chmod 666 {} \;
-
-CMD [ "context" ]
 
 # fonts
 
