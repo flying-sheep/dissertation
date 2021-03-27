@@ -2,6 +2,8 @@
 
 "Enabling technologies for visualization and analysis of single cell RNA-Seq data"
 
+- [ ] Global vs local features https://www.techtimes.com/articles/44206/20150404/marilyn-monroe-or-albert-einstein-optical-illusion-can-tell-if-you-need-glasses-or-not.htm
+
 ## Restructuring
 
 maybe fuse summaries / own contribs and integrate sections that confused fabian like
