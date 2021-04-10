@@ -97,7 +97,7 @@ maybe fuse summaries / own contribs and integrate sections that confused fabian 
 #### 1.1.4 Analysis
 - [x] analysis of what
 - [ ] here would really make clear what pot. questions could be, then enumerate analysis parts
-- [ ] fig 1.4 somewhat nice, but give legend for arrows, add some references and say these things are artificial mostly. but: this is out of place in analysis, this should be in motivating bio questions in the single cell bio part in beginning, no? you'd need a fig for analysis etc
+- [ ] fig 1.4 (cell fates) somewhat nice, but give legend for arrows, add some references and say these things are artificial mostly. but: this is out of place in analysis, this should be in motivating bio questions in the single cell bio part in beginning, no? you'd need a fig for analysis etc
 
 #### 1.1.5 Visualization
 - [x] really viz AFTER analysis? often first step

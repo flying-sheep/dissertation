@@ -40,10 +40,23 @@ This untargeted large-scale process is called gene expression analysis.
 During the past decade, biological research worked with averaged RNA profiles of cell samples called bulk RNA-Seq.
 Those profiles allow to capture the gene expression of a tissue or fluid sample without accounting for cell-to-cell variability.
 
+\startplacefigure[reference=fig:cell-fate, title={
+Cells differentiate smoothly and in stochasically diverging paths, from high potency (top) to high specialization (bottom).
+Dedifferentiation (blue arrows) occurs naturally in plants and regenerating basal animals, but not humans.
+The natural occurance of transdifferentiation (orange arrows) in humans has only been observed from α to β cells in pancreatic islets.
+Experiments to artificially induce trans- or dedifferentiation have shown promise for regeneration of tissue damage and effects of aging.
+\crlf\small{(Figure adapted from \inlinecite[gam2019] with permission)}
+}]
+%https://www.mdpi.com/2073-4409/8/10/1189
+%\externalfigure[https://www.researchgate.net/publication/336222289/figure/fig1/AS:809726799523847@1570065321789/Cell-fate-plasticity-and-the-epigenetic-landscape-currently-applied-for-direct-cell.jpg][width=.8\textwidth]
+\externalfigure[cell-fate.png][width=.8\textwidth]
+\stopplacefigure
+
 % SC revolution
 Single cell RNA-Seq (scRNA-Seq) can measure extremely small expression values down to a single mRNA molecule \cite[tang2011].
 This data comes with its own challenges, but enables the study of heterogeneous tissue, where expression averages from bulk RNA-Seq are not meaningful \cite[svensson2018b].
-The ability to dissect heterogeneity allows for example to improve our understanding of complex cellular diseases like cancer \cite[patel2014,qian2017].
+The ability to dissect heterogeneity allows to improve our understanding of the complex cellular interaction, in developing, mature, and diseased tissue.
+This enables new approaches to fight diseases like cancer \cite[patel2014,qian2017] and influencing cellular development (see \infig[fig:cell-fate]).
 The second great advantage is that the amounts of data present in scRNA-Seq are necessary for machine learning approaches.
 Advances in microfluidic devices have led to experimental protocols able to sequence more than a million cells \cite[macosko2015,klein2015,zheng2017].
 The ample variation between this multitude of individual cells allows to derive patterns no human can detect by manual and careful isolation of bulk samples \cite[huang2018].
@@ -194,17 +207,7 @@ Clusters are commonly the basis for further analysis like inter-cluster DE analy
 However, this leads to both clusters and markers being derived from the same data, and treating clusters as ground truth in this settings leads to inflated confidence in the found markers.
 The problem can be circumvented by joint clustering and DE analysis, manually propagating uncertainties \cite[zhang2019], or not relying on clustering to detect genes \cite[angerer2020].
 
-\startplacefigure[reference=fig:cell-fate, title={
-Cells differentiate smoothly and in stochasically diverging paths, from high potency (top) to high specialization (bottom).
-Dedifferentiation (blue arrows) occurs naturally in plants and regenerating basal animals, but not humans.
-The natural occurance of transdifferentiation (orange arrows) in humans has only been observed from α to β cells in pancreatic islets.
-Experiments to artificially induce trans- or dedifferentiation have shown promise for regeneration of tissue damage and effects of aging.
-\crlf\small{(Figure adapted from \inlinecite[gam2019] with permission)}
-}]
-%https://www.mdpi.com/2073-4409/8/10/1189
-%\externalfigure[https://www.researchgate.net/publication/336222289/figure/fig1/AS:809726799523847@1570065321789/Cell-fate-plasticity-and-the-epigenetic-landscape-currently-applied-for-direct-cell.jpg][width=.8\textwidth]
-\externalfigure[cell-fate.png][width=.8\textwidth]
-\stopplacefigure
+\TODO[Analysis fig]
 
 While cluster analysis strongly benefits from the availability of scRNA-Seq data, the field of trajectory analysis can only exist because of it.
 Traditionally, cells were thought of exhibiting a discrete cell type each.
