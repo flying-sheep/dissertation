@@ -110,8 +110,11 @@ maybe fuse summaries / own contribs and integrate sections that confused fabian 
 #### 1.1.7 Frameworks
 - [x] framework for scRNA-Seq analysis i guess (title of the overall sec is workflow hmm)
 - [ ] for whole section above
-  - [ ] you need to end with open challenges in the field that you will address
-  - [ ] altogether intro very short and in particular misses biol big questions and then question you can address
+  - [x] you need to end with open challenges in the field that you will address
+  - [x] altogether intro very short and in particular misses biol big questions and then question you can address
+    - Large cell numbers (Microfluidics) couldn’t be processed by old pipelines
+    - Reproducibility
+    - Few/bad embedding tools
 - [ ] also don’t get link here to rest
 - [ ] good to point out, may add citations. clear why they are needed etc?
 - [ ] the AnnData tech fig in intro, dude? why?
