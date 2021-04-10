@@ -1,0 +1,151 @@
+%do not think about vis at first, only raw data
+%a) cell level discretization (clustering), then cluster labelling (cell type) …
+%b) … then DE
+%c) gene level discretization (correlation modules) to be able to interpret gene results
+%d) cell networks (e.g. PAGA) for e) pseudotime (less discretization) f) dim. red. g) kernels like Gene Relevance
+%or
+%a) Clustering -> [d) DE | e) Labelling]
+%b) PAGA -> [e) | f) Trajectories]
+%c) Scoring -> [g) Gene Modules | h) GR]
+
+\starttikzpicture
+
+\unprotect
+\pgfdeclareshape{manifold}{
+	%save anchor. they can’t be used in other saved anchors sadly
+	\savedanchor{\centerpoint}{%
+		\pgf@x=.5\wd\pgfnodeparttextbox%
+		\pgf@y=.5\ht\pgfnodeparttextbox%
+		\advance\pgf@y by-.5\dp\pgfnodeparttextbox%
+	}%
+	% Copied from /usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+	\saveddimen\radius{%
+		% Calculate height radius
+		\pgf@ya=.5\ht\pgfnodeparttextbox%
+		\advance\pgf@ya by.5\dp\pgfnodeparttextbox%
+		\pgfmathsetlength\pgf@yb{\pgfkeysvalueof{/pgf/inner ysep}}%
+		\advance\pgf@ya by\pgf@yb%
+		% Calculate width radius
+		\pgf@xa=.5\wd\pgfnodeparttextbox%
+		\pgfmathsetlength\pgf@xb{\pgfkeysvalueof{/pgf/inner xsep}}%
+		\advance\pgf@xa by\pgf@xb%
+		% Calculate length of radius vector:
+		\pgf@process{\pgfpointnormalised{\pgfqpoint{\pgf@xa}{\pgf@ya}}}%
+		\ifdim\pgf@x>\pgf@y%
+			\c@pgf@counta=\pgf@x%
+			\ifnum\c@pgf@counta=0\relax%
+			\else%
+			\divide\c@pgf@counta by 255\relax%
+			\pgf@xa=16\pgf@xa\relax%
+			\divide\pgf@xa by\c@pgf@counta%
+			\pgf@xa=16\pgf@xa\relax%
+			\fi%
+		\else%
+			\c@pgf@counta=\pgf@y%
+			\ifnum\c@pgf@counta=0\relax%
+			\else%
+			\divide\c@pgf@counta by 255\relax%
+			\pgf@ya=16\pgf@ya\relax%
+			\divide\pgf@ya by\c@pgf@counta%
+			\pgf@xa=16\pgf@ya\relax%
+			\fi%
+		\fi%
+		\pgf@x=\pgf@xa%
+		% If necessary, adjust radius so that the size requirements are met:
+		\pgfmathsetlength{\pgf@xb}{\pgfkeysvalueof{/pgf/minimum width}}%
+		\pgfmathsetlength{\pgf@yb}{\pgfkeysvalueof{/pgf/minimum height}}%
+		\ifdim\pgf@x<.5\pgf@xb%
+			\pgf@x=.5\pgf@xb%
+		\fi%
+		\ifdim\pgf@x<.5\pgf@yb%
+			\pgf@x=.5\pgf@yb%
+		\fi%
+		% Now, add larger of outer separations.
+		\pgfmathsetlength{\pgf@xb}{\pgfkeysvalueof{/pgf/outer xsep}}%
+		\pgfmathsetlength{\pgf@yb}{\pgfkeysvalueof{/pgf/outer ysep}}%
+		\ifdim\pgf@xb<\pgf@yb%
+		\advance\pgf@x by\pgf@yb%
+		\else%
+		\advance\pgf@x by\pgf@xb%
+		\fi%
+	}%
+	%
+	\anchor{center}{\centerpoint}%
+	\anchor{north}{\centerpoint\advance\pgf@y by \radius}%
+	\anchor{north west}{
+		\centerpoint%
+		\pgf@xa=\radius%
+		\advance\pgf@x by-.5\pgf@xa%
+		\advance\pgf@y by .5\pgf@xa%
+	}%
+	\anchor{west}{
+		\centerpoint%
+		\pgf@xa=\radius%
+		\advance\pgf@x by-   \pgf@xa%
+		\advance\pgf@y by-.25\pgf@xa%
+	}%
+	\anchor{south}{
+		\centerpoint%
+		\pgf@xa=\radius%
+		%guessed
+		\advance\pgf@y by-.72\pgf@xa%
+	}%
+	\anchor{east}{
+		\centerpoint%
+		\pgf@xa=\radius%
+		\advance\pgf@x by    \pgf@xa%
+		\advance\pgf@y by-.25\pgf@xa%
+	}%
+	\anchor{north east}{
+		\centerpoint%
+		\pgf@xa=\radius%
+		\advance\pgf@x by.75\pgf@xa%
+		\advance\pgf@y by .25\pgf@xa%
+	}%
+	%
+	\savedmacro\manifoldparameters{%
+		\pgfmathsetmacro\shapeborderrotate{\pgfkeysvalueof{/pgf/shape border rotate}}%
+		\addtosavedmacro\shapeborderrotate%
+	}%
+	%
+	\backgroundpath{%
+		\manifoldparameters%
+		{% Make sure transformations are inside group.
+			\pgftransformshift{\centerpoint}%
+			\pgftransformrotate{\shapeborderrotate}%
+			\pgfutil@tempdima=\radius%
+			\pgfpathmoveto{\pgfqpoint{0pt}{\pgfutil@tempdima}}%
+			\pgfpathcurveto%
+				{\pgfqpoint{-.25\pgfutil@tempdima}{    \pgfutil@tempdima}}%
+				{\pgfqpoint{-.25\pgfutil@tempdima}{ .75\pgfutil@tempdima}}%
+				{\pgfqpoint{-.5 \pgfutil@tempdima}{ .5 \pgfutil@tempdima}}%
+			\pgfpathcurveto%
+				{\pgfqpoint{-.75\pgfutil@tempdima}{ .25\pgfutil@tempdima}}%
+				{\pgfqpoint{-   \pgfutil@tempdima}{ .25\pgfutil@tempdima}}%
+				{\pgfqpoint{-   \pgfutil@tempdima}{-.25\pgfutil@tempdima}}%
+			\pgfpathcurveto%
+				{\pgfqpoint{-   \pgfutil@tempdima}{-.75\pgfutil@tempdima}}%
+				{\pgfqpoint{    \pgfutil@tempdima}{-   \pgfutil@tempdima}}%
+				{\pgfqpoint{    \pgfutil@tempdima}{-.25\pgfutil@tempdima}}%
+			\pgfpathcurveto%
+				{\pgfqpoint{    \pgfutil@tempdima}{-.25\pgfutil@tempdima}}%
+				{\pgfqpoint{    \pgfutil@tempdima}{.125\pgfutil@tempdima}}%
+				{\pgfqpoint{ .75\pgfutil@tempdima}{ .25\pgfutil@tempdima}}%
+			\pgfpathcurveto%
+				{\pgfqpoint{ .25\pgfutil@tempdima}{ .5 \pgfutil@tempdima}}%
+				{\pgfqpoint{ .5 \pgfutil@tempdima}{    \pgfutil@tempdima}}%
+				{\pgfqpoint{0pt}{\pgfutil@tempdima}}%
+		}%
+	}
+}
+\protect
+
+\node[manifold, draw] (x) {};
+\foreach \anchor in {center,north,north west,west,south,east,north east}{
+	\draw[red] (x.\anchor) +(1pt, 1pt) -- +(-1pt, -1pt) +(-1pt, 1pt) -- +(1pt, -1pt);
+}
+
+\node[manifold, draw] (x) at (2, 0) {Foobar};
+
+\stoptikzpicture
+
