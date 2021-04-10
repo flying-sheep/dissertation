@@ -94,12 +94,12 @@ maybe fuse summaries / own contribs and integrate sections that confused fabian 
 - [x] preprocessing of counts? batch etc?
 - [ ] a figure for everything after count matrix may be nice?
 
-#### 1.1.4 Analysis
-- [x] analysis of what
+#### 1.1.4 Analysis (of cellular dynamics, heterogeneity and gene roles)
+- [x] analysis of what: of cellular dynamics, heterogeneity and gene roles
 - [ ] here would really make clear what pot. questions could be, then enumerate analysis parts
-- [ ] fig 1.4 (cell fates) somewhat nice, but give legend for arrows, add some references and say these things are artificial mostly. but: this is out of place in analysis, this should be in motivating bio questions in the single cell bio part in beginning, no? you'd need a fig for analysis etc
+- [x] fig 1.4 (cell fates) somewhat nice, but give legend for arrows, add some references and say these things are artificial mostly. but: this is out of place in analysis, this should be in motivating bio questions in the single cell bio part in beginning, no? you'd need a fig for analysis etc
 
-#### 1.1.5 Visualization
+#### 1.1.5 Visualization (as Analysis steps and result)
 - [x] really viz AFTER analysis? often first step
 - [ ] at end here you *write about own contrib*ution → as reader I am waiting very much for this, then hidden within a detail expl chap → this needs major reorganization see below
 

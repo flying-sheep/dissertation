@@ -263,13 +263,13 @@ To provide further context for my work, I would like to outline the relevant cha
 % pipelines used scripts and binaries to proceed between snapshots
 The steps necessary to reproduce the preprocessing and analysis of a publication are bundled in an executable bundle of scripts called a pipeline.
 Pipelines perform transformations on the data, collect statistics, and compile reports.
-Depending on the performance of the individual steps, it is desirable to regularly store files representing a processing state from which to continue in case of errors, called a snapshot.
-\TODO[phrasing]
-Before my work in the area started, pipelines were mostly written in R or \n{GNU make} and often used a command line tool for each step, which by necessity consumed and produced a snapshot.
+Depending on the amount of time and resources required to run the whole pipeline, it is desirable be able to only repeat part of the processing in case of an error.
+This is mostly achieved by regularly storing snapshot files representing the processing state between two subsequent sets of steps.
+Before my work in the area started, pipelines were mostly written in R or \n{GNU make} and often executed a command line for each step, a procedure which by necessity consumed and produced a snapshot, but allows no choice when this high granularity is undesirable.
 Despite the field’s increasing investment into machine learning algorithms implemented in Python, few tools were available in that language.
 
 % communication
-Communication with other languages or between pipeline steps involved reading a textual representation of the data from a file system, processing it, and writing it back to disk.
+Communication with other languages or between pipeline steps involved reading an (often textual) snapshot from a file system, processing it, and writing it back to disk.
 This process involved long run times due to slow reading and writing, high storage space requirements and little resilience to errors.
 File corruption introduced e.\,g. via unreliable access to network storage could not be detected in text files, which lack checksums and other resilience precautions.
 In practice, the lack of frameworks meant that each tool or pipeline had to solve common problems by itself, such as hardening against the aforementioned reliability issues.
