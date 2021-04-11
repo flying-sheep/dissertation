@@ -204,7 +204,7 @@ A common method to make sense of complex heterogeneous data is cluster analysis.
 For single cell data, the multi-resolution community detection algorithm \n{Leiden} \cite[traag2019] and its predecessor \n{Louvain} is used most commonly, despite \inlinecite[kiselev2019] arguing its lack of performance for smaller datasets.
 A general problem of clustering is data reuse.
 Clusters are commonly the basis for further analysis like inter-cluster DE analysis – a task the aforementioned single cell specific DE tools are specifically designed for.
-However, this leads to both clusters and markers being derived from the same data, and treating clusters as ground truth in this settings leads to inflated confidence in the found markers.
+However, this leads to both clusters and markers being derived from the same data, and treating clusters as ground truth in this setting leads to inflated confidence in the found markers.
 The problem can be circumvented by joint clustering and DE analysis, manually propagating uncertainties \cite[zhang2019], or not relying on clustering to detect genes \cite[angerer2020].
 
 \TODO[Heterogeneity analysis fig:
@@ -218,6 +218,7 @@ a) Clustering -> [d) DE | e) Labelling]
 b) PAGA -> [e) | f) Trajectories]
 c) Scoring -> [g) Gene Modules | h) GR]
 ]
+\TODO[c not immediately mentioned. Mention that prior info is used for labelling (marker genes) and gene modules]
 \TODO[maybe also composition differences between datasets (mapping between cell neighborhoods)?]
 
 While cluster analysis strongly benefits from the availability of scRNA-Seq data, the field of trajectory analysis can only exist because of it.
