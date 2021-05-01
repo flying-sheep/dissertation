@@ -127,6 +127,7 @@
 	}
 }
 \protect
+% TODO: https://ctan.math.illinois.edu/graphics/pgf/contrib/makeshape/makeshape.pdf
 
 %do not think about vis at first, only raw data
 %a) cell level discretization (clustering), then cluster labelling (cell type) …
@@ -141,6 +142,7 @@
 \usetikzlibrary[calc]
 \starttikzpicture[
 	paga/.style={circle, draw, fill=white},
+	arr/.style={->, shorten <=15mm},
 ]
 
 % debug code
@@ -150,11 +152,27 @@
 %}
 
 % main shapes
+%a) Clustering -> [d) DE | e) Labelling]
+%b) PAGA -> [e) | f) Trajectories]
+%c) Scoring -> [g) Gene Modules | h) GR]
 \node[manifold, draw, inner sep=1cm] (clust) at (0, 0) {};
 \node[manifold, draw, inner sep=1cm] (trajy) at (4, 0) {};
 \node[manifold, draw, inner sep=1cm] (score) at (8, 0) {};
+\node[align=center] (de) at (-2, -3) {\bold{d)} Differential\\Expression};
+\node[align=center] (lb) at ( 1, -3) {\bold{e)} Labelling};
+\node[align=center] (tj) at ( 4, -3) {\bold{f)} Trajectories};
+\node[align=center] (gm) at ( 7, -3) {\bold{g)} Gene\\Modules};
+\node[align=center] (gr) at (10, -3) {\bold{h)} Gene\\Relevance};
 
-% cluster
+\draw[arr] (clust) -- (de);
+\draw[arr] (clust) -- (lb);
+\draw[arr] (trajy) -- (lb);
+\draw[arr] (trajy) -- (tj);
+\draw[arr] (score) -- (gm);
+\draw[arr] (score) -- (gr);
+
+% a) cluster
+\node[anchor=south east] at (clust.north west) {\bold{a)}};
 \coordinate (clust a) at ($(clust.center) + (-.4, -.4)$);
 \coordinate (clust b) at ($(clust.center) + (.6, -.4)$);
 \coordinate (clust c) at ($(clust.north west) + (.6, -.3)$);
@@ -166,7 +184,8 @@
 	(clust.north east) -- (clust.center) -- (clust b)
 ;
 
-% trajectory
+% b) trajectory
+\node[anchor=south east] at (trajy.north west) {\bold{b)}};
 \node[paga, inner sep=1.5mm] (trajy a) at ($(trajy.west)   + ( .4,  .1)$) {};
 \node[paga, inner sep=1.7mm] (trajy b) at ($(trajy.north)  + ( .1, -.5)$) {};
 \node[paga, inner sep=2.0mm] (trajy c) at ($(trajy.east)   + (-.6,  .3)$) {};
@@ -182,8 +201,10 @@
 	(trajy o) -- (trajy d)  % secondary
 ;
 
-% scoring
+% c) scoring
+\node[anchor=south east] at (score.north west) {\bold{c)}};
 \fill[white, inner color=black, outer color=white] ($(score.west)  + ( .6,  .1)$) circle (.4);
 \fill[white, inner color=black, outer color=white] ($(score.east)  + (-.8,  .1)$) circle (.5);
+
 
 \stoptikzpicture

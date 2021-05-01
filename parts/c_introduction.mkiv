@@ -207,17 +207,29 @@ Clusters are commonly the basis for further analysis like inter-cluster DE analy
 However, this leads to both clusters and markers being derived from the same data, and treating clusters as ground truth in this setting leads to inflated confidence in the found markers.
 The problem can be circumvented by joint clustering and DE analysis, manually propagating uncertainties \cite[zhang2019], or not relying on clustering to detect genes \cite[angerer2020].
 
-\TODO[Heterogeneity analysis fig:
-do not think about vis at first, only raw data
-a) cell level discretization (clustering), then cluster labelling (cell type) …
-b) … then DE
-c) gene level discretization (correlation modules) to be able to interpret gene results
-d) cell networks (e.g. PAGA) for e) pseudotime (less discretization) f) dim. red. g) kernels like Gene Relevance
-or
-a) Clustering -> [d) DE | e) Labelling]
-b) PAGA -> [e) | f) Trajectories]
-c) Scoring -> [g) Gene Modules | h) GR]
-]
+\startplacefigure[reference=fig:heterogeneity-analysis, title={
+    Heterogeneity Analysis approaches.
+    For visualization purposes, cells are represented in a dimensionally reduced space represented by the outer border of \bold{a}, \bold{b}, and \bold{c}.
+    All three represent common starting points for further analysis.
+    \bold{a)} Clustering divides the set of cells into discrete subsets (clusters) based on similarity.
+    The clarity of division between clusters shows how easily a given pair of clusters can be discriminated between.
+    \bold{b)} Transition State Analysis dissects metastable states and their transitions.
+    This can accurately represent cell development or more gradual cell identities than discrete types.
+    \bold{c)} Scoring results in each cell having an individual score in one or more schemas, defining likelihood or strength of a certain property.
+    \bold{d)} Differential Expression Analysis allows to identify genes defining a a given subdivision, marking them for further analysis and providing insight into cell identities.
+    \bold{e)} Labelling of clusters assigns them a cell type label, based on marker genes and other external knowledge.
+    \bold{f)} Trajectory Analysis groups and orders cells by similar transition state rather than absolute similarities and therefore allows to reason about continuous processes like cellular development or spatial gradients.
+    \bold{g)} Gene Module Analysis integrates previous knowledge about gene roles to gain insights about the likeliness of each cell fulfilling a given role.
+    \bold{h)} Gene Relevance Analysis relates the location of a cell in the embedding back to the genes driving that localization.
+}]
+\hbox{\input{imgs/heterogeneity-analysis.tikz}}
+\stopplacefigure
+% Alternative:
+% a) cell level discretization (clustering), then cluster labelling (cell type) …
+% b) … then DE
+% c) gene level discretization (correlation modules) to be able to interpret gene results
+% d) cell networks (e.g. PAGA) for e) pseudotime (less discretization) f) dim. red. g) kernels like Gene Relevance
+\TODO[not using “cell identities” elsewhere, unify]
 \TODO[c not immediately mentioned. Mention that prior info is used for labelling (marker genes) and gene modules]
 \TODO[maybe also composition differences between datasets (mapping between cell neighborhoods)?]
 
