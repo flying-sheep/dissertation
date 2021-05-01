@@ -6,10 +6,17 @@
 
 ## Restructuring
 
-maybe fuse summaries / own contribs and integrate sections that confused fabian like
+fuse summaries / own contribs and integrate sections that confused fabian like 2.4 BART-Seq, 2.1.3 Gene Relevance
 
-- 2.4 BART-Seq
-- 2.1.3 Gene Relevance
+own contrib part in
+
+- own contribs
+- intro subsections
+- paper summaries
+
+centralize into only “own contribs”. fabian says “I was hoping for this earlier, **in particular** because it was intertwined in above a bit already”
+
+## Feedback
 
 **summary**: good, quite some orga work to be done.
 
@@ -124,7 +131,7 @@ maybe fuse summaries / own contribs and integrate sections that confused fabian 
 ### 1.2 Own Contributions
 - [ ] I was hoping for this earlier, in particular because it was intertwined in above a bit already
 - [x] motivation missing though
-- [ ] CRUCIAL: what is your question? you only describe the WHAT+HOW you do things, but not at all the WHY? motivation to assess relevance *totally* unclear. even worse, in 2nd sentence you say, oh btw., i also analyzed sizes of data sets. this is the core thing of your 4year phd work? 
+- [x] CRUCIAL: what is your question? you only describe the WHAT+HOW you do things, but not at all the WHY? motivation to assess relevance *totally* unclear. even worse, in 2nd sentence you say, oh btw., i also analyzed sizes of data sets. this is the core thing of your 4year phd work? 
 - [ ] you really need to spend some time on this and exactly state what your goal is, altogether and then in each of the 3 (or 4?) projects, and then what is state of the art and in particular missing (above you described SOTA already INCLUDING your contributions) and therefore what your contribution is (see abstract comments)
 - [ ] also tie things together. why the bar-seq? because you had tools to show all this and can use as PoC
 - [ ] often (check other theses) students also shortly write about/summarize other projects they contributed to but do not put into thesis, this is useful and I would recommend this. just looked at rules again from WZW, here you miss points 4 and 5 - 1 page summary for each paper with particular highlighting of your contrib, and 5 inclusion of those papers etc. see WZW
@@ -137,10 +144,11 @@ maybe fuse summaries / own contribs and integrate sections that confused fabian 
 - [ ] maybe give some example or data set to visualize? imagine you presented this as a talk → this would never work to just directly talk about dim red, diff map etc without illustrating a big data set and what you'd look for in that.
 
 ### 2.1 Dimensionality Reduction
-#### Spectral Decompposition
+#### Spectral Decomposition
 ##### 2.1.1.1
 - [x] SVD not defined (U,S,V)
 - [ ] when talking about extensions of that in our field, please *by all means* cite our own things at least. I expect you to know these and will ask. e.g. Buettner GLM with missing values etc
+  - [ ] TODO: scLVM? can’t find “GLM with missing values ”
 
 ##### 2.1.1.2
 - [ ] PCA then DM does not work. would make point more on linear and nonlinear red methods, then show umap tsne etc
