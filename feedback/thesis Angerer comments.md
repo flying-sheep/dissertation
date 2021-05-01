@@ -109,7 +109,7 @@ maybe fuse summaries / own contribs and integrate sections that confused fabian 
 
 #### 1.1.7 Frameworks
 - [x] framework for scRNA-Seq analysis i guess (title of the overall sec is workflow hmm)
-- [ ] for whole section above
+- [x] for whole section above
   - [x] you need to end with open challenges in the field that you will address
   - [x] altogether intro very short and in particular misses biol big questions and then question you can address
     - Large cell numbers (Microfluidics) couldn’t be processed by old pipelines
@@ -123,7 +123,7 @@ maybe fuse summaries / own contribs and integrate sections that confused fabian 
 
 ### 1.2 Own Contributions
 - [ ] I was hoping for this earlier, in particular because it was intertwined in above a bit already
-- [ ] motivation missing though
+- [x] motivation missing though
 - [ ] CRUCIAL: what is your question? you only describe the WHAT+HOW you do things, but not at all the WHY? motivation to assess relevance *totally* unclear. even worse, in 2nd sentence you say, oh btw., i also analyzed sizes of data sets. this is the core thing of your 4year phd work? 
 - [ ] you really need to spend some time on this and exactly state what your goal is, altogether and then in each of the 3 (or 4?) projects, and then what is state of the art and in particular missing (above you described SOTA already INCLUDING your contributions) and therefore what your contribution is (see abstract comments)
 - [ ] also tie things together. why the bar-seq? because you had tools to show all this and can use as PoC
@@ -147,8 +147,8 @@ maybe fuse summaries / own contribs and integrate sections that confused fabian 
 - [ ] DM details, maybe s.t. on implementation and scaling, extend on this since you did contribute to that, no?
 
 #### 2.1.2 Learned Embeddings
-- [ ] what is difference of learned embedding to say PCA? of course there is a "learning" formulation of PCA too. this differentiation you try to make up does not exist, adapt
-  - [ ] → distinguish between deterministic and nondeterministic ones
+- [x] what is difference of learned embedding to say PCA? of course there is a "learning" formulation of PCA too. this differentiation you try to make up does not exist, adapt
+  - [x] → distinguish between deterministic and nondeterministic ones
 - [ ] add a few nonlinear ones I guess
 - [x] and again, you bloody cite scVI but not Gokcen's DCA? why?
   - [x] because it’s a denoising method, not embedding, but I added it anyway.
