@@ -381,12 +381,11 @@ It also supports being used as a Python library to back visualization tools, web
 
 In the previous section, I outlined the ways programmatic frameworks improve reusability and therefore interoperability and reproducibility, specifically of scRNA-seq analysis.
 I identified gaps that I found scientists to spend disproportionate time on rebuilding and concentrated on components improving the way they can interface with and build on each others’ work.
-I improved interoperability and modularity of existing tools, pioneered technologies and software development processes in a research environment, and developed some of the missing building blocks for the resulting toolkit.
-My contributions to the field of scRNA-Seq data analysis consequently include research and development of algorithms, data structures, pipelines, frameworks, and APIs, as outlined in the following.
-Placed in the framework provided by the overview of scRNA-seq analysis in \insec[sec:workflow], I worked on every computational step of the process except for alignment.
-My contributions specifically focused on steps involving a count matrix.
-I also analyzed sizes and sequencing depth of 455 publicly available datasets and the impact of growing data sizes (see \infig[fig:dataset-sizes]) on the field \cite[angerer2017].
-The effects of increasing data availability are felt throughout the field, while the theoretical possibilities mentioned in \inlinecite[angerer2017] are becoming reality.
+I consequently focused my work on improving interoperability and modularity of existing tools, pioneering technologies and software development processes in a research environment, and developing some of the missing building blocks for the resulting toolkit.
+My contributions to the field of scRNA-Seq data analysis include research and development of algorithms, data structures, pipelines, frameworks, and APIs, as outlined in the following.
+Placed in the framework provided by the overview of scRNA-seq analysis in \insec[sec:workflow], I worked on every computational step of the process except for alignment, with a specific focus on steps involving a count matrix.
+To demonstrate the need for rigorous software solutions like mine, I also analyzed sizes and sequencing depth of 455 publicly available datasets and the impact of growing data sizes (see \infig[fig:dataset-sizes]) on the field \cite[angerer2017].
+Since then, effects of increasing data availability are increasingly felt throughout the field, while the theoretical possibilities mentioned in \inlinecite[angerer2017] are becoming reality.
 For example, cell atlases containing large amounts of multimodal data can now be used to infer labels for new data using transfer learning \cite[abdelaal2019].
 
 \startplacefigure[reference=fig:dataset-sizes, title={
@@ -398,7 +397,9 @@ This updated version of a figure from \inlinecite[angerer2017] shows the sustain
 
 \startsubsection[title={\n{destiny}}]
 % efficient and flexible diffusion maps for R
-\n{Destiny} is a user-friendly, flexible and fast R tool for the creation and visualization of diffusion maps, diffusion pseudo time, and gene relevance \cite[angerer2016].
+My first contribution \n{destiny} is a user-friendly, flexible and fast R tool for three closely related scRNA-Seq analysis steps.
+It was written to allow dimensional reduction of both large, sparse scRNA-Seq data and qPCR data which benefits from explicit handling of missing values.
+\n{Destiny} supports the creation and visualization of diffusion maps, diffusion pseudo time, and gene relevance (\inlinecite[angerer2016], see below).
 It performs a kNN search on a data set to define a sparse distance matrix, in which the missing values stand for infinite distances instead of zeroes.
 From this matrix, \n{destiny} derives a transition probability matrix.
 That matrix’s Eigen decomposition is a diffusion map embedding of the data.
@@ -425,6 +426,7 @@ Without them, accurate assessment of any kind of color-mapped visualizations can
 \n{Destiny} can utilize a number of distance metrics including euclidean, cosine, and rank correlation distance.
 Unlike other available R tools, \n{destiny} uses the chosen distance metric also for kNN search, which has been shown to improve results \cite[hu2016].
 To make \n{destiny} deterministic, I contributed to a few of its dependencies to support random seeds.
+\n{Destiny}’s API is flexible enough to be used as an analysis tool in its own right, as well as as a diffusion map backend for integrated analysis pipelines like \n{scater} \cite[mccarthy2017].
 
 Destiny has been cited 175 times at the time of writing and has for example been used for dimensional reduction and pseudo-time inference in analyses.
 This includes hematopoietic stem and progenitor cell differentiation \cite[nestorowa2016], an immune atlas of clear cell renal cell carcinoma \cite[chevrier2017], development in the human adult brain \cite[blue2018] and an atlas of the aging drosophila brain \cite[davie2018].
@@ -433,7 +435,7 @@ This includes hematopoietic stem and progenitor cell differentiation \cite[nesto
 \startsubsection[title={Gene Relevance}]
 % combines gene-level with cell-level analysis
 The most recent addition to \n{destiny} is the gene relevance algorithm.
-It is designed to identify genes that drive the local positioning of a cell in an embedding.
+It is designed to identify genes that drive the local positioning of a cell in an embedding, information that less powerful linear embeddings like PCA have intrinsically.
 This allows to detect locally relevant genes without a discrete clustering step, and therefore without data reuse as a result of using inferred cluster labels as input for gene level analysis.
 
 The initial idea comes from Fabian Theis, while I designed the changes making it applicable to real data with A. Scialdone and C. Marr and implemented it.
@@ -463,6 +465,7 @@ So does EMBL-EBI’s expression atlas use \n{scanpy} for downstream analysis of 
 
 \startsubsection[title={BART-Seq}]
 % flexible processing pipeline and Python library
+\TODO[motivation, tie in with rest]
 Beyond processing count matrices, I also contributed to a new, targeted RNA-Seq protocol called BART-Seq \cite[uzbas2019].
 It is set apart from untargeted single cell and bulk RNA-Seq protocols due to its high sensitivity and low cost.
 BART-Seq tags each of its samples, which can be single cells groups of multiple cells, with a pair of computationally designed barcodes.
