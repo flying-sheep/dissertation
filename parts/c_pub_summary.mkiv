@@ -10,7 +10,15 @@ I made substantial contributions to during the course of my work as PhD candidat
 \item \cite[alternative=entry, left=, right=][angerer2016]
 
 Summary:
-\TODO
+In this article, we described the initial scope of \n{destiny}, an R package implementing diffusion maps.
+Diffusion maps were chosen for their at the time unique ability to capture smooth nonlinear transitions in single cell transcription data and its robustness towards noise.
+\n{Destiny} was the first user friendly and practical implementation of the algorithm, suited for both interactive use by data scientists and use in other packages.
+It has been especially user friendly from the start by automatically deriving a suitable kernel width and supplying other sensible defaults and useful plotting routines.
+The package’s tailoring for single cell transcription data rests on algorithmic enhancements and scalability.
+The enhancements include explicit support for missing values, as well as the ability to project a second set of data into an existing diffusion map.
+Scalability and compuatational efficiency was achieved through several adaptations such initializing based on a k-nearest-neighbor search, full sparse matrix support for data and transition matrix, as well as an approximate Eigen decomposition algorithmus. 
+\n{Destiny} is continuously maintained and has been adapted to make use of current best practices such as an adaptable diffusion map kernel, plotting with \n{ggplot2} and storing expression data in the \n{SingleCellExperiment} data structure.
+It also served as a flexible base for the implementation of \n{DPT} and gene relevance.
 
 My contribution:
 First author
