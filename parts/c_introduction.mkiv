@@ -89,9 +89,9 @@ Until few years ago, there were no freely available programming environments tha
 Analysis pipelines came custom-built for a certain publication, just as hard to take apart and reuse as a holistic model would have been.
 Every graduate student and postdoctoral researcher had to start from scratch.
 The thesis at hand is a slice of the author’s continued efforts to change this.
-I improved interoperability and modularity of existing tools, pioneered technologies and software development processes in a research environment, and developed some of the missing building blocks for the resulting toolkit.
+See \insec[sec:contribs] for my contributions to the field.
 
-\startsection[title={Workflow for scRNA-Seq Data Processing}]
+\startsection[reference=sec:workflow, title={Workflow for scRNA-Seq Data Processing}]
 % story: new challenges by single cell data; old way to deal with data (workflows) are not efficient → new approaches needed → me
 
 % Overview:Describe how the workflows work and why the aforementioned is important.
@@ -279,9 +279,8 @@ When discovering novel subpopulations, their adjacency to known ones can be used
 An upcoming way to simplify the process are cell transcriptome atlases \cite[regev2017,schaum2018] that can be used as references to automatically look up your cells and annotate them \cite[abdelaal2019].
 \stopsubsection
 
-My specific contributions can be placed in the framework provided by the above overview of scRNA-Seq analysis.
-While I worked on every computational step of the process except for alignment, my contributions are focused on steps involving a count matrix.
-To provide further context for my work, I would like to outline the relevant changes in the process of scRNA-Seq analysis in the following sections.
+In recent years, I have contributed to a class of changes that scientists are adopting in their approach to scRNA-Seq analysis.
+Before addressing my work, I would like to outline the relevant changes in the process of scRNA-Seq analysis in the following sections.
 
 \startsubsection[title={Analysis Pipelines: Status Quo}]
 % pipelines used scripts and binaries to proceed between snapshots
@@ -376,13 +375,16 @@ It also supports being used as a Python library to back visualization tools, web
 \stopsection
 
 
-\startsection[title={Own Contributions}]
+\startsection[reference=sec:contribs, title={Own Contributions}]
 
 % (I am the one who can create usable interfaces and/for pipelines and fill in the gaps where “cobblestones” are missing)
 
 In the previous section, I outlined the ways programmatic frameworks improve reusability and therefore interoperability and reproducibility, specifically of scRNA-seq analysis.
 I identified gaps that I found scientists to spend disproportionate time on rebuilding and concentrated on components improving the way they can interface with and build on each others’ work.
+I improved interoperability and modularity of existing tools, pioneered technologies and software development processes in a research environment, and developed some of the missing building blocks for the resulting toolkit.
 My contributions to the field of scRNA-Seq data analysis consequently include research and development of algorithms, data structures, pipelines, frameworks, and APIs, as outlined in the following.
+Placed in the framework provided by the overview of scRNA-seq analysis in \insec[sec:workflow], I worked on every computational step of the process except for alignment.
+My contributions specifically focused on steps involving a count matrix.
 I also analyzed sizes and sequencing depth of 455 publicly available datasets and the impact of growing data sizes (see \infig[fig:dataset-sizes]) on the field \cite[angerer2017].
 The effects of increasing data availability are felt throughout the field, while the theoretical possibilities mentioned in \inlinecite[angerer2017] are becoming reality.
 For example, cell atlases containing large amounts of multimodal data can now be used to infer labels for new data using transfer learning \cite[abdelaal2019].

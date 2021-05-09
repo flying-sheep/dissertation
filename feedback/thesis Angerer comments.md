@@ -3,18 +3,7 @@
 "Enabling technologies for visualization and analysis of single cell RNA-Seq data"
 
 - [ ] Global vs local features https://www.techtimes.com/articles/44206/20150404/marilyn-monroe-or-albert-einstein-optical-illusion-can-tell-if-you-need-glasses-or-not.htm
-
-## Restructuring
-
-fuse summaries / own contribs and integrate sections that confused fabian like 2.4 BART-Seq, 2.1.3 Gene Relevance
-
-own contrib part in
-
-- own contribs
-- intro subsections
-- paper summaries
-
-centralize into only “own contribs”. fabian says “I was hoping for this earlier, **in particular** because it was intertwined in above a bit already”
+- [ ] vertical integration https://www.nature.com/articles/s41587-021-00895-7/figures/1
 
 ## Feedback
 
