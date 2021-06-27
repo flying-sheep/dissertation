@@ -61,13 +61,20 @@ Samples receive a predictable barcode each, allowing to maintain sample identity
 This contrasts the way other protocols assign random barcodes, meaning that samples can only be labeled by batch.
 
 My contribution:
-I helped designed the demultiplexing and counting strategy.
+I helped design the demultiplexing and counting strategy.
 I implemented a pipeline performing it and visualizing the result.
 
 \item \cite[alternative=entry, left=, right=][angerer2020]
 
 Summary:
-\TODO
+In this article, we present gene relevance, a novel method for inference of the contributions individual variables have on the location of data in an embedding.
+The method was inspired by PCA loadings, a intrinsic property of the linear dimensionality reduction method PCA.
+These loadings are the linear factors scaling a variable to define its role in a principal component.
+Using PCA as dimensional reduction method for expression data therefore allows to see each gene’s contribution to a cell’s position in a plot.
+Gene relevance generalizes the idea to make it applicable to nonlinear dimension reduction methods by calculating the differential of each gene-cell combination.
+This involves estimating the partial derivatives of the gene expression with respect to the embedding location by looking at cell neighborhoods.
+The article shows robust derivation of both obvious candidates such as hemoglobin genes for hematopoietic development, as well as interesting but less obvious genes.
+We also present an easy to use interface for calculating gene lists and plotting as part of the \n{destiny} package.
 
 My contribution:
 First author
