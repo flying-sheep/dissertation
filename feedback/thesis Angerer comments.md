@@ -79,7 +79,7 @@
 #### 1.1.1 Lib prep and sequencing
 - fig 1.2: pretty!
   - [x] maybe unclear that you describe a process from top to bottom, with text being next step.
-  - [x] caption UNCLEAR. library prep in general? for scRNA-seq?
+  - [x] caption UNCLEAR. library prep in general? for scRNA-Seq?
   - [x] in fig unclear where within cell
   - [x] dude, how about amplification? molecular barcodes, UMIs? far too much missing
   - [ ] fix up caption
@@ -176,11 +176,11 @@
 
 ## 3 (new) Summary of papers
 
-- [ ] Destiny: Diffusion maps for large-scale single cell data in R.
-- [ ] Single cells make big data: New challenges and opportunities in transcriptomics.
+- [x] Destiny: Diffusion maps for large-scale single cell data in R.
+- [x] Single cells make big data: New challenges and opportunities in transcriptomics.
 - [x] SCANPY: large-scale single cell gene expression data analysis.
 - [x] BART-Seq: cost-effective massively parallelized targeted sequencing for genomics, transcriptomics, and single cell analysis
-- [ ] Automatic identification of relevant genes from low-dimensional embeddings of single cell RNA-seq data
+- [x] Automatic identification of relevant genes from low-dimensional embeddings of single cell RNA-Seq data
 
 ## 3 Conclusion
 - [x] should be conclusion + outlook (which is what you do anyway)

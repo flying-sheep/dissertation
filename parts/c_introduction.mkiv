@@ -66,7 +66,7 @@ The international community of scientists working on transcriptomics is coming t
 
 %challenges: different sources of biases and noise
 All these opportunities come at the cost of additional complexity and more confounding variables (biases).
-For one, scRNA-Seq has by far fewer mRNA molecules per sample than bulk RNA-seq, which results in noisier measurements in general \cite[brennecke2013].
+For one, scRNA-Seq has by far fewer mRNA molecules per sample than bulk RNA-Seq, which results in noisier measurements in general \cite[brennecke2013].
 Experimental protocols used for sequencing single cell transcriptomes have different tradeoffs between sensitivity, cost, time investment, and individual biases \cite[ziegenhain2017,vieth2019].
 For example, microfluidic protocols cannot completely avoid lysing and sequencing two cells in the same droplet (doublets).
 The number of cells that can be measured at once with a certain quality is therefore practically limited.
@@ -379,11 +379,11 @@ It also supports being used as a Python library to back visualization tools, web
 
 % (I am the one who can create usable interfaces and/for pipelines and fill in the gaps where “cobblestones” are missing)
 
-In the previous section, I outlined the ways programmatic frameworks improve reusability and therefore interoperability and reproducibility, specifically of scRNA-seq analysis.
+In the previous section, I outlined the ways programmatic frameworks improve reusability and therefore interoperability and reproducibility, specifically of scRNA-Seq analysis.
 I identified gaps that I found scientists to spend disproportionate time on rebuilding and concentrated on components improving the way they can interface with and build on each others’ work.
 I consequently focused my work on improving interoperability and modularity of existing tools, pioneering technologies and software development processes in a research environment, and developing some of the missing building blocks for the resulting toolkit.
 My contributions to the field of scRNA-Seq data analysis include research and development of algorithms, data structures, pipelines, frameworks, and APIs, as outlined in the following.
-Placed in the framework provided by the overview of scRNA-seq analysis in \insec[sec:workflow], I worked on every computational step of the process except for alignment, with a specific focus on steps involving a count matrix.
+Placed in the framework provided by the overview of scRNA-Seq analysis in \insec[sec:workflow], I worked on every computational step of the process except for alignment, with a specific focus on steps involving a count matrix.
 To demonstrate the need for rigorous software solutions like mine, I also analyzed sizes and sequencing depth of 455 publicly available datasets and the impact of growing data sizes (see \infig[fig:dataset-sizes]) on the field \cite[angerer2017].
 Since then, effects of increasing data availability are increasingly felt throughout the field, while the theoretical possibilities mentioned in \inlinecite[angerer2017] are becoming reality.
 For example, cell atlases containing large amounts of multimodal data can now be used to infer labels for new data using transfer learning \cite[abdelaal2019].
