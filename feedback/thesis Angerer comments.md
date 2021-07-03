@@ -184,7 +184,7 @@
 
 ## 3 Conclusion
 - [x] should be conclusion + outlook (which is what you do anyway)
-- [ ] please go over typos, here capitalization in first sentence
+- [x] please go over typos, here capitalization in first sentence
 - [ ] often people include a least short summary
 - [ ] "My contributions towards more reproducible, scalable and inter-connectible scientific programming have helped these changes along." → sounds very different from what you wrote before
 
@@ -194,7 +194,7 @@
 
 ### 3.3 Multi-modal Scanpy and AnnData
 - [x] very good, swap with 3.2?
-- [ ] Nature Method of year, nice! add the 2013 one to intro, though.
+- [x] Nature Method of year, nice! add the 2013 one to intro, though.
 - [ ] extend a bit, some timeline?
 - [ ] something on how community can address?
 
