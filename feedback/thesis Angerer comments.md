@@ -82,7 +82,7 @@
   - [x] caption UNCLEAR. library prep in general? for scRNA-Seq?
   - [x] in fig unclear where within cell
   - [x] dude, how about amplification? molecular barcodes, UMIs? far too much missing
-  - [ ] fix up caption
+  - [x] fix up caption
 
 #### 1.1.2 Counting
 - [x] counting of what

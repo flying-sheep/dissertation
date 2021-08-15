@@ -1,5 +1,5 @@
 \unprotect
-\pgfdeclareshape{manifold}{
+\pgfdeclareshape{manifold}{%
 	%save anchor. they can’t be used in other saved anchors sadly
 	\savedanchor{\centerpoint}{%
 		\pgf@x=.5\wd\pgfnodeparttextbox%
@@ -124,11 +124,11 @@
 				{\pgfqpoint{ .5 \pgfutil@tempdima}{    \pgfutil@tempdima}}%
 				{\pgfqpoint{0pt}{\pgfutil@tempdima}}%
 		}%
-	}
-}
-\protect
+	}%
+}%
+\protect%
 % TODO: https://ctan.math.illinois.edu/graphics/pgf/contrib/makeshape/makeshape.pdf
-
+%
 %do not think about vis at first, only raw data
 %a) cell level discretization (clustering), then cluster labelling (cell type) …
 %b) … then DE
@@ -138,8 +138,8 @@
 %a) Clustering -> [d) DE | e) Labelling]
 %b) PAGA -> [e) | f) Trajectories]
 %c) Scoring -> [g) Gene Modules | h) GR]
-
-\usetikzlibrary[calc]
+%
+\usetikzlibrary[calc]%
 \starttikzpicture[
 	paga/.style={circle, draw, fill=white},
 	arr/.style={->, shorten <=15mm},

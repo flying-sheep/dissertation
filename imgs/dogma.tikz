@@ -1,4 +1,4 @@
-\usetikzlibrary[positioning,shapes]
+\usetikzlibrary[positioning,shapes]%
 \starttikzpicture[
     bendy/.style={bend left=45},
     form/.style={ellipse, inner sep=1mm, font=\bf},

@@ -110,16 +110,17 @@ A gene is transcribed from DNA to a pre-messenger RNA (pre-mRNA).
 Introns are spliced out to form one of several possible splicing variant mRNAs.
 \bold{b)} In-vitro steps performed using lab equipment.
 The mRNA strands are fragmented chemically and reverse transcribed into cDNA for stability, as RNA degrades quickly.
-The fragments are tagged with a cell-specific barcode.
-The tagged fragments are sequenced using a high-throughput sequencing machine.
+The fragments are tagged with a cell-specific barcode and optionally molecular and library identifiers.
+The tagged fragments are pooled, amplified, then sequenced using a high-throughput sequencing machine.
 \bold{c)} In-silico steps performed using a PC or server.
 The tagged fragment sequences are aligned to a genome or transcriptome.
 The mapped fragments are counted per cell-gene combination, accounting for splicing variants.
-}]
+}]%
 % https://upload.wikimedia.org/wikipedia/commons/f/f3/Summary_of_RNA-Seq.svg
 \hbox{\input{imgs/rna-seq.tikz}}
 \stopplacefigure
 
+\noindent
 The first step begins with an experiment to prepare and sequence a transcript library containing mostly mature mRNA but also unspliced mRNA and other RNA (see \infig[fig:rna-seq]a).
 There are different kinds of library preparation protocols, all of which have in common that they isolate and fragment the RNA per single cell, reverse transcribe it into complementary DNA (cDNA) and then tag each fragment with a cell specific barcode (see \infig[fig:rna-seq]b).
 Due to the low amount of RNA in single cells and the protocols’ detection limits, all current protocols also contain contain a step amplifying the available cDNA \cite[islam2014].

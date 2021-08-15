@@ -1,19 +1,19 @@
-\usetikzlibrary[arrows.meta]
-\usetikzlibrary[fadings]
-\usetikzlibrary[decorations.pathreplacing]
-
-\tikzfading[name=middle, left color=transparent!100, right color=transparent!100, middle color=transparent!0]
-\definecolor[tab:1][x=1f77b4]\definecolor[tab:blue][tab:1]
-\definecolor[tab:2][x=ff7f0e]\definecolor[tab:orange][tab:2]
-\definecolor[tab:3][x=2ca02c]\definecolor[tab:green][tab:3]
-\definecolor[tab:4][x=d62728]\definecolor[tab:red][tab:4]
-\definecolor[tab:5][x=9467bd]\definecolor[tab:purple][tab:5]
-\definecolor[tab:6][x=8c564b]\definecolor[tab:brown][tab:6]
-\definecolor[tab:7][x=e377c2]\definecolor[tab:pink][tab:7]
-\definecolor[tab:8][x=7f7f7f]\definecolor[tab:gray][tab:8]
-\definecolor[tab:9][x=bcbd22]\definecolor[tab:olive][tab:9]
-\definecolor[tab:10][x=17becf]\definecolor[tab:cyan][tab:10]
-
+\usetikzlibrary[arrows.meta]%
+\usetikzlibrary[fadings]%
+\usetikzlibrary[decorations.pathreplacing]%
+%
+\tikzfading[name=middle, left color=transparent!100, right color=transparent!100, middle color=transparent!0]%
+\definecolor[tab:1][x=1f77b4]\definecolor[tab:blue][tab:1]%
+\definecolor[tab:2][x=ff7f0e]\definecolor[tab:orange][tab:2]%
+\definecolor[tab:3][x=2ca02c]\definecolor[tab:green][tab:3]%
+\definecolor[tab:4][x=d62728]\definecolor[tab:red][tab:4]%
+\definecolor[tab:5][x=9467bd]\definecolor[tab:purple][tab:5]%
+\definecolor[tab:6][x=8c564b]\definecolor[tab:brown][tab:6]%
+\definecolor[tab:7][x=e377c2]\definecolor[tab:pink][tab:7]%
+\definecolor[tab:8][x=7f7f7f]\definecolor[tab:gray][tab:8]%
+\definecolor[tab:9][x=bcbd22]\definecolor[tab:olive][tab:9]%
+\definecolor[tab:10][x=17becf]\definecolor[tab:cyan][tab:10]%
+%
 \starttikzpicture[
     y=-1.5cm,
     header/.style={rotate=90, anchor=south},
@@ -37,22 +37,18 @@
 ]
 
 % headers
-\draw[headbrace] (-4.7, -.2)
+\draw[headbrace] (-3.7, -.2)
     node[abc] {a} --
-    node[header] {in-vivo}
+    node[header] {in-vivo (per cell)}
     ++(0, 2.4);
-\draw[headbrace] (-4.7, 2.8)
+\draw[headbrace] (-3.7, 2.8)
     node[abc] {b} --
-    node[header] {in-vitro}
-    ++(0, 4.4);
-\draw[headbrace] (-4.7, 7.8)
-    node[abc] {c} --
-    node[header] {in-silico}
+    node[header] {in-vitro (per cell)}
     ++(0, 3.4);
-
-% Legend
-\path (-3.6, -.2) edge[legend, draw=tab:olive] node[header] {per cell} ++ (0, 6.4);
-\path (-3.6, 6.3) edge[legend, draw=tab:gray] node[header] {per library} ++ (0, 4.9);
+\draw[headbrace] (-3.7, 6.8)
+    node[abc] {c} --
+    node[header] {in-silico (per library)}
+    ++(0, 4.4);
 
 %transitions
 \fill[path fading=south, top color=black, bottom color=red, opacity=.1] (0, 0) rectangle (10, 1);
@@ -142,5 +138,7 @@
 \node[anchor=north, rotate=90] at (-.1, 0.75) {cells→};
 \node[desc] at (0, 0.75) {count matrix};
 \stopscope
+
+%\draw (current bounding box.north east) -- (current bounding box.north west) -- (current bounding box.south west) -- (current bounding box.south east) -- cycle;
 
 \stoptikzpicture
