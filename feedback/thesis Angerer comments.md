@@ -49,7 +49,7 @@
 ## Pub list
 
 - [x] is this clear somewhere that this is a cumulative dissertation? add as explanation before list of pub.
-  - [ ] is not that way in Laleh’s thesis…
+  - [x] is not that way in Laleh’s thesis…
 - [ ] Mention that Scanpy was the 2018 featured paper in the [20 year anniversary](https://genomebiology.biomedcentral.com/20years)
 - [x] did you check that papers are OK, in particular review OK to list? you may need some signatures from others?
   - [x] Elsevier: [automatically permitted](https://www.elsevier.com/about/policies/copyright/permissions)
@@ -137,8 +137,8 @@
 #### Spectral Decomposition
 ##### 2.1.1.1
 - [x] SVD not defined (U,S,V)
-- [ ] when talking about extensions of that in our field, please *by all means* cite our own things at least. I expect you to know these and will ask. e.g. Buettner GLM with missing values etc
-  - [ ] TODO: scLVM? can’t find “GLM with missing values ”
+- [x] when talking about extensions of that in our field, please *by all means* cite our own things at least. I expect you to know these and will ask. e.g. Buettner GLM with missing values etc
+  - [ ] GPLVM: buettner2014: “Probabilistic PCA of censored data” https://doi.org/10.1093/bioinformatics/btu134
 
 ##### 2.1.1.2
 - [ ] PCA then DM does not work. would make point more on linear and nonlinear red methods, then show umap tsne etc

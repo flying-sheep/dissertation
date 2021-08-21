@@ -406,6 +406,24 @@
   year		= {2012}
 }
 
+
+@article{   buettner2014,
+	title = {Probabilistic {PCA} of censored data: accounting for uncertainties in the visualization of high-throughput single-cell {qPCR} data},
+	volume = {30},
+	issn = {1367-4803},
+	url = {https://doi.org/10.1093/bioinformatics/btu134},
+	doi = {10.1093/bioinformatics/btu134},
+	shorttitle = {Probabilistic {PCA} of censored data},
+	abstract = {Motivation: High-throughput single-cell quantitative real-time polymerase chain reaction ({qPCR}) is a promising technique allowing for new insights in complex cellular processes. However, the {PCR} reaction can be detected only up to a certain detection limit, whereas failed reactions could be due to low or absent expression, and the true expression level is unknown. Because this censoring can occur for high proportions of the data, it is one of the main challenges when dealing with single-cell {qPCR} data. Principal component analysis ({PCA}) is an important tool for visualizing the structure of high-dimensional data as well as for identifying subpopulations of cells. However, to date it is not clear how to perform a {PCA} of censored data. We present a probabilistic approach that accounts for the censoring and evaluate it for two typical datasets containing single-cell {qPCR} data. Results: We use the Gaussian process latent variable model framework to account for censoring by introducing an appropriate noise model and allowing a different kernel for each dimension. We evaluate this new approach for two typical {qPCR} datasets (of mouse embryonic stem cells and blood stem/progenitor cells, respectively) by performing linear and non-linear probabilistic {PCA}. Taking the censoring into account results in a 2D representation of the data, which better reflects its known structure: in both datasets, our new approach results in a better separation of known cell types and is able to reveal subpopulations in one dataset that could not be resolved using standard {PCA}. Availability and implementation: The implementation was based on the existing Gaussian process latent variable model toolbox ( https://github.com/{SheffieldML}/{GPmat} ); extensions for noise models and kernels accounting for censoring are available at http://icb.helmholtz-muenchen.de/censgplvm . Contact:fbuettner.phys@gmail.{comSupplementary} information: Supplementary data are available at Bioinformatics online.},
+	pages = {1867--1875},
+	number = {13},
+	journaltitle = {Bioinformatics},
+	shortjournal = {Bioinformatics},
+	author = {Buettner, Florian and Moignard, Victoria and Göttgens, Berthold and Theis, Fabian J.},
+	urldate = {2021-08-21},
+	date = {2014-07-01},
+}
+
 @Article{	  buettner2015,
   abstract	= {Recent technical developments have enabled the transcriptomes of hundreds of cells to be assayed in an unbiased manner, opening up the possibility that new subpopulations of cells can be found. However, the effects of potential confounding factors, such as the cell cycle, on the heterogeneity of gene expression and therefore on the ability to robustly identify subpopulations remain unclear. We present and validate a computational approach that uses latent variable models to account for such hidden factors. We show that our single-cell latent variable model (scLVM) allows the identification of otherwise undetectable subpopulations of cells that correspond to different stages during the differentiation of naive T cells into T helper 2 cells. Our approach can be used not only to identify cellular subpopulations but also to tease apart different sources of gene expression heterogeneity in single-cell transcriptomes.},
   author	= {Buettner, Florian and Natarajan, Kedar N and Casale, F Paolo and Proserpio, Valentina and Scialdone, Antonio and Theis, Fabian J and Teichmann, Sarah A and Marioni, John C and Stegle, Oliver},
