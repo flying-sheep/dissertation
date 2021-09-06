@@ -1,6 +1,11 @@
 Enabling technologies for visualization and analysis of single cell RNA-Seq data
 ================================================================================
 
+Setup zotero-better-bibtex’ [auto export](https://retorque.re/zotero-better-bibtex/exporting/auto/):
+
+- Path is `lib/library.bib`
+- Turn off title casing in “Better Bibtex” → “Export” → “Misc”
+
 Build in docker:
 
 ```bash
@@ -11,7 +16,7 @@ docker run -it -v "$PWD:/home/me" dissertation
 Build locally (needs all kinds of Python and R stuff)
 
 ```bash
-snakemake prd_dissertation.mkiv
+snakemake -j4 prd_dissertation.pdf
 ```
 
 - https://www.gzw.wzw.tum.de/abschluss-der-promotion/

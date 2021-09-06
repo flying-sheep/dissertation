@@ -55,7 +55,7 @@ Experiments to artificially induce trans- or dedifferentiation have shown promis
 % SC revolution
 Single cell RNA-Seq (scRNA-Seq) can measure extremely small expression values down to a single mRNA molecule \cite[tang2011].
 This data comes with its own challenges, but enables the study of heterogeneous tissue, where expression averages from bulk RNA-Seq are not meaningful \cite[svensson2018b].
-Nature Methods has named scRNA-Seq its method of the year 2013 together with scDNA-Seq \cite[nmeth2013].
+Nature Methods has named scRNA-Seq its method of the year 2013 together with scDNA-Seq \cite[nmeth2014].
 The ability to dissect heterogeneity allows to improve our understanding of the complex cellular interaction, in developing, mature, and diseased tissue.
 This enables new approaches to fight diseases like cancer \cite[patel2014,qian2017] and influencing cellular development (see \infig[fig:cell-fate]).
 The second great advantage is that the amounts of data present in scRNA-Seq are necessary for machine learning approaches.
@@ -272,14 +272,14 @@ Four increasingly complex 2D embeddings of the same differentiating cells colore
 Analysis of complex heterogeneity patterns requires methods of matching complexity to visualize their results.
 Complex developmental hierarchies and other relations in the data need to be faithfully represented.
 This commonly involves laying out points representing the cells in a flat plane while trying to maintain relationships such as developmental closeness (see \infig[fig:embeddings]).
-The challenge of finding a fitting low dimensional representation lies in the multiple scales biological processes take place in \cite[https://doi.org/10.1166/jcsmd.2015.1069] (see \infig[fig:hybrid]).
+The challenge of finding a fitting low dimensional representation lies in the multiple scales biological processes take place in \cite[hasenauer2015] (see \infig[fig:hybrid]).
 \TODO[maybe find better citation? this one just mentions multi-scale processes, not dim red]
 Therefore, as opposed to of simple dimensional reduction methods used for for distance calculations (see \insec[sec:preprocessing]), the preferred methods for visualization take this multi-scale nature into account.
 Complex transforms are irreversible, so their resulting coordinates of cells in the visualization (the embedding) cannot be directly traced back to the input genes.
 
 \startplacefigure[reference=fig:hybrid, location=left, title={
 A so called hybrid image exemplifies how the same data can encode information on multiple scales.
-In this painting, the highly frequency visual features are interpreted as a woman with a mirror while the low frequency details are interpreted as a skull \cite[https://doi.org/10.1145/1141911.1141919].
+In this painting, the highly frequency visual features are interpreted as a woman with a mirror while the low frequency details are interpreted as a skull \cite[oliva2006].
 (“All is Vanity” by Charles Allan Gilbert, 1892)
 }]
 \externalfigure[allisvanity.jpg][width=5.3cm]
@@ -357,7 +357,7 @@ Reproducibility seems to be largely solved, as widely available container soluti
 Unlike standalone tools, the frameworks also consistently support random seeding for identical output of nondeterministic processes.
 % - good error reporting / software quality important for good science (Avoid garbage-in garbage-out)
 % - principle of many eyes: less bugs in shared code
-The number of users of a framework or tool contributes to its quality and therefore the quality of studies relying on it, as more people report errors and special use cases, which increases the robustness of the frameworks towards those problems \cite[kim2015].
+The number of users of a framework or tool contributes to its quality and therefore the quality of studies relying on it, as more people report errors and special use cases, which increases the robustness of the frameworks towards those problems \cite[kim2015b].
 Bigger frameworks encompassing many tools have an easier time to test several permutations of their functionality than each tool would be able to when standing alone.
 
 %R
@@ -441,7 +441,7 @@ To make \n{destiny} deterministic, I contributed to a few of its dependencies to
 \n{Destiny}’s API is flexible enough to be used as an analysis tool in its own right, as well as as a diffusion map backend for integrated analysis pipelines like \n{scater} \cite[mccarthy2017].
 
 Destiny has been cited 175 times at the time of writing and has for example been used for dimensional reduction and pseudo-time inference in analyses.
-This includes hematopoietic stem and progenitor cell differentiation \cite[nestorowa2016], an immune atlas of clear cell renal cell carcinoma \cite[chevrier2017], development in the human adult brain \cite[blue2018] and an atlas of the aging drosophila brain \cite[davie2018].
+This includes hematopoietic stem and progenitor cell differentiation \cite[nestorowa2016], an immune atlas of clear cell renal cell carcinoma \cite[chevrier2017], development in the human adult brain \cite[lake2018] and an atlas of the aging drosophila brain \cite[davie2018].
 \stopsubsection
 
 \startsubsection[title={Gene Relevance}]
@@ -486,7 +486,7 @@ An advantage of the predictable barcoding over randomized barcodes is that sampl
 I designed a demultiplexing and counting strategy for BART-Seq together with Fatma Uzbas and Micha Drucker (see \insec[sec:bart-seq]).
 I implemented those strategies as well as visualization routines for the protocol as a Python package.
 Part of this package is the BART-Seq equivalent to \n{Cell Ranger} or \n{zUMIs}:
-a \n{Snakemake} pipeline \cite[köster2012] that performs all steps of the protocol to create count matrices, statistics and visualizations \cite[angerer2019a].
+a \n{Snakemake} pipeline \cite[koster2012] that performs all steps of the protocol to create count matrices, statistics and visualizations \cite[angerer2019a].
 \stopsubsection
 
 \stopsection
