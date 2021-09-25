@@ -344,6 +344,13 @@ The implementation as part of the R package \n{destiny} \cite[angerer2016] is su
 
 \startsection[reference=sec:anndata, title={\n{AnnData}}]
 
+\startplacefigure[reference=fig:anndata, title={
+\n{AnnData} is structured around a central stack of variable × observation matrices (layers) and a hierarchy of unstructured annotations.
+Each dimension, variables and observations, can be annotated with vectors (1D), matrices (2D) and graphs (2D, square matrices).
+}]
+\hbox{\input{imgs/anndata.tikz}}
+\stopplacefigure
+
 \n{AnnData} is a general purpose data structure for annotated two dimensional data (see \infig[fig:anndata]).
 % rectangular vs tidy data
 This is in contrast to tidy data, where each variable type has its own column: in our case that would mean one column each for gene ID, cell ID, expression value, and each annotation \cite[wickham2014].

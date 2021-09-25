@@ -98,7 +98,7 @@
 
 #### 1.1.5 Visualization (as Analysis steps and result)
 - [x] really viz AFTER analysis? often first step
-- [ ] at end here you *write about own contrib*ution → as reader I am waiting very much for this, then hidden within a detail expl chap → this needs major reorganization see below
+- [ ] at end here you *write about own contribution* → as reader I am waiting very much for this, then hidden within a detail expl chap → this needs major reorganization see below
 
 #### 1.1.6 Custom-built pipelines
 - [x] custom build vs what? don’t get this
@@ -112,11 +112,11 @@
     - Large cell numbers (Microfluidics) couldn’t be processed by old pipelines
     - Reproducibility
     - Few/bad embedding tools
-- [ ] also don’t get link here to rest
-- [ ] good to point out, may add citations. clear why they are needed etc?
-- [ ] the AnnData tech fig in intro, dude? why?
-- [ ] again Bioconductor?
-- [ ] very disorganized, super unclear
+- [x] also don’t get link here to rest
+- [x] good to point out, may add citations. clear why they are needed etc?
+- [x] the AnnData tech fig in intro, dude? why?
+- [x] again Bioconductor?
+- [x] very disorganized, super unclear
 
 ### 1.2 Own Contributions
 - [x] I was hoping for this earlier, in particular because it was intertwined in above a bit already

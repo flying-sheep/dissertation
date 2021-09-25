@@ -329,29 +329,34 @@ DE requires discrete partitioning of the data, which is not well defined for dat
 \stopsubsection
 
 \startsubsection[title={Frameworks for modular scRNA-Seq Analysis Pipelines}]
-\startplacefigure[reference=fig:anndata, title={
-\n{AnnData} is structured around a central stack of variable × observation matrices (layers) and a hierarchy of unstructured annotations.
-Each dimension, variables and observations, can be annotated with vectors (1D), matrices (2D) and graphs (2D, square matrices).
-}]
-\hbox{\input{imgs/anndata.tikz}}
-\stopplacefigure
+% - What came before frameworks?
+The original way to implement the aforementioned pipelines arose from the lowest common denominators of program interaction, summarized by Doug McIlroy as the UNIX philosophy \cite[salus1994]:
+
+\setupdelimitedtext[blockquote][style=\slx, before={\setupinterlinespace[line=2.4ex]\noindentation}]
+\startblockquote
+Write programs that do one thing and do it well.\crlf
+Write programs to work together.\crlf
+Write programs to handle text streams, because that is a universal interface.
+\stopblockquote
+
+\noindentation
+Text based file formats and pipeline steps realized as command line interfaces working on these files had their place for a long time.
+The approach results in automatic availability of intermediate steps as snapshots, in a human readable form, and to use basic text manipulation to work on them.
+Attempting to serve this lowest common denominator however lead to the aforementioned limitations when building pipelines. 
 
 % - What is a framework?
-Text based file formats and pipeline steps realized as command line interfaces working on these files had their place for a long time.
-The approach allows to inspect intermediate steps in a human readable form, and to use basic text manipulation to work on them.
-Attempting to serve this lowest common denominator lead however to the aforementioned limitations when building pipelines. 
 The alternative is to use a framework, i.\,e. an opinionated set of data structures and routines that are tightly integrated but generic enough to be used as building blocks for pipelines or visualization tools.
-The tight integration allows to rely on information being tracked that allows the framework to provide necessary features, which would have to be rebuilt on a case-by-case basis without a framework.
-
-\TODO[integrate]
-Analysis frameworks that are available today are toolkits able to perform each step efficiently in memory, allowing their users to choose when to use snapshots.
+This tight integration allows to rely on information being tracked that allows the framework to provide necessary features, which would have to be rebuilt on a case-by-case basis without a framework.
+It also allows to bundle steps efficiently in memory, allowing control over when to invest the resources to store snapshots.
 
 % - Through frameworks, data interchange formats and containers we get interoperability and reproducibility.
-Today, both R and Python have viable frameworks for scRNA-Seq analysis: \n{Seurat}\footnote{
+Due to their tighter coupling of data structures and algorithms, frameworks are specific to individual programming languages.
+For scRNA-Seq analysis, the major frameworks are implemented in R and Python: \n{Seurat}\footnote{
 Note that \n{Seurat} in its original publication 2015 was no general purpose scRNA-Seq analysis framework yet, but a data alignment algorithm with additional helper routines.
 } \cite[satija2015,butler2018], \n{scater} \cite[mccarthy2017], and \n{scanpy} \cite[wolf2018] are the most popular ones.
-Their data structures allow keeping gene and cell annotations and graphs in sync with the expression matrix while filtering and concatenating data (see \infig[fig:anndata]).
-Conversion between the R and Python world is now possible via common serialization formats and in-memory conversion \cite[angerer2019b].
+Their data structures allow keeping gene and cell annotations and graphs in sync with the expression matrix while filtering and concatenating data (see \insec[sec:anndata]).
+Interspersing steps from frameworks written in different languages stay possible via common serialization formats and in-memory conversion, while largely maintaining aforementioned advantages \cite[angerer2019b].
+
 %reproducibility
 Reproducibility seems to be largely solved, as widely available container solutions such as \n{Docker} allow defining perfectly reproducible environments \cite[ditommaso2015].
 Unlike standalone tools, the frameworks also consistently support random seeding for identical output of nondeterministic processes.
