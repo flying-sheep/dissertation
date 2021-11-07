@@ -116,7 +116,8 @@ While the intrinsic dimensionality of transcriptomic data is low, the number of 
 Picking a number of PCs in this range, for example using the jackstraw algorithm \cite[chung2015] is a popular preprocessing step for downstream analysis.
 
 There are a number of related methods that can serve a similar purpose, such as independent component analysis \cite[bell1995] or factor analysis \cite[stephenson1935].
-Furthermore, single cell transcriptomics specific extensions exist, such as GPLVM \cite[buettner2012,buettner2014], scLVM \cite[buettner2015], ZINB-WaVE \cite[risso2018] and GLM-PCA \cite[townes2019], which account for high numbers of zeros and over-dispersion of scRNASeq-data.
+Furthermore, single cell transcriptomics specific extensions exist, such as the application of GPLVM in \inlinecite[buettner2014],
+and the PCA extensions ZINB-WaVE \cite[risso2018] and GLM-PCA \cite[townes2019], which account for high numbers of zeros and over-dispersion of scRNASeq-data.
 \stopsubsubsection
 
 \startsubsubsection[reference=sec:diffmaps, title={Diffusion Maps}]
@@ -224,7 +225,9 @@ It stops iterating if the similarity matrices converge sufficiently or a maximum
 The more recent method UMAP works similarly, while claiming to represent global structures in the data more faithfully \cite[becht2018].
 Its more continuous and global structure also makes it a viable dimensionality reduction for preprocessing similarly to the aforementioned spectral decomposition methods (see \in[sec:spectral]).
 \inlinecite[kobak2019b] however showed that t-SNE and UMAP perform very similarly with the same data-driven initialization and selection of meta-parameters.
-Other learned embeddings are modeled explicitly to perform scRNA-Seq preprocessing, e.\,g. single cell variational inference (scVI, \inlinecite[lopez2018]).
+Single cell transcriptomics specific methods exist in this space as well, such as scLVM \cite[buettner2015], a successor of the earlier GPLVM \cite[buettner2012].
+Their performance criteria however don’t lend themselves well to the heterogeneity analysis of much more than few hundreds of cells performed today.
+This led to other approaches, such as learned embeddings modeled explicitly to perform scRNA-Seq preprocessing, e.\,g. single cell variational inference (scVI, \inlinecite[lopez2018]).
 Alternatively, one can preprocess the data in a way that improves embeddings by general purpose methods, e.\,g. by denoising data using a deep count autoencoder (DCA, \inlinecite[eraslan2019]).
 
 A disadvantages of machine learning based methods is their nondeterministic nature:
