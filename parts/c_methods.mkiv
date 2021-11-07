@@ -24,6 +24,8 @@ Nonlinear methods such as t-Stochastic Neighborhood Embedding (t-SNE, \inlinecit
 This means that local neighborhoods of samples in $x$ are still close neighbors in $s$ (red circles in \bold{b}).
 Some nonlinear dimensionality reduction methods also maintain global distances to a degree (UMAP and diffusion maps, not t-SNE).
 
+\page
+
 \startplacefigure[title={
 Reducing dimensions using global and local distances.
 \bold{a)}
@@ -89,8 +91,6 @@ These components are scored by their ability to explain the data’s structure.
 By keeping components with high enough scores as embedding dimensions, spectral decompositions can be used as dimensionality reduction methods.
 This is most useful as a very fast preprocessing step to define a less noisy latent space reflecting the inherent dimensionality of the data, but components can also be directly visualized \cite[linderman2019].
 
-\TODO[Add buettner2014 citation somewhere here]
-
 \startsubsubsection[title={Principal Component Analysis}]
 PCA is a simple spectral decomposition \cite[abdi2010].
 Principal components (PCs) $p$ are weighted products of input variables (such as gene transcripts $g$), scored by the variance each PC explains.
@@ -116,7 +116,7 @@ While the intrinsic dimensionality of transcriptomic data is low, the number of 
 Picking a number of PCs in this range, for example using the jackstraw algorithm \cite[chung2015] is a popular preprocessing step for downstream analysis.
 
 There are a number of related methods that can serve a similar purpose, such as independent component analysis \cite[bell1995] or factor analysis \cite[stephenson1935].
-Furthermore, single cell transcriptomics specific extensions exist, such as ZINB-WaVE \cite[risso2018] and GLM-PCA \cite[townes2019], which account for high numbers of zeros and over-dispersion of scRNASeq-data.
+Furthermore, single cell transcriptomics specific extensions exist, such as GPLVM \cite[buettner2012,buettner2014], scLVM \cite[buettner2015], ZINB-WaVE \cite[risso2018] and GLM-PCA \cite[townes2019], which account for high numbers of zeros and over-dispersion of scRNASeq-data.
 \stopsubsubsection
 
 \startsubsubsection[reference=sec:diffmaps, title={Diffusion Maps}]
