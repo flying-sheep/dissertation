@@ -138,7 +138,7 @@
 ##### 2.1.1.1
 - [x] SVD not defined (U,S,V)
 - [x] when talking about extensions of that in our field, please *by all means* cite our own things at least. I expect you to know these and will ask. e.g. Buettner GLM with missing values etc
-  - [ ] GPLVM: buettner2014: “Probabilistic PCA of censored data” https://doi.org/10.1093/bioinformatics/btu134
+  - [x] GPLVM: buettner2014: “Probabilistic PCA of censored data” https://doi.org/10.1093/bioinformatics/btu134
 
 ##### 2.1.1.2
 - [ ] PCA then DM does not work. would make point more on linear and nonlinear red methods, then show umap tsne etc

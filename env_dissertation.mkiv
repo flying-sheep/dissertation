@@ -56,7 +56,7 @@
 \setupcombinedlist[content][interaction=all]
 
 % Which PDF bookmarks to create and which ones to open
-\placebookmarks[chapter,title,section,subsection][chapter,title,section][force=yes]
+\placebookmarks[chapter,title,section,subsection,subsubsection][chapter,title,section][force=yes]
 \setupinteractionscreen[option=bookmark]
 
 % % Vim syntax highlighting
@@ -153,18 +153,9 @@
 %\usemodule[chemic]
 
 \usemodule[tikz]
-\usetikzlibrary[positioning]
-\usetikzlibrary[decorations.pathreplacing]
-\usetikzlibrary[backgrounds] %\tikz[framed] for debugging
-\usetikzlibrary[shapes]
-%\usetikzlibrary[shadings]
-\usetikzlibrary[arrows.meta]
-\usetikzlibrary[fadings]
-\usetikzlibrary[calc]
-%\usetikzlibrary[external]
-%\tikzexternalize[prefix=imgs/]
-% \usemodule[pgfplots]
-% \pgfplotsset{compat=1.14}
+
+\usemodule[pgfplots] % needs to be before \usetikzlibrary calls
+\pgfplotsset{compat=1.14}
 % \usepgfplotslibrary[groupplots]
 \unexpanded\def\startgroupplot{\groupplot}
 \unexpanded\def\stopgroupplot{\endgroupplot}
@@ -174,6 +165,17 @@
 % \pgfplotsset{
 %	table/search path={data},
 % }
+
+\usetikzlibrary[positioning] % needs to be after pgfplots
+\usetikzlibrary[decorations.pathreplacing]
+\usetikzlibrary[backgrounds] %\tikz[framed] for debugging
+\usetikzlibrary[shapes]
+%\usetikzlibrary[shadings]
+\usetikzlibrary[arrows.meta]
+\usetikzlibrary[fadings]
+\usetikzlibrary[calc]
+%\usetikzlibrary[external]
+%\tikzexternalize[prefix=imgs/]
 
 \usemodule[logos]
 
