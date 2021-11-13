@@ -90,7 +90,152 @@ Until few years ago, there were no freely available programming environments tha
 Analysis pipelines came custom-built for a certain publication, just as hard to take apart and reuse as a holistic model would have been.
 Every graduate student and postdoctoral researcher had to start from scratch.
 The thesis at hand is a slice of the author’s continued efforts to change this.
-See \insec[sec:contribs] for my contributions to the field.
+My contributions to the field of scRNA-Seq data analysis include research and development of algorithms, data structures, pipelines, frameworks, and APIs.
+The following \insec[sec:org] addresses my contributions to the organization and reuse of analysis workflows.
+\insec[sec:workflow] details individual steps of scRNA-Seq workflows and the methods I contributed.
+
+\startsection[reference=sec:org, title={Organizing Analysis Workflows}]
+
+% (I am the one who can create usable interfaces and/for pipelines and fill in the gaps where “cobblestones” are missing)
+
+In the scientific landscape of 2015 onwards, I identified tasks that scientists spent disproportionate time on rebuilding.
+By improving how individual steps integrate with each other, we could increase how often and well we interface with and build on each others’ work.
+I consequently focused my work on improving interoperability and modularity of existing tools, pioneering technologies and software development processes in a research environment, and developed some of the missing building blocks for the resulting toolkit.
+
+To demonstrate the need for rigorous software solutions like mine, I also analyzed sizes and sequencing depth of 455 publicly available datasets and the impact of growing data sizes (see \infig[fig:dataset-sizes]) on the field \cite[angerer2017].
+Since then, effects of increasing data availability are increasingly felt throughout the field, while the theoretical possibilities mentioned in \inlinecite[angerer2017] are becoming reality.
+For example, cell atlases containing large amounts of multimodal data can now be used to infer labels for new data using transfer learning \cite[abdelaal2019].
+
+In this section, I outline the ways in which programmatic frameworks improve reusability and therefore interoperability and reproducibility, specifically of scRNA-Seq analysis.
+I address how the field changed its approach to analysis workflows, and my contributions in facilitating the changes.
+
+\startplacefigure[reference=fig:dataset-sizes, title={
+Single cell dataset sizes uploaded to Gene Expression Omnibus (GEO).
+This updated version of a figure from \inlinecite[angerer2017] shows the sustained trend of increasing datasets and cell numbers per dataset.
+}]
+\externalfigure[imgs/dataset-sizes.pdf]
+\stopplacefigure
+
+\startsubsection[title={Analysis Pipelines: Status Quo}]
+% pipelines used scripts and binaries to proceed between snapshots
+The steps necessary to reproduce the preprocessing and analysis of a publication are bundled in an executable bundle of scripts called a pipeline.
+Pipelines perform transformations on the data, collect statistics, and compile reports.
+Depending on the amount of time and resources required to run the whole pipeline, it is desirable be able to only repeat part of the processing in case of an error.
+This is mostly achieved by regularly storing snapshot files representing the processing state between two subsequent sets of steps.
+Before my work in the area started, pipelines were mostly written in R or \n{GNU make} and often executed a command line for each step, a procedure which by necessity consumed and produced a snapshot, but allows no choice when this high granularity is undesirable.
+Despite the field’s increasing investment into machine learning algorithms implemented in Python, few tools were available in that language.
+
+% communication
+Communication with other languages or between pipeline steps involved reading an (often textual) snapshot from a file system, processing it, and writing it back to disk.
+This process involved long run times due to slow reading and writing, high storage space requirements and little resilience to errors.
+File corruption introduced e.\,g. via unreliable access to network storage could not be detected in text files, which lack checksums and other resilience precautions.
+In practice, the lack of frameworks meant that each tool or pipeline had to solve common problems by itself, such as hardening against the aforementioned reliability issues.
+This further wasted resources and increased the potential for errors.
+The resulting pipeline code published with papers was very application-specific and hard to generalize or share.
+
+% Existing methods are not focused on interoperability.
+Even within analysis pipelines operating entirely in memory instead of on slow and unreliable files, individual tools were not necessarily designed to be compatible.
+Single tools could halt progress if they had insufficient performance for upcoming large datasets from microfluidic protocols.
+The tools’ varying code quality, choice of default values and error reporting led to subtle incompatibility bugs.
+Furthermore, no data structures and file exchange formats suitable for scRNA-Seq existed, so workflows manually kept count matrices and annotation data frames in sync across filtering steps, increasing the potential for error.
+Furthermore, reproducibility was hard to guarantee in the presence of nondeterministic methods and a multitude of tool versions with subtly different defaults and behavior.
+
+% DM creation in R
+In the R world, the \n{Bioconductor} project \cite[huber2015] provided tools for preprocessing and basic analysis, but little in the way of embeddings.
+The only available option for diffusion map embedding before the creation of \n{destiny} did not offer features necessary for scRNA-Seq analysis and was impractically slow \cite[angerer2016].
+
+% - pre-GR: differential expression
+No dimensionality reduction method except for the simplistic linear PCA provides a way to relate embedding location back to input variables.
+The popularity of nonlinear dimensionality reductions meant that there was a gap between using them as cell-level analysis tool and the differential expression (DE) analysis \cite[soneson2018] as most popular gene-level analysis tool.
+DE requires discrete partitioning of the data, which is not well defined for data containing gradual transition of gene expression profiles between cells, and has the aforementioned issues with uncertainty propagation.
+\stopsubsection
+
+\startsubsection[title={Frameworks for modular scRNA-Seq Analysis Pipelines}]
+% - What came before frameworks?
+The original way to implement the aforementioned pipelines arose from the lowest common denominators of program interaction, summarized by Doug McIlroy as the UNIX philosophy \cite[salus1994]:
+
+\setupdelimitedtext[blockquote][style=\slx, before={\setupinterlinespace[line=2.4ex]\noindentation}]
+\startblockquote
+Write programs that do one thing and do it well.\crlf
+Write programs to work together.\crlf
+Write programs to handle text streams, because that is a universal interface.
+\stopblockquote
+
+\noindentation
+Text based file formats and pipeline steps realized as command line interfaces working on these files had their place for a long time.
+The approach results in automatic availability of intermediate steps as snapshots, in a human readable form, and to use basic text manipulation to work on them.
+Attempting to serve this lowest common denominator however lead to the aforementioned limitations when building pipelines. 
+
+% - What is a framework?
+The alternative is to use a framework, i.\,e. an opinionated set of data structures and routines that are tightly integrated but generic enough to be used as building blocks for pipelines or visualization tools.
+This tight integration allows to rely on information being tracked that allows the framework to provide necessary features, which would have to be rebuilt on a case-by-case basis without a framework.
+It also allows to bundle steps efficiently in memory, allowing control over when to invest the resources to store snapshots.
+
+% - Through frameworks, data interchange formats and containers we get interoperability and reproducibility.
+Due to their tighter coupling of data structures and algorithms, frameworks are specific to individual programming languages.
+For scRNA-Seq analysis, the major frameworks are implemented in R and Python: \n{Seurat}\footnote{
+Note that \n{Seurat} in its original publication 2015 was no general purpose scRNA-Seq analysis framework yet, but a data alignment algorithm with additional helper routines.
+} \cite[satija2015,butler2018], \n{scater} \cite[mccarthy2017], and \n{scanpy} \cite[wolf2018] are the most popular ones.
+Their data structures allow keeping gene and cell annotations and graphs in sync with the expression matrix while filtering and concatenating data (see \insec[sec:anndata]).
+Interspersing steps from frameworks written in different languages stay possible via common serialization formats and in-memory conversion, while largely maintaining aforementioned advantages \cite[angerer2019b].
+
+%reproducibility
+Reproducibility seems to be largely solved, as widely available container solutions such as \n{Docker} allow defining perfectly reproducible environments \cite[ditommaso2015].
+Unlike standalone tools, the frameworks also consistently support random seeding for identical output of nondeterministic processes.
+% - good error reporting / software quality important for good science (Avoid garbage-in garbage-out)
+% - principle of many eyes: less bugs in shared code
+The number of users of a framework or tool contributes to its quality and therefore the quality of studies relying on it, as more people report errors and special use cases, which increases the robustness of the frameworks towards those problems \cite[kim2015b].
+Bigger frameworks encompassing many tools have an easier time to test several permutations of their functionality than each tool would be able to when standing alone.
+
+%R
+The R world is more fragmented than Python’s:
+The \n{Bioconductor} ecosystem provides annotated matrix data structures and tools for preprocessing scRNA-Seq data.
+\n{Scater} provides extensive quality control and preprocessing but little for analysis \cite[luecken2019].
+\n{Seurat} has opinionated preprocessing, analysis and plotting routines but is not integrated into \n{Bioconductor}.
+Its data structure is \n{Seurat}-specific and needs conversion to the more generic \n{Bioconductor} data structures.
+Standalone tools in R like \n{destiny} \cite[angerer2016], \n{scmap} \cite[kiselev2018], BASiCS \cite[eling2018], or \n{velocyto} \cite[lamanno2018] usually support \n{Bioconductor} data structures or even just plain matrices and data frames.
+
+%AnnData
+In Python, many standalone tools start supporting the generic data structure \n{AnnData} \cite[zappia2018,eraslan2019,polanski2020].
+\n{AnnData} supports reading and writing from and to several language agnostic interchange formats.
+It was the first annotated matrix data structure to support sparse expression matrices and therefore up to millions of cells.
+It provides its own format that supports disk backing for operations on data too large to be performed in memory, sparse or dense.
+% Scanpy
+\n{AnnData} was developed alongside \n{scanpy} in order to make the latter a highly modular framework.
+\n{Scanpy} is now in widespread international use, continuously expanded with new algorithms, and on its way to become a community governed project \cite[wolf2018,zappia2018].
+Being based on \n{NumPy} \cite[vanderwalt2011], \n{SciPy} \cite[virtanen2020], and other mature and highly performant Python technologies, \n{scanpy} is very scalable.
+% - serving all MOs: iterative with biologists, manual coding, let it be done as-a-service
+Integrating well with \n{JupyterLab} and \n{Jupyter} notebooks \cite[kluyver2016], \n{scanpy} lends itself to be used interactively to quickly iterate on analyses with close feedback from biologists.
+It also supports being used as a Python library to back visualization tools, web servers and traditional file-based processing pipelines.
+
+%skip destiny, GR
+\stopsubsection
+
+\startsubsection[title={\n{scanpy} and \n{AnnData}}]
+% reusable and remix-able workflow building blocks and data structures
+\n{Scanpy} is a framework for scRNA-Seq preprocessing, analysis, and visualization in Python.
+\n{AnnData} is a data structure for annotated observation data including scRNA-Seq counts and expressions.
+It is designed to be generic and independent of \n{scanpy}.
+With F. Alexander Wolf I implemented the initial version of both, where he focused on performance while I focused on API and data structure design.
+\n{Scanpy} is designed around \n{AnnData}, storing the results of each processing step in an expression matrix layer or an aligned annotation (see \infig[fig:anndata]).
+\n{AnnData} can be stored on disk in various formats for snapshots, data interchange, and interoperability with command line tools.
+For data too large to hold in memory, \n{AnnData} supports disk-backed operations.
+For details about the implementation of \n{AnnData} and \n{scanpy}, see \in{Sections}[sec:anndata] and \in{}[sec:scanpy]
+
+\n{AnnData}’s and \n{scanpy}’s modular and flexible design philosophies allows \n{scanpy} routines to be effortlessly interspersed with preprocessing and analysis steps of other tools, including R tools via \n{SingleCellExperiment} \cite[lun2017a,angerer2019b].
+\n{AnnData} has been used for this purpose by several scRNA-Seq analysis tools since the publication of \n{scanpy}, such as \n{scVI} \cite[lopez2018], \n{DCA} \cite[eraslan2019], \n{DESC} \cite[li2019], or \n{BBKNN} \cite[polanski2020].
+Its \type{.h5ad} format is supported by visual analysis pipelines like \n{Galaxy} \cite[afgan2018] or \n{cellxgene} \cite[megill2020].
+\n{Scanpy} is widely used and popular in the scRNA-Seq analysis community \cite[zappia2018].
+It is integrated in \n{Galaxy}, used for large projects like the \n{Human Cell Atlas} \cite[regev2017] or \n{Tabula Muris} \cite[schaum2018], and at the time of writing cited by over 300 studies, review papers and tools.
+So does EMBL-EBI’s expression atlas use \n{scanpy} for downstream analysis of all single cell experiments \cite[papatheodorou2020]
+\stopsubsection
+
+\stopsection
+
+I outlined how the paradigm of developing and executing analysis workflows changed.
+In the following \insec[sec:workflow], I will provide an overview of a general scRNA-Seq analysis workflow,
+specifically detailing steps I contributed to the most.
+I worked on every computational step of the process except for alignment, with a specific focus on steps involving a count matrix.
 
 \startsection[reference=sec:workflow, title={Workflow for scRNA-Seq Data Processing}]
 % story: new challenges by single cell data; old way to deal with data (workflows) are not efficient → new approaches needed → me
@@ -142,7 +287,22 @@ Aligned reads are counted per splicing configuration that translates to a protei
 Since only the resulting count matrix is needed for many kinds of downstream analysis, there have been advances in pseudo-alignment algorithms like \n{kallisto} \cite[ntranos2016] or \n{Salmon} \cite[patro2017], which efficiently count without a separate alignment step.
 For ease of use, pipelines wrapping those tools for certain experimental protocols exist.
 Those include \n{Cell Ranger} for the \n{10x Genomics} \n{Chromium} protocol \cite[zheng2017] or \n{zUMIs} \cite[parekh2018] for several protocols involving UMIs.
-See also \insec[sec:bart-seq] for the counting process of the BART-Seq protocol.
+
+\TODO[motivation of BART-seq, tie in with rest]
+
+\startsubsubsection[title={BART-Seq}]
+% flexible processing pipeline and Python library
+Beyond processing count matrices, I also contributed to a new, targeted RNA-Seq protocol called BART-Seq \cite[uzbas2019].
+It is set apart from untargeted single cell and bulk RNA-Seq protocols due to its high sensitivity and low cost.
+BART-Seq tags each of its samples, which can be single cells groups of multiple cells, with a pair of computationally designed barcodes.
+Their combination allows to distinguish high numbers of samples while sensitively measuring the specified target amplicons, such as expressed genes.
+An advantage of the predictable barcoding over randomized barcodes is that sample identity is maintained, allowing for arbitrarily much information attached to each sample of a single batch, such as treatment labels.
+I designed a demultiplexing and counting strategy for BART-Seq together with Fatma Uzbas and Micha Drucker (see \insec[sec:bart-seq]).
+I implemented those strategies as well as visualization routines for the protocol as a Python package.
+Part of this package is the BART-Seq equivalent to \n{Cell Ranger} or \n{zUMIs}:
+a \n{Snakemake} pipeline \cite[koster2012] that performs all steps of the protocol to create count matrices, statistics and visualizations \cite[angerer2019a].
+\stopsubsubsection
+
 \stopsubsection
 
 \startsubsection[reference=sec:preprocessing, title={Preprocessing of counts}]
@@ -253,6 +413,7 @@ Analyses depend on the availability of informative data.
 Since classic scRNA-Seq is limited to spliced mRNAs, additional data modalities are necessary to infer dynamics like directionality in trajectory inference \cite[efremova2020].
 As an example, RNA velocity indicates the direction in which cells differentiate and therefore enhances trajectory inference with directionality and more accuracy.
 It is reconstructed from the relation of spliced and unspliced mRNA \cite[lamanno2018].
+
 \stopsubsection
 
 \startsubsection[reference=sec:visualization, title={Visualization as Analysis steps and result}]
@@ -291,130 +452,9 @@ When discovering novel subpopulations, their adjacency to known ones can be used
 An upcoming way to simplify the process are cell transcriptome atlases \cite[regev2017,schaum2018] that can be used as references to automatically look up your cells and annotate them \cite[abdelaal2019].
 \stopsubsection
 
-In recent years, I have contributed to a class of changes that scientists are adopting in their approach to scRNA-Seq analysis.
-Before addressing my work, I would like to outline the relevant changes in the process of scRNA-Seq analysis in the following sections.
-
-\startsubsection[title={Analysis Pipelines: Status Quo}]
-% pipelines used scripts and binaries to proceed between snapshots
-The steps necessary to reproduce the preprocessing and analysis of a publication are bundled in an executable bundle of scripts called a pipeline.
-Pipelines perform transformations on the data, collect statistics, and compile reports.
-Depending on the amount of time and resources required to run the whole pipeline, it is desirable be able to only repeat part of the processing in case of an error.
-This is mostly achieved by regularly storing snapshot files representing the processing state between two subsequent sets of steps.
-Before my work in the area started, pipelines were mostly written in R or \n{GNU make} and often executed a command line for each step, a procedure which by necessity consumed and produced a snapshot, but allows no choice when this high granularity is undesirable.
-Despite the field’s increasing investment into machine learning algorithms implemented in Python, few tools were available in that language.
-
-% communication
-Communication with other languages or between pipeline steps involved reading an (often textual) snapshot from a file system, processing it, and writing it back to disk.
-This process involved long run times due to slow reading and writing, high storage space requirements and little resilience to errors.
-File corruption introduced e.\,g. via unreliable access to network storage could not be detected in text files, which lack checksums and other resilience precautions.
-In practice, the lack of frameworks meant that each tool or pipeline had to solve common problems by itself, such as hardening against the aforementioned reliability issues.
-This further wasted resources and increased the potential for errors.
-The resulting pipeline code published with papers was very application-specific and hard to generalize or share.
-
-% Existing methods are not focused on interoperability.
-Even within analysis pipelines operating entirely in memory instead of on slow and unreliable files, individual tools were not necessarily designed to be compatible.
-Single tools could halt progress if they had insufficient performance for upcoming large datasets from microfluidic protocols.
-The tools’ varying code quality, choice of default values and error reporting led to subtle incompatibility bugs.
-Furthermore, no data structures and file exchange formats suitable for scRNA-Seq existed, so workflows manually kept count matrices and annotation data frames in sync across filtering steps, increasing the potential for error.
-Furthermore, reproducibility was hard to guarantee in the presence of nondeterministic methods and a multitude of tool versions with subtly different defaults and behavior.
-
-% DM creation in R
-In the R world, the \n{Bioconductor} project \cite[huber2015] provided tools for preprocessing and basic analysis, but little in the way of embeddings.
-The only available option for diffusion map embedding before the creation of \n{destiny} did not offer features necessary for scRNA-Seq analysis and was impractically slow \cite[angerer2016].
-
-% - pre-GR: differential expression
-No dimensionality reduction method except for the simplistic linear PCA provides a way to relate embedding location back to input variables.
-The popularity of nonlinear dimensionality reductions meant that there was a gap between using them as cell-level analysis tool and the differential expression (DE) analysis \cite[soneson2018] as most popular gene-level analysis tool.
-DE requires discrete partitioning of the data, which is not well defined for data containing gradual transition of gene expression profiles between cells, and has the aforementioned issues with uncertainty propagation.
-\stopsubsection
-
-\startsubsection[title={Frameworks for modular scRNA-Seq Analysis Pipelines}]
-% - What came before frameworks?
-The original way to implement the aforementioned pipelines arose from the lowest common denominators of program interaction, summarized by Doug McIlroy as the UNIX philosophy \cite[salus1994]:
-
-\setupdelimitedtext[blockquote][style=\slx, before={\setupinterlinespace[line=2.4ex]\noindentation}]
-\startblockquote
-Write programs that do one thing and do it well.\crlf
-Write programs to work together.\crlf
-Write programs to handle text streams, because that is a universal interface.
-\stopblockquote
-
-\noindentation
-Text based file formats and pipeline steps realized as command line interfaces working on these files had their place for a long time.
-The approach results in automatic availability of intermediate steps as snapshots, in a human readable form, and to use basic text manipulation to work on them.
-Attempting to serve this lowest common denominator however lead to the aforementioned limitations when building pipelines. 
-
-% - What is a framework?
-The alternative is to use a framework, i.\,e. an opinionated set of data structures and routines that are tightly integrated but generic enough to be used as building blocks for pipelines or visualization tools.
-This tight integration allows to rely on information being tracked that allows the framework to provide necessary features, which would have to be rebuilt on a case-by-case basis without a framework.
-It also allows to bundle steps efficiently in memory, allowing control over when to invest the resources to store snapshots.
-
-% - Through frameworks, data interchange formats and containers we get interoperability and reproducibility.
-Due to their tighter coupling of data structures and algorithms, frameworks are specific to individual programming languages.
-For scRNA-Seq analysis, the major frameworks are implemented in R and Python: \n{Seurat}\footnote{
-Note that \n{Seurat} in its original publication 2015 was no general purpose scRNA-Seq analysis framework yet, but a data alignment algorithm with additional helper routines.
-} \cite[satija2015,butler2018], \n{scater} \cite[mccarthy2017], and \n{scanpy} \cite[wolf2018] are the most popular ones.
-Their data structures allow keeping gene and cell annotations and graphs in sync with the expression matrix while filtering and concatenating data (see \insec[sec:anndata]).
-Interspersing steps from frameworks written in different languages stay possible via common serialization formats and in-memory conversion, while largely maintaining aforementioned advantages \cite[angerer2019b].
-
-%reproducibility
-Reproducibility seems to be largely solved, as widely available container solutions such as \n{Docker} allow defining perfectly reproducible environments \cite[ditommaso2015].
-Unlike standalone tools, the frameworks also consistently support random seeding for identical output of nondeterministic processes.
-% - good error reporting / software quality important for good science (Avoid garbage-in garbage-out)
-% - principle of many eyes: less bugs in shared code
-The number of users of a framework or tool contributes to its quality and therefore the quality of studies relying on it, as more people report errors and special use cases, which increases the robustness of the frameworks towards those problems \cite[kim2015b].
-Bigger frameworks encompassing many tools have an easier time to test several permutations of their functionality than each tool would be able to when standing alone.
-
-%R
-The R world is more fragmented than Python’s:
-The \n{Bioconductor} ecosystem provides annotated matrix data structures and tools for preprocessing scRNA-Seq data.
-\n{Scater} provides extensive quality control and preprocessing but little for analysis \cite[luecken2019].
-\n{Seurat} has opinionated preprocessing, analysis and plotting routines but is not integrated into \n{Bioconductor}.
-Its data structure is \n{Seurat}-specific and needs conversion to the more generic \n{Bioconductor} data structures.
-Standalone tools in R like \n{destiny} \cite[angerer2016], \n{scmap} \cite[kiselev2018], BASiCS \cite[eling2018], or \n{velocyto} \cite[lamanno2018] usually support \n{Bioconductor} data structures or even just plain matrices and data frames.
-
-%AnnData
-In Python, many standalone tools start supporting the generic data structure \n{AnnData} \cite[zappia2018,eraslan2019,polanski2020].
-\n{AnnData} supports reading and writing from and to several language agnostic interchange formats.
-It was the first annotated matrix data structure to support sparse expression matrices and therefore up to millions of cells.
-It provides its own format that supports disk backing for operations on data too large to be performed in memory, sparse or dense.
-% Scanpy
-\n{AnnData} was developed alongside \n{scanpy} in order to make the latter a highly modular framework.
-\n{Scanpy} is now in widespread international use, continuously expanded with new algorithms, and on its way to become a community governed project \cite[wolf2018,zappia2018].
-Being based on \n{NumPy} \cite[vanderwalt2011], \n{SciPy} \cite[virtanen2020], and other mature and highly performant Python technologies, \n{scanpy} is very scalable.
-% - serving all MOs: iterative with biologists, manual coding, let it be done as-a-service
-Integrating well with \n{JupyterLab} and \n{Jupyter} notebooks \cite[kluyver2016], \n{scanpy} lends itself to be used interactively to quickly iterate on analyses with close feedback from biologists.
-It also supports being used as a Python library to back visualization tools, web servers and traditional file-based processing pipelines.
-
-%skip destiny, GR
-\stopsubsection
-
-\stopsection
-
-
-\startsection[reference=sec:contribs, title={Own Contributions}]
-
-% (I am the one who can create usable interfaces and/for pipelines and fill in the gaps where “cobblestones” are missing)
-
-In the previous section, I outlined the ways programmatic frameworks improve reusability and therefore interoperability and reproducibility, specifically of scRNA-Seq analysis.
-I identified gaps that I found scientists to spend disproportionate time on rebuilding and concentrated on components improving the way they can interface with and build on each others’ work.
-I consequently focused my work on improving interoperability and modularity of existing tools, pioneering technologies and software development processes in a research environment, and developing some of the missing building blocks for the resulting toolkit.
-My contributions to the field of scRNA-Seq data analysis include research and development of algorithms, data structures, pipelines, frameworks, and APIs, as outlined in the following.
-Placed in the framework provided by the overview of scRNA-Seq analysis in \insec[sec:workflow], I worked on every computational step of the process except for alignment, with a specific focus on steps involving a count matrix.
-To demonstrate the need for rigorous software solutions like mine, I also analyzed sizes and sequencing depth of 455 publicly available datasets and the impact of growing data sizes (see \infig[fig:dataset-sizes]) on the field \cite[angerer2017].
-Since then, effects of increasing data availability are increasingly felt throughout the field, while the theoretical possibilities mentioned in \inlinecite[angerer2017] are becoming reality.
-For example, cell atlases containing large amounts of multimodal data can now be used to infer labels for new data using transfer learning \cite[abdelaal2019].
-
-\startplacefigure[reference=fig:dataset-sizes, title={
-Single cell dataset sizes uploaded to Gene Expression Omnibus (GEO).
-This updated version of a figure from \inlinecite[angerer2017] shows the sustained trend of increasing datasets and cell numbers per dataset.
-}]
-\externalfigure[imgs/dataset-sizes.pdf]
-\stopplacefigure
-
 \startsubsection[title={\n{destiny}}]
 % efficient and flexible diffusion maps for R
-My first contribution \n{destiny} is a user-friendly, flexible and fast R tool for three closely related scRNA-Seq analysis steps.
+My chronologically first contribution \n{destiny} is a user-friendly, flexible and fast R tool for three closely related scRNA-Seq analysis steps.
 It was written to allow dimensional reduction of both large, sparse scRNA-Seq data and qPCR data which benefits from explicit handling of missing values.
 \n{Destiny} supports the creation and visualization of diffusion maps, diffusion pseudo time, and gene relevance (\inlinecite[angerer2016], see below).
 It performs a kNN search on a data set to define a sparse distance matrix, in which the missing values stand for infinite distances instead of zeroes.
@@ -459,39 +499,6 @@ The initial idea comes from Fabian Theis, while I designed the changes making it
 I also extended the idea to include scores for defined groups of cells (such as clusters) or the whole data for a global relevance score per gene.
 The method is described in detail in \insec[sec:generelevance].
 \n{Destiny} offers a rich and user friendly API for all gene relevance concepts, including plotting routines.
-\stopsubsection
-
-\startsubsection[title={\n{scanpy} and \n{AnnData}}]
-% reusable and remix-able workflow building blocks and data structures
-\n{Scanpy} is a framework for scRNA-Seq preprocessing, analysis, and visualization in Python.
-\n{AnnData} is a data structure for annotated observation data including scRNA-Seq counts and expressions.
-It is designed to be generic and independent of \n{scanpy}.
-With F. Alexander Wolf I implemented the initial version of both, where he focused on performance while I focused on API and data structure design.
-\n{Scanpy} is designed around \n{AnnData}, storing the results of each processing step in an expression matrix layer or an aligned annotation (see \infig[fig:anndata]).
-\n{AnnData} can be stored on disk in various formats for snapshots, data interchange, and interoperability with command line tools.
-For data too large to hold in memory, \n{AnnData} supports disk-backed operations.
-For details about the implementation of \n{AnnData} and \n{scanpy}, see \in{Sections}[sec:anndata] and \in{}[sec:scanpy]
-
-\n{AnnData}’s and \n{scanpy}’s modular and flexible design philosophies allows \n{scanpy} routines to be effortlessly interspersed with preprocessing and analysis steps of other tools, including R tools via \n{SingleCellExperiment} \cite[lun2017a,angerer2019b].
-\n{AnnData} has been used for this purpose by several scRNA-Seq analysis tools since the publication of \n{scanpy}, such as \n{scVI} \cite[lopez2018], \n{DCA} \cite[eraslan2019], \n{DESC} \cite[li2019], or \n{BBKNN} \cite[polanski2020].
-Its \type{.h5ad} format is supported by visual analysis pipelines like \n{Galaxy} \cite[afgan2018] or \n{cellxgene} \cite[megill2020].
-\n{Scanpy} is widely used and popular in the scRNA-Seq analysis community \cite[zappia2018].
-It is integrated in \n{Galaxy}, used for large projects like the \n{Human Cell Atlas} \cite[regev2017] or \n{Tabula Muris} \cite[schaum2018], and at the time of writing cited by over 300 studies, review papers and tools.
-So does EMBL-EBI’s expression atlas use \n{scanpy} for downstream analysis of all single cell experiments \cite[papatheodorou2020]
-\stopsubsection
-
-\startsubsection[title={BART-Seq}]
-% flexible processing pipeline and Python library
-\TODO[motivation, tie in with rest]
-Beyond processing count matrices, I also contributed to a new, targeted RNA-Seq protocol called BART-Seq \cite[uzbas2019].
-It is set apart from untargeted single cell and bulk RNA-Seq protocols due to its high sensitivity and low cost.
-BART-Seq tags each of its samples, which can be single cells groups of multiple cells, with a pair of computationally designed barcodes.
-Their combination allows to distinguish high numbers of samples while sensitively measuring the specified target amplicons, such as expressed genes.
-An advantage of the predictable barcoding over randomized barcodes is that sample identity is maintained, allowing for arbitrarily much information attached to each sample of a single batch, such as treatment labels.
-I designed a demultiplexing and counting strategy for BART-Seq together with Fatma Uzbas and Micha Drucker (see \insec[sec:bart-seq]).
-I implemented those strategies as well as visualization routines for the protocol as a Python package.
-Part of this package is the BART-Seq equivalent to \n{Cell Ranger} or \n{zUMIs}:
-a \n{Snakemake} pipeline \cite[koster2012] that performs all steps of the protocol to create count matrices, statistics and visualizations \cite[angerer2019a].
 \stopsubsection
 
 \stopsection

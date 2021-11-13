@@ -17,6 +17,19 @@
 - [ ] really play on your strengths, say data exploding in scRNA-Seq, hence need for good well implemented SOFTWARE, not only theory methods. this is where you excel.
 - [ ] title, not sure, what are "enabling technologies". usually high-level summary term, why needed here? analysis is super broad, what type of analysis? 
 
+## own contribs
+
+- [x] 1.1 Workflow
+  Own contribution earlier?
+- [x] 1.1.5 Visualization as Analysis steps and result
+  at end here you write about own contribution → as reader I am waiting very much for this, then hidden within a detail expl chap → this needs major reorganization see below
+- [x] 1.2 Own Contributions
+  I was hoping for this earlier
+- [ ] 2 Methods
+  intro missing before you dive into each topic. goal of this chap? methods, background, own contributions? reads like a random mixture to me
+- [ ] 2.1.3 Gene Relevance
+  how does this fit at all to rest, hmm. this is now your own contribution part, right
+
 ## Abstract
 - [x] **Summary**:
 
@@ -74,7 +87,7 @@
 ### 1.1 Workflow
 - [x] workflow for what?
 - [x] Viz before analysis?
-- [ ] Own contribution earlier?
+- [x] Own contribution earlier?
 
 #### 1.1.1 Lib prep and sequencing
 - fig 1.2: pretty!
@@ -98,7 +111,7 @@
 
 #### 1.1.5 Visualization (as Analysis steps and result)
 - [x] really viz AFTER analysis? often first step
-- [ ] at end here you *write about own contribution* → as reader I am waiting very much for this, then hidden within a detail expl chap → this needs major reorganization see below
+- [x] at end here you *write about own contribution* → as reader I am waiting very much for this, then hidden within a detail expl chap → this needs major reorganization see below
 
 #### 1.1.6 Custom-built pipelines
 - [x] custom build vs what? don’t get this
@@ -123,13 +136,13 @@
 - [x] motivation missing though
 - [x] CRUCIAL: what is your question? you only describe the WHAT+HOW you do things, but not at all the WHY? motivation to assess relevance *totally* unclear. even worse, in 2nd sentence you say, oh btw., i also analyzed sizes of data sets. this is the core thing of your 4year phd work? 
 - [x] you really need to spend some time on this and exactly state what your goal is, altogether and then in each of the 3 (or 4?) projects, and then what is state of the art and in particular missing (above you described SOTA already INCLUDING your contributions) and therefore what your contribution is (see abstract comments)
-- [ ] also tie things together. why the bar-seq? because you had tools to show all this and can use as proof of concept
+- [ ] also tie things together. why the BART-seq? because you had tools to show all this and can use as proof of concept
 - [ ] often (check other theses) students also shortly write about/summarize other projects they contributed to but do not put into thesis, this is useful and I would recommend this. just looked at rules again from WZW, here you miss points 4 and 5 - 1 page summary for each paper with particular highlighting of your contrib, and 5 inclusion of those papers etc. see WZW
   - [ ] this needs quite some additional work, and I kindly ask you to go over this with Carsten first and then give me short answer to points done ok? thanks!
 - [x] I though the cumulative thesis also needs contribution to papers and your own contributions. should this be here in intro already? usually separate chapter (e.g. with Laleh). please please please by all means look at other theses and talk with currently finished PhDs, OK? thanks!
 
 ## 2 Methods
-- [ ] intro missing before you dive into each topic. goal of this chap? methods, background, own contributions? reads like a random mixture to me
+- [x] intro missing before you dive into each topic. goal of this chap? methods, background, own contributions? reads like a random mixture to me
 - [ ] also if this is methods, where is the results chapter?
 - [ ] maybe give some example or data set to visualize? imagine you presented this as a talk → this would never work to just directly talk about dim red, diff map etc without illustrating a big data set and what you'd look for in that.
 
@@ -151,7 +164,7 @@
   - [x] because it’s a denoising method, not embedding, but I added it anyway.
 
 #### 2.1.3 Gene Relevance
-- [ ] how does this fit at all to rest, hmm. this is now your own contribution part, right 
+- [x] how does this fit at all to rest, hmm. this is now your own contribution part, right 
 - [ ] fig 2.2 badly inlined; data not explained. question not motivated. not clear what I learn from this. this has a lot of issues, please help reader here.
 - [ ] something on implementation?
 
@@ -171,7 +184,7 @@
 ### 2.4 BART-Seq
 - [x] in general: need to add 1 page summaries + own contribution as extra section. please check other theses
 - [ ] this is brief, describes method, but does not give any result (maybe OK for this section though)
-- [ ] in particular though does not tie to above; and not clear how comp parts are in there, and what your contribution is.
+- [x] in particular though does not tie to above; and not clear how comp parts are in there, and what your contribution is.
 
 ## 3 (new) Summary of papers
 
