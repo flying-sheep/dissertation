@@ -280,28 +280,17 @@ A second example is adding known quantities of RNA from a foreign organism (spik
 \startsubsection[title={Counting of transcripts or reads}]
 % 2. (reads → counts)
 Counting starts from the paired sequences read from both ends of a fragment (paired-end reads) or the 3′ end sequences (single-end reads).
-The read or read pair includes a cell barcode and possibly a UMI barcode
-(see \inlinecite[uzbas2019] and \insec[sec:bart-seq] for BART-Seq, a protocol that combines paired-end reads with two cell barcodes to address a high number of cells).
+The read or read pair includes a cell barcode and possibly a UMI barcode.
 Classic counting uses specialized short read alignment tools like \n{Bowtie} \cite[langmead2009,langmead2012] or \n{STAR} \cite[dobin2013] to match reads to a reference genome annotated with information about where genes start, end, and can be spliced (see \infig[fig:rna-seq]c).
 Aligned reads are counted per splicing configuration that translates to a protein, while collapsing the counts for reads with identical UMIs – if available (see \infig[fig:rna-seq]c).
 Since only the resulting count matrix is needed for many kinds of downstream analysis, there have been advances in pseudo-alignment algorithms like \n{kallisto} \cite[ntranos2016] or \n{Salmon} \cite[patro2017], which efficiently count without a separate alignment step.
 For ease of use, pipelines wrapping those tools for certain experimental protocols exist.
 Those include \n{Cell Ranger} for the \n{10x Genomics} \n{Chromium} protocol \cite[zheng2017] or \n{zUMIs} \cite[parekh2018] for several protocols involving UMIs.
 
-\TODO[motivation of BART-seq, tie in with rest]
-
-\startsubsubsection[title={BART-Seq}]
-% flexible processing pipeline and Python library
-Beyond processing count matrices, I also contributed to a new, targeted RNA-Seq protocol called BART-Seq \cite[uzbas2019].
-It is set apart from untargeted single cell and bulk RNA-Seq protocols due to its high sensitivity and low cost.
-BART-Seq tags each of its samples, which can be single cells groups of multiple cells, with a pair of computationally designed barcodes.
-Their combination allows to distinguish high numbers of samples while sensitively measuring the specified target amplicons, such as expressed genes.
-An advantage of the predictable barcoding over randomized barcodes is that sample identity is maintained, allowing for arbitrarily much information attached to each sample of a single batch, such as treatment labels.
-I designed a demultiplexing and counting strategy for BART-Seq together with Fatma Uzbas and Micha Drucker (see \insec[sec:bart-seq]).
-I implemented those strategies as well as visualization routines for the protocol as a Python package.
-Part of this package is the BART-Seq equivalent to \n{Cell Ranger} or \n{zUMIs}:
-a \n{Snakemake} pipeline \cite[koster2012] that performs all steps of the protocol to create count matrices, statistics and visualizations \cite[angerer2019a].
-\stopsubsubsection
+Protocols like the above produce counts for all expressed genes, resulting in a sparse matrix of not very sensitively captured expression values.
+My contributions to the analysis process were among the first tools able to work with sparse matrices.
+I also contributed to a new, targeted RNA-Seq protocol called BART-Seq \cite[uzbas2019] (see \insec[sec:bart-seq]).
+Its tradeoffs are the inverse, allowing to sensitively capture expression values of a low number of target genes for a high number of samples.
 
 \stopsubsection
 
@@ -451,6 +440,8 @@ A panel of marker genes per cluster is derived from the data and cross-reference
 When discovering novel subpopulations, their adjacency to known ones can be used to make assumptions about their role and test them.
 An upcoming way to simplify the process are cell transcriptome atlases \cite[regev2017,schaum2018] that can be used as references to automatically look up your cells and annotate them \cite[abdelaal2019].
 \stopsubsection
+
+\TODO[make small, integrate, move bulk into article summary]
 
 \startsubsection[title={\n{destiny}}]
 % efficient and flexible diffusion maps for R

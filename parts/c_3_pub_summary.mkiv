@@ -64,6 +64,18 @@ My contribution:
 I helped design the demultiplexing and counting strategy.
 I implemented a pipeline performing it and visualizing the result.
 
+\TODO[include]
+% flexible processing pipeline and Python library
+see \inlinecite[uzbas2019] and \insec[sec:bart-seq] for BART-Seq, a protocol that combines paired-end reads with two cell barcodes to address a high number of cells
+It is set apart from untargeted single cell and bulk RNA-Seq protocols due to its high sensitivity and low cost.
+BART-Seq tags each of its samples, which can be single cells groups of multiple cells, with a pair of computationally designed barcodes.
+Their combination allows to distinguish high numbers of samples while sensitively measuring the specified target amplicons, such as expressed genes.
+An advantage of the predictable barcoding over randomized barcodes is that sample identity is maintained, allowing for arbitrarily much information attached to each sample of a single batch, such as treatment labels.
+I designed a demultiplexing and counting strategy for BART-Seq together with Fatma Uzbas and Micha Drucker (see \insec[sec:bart-seq]).
+I implemented those strategies as well as visualization routines for the protocol as a Python package.
+Part of this package is the BART-Seq equivalent to \n{Cell Ranger} or \n{zUMIs}:
+a \n{Snakemake} pipeline \cite[koster2012] that performs all steps of the protocol to create count matrices, statistics and visualizations \cite[angerer2019a].
+
 \item \cite[alternative=entry, left=, right=][angerer2020]
 
 Summary:
