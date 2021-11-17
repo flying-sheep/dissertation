@@ -162,9 +162,9 @@ function userdata.cite_title(tag)
 end
 \stopluacode
 
-\def\titlecite#1{\ctxlua{userdata.cite_title([==[#1]==])}}
+\def\placecitationtitle#1{\ctxlua{userdata.cite_title([==[#1]==])}}
 
-\def\titlewithfootnote#1{\titlecite{#1}\footnote{\placecitation[#1]}}
+\def\titlecite#1{\placecitationtitle{#1} \cite[#1]}
 
 % \usemodule[res-08] \setups[rl:manipulate]
 \setupexternalfigures[directory=imgs,conversion=pdf] 
