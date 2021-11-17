@@ -146,6 +146,26 @@
 % }
 \def\inlinecite[#1]{\cite[authoryears][#1]}
 
+% command to extract titles
+\startluacode
+local luadata = publications.datasets.main.luadata
+--for tag, entry in next, luadata do
+--    if entry.title then
+--        logs.report("btx", "tag: %a, title: %a", entry.tag, entry.title)
+--    end
+--end
+
+userdata = userdata or {}
+
+function userdata.cite_title(tag)
+    tex.print(luadata[tag].title)
+end
+\stopluacode
+
+\def\titlecite#1{\ctxlua{userdata.cite_title([==[#1]==])}}
+
+\def\titlewithfootnote#1{\titlecite{#1}\footnote{\placecitation[#1]}}
+
 % \usemodule[res-08] \setups[rl:manipulate]
 \setupexternalfigures[directory=imgs,conversion=pdf] 
 % Modules

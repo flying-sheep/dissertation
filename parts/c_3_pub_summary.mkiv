@@ -6,8 +6,7 @@
 This chapter contains a summary of the articles
 I made substantial contributions to during the course of my work as PhD candidate.
 
-\startitemize[r, fit][itemalign=flushright, stopper={) }]
-\item \cite[alternative=entry, left=, right=][angerer2016]
+\startsection[title=\titlewithfootnote{angerer2016}]
 
 Summary:
 In this article, we described the initial scope of \n{destiny}, an R package implementing diffusion maps.
@@ -23,7 +22,46 @@ It also served as a flexible base for the implementation of \n{DPT} and gene rel
 My contribution:
 First author
 
-\item \cite[alternative=entry, left=, right=][angerer2017]
+\TODO[integrate]
+
+% efficient and flexible diffusion maps for R
+My chronologically first contribution \n{destiny} is a user-friendly, flexible and fast R tool for three closely related scRNA-Seq analysis steps.
+It was written to allow dimensional reduction of both large, sparse scRNA-Seq data and qPCR data which benefits from explicit handling of missing values.
+\n{Destiny} supports the creation and visualization of diffusion maps, diffusion pseudo time, and gene relevance (\inlinecite[angerer2016], see below).
+It performs a kNN search on a data set to define a sparse distance matrix, in which the missing values stand for infinite distances instead of zeroes.
+From this matrix, \n{destiny} derives a transition probability matrix.
+That matrix’s Eigen decomposition is a diffusion map embedding of the data.
+Further, \n{destiny} uses the matrix to calculate diffusion pseudo time between cells as well as to project new data into the diffusion map of the data the matrix is derived from.
+For a more in-depth explanation of diffusion maps, see \insec[sec:diffmaps].
+
+\TODO[integrate]
+
+%efficiency
+\n{Destiny}’s high performance is mainly achieved by reusing the sparsity structure of the sparse distance matrix to perform element-wise operations.
+To this end, \n{destiny} symmetrizes its kNN matrix and uses the symmetric variant of diffusion maps.
+This efficient design is also used by \n{scanpy} for its many tools that use a kNN search as preprocessing step.
+
+% user friendly: defaults, no sigma
+To guarantee user friendliness, \n{destiny} has sensible defaults and compatibility to best-practice data structures and conventions.
+It is able to run without specifying parameters, as by default it obtains a number of nearest neighbors with a heuristic and uses locally scaled diffusion maps.
+I helped develop this nonparametric diffusion map variant, which is also used by \n{scanpy} today, during the parallel development of \n{destiny} and diffusion pseudo time (DPT, \inlinecite[haghverdi2016]).
+
+% plotting and color maps
+\n{Destiny} contains dedicated plotting routines for diffusion maps and diffusion pseudo time that directly integrate into the popular plotting library \n{ggplot2}.
+Destiny started providing perceptually continuous color-maps before they have been included in the major plotting libraries of Python and R.
+Without them, accurate assessment of any kind of color-mapped visualizations cannot be guaranteed \cite[borkin2011,moreland2017].
+\n{Destiny} supports \n{Bioconductor}’s annotated expression matrix classes as well as plain matrices and data frames.
+
+% flexibility
+\n{Destiny} can utilize a number of distance metrics including euclidean, cosine, and rank correlation distance.
+Unlike other available R tools, \n{destiny} uses the chosen distance metric also for kNN search, which has been shown to improve results \cite[hu2016].
+To make \n{destiny} deterministic, I contributed to a few of its dependencies to support random seeds.
+\n{Destiny}’s API is flexible enough to be used as an analysis tool in its own right, as well as as a diffusion map backend for integrated analysis pipelines like \n{scater} \cite[mccarthy2017].
+
+Destiny has been cited 175 times at the time of writing and has for example been used for dimensional reduction and pseudo-time inference in analyses.
+This includes hematopoietic stem and progenitor cell differentiation \cite[nestorowa2016], an immune atlas of clear cell renal cell carcinoma \cite[chevrier2017], development in the human adult brain \cite[lake2018] and an atlas of the aging drosophila brain \cite[davie2018].
+
+\startsection[title=\titlewithfootnote{angerer2017}]
 
 Summary:
 In this review article, we provide a selective view on the history of single cell data,
@@ -38,7 +76,7 @@ The challenges can change rapidly: while smaller scRNA-Seq require regularizatio
 My contribution:
 First author
 
-\item \cite[alternative=entry, left=, right=][wolf2018]
+\startsection[title=\titlewithfootnote{wolf2018}]
 
 Summary:
 In this article, we introduced \n{scanpy}, a framework for single cell analysis and visualization.
@@ -52,7 +90,26 @@ My contribution:
 I designed the foundational APIs and \n{AnnData}.
 I contributed to the implementation of some included algorithms.
 
-\item \cite[alternative=entry, left=, right=][uzbas2019]
+\TODO[integrate]
+
+% reusable and remix-able workflow building blocks and data structures
+\n{Scanpy} is a framework for scRNA-Seq preprocessing, analysis, and visualization in Python.
+\n{AnnData} is a data structure for annotated observation data including scRNA-Seq counts and expressions.
+It is designed to be generic and independent of \n{scanpy}.
+With F. Alexander Wolf I implemented the initial version of both, where he focused on performance while I focused on API and data structure design.
+\n{Scanpy} is designed around \n{AnnData}, storing the results of each processing step in an expression matrix layer or an aligned annotation (see \infig[fig:anndata]).
+\n{AnnData} can be stored on disk in various formats for snapshots, data interchange, and interoperability with command line tools.
+For data too large to hold in memory, \n{AnnData} supports disk-backed operations.
+For details about the implementation of \n{AnnData} and \n{scanpy}, see \in{Sections}[sec:anndata] and \in{}[sec:scanpy]
+
+\n{AnnData}’s and \n{scanpy}’s modular and flexible design philosophies allows \n{scanpy} routines to be effortlessly interspersed with preprocessing and analysis steps of other tools, including R tools via \n{SingleCellExperiment} \cite[lun2017a,angerer2019b].
+\n{AnnData} has been used for this purpose by several scRNA-Seq analysis tools since the publication of \n{scanpy}, such as \n{scVI} \cite[lopez2018], \n{DCA} \cite[eraslan2019], \n{DESC} \cite[li2019], or \n{BBKNN} \cite[polanski2020].
+Its \type{.h5ad} format is supported by visual analysis pipelines like \n{Galaxy} \cite[afgan2018] or \n{cellxgene} \cite[megill2020].
+\n{Scanpy} is widely used and popular in the scRNA-Seq analysis community \cite[zappia2018].
+It is integrated in \n{Galaxy}, used for large projects like the \n{Human Cell Atlas} \cite[regev2017] or \n{Tabula Muris} \cite[schaum2018], and at the time of writing cited by over 300 studies, review papers and tools.
+So does EMBL-EBI’s expression atlas use \n{scanpy} for downstream analysis of all single cell experiments \cite[papatheodorou2020]
+
+\startsection[title=\titlewithfootnote{uzbas2019}]
 
 Summary:
 In this article, we developed BART-Seq, a targeted RNA-Seq protocol usable at the single cell or bulk levels.
@@ -64,7 +121,8 @@ My contribution:
 I helped design the demultiplexing and counting strategy.
 I implemented a pipeline performing it and visualizing the result.
 
-\TODO[include]
+\TODO[integrate]
+
 % flexible processing pipeline and Python library
 see \inlinecite[uzbas2019] and \insec[sec:bart-seq] for BART-Seq, a protocol that combines paired-end reads with two cell barcodes to address a high number of cells
 It is set apart from untargeted single cell and bulk RNA-Seq protocols due to its high sensitivity and low cost.
@@ -76,7 +134,7 @@ I implemented those strategies as well as visualization routines for the protoco
 Part of this package is the BART-Seq equivalent to \n{Cell Ranger} or \n{zUMIs}:
 a \n{Snakemake} pipeline \cite[koster2012] that performs all steps of the protocol to create count matrices, statistics and visualizations \cite[angerer2019a].
 
-\item \cite[alternative=entry, left=, right=][angerer2020]
+\startsection[title=\titlewithfootnote{angerer2020}]
 
 Summary:
 In this article, we present gene relevance, a novel method for inference of the contributions individual variables have on the location of data in an embedding.
@@ -91,7 +149,19 @@ We also present an easy to use interface for calculating gene lists and plotting
 My contribution:
 First author
 
-\stopitemize
+\TODO[integrate]
+
+% combines gene-level with cell-level analysis
+The most recent addition to \n{destiny} is the gene relevance algorithm.
+It is designed to identify genes that drive the local positioning of a cell in an embedding, information that less powerful linear embeddings like PCA have intrinsically.
+This allows to detect locally relevant genes without a discrete clustering step, and therefore without data reuse as a result of using inferred cluster labels as input for gene level analysis.
+
+The initial idea comes from Fabian Theis, while I designed the changes making it applicable to real data with A. Scialdone and C. Marr and implemented it.
+I also extended the idea to include scores for defined groups of cells (such as clusters) or the whole data for a global relevance score per gene.
+The method is described in detail in \insec[sec:generelevance].
+\n{Destiny} offers a rich and user friendly API for all gene relevance concepts, including plotting routines.
+
+\stopsection
 
 \stopchapter
 \stopcomponent
