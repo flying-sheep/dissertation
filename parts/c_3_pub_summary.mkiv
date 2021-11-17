@@ -24,18 +24,6 @@ First author
 
 \TODO[integrate]
 
-% efficient and flexible diffusion maps for R
-My chronologically first contribution \n{destiny} is a user-friendly, flexible and fast R tool for three closely related scRNA-Seq analysis steps.
-It was written to allow dimensional reduction of both large, sparse scRNA-Seq data and qPCR data which benefits from explicit handling of missing values.
-\n{Destiny} supports the creation and visualization of diffusion maps, diffusion pseudo time, and gene relevance (\inlinecite[angerer2016], see below).
-It performs a kNN search on a data set to define a sparse distance matrix, in which the missing values stand for infinite distances instead of zeroes.
-From this matrix, \n{destiny} derives a transition probability matrix.
-That matrix’s Eigen decomposition is a diffusion map embedding of the data.
-Further, \n{destiny} uses the matrix to calculate diffusion pseudo time between cells as well as to project new data into the diffusion map of the data the matrix is derived from.
-For a more in-depth explanation of diffusion maps, see \insec[sec:diffmaps].
-
-\TODO[integrate]
-
 %efficiency
 \n{Destiny}’s high performance is mainly achieved by reusing the sparsity structure of the sparse distance matrix to perform element-wise operations.
 To this end, \n{destiny} symmetrizes its kNN matrix and uses the symmetric variant of diffusion maps.
