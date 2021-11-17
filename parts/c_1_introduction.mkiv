@@ -305,10 +305,31 @@ When discovering novel subpopulations, their adjacency to known ones can be used
 An upcoming way to simplify the process are cell transcriptome atlases \cite[regev2017,schaum2018] that can be used as references to automatically look up your cells and annotate them \cite[abdelaal2019].
 \stopsubsection
 
+% start own contributions
+In recent years, I have contributed to a class of changes that scientists are adopting in their approach to scRNA-Seq analysis.
+My contributions focused on improving the ability of scientists to apply the theoretical steps outlined above to real data in praxis.
+To this end, I worked on implementing and extending useful algorithms in projects such as \n{destiny} and \n{scanpy}.
+
+\startsubsection[title={destiny}]
+% efficient and flexible diffusion maps for R
+My chronologically first contribution \n{destiny} is a user-friendly, flexible and fast R tool for three closely related scRNA-Seq analysis steps.
+It was written to allow dimensional reduction of both large, sparse scRNA-Seq data and qPCR data which benefits from explicit handling of missing values.
+\n{Destiny} supports the creation and visualization of diffusion maps, diffusion pseudo time, and gene relevance (\inlinecite[angerer2016], see \insec[sec:gene-relevance]).
+For an in-depth explanation of diffusion maps, see \insec[sec:diffmaps].
+
+\TODO[Move elsewhere:
+It performs a kNN search on a data set to define a sparse distance matrix, in which the missing values stand for infinite distances instead of zeroes.
+From this matrix, \n{destiny} derives a transition probability matrix.
+That matrix’s Eigen decomposition is a diffusion map embedding of the data.
+Further, \n{destiny} uses the matrix to calculate diffusion pseudo time between cells as well as to project new data into the diffusion map of the data the matrix is derived from.
+]
+
+\stopsubsection
+
 \stopsection
 
-In recent years, I have contributed to a class of changes that scientists are adopting in their approach to scRNA-Seq analysis.
-Before addressing my work, I would like to outline the relevant changes in the process of scRNA-Seq analysis in the following sections.
+Apart from implementing and extending algorithms for analysis and visualization, I especially focused on improving the interoperability between such steps.
+Before addressing my work in this field, I would like to outline the relevant changes in the process of scRNA-Seq analysis in the following sections.
 
 \startsection[reference=sec:org, title={Organizing Analysis Workflows}]
 
@@ -356,20 +377,11 @@ The tools’ varying code quality, choice of default values and error reporting 
 Furthermore, no data structures and file exchange formats suitable for scRNA-Seq existed, so workflows manually kept count matrices and annotation data frames in sync across filtering steps, increasing the potential for error.
 Furthermore, reproducibility was hard to guarantee in the presence of nondeterministic methods and a multitude of tool versions with subtly different defaults and behavior.
 
+\TODO[maybe earlier?]
+
 % DM creation in R
 In the R world, the \n{Bioconductor} project \cite[huber2015] provided tools for preprocessing and basic analysis, but little in the way of embeddings.
 The only available option for diffusion map embedding before the creation of \n{destiny} did not offer features necessary for scRNA-Seq analysis and was impractically slow \cite[angerer2016].
-
-\TODO[integrate]
-% efficient and flexible diffusion maps for R
-My chronologically first contribution \n{destiny} is a user-friendly, flexible and fast R tool for three closely related scRNA-Seq analysis steps.
-It was written to allow dimensional reduction of both large, sparse scRNA-Seq data and qPCR data which benefits from explicit handling of missing values.
-\n{Destiny} supports the creation and visualization of diffusion maps, diffusion pseudo time, and gene relevance (\inlinecite[angerer2016], see below).
-It performs a kNN search on a data set to define a sparse distance matrix, in which the missing values stand for infinite distances instead of zeroes.
-From this matrix, \n{destiny} derives a transition probability matrix.
-That matrix’s Eigen decomposition is a diffusion map embedding of the data.
-Further, \n{destiny} uses the matrix to calculate diffusion pseudo time between cells as well as to project new data into the diffusion map of the data the matrix is derived from.
-For a more in-depth explanation of diffusion maps, see \insec[sec:diffmaps].
 
 % - pre-GR: differential expression
 No dimensionality reduction method except for the simplistic linear PCA provides a way to relate embedding location back to input variables.
