@@ -74,20 +74,8 @@ First author
 \startsection[title=\titlecite{wolf2018}]
 
 Summary:
-In this article, we introduced \n{scanpy}, a framework for single cell analysis and visualization.
-It is designed around operations transforming \n{AnnData}, its foundational data structure.
-A design like this allows implementing and performing steps on the data which are not included in \n{scanpy}.
-Scanpy was named Genome Biology’s milestone article of the year \cite[genomebiology2020].
-\n{AnnData} and \n{scanpy} are widely used as base for analysis pipelines and specific analysis methods.
-\n{AnnData} is used as the primary download format of single cell projects like the Human Cell Atlas.
-
-My contribution:
-I designed the foundational APIs and \n{AnnData}.
-I contributed to the implementation of some included algorithms.
-
-\TODO[integrate]
-
 % reusable and remix-able workflow building blocks and data structures
+In this article, we introduced \n{scanpy}, a framework for single cell analysis and visualization.
 \n{Scanpy} is a framework for scRNA-Seq preprocessing, analysis, and visualization in Python.
 \n{AnnData} is a data structure for annotated observation data including scRNA-Seq counts and expressions.
 It is designed to be generic and independent of \n{scanpy}.
@@ -101,8 +89,13 @@ For details about the implementation of \n{AnnData} and \n{scanpy}, see \in{Sect
 \n{AnnData} has been used for this purpose by several scRNA-Seq analysis tools since the publication of \n{scanpy}, such as \n{scVI} \cite[lopez2018], \n{DCA} \cite[eraslan2019], \n{DESC} \cite[li2019], or \n{BBKNN} \cite[polanski2020].
 Its \type{.h5ad} format is supported by visual analysis pipelines like \n{Galaxy} \cite[afgan2018] or \n{cellxgene} \cite[megill2020].
 \n{Scanpy} is widely used and popular in the scRNA-Seq analysis community \cite[zappia2018].
+It was named Genome Biology’s milestone article of the year \cite[genomebiology2020].
 It is integrated in \n{Galaxy}, used for large projects like the \n{Human Cell Atlas} \cite[regev2017] or \n{Tabula Muris} \cite[schaum2018], and at the time of writing cited by over 300 studies, review papers and tools.
 So does EMBL-EBI’s expression atlas use \n{scanpy} for downstream analysis of all single cell experiments \cite[papatheodorou2020]
+
+My contribution:
+I designed the foundational APIs and \n{AnnData}.
+I contributed to the implementation of some included algorithms.
 
 \stopsection
 
