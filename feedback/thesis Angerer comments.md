@@ -206,7 +206,8 @@
 
 ### 3.3 Multi-modal Scanpy and AnnData
 - [x] very good, swap with 3.2?
-- [x] Nature Method of year, nice! add the 2013 one to intro, though.
+- [x] ~~Nature Method of year~~, nice! add the 2013 one to intro, though.
+  - Actually genome biology
 - [ ] extend a bit, some timeline?
 - [ ] something on how community can address?
 
