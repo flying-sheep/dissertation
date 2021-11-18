@@ -311,16 +311,9 @@ To this end, I worked on implementing and extending useful algorithms in project
 \startsubsection[title={destiny}]
 % efficient and flexible diffusion maps for R
 My chronologically first contribution \n{destiny} is a user-friendly, flexible and fast R tool for three closely related scRNA-Seq analysis steps.
-It was written to allow dimensional reduction of both large, sparse scRNA-Seq data and qPCR data which benefits from explicit handling of missing values.
-\n{Destiny} supports the creation and visualization of diffusion maps, diffusion pseudo time, and gene relevance (\inlinecite[angerer2016], see \insec[sec:gene-relevance]).
-For an in-depth explanation of diffusion maps, see \insec[sec:diffmaps].
-
-\TODO[Move elsewhere:
-It performs a kNN search on a data set to define a sparse distance matrix, in which the missing values stand for infinite distances instead of zeroes.
-From this matrix, \n{destiny} derives a transition probability matrix.
-That matrix’s Eigen decomposition is a diffusion map embedding of the data.
-Further, \n{destiny} uses the matrix to calculate diffusion pseudo time between cells as well as to project new data into the diffusion map of the data the matrix is derived from.
-]
+It supports the efficient computation and visualization of diffusion maps (see \insec[sec:diffmaps]), diffusion pseudo time \cite[haghverdi2016], and gene relevance (\inlinecite[angerer2016], see \insec[sec:gene-relevance]).
+\n{Destiny} was created to enable dimensional reduction of both large, sparse scRNA-Seq data and qPCR data which benefits from explicit handling of missing values.
+Its efficiency involves reuse of intermediate results from the diffusion map creation to calculate diffusion pseudo time between cells as well as to project new data into an existing diffusion map.
 \stopsubsection
 
 \stopsection
