@@ -8,15 +8,6 @@ I made substantial contributions to during the course of my work as PhD candidat
 
 \startsection[title=\titlecite{angerer2016}]
 
-
-
-It also served as a flexible base for the implementation of \n{DPT} and gene relevance.
-
-My contribution:
-First author
-
-\TODO[integrate]
-
 Summary:
 In this article, we described the initial scope of \n{destiny}, an R package implementing diffusion maps.
 Diffusion maps were chosen for their at the time unique ability to capture smooth nonlinear transitions in single cell transcription data and its robustness towards noise.
@@ -31,7 +22,7 @@ This efficient design has been adopted by \n{scanpy} for its many tools that use
 
 % enhancements
 \n{Destiny} also efficiently reuses intermediate results such as the transition matrix for its other functions.
-Those include diffusion pseudo time (DPT, \inlinecite[haghverdi2016]) and the ability to project a second set of data into an existing diffusion map.
+Those include diffusion pseudo time (\n{DPT}, \inlinecite[haghverdi2016]) and the ability to project a second set of data into an existing diffusion map.
 Apart from the sparsity support making it suitable for scRNA-Seq, explicit support for missing and censored values also make \n{destiny} fit to support qPCR data.
 The R package is continuously maintained and has been adapted to make use of current best practices such as an adaptable diffusion map kernel, plotting with \n{ggplot2} and storing expression data in the \n{SingleCellExperiment} data structure.
 
@@ -39,11 +30,11 @@ The R package is continuously maintained and has been adapted to make use of cur
 This integration and flexibility makes \n{destiny}n especially user friendly.
 It is also easy to use without detail knowledge by being able to run without specifying parameters.
 To this end, \n{destiny} locally scaled diffusion maps, and heuristically derives a fitting number of nearest neighbors.
-I helped develop this nonparametric diffusion map variant, which is also used by \n{scanpy} today, during the parallel development of \n{destiny} and DPT.
+I helped develop this nonparametric diffusion map variant, which is also used by \n{scanpy} today, during the parallel development of \n{destiny} and \n{DPT}.
 When opting for a global scale instead, \n{destiny} will derive a suitable kernel width by default.
 
 % plotting and color maps
-\n{Destiny} contains dedicated plotting routines for diffusion maps and DPT that directly integrate into the popular plotting library \n{ggplot2}.
+\n{Destiny} contains dedicated plotting routines for diffusion maps and \n{DPT} that directly integrate into the popular plotting library \n{ggplot2}.
 Destiny started providing perceptually continuous color-maps before they have been included in the major plotting libraries of Python and R.
 Without them, accurate assessment of any kind of color-mapped visualizations cannot be guaranteed \cite[borkin2011,moreland2017].
 \n{Destiny} supports \n{Bioconductor}’s annotated expression matrix classes as well as plain matrices and data frames.
@@ -53,9 +44,15 @@ Without them, accurate assessment of any kind of color-mapped visualizations can
 Unlike other available R tools, \n{destiny} uses the chosen distance metric also for kNN search, which has been shown to improve results \cite[hu2016].
 To make \n{destiny} deterministic, I contributed to a few of its dependencies to support random seeds.
 \n{Destiny}’s API is flexible enough to be used as an analysis tool in its own right, as well as as a diffusion map backend for integrated analysis pipelines like \n{scater} \cite[mccarthy2017].
+It also served as a flexible base for the implementation of \n{DPT} and gene relevance (see below).
 
 Destiny has been cited 175 times at the time of writing and has for example been used for dimensional reduction and pseudo-time inference in analyses.
 This includes hematopoietic stem and progenitor cell differentiation \cite[nestorowa2016], an immune atlas of clear cell renal cell carcinoma \cite[chevrier2017], development in the human adult brain \cite[lake2018] and an atlas of the aging drosophila brain \cite[davie2018].
+
+My contribution:
+First author
+
+\stopsection
 
 \startsection[title=\titlecite{angerer2017}]
 
@@ -71,6 +68,8 @@ The challenges can change rapidly: while smaller scRNA-Seq require regularizatio
 
 My contribution:
 First author
+
+\stopsection
 
 \startsection[title=\titlecite{wolf2018}]
 
@@ -105,6 +104,8 @@ Its \type{.h5ad} format is supported by visual analysis pipelines like \n{Galaxy
 It is integrated in \n{Galaxy}, used for large projects like the \n{Human Cell Atlas} \cite[regev2017] or \n{Tabula Muris} \cite[schaum2018], and at the time of writing cited by over 300 studies, review papers and tools.
 So does EMBL-EBI’s expression atlas use \n{scanpy} for downstream analysis of all single cell experiments \cite[papatheodorou2020]
 
+\stopsection
+
 \startsection[title=\titlecite{uzbas2019}]
 
 Summary:
@@ -129,6 +130,8 @@ I designed a demultiplexing and counting strategy for BART-Seq together with Fat
 I implemented those strategies as well as visualization routines for the protocol as a Python package.
 Part of this package is the BART-Seq equivalent to \n{Cell Ranger} or \n{zUMIs}:
 a \n{Snakemake} pipeline \cite[koster2012] that performs all steps of the protocol to create count matrices, statistics and visualizations \cite[angerer2019a].
+
+\stopsection
 
 \startsection[title=\titlecite{angerer2020}]
 
