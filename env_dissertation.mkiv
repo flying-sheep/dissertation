@@ -58,6 +58,8 @@
 % Which PDF bookmarks to create and which ones to open
 \placebookmarks[chapter,title,section,subsection,subsubsection][chapter,title,section][force=yes]
 \setupinteractionscreen[option=bookmark]
+\enabledirectives[interaction.identity.preroll]  % prevent TeX from appering in title metadata
+\enabledirectives[references.bookmarks.preroll]  % prevent TeX from appering in PDF bookmarks
 
 % % Vim syntax highlighting
 %\usemodule[vim]
