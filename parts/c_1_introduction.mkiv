@@ -155,7 +155,6 @@ Protocols like the above produce counts for all expressed genes, resulting in a 
 My contributions to the analysis process were among the first tools able to work with sparse matrices.
 I also contributed to a new, targeted RNA-Seq protocol called BART-Seq \cite[uzbas2019] (see \insec[sec:bart-seq]).
 Its tradeoffs are the inverse, allowing to sensitively capture expression values of a low number of target genes for a high number of samples.
-
 \stopsubsection
 
 \startsubsection[reference=sec:preprocessing, title={Preprocessing of counts}]
@@ -266,7 +265,6 @@ Analyses depend on the availability of informative data.
 Since classic scRNA-Seq is limited to spliced mRNAs, additional data modalities are necessary to infer dynamics like directionality in trajectory inference \cite[efremova2020].
 As an example, RNA velocity indicates the direction in which cells differentiate and therefore enhances trajectory inference with directionality and more accuracy.
 It is reconstructed from the relation of spliced and unspliced mRNA \cite[lamanno2018].
-
 \stopsubsection
 
 \startsubsection[reference=sec:visualization, title={Visualization as Analysis steps and result}]
@@ -323,7 +321,6 @@ From this matrix, \n{destiny} derives a transition probability matrix.
 That matrix’s Eigen decomposition is a diffusion map embedding of the data.
 Further, \n{destiny} uses the matrix to calculate diffusion pseudo time between cells as well as to project new data into the diffusion map of the data the matrix is derived from.
 ]
-
 \stopsubsection
 
 \stopsection
@@ -446,7 +443,6 @@ Being based on \n{NumPy} \cite[vanderwalt2011], \n{SciPy} \cite[virtanen2020], a
 % - serving all MOs: iterative with biologists, manual coding, let it be done as-a-service
 Integrating well with \n{JupyterLab} and \n{Jupyter} notebooks \cite[kluyver2016], \n{scanpy} lends itself to be used interactively to quickly iterate on analyses with close feedback from biologists.
 It also supports being used as a Python library to back visualization tools, web servers and traditional file-based processing pipelines.
-
 \stopsubsection
 
 \stopsection
