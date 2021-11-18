@@ -8,15 +8,8 @@ I made substantial contributions to during the course of my work as PhD candidat
 
 \startsection[title=\titlecite{angerer2016}]
 
-Summary:
-In this article, we described the initial scope of \n{destiny}, an R package implementing diffusion maps.
-Diffusion maps were chosen for their at the time unique ability to capture smooth nonlinear transitions in single cell transcription data and its robustness towards noise.
-\n{Destiny} was the first user friendly and practical implementation of the algorithm, suited for both interactive use by data scientists and use in other packages.
-It has been especially user friendly from the start by automatically deriving a suitable kernel width and supplying other sensible defaults and useful plotting routines.
-The package’s tailoring for single cell transcription data rests on algorithmic enhancements and scalability.
-The enhancements include explicit support for missing values, as well as the ability to project a second set of data into an existing diffusion map.
-Scalability and compuatational efficiency was achieved through several adaptations such initializing based on a k-nearest-neighbor search, full sparse matrix support for data and transition matrix, as well as an approximate Eigen decomposition algorithmus. 
-\n{Destiny} is continuously maintained and has been adapted to make use of current best practices such as an adaptable diffusion map kernel, plotting with \n{ggplot2} and storing expression data in the \n{SingleCellExperiment} data structure.
+
+
 It also served as a flexible base for the implementation of \n{DPT} and gene relevance.
 
 My contribution:
@@ -24,18 +17,33 @@ First author
 
 \TODO[integrate]
 
-%efficiency
-\n{Destiny}’s high performance is mainly achieved by reusing the sparsity structure of the sparse distance matrix to perform element-wise operations.
+Summary:
+In this article, we described the initial scope of \n{destiny}, an R package implementing diffusion maps.
+Diffusion maps were chosen for their at the time unique ability to capture smooth nonlinear transitions in single cell transcription data and its robustness towards noise.
+\n{Destiny} was the first user friendly and practical implementation of the algorithm, suited for both interactive use by data scientists and use in other packages.
+Its practicality is a result of high performance making it scale from personal computers to high performance machines, as well as algorithmic enhancements adapting the algorithm to scRNA-Seq and qPCR data.
+
+% efficiency
+\n{Destiny}’s scalability and compuatational efficiency is mainly achieved by reusing the sparsity structure of the sparse distance matrix to perform element-wise operations.
 To this end, \n{destiny} symmetrizes its kNN matrix and uses the symmetric variant of diffusion maps.
-This efficient design is also used by \n{scanpy} for its many tools that use a kNN search as preprocessing step.
+Other adaptations for efficiency include such initializing based on a k-nearest-neighbor search, full sparse matrix support for input data, as well as taking advantage of an approximate Eigen decomposition algorithmus.
+This efficient design has been adopted by \n{scanpy} for its many tools that use a kNN search as preprocessing step.
+
+% enhancements
+\n{Destiny} also efficiently reuses intermediate results such as the transition matrix for its other functions.
+Those include diffusion pseudo time (DPT, \inlinecite[haghverdi2016]) and the ability to project a second set of data into an existing diffusion map.
+Apart from the sparsity support making it suitable for scRNA-Seq, explicit support for missing and censored values also make \n{destiny} fit to support qPCR data.
+The R package is continuously maintained and has been adapted to make use of current best practices such as an adaptable diffusion map kernel, plotting with \n{ggplot2} and storing expression data in the \n{SingleCellExperiment} data structure.
 
 % user friendly: defaults, no sigma
-To guarantee user friendliness, \n{destiny} has sensible defaults and compatibility to best-practice data structures and conventions.
-It is able to run without specifying parameters, as by default it obtains a number of nearest neighbors with a heuristic and uses locally scaled diffusion maps.
-I helped develop this nonparametric diffusion map variant, which is also used by \n{scanpy} today, during the parallel development of \n{destiny} and diffusion pseudo time (DPT, \inlinecite[haghverdi2016]).
+This integration and flexibility makes \n{destiny}n especially user friendly.
+It is also easy to use without detail knowledge by being able to run without specifying parameters.
+To this end, \n{destiny} locally scaled diffusion maps, and heuristically derives a fitting number of nearest neighbors.
+I helped develop this nonparametric diffusion map variant, which is also used by \n{scanpy} today, during the parallel development of \n{destiny} and DPT.
+When opting for a global scale instead, \n{destiny} will derive a suitable kernel width by default.
 
 % plotting and color maps
-\n{Destiny} contains dedicated plotting routines for diffusion maps and diffusion pseudo time that directly integrate into the popular plotting library \n{ggplot2}.
+\n{Destiny} contains dedicated plotting routines for diffusion maps and DPT that directly integrate into the popular plotting library \n{ggplot2}.
 Destiny started providing perceptually continuous color-maps before they have been included in the major plotting libraries of Python and R.
 Without them, accurate assessment of any kind of color-mapped visualizations cannot be guaranteed \cite[borkin2011,moreland2017].
 \n{Destiny} supports \n{Bioconductor}’s annotated expression matrix classes as well as plain matrices and data frames.
