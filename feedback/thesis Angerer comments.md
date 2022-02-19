@@ -255,9 +255,12 @@
   > I totally reorged this subsection, should be clear now!
 
 ### 1.2 Own Contributions
+
+> this section is obsolete because of the own contribs overhaul, I tried to address all this while doing it
+
 - [x] I was hoping for this earlier, in particular because it was intertwined in above a bit already
 - [x] motivation missing though
-- [x] CRUCIAL: what is your question? you only describe the WHAT+HOW you do things, but not at all the WHY? motivation to assess relevance *totally* unclear. even worse, in 2nd sentence you say, oh btw., i also analyzed sizes of data sets. this is the core thing of your 4year phd work? 
+- [x] CRUCIAL: what is your question? you only describe the WHAT+HOW you do things, but not at all the WHY? motivation to assess relevance *totally* unclear. even worse, in 2nd sentence you say, oh btw., i also analyzed sizes of data sets. this is the core thing of your 4year phd work?
 - [x] you really need to spend some time on this and exactly state what your goal is, altogether and then in each of the 3 (or 4?) projects, and then what is state of the art and in particular missing (above you described SOTA already INCLUDING your contributions) and therefore what your contribution is (see abstract comments)
 - [ ] also tie things together. why the BART-seq? because you had tools to show all this and can use as proof of concept
 - [ ] often (check other theses) students also shortly write about/summarize other projects they contributed to but do not put into thesis, this is useful and I would recommend this. just looked at rules again from WZW, here you miss points 4 and 5 - 1 page summary for each paper with particular highlighting of your contrib, and 5 inclusion of those papers etc. see WZW
@@ -266,6 +269,9 @@
 
 ## 2 Methods
 - [x] intro missing before you dive into each topic. goal of this chap? methods, background, own contributions? reads like a random mixture to me
+
+  > added intros to top level topics (2.1, 2.2, …)
+
 - [ ] also if this is methods, where is the results chapter?
 - [ ] maybe give some example or data set to visualize? imagine you presented this as a talk → this would never work to just directly talk about dim red, diff map etc without illustrating a big data set and what you'd look for in that.
 
@@ -273,7 +279,12 @@
 #### Spectral Decomposition
 ##### 2.1.1.1
 - [x] SVD not defined (U,S,V)
+
+  > done
+
 - [x] when talking about extensions of that in our field, please *by all means* cite our own things at least. I expect you to know these and will ask. e.g. Buettner GLM with missing values etc
+
+  > added this and a few more like Goecken’s
 
 ##### 2.1.1.2
 - [ ] PCA then DM does not work. would make point more on linear and nonlinear red methods, then show umap tsne etc
@@ -281,13 +292,24 @@
 
 #### 2.1.2 Learned Embeddings
 - [x] what is difference of learned embedding to say PCA? of course there is a "learning" formulation of PCA too. this differentiation you try to make up does not exist, adapt
-  - [x] → distinguish between deterministic and nondeterministic ones
-- [ ] add a few nonlinear ones I guess
+
+  > I cleared up that I mean distinguishing between deterministic and nondeterministic ones.
+  > 
+  > PCA and DM alyays come out the same, UMAPs and tSNE can be wildly different: https://mobile.twitter.com/lpachter/status/1431326001414299650
+
+- [x] add a few nonlinear ones I guess
+
+  > done
+
 - [x] and again, you bloody cite scVI but not Gokcen's DCA? why?
-  - [x] because it’s a denoising method, not embedding, but I added it anyway.
+
+  > because it’s a denoising method, not embedding, but I added it anyway.
 
 #### 2.1.3 Gene Relevance
 - [x] how does this fit at all to rest, hmm. this is now your own contribution part, right 
+
+  > added context
+
 - [ ] fig 2.2 badly inlined; data not explained. question not motivated. not clear what I learn from this. this has a lot of issues, please help reader here.
 - [ ] something on implementation?
 
@@ -306,10 +328,18 @@
 
 ### 2.4 BART-Seq
 - [x] in general: need to add 1 page summaries + own contribution as extra section. please check other theses
+
+  > done
+
 - [ ] this is brief, describes method, but does not give any result (maybe OK for this section though)
-- [x] in particular though does not tie to above; and not clear how comp parts are in there, and what your contribution is.
+- [ ] in particular though does not tie to above
+- [x] not clear how comp parts are in there, and what your contribution is.
+
+  > added own contrib
 
 ## 3 (new) Summary of papers
+
+> added all of them
 
 - [x] Destiny: Diffusion maps for large-scale single cell data in R.
 - [x] Single cells make big data: New challenges and opportunities in transcriptomics.
@@ -319,7 +349,13 @@
 
 ## 3 Conclusion
 - [x] should be conclusion + outlook (which is what you do anyway)
+
+  > done
+
 - [x] please go over typos, here capitalization in first sentence
+
+  > did multiple editor passes
+
 - [ ] often people include a least short summary
 - [ ] "My contributions towards more reproducible, scalable and inter-connectible scientific programming have helped these changes along." → sounds very different from what you wrote before
 
@@ -329,12 +365,20 @@
 
 ### 3.3 Multi-modal Scanpy and AnnData
 - [x] very good, swap with 3.2?
+
+   > swapped
+
 - [x] ~~Nature Method of year~~, nice! add the 2013 one to intro, though.
-  - Actually genome biology
+
+  > Actually genome biology, no? added that one
+
 - [ ] extend a bit, some timeline?
 - [ ] something on how community can address?
 
 ### 3.2 New Dimensions of Scanpy Scalability
 
 - [x] VERY GOOD, this plays into your strengths.
+
+  > thanks!
+
 - [ ] please expand a bit and give clear advice, we could all profit. draw links to professional software development?
