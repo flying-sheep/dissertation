@@ -99,74 +99,160 @@
 ## Pub list
 
 - [x] is this clear somewhere that this is a cumulative dissertation? add as explanation before list of pub.
-  - [x] is not that way in Laleh’s thesis…
+  
+  > is not that way in other theses I read either, but the “Publication list” section points it out now
+
 - [x] Mention that Scanpy was the 2018 featured paper in the [20 year anniversary](https://genomebiology.biomedcentral.com/20years)
+  
+  > Done
+
 - [x] did you check that papers are OK, in particular review OK to list? you may need some signatures from others?
-  - [x] Elsevier: [automatically permitted](https://www.elsevier.com/about/policies/copyright/permissions)
-    - [x] Single Cells Make Big Data: https://doi.org/10.1016/j.coisb.2017.07.004
-  - [x] Oxford Press: [automatically permitted](https://global.oup.com/academic/rights/permissions/autperm/)
-    - [x] Destiny: https://doi.org/10.1093/bioinformatics/btv715
-    - [x] Gene Relevance: https://doi.org/10.1093/bioinformatics/btaa198
-  - [x] Springer Nature (BMC): [automatically permitted](https://www.springer.com/gp/rights-permissions/obtaining-permissions/882) when including “Material from: 'AUTHOR, TITLE, JOURNAL TITLE, published [YEAR], [publisher - as it appears on our copyright page]’”
-    - [x] Scanpy: https://doi.org/10.1186/s13059-017-1382-0
-    - [x] BART-Seq: https://doi.org/10.1186/s13059-019-1748-6
+
+  Yes, they all autopermit:
+
+  - Elsevier: [automatically permitted](https://www.elsevier.com/about/policies/copyright/permissions)
+    - Single Cells Make Big Data: https://doi.org/10.1016/j.coisb.2017.07.004
+  - Oxford Press: [automatically permitted](https://global.oup.com/academic/rights/permissions/autperm/)
+    - Destiny: https://doi.org/10.1093/bioinformatics/btv715
+    - Gene Relevance: https://doi.org/10.1093/bioinformatics/btaa198
+  - Springer Nature (BMC): [automatically permitted](https://www.springer.com/gp/rights-permissions/obtaining-permissions/882) when including “Material from: 'AUTHOR, TITLE, JOURNAL TITLE, published [YEAR], [publisher - as it appears on our copyright page]’”
+    - Scanpy: https://doi.org/10.1186/s13059-017-1382-0
+    - BART-Seq: https://doi.org/10.1186/s13059-019-1748-6
 
 ## 1 Introduction
-- [ ] See summary for Abstract re: focus
+- [x] See summary for Abstract re: focus
+
+  > See there for responses
+
 - [x] "Every aspect of existence" → of OUR exist
+
+  > done
+
 - [x] not sure central dogma super necessary in Bioinformatics thesis, but i guess OK
+
+  > I use it to explain why RNA-seq actually relates to what we’re interested in.
+
 - [ ] add some viz for HCA? even just overview of state from web page or review?
 - [x] text on examples etc good → please be CAREFUL that you don't do copy&paste from own papers and reviews *without* citation.
+
+  > I never copy and paste, any possible plagiate finder results would probably just mean that my english isn’t very varied and I tend to explain the same concept similarly.
+
 - [ ] add a subsection
 - [ ] say e.g. something on analysis or so
 - [ ] but: first a section on single cell biology or so?
 
 ### 1.1 Workflow
 - [x] workflow for what?
+
+  > for “for scRNA-Seq Data Processing”, added.
+
 - [x] Viz before analysis?
+
+  > I explained that vis and analysis are intertwined / a loop, but IMHO it flows better to first explain what we’re interested in, and then how to show it
+
 - [x] Own contribution earlier?
+
+  > Own contribs totally reworked
 
 #### 1.1.1 Lib prep and sequencing
 - fig 1.2: pretty!
+
+    > thanks! For reference: it’s now fig 1.3: “ScRNA-Seq library preparation, sequencing, and mapping”
+
   - [x] maybe unclear that you describe a process from top to bottom, with text being next step.
+  
+    > tried to make it more clear by changing how the arrows look
+  
   - [x] caption UNCLEAR. library prep in general? for scRNA-Seq?
+  
+    > I describe it
+  
   - [x] in fig unclear where within cell
+  
+    > I made grouping of where steps happen clearer
+  
   - [x] dude, how about amplification? molecular barcodes, UMIs? far too much missing
+  
+    > all added
+  
   - [x] fix up caption
+  
+    > done, looks good now
 
 #### 1.1.2 Counting
 - [x] counting of what
 
+  > “of transcripts or reads”, added
+
 #### 1.1.3 Preprocessing
 - [x] preprocessing of counts? batch etc?
+
+  > Yes, clarified.
+
 - [ ] a figure for everything after count matrix may be nice?
 
+  > There’s already fig 1.4 “batch effect correction” and fig 1.5 “Heterogeneity Analysis approaches”, but meybe more comprehensive?
+
 #### 1.1.4 Analysis (of cellular dynamics, heterogeneity and gene roles)
-- [x] analysis of what: of cellular dynamics, heterogeneity and gene roles
+- [x] analysis of what
+
+  > “of cellular dynamics, heterogeneity and gene roles”, added
+
 - [ ] here would really make clear what pot. questions could be, then enumerate analysis parts
 - [x] fig 1.4 (cell fates) somewhat nice, but give legend for arrows, add some references and say these things are artificial mostly. but: this is out of place in analysis, this should be in motivating bio questions in the single cell bio part in beginning, no? you'd need a fig for analysis etc
 
+  > Moved and explained arrows.
+
 #### 1.1.5 Visualization (as Analysis steps and result)
 - [x] really viz AFTER analysis? often first step
+
+  > see above
+
 - [x] at end here you *write about own contribution* → as reader I am waiting very much for this, then hidden within a detail expl chap → this needs major reorganization see below
 
+  > own contribs have been overhauled
+
 #### 1.1.6 Custom-built pipelines
-- [x] custom build vs what? don’t get this
-- [x] is this about frameworks? scripts?
+- [x] custom build vs what? don’t get this. is this about frameworks? scripts?
+
+  > vs reusable code. renamed to “Analysis Pipelines: Status Quo” and made clearer
 
 #### 1.1.7 Frameworks
 - [x] framework for scRNA-Seq analysis i guess (title of the overall sec is workflow hmm)
+
+  > “for modular scRNA-Seq Analysis Pipelines”, yes
+
 - [x] for whole section above
   - [x] you need to end with open challenges in the field that you will address
+  
+    > added longer intro with history and all, including why that led to problems
+  
   - [x] altogether intro very short and in particular misses biol big questions and then question you can address
     - Large cell numbers (Microfluidics) couldn’t be processed by old pipelines
     - Reproducibility
     - Few/bad embedding tools
+    
+    > Addressed all in that intro
+    
 - [x] also don’t get link here to rest
+
+  > clarified that it’s about building reusable/remixable steps for pipelines
+
 - [x] good to point out, may add citations. clear why they are needed etc?
+
+  > added and clarified
+
 - [x] the AnnData tech fig in intro, dude? why?
+
+  > moved to methods
+
 - [x] again Bioconductor?
+
+  > yeah, it’s what we’re trying to be better than
+
 - [x] very disorganized, super unclear
+
+  > I totally reorged this subsection, should be clear now!
 
 ### 1.2 Own Contributions
 - [x] I was hoping for this earlier, in particular because it was intertwined in above a bit already
