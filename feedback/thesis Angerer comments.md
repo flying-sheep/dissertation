@@ -11,13 +11,26 @@
 
 - [x] rephrase and focus needed. see 3rd, 4th, last points in own contributions:
   - [x] CRUCIAL: what is your question? you only describe the WHAT+HOW you do things, but not at all the WHY? motivation to assess relevance *totally* unclear.
-  - [x] you really need to spend some time on this and exactly state what your **goal** is, **altogether** and then in **each of the 3 (or 4?) projects**, and then what is **state of the art** (without own contributions) and in particular missing and therefore what your **contribution** is (see abstract comments)
+  
+    you really need to spend some time on this and exactly state what your **goal** is, **altogether** and then in **each of the 3 (or 4?) projects**, and then what is **state of the art** (without own contributions) and in particular missing and therefore what your **contribution** is (see abstract comments)
+    
+    > Added/clarified motivation and state of the art to all project sections
+
   - [x] summaries of papers and contributions to papers (check how Laleh did it)
-    - [ ] first status quo, then “1.3 Geometric diffusions approach for cluster analysis and pseudo-time ordering of single cell differentiation data”, then paper summaries
-- [ ] really play on your strengths, say data exploding in scRNA-Seq, hence need for good well implemented SOFTWARE, not only theory methods. this is where you excel.
+
+    > Added summaries with this formula: first status quo, then “1.3 Geometric diffusions approach for cluster analysis and pseudo-time ordering of single cell differentiation data”, then paper summaries
+
+- [x] really play on your strengths, say data exploding in scRNA-Seq, hence need for good well implemented SOFTWARE, not only theory methods. this is where you excel.
+
+  > Stressed this e.g. in “Organizing Analysis Workflows” section
+
 - [ ] title, not sure, what are "enabling technologies". usually high-level summary term, why needed here? analysis is super broad, what type of analysis? 
 
 ## own contribs
+
+> has been totally reworked by …
+
+  - [ ] TODO
 
 - [x] 1.1 Workflow
   Own contribution earlier?
@@ -34,36 +47,60 @@
 - [x] **Summary**:
 
   - [x] emphasize own contribution
+  
+    > Totally reworked own contribs
 
   - [x] motivation: please think about better way how to link the topics, and ask overarching "why" questions before telling the how
+  
+  > Added an intro paragraph about all problems I’m going to solve
 
   - [x] Suggestion: how about changing scope to data complexity plus size, focusing on your novelty + contribution of efficient *software* for analysis, and then Bart-seq as maybe proof-of-concept use and adaption or so.
 
     (i say this here for abstract, but same holds for intro, crucial to show your goals and novelty of resulting approach. would also adapt title)
+  
+  > Done just that
 
 - [x] would go over it once more and clean up text, eg. 3× this in a row etc
+  
+  > Multiple editor passes
 
 - [x] "disease and development research" unclear; maybe more explicit example?
+  
+  > Added some clarification as well as things this enabled.
 
 - [x] combinatoric options - explain; also sounds as if you pitch for best practice/optimal workflow, which is *not* your goal → adapt to your contribution
+  
+  > Explicitly stated what my goal is 
 
 - [x] you say what you do, but did not motivate why? in contrary you say there are so many analysis things, and we also did s.t.
+  
+  > Added motivation via things that weren’t possible/harder
 
 - [x] "analysis" building blocks, OK get this; maybe really put the framework idea in center. *not* clear what you claim as your contribution - Scanpy itself? AnnData? parts in there? does not come clear. I cannot stress enough how important it is that a) you fully understand what you claim is your own contribution and b) you super clearly formulate this for reviewers. this is a persistent discussion and you absolutely need to make this crystal clear.
 
+  > Added clear explanations what my contrib is
+
 - [x] motivation for each tool and explanation why you need each tool is unclear.
+  
+  > Added tool descriptions addressing which niche they fill
 
 - [x] you then super shortly describe method but not WHAT you want to do; this is crucial and really needs reworking, what is your overarching goal, then why did you dev a method (and why is it unique and why needed; these are core questions reviewer will need to answer, and you better help them with this, otherwise tough for them to say what your contrib/novelty was)
+  
+  > Added some hints here, but the bulk of this needs of course to be in the text
 
 - [x] cool with bioinformatics for last one
+  
+  > Thanks!
 
 - [x] btw, *very* good that you make a cumulative dissertation, and that you are brief
+  
+  > I always go for brevity, thanks!
 
 ## Pub list
 
 - [x] is this clear somewhere that this is a cumulative dissertation? add as explanation before list of pub.
   - [x] is not that way in Laleh’s thesis…
-- [ ] Mention that Scanpy was the 2018 featured paper in the [20 year anniversary](https://genomebiology.biomedcentral.com/20years)
+- [x] Mention that Scanpy was the 2018 featured paper in the [20 year anniversary](https://genomebiology.biomedcentral.com/20years)
 - [x] did you check that papers are OK, in particular review OK to list? you may need some signatures from others?
   - [x] Elsevier: [automatically permitted](https://www.elsevier.com/about/policies/copyright/permissions)
     - [x] Single Cells Make Big Data: https://doi.org/10.1016/j.coisb.2017.07.004
