@@ -381,4 +381,6 @@
 
   > thanks!
 
-- [ ] please expand a bit and give clear advice, we could all profit. draw links to professional software development?
+- [x] please expand a bit and give clear advice, we could all profit. draw links to professional software development?
+
+  > added advice about structuring dev work.
