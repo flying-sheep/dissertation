@@ -132,14 +132,19 @@
 
   > I use it to explain why RNA-seq actually relates to what we’re interested in.
 
-- [ ] add some viz for HCA? even just overview of state from web page or review?
+- [x] add some viz for HCA? even just overview of state from web page or review?
+
 - [x] text on examples etc good → please be CAREFUL that you don't do copy&paste from own papers and reviews *without* citation.
 
   > I never copy and paste, any possible plagiate finder results would probably just mean that my english isn’t very varied and I tend to explain the same concept similarly.
 
-- [ ] add a subsection
-- [ ] say e.g. something on analysis or so
-- [ ] but: first a section on single cell biology or so?
+- [x] add a subsection
+
+  > unclear what that means but it has more subsections now
+
+- [x] say e.g. something on analysis or so
+
+- [x] but: first a section on single cell biology or so?
 
 ### 1.1 Workflow
 - [x] workflow for what?
@@ -191,7 +196,7 @@
 
 - [ ] a figure for everything after count matrix may be nice?
 
-  > There’s already fig 1.4 “batch effect correction” and fig 1.5 “Heterogeneity Analysis approaches”, but meybe more comprehensive?
+  > There’s already fig 1.4 “batch effect correction” and fig 1.5 “Heterogeneity Analysis approaches”, but maybe more comprehensive?
 
 #### 1.1.4 Analysis (of cellular dynamics, heterogeneity and gene roles)
 - [x] analysis of what
@@ -233,7 +238,7 @@
     - Few/bad embedding tools
     
     > Addressed all in that intro
-    
+  
 - [x] also don’t get link here to rest
 
   > clarified that it’s about building reusable/remixable steps for pipelines
