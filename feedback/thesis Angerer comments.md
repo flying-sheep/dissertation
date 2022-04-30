@@ -326,8 +326,14 @@
 - [ ] something on implementation?
 
 ### 2.2 AnnData
-- [ ] is there publication for this? shouldn’t you for cumulative contribution chapter do this? i guess separate one, so this is method used below
-- [ ] here you could show your AnnData topic
+- [x] is there publication for this? shouldn’t you for cumulative contribution chapter do this? i guess separate one, so this is method used below
+
+  > there is now!
+
+- [x] here you could show your AnnData topic
+
+  > you mean figure? moved.
+
 - [ ] organization wise this is a tough break in how your write things. this reads suddenly like a package documentation. really adequate?
 
 ### 2.3 Scanpy
