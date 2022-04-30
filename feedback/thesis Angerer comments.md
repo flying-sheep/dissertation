@@ -277,12 +277,15 @@
 
   > added intros to top level topics (2.1, 2.2, …)
 
-- [ ] also if this is methods, where is the results chapter?
+- [x] also if this is methods, where is the results chapter?
+
+  > Nowhere, just like in multiple other Dissertations that I’ve oriented myself on. Why does there need to be one, there are results in the individual articles.
+
 - [ ] maybe give some example or data set to visualize? imagine you presented this as a talk → this would never work to just directly talk about dim red, diff map etc without illustrating a big data set and what you'd look for in that.
 
 ### 2.1 Dimensionality Reduction
 #### Spectral Decomposition
-##### 2.1.1.1
+##### 2.1.1.1 PCA
 - [x] SVD not defined (U,S,V)
 
   > done
@@ -291,9 +294,13 @@
 
   > added this and a few more like Goecken’s
 
-##### 2.1.1.2
-- [ ] PCA then DM does not work. would make point more on linear and nonlinear red methods, then show umap tsne etc
-- [ ] DM details, maybe s.t. on implementation and scaling, extend on this since you did contribute to that, no?
+##### 2.1.1.2 DMs
+- [x] PCA then DM does not work. would make point more on linear and nonlinear red methods, then show umap tsne etc
+
+  > done
+- [x] DM details, maybe s.t. on implementation and scaling, extend on this since you did contribute to that, no?
+
+  > I did, and added details about this
 
 #### 2.1.2 Learned Embeddings
 - [x] what is difference of learned embedding to say PCA? of course there is a "learning" formulation of PCA too. this differentiation you try to make up does not exist, adapt

@@ -21,12 +21,12 @@ Embeddings $s_{pc}$ ($p∈\{1,…,P\}$) of most datasets therefore only require 
 Dimensionality reduction methods can also be categorized into linear and nonlinear.
 Linear methods such as Principal Component Analysis (PCA, \inlinecite[abdi2010]) use linear combinations of input dimensions as embedding dimensions, which means that distances in $s$ directly relate to distances in $x$.
 Nonlinear methods such as t-Stochastic Neighborhood Embedding (t-SNE, \inlinecite[vandermaaten2008]), Uniform Manifold Approximation and Projection (UMAP, \inlinecite[mcinnes2018], or diffusion maps \cite[coifman2005] attempt to maintain locality in the data.
-This means that local neighborhoods of samples in $x$ are still close neighbors in $s$ (red circles in \bold{b}).
+This means that local neighborhoods of samples in $x$ are still close neighbors in $s$ (red circles in \infig[fig:dim-red]\bold{b}).
 Some nonlinear dimensionality reduction methods also maintain global distances to a degree (UMAP and diffusion maps, not t-SNE).
 
 \page
 
-\startplacefigure[title={
+\startplacefigure[reference=fig:dim-red,title={
 Reducing dimensions using global and local distances.
 \bold{a)}
 Dimensionality reduction methods embed samples (such as cells) from a high dimensional space (such as gene expressions) to a low dimensional space ($x_{gc} ↪ s_{pc}$, $G>>P$).
@@ -117,7 +117,7 @@ Picking a number of PCs in this range, for example using the jackstraw algorithm
 
 There are a number of related methods that can serve a similar purpose, such as independent component analysis \cite[bell1995] or factor analysis \cite[stephenson1935].
 Furthermore, single cell transcriptomics specific extensions exist, such as the application of GPLVM in \inlinecite[buettner2014],
-and the PCA extensions ZINB-WaVE \cite[risso2018] and GLM-PCA \cite[townes2019], which account for high numbers of zeros and over-dispersion of scRNASeq-data.
+and the PCA extensions ZINB-WaVE \cite[risso2018] and GLM-PCA \cite[townes2019], which account for high numbers of zeros and over-dispersion of scRNA-Seq data.
 \stopsubsubsection
 
 \startsubsubsection[reference=sec:diffmaps, title={Diffusion Maps}]
@@ -183,7 +183,9 @@ Z(c) = ∑_{d ∈ \{1,…,C\}} K(c, d)
 \stopformula
 
 More commonly today, $W$ is approximated.
-One approach is to only define $W_{cd}$ for $d∈\{\text{NN}_k(c)\}$ instead of all $d∈\{1,…,C\}$, another is employed by UMAP (see \in[sec:learned-embeddings]), which uses fuzzy simplical sets derived from $σ_c$ instead of discrete sets of nearest neighbors.
+One approach is to only define $W_{cd}$ for $d∈\{\text{NN}_k(c)\}$ instead of all $d∈\{1,…,C\}$,
+another is employed by UMAP (see \in[sec:learned-embeddings]),
+which uses fuzzy simplical sets derived from $σ_c$ instead of discrete sets of nearest neighbors.
 
 In any case, a transition probability matrix $T$ can be obtained by row-normalizing $W$:
 
@@ -192,14 +194,16 @@ In any case, a transition probability matrix $T$ can be obtained by row-normaliz
 \tilde{Z}(c) = ∑_{d∈\{1,…,C\}} W_{cd}
 \stopformula
 
-There are different possible definitions for $T_{cd}$ has several advantages, including computational performance and the ability to reuse the sparsity structure of $W$: 
+There are different possible definitions for $T_{cd}$.
+The symmetrical version has several computational advantages, including performance and the ability to reuse the sparsity structure of $W$: 
 
 \placeformula
 \startformula
 T_{cd} = √{\tilde{Z}(c)}^{-1} W_{cd} √{\tilde{Z}(y)}^{-1}
 \stopformula
 
-Compared to machine learning methods like t-SNE that embed data nondeterministically (see \in[sec:learned-embeddings]), diffusion maps preserve global structure and the pseudo-temporal ordering of cells better \cite[haghverdi2015].
+Compared to machine learning methods like t-SNE that embed data nondeterministically (see \in[sec:learned-embeddings]),
+diffusion maps preserve global structure and the pseudo-temporal ordering of cells better \cite[haghverdi2015].
 The first diffusion component is often sufficient to directly capture and visualize bifurcation events in differentiating cells.
 \stopsubsubsection
 
@@ -207,7 +211,8 @@ The first diffusion component is often sufficient to directly capture and visual
 
 \startsubsection[reference=sec:learned-embeddings, title={Learned Embeddings}]
 % https://nbisweden.github.io/workshop-scRNAseq/slides2019/Dimensionality_reduction_P_Czarnewski_2019.pdf
-Machine learning based dimensionality reduction methods use optimization to either learn an embedding directly, or a function mapping high-dimensional data to embedding coordinates.
+Machine learning based dimensionality reduction methods use optimization to either learn an embedding directly,
+or a function mapping high-dimensional data to embedding coordinates.
 A common optimization target is to represent high-dimensional relationships in the data as faithfully as possible in a 2D or 3D embedding that can be displayed on a screen or paper.
 
 The machine learning driven method t-SNE remains the most popular dimensionality reduction \cite[kobak2019a].
