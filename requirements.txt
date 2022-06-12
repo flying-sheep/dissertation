@@ -3,8 +3,6 @@ ipykernel
 nbconvert
 jupyter-core
 
-attrdict
-
 numpy
 pandas
 pyarrow
