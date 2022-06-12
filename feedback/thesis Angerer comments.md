@@ -115,7 +115,7 @@
   - Oxford Press: [automatically permitted](https://global.oup.com/academic/rights/permissions/autperm/)
     - Destiny: https://doi.org/10.1093/bioinformatics/btv715
     - Gene Relevance: https://doi.org/10.1093/bioinformatics/btaa198
-  - Springer Nature (BMC): [automatically permitted](https://www.springer.com/gp/rights-permissions/obtaining-permissions/882) when including “Material from: 'AUTHOR, TITLE, JOURNAL TITLE, published [YEAR], [publisher - as it appears on our copyright page]’”
+  - Springer Nature (BMC): [automatically permitted](https://www.springer.com/gp/rights-permissions/obtaining-permissions/882) when including “Material from: AUTHOR, TITLE, JOURNAL TITLE, published [YEAR], [publisher - as it appears on our copyright page]’”
     - Scanpy: https://doi.org/10.1186/s13059-017-1382-0
     - BART-Seq: https://doi.org/10.1186/s13059-019-1748-6
 
@@ -134,7 +134,7 @@
 
 - [x] add some viz for HCA? even just overview of state from web page or review?
 
-- [x] text on examples etc good → please be CAREFUL that you don't do copy&paste from own papers and reviews *without* citation.
+- [x] text on examples etc good → please be CAREFUL that you don’t do copy&paste from own papers and reviews *without* citation.
 
   > I never copy and paste, any possible plagiate finder results would probably just mean that my english isn’t very varied and I tend to explain the same concept similarly.
 
@@ -204,7 +204,7 @@
   > “of cellular dynamics, heterogeneity and gene roles”, added
 
 - [ ] here would really make clear what pot. questions could be, then enumerate analysis parts
-- [x] fig 1.4 (cell fates) somewhat nice, but give legend for arrows, add some references and say these things are artificial mostly. but: this is out of place in analysis, this should be in motivating bio questions in the single cell bio part in beginning, no? you'd need a fig for analysis etc
+- [x] fig 1.4 (cell fates) somewhat nice, but give legend for arrows, add some references and say these things are artificial mostly. but: this is out of place in analysis, this should be in motivating bio questions in the single cell bio part in beginning, no? you’d need a fig for analysis etc
 
   > Moved and explained arrows.
 
@@ -281,7 +281,7 @@
 
   > Nowhere, just like in multiple other Dissertations that I’ve oriented myself on. Why does there need to be one, there are results in the individual articles.
 
-- [ ] maybe give some example or data set to visualize? imagine you presented this as a talk → this would never work to just directly talk about dim red, diff map etc without illustrating a big data set and what you'd look for in that.
+- [ ] maybe give some example or data set to visualize? imagine you presented this as a talk → this would never work to just directly talk about dim red, diff map etc without illustrating a big data set and what you’d look for in that.
 
 ### 2.1 Dimensionality Reduction
 #### Spectral Decomposition
@@ -314,7 +314,7 @@
 
   > done
 
-- [x] and again, you bloody cite scVI but not Gokcen's DCA? why?
+- [x] and again, you bloody cite scVI but not Gokcen’s DCA? why?
 
   > because it’s a denoising method, not embedding, but I added it anyway.
 
@@ -349,8 +349,13 @@
 
 ### 2.3 Scanpy
 - [ ] Scanpy, say s.y.a about its popularity
-- [ ] what's diff to intro, like more detail here?
-- [ ] fig 2.3 → what's the question, the data, the result? not only how but you need to motivate. remember, you submit to WZW faculty, they want to have some of this
+- [x] what’s diff to intro, like more detail here?
+
+  > Intro describes how scRNA-Seq analysis is organized.
+  > Scanpy is designed after that process.
+  > This section describes that fact and goes into detail about the design philosophy and scope of scanpy.
+
+- [ ] fig 2.3 (now 2.4) → what’s the question, the data, the result? not only how but you need to motivate. remember, you submit to WZW faculty, they want to have some of this
 
 #### 2.3.3 Visualization
 - [ ] ties into diffmaps?
@@ -389,7 +394,7 @@
 - [ ] "My contributions towards more reproducible, scalable and inter-connectible scientific programming have helped these changes along." → sounds very different from what you wrote before
 
 ### 3.1 Multi-resolution scRNA-Seq Analysis
-- [ ] multi-res? really? don't understand what you mean, can you define?
+- [ ] multi-res? really? don’t understand what you mean, can you define?
 - [x] multi-layer/omics add too? ah, 3.3 OK :)
 
 ### 3.3 Multi-modal Scanpy and AnnData
