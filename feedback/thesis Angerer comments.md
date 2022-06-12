@@ -340,7 +340,12 @@
 
   > you mean figure? moved.
 
-- [ ] organization wise this is a tough break in how your write things. this reads suddenly like a package documentation. really adequate?
+- [x] organization wise this is a tough break in how your write things. this reads suddenly like a package documentation. really adequate?
+
+  > This is intentional.
+  > The actual package documentation is far far more detailed, this just reuses names used in the API.
+  > I think my thesis will mostly be read by people who know my work on anndata,
+  > so it’s a benefit to them to make connections between how things are named in the package and math variables used in the text.
 
 ### 2.3 Scanpy
 - [ ] Scanpy, say s.y.a about its popularity

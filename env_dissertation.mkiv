@@ -68,7 +68,13 @@
 
 % Typography settings
 \setupalign[hz, hanging] % Micro-typography: Font expansion, Protruding punctuation
-\definefontfeature[default][default][expansion=quality, protrusion=quality, onum=yes]
+\definefontfeature[default][default][ % https://docs.microsoft.com/en-us/typography/opentype/spec/features_ae
+	liga=yes, tlig=yes, ccmp=yes, % ligatures and glyph composition/decomposition
+	kern=yes, % kerning
+	onum=yes, % oldstyle numbers
+	expansion=quality, protrusion=quality,
+	trep=no, mode=node, % text replacement like '→’
+]
 \setupbodyfontenvironment[default][em=italic] %italic instead of slanted
 \setupindenting[yes, medium] % Indent paragraph starts
 \setbreakpoints[compound] % Allow breaking after dashes
