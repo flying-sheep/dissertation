@@ -19,8 +19,8 @@ The intrinsic dimensionality of transcriptomic data is low when compared to this
 Embeddings $s_{pc}$ ($p∈\{1,…,P\}$) of most datasets therefore only require a comparatively low number of dimensions $50≤P≤100$ to capture all information necessary to reconstruct all known biological processes \cite[ding2018,lenz2016].
 
 Dimensionality reduction methods can also be categorized into linear and nonlinear.
-Linear methods such as Principal Component Analysis (PCA, \inlinecite[abdi2010]) use linear combinations of input dimensions as embedding dimensions, which means that distances in $s$ directly relate to distances in $x$.
-Nonlinear methods such as t-Stochastic Neighborhood Embedding (t-SNE, \inlinecite[vandermaaten2008]), Uniform Manifold Approximation and Projection (UMAP, \inlinecite[mcinnes2018], or diffusion maps \cite[coifman2005] attempt to maintain locality in the data.
+Linear methods such as Principal Component Analysis (PCA, \inbracecite[abdi2010]) use linear combinations of input dimensions as embedding dimensions, which means that distances in $s$ directly relate to distances in $x$.
+Nonlinear methods such as t-Stochastic Neighborhood Embedding (t-SNE, \inbracecite[vandermaaten2008]), Uniform Manifold Approximation and Projection (UMAP, \inbracecite[mcinnes2018]), or diffusion maps \cite[coifman2005] attempt to maintain locality in the data.
 This means that local neighborhoods of samples in $x$ are still close neighbors in $s$ (red circles in \infig[fig:dim-red]\bold{b}).
 Some nonlinear dimensionality reduction methods also maintain global distances to a degree (UMAP and diffusion maps, not t-SNE).
 
@@ -232,8 +232,8 @@ Its more continuous and global structure also makes it a viable dimensionality r
 \inlinecite[kobak2019b] however showed that t-SNE and UMAP perform very similarly with the same data-driven initialization and selection of meta-parameters.
 Single cell transcriptomics specific methods exist in this space as well, such as scLVM \cite[buettner2015], a successor of the earlier GPLVM \cite[buettner2012].
 Their performance criteria however don’t lend themselves well to the heterogeneity analysis of much more than few hundreds of cells performed today.
-This led to other approaches, such as learned embeddings modeled explicitly to perform scRNA-Seq preprocessing, e.\,g. single cell variational inference (scVI, \inlinecite[lopez2018]).
-Alternatively, one can preprocess the data in a way that improves embeddings by general purpose methods, e.\,g. by denoising data using a deep count autoencoder (DCA, \inlinecite[eraslan2019]).
+This led to other approaches, such as learned embeddings modeled explicitly to perform scRNA-Seq preprocessing, e.\,g. single cell variational inference (scVI, \inbracecite[lopez2018]).
+Alternatively, one can preprocess the data in a way that improves embeddings by general purpose methods, e.\,g. by denoising data using a deep count autoencoder (DCA, \inbracecite[eraslan2019]).
 
 A disadvantages of machine learning based methods is their nondeterministic nature:
 due to the non-convex nature of the optimization, its converging to local optima can result in unstable inference of certain cells’ neighborhoods in the embedding \cite[hinton2003].
@@ -371,7 +371,7 @@ It would also be computationally wasteful to use the tidy format for data is com
 \n{AnnData}’s structure therefore matches the annotated observations-by-variables ($c×g$) matrix format most biological snapshot data is analyzed in.
 \footnote{In the R world, R’s native data frame matches this orientation, while count matrices are its transpose: $g×c$}
 This includes single cell imaging, where this matrix contains each segmented cell $c$’s average fluorescent channel $g$ value.
-In RNA-Seq or quantitative real-time polymerase chain reaction (qRT-PCR, \inlinecite[nurmi2002]), $g$ stands for a gene’s expression in a tissue sample or a single cell.
+In RNA-Seq or quantitative real-time polymerase chain reaction (qRT-PCR, \inbracecite[nurmi2002]), $g$ stands for a gene’s expression in a tissue sample or a single cell.
 % annotations from start or later
 Each observation $c$ or variable $g$ can be annotated with different labels used in any step of an analysis pipeline.
 Annotations that exist from the start can stem from technical sources such as experimental batches or different data sources such as images from flow cytometry \cite[fulwyler1965].

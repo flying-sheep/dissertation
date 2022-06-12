@@ -147,6 +147,7 @@
 % 	\insertnote{ }{.}{}%
 % }
 \def\inlinecite[#1]{\cite[authoryears][#1]}
+\def\inbracecite[#1]{\cite[authoryear,left=,right=][#1]}
 
 % command to extract titles
 \startluacode
@@ -291,6 +292,8 @@ end
 %	},
 %}
 
+% hyphenation
+\hyphenation{c-an}
 
 % Front and body part definitions
 \definestructureconversionset[frontpart:pagenumber][][romannumerals]

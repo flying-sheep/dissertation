@@ -37,7 +37,7 @@ The assembly of proteins in cells is however fairly well understood and measurab
 The central dogma of molecular biology states that genes on our chromosomes are transcribed to short lived messenger RNA (mRNA) molecules, which are then translated to proteins (seed \infig[fig:dogma]).
 %Genes are transcribed into a pre-messenger RNA (pre-mRNA) and then spliced into one of several possible final mRNAs encoding a different protein each.
 The presence of mRNA in a cell therefore indicates that its respective protein is currently being produced.
-It is possible to quantify and subsequently analyze snapshots of all mRNA molecules in a cell sample using RNA sequencing (RNA-Seq, \inlinecite[morin2008]).
+It is possible to quantify and subsequently analyze snapshots of all mRNA molecules in a cell sample using RNA sequencing (RNA-Seq, \inbracecite[morin2008]).
 This untargeted large-scale process is called gene expression analysis.
 During the past decade, biological research worked with averaged RNA profiles of cell samples called bulk RNA-Seq.
 Those profiles allow to capture the gene expression of a tissue or fluid sample without accounting for cell-to-cell variability.
@@ -65,7 +65,7 @@ Advances in microfluidic devices have led to experimental protocols able to sequ
 The ample variation between this multitude of individual cells allows to derive patterns no human can detect by manual and careful isolation of bulk samples \cite[huang2018].
 For example \inlinecite[plass2018] have determined the developmental lineage of every cell in a planarian, a regenerative species whose cellular mechanisms could be the key to prevent scarring or delay aging in humans.
 \inlinecite[vento-tormo2018] have profiled cells from human placentas for regulatory interactions in the maternal-fetal interface, furthering our understanding of pregnancy diseases.
-The international community of scientists working on transcriptomics is coming together to create the \n{Human Cell Atlas} (\inlinecite[regev2017], see \infig[fig:hca]).
+The international community of scientists working on transcriptomics is coming together to create the \n{Human Cell Atlas} (see \infig[fig:hca], \inbracecite[regev2017]).
 
 \startplacefigure[reference=fig:hca, title={
 Human Cell Atlas (HCA) data flow overview.
@@ -180,7 +180,7 @@ Doublets cannot be detected reliably by a simple count threshold, as a pair of s
 \startplacefigure[reference=fig:batch-effect, title={
 Batch effect correction reduces biases between data gathered in multiple sequencer runs.
 Cells from well-normalized data will have similar expression profiles to cells from the other sequencer runs.\crlf
-\small{(Figure reproduced with friendly permission from \inlinecite[buttner2019])}
+\small{(Figure reproduced from \inlinecite[buttner2019] with friendly permission)}
 }]
 \externalfigure[batch-effect-correction.svg][width=.8\textwidth]
 \stopplacefigure
@@ -202,7 +202,7 @@ In order to model and analyze count data, it is almost always necessary to calcu
 Distance measures usually expect data with no mean–variance dependency, i.\,e. normally distributed data, which can be fulfilled in two ways.
 One is to transform expressions into a space where those expectations hold, commonly by logarithmizing it.
 The intuition is that in in log-space, distances represent log-fold changes, an usual way to compare expression levels \cite[brennecke2013,eling2018].
-Another way is to employ dimensional reduction methods to embed the data into a lower-dimensional space with the desired properties, such as Principal Component Analysis (PCA, \inlinecite[abdi2010]) or diffusion maps \cite[coifman2005].
+Another way is to employ dimensional reduction methods to embed the data into a lower-dimensional space with the desired properties, such as Principal Component Analysis (PCA, \inbracecite[abdi2010]) or diffusion maps \cite[coifman2005].
 An advantage of operating on a low-dimensional embedding instead of on the expression level are the reduced computational and memory costs.
 However, \inlinecite[svensson2020] suggested that log-transforming data is a possible cause for distorting data by zero-inflation.
 With single cell data specific transforms like \n{SCTransform} \cite[hafemeister2019], as well as embeddings like \n{scVI} \cite[lopez2018] or \n{GLM-PCA} \cite[townes2019], promising alternatives are emerging, despite them losing the log-fold interpretability.
@@ -321,7 +321,7 @@ To this end, I worked on implementing and extending useful algorithms in project
 My chronologically first contribution \n{destiny} is a user-friendly, flexible and fast R tool for three closely related scRNA-Seq analysis steps \cite[angerer2016].
 It was created to enable dimensional reduction of both large, sparse scRNA-Seq data and qPCR data which benefits from explicit handling of missing values.
 The only previously existing tool was impractically slow and memory intensive when applied to scRNA-Seq data and did not support censored values present in qPCR data.
-Beyond routines for efficient computation and visualization of diffusion maps (see \insec[sec:diffmaps]), \n{destiny} offers routines for diffusion pseudo time \cite[haghverdi2016], and gene relevance (\inlinecite[angerer2020], see \insec[sec:gene-relevance]).
+Beyond routines for efficient computation and visualization of diffusion maps (see \insec[sec:diffmaps]), \n{destiny} offers routines for diffusion pseudo time \cite[haghverdi2016], and gene relevance (see \insec[sec:gene-relevance], \inbracecite[angerer2020]).
 Its efficiency involves reuse of intermediate results from the diffusion map creation to calculate diffusion pseudo time between cells as well as to project new data into an existing diffusion map.
 \stopsubsection
 
