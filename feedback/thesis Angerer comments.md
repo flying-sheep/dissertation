@@ -324,7 +324,12 @@
   > added context
 
 - [x] fig 2.2 badly inlined; data not explained. question not motivated. not clear what I learn from this. this has a lot of issues, please help reader here.
-- [ ] something on implementation?
+
+  > done
+
+- [x] something on implementation?
+
+  > done
 
 ### 2.2 AnnData
 - [x] is there publication for this? shouldn’t you for cumulative contribution chapter do this? i guess separate one, so this is method used below

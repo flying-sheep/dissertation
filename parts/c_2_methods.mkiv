@@ -355,6 +355,8 @@ l_c^m = \argmax_{g∈Ω ∧ x_{gc}≠0}
 
 Gene relevance is robust towards its rank cutoff parameter $r$ and reasonably robust towards its smoothing parameter $m$ \cite[angerer2020], given that strong smoothing $m≥3$ often results in all cells sharing the single most globally relevant gene as label.
 The implementation as part of the R package \n{destiny} \cite[angerer2016] is sufficiently efficient in terms of computational time and memory so that quick iterations are possible.
+Like other parts of destiny \n{destiny}, it allows control over the distance metric used,
+and handles missing values and outliers in the data.
 
 \stopsubsection
 
