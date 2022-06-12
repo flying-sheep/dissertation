@@ -26,7 +26,7 @@ Some nonlinear dimensionality reduction methods also maintain global distances t
 
 \page
 
-\startplacefigure[reference=fig:dim-red,title={
+\startplacefigure[reference=fig:dim-red,title={%
 Reducing dimensions using global and local distances.
 \bold{a)}
 Dimensionality reduction methods embed samples (such as cells) from a high dimensional space (such as gene expressions) to a low dimensional space ($x_{gc} ↪ s_{pc}$, $G>>P$).
@@ -314,12 +314,18 @@ With the \inlinecite[iverson1962] bracket notation:
 The set of cells of interest $Ψ$ can be obtained by metadata such as experimental markers or the labels from a clustering algorithm.
 Another alternative is the visualization of local relevance by dividing the embedding into shaped bins, which can be colored according to their respective local relevance.
 
-\startplacefigure[reference=fig:gene.relevance, title={
-Gene relevance visualizations on a diffusion map embedding.
+\startplacefigure[reference=fig:gene-relevance, title={%
+Gene relevance visualizations on a diffusion map embedding allow to reason about the role individual genes play for the embedding.
+Our example data from \inlinecite[guo2010] contains differentiating cells, with their differentiation state controlled by transcription factors like Klf4.
+We therefore expect those same genes to have a strong influence on the location of each cell in an diffusion map embedding derived from the data.
 \bold{a)}
 Local gene relevance of the gene Klf4 and local density for each hexagonal bin.
+This score can be calculated for any given gene in order to investigate how much it drives each cell’s location in the embedding.
+As expected, a transcription factor like Klf4 has strong effect on positioning cells in the left arm of the embedding.
 \bold{b)}
-Gene relevance map labelling cells by the gene which drives each cell’s location in the embedding.
+Gene relevance map.
+Calculating all scores allows to label each cell by the gene which drives its location in the embedding most.
+Klf4 shows up next to Cebpa as the strongest driver for cells in the left arm.
 }]
 \externalfigure[imgs/gene-relevance.pdf]
 \stopplacefigure
@@ -354,7 +360,7 @@ The implementation as part of the R package \n{destiny} \cite[angerer2016] is su
 
 \startsection[reference=sec:anndata, title={\n{AnnData}}]
 
-\startplacefigure[reference=fig:anndata, title={
+\startplacefigure[reference=fig:anndata, title={%
 \n{AnnData} is structured around a central stack of variable × observation matrices (layers) and a hierarchy of unstructured annotations.
 Each dimension, variables and observations, can be annotated with vectors (1D), matrices (2D) and graphs (2D, square matrices).
 }]
@@ -450,7 +456,7 @@ This includes certain dimensionality reduction methods like UMAP \cite[mcinnes20
 These allow analyzing either the influence of given known gene groups such as cell cycle genes \cite[satija2015] and the differential expression between clusters in one of different flavors such as the variance adjusted t-test or Wilcoxon rank-sum test \cite[wilcoxon1945,soneson2018].
 \stopsubsection
 
-\startplacefigure[reference=fig:scanpy, title={
+\startplacefigure[reference=fig:scanpy, title={%
 \n{Scanpy} flexibly computes annotations from scRNA-Seq data and visualizes results combined with previous knowledge. A example cluster analysis starts by determining cell clusters with the \n{Leiden} algorithm: \type{sc.tl.leiden(adata)}\crlf
 \bold{a)} Marker genes for clusters are determined with a Wilcoxon rank-sum test.\crlf
 \type{sc.tl.rank_genes_groups(adata, 'leiden', method='wilcoxon')}\crlf

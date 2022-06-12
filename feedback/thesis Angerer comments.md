@@ -298,6 +298,7 @@
 - [x] PCA then DM does not work. would make point more on linear and nonlinear red methods, then show umap tsne etc
 
   > done
+
 - [x] DM details, maybe s.t. on implementation and scaling, extend on this since you did contribute to that, no?
 
   > I did, and added details about this
@@ -322,7 +323,7 @@
 
   > added context
 
-- [ ] fig 2.2 badly inlined; data not explained. question not motivated. not clear what I learn from this. this has a lot of issues, please help reader here.
+- [x] fig 2.2 badly inlined; data not explained. question not motivated. not clear what I learn from this. this has a lot of issues, please help reader here.
 - [ ] something on implementation?
 
 ### 2.2 AnnData

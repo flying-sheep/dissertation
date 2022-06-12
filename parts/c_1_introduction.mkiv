@@ -22,7 +22,7 @@ The more diseases we can effectively counter, the more it is possible to shift o
 This includes diseases like cancer, caused by mutated cells, or diseases caused by malfunctioning cell regulation.
 All those diseases have in common that they cannot be understood without knowing the cellular mechanisms involved.
 
-\startplacefigure[reference=fig:dogma, location=left, title={The central dogma}]
+\startplacefigure[reference=fig:dogma, location=left, hang=no, title={The central dogma}]
 \hbox{\input{imgs/dogma.tikz}}
 \stopplacefigure
 
@@ -42,7 +42,7 @@ This untargeted large-scale process is called gene expression analysis.
 During the past decade, biological research worked with averaged RNA profiles of cell samples called bulk RNA-Seq.
 Those profiles allow to capture the gene expression of a tissue or fluid sample without accounting for cell-to-cell variability.
 
-\startplacefigure[reference=fig:cell-fate, title={
+\startplacefigure[reference=fig:cell-fate, title={%
 Cells differentiate smoothly and in stochasically diverging paths, from high potency (top) to high specialization (bottom).
 Dedifferentiation (blue arrows) occurs naturally in plants and regenerating basal animals, but not humans.
 The natural occurance of transdifferentiation (orange arrows) in humans has only been observed from α to β cells in pancreatic islets.
@@ -51,7 +51,7 @@ Experiments to artificially induce trans- or dedifferentiation have shown promis
 }]
 %https://www.mdpi.com/2073-4409/8/10/1189
 %\externalfigure[https://www.researchgate.net/publication/336222289/figure/fig1/AS:809726799523847@1570065321789/Cell-fate-plasticity-and-the-epigenetic-landscape-currently-applied-for-direct-cell.jpg][width=.8\textwidth]
-\externalfigure[cell-fate.png][width=.8\textwidth]
+\externalfigure[cell-fate.png][width=\textwidth]
 \stopplacefigure
 
 % SC revolution
@@ -67,12 +67,12 @@ For example \inlinecite[plass2018] have determined the developmental lineage of 
 \inlinecite[vento-tormo2018] have profiled cells from human placentas for regulatory interactions in the maternal-fetal interface, furthering our understanding of pregnancy diseases.
 The international community of scientists working on transcriptomics is coming together to create the \n{Human Cell Atlas} (see \infig[fig:hca], \inbracecite[regev2017]).
 
-\startplacefigure[reference=fig:hca, title={
+\startplacefigure[reference=fig:hca, title={%
 Human Cell Atlas (HCA) data flow overview.
 Next to scRNA-Seq methods operating on disaggregated cells, HCA collects spatial information.
 \crlf\small{(Figure adapted from \inlinecite[hon2018] with permission)}
 }]
-\externalfigure[hca.jpg][width=.8\textwidth]
+\externalfigure[hca.jpg][width=\textwidth]
 \stopplacefigure
 
 %challenges: different sources of biases and noise
@@ -120,7 +120,7 @@ The remaining steps are preprocessing, analysis and visualization of this matrix
 
 \startsubsection[title={Library Preparation and Sequencing}]
 % 1. (cells → transcript library) and sequencing (transcript library → reads)
-\startplacefigure[reference=fig:rna-seq, title={
+\startplacefigure[reference=fig:rna-seq, title={%
 ScRNA-Seq library preparation, sequencing, and mapping.
 \bold{a)} In-vivo steps performed by the cell.
 A gene is transcribed from DNA to a pre-messenger RNA (pre-mRNA).
@@ -177,12 +177,12 @@ It also removes cells containing a high fraction of mitochondrial gene counts, i
 Doublets cannot be detected reliably by a simple count threshold, as a pair of small cells can have similar numbers of expressed genes and counts as single large cell, but more sophisticated solutions are emerging \cite[mcginnis2019,wolock2019].
 \inlinecite[luecken2019] point out that each of those filtering covariates in isolation is not sufficient to identify a non-cell row, and suggests conservative joint scoring using more than one covariate.
 
-\startplacefigure[reference=fig:batch-effect, title={
+\startplacefigure[reference=fig:batch-effect, title={%
 Batch effect correction reduces biases between data gathered in multiple sequencer runs.
 Cells from well-normalized data will have similar expression profiles to cells from the other sequencer runs.\crlf
 \small{(Figure reproduced from \inlinecite[buttner2019] with friendly permission)}
 }]
-\externalfigure[batch-effect-correction.svg][width=.8\textwidth]
+\externalfigure[batch-effect-correction.svg][width=\textwidth]
 \stopplacefigure
 
 Another common preprocessing step is normalization.
@@ -229,7 +229,7 @@ Clusters are commonly the basis for further analysis like inter-cluster DE analy
 However, this leads to both clusters and markers being derived from the same data, and treating clusters as ground truth in this setting leads to inflated confidence in the found markers.
 The problem can be circumvented by joint clustering and DE analysis, manually propagating uncertainties \cite[zhang2019], or not relying on clustering to detect genes \cite[angerer2020].
 
-\startplacefigure[reference=fig:heterogeneity-analysis, title={
+\startplacefigure[reference=fig:heterogeneity-analysis, title={%
     Heterogeneity Analysis approaches.
     For visualization purposes, cells are represented in a dimensionally reduced space represented by the outer border of \bold{a}, \bold{b}, and \bold{c}.
     All three represent common starting points for further analysis.
@@ -278,7 +278,7 @@ It is reconstructed from the relation of spliced and unspliced mRNA \cite[lamann
 \startsubsection[reference=sec:visualization, title={Visualization as Analysis steps and result}]
 % 5. (results often too complex to understand as numbers)
 % talk about dim red here and the fact that it’s hard to reason about how the input variables relate back to output – make path for GR coming to the rescue
-\startplacefigure[reference=fig:embeddings, title={
+\startplacefigure[reference=fig:embeddings, title={%
 Four increasingly complex 2D embeddings of the same differentiating cells colored by age in days \cite[guo2010].
 \bold{a)} Two carefully selected pluripotency markers are not able to separate the differentiation paths.
 \bold{b)} A PCA is able to differentiate distinct clusters.
@@ -297,7 +297,7 @@ The challenge of finding a fitting low dimensional representation lies in the mu
 Therefore, as opposed to of simple dimensional reduction methods used for for distance calculations (see \insec[sec:preprocessing]), the preferred methods for visualization take this multi-scale nature into account.
 Complex transforms are irreversible, so their resulting coordinates of cells in the visualization (the embedding) cannot be directly traced back to the input genes.
 
-\startplacefigure[reference=fig:hybrid, location=left, title={
+\startplacefigure[reference=fig:hybrid, location=left, hang=no, title={%
 A so called hybrid image exemplifies how the same data can encode information on multiple scales.
 In this painting, the highly frequency visual features are interpreted as a woman with a mirror while the low frequency details are interpreted as a skull \cite[oliva2006].
 (“All is Vanity” by Charles Allan Gilbert, 1892)
@@ -345,7 +345,7 @@ For example, cell atlases containing large amounts of multimodal data can now be
 In this section, I outline the ways in which programmatic frameworks improve reusability and therefore interoperability and reproducibility, specifically of scRNA-Seq analysis.
 I address how the field changed its approach to analysis workflows, and my contributions in facilitating the changes.
 
-\startplacefigure[reference=fig:dataset-sizes, title={
+\startplacefigure[reference=fig:dataset-sizes, title={%
 Single cell dataset sizes uploaded to Gene Expression Omnibus (GEO).
 This updated version of a figure from \inlinecite[angerer2017] shows the sustained trend of increasing datasets and cell numbers per dataset.
 }]
