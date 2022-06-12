@@ -348,7 +348,10 @@
   > so it’s a benefit to them to make connections between how things are named in the package and math variables used in the text.
 
 ### 2.3 Scanpy
-- [ ] Scanpy, say s.y.a about its popularity
+- [x] Scanpy, say s.y.a about its popularity
+
+  > done
+
 - [x] what’s diff to intro, like more detail here?
 
   > Intro describes how scRNA-Seq analysis is organized.
