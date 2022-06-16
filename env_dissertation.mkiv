@@ -3,6 +3,7 @@
 
 \enableregime[utf-8]
 \mainlanguage[en]
+\setuplanguage[en][spacing=packed] % no double space after sentences
 
 \def\title{Enabling technologies for visualization and analysis of single cell RNA-Seq data}
 \def\author{Philipp Angerer}
@@ -67,7 +68,7 @@
 %\definevimtyping[R][syntax=r, strip=yes]
 
 % Typography settings
-\setupalign[hz, hanging] % Micro-typography: Font expansion, Protruding punctuation
+\setupalign[hz, hanging, tolerant] % Breaks: Font expansion, Protruding punct., tolerance
 \definefontfeature[default][default][ % https://docs.microsoft.com/en-us/typography/opentype/spec/features_ae
 	liga=yes, tlig=yes, ccmp=yes, % ligatures and glyph composition/decomposition
 	kern=yes, % kerning
@@ -78,6 +79,13 @@
 \setupbodyfontenvironment[default][em=italic] %italic instead of slanted
 \setupindenting[yes, medium] % Indent paragraph starts
 \setbreakpoints[compound] % Allow breaking after dashes
+
+% hyphenation
+\hyphenation{chan-ges}
+\hyphenation{u-bi-qui-tous}
+\hyphenation{me-thy-la-tion}
+\hyphenation{he-te-ro-ge-ne-i-ty}
+\hyphenation{mar-kers}
 
 % Font settings, need to be after typography
 %\usetypescriptfile[type-imp-euler.mkiv]
@@ -102,7 +110,7 @@
 % List environments
 \definedescription[desc][
 	headstyle=bold, style=normal,
-	align=flushleft, alternative=hanging,
+	align=justify, alternative=hanging,
 	width=broad, margin=1cm,
 ]
 
@@ -298,9 +306,6 @@ end
 %		}%
 %	},
 %}
-
-% hyphenation
-\hyphenation{c-an}
 
 % Front and body part definitions
 \definestructureconversionset[frontpart:pagenumber][][romannumerals]
