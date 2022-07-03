@@ -261,7 +261,13 @@
 
 ### 1.2 Own Contributions
 
-> this section is obsolete because of the own contribs overhaul, I tried to address all this while doing it
+> this section is obsolete because of the own contribs overhaul, I tried to address all this while doing it.
+> 
+> 1. My first attempt was to put a single section “Own Contributions” at the end of the Introduction and each contributed article
+> 2. My second attempt is based on the comments below, especially “I expected this earlier” and “Do it like Lea”: I split my contributions up into small sections to go at the end of each intro subchapter.
+> 3. My third attempt is based on “I didn’t like Lea’s approach after all, do it like Mo”. Who did it exactly like I did it in 1., except that he also mentioned contribution in the discussion.
+> 
+> Comments after the first attempt:
 
 - [x] I was hoping for this earlier, in particular because it was intertwined in above a bit already
 - [x] motivation missing though
