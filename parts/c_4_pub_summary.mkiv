@@ -56,14 +56,17 @@ Destiny has been cited 175 times at the time of writing and has for example been
 This includes hematopoietic stem and progenitor cell differentiation \cite[nestorowa2016], an immune atlas of clear cell renal cell carcinoma \cite[chevrier2017], development in the human adult brain \cite[lake2018] and an atlas of the aging drosophila brain \cite[davie2018].
 
 My contribution:
-I started with a basic diffusion map implementation from \inlinecite[haghverdi2015].
-It already supported missing and censored values, while I developed all scRNA-Seq related extensions.
-To this end it initially supported raw standard sparse matrix data structures and later gained support for \n{SingleCellExperiment}.
-I came up with all optimizations improving its memory and time efficiency and therefore enabling its use on a personal computer, where less efficient tools needed to be ran on a powerful server.
+For the tool, I started with a basic diffusion map implementation from \inlinecite[haghverdi2015].
+It already supported missing and censored values, while I developed all scRNA-Seq related extensions and implemented the first published version by myself.
+I implemented all further enhancements of the tool.
+I conceived all optimizations improving its memory and time efficiency and therefore enabling its use on a personal computer, where less efficient tools needed to be ran on a powerful server.
+\n{Destiny} initially supported raw standard sparse matrix data structures and later gained support for \n{SingleCellExperiment}.
 As a consequence, \n{destiny} became one of the first scRNA-Seq analysis tools able to handle sparse matrices and therefore millions of cells on a personal computer.
 I helped Laleh Haghverdi in developing the nonparametric diffusion map variant during the parallel development of \n{destiny} and \n{DPT}, paving the way for \n{scanpy}’s use of the same.
 I chose to default to perceptually continuous color-maps, which put \n{destiny} ahead of its time in guaranteeing accurate assessment of information encoded into plot colors.
 I contributed to a few of \n{destiny}’s dependencies to support random seeds for determinism.
+For the publication, I wrote the first draft, which I then completed together with other contributors.
+I designed the figure to which Maren Büttner contributed cell type annotations.
 
 \stopsection
 
@@ -80,7 +83,11 @@ Challenges can be approached with a variety of attack angles, that usually range
 The challenges can change rapidly: while smaller scRNA-Seq require regularization to handle their intrinsic “small n large p” properties, newer experiments capturing 10s of thousands of cells already no longer suffer from this problem.
 
 My contribution:
-First author
+Starting from an idea by Fabian Theis, I performed the data analysis supporting the publication’s primary thesis,
+showing conclusively the growth of scRNA-Seq data in both volume per experiment and number of experiments.
+I designed and produced the figures with feedback from other contributors.
+I wrote the major part of the publication, with parts contributed by other contributors.
+\TODO[too unspecific?]
 
 \stopsection
 
