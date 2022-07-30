@@ -11,9 +11,9 @@
 
 - [x] rephrase and focus needed. see 3rd, 4th, last points in own contributions:
   - [x] CRUCIAL: what is your question? you only describe the WHAT+HOW you do things, but not at all the WHY? motivation to assess relevance *totally* unclear.
-  
+
     you really need to spend some time on this and exactly state what your **goal** is, **altogether** and then in **each of the 3 (or 4?) projects**, and then what is **state of the art** (without own contributions) and in particular missing and therefore what your **contribution** is (see abstract comments)
-    
+
     > Added/clarified motivation and state of the art to all project sections
 
   - [x] summaries of papers and contributions to papers (check how Laleh did it)
@@ -24,7 +24,7 @@
 
   > Stressed this e.g. in “Organizing Analysis Workflows” section
 
-- [ ] title, not sure, what are "enabling technologies". usually high-level summary term, why needed here? analysis is super broad, what type of analysis? 
+- [ ] title, not sure, what are "enabling technologies". usually high-level summary term, why needed here? analysis is super broad, what type of analysis?
 
 ## own contribs
 
@@ -47,33 +47,33 @@
 - [x] **Summary**:
 
   - [x] emphasize own contribution
-  
+
     > Totally reworked own contribs
 
   - [x] motivation: please think about better way how to link the topics, and ask overarching "why" questions before telling the how
-  
+
   > Added an intro paragraph about all problems I’m going to solve
 
   - [x] Suggestion: how about changing scope to data complexity plus size, focusing on your novelty + contribution of efficient *software* for analysis, and then Bart-seq as maybe proof-of-concept use and adaption or so.
 
     (i say this here for abstract, but same holds for intro, crucial to show your goals and novelty of resulting approach. would also adapt title)
-  
+
   > Done just that
 
 - [x] would go over it once more and clean up text, eg. 3× this in a row etc
-  
+
   > Multiple editor passes
 
 - [x] "disease and development research" unclear; maybe more explicit example?
-  
+
   > Added some clarification as well as things this enabled.
 
 - [x] combinatoric options - explain; also sounds as if you pitch for best practice/optimal workflow, which is *not* your goal → adapt to your contribution
-  
-  > Explicitly stated what my goal is 
+
+  > Explicitly stated what my goal is
 
 - [x] you say what you do, but did not motivate why? in contrary you say there are so many analysis things, and we also did s.t.
-  
+
   > Added motivation via things that weren’t possible/harder
 
 - [x] "analysis" building blocks, OK get this; maybe really put the framework idea in center. *not* clear what you claim as your contribution - Scanpy itself? AnnData? parts in there? does not come clear. I cannot stress enough how important it is that a) you fully understand what you claim is your own contribution and b) you super clearly formulate this for reviewers. this is a persistent discussion and you absolutely need to make this crystal clear.
@@ -81,29 +81,29 @@
   > Added clear explanations what my contrib is
 
 - [x] motivation for each tool and explanation why you need each tool is unclear.
-  
+
   > Added tool descriptions addressing which niche they fill
 
 - [x] you then super shortly describe method but not WHAT you want to do; this is crucial and really needs reworking, what is your overarching goal, then why did you dev a method (and why is it unique and why needed; these are core questions reviewer will need to answer, and you better help them with this, otherwise tough for them to say what your contrib/novelty was)
-  
+
   > Added some hints here, but the bulk of this needs of course to be in the text
 
 - [x] cool with bioinformatics for last one
-  
+
   > Thanks!
 
 - [x] btw, *very* good that you make a cumulative dissertation, and that you are brief
-  
+
   > I always go for brevity, thanks!
 
 ## Pub list
 
 - [x] is this clear somewhere that this is a cumulative dissertation? add as explanation before list of pub.
-  
+
   > is not that way in other theses I read either, but the “Publication list” section points it out now
 
 - [x] Mention that Scanpy was the 2018 featured paper in the [20 year anniversary](https://genomebiology.biomedcentral.com/20years)
-  
+
   > Done
 
 - [x] did you check that papers are OK, in particular review OK to list? you may need some signatures from others?
@@ -165,23 +165,23 @@
     > thanks! For reference: it’s now fig 1.3: “ScRNA-Seq library preparation, sequencing, and mapping”
 
   - [x] maybe unclear that you describe a process from top to bottom, with text being next step.
-  
+
     > tried to make it more clear by changing how the arrows look
-  
+
   - [x] caption UNCLEAR. library prep in general? for scRNA-Seq?
-  
+
     > I describe it
-  
+
   - [x] in fig unclear where within cell
-  
+
     > I made grouping of where steps happen clearer
-  
+
   - [x] dude, how about amplification? molecular barcodes, UMIs? far too much missing
-  
+
     > all added
-  
+
   - [x] fix up caption
-  
+
     > done, looks good now
 
 #### 1.1.2 Counting
@@ -229,16 +229,16 @@
 
 - [x] for whole section above
   - [x] you need to end with open challenges in the field that you will address
-  
+
     > added longer intro with history and all, including why that led to problems
-  
+
   - [x] altogether intro very short and in particular misses biol big questions and then question you can address
     - Large cell numbers (Microfluidics) couldn’t be processed by old pipelines
     - Reproducibility
     - Few/bad embedding tools
-    
+
     > Addressed all in that intro
-  
+
 - [x] also don’t get link here to rest
 
   > clarified that it’s about building reusable/remixable steps for pipelines
@@ -262,11 +262,11 @@
 ### 1.2 Own Contributions
 
 > this section is obsolete because of the own contribs overhaul, I tried to address all this while doing it.
-> 
+>
 > 1. My first attempt was to put a single section “Own Contributions” at the end of the Introduction and each contributed article
 > 2. My second attempt is based on the comments below, especially “I expected this earlier” and “Do it like Lea”: I split my contributions up into small sections to go at the end of each intro subchapter.
 > 3. My third attempt is based on “I didn’t like Lea’s approach after all, do it like Mo”. Who did it exactly like I did it in 1., except that he also mentioned contribution in the discussion.
-> 
+>
 > Comments after the first attempt:
 
 - [x] I was hoping for this earlier, in particular because it was intertwined in above a bit already
@@ -313,7 +313,7 @@
 - [x] what is difference of learned embedding to say PCA? of course there is a "learning" formulation of PCA too. this differentiation you try to make up does not exist, adapt
 
   > I cleared up that I mean distinguishing between deterministic and nondeterministic ones.
-  > 
+  >
   > PCA and DM alyays come out the same, UMAPs and tSNE can be wildly different: https://mobile.twitter.com/lpachter/status/1431326001414299650
 
 - [x] add a few nonlinear ones I guess
@@ -325,7 +325,7 @@
   > because it’s a denoising method, not embedding, but I added it anyway.
 
 #### 2.1.3 Gene Relevance
-- [x] how does this fit at all to rest, hmm. this is now your own contribution part, right 
+- [x] how does this fit at all to rest, hmm. this is now your own contribution part, right
 
   > added context
 

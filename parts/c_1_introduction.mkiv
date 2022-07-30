@@ -159,6 +159,8 @@ For ease of use, pipelines wrapping those tools for certain experimental protoco
 Those include \n{Cell Ranger} for the \n{10x Genomics} \n{Chromium} protocol \cite[zheng2017] or \n{zUMIs} \cite[parekh2018] for several protocols involving UMIs.
 
 Protocols like the above produce counts for all expressed genes, resulting in a sparse matrix of not very sensitively captured expression values.
+The present thesis details a targeted RNA-Seq protocol called BART-Seq \cite[uzbas2019] (see \insec[sec:bart-seq]).
+Its tradeoffs are the inverse, allowing to sensitively capture expression values of a low number of target genes for a high number of samples.
 \stopsubsection
 
 \startsubsection[reference=sec:preprocessing, title={Preprocessing of counts}]
@@ -384,7 +386,7 @@ Write programs to handle text streams, because that is a universal interface.
 \noindentation
 Text based file formats and pipeline steps realized as command line interfaces working on these files had their place for a long time.
 The approach results in automatic availability of intermediate steps as snapshots, in a human readable form, and to use basic text manipulation to work on them.
-Attempting to serve this lowest common denominator however lead to the aforementioned limitations when building pipelines. 
+Attempting to serve this lowest common denominator however lead to the aforementioned limitations when building pipelines.
 
 % - What is a framework?
 The alternative is to use a framework, i.\,e. an opinionated set of data structures and routines that are tightly integrated but generic enough to be used as building blocks for pipelines or visualization tools.

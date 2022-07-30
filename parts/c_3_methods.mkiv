@@ -195,7 +195,7 @@ In any case, a transition probability matrix $T$ can be obtained by row-normaliz
 \stopformula
 
 There are different possible definitions for $T_{cd}$.
-The symmetrical version has several computational advantages, including performance and the ability to reuse the sparsity structure of $W$: 
+The symmetrical version has several computational advantages, including performance and the ability to reuse the sparsity structure of $W$:
 
 \placeformula
 \startformula
@@ -262,7 +262,7 @@ The gene relevance score $R_{gc}$ is a measure of the extent in which a gene $g$
 It can be derived from the gradient $∇f_{gc}$ of the function $f$ mapping a embedding $s_{pc}$ to the gene expression $x_{gc}$:
 
 % https://de.wikipedia.org/wiki/Nabla-Operator
-% use the ∇ operator like a vector, where the “product” of e.g. $∂ / ∂x_i$ with a function f on the right is interpreted as the partial derivative $∂f / ∂x_i$. 
+% use the ∇ operator like a vector, where the “product” of e.g. $∂ / ∂x_i$ with a function f on the right is interpreted as the partial derivative $∂f / ∂x_i$.
 
 \placeformula
 \startformula
@@ -346,7 +346,7 @@ Because this labeling is subject to noise, $m$ smoothing steps over the scores o
 
 \placeformula
 \startformula
-l_c^m = \argmax_{g∈Ω ∧ x_{gc}≠0} 
+l_c^m = \argmax_{g∈Ω ∧ x_{gc}≠0}
 \startcases[style=\displaystyle]
 \NC R_{gc}, \NC if $m=0$ \NR
 \NC {\textstyle \frac1k} ∑_{n ∈ \text{NN}_k(c)} \left[ l_n^{m-1} = g \right], \NC otherwise \NR
