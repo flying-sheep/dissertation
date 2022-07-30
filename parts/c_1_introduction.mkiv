@@ -295,18 +295,26 @@ The challenge of finding a fitting low dimensional representation lies in the mu
 Therefore, as opposed to of simple dimensional reduction methods used for for distance calculations (see \insec[sec:preprocessing]), the preferred methods for visualization take this multi-scale nature into account.
 Complex transforms are irreversible, so their resulting coordinates of cells in the visualization (the embedding) cannot be directly traced back to the input genes.
 
-\startplacenarrowfigure[reference=fig:hybrid, title={%
+\startplacefigure[reference=fig:hybrid, location=left, hang=no, title={%
 A so called hybrid image exemplifies how the same data can encode information on multiple scales.
 In this painting, the high frequency visual features are interpreted as a woman with a mirror while the low frequency details are interpreted as a skull \cite[oliva2006].\crlf
 (“All is Vanity” by Charles Allan Gilbert, 1892)
 }]
 \externalfigure[allisvanity.jpg][width=5.3cm]
-\stopplacenarrowfigure
+\stopplacefigure
 
 Without additional data providing a ground truth about subpopulation identity, or clearly separated clusters that are inherently assigned genes driving their embedding, the process of validating an embedding is not automatic, requiring creative reasoning and literature research.
 A panel of marker genes per cluster is derived from the data and cross-referenced with literature to annotate known cell types in the data.
 When discovering novel subpopulations, their adjacency to known ones can be used to make assumptions about their role and test them.
 An upcoming way to simplify the process are cell transcriptome atlases \cite[regev2017,schaum2018] that can be used as references to automatically look up your cells and annotate them \cite[abdelaal2019].
+
+% destiny: efficient and flexible diffusion maps for R
+An example for a relatively self contained scRNA-Seq analysis loop, this thesis presents \n{destiny},
+a user-friendly, flexible and fast R tool for three closely related analysis steps \cite[angerer2016].
+It was created to enable dimensional reduction of both large, sparse scRNA-Seq data and qPCR data which benefits from explicit handling of missing values.
+The only previously existing tool was impractically slow and memory intensive when applied to scRNA-Seq data and did not support censored values present in qPCR data.
+Beyond routines for efficient computation and visualization of diffusion maps (see \insec[sec:diffmaps]), \n{destiny} offers routines for diffusion pseudo time \cite[haghverdi2016], and gene relevance (see \insec[sec:gene-relevance], \inbracecite[angerer2020]).
+Its efficiency involves reuse of intermediate results from the diffusion map creation to calculate diffusion pseudo time between cells as well as to project new data into an existing diffusion map.
 \stopsubsection
 
 \stopsection

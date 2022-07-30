@@ -5,28 +5,10 @@
 
 % Intro
 
-In recent years, I have contributed to a class of changes that scientists are adopting in their approach to scRNA-Seq analysis.
-My contributions focused on improving the ability of scientists to apply the theoretical steps outlined in \insec[sec:workflow] to real data in praxis.
-I worked on every computational step of the scRNA-Seq analysis process described in \insec[sec:workflow] except for alignment, with a specific focus on steps involving a count matrix.
-
-My contributions to the field of scRNA-Seq data analysis include research, development, and extension of alogrithms, data structures, pipelines, frameworks, and APIs.
-
 \startsection[title={Algorithms for scRNA-seq Analysis}]
-
-% refers to subsection “Counting of transcripts or reads”
-Generally, my contributions to the analysis process were among the first tools able to work with sparse matrices.
 
 \startsubsection[title={BART-Seq}]
 My work focused on reusable open source code in the form of a Python package and an accompanying \n{Snakemake} pipeline \cite[koster2012].
-\stopsubsection
-
-\startsubsection[title={destiny}]
-% efficient and flexible diffusion maps for R
-My chronologically first contribution \n{destiny} is a user-friendly, flexible and fast R tool for three closely related scRNA-Seq analysis steps \cite[angerer2016].
-It was created to enable dimensional reduction of both large, sparse scRNA-Seq data and qPCR data which benefits from explicit handling of missing values.
-The only previously existing tool was impractically slow and memory intensive when applied to scRNA-Seq data and did not support censored values present in qPCR data.
-Beyond routines for efficient computation and visualization of diffusion maps (see \insec[sec:diffmaps]), \n{destiny} offers routines for diffusion pseudo time \cite[haghverdi2016], and gene relevance (see \insec[sec:gene-relevance], \inbracecite[angerer2020]).
-Its efficiency involves reuse of intermediate results from the diffusion map creation to calculate diffusion pseudo time between cells as well as to project new data into an existing diffusion map.
 \stopsubsection
 
 \stopsection
