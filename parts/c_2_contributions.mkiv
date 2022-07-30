@@ -2,6 +2,56 @@
 \project project_dissertation
 
 \startchapter[reference=contributions, title={Own Contributions}]
+
+% Intro
+
+My contributions to the field of scRNA-Seq data analysis include research and development of algorithms, data structures, pipelines, frameworks, and APIs.
+
+I worked on every computational step of the process except for alignment, with a specific focus on steps involving a count matrix.
+
+% section – sec:workflow
+
+% subsection – Counting of transcripts or reads
+
+My contributions to the analysis process were among the first tools able to work with sparse matrices.
+%TODO: why the BART-seq? because you had tools to show all this and can use as proof of concept
+I also contributed to a new, targeted RNA-Seq protocol called BART-Seq \cite[uzbas2019] (see \insec[sec:bart-seq]).
+Its tradeoffs are the inverse, allowing to sensitively capture expression values of a low number of target genes for a high number of samples.
+
+% subsection – sec:visualization
+
+In recent years, I have contributed to a class of changes that scientists are adopting in their approach to scRNA-Seq analysis.
+My contributions focused on improving the ability of scientists to apply the theoretical steps outlined above to real data in praxis.
+To this end, I worked on implementing and extending useful algorithms in projects such as \n{destiny} and \n{scanpy}.
+
+
+\startsubsection[title={destiny}]
+% efficient and flexible diffusion maps for R
+My chronologically first contribution \n{destiny} is a user-friendly, flexible and fast R tool for three closely related scRNA-Seq analysis steps \cite[angerer2016].
+It was created to enable dimensional reduction of both large, sparse scRNA-Seq data and qPCR data which benefits from explicit handling of missing values.
+The only previously existing tool was impractically slow and memory intensive when applied to scRNA-Seq data and did not support censored values present in qPCR data.
+Beyond routines for efficient computation and visualization of diffusion maps (see \insec[sec:diffmaps]), \n{destiny} offers routines for diffusion pseudo time \cite[haghverdi2016], and gene relevance (see \insec[sec:gene-relevance], \inbracecite[angerer2020]).
+Its efficiency involves reuse of intermediate results from the diffusion map creation to calculate diffusion pseudo time between cells as well as to project new data into an existing diffusion map.
+\stopsubsection
+
+% end of section – sec:workflow
+
+Apart from implementing and extending algorithms for analysis and visualization, I especially focused on improving the interoperability between such steps.
+Before addressing my work in this field, I would like to outline the relevant changes in the process of scRNA-Seq analysis in the following sections.
+
+% section – sec:org
+
+\TODO[too close to sec:org’s intro]
+Starting in 2015, I identified a high amount of tasks being repeatedly rebuilt by scientists.
+I noticed road blocks that were re-discovered and re-solved by my peers.
+I consequently focused my work on improving interoperability and modularity of existing tools, pioneering technologies and software development processes in a research environment, and developed some of the missing building blocks for the resulting toolkit.
+
+To demonstrate the need for rigorous software solutions like mine, I also analyzed sizes and sequencing depth of 455 publicly available datasets and the impact of growing data sizes (see \infig[fig:dataset-sizes]) on the field \cite[angerer2017].
+The proposed ramifications of these changes are gradually becoming reality,
+such as the use of transfer learning to infer labels for new data from multimodal data in cell atlases \cite[abdelaal2019].
+
+\TODO[frameworks, scanpy]
+
 \stopchapter
 
 \stopcomponent

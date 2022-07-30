@@ -123,6 +123,8 @@
 \setupcaption[subfigure][number=yes, numberconversion=a, style=bold, location=right]
 \setuplabeltext[subfigure=]
 \appendvalue{stopplacefigure}{\resetcounter[subfigure]}
+\definefloat[narrowfigure][figures][figure]
+\setupcaption[narrowfigure][location=right, hang=no]
 
 % Tables
 \setupTABLE[c][each][align={middle,lohi},frame=off]

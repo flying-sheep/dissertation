@@ -93,21 +93,20 @@ From-scratch modeling is more correct, but less flexible, as it requires careful
 Each new analysis that significantly deviates from previous analyses requires a re-thinking and re-building of the model almost from the ground up.
 There are however also modeling approaches that instead of performing analysis, replace several preprocessing steps specifically for scRNA-Seq data, like the normalizing single cell dimensionality reduction methods \n{scVI} \cite[lopez2018] and \n{GLM-PCA} \cite[townes2019].
 
-% my work
+% motivation for my work
 The more practical approach is to start with careful preprocessing, transforming data in a way that fulfills the assumptions of subsequent analysis \cite[vieth2019].
 The second step is then to create and use streamlined building blocks for pipelines to preprocess and analyze the data, and to then visualize the insights gained.
 Until few years ago, there were no freely available programming environments that allowed this approach for single cell data analysis \cite[wolf2018,stuart2019].
 Analysis pipelines came custom-built for a certain publication, just as hard to take apart and reuse as a holistic model would have been.
 Every graduate student and postdoctoral researcher had to start from scratch.
 The thesis at hand is a slice of the author’s continued efforts to change this.
-My contributions to the field of scRNA-Seq data analysis include research and development of algorithms, data structures, pipelines, frameworks, and APIs.
 
 \stopsection
 
-In the following \insec[sec:workflow], I will provide an overview of a general scRNA-Seq analysis workflow,
-specifically detailing steps I contributed to the most.
-I worked on every computational step of the process except for alignment, with a specific focus on steps involving a count matrix.
-Afterwards, \insec[sec:org] will address my contributions to the organization and reuse of analysis workflows like it.
+In the following \insec[sec:workflow], I will provide an overview of a general scRNA-Seq analysis workflow.
+Afterwards, \insec[sec:org] will address the organization and reuse of analysis workflows like it.
+The extent of detail in describing the individual steps will correspond to the extent of my contributions,
+a detailed breakdown of which follows in \insec[contributions].
 
 \startsection[reference=sec:workflow, title={Workflow for scRNA-Seq Data Processing}]
 % story: new challenges by single cell data; old way to deal with data (workflows) are not efficient → new approaches needed → me
@@ -160,9 +159,6 @@ For ease of use, pipelines wrapping those tools for certain experimental protoco
 Those include \n{Cell Ranger} for the \n{10x Genomics} \n{Chromium} protocol \cite[zheng2017] or \n{zUMIs} \cite[parekh2018] for several protocols involving UMIs.
 
 Protocols like the above produce counts for all expressed genes, resulting in a sparse matrix of not very sensitively captured expression values.
-My contributions to the analysis process were among the first tools able to work with sparse matrices.
-I also contributed to a new, targeted RNA-Seq protocol called BART-Seq \cite[uzbas2019] (see \insec[sec:bart-seq]).
-Its tradeoffs are the inverse, allowing to sensitively capture expression values of a low number of target genes for a high number of samples.
 \stopsubsection
 
 \startsubsection[reference=sec:preprocessing, title={Preprocessing of counts}]
@@ -297,13 +293,13 @@ The challenge of finding a fitting low dimensional representation lies in the mu
 Therefore, as opposed to of simple dimensional reduction methods used for for distance calculations (see \insec[sec:preprocessing]), the preferred methods for visualization take this multi-scale nature into account.
 Complex transforms are irreversible, so their resulting coordinates of cells in the visualization (the embedding) cannot be directly traced back to the input genes.
 
-\startplacefigure[reference=fig:hybrid, location=left, hang=no, title={%
+\startplacenarrowfigure[reference=fig:hybrid, title={%
 A so called hybrid image exemplifies how the same data can encode information on multiple scales.
-In this painting, the highly frequency visual features are interpreted as a woman with a mirror while the low frequency details are interpreted as a skull \cite[oliva2006].
+In this painting, the high frequency visual features are interpreted as a woman with a mirror while the low frequency details are interpreted as a skull \cite[oliva2006].\crlf
 (“All is Vanity” by Charles Allan Gilbert, 1892)
 }]
 \externalfigure[allisvanity.jpg][width=5.3cm]
-\stopplacefigure
+\stopplacenarrowfigure
 
 Without additional data providing a ground truth about subpopulation identity, or clearly separated clusters that are inherently assigned genes driving their embedding, the process of validating an embedding is not automatic, requiring creative reasoning and literature research.
 A panel of marker genes per cluster is derived from the data and cross-referenced with literature to annotate known cell types in the data.
@@ -311,39 +307,27 @@ When discovering novel subpopulations, their adjacency to known ones can be used
 An upcoming way to simplify the process are cell transcriptome atlases \cite[regev2017,schaum2018] that can be used as references to automatically look up your cells and annotate them \cite[abdelaal2019].
 \stopsubsection
 
-% start own contributions
-In recent years, I have contributed to a class of changes that scientists are adopting in their approach to scRNA-Seq analysis.
-My contributions focused on improving the ability of scientists to apply the theoretical steps outlined above to real data in praxis.
-To this end, I worked on implementing and extending useful algorithms in projects such as \n{destiny} and \n{scanpy}.
-
-\startsubsection[title={destiny}]
-% efficient and flexible diffusion maps for R
-My chronologically first contribution \n{destiny} is a user-friendly, flexible and fast R tool for three closely related scRNA-Seq analysis steps \cite[angerer2016].
-It was created to enable dimensional reduction of both large, sparse scRNA-Seq data and qPCR data which benefits from explicit handling of missing values.
-The only previously existing tool was impractically slow and memory intensive when applied to scRNA-Seq data and did not support censored values present in qPCR data.
-Beyond routines for efficient computation and visualization of diffusion maps (see \insec[sec:diffmaps]), \n{destiny} offers routines for diffusion pseudo time \cite[haghverdi2016], and gene relevance (see \insec[sec:gene-relevance], \inbracecite[angerer2020]).
-Its efficiency involves reuse of intermediate results from the diffusion map creation to calculate diffusion pseudo time between cells as well as to project new data into an existing diffusion map.
-\stopsubsection
-
 \stopsection
 
-Apart from implementing and extending algorithms for analysis and visualization, I especially focused on improving the interoperability between such steps.
-Before addressing my work in this field, I would like to outline the relevant changes in the process of scRNA-Seq analysis in the following sections.
+Alogrithms for analysis and visualization are at the forefront of discovery.
+They are however only part of the picture.
+A too narrow focus on individual steps or results also narrows the scope of what we consider doable.
+The bigger picture includes interoperability between tools.
+Progress is slow when one is bogged down by difficulties in menial tasks like file format conversion, tracking down ambiguously mapped gene names, and a faster machine to run an inefficient algorithm.
 
 \startsection[reference=sec:org, title={Organizing Analysis Workflows}]
 
 % (I am the one who can create usable interfaces and/for pipelines and fill in the gaps where “cobblestones” are missing)
 
-In the scientific landscape of 2015 onwards, I identified tasks that scientists spent disproportionate time on rebuilding.
+In the scientific landscape of 2015 onwards, many tasks existed that scientists spent disproportionate time on rebuilding.
 By improving how individual steps integrate with each other, we could increase how often and well we interface with and build on each others’ work.
-I consequently focused my work on improving interoperability and modularity of existing tools, pioneering technologies and software development processes in a research environment, and developed some of the missing building blocks for the resulting toolkit.
 
-To demonstrate the need for rigorous software solutions like mine, I also analyzed sizes and sequencing depth of 455 publicly available datasets and the impact of growing data sizes (see \infig[fig:dataset-sizes]) on the field \cite[angerer2017].
-Since then, effects of increasing data availability are increasingly felt throughout the field, while the theoretical possibilities mentioned in \inlinecite[angerer2017] are becoming reality.
+Specifically growing data sizes (see \infig[fig:dataset-sizes]) and increasing data availability impact the field greatly \cite[angerer2017].
+Multiple theoretical possibilities mentioned in \inlinecite[angerer2017] are becoming reality.
 For example, cell atlases containing large amounts of multimodal data can now be used to infer labels for new data using transfer learning \cite[abdelaal2019].
 
 In this section, I outline the ways in which programmatic frameworks improve reusability and therefore interoperability and reproducibility, specifically of scRNA-Seq analysis.
-I address how the field changed its approach to analysis workflows, and my contributions in facilitating the changes.
+I address how the field changed its approach to analysis workflows.
 
 \startplacefigure[reference=fig:dataset-sizes, title={%
 Single cell dataset sizes uploaded to Gene Expression Omnibus (GEO).
