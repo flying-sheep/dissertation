@@ -148,7 +148,7 @@ This includes e.\,g. unique molecular identifiers (UMIs), which allow to count e
 A second example is adding known quantities of RNA from a foreign organism (spike-in RNA) to each cell library, which later allows to correct for nonlinear per-cell biases in transcript counts \cite[lun2017b].
 \stopsubsection
 
-\startsubsection[title={Counting of transcripts or reads}]
+\startsubsection[reference=sec:counting, title={Counting of transcripts or reads}]
 % 2. (reads → counts)
 Counting starts from the paired sequences read from both ends of a fragment (paired-end reads) or the 3′ end sequences (single-end reads).
 The read or read pair includes a cell barcode and possibly a UMI barcode.
@@ -393,7 +393,7 @@ It also allows to bundle steps efficiently in memory, allowing control over when
 
 % - Through frameworks, data interchange formats and containers we get interoperability and reproducibility.
 Due to their tighter coupling of data structures and algorithms, frameworks are specific to individual programming languages.
-For scRNA-Seq analysis, the major frameworks are implemented in R and Python: \n{Seurat}\footnote{
+For scRNA-Seq analysis, the major frameworks today are implemented in R and Python: \n{Seurat}\footnote{
 Note that \n{Seurat} in its original publication 2015 was no general purpose scRNA-Seq analysis framework yet, but a data alignment algorithm with additional helper routines.
 } \cite[satija2015,butler2018], \n{scater} \cite[mccarthy2017], and \n{scanpy} \cite[wolf2018] are the most popular ones.
 Their data structures allow keeping gene and cell annotations and graphs in sync with the expression matrix while filtering and concatenating data (see \insec[sec:anndata]).
@@ -421,8 +421,9 @@ In Python, many standalone tools start supporting the generic data structure \n{
 It was the first annotated matrix data structure to support sparse expression matrices and therefore up to millions of cells.
 It provides its own format that supports disk backing for operations on data too large to be performed in memory, sparse or dense.
 % Scanpy
-\n{AnnData} was developed alongside \n{scanpy} in order to make the latter a highly modular framework.
-\n{Scanpy} is now in widespread international use, continuously expanded with new algorithms, and on its way to become a community governed project \cite[wolf2018,zappia2018].
+\n{AnnData} was developed alongside \n{scanpy} in order to make the latter a highly modular framework \cite[wolf2018].
+\n{Scanpy} provides commonly used builing blocks which, through sharing \n{AnnData} as a mutual base, can be combined with specialized packages for certain data types and algorithms such as \n{scVelo} \cite[bergen2019], \n{Scirpy} \cite[sturm2020], \n{muon} \cite[bredikhin2022], \n{scvi-tools} \cite[gayoso2022], \n{squidpy} \cite[palla2022], and more.
+\n{Scanpy} is now in widespread international use, continuously expanded with new algorithms, and together with \n{AnnData} core of the community governed umbrella project \n{scverse} \cite[zappia2018].
 Being based on \n{NumPy} \cite[vanderwalt2011], \n{SciPy} \cite[virtanen2020], and other mature and highly performant Python technologies, \n{scanpy} is very scalable.
 % - serving all MOs: iterative with biologists, manual coding, let it be done as-a-service
 Integrating well with \n{JupyterLab} and \n{Jupyter} notebooks \cite[kluyver2016], \n{scanpy} lends itself to be used interactively to quickly iterate on analyses with close feedback from biologists.
