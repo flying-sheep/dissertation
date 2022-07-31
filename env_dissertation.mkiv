@@ -106,6 +106,7 @@
 \setuphead[section]      [style=\ss\bfb, align=flushleft]
 \setuphead[subsection]   [style=\ss\bfa, align=flushleft]
 \setuphead[subsubsection][style=\ss\bf,  align=flushleft]
+\setuplabeltext[appendix=Appendix~]
 
 % List environments
 \definedescription[desc][
@@ -185,6 +186,14 @@ end
 \def\placecitationtitle#1{\ctxlua{userdata.cite_title([==[#1]==])}}
 
 \def\titlecite#1{\placecitationtitle{#1} \cite[#1]}
+
+\def\embedappendix{\dosingleempty\doEmbedappendix}
+\def\doEmbedappendix[#1]#2{\page[odd]
+\startchapter[title={\titlecite{#2}}, #1]
+\cite[alternative=entry, left=, right=][#2]
+\page
+\copypages[publications/#2.pdf][][scale=900]
+\stopchapter}
 
 % \usemodule[res-08] \setups[rl:manipulate]
 \setupexternalfigures[directory=imgs,conversion=pdf]
