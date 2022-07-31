@@ -1,0 +1,8 @@
+amplicons
+barcodes
+barcoding
+conservativity
+demultiplexing
+demultiplexed
+transcriptomics
+untargeted

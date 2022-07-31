@@ -29,5 +29,25 @@
     "gitlens.currentLine.enabled": false,
     "todo-tree.regex.regex": "((//|#|<!--|;|/\\*|^|\\\\)\\s*($TAGS)|^\\s*- \\[ \\])",
     "python.pythonPath": ".venv/bin/python",
-    "editor.wordWrap": "on"
+    "editor.wordWrap": "on",
+    "cSpell.customDictionaries": {
+        "context-commands": {
+            "name": "context-commands",
+            "path": "${workspaceFolder:dissertation}/.cspell/context-commands.txt",
+            "addWords": true,
+            "scope": "workspace"
+        },
+        "names": {
+            "name": "names",
+            "path": "${workspaceFolder:dissertation}/.cspell/names.txt",
+            "addWords": true,
+            "scope": "workspace"
+        },
+        "words": {
+            "name": "words",
+            "path": "${workspaceFolder:dissertation}/.cspell/words.txt",
+            "addWords": true,
+            "scope": "workspace"
+        }
+    }
 }
