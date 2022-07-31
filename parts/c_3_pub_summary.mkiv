@@ -66,7 +66,7 @@ I helped Laleh Haghverdi in developing the nonparametric diffusion map variant d
 I chose to default to perceptually continuous color-maps, which put \n{destiny} ahead of its time in guaranteeing accurate assessment of information encoded into plot colors.
 I contributed to a few of \n{destiny}’s dependencies to support random seeds for determinism.
 For the publication, I wrote the first draft, which I then completed together with other contributors.
-I designed the figure to which Maren Büttner contributed cell type annotations.
+I designed the main figure to which Maren Büttner contributed cell type annotations, and created all supplementary figures.
 
 \stopsection
 
@@ -124,6 +124,7 @@ where he focused on performance while I focused on API and data structure design
 I contributed to the implementation of some algorithms included in \n{scanpy}.
 I designed \n{AnnData}’s on-disk format together with F. Alexander Wolf, driving the choice of HDF5 as a reliable format, which led to aforementioned adoption by large projects and popular tools.
 I contributed to the manuscript after F. Alexander Wolf wrote the first draft.
+\TODO[mention anndata2ri]
 
 \stopsection
 
@@ -168,11 +169,14 @@ The article shows robust derivation of both obvious candidates such as hemoglobi
 We also present an easy to use interface for calculating gene lists and plotting as part of the \n{destiny} package.
 
 My contribution:
-First author.
-The initial idea comes from Fabian Theis, while I designed the changes making it applicable to real data with A. Scialdone and C. Marr and implemented it.
+The initial idea comes from Fabian Theis, while I designed the changes making it applicable to real data with A. Scialdone and C. Marr.
+I implemented the algorithm as an extension of \n{destiny}’s data structures and API,
+offering a rich and user friendly way to interact with for all gene relevance concepts, including plotting routines.
 I also extended the idea to include scores for defined groups of cells (such as clusters) or the whole data for a global relevance score per gene.
 The method is described in detail in \insec[sec:gene-relevance].
-\n{Destiny} offers a rich and user friendly API for all gene relevance concepts, including plotting routines.
+For the publication, I designed and performed its data analysis, which Antonio Scialdone interpreted.
+I wrote the first draft, while David Fischer and Carsten Marr contributed to the mathematical description.
+I completed writing the manuscript with feedback from Carsten Marr.
 
 \stopsection
 
