@@ -1,53 +1,26 @@
 {
-    "spellright.language": [
-        "en_US-large",
-        "en_US",
-        "en"
-    ],
-    "spellright.documentTypes": [
-        "markdown",
-        "latex",
-        "context",
-        "plaintext"
-    ],
-    "spellright.parserByClass": {
-        "context": {
-            "parser": "latex"
-        }
-    },
-    "spellright.ignoreRegExpsByClass": {
-        "context": [
-            "/\\\\starttikzpicture[^]*?\\\\stoptikzpicture/gm",
-            "/\\\\startformula[^]*?\\\\stopformula/gm",
-            "/\\\\startluacode[^]*?\\\\stopluacode/gm",
-            "/\\$[^\\$]+?\\$(’s|th)/g",
-            "/\\{[^\\}]+?\\}(’s|th)/g",
-            "/\\\\startproduct.*/g"
-        ]
-    },
     "gitlens.codeLens.enabled": false,
     "gitlens.currentLine.enabled": false,
     "todo-tree.regex.regex": "((//|#|<!--|;|/\\*|^|\\\\)\\s*($TAGS)|^\\s*- \\[ \\])",
-    "python.pythonPath": ".venv/bin/python",
+    "python.defaultInterpreterPath": ".venv/bin/python",
     "editor.wordWrap": "on",
+    "cSpell.ignoreRegExpList": [
+        "\\\\[a-z]+",
+        "\\b(sec|fig):[a-z]+",
+        "[\\[\\{]([a-z]+\\d{4}[a-z]?,?)+[\\]\\}]",
+    ],
     "cSpell.customDictionaries": {
-        "context-commands": {
-            "name": "context-commands",
-            "path": "${workspaceFolder:dissertation}/.cspell/context-commands.txt",
-            "addWords": true,
-            "scope": "workspace"
-        },
         "names": {
             "name": "names",
             "path": "${workspaceFolder:dissertation}/.cspell/names.txt",
             "addWords": true,
-            "scope": "workspace"
+            "scope": "workspace",
         },
         "words": {
             "name": "words",
             "path": "${workspaceFolder:dissertation}/.cspell/words.txt",
             "addWords": true,
-            "scope": "workspace"
+            "scope": "workspace",
         }
     }
 }
