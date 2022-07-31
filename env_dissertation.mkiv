@@ -106,7 +106,12 @@
 \setuphead[section]      [style=\ss\bfb, align=flushleft]
 \setuphead[subsection]   [style=\ss\bfa, align=flushleft]
 \setuphead[subsubsection][style=\ss\bf,  align=flushleft]
-\setuplabeltext[appendix=Appendix~]
+\setuplabeltext[en][appendix=Appendix~]
+\define[2]\AppendixHeader
+  {\framed[frame=off,width=broad,align=flushleft]{\ss\bfc#1\crlf#2}}
+\startsectionblockenvironment[appendix]
+\setuphead[chapter][command=\AppendixHeader]
+\stopsectionblockenvironment
 
 % List environments
 \definedescription[desc][
