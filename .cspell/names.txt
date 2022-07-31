@@ -1,12 +1,23 @@
 # people
+Carsten
 Marr
+Antonio
 Scialdone
+Fabian
 Theis
 Fatma
 Uzbas
 Micha
 Drukker
+Laleh
+Haghverdi
+Maren
+Büttner
+
+# algos (name and thing)
+Eigen
 
 # things
+Bioconductor
 Scanpy
 Snakemake

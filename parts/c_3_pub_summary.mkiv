@@ -10,7 +10,7 @@ In general, I have contributed to a class of changes that scientists are adoptin
 My contributions focused on improving the ability of scientists to apply the theoretical steps outlined in \insec[sec:workflow] to real data in praxis.
 I worked on every computational step of the scRNA-Seq analysis process described in \insec[sec:workflow] except for alignment, with a specific focus on steps involving a count matrix.
 
-My contributions to the field of scRNA-Seq data analysis include research, development, and extension of alogrithms, data structures, pipelines, frameworks, and APIs.
+My contributions to the field of scRNA-Seq data analysis include research, development, and extension of algorithms, data structures, pipelines, frameworks, and APIs.
 
 \startsection[title={\titlecite{angerer2016}}]
 
@@ -21,9 +21,9 @@ Diffusion maps were chosen for their at the time unique ability to capture smoot
 Its practicality is a result of high performance making it scale from personal computers to high performance machines, as well as algorithmic enhancements adapting the algorithm to scRNA-Seq and qPCR data.
 
 % efficiency
-\n{Destiny}’s scalability and compuatational efficiency is mainly achieved by reusing the sparsity structure of the sparse distance matrix to perform element-wise operations.
+\n{Destiny}’s scalability and computational efficiency is mainly achieved by reusing the sparsity structure of the sparse distance matrix to perform element-wise operations.
 To this end, \n{destiny} symmetrizes its kNN matrix and uses the symmetric variant of diffusion maps.
-Other adaptations for efficiency include such initializing based on a k-nearest-neighbor search, full sparse matrix support for input data, as well as taking advantage of an approximate Eigen decomposition algorithmus.
+Other adaptations for efficiency include such initializing based on a k-nearest-neighbor search, full sparse matrix support for input data, as well as taking advantage of an approximate Eigen decomposition algorithm.
 This efficient design has been adopted by \n{scanpy} for its many tools that use a kNN search as preprocessing step.
 
 % enhancements

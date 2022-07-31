@@ -4,5 +4,6 @@ barcoding
 conservativity
 demultiplexing
 demultiplexed
+hematopoietic
 transcriptomics
 untargeted
