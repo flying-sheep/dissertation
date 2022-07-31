@@ -40,8 +40,8 @@ This nonparametric diffusion map variant is also used by \n{scanpy} today.
 When opting for a global scale instead, \n{destiny} will derive a suitable kernel width by default.
 
 % plotting and color maps
-\n{Destiny} contains dedicated plotting routines for diffusion maps and \n{DPT} that directly integrate into the popular plotting library \n{ggplot2}.
-Destiny started providing perceptually continuous color-maps before they have been included in the major plotting libraries of Python and R.
+\n{Destiny} contains dedicated plotting routines for diffusion maps and \n{DPT} that directly integrate into the popular plotting package \n{ggplot2}.
+Destiny started providing perceptually continuous color-maps before they have been included in the major plotting packages of Python and R.
 Without them, accurate assessment of any kind of color-mapped visualizations cannot be guaranteed \cite[borkin2011,moreland2017].
 \n{Destiny} supports \n{Bioconductor}’s annotated expression matrix classes as well as plain matrices and data frames.
 
@@ -99,10 +99,12 @@ In this article, we introduced \n{scanpy}, a framework for single cell analysis 
 \n{Scanpy} is a framework for scRNA-Seq preprocessing, analysis, and visualization in Python.
 \n{AnnData} is a data structure for annotated observation data including scRNA-Seq counts and expressions.
 It is designed to be generic and independent of \n{scanpy}.
-With F. Alexander Wolf I implemented the initial version of both, where he focused on performance while I focused on API and data structure design.
+
 \n{Scanpy} is designed around \n{AnnData}, storing the results of each processing step in an expression matrix layer or an aligned annotation (see \infig[fig:anndata]).
 \n{AnnData} can be stored on disk in various formats for snapshots, data interchange, and interoperability with command line tools.
-For data too large to hold in memory, \n{AnnData} supports disk-backed operations.
+Its structure allows serialization in the file-tree like formats \n{HDF5} \cite[folk2011] and \n{Zarr} \cite[miles2022].
+They, unlike Python’s “pickle” format are not bound to individual implementation versions and therefore allow for reliable long term storage.
+For data too large to hold in memory, \n{AnnData} supports disk-backed operations on its \n{HDF5}-based \type{.h5ad} files.
 For details about the implementation of \n{AnnData} and \n{scanpy}, see \in{Sections}[sec:anndata] and \in{}[sec:scanpy]
 
 \n{AnnData}’s and \n{scanpy}’s modular and flexible design philosophies allows \n{scanpy} routines to be effortlessly interspersed with preprocessing and analysis steps of other tools, including R tools via \n{SingleCellExperiment} \cite[lun2017a,angerer2019b].
@@ -110,18 +112,24 @@ For details about the implementation of \n{AnnData} and \n{scanpy}, see \in{Sect
 Its \type{.h5ad} format is supported by visual analysis pipelines like \n{Galaxy} \cite[afgan2018] or \n{cellxgene} \cite[megill2020].
 \n{Scanpy} is widely used and popular in the scRNA-Seq analysis community \cite[zappia2018].
 It was named Genome Biology’s milestone article of the year 2018 \cite[genomebiology2020].
-It is integrated in \n{Galaxy}, used for large projects like the \n{Human Cell Atlas} \cite[regev2017] or \n{Tabula Muris} \cite[schaum2018], and at the time of writing cited by over 300 studies, review papers and tools.
-So does EMBL-EBI’s expression atlas use \n{scanpy} for downstream analysis of all single cell experiments \cite[papatheodorou2020]
+It is used for large projects like the \n{Human Cell Atlas} \cite[regev2017], \n{Tabula Muris} \cite[schaum2018], or EMBL-EBI’s expression atlas, which uses \n{scanpy} for downstream analysis of all single cell experiments \cite[papatheodorou2020].
+The \n{Human Cell Atlas} and \n{COVID19 Cell Atlas} \cite[wilk2020] chose \n{AnnData}’s \type{.h5ad} format as their data interchange format.
+At the time of writing, \n{scanpy} is cited by over 300 studies, review papers and tools.
 
 My contribution:
-I designed the foundational APIs and \n{AnnData}.
-I contributed to the implementation of some included algorithms.
+For the Python packages,
+I designed \n{AnnData} and the foundational API structure of \n{scanpy}.
+With F. Alexander Wolf I implemented the initial version of both packages,
+where he focused on performance while I focused on API and data structure design.
+I contributed to the implementation of some algorithms included in \n{scanpy}.
+I designed \n{AnnData}’s on-disk format together with F. Alexander Wolf, driving the choice of HDF5 as a reliable format, which led to aforementioned adoption by large projects and popular tools.
+I contributed to the manuscript after F. Alexander Wolf wrote the first draft.
 
 \stopsection
 
 \startsection[title={\titlecite{uzbas2019}}]
 
-% flexible processing pipeline and Python library
+% flexible processing pipeline and Python package
 Summary:
 In this article, we developed BART-Seq, a targeted RNA-Seq protocol usable at the single cell or bulk levels.
 See \inlinecite[uzbas2019] and \insec[sec:bart-seq] for BART-Seq, a transcriptomics protocol that allows to quantify many samples at once.
