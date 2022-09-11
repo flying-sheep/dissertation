@@ -6,6 +6,8 @@
     "editor.wordWrap": "on",
     "cSpell.ignoreRegExpList": [
         "\\\\[a-z]+",
+        "\\\\(input|type)\\{[^\\}]+\\}",
+        "\\\\((inline)?cite|externalfigure)\\[[^\\}]+\\]",
         "\\b(sec|fig):[a-z]+",
         "[\\[\\{]([a-z]+\\d{4}[a-z]?,?)+[\\]\\}]",
     ],

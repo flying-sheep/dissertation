@@ -44,6 +44,7 @@ multiresolution
 omics
 parallelly
 performant
+pluripotency
 pluripotent
 posttranslational
 posttranslationally
