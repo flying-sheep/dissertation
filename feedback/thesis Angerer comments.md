@@ -2,9 +2,6 @@
 
 "Enabling technologies for visualization and analysis of single cell RNA-Seq data"
 
-- [x] Global vs local features https://www.techtimes.com/articles/44206/20150404/marilyn-monroe-or-albert-einstein-optical-illusion-can-tell-if-you-need-glasses-or-not.htm
-- [ ] vertical integration https://www.nature.com/articles/s41587-021-00895-7/figures/1
-
 ## Feedback
 
 **summary**: good, quite some orga work to be done.
@@ -28,9 +25,11 @@
 
 ## own contribs
 
-> has been totally reworked by …
-
-  - [ ] TODO
+> Has been totally reworked.
+> I now clearly point out pain points in the status quo that can be fixed by software engineering,
+> then how they are fixed by software engineering,
+> finally how my contributions specifically relate to them.
+> See also earlier emails.
 
 - [x] 1.1 Workflow
   Own contribution earlier?
@@ -38,9 +37,9 @@
   at end here you write about own contribution → as reader I am waiting very much for this, then hidden within a detail expl chap → this needs major reorganization see below
 - [x] 1.2 Own Contributions
   I was hoping for this earlier
-- [ ] 2 Methods
+- [x] 2 Methods
   intro missing before you dive into each topic. goal of this chap? methods, background, own contributions? reads like a random mixture to me
-- [ ] 2.1.3 Gene Relevance
+- [x] 2.1.3 Gene Relevance
   how does this fit at all to rest, hmm. this is now your own contribution part, right
 
 ## Abstract
@@ -194,16 +193,21 @@
 
   > Yes, clarified.
 
-- [ ] a figure for everything after count matrix may be nice?
+- [x] a figure for everything after count matrix may be nice?
 
-  > There’s already fig 1.4 “batch effect correction” and fig 1.5 “Heterogeneity Analysis approaches”, but maybe more comprehensive?
+  > There’s already fig 1.4 “batch effect correction” and fig 1.5 “Heterogeneity Analysis approaches”.
+  >
+  > - [ ] might do a more comprehensive one still
 
 #### 1.1.4 Analysis (of cellular dynamics, heterogeneity and gene roles)
 - [x] analysis of what
 
   > “of cellular dynamics, heterogeneity and gene roles”, added
 
-- [ ] here would really make clear what pot. questions could be, then enumerate analysis parts
+- [x] here would really make clear what pot. questions could be, then enumerate analysis parts
+
+  > done
+
 - [x] fig 1.4 (cell fates) somewhat nice, but give legend for arrows, add some references and say these things are artificial mostly. but: this is out of place in analysis, this should be in motivating bio questions in the single cell bio part in beginning, no? you’d need a fig for analysis etc
 
   > Moved and explained arrows.
@@ -374,7 +378,7 @@
 
   > done
 
-- [ ] this is brief, describes method, but does not give any result (maybe OK for this section though)
+- [x] this is brief, describes method, but does not give any result (maybe OK for this section though)
 - [ ] in particular though does not tie to above
 - [x] not clear how comp parts are in there, and what your contribution is.
 
