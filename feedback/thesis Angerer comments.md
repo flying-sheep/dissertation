@@ -426,7 +426,10 @@
 - [ ] "My contributions towards more reproducible, scalable and interconnectible scientific programming have helped these changes along." → sounds very different from what you wrote before
 
 ### 3.1 Multi-resolution scRNA-Seq Analysis
-- [ ] multi-res? really? don’t understand what you mean, can you define?
+- [x] multi-res? really? don’t understand what you mean, can you define?
+
+  > renamed to multi-scale and drawn connection to intro
+
 - [x] multi-layer/omics add too? ah, 3.3 OK :)
 
 ### 3.3 Multi-modal Scanpy and AnnData

@@ -16,21 +16,21 @@ For example, extensible and efficient data format standards are born from the co
 Open source analysis frameworks have been designed to offer an open and welcoming environment for new as well as established analysts and method developers.
 My contributions towards more reproducible, scalable and interconnectible scientific programming have helped these changes along.
 
-\startsection[title={Multiresolution scRNA-Seq Analysis}]
+\startsection[title={Multi-scale scRNA-Seq Analysis}]
 The analysis of continuous processes driving cellular heterogeneity has been enabled by fluorescent tagging and single cell imaging.
 Their targeted nature as well as their monetary and time costs however renders them unsuitable for unbiased heterogeneity analysis.
 While careful selection of parameters like sequencing depth is vital, scRNA-Seq is an unbiased and inexpensive method able to detect rare cells \cite[torre2018].
 This makes it uniquely suited for heterogeneity analyses.
-A rarely addressed property of cellular heterogeneity is its multiresolution nature:
-multiple processes at different scales and locality shape heterogeneity of either subpopulations or all cells.
+A rarely addressed property of cellular heterogeneity is its multi-scale nature:
+multiple processes at different scales and locality shape heterogeneity of either subpopulations or all cells (see \insec[sec:visualization]).
 
 Analysis algorithms in this area have evolved alongside the protocols able to sequence hundreds of thousands of cells.
 Suitable for the low sample sizes of bulk RNA-Seq, simple linear dimension reduction methods like PCA were used to visualize early single cell studies.
 Nonlinear methods like diffusion maps, t-SNE or later UMAP have been developed and continue being improved to fit the nature of transcriptome data.
-But while they capture both continuity and heterogeneity at multiple resolutions, their output does not contain directly interpretable information about processes at different resolutions.
+But while they capture both continuity and heterogeneity at multiple scales, their output does not contain directly interpretable information about processes at different scales.
 Methods like the growing multitude of trajectory inference algorithms or gene relevance complement them within the same constraint \cite[saelens2019].
-Of all methods known to the author, only \n{PAGA} so far distinctively dissects continuous multiresolution heterogeneity \cite[wolf2019].
-To analyze this foundational attribute of cellular processes, a multiresolution variant of gene relevance would be of great use.
+Of all methods known to the author, only \n{PAGA} so far distinctively dissects continuous multi-scale heterogeneity \cite[wolf2019].
+To analyze this foundational attribute of cellular processes, a multi-scale variant of gene relevance would be of great use.
 \stopsection
 
 \startsection[title={Multimodal \n{scanpy} and \n{AnnData}}]
