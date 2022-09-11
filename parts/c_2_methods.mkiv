@@ -492,6 +492,8 @@ subpopulations that touch in the UMAP embedding can be assumed to have similar e
 \startsubsection[title={Visualization}]
 \n{Scanpy} has rich visualizations based on Matplotlib \cite[hunter2007] for each step from basic quality control to complex analysis.
 Their flexibility is rooted in them being generic over the annotation column used for coloring or statistic summarization (see \infig[fig:scanpy]).
+Common analysis loops consist of repeatedly visualizing statistics either over discrete subsets of the data (\infig[fig:scanpy] a, b)
+or onto embeddings into dimension reduced spaces using e.g. UMAPs or diffusion maps (\infig[fig:scanpy] c).
 The final step of \n{scanpy} analyses consists of converting the complete \n{Jupyter} notebook, select visualizations, and the final data to publishable formats using few simple commands \cite[wolf2018].
 \stopsubsection
 

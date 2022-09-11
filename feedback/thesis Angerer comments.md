@@ -385,7 +385,9 @@
   > Done
 
 #### 2.3.3 Visualization
-- [ ] ties into diffmaps?
+- [x] ties into diffmaps?
+
+  > Done
 
 ### 2.4 BART-Seq
 - [x] in general: need to add 1 page summaries + own contribution as extra section. please check other theses
