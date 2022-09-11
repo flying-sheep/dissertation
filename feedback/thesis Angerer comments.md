@@ -380,7 +380,9 @@
   > Scanpy is designed after that process.
   > This section describes that fact and goes into detail about the design philosophy and scope of scanpy.
 
-- [ ] fig 2.3 (now 2.4) → what’s the question, the data, the result? not only how but you need to motivate. remember, you submit to WZW faculty, they want to have some of this
+- [x] fig 2.3 [now 2.4] → what’s the question, the data, the result? not only how but you need to motivate. remember, you submit to WZW faculty, they want to have some of this
+
+  > Done
 
 #### 2.3.3 Visualization
 - [ ] ties into diffmaps?
