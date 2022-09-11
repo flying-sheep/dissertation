@@ -21,7 +21,12 @@
 
   > Stressed this e.g. in “Organizing Analysis Workflows” section
 
-- [ ] title, not sure, what are "enabling technologies". usually high-level summary term, why needed here? analysis is super broad, what type of analysis?
+- [x] title, not sure, what are "enabling technologies". usually high-level summary term, why needed here? analysis is super broad, what type of analysis?
+
+  > Done, new title is “Frameworks of interpretation: Stabilizing scRNA-seq data processing for discovery”
+  >
+  > I explain in the abstract that this is about the advantages my contributions bring into the field:
+  > Building computational frameworks for interoperability, reproducibility, and discoverability of tools.
 
 ## own contribs
 
