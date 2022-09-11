@@ -395,7 +395,10 @@
   > done
 
 - [x] this is brief, describes method, but does not give any result (maybe OK for this section though)
-- [ ] in particular though does not tie to above
+- [x] in particular though does not tie to above
+
+  > Added description of how good analysis can only be performed with a fitting tradeoff in sensitivity/specificity of quantification.
+
 - [x] not clear how comp parts are in there, and what your contribution is.
 
   > added own contrib
