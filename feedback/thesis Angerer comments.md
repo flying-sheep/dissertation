@@ -441,8 +441,13 @@
 
   > Actually genome biology, no? added that one
 
-- [ ] extend a bit, some timeline?
-- [ ] something on how community can address?
+- [x] extend a bit, some timeline?
+
+  > adapted to 2022 state
+
+- [x] something on how community can address?
+
+  > referenced new tools dealing with these problems.
 
 ### 3.2 New Dimensions of Scanpy Scalability
 
