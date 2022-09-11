@@ -294,9 +294,16 @@
 
 - [x] also if this is methods, where is the results chapter?
 
-  > Nowhere, just like in multiple other Dissertations that I’ve oriented myself on. Why does there need to be one, there are results in the individual articles.
+  > Nowhere, just like in all other dissertations that I’ve read.
+  > The results are discussed in the individual contributed articles and my figures use these datasets as examples.
 
-- [ ] maybe give some example or data set to visualize? imagine you presented this as a talk → this would never work to just directly talk about dim red, diff map etc without illustrating a big data set and what you’d look for in that.
+- [x] maybe give some example or data set to visualize? imagine you presented this as a talk → this would never work to just directly talk about dim red, diff map etc without illustrating a big data set and what you’d look for in that.
+
+  > Same as above: The methods section has figures whose text describes what the corresponding method can be used for.
+  > The main methods text only describes the mathematical or software design.
+  > Dissertations with more general purpose methods like Mo’s do it that way too.
+  > Even dissertations like Valerio’s that are designed for a very specific data type (in his case zebrafish brains) have the methods text explain only details about that data type brains while still not going into individual results.
+  > Here too like the figures and individual contributed articles go into individual dataset results.
 
 ### 2.1 Dimensionality Reduction
 #### Spectral Decomposition
