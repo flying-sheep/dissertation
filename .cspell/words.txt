@@ -18,6 +18,7 @@ demultiplexed
 demultiplexing
 dimerize
 discoverability
+discretization
 epigenetic
 epigenetics
 epitope
@@ -29,6 +30,8 @@ in-situ
 inclusivity
 interconnectible
 interpretability
+intron
+introns
 logarithmized
 logarithmizing
 lysing
@@ -57,6 +60,7 @@ transcriptome
 transcriptomes
 transcriptomic
 transcriptomics
+transdifferentiation
 transposase
 unrepresentable
 unspliced

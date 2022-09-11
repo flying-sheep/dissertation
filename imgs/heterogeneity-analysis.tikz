@@ -133,7 +133,7 @@
 %a) cell level discretization (clustering), then cluster labelling (cell type) …
 %b) … then DE
 %c) gene level discretization (correlation modules) to be able to interpret gene results
-%d) cell networks (e.g. PAGA) for e) pseudotime (less discretization) f) dim. red. g) kernels like Gene Relevance
+%d) cell networks (e.g. PAGA) for e) pseudo-time (less discretization) f) dim. red. g) kernels like Gene Relevance
 %or
 %a) Clustering -> [d) DE | e) Labelling]
 %b) PAGA -> [e) | f) Trajectories]

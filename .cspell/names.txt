@@ -16,6 +16,7 @@ Maren
 Büttner
 Micha
 Drukker
+McIlroy
 
 # algos (name and thing)
 Eigen
@@ -67,8 +68,15 @@ Salmon
 Scanpy
 scater
 SciPy
+Scirpy
+scmap
 scran
 SCTransform
+scVelo
+scverse
 Snakemake
+squidpy
 trendsceek
+velocyto
+Visium
 Zarr

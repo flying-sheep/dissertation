@@ -419,8 +419,11 @@
 
   > did multiple editor passes
 
-- [ ] often people include a least short summary
-- [ ] "My contributions towards more reproducible, scalable and inter-connectible scientific programming have helped these changes along." → sounds very different from what you wrote before
+- [x] often people include at least short summary
+
+  Added
+
+- [ ] "My contributions towards more reproducible, scalable and interconnectible scientific programming have helped these changes along." → sounds very different from what you wrote before
 
 ### 3.1 Multi-resolution scRNA-Seq Analysis
 - [ ] multi-res? really? don’t understand what you mean, can you define?

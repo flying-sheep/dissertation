@@ -43,9 +43,9 @@ During the past decade, biological research worked with averaged RNA profiles of
 Those profiles allow to capture the gene expression of a tissue or fluid sample without accounting for cell-to-cell variability.
 
 \startplacefigure[reference=fig:cell-fate, title={%
-Cells differentiate smoothly and in stochasically diverging paths, from high potency (top) to high specialization (bottom).
+Cells differentiate smoothly and in stochastically diverging paths, from high potency (top) to high specialization (bottom).
 Dedifferentiation (blue arrows) occurs naturally in plants and regenerating basal animals, but not humans.
-The natural occurance of transdifferentiation (orange arrows) in humans has only been observed from α to β cells in pancreatic islets.
+The natural occurrence of transdifferentiation (orange arrows) in humans has only been observed from α to β cells in pancreatic islets.
 Experiments to artificially induce trans- or dedifferentiation have shown promise for regeneration of tissue damage and effects of aging.
 \crlf\small{(Figure adapted from \inlinecite[gam2019] with permission)}
 }]
@@ -248,7 +248,7 @@ The problem can be circumvented by joint clustering and DE analysis, manually pr
 % a) cell level discretization (clustering), then cluster labelling (cell type) …
 % b) … then DE
 % c) gene level discretization (correlation modules) to be able to interpret gene results
-% d) cell networks (e.g. PAGA) for e) pseudotime (less discretization) f) dim. red. g) kernels like Gene Relevance
+% d) cell networks (e.g. PAGA) for e) pseudo-time (less discretization) f) dim. red. g) kernels like Gene Relevance
 \TODO[not using “cell identities” elsewhere, unify]
 \TODO[c not immediately mentioned. Mention that prior info is used for labelling (marker genes) and gene modules]
 \TODO[maybe also composition differences between datasets (mapping between cell neighborhoods)?]
@@ -319,7 +319,7 @@ Its efficiency involves reuse of intermediate results from the diffusion map cre
 
 \stopsection
 
-Alogrithms for analysis and visualization are at the forefront of discovery.
+Algorithms for analysis and visualization are at the forefront of discovery.
 They are however only part of the picture.
 A too narrow focus on individual steps or results also narrows the scope of what we consider doable.
 The bigger picture includes interoperability between tools.
@@ -432,7 +432,7 @@ It was the first annotated matrix data structure to support sparse expression ma
 It provides its own format that supports disk backing for operations on data too large to be performed in memory, sparse or dense.
 % Scanpy
 \n{AnnData} was developed alongside \n{scanpy} in order to make the latter a highly modular framework \cite[wolf2018].
-\n{Scanpy} provides commonly used builing blocks which, through sharing \n{AnnData} as a mutual base, can be combined with specialized Python package for certain data types and algorithms such as \n{scVelo} \cite[bergen2019], \n{Scirpy} \cite[sturm2020], \n{muon} \cite[bredikhin2022], \n{scvi-tools} \cite[gayoso2022], \n{squidpy} \cite[palla2022], and more.
+\n{Scanpy} provides commonly used building blocks which, through sharing \n{AnnData} as a mutual base, can be combined with specialized Python package for certain data types and algorithms such as \n{scVelo} \cite[bergen2019], \n{Scirpy} \cite[sturm2020], \n{muon} \cite[bredikhin2022], \n{scvi-tools} \cite[gayoso2022], \n{squidpy} \cite[palla2022], and more.
 \n{Scanpy} is now in widespread international use, continuously expanded with new algorithms, and together with \n{AnnData} core of the community governed umbrella project \n{scverse} \cite[zappia2018].
 Being based on \n{NumPy} \cite[vanderwalt2011], \n{SciPy} \cite[virtanen2020], and other mature and highly performant Python technologies, \n{scanpy} is very scalable.
 % - serving all MOs: iterative with biologists, manual coding, let it be done as-a-service
