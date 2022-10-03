@@ -28,13 +28,14 @@ All those diseases have in common that they cannot be understood without knowing
 
 % motivate RNA-Seq
 Each inner process of a cell is performed directly or indirectly through proteins reshaping themselves while binding to metabolic molecules and each other.
-Their tasks range from simply transporting oxygen in red blood cells, over processing food into readily available energy, to complex developmental chain reactions forming our bodies in the womb.
+Their tasks range from simply transporting oxygen in red blood cells, to processing food into readily available energy, to complex developmental cascades forming our bodies in the womb.
 Proteins achieve their versatility through the binding characteristics of their twenty different constituent amino acids.
-Knowing what proteins are being produced in a cell at a given moment allows to draw conclusions about its purpose and health.
-Proteomics, the measurement of proteins directly, is however made difficult by their complex binding behavior.
+Knowing what proteins are being produced in a cell at a given moment allows one to draw conclusions about its purpose and health.
+Proteomics, the measurement of proteins directly, is impeded in several ways.
+Proteins experience complex binding behavior and cannot be directly amplified, which impedes quantification.
 This results in proteomics being limited to targeted analysis of a small number of known proteins \cite[manzoni2018].
 The assembly of proteins in cells is however fairly well understood and measurable.
-The central dogma of molecular biology states that genes on our chromosomes are transcribed to short lived messenger RNA (mRNA) molecules, which are then translated to proteins (seed \infig[fig:dogma]).
+The central dogma of molecular biology states that genes on our chromosomes are transcribed to short lived messenger RNA (mRNA) molecules, which are then translated to proteins (see \infig[fig:dogma]).
 %Genes are transcribed into a pre-messenger RNA (pre-mRNA) and then spliced into one of several possible final mRNAs encoding a different protein each.
 The presence of mRNA in a cell therefore indicates that its respective protein is currently being produced.
 It is possible to quantify and subsequently analyze snapshots of all mRNA molecules in a cell sample using RNA sequencing (RNA-Seq, \inbracecite[morin2008]).
@@ -62,9 +63,9 @@ The ability to dissect heterogeneity allows to improve our understanding of the 
 This enables new approaches to fight diseases like cancer \cite[patel2014,qian2017] and influencing cellular development (see \infig[fig:cell-fate]).
 The second great advantage is that the amounts of data present in scRNA-Seq are necessary for machine learning approaches.
 Advances in microfluidic devices have led to experimental protocols able to sequence more than a million cells \cite[macosko2015,klein2015,zheng2017].
-The ample variation between this multitude of individual cells allows to derive patterns no human can detect by manual and careful isolation of bulk samples \cite[huang2018].
+Ample variation between this multitude of individual cells enables derivation of patterns undiscernible by even the most careful manual isolation of bulk samples \cite[huang2018].
 For example \inlinecite[plass2018] have determined the developmental lineage of every cell in a planarian, a regenerative species whose cellular mechanisms could be the key to prevent scarring or delay aging in humans.
-\inlinecite[vento-tormo2018] have profiled cells from human placentas for regulatory interactions in the maternal-fetal interface, furthering our understanding of pregnancy diseases.
+\inlinecite[vento-tormo2018] have profiled cells from human placentas for regulatory interactions in the maternal-fetal interface, furthering our understanding of prenatal diseases.
 The international community of scientists working on transcriptomics is coming together to create the \n{Human Cell Atlas} (see \infig[fig:hca], \inbracecite[regev2017]).
 
 \startplacefigure[reference=fig:hca, title={%
@@ -84,8 +85,8 @@ The number of cells that can be measured at once with a certain quality is there
 Measuring thousands or more cells without exploding costs means that shallow sequencing depths and additional biases are being tackled using computational solutions where applicable \cite[angerer2017].
 % solutions
 For example there are dedicated methods for doublet filtering \cite[mcginnis2019,wolock2019].
-Not all effects however are correctly understood and approached.
-So have studies suggested in past years that microfluidic protocols inflate the number of zeros in the data due to technical reasons, where a zero stands for a gene not being detected in a cell at all.
+Not all effects however are correctly understood and currently approached.
+Studies have suggested in past years that microfluidic protocols inflate the number of zeros in the data due to technical reasons, where a zero stands for a gene not being detected in a cell at all.
 \inlinecite[svensson2020] however asserts that the high number of zeros stems from biological variation.
 % preprocessing is important
 Increased complexity in analysis can be conquered with improved modeling or more sophisticated preprocessing.
@@ -95,8 +96,8 @@ There are however also modeling approaches that instead of performing analysis, 
 
 % motivation for my work
 The more practical approach is to start with careful preprocessing, transforming data in a way that fulfills the assumptions of subsequent analysis \cite[vieth2019].
-The second step is then to create and use streamlined building blocks for pipelines to preprocess and analyze the data, and to then visualize the insights gained.
-Until few years ago, there were no freely available programming environments that allowed this approach for single cell data analysis \cite[wolf2018,stuart2019].
+This allows the creation and use of streamlined building blocks for pipelines to preprocess, analyze, and visualize the data.
+Until a few years ago, there were no freely available programming environments that enabled this approach for single cell data analysis \cite[wolf2018,stuart2019].
 Analysis pipelines came custom-built for a certain publication, just as hard to take apart and reuse as a holistic model would have been.
 Every graduate student and postdoctoral researcher had to start from scratch.
 The thesis at hand is a slice of the author’s continued efforts to change this.
