@@ -7,7 +7,7 @@
     "cSpell.ignoreRegExpList": [
         "\\\\[a-z]+",
         "\\\\(input|type|tikzset)\\{[^\\}]+\\}",
-        "\\\\((inline)?cite|setup[a-z]+|externalfigure|node|draw)\\[[^\\]]+\\]",
+        "\\\\((in(line|brace))?cite|setup[a-z]+|externalfigure|node|draw)\\[[^\\]]+\\]",
         "\\b(sec|fig):[a-z]+",
         "[\\[\\{]([a-z]+\\d{4}[a-z]?,?)+[\\]\\}]",
     ],
