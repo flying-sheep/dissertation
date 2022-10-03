@@ -13,18 +13,18 @@ This development shows a clear need for a central, efficient data structure and 
 This work describes advances towards a consolidated and accessible scRNA-Seq analysis and visualization experience using such a framework.
 It focuses on the development of reusable analysis building blocks and algorithms for dimensional reduction tailored to this kind of high-volume, high-dimensional data.
 A general scRNA-Seq analysis workflow is explained together with the challenges and opportunities related to each step.
-My contributions outline the development towards this framework in context of this workflow:
-First, data is collected and quantified.
+My contributions outline the development towards this framework in context of a generalized workflow;
+first, data is collected and quantified.
 This step commonly involves untargeted scRNA-Seq using a commercial platform, which can get expensive for high volumes of data.
 BART-Seq is an inexpensive protocol for targeted transcriptome quantification for large amounts of samples.
 Fatma Uzbas, Micha Drucker and I designed its demultiplexing and quantification strategy together, while I also implemented the quantification pipeline.
-Second, data is read into a data structure able to hold raw quantities, metadata, and different representations such as dimensional reductions.
+Second, raw data is read into a data structure able to hold raw quantities, metadata, and different representations such as dimensional reductions.
 I designed and implemented \n{AnnData}, a by now widely used generic Python data structure for annotated matrices such as scRNA-Seq expressions.
 Third, an integrated framework and compatible tools are used to operate on the data structure and visualize insights.
 \n{AnnData} is central to \n{scanpy}, an efficient Python framework with building blocks for preprocessing, analysis, and visualization of scRNA-Seq data.
 I co-developed \n{scanpy} with F. Alex Wolf, with me focusing on interaction design and usability.
-Given the central role of dimensional reduction in analysis of high-dimensional data, I developed two methods for creating and making sense of them.
-I developed and continuously improved \n{destiny}, an efficient implementation of the diffusion map algorithm for dimensional reduction in R, which I optimized end extended for biological data.
+Given the central role of dimensional reduction in analysis of high-dimensional data, I developed two methods for creating and interpreting of them.
+I developed and continuously improved \n{destiny}, an efficient implementation of the diffusion map algorithm for dimensional reduction in R, which I optimized and extended for biological data.
 Based on an initial idea by F. Theis, I designed the gene relevance algorithm, which detects genes that drive a given dimensional reduction.
 
 The established projects \n{AnnData}, \n{scanpy}, and \n{destiny} prove to be popular contributions to single cell transcriptome analysis.
