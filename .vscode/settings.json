@@ -12,9 +12,21 @@
         "[\\[\\{]([a-z]+\\d{4}[a-z]?,?)+[\\]\\}]",
     ],
     "cSpell.customDictionaries": {
+        "abbreviations": {
+            "name": "abbreviations",
+            "path": "${workspaceFolder:dissertation}/.cspell/abbreviations.txt",
+            "addWords": true,
+            "scope": "workspace",
+        },
         "names": {
             "name": "names",
             "path": "${workspaceFolder:dissertation}/.cspell/names.txt",
+            "addWords": true,
+            "scope": "workspace",
+        },
+        "tools": {
+            "name": "tools",
+            "path": "${workspaceFolder:dissertation}/.cspell/tools.txt",
             "addWords": true,
             "scope": "workspace",
         },
