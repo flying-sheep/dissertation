@@ -213,7 +213,7 @@ Analysts work interactively, with gradual insight gain shaping further steps.
 To this end, overview statistics and visualizations are employed from the earliest to the last steps of an analysis (see \insec[sec:visualization]).
 
 Analysis of single cell data generally focuses on uncovering previously unknown heterogeneity and its sources \cite[patel2014,poirion2016,angerer2017].
-The kind of heterogeneity to uncover depends on the kind of data available:
+The kind of heterogeneity to uncover depends on what was captured experimentally:
 the simplest case is discrimination between discrete subpopulations of few clearly different cell types.
 A common goal there is to find a small number of marker genes able to reliably distinguish a subpopulation that is sufficiently distinct from the rest of the cells.
 Methods performing this search are called differential gene expression (DE) analyses \cite[soneson2018].
@@ -221,26 +221,26 @@ While DE analysis methods stem from bulk RNA-Seq, single cell specific methods s
 
 Another source of heterogeneity is the composition of the studied tissue.
 Tumors as well as healthy tissue are composed of cells fulfilling a multitude of different roles that can only be uncovered using single cell analysis \cite[patel2014,zhang2016,qian2017].
-A common method to make sense of complex heterogeneous data is cluster analysis.
-For single cell data, the multi-resolution community detection algorithm \n{Leiden} \cite[traag2019] and its predecessor \n{Louvain} is used most commonly, despite \inlinecite[kiselev2019] arguing its lack of performance for smaller datasets.
-A general problem of clustering is data reuse.
+A common method to make sense of tissue data is cluster analysis.
+For single cell data, the multi-resolution community detection algorithm \n{Leiden} \cite[traag2019] and its predecessor \n{Louvain} are used most commonly, despite \inlinecite[kiselev2019] arguing their lack of performance for smaller datasets.
+A frequent problem arising from cluster analysis is data reuse.
 Clusters are commonly the basis for further analysis like inter-cluster DE analysis – a task the aforementioned single cell specific DE tools are specifically designed for.
 However, this leads to both clusters and markers being derived from the same data, and treating clusters as ground truth in this setting leads to inflated confidence in the found markers.
 The problem can be circumvented by joint clustering and DE analysis, manually propagating uncertainties \cite[zhang2019], or not relying on clustering to detect genes \cite[angerer2020].
 
 \startplacefigure[reference=fig:heterogeneity-analysis, title={%
     Heterogeneity Analysis approaches.
-    For visualization purposes, cells are represented in a dimensionally reduced space represented by the outer border of \bold{a}, \bold{b}, and \bold{c}.
+    For visualization purposes, cells are embedded into a dimensionally reduced space depicted as the outer border of \bold{a}, \bold{b}, and \bold{c}.
     All three represent common starting points for further analysis.
     \bold{a)} Clustering divides the set of cells into discrete subsets (clusters) based on similarity.
     The clarity of division between clusters shows how easily a given pair of clusters can be discriminated between.
     \bold{b)} Transition State Analysis dissects metastable states and their transitions.
-    This can accurately represent cell development or more gradual cell identities than discrete types.
+    This can accurately represent cell development or more gradual cell identities rather than discrete types.
     \bold{c)} Scoring results in each cell having an individual score in one or more schemas, defining likelihood or strength of a certain property.
-    \bold{d)} Differential Expression Analysis allows to identify genes defining a a given subdivision, marking them for further analysis and providing insight into cell identities.
+    \bold{d)} Differential Expression Analysis allows to identify genes defining a given subdivision, marking them for further analysis and providing insight into cell identities.
     \bold{e)} Labelling of clusters assigns them a cell type label, based on marker genes and other external knowledge.
-    \bold{f)} Trajectory Analysis groups and orders cells by similar transition state rather than absolute similarities and therefore allows to reason about continuous processes like cellular development or spatial gradients.
-    \bold{g)} Gene Module Analysis integrates previous knowledge about gene roles to gain insights about the likeliness of each cell fulfilling a given role.
+    \bold{f)} Trajectory Analysis groups and orders cells by similar transition states rather than absolute similarities and therefore enables reasoning about continuous processes like cellular development or spatial gradients.
+    \bold{g)} Gene Module Analysis associates genes with each other to combine previous knowledge about genes’ mechanism of action with new gene associations.
     \bold{h)} Gene Relevance Analysis relates the location of a cell in the embedding back to the genes driving that localization.
 }]
 \hbox{\input{imgs/heterogeneity-analysis.tikz}}
@@ -254,25 +254,27 @@ The problem can be circumvented by joint clustering and DE analysis, manually pr
 \TODO[c not immediately mentioned. Mention that prior info is used for labelling (marker genes) and gene modules]
 \TODO[maybe also composition differences between datasets (mapping between cell neighborhoods)?]
 
-While cluster analysis strongly benefits from the availability of scRNA-Seq data, the field of trajectory analysis can only exist because of it.
+Trajectory analysis is an approach that uncovers a developmental direction and hierarchy in developmental snapshot data.
+While cluster analysis strongly benefits from the availability of scRNA-Seq data, trajectory analysis can only exist because of it.
 Traditionally, cells were thought of exhibiting a discrete cell type each.
 For cells that are dramatically specialized for one main role, this idea still holds.
 Most tissues however contain a multitude of cells fulfilling multiple roles each, without fitting into a discrete and homogeneous type.
 %developmental
 This includes cells in the process of differentiating from a malleable pluripotent state to a more or less specialized mature state \cite[haghverdi2015].
 While marker genes for certain cell roles or developmental steps exist, this complex and gradual nature of most tissues requires sophisticated analysis and visualization of single cell data.
-An approach that uncovers a developmental direction and hierarchy in developmental snapshot data is called trajectory analysis.
 Early analysis tools like \n{Wanderlust} \cite[bendall2014], or DPT \cite[haghverdi2016] can be effectively applied to simple developmental data.
-But while cells usually get increasingly specialized during their path of development, the reverse direction (dedifferentiation) can also be observed (see \infig[fig:cell-fate]).
-Furthermore, developing cells do not necessarily follow all steps of differentiation in the same order or magnitude.
+Cells usually get increasingly specialized during their path of development, but do not necessarily follow all steps of differentiation in the same order or magnitude (see \infig[fig:cell-fate]).
 This results in cells temporarily or sometimes permanently stuck as intermediate types.
-The field of trajectory analysis is therefore constantly evolving to enable the analysis of complex tissues up to whole animals \cite[plass2018] using tools like SPRING \cite[weinreb2018a] or PAGA \cite[wolf2019].
+The field of trajectory analysis is constantly evolving to enable the analysis of complex tissues up to whole animals \cite[plass2018] using tools like SPRING \cite[weinreb2018a] or PAGA \cite[wolf2019].
 
 Analyses depend on the availability of informative data.
-Since classic scRNA-Seq is limited to spliced mRNAs, additional data modalities are necessary to infer dynamics like directionality in trajectory inference \cite[efremova2020].
-As an example, RNA velocity indicates the direction in which cells differentiate and therefore enhances trajectory inference with directionality and more accuracy.
+RNA velocity indicates the direction in which cells differentiate and therefore enhances trajectory inference with directionality and more accuracy \cite[efremova2020].
 It is reconstructed from the relation of spliced and unspliced mRNA \cite[lamanno2018].
+This makes RNA velocity an example going beyond data captured by classic scRNA-Seq, which is is limited to spliced mRNAs.
+Innovative analysis methods like it require additional data modalities to improve inference of certain biological dynamics.
 \stopsubsection
+
+\page
 
 \startsubsection[reference=sec:visualization, title={Visualization as Analysis steps and result}]
 % 5. (results often too complex to understand as numbers)
@@ -291,9 +293,9 @@ Four increasingly complex 2D embeddings of the same differentiating cells colore
 Analysis of complex heterogeneity patterns requires methods of matching complexity to visualize their results.
 Complex developmental hierarchies and other relations in the data need to be faithfully represented.
 This commonly involves laying out points representing the cells in a flat plane while trying to maintain relationships such as developmental closeness (see \infig[fig:embeddings]).
-The challenge of finding a fitting low dimensional representation lies in the multiple scales biological processes take place in \cite[hasenauer2015] (see \infig[fig:hybrid]).
+The main challenge of finding a fitting low dimensional representation lies in the multiple scales biological processes take place in \cite[hasenauer2015] (see \infig[fig:hybrid]).
 \TODO[maybe find better citation? this one just mentions multi-scale processes, not dim red]
-Therefore, as opposed to of simple dimensional reduction methods used for for distance calculations (see \insec[sec:preprocessing]), the preferred methods for visualization take this multi-scale nature into account.
+Therefore, as opposed to simple dimensional reduction methods used for distance calculations (see \insec[sec:preprocessing]), the preferred methods for visualization take this multi-scale nature into account.
 Complex transforms are irreversible, so their resulting coordinates of cells in the visualization (the embedding) cannot be directly traced back to the input genes.
 
 \startplacefigure[reference=fig:hybrid, location=left, hang=no, title={%
@@ -306,13 +308,13 @@ In this painting, the high frequency visual features are interpreted as a woman 
 
 Without additional data providing a ground truth about subpopulation identity, or clearly separated clusters that are inherently assigned genes driving their embedding, the process of validating an embedding is not automatic, requiring creative reasoning and literature research.
 A panel of marker genes per cluster is derived from the data and cross-referenced with literature to annotate known cell types in the data.
-When discovering novel subpopulations, their adjacency to known ones can be used to make assumptions about their role and test them.
-An upcoming way to simplify the process are cell transcriptome atlases \cite[regev2017,schaum2018] that can be used as references to automatically look up your cells and annotate them \cite[abdelaal2019].
+When discovering novel subpopulations, their adjacency to known ones can be used to make and test assumptions about their role.
+An upcoming way to simplify the process are cell transcriptome atlases \cite[regev2017,schaum2018] that can be used as references to automatically look up and annotate your cells \cite[abdelaal2019].
 
 % destiny: efficient and flexible diffusion maps for R
-An example for a relatively self contained scRNA-Seq analysis loop, this thesis presents \n{destiny},
+As an example for a relatively self contained scRNA-Seq analysis loop, this thesis presents \n{destiny},
 a user-friendly, flexible and fast R tool for three closely related analysis steps \cite[angerer2016].
-It was created to enable dimensional reduction of both large, sparse scRNA-Seq data and qPCR data which benefits from explicit handling of missing values.
+It was created to enable dimensional reduction of both large, sparse scRNA-Seq data and qPCR data, both of which benefit from explicit handling of missing values.
 The only previously existing tool was impractically slow and memory intensive when applied to scRNA-Seq data and did not support censored values present in qPCR data.
 Beyond routines for efficient computation and visualization of diffusion maps (see \insec[sec:diffmaps]), \n{destiny} offers routines for diffusion pseudo time \cite[haghverdi2016], and gene relevance (see \insec[sec:gene-relevance], \inbracecite[angerer2020]).
 Its efficiency involves reuse of intermediate results from the diffusion map creation to calculate diffusion pseudo time between cells as well as to project new data into an existing diffusion map.
@@ -322,7 +324,7 @@ Its efficiency involves reuse of intermediate results from the diffusion map cre
 
 Algorithms for analysis and visualization are at the forefront of discovery.
 They are however only part of the picture.
-A too narrow focus on individual steps or results also narrows the scope of what we consider doable.
+A too narrow focus on individual steps or results in turn narrows the scope of what we consider doable.
 The bigger picture includes interoperability between tools.
 Progress is slow when one is bogged down by difficulties in menial tasks like file format conversion, tracking down ambiguously mapped gene names, and a faster machine to run an inefficient algorithm.
 
