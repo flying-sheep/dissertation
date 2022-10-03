@@ -145,13 +145,13 @@ The most important differences between protocols manifest in cost, sensitivity a
 The sequencing machine finally digitizes the fragments and allows all further processing to happen on a computer (see \infig[fig:rna-seq]c).
 % 1½. protocol specific bias correction
 Additional to the cell barcode, some protocols allow to enrich the library with information that can be used to reduce sources of noise or bias.
-This includes e.\,g. unique molecular identifiers (UMIs), which allow to count each transcript only once, despite the amplification step \cite[islam2014].
-A second example is adding known quantities of RNA from a foreign organism (spike-in RNA) to each cell library, which later allows to correct for nonlinear per-cell biases in transcript counts \cite[lun2017b].
+This includes e.\,g. unique molecular identifiers (UMIs), which ensure each transcript is counted only once despite the amplification step \cite[islam2014].
+A second example is adding known quantities of RNA from a foreign organism (spike-in RNA) to each cell library, which are later used to correct for nonlinear per-cell biases in transcript counts \cite[lun2017b].
 \stopsubsection
 
 \startsubsection[reference=sec:counting, title={Counting of transcripts or reads}]
 % 2. (reads → counts)
-Counting starts from the paired sequences read from both ends of a fragment (paired-end reads) or the 3′ end sequences (single-end reads).
+Counting starts from the paired DNA sequences read from both ends of a fragment (paired-end reads) or the 3′ end sequences (single-end reads).
 The read or read pair includes a cell barcode and possibly a UMI barcode.
 Classic counting uses specialized short read alignment tools like \n{Bowtie} \cite[langmead2009,langmead2012] or \n{STAR} \cite[dobin2013] to match reads to a reference genome annotated with information about where genes start, end, and can be spliced (see \infig[fig:rna-seq]c).
 Aligned reads are counted per splicing configuration that translates to a protein, while collapsing the counts for reads with identical UMIs – if available (see \infig[fig:rna-seq]c).
@@ -170,11 +170,11 @@ Its tradeoffs are the inverse, allowing to sensitively capture expression values
 
 To obtain comparable quantities, counts have to be preprocessed to correct for various technical biases.
 Commonly one starts by eliminating rows and columns from the count matrix that are unlikely to be (living) cells or important genes.
-This filtering removes rows and columns containing a low count sum or very few entries.
-Rows matching these criteria are assumed to be empty droplets or wells, while matching columns are genes which due to their low counts do not impact later analysis steps.
+Rows with low count sum or very few entries are assumed to be empty droplets or wells, while columns with similar properties are genes that do not impact later analysis steps.
+A popular strategy is therefore to initially remove rows and columns like this from the count matrix.
 It also removes cells containing a high fraction of mitochondrial gene counts, indicative of dead or dying cells \cite[ilicic2016].
 Doublets cannot be detected reliably by a simple count threshold, as a pair of small cells can have similar numbers of expressed genes and counts as single large cell, but more sophisticated solutions are emerging \cite[mcginnis2019,wolock2019].
-\inlinecite[luecken2019] point out that each of those filtering covariates in isolation is not sufficient to identify a non-cell row, and suggests conservative joint scoring using more than one covariate.
+\inlinecite[luecken2019] point out that each filtering covariate in isolation is insufficient to identify a non-cell row, and suggests conservative joint scoring using more than one covariate.
 
 \startplacefigure[reference=fig:batch-effect, title={%
 Batch effect correction reduces biases between data gathered in multiple sequencer runs.
@@ -184,30 +184,30 @@ Cells from well-normalized data will have similar expression profiles to cells f
 \externalfigure[batch-effect-correction.svg][width=\textwidth]
 \stopplacefigure
 
-Another common preprocessing step is normalization.
-It entails correction for common technical sources of cell variation, as well as biological sources with a strong effect, such as the cell cycle:
-when not studying the cell cycle itself, its variation can obscure the processes under investigation \cite[buettner2015].
+Another common preprocessing step is normalization, which corrects for common technical and unwanted biological sources of cell variation.
+For example when not studying the cell cycle itself, its variation can obscure the processes under investigation \cite[buettner2015].
 If multiple runs of the sequencer were used to obtain the full data, there will be biases per run that can be reduced by using a dedicated batch effect correction algorithm (see \infig[fig:batch-effect]).
-While older bulk correction effects such as \n{ComBat} \cite[johnson2007] have proven to be effective in the last years, a growing number of dedicated scRNA-Seq batch effect correction tools is becoming available \cite[haghverdi2018,lotfollahi2018,korsunsky2019,polanski2020].
+While older bulk correction effects such as \n{ComBat} \cite[johnson2007] have proven to be effective in the last years,
+a growing number of dedicated scRNA-Seq batch effect correction tools are becoming available \cite[haghverdi2018,lotfollahi2018,korsunsky2019,polanski2020].
 Preprocessing can also involve scaling count values using a per-cell function derived from the aforementioned spike-ins.
-All transformation have to be carefully balanced with their potential to over-correct and remove relevant biological variation.
+All transformations have to be carefully balanced with their potential to over-correct and remove relevant biological variation.
 
-A final common preprocessing step highly variable gene selection.
-It reduces data by discarding genes with low variability, as they contribute little to the data’s variability using differently rigorous algorithms \cite[brennecke2013,yip2018].
+A final common preprocessing step is highly variable gene selection.
+Multiple algorithms are available for discarding genes with low variability, which would contribute little to downstream analysis \cite[brennecke2013,yip2018].
 This more complex filtering is performed in addition to the aforementioned quality-based gene filtering, reducing the retained number of genes to the low thousands \cite[luecken2019].
 
-One step lies between preprocessing and analysis.
+One last step lies between preprocessing and analysis.
 In order to model and analyze count data, it is almost always necessary to calculate distances between cells’ expression profiles.
 Distance measures usually expect data with no mean–variance dependency, i.\,e. normally distributed data, which can be fulfilled in two ways.
 One is to transform expressions into a space where those expectations hold, commonly by logarithmizing it.
-The intuition is that in in log-space, distances represent log-fold changes, an usual way to compare expression levels \cite[brennecke2013,eling2018].
-Another way is to employ dimensional reduction methods to embed the data into a lower-dimensional space with the desired properties, such as Principal Component Analysis (PCA, \inbracecite[abdi2010]) or diffusion maps \cite[coifman2005].
-An advantage of operating on a low-dimensional embedding instead of on the expression level are the reduced computational and memory costs.
+The intuition is that in log-space, distances represent log-fold changes, a usual way to compare expression levels \cite[brennecke2013,eling2018].
 However, \inlinecite[svensson2020] suggested that log-transforming data is a possible cause for distorting data by zero-inflation.
+Another way is to employ dimensional reduction methods to embed the data into a lower-dimensional space with the desired properties, such as Principal Component Analysis (PCA, \inbracecite[abdi2010]) or diffusion maps \cite[coifman2005].
+An advantage of operating on a low-dimensional embedding instead of on the expression level is the reduced computational and memory costs.
 With single cell data specific transforms like \n{SCTransform} \cite[hafemeister2019], as well as embeddings like \n{scVI} \cite[lopez2018] or \n{GLM-PCA} \cite[townes2019], promising alternatives are emerging, despite them losing the log-fold interpretability.
 \stopsubsection
 
-\startsubsection[reference=sec:analysis, title={Analysis of cellular dynamics, heterogeneity and gene roles}]
+\startsubsection[reference=sec:analysis, title={Analysis of heterogeneity, cellular dynamics, and gene roles}]
 % 4. uncover dynamics, heterogeneity structure, variable importance and role
 Analysts work interactively, with gradual insight gain shaping further steps.
 To this end, overview statistics and visualizations are employed from the earliest to the last steps of an analysis (see \insec[sec:visualization]).
