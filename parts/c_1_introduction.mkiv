@@ -359,6 +359,7 @@ Depending on the amount of time and resources required to run the whole pipeline
 This is mostly achieved by regularly storing snapshot files representing the processing state between two subsequent sets of steps.
 Before I started working as a PhD student in the field, pipelines were mostly written in R or \n{GNU make} and often executed a command line for each step, a procedure which by necessity consumed and produced a snapshot, but allows no choice when this high granularity is undesirable.
 Despite the field’s increasing investment into machine learning algorithms implemented in Python, few tools were available in that language.
+\TODO[the above is actually about pipelines still, so move it up?]
 
 % communication
 Communication with other languages or between pipeline steps involved reading a snapshot (often text-based) from a file system, processing it, and writing it back to disk.
