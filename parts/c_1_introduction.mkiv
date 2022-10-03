@@ -431,17 +431,18 @@ Its data structure is \n{Seurat}-specific and needs conversion to the more gener
 Standalone tools in R like \n{destiny} \cite[angerer2016], \n{scmap} \cite[kiselev2018], BASiCS \cite[eling2018], or \n{velocyto} \cite[lamanno2018] usually support \n{Bioconductor} data structures or even just plain matrices and data frames.
 
 %AnnData and scanpy
-In Python, many standalone tools start supporting the generic data structure \n{AnnData} \cite[zappia2018,eraslan2019,polanski2020].
+In Python, most newly released standalone tools come with support for the generic data structure \n{AnnData} \cite[zappia2018,eraslan2019,polanski2020].
 \n{AnnData} supports reading and writing from and to several language agnostic interchange formats.
 It was the first annotated matrix data structure to support sparse expression matrices and therefore up to millions of cells.
 It provides its own format that supports disk backing for operations on data too large to be performed in memory, sparse or dense.
 % Scanpy
 \n{AnnData} was developed alongside \n{scanpy} in order to make the latter a highly modular framework \cite[wolf2018].
 \n{Scanpy} provides commonly used building blocks which, through sharing \n{AnnData} as a mutual base, can be combined with specialized Python package for certain data types and algorithms such as \n{scVelo} \cite[bergen2019], \n{Scirpy} \cite[sturm2020], \n{muon} \cite[bredikhin2022], \n{scvi-tools} \cite[gayoso2022], \n{squidpy} \cite[palla2022], and more.
-\n{Scanpy} is now in widespread international use, continuously expanded with new algorithms, and together with \n{AnnData} core of the community governed umbrella project \n{scverse} \cite[zappia2018].
+\n{Scanpy} is now in widespread international use, continuously expanded with new algorithms, and together with \n{AnnData} make up the core of the community-governed umbrella project \n{scverse} \cite[zappia2018].
 Being based on \n{NumPy} \cite[vanderwalt2011], \n{SciPy} \cite[virtanen2020], and other mature and highly performant Python technologies, \n{scanpy} is very scalable.
 % - serving all MOs: iterative with biologists, manual coding, let it be done as-a-service
-Integrating well with \n{JupyterLab} and \n{Jupyter} notebooks \cite[kluyver2016], \n{scanpy} lends itself to be used interactively to quickly iterate on analyses with close feedback from biologists.
+\n{Scanpy} integrates well with \n{JupyterLab} and \n{Jupyter} notebooks \cite[kluyver2016].
+This way, it lends itself to be used interactively to quickly iterate on analyses with close feedback from biologists.
 It also supports being used as a Python package to back visualization tools, web servers and traditional file-based processing pipelines.
 \stopsubsection
 
