@@ -4,6 +4,12 @@
     "todo-tree.regex.regex": "((//|#|<!--|;|/\\*|^|\\\\)\\s*($TAGS)|^\\s*- \\[ \\])",
     "python.defaultInterpreterPath": ".venv/bin/python",
     "editor.wordWrap": "on",
+    "cSpell.overrides": [
+        {
+            "filename": "**/*zusammenfassung.mkiv",
+            "language": "de",
+        },
+    ],
     "cSpell.ignoreRegExpList": [
         "\\\\[a-z]+",
         "\\\\(input|type|tikzset)\\{[^\\}]+\\}",
@@ -35,6 +41,6 @@
             "path": "${workspaceFolder:dissertation}/.cspell/words.txt",
             "addWords": true,
             "scope": "workspace",
-        }
-    }
+        },
+    },
 }
