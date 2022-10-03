@@ -312,6 +312,7 @@ When discovering novel subpopulations, their adjacency to known ones can be used
 An upcoming way to simplify the process are cell transcriptome atlases \cite[regev2017,schaum2018] that can be used as references to automatically look up and annotate your cells \cite[abdelaal2019].
 
 % destiny: efficient and flexible diffusion maps for R
+\TODO[find good spot]
 As an example for a relatively self contained scRNA-Seq analysis loop, this thesis presents \n{destiny},
 a user-friendly, flexible and fast R tool for three closely related analysis steps \cite[angerer2016].
 It was created to enable dimensional reduction of both large, sparse scRNA-Seq data and qPCR data, both of which benefit from explicit handling of missing values.
@@ -348,23 +349,24 @@ This updated version of a figure from \inlinecite[angerer2017] shows the sustain
 }]
 \externalfigure[imgs/dataset-sizes.pdf]
 \stopplacefigure
+\TODO[add trend line]
 
 \startsubsection[title={Analysis Pipelines: Status Quo}]
 % pipelines used scripts and binaries to proceed between snapshots
-The steps necessary to reproduce the preprocessing and analysis of a publication are bundled in an executable bundle of scripts called a pipeline.
-Pipelines perform transformations on the data, collect statistics, and compile reports.
+The steps necessary to reproduce the preprocessing and analysis of a publication are combined into an executable bundle of scripts called a pipeline.
+Pipelines perform transformations on the data, compute statistics, and compile reports.
 Depending on the amount of time and resources required to run the whole pipeline, it is desirable be able to only repeat part of the processing in case of an error.
 This is mostly achieved by regularly storing snapshot files representing the processing state between two subsequent sets of steps.
-Before my work in the area started, pipelines were mostly written in R or \n{GNU make} and often executed a command line for each step, a procedure which by necessity consumed and produced a snapshot, but allows no choice when this high granularity is undesirable.
+Before I started working as a PhD student in the field, pipelines were mostly written in R or \n{GNU make} and often executed a command line for each step, a procedure which by necessity consumed and produced a snapshot, but allows no choice when this high granularity is undesirable.
 Despite the field’s increasing investment into machine learning algorithms implemented in Python, few tools were available in that language.
 
 % communication
-Communication with other languages or between pipeline steps involved reading an (often textual) snapshot from a file system, processing it, and writing it back to disk.
+Communication with other languages or between pipeline steps involved reading a snapshot (often text-based) from a file system, processing it, and writing it back to disk.
 This process involved long run times due to slow reading and writing, high storage space requirements and little resilience to errors.
 File corruption introduced e.\,g. via unreliable access to network storage could not be detected in text files, which lack checksums and other resilience precautions.
-In practice, the lack of frameworks meant that each tool or pipeline had to solve common problems by itself, such as hardening against the aforementioned reliability issues.
+In practice, the lack of frameworks resulted in each tool or pipeline having to solve common problems by itself, such as hardening against the aforementioned reliability issues.
 This further wasted resources and increased the potential for errors.
-The resulting pipeline code published with papers was very application-specific and hard to generalize or share.
+The resulting pipeline code published with papers was very application-specific and hard to generalize or reuse.
 
 % Existing methods are not focused on interoperability.
 Even within analysis pipelines operating entirely in memory instead of on slow and unreliable files, individual tools were not necessarily designed to be compatible.
