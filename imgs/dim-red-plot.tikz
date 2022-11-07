@@ -1,0 +1,19 @@
+\starttikzpicture
+    \startaxis[
+        axis equal,
+        width=8cm,
+        colormap name=viridis,
+        colorbar,
+        colorbar style={title={$x_{a·}$}, ticks=none},
+        ticks=none,
+        xlabel={$s_{1·}$},
+        ylabel={$s_{2·}$}
+    ]
+    \addplot[only marks, scatter, point meta=explicit]
+        table[x=DC1, y=DC2, meta=X920]
+        {scdata.dat};
+    \draw[red, dashed, thick] (-0.00,-0.02) circle (0.04);
+    \draw[red, dashed, thick] (-0.05, 0.10) circle (0.02);
+    \stopaxis
+    \path (current axis.outer north west |- current colorbar axis.outer north west) node[font=\bf, anchor=north west] {b};
+\stoptikzpicture
