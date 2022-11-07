@@ -1,0 +1,50 @@
+{
+    "version": "0.2",
+    "language": "en",
+    "ignorePaths": [
+        "**/Dockerfile",
+        "**/*.svg",
+        "**/*.tikz",
+        "**/*.ipynb",
+        "**/requirements*.txt",
+        "**/*.json",
+        "**/*.rsc",
+    ],
+    "overrides": [
+        {
+            "filename": "**/*zusammenfassung.mkiv",
+            "language": "de",
+        },
+    ],
+    "ignoreRegExpList": [
+        "\\\\[a-z]+",
+        "\\\\(input|type|tikzset)\\{[^\\}]+\\}",
+        "\\\\((in(line|brace))?cite|setup[a-z]+|externalfigure|node|draw)\\[[^\\]]+\\]",
+        "\\b(sec|fig):[a-z]+",
+        "[\\[\\{]([a-z]+\\d{4}[a-z]?,?)+[\\]\\}]",
+    ],
+    "dictionaryDefinitions": [
+        {
+            "name": "abbreviations",
+            "path": ".cspell/abbreviations.txt",
+        },
+        {
+            "name": "names",
+            "path": ".cspell/names.txt",
+        },
+        {
+            "name": "tools",
+            "path": ".cspell/tools.txt",
+        },
+        {
+            "name": "words",
+            "path": ".cspell/words.txt",
+        },
+    ],
+    "dictionaries": [
+        "abbreviations",
+        "names",
+        "tools",
+        "words",
+    ],
+}

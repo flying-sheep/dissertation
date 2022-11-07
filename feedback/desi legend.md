@@ -2,7 +2,7 @@ Yellow: Rewording
 Pink: Error
 Blue: move
 red underline: Ambiguity
-Green: Desi gets back to it
+Green: Desiree gets back to it
 
 Important:
 

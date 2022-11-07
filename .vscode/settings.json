@@ -4,44 +4,6 @@
     "todo-tree.regex.regex": "((//|#|<!--|;|/\\*|^|\\\\)\\s*($TAGS)|^\\s*- \\[ \\])",
     "python.defaultInterpreterPath": ".venv/bin/python",
     "editor.wordWrap": "on",
-    "cSpell.overrides": [
-        {
-            "filename": "**/*zusammenfassung.mkiv",
-            "language": "de",
-        },
-    ],
-    "cSpell.ignoreRegExpList": [
-        "\\\\[a-z]+",
-        "\\\\(input|type|tikzset)\\{[^\\}]+\\}",
-        "\\\\((in(line|brace))?cite|setup[a-z]+|externalfigure|node|draw)\\[[^\\]]+\\]",
-        "\\b(sec|fig):[a-z]+",
-        "[\\[\\{]([a-z]+\\d{4}[a-z]?,?)+[\\]\\}]",
-    ],
-    "cSpell.customDictionaries": {
-        "abbreviations": {
-            "name": "abbreviations",
-            "path": "${workspaceFolder:dissertation}/.cspell/abbreviations.txt",
-            "addWords": true,
-            "scope": "workspace",
-        },
-        "names": {
-            "name": "names",
-            "path": "${workspaceFolder:dissertation}/.cspell/names.txt",
-            "addWords": true,
-            "scope": "workspace",
-        },
-        "tools": {
-            "name": "tools",
-            "path": "${workspaceFolder:dissertation}/.cspell/tools.txt",
-            "addWords": true,
-            "scope": "workspace",
-        },
-        "words": {
-            "name": "words",
-            "path": "${workspaceFolder:dissertation}/.cspell/words.txt",
-            "addWords": true,
-            "scope": "workspace",
-        },
-    },
+    "cSpell.enabled": true,
     "grammarly.files.include": ["**/*.mkiv"],
 }
