@@ -11,3 +11,5 @@ repos:
   rev: v6.2.0
   hooks:
   - id: cspell
+    additional_dependencies:
+    - "@cspell/dict-de-de"
