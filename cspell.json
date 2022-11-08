@@ -5,7 +5,7 @@
     "version": "0.2",
     "language": "en",
     "ignorePaths": [
-        ".gitignore",
+        ".git*",
         "Snakefile",
         "Dockerfile",
         "env_dissertation.mkiv",
@@ -39,6 +39,7 @@
         "\\\\project \\w+",
         "\\b(sec|fig):[a-z]+",
         "[\\[\\{]([a-z]+\\d{4}[a-z]?,?)+[\\]\\}]",
+        "file://[^\\s]+",
         "^--.*$",
         "\\[KC\\]aros",
         "(Univ|Prof)[.]",
