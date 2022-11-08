@@ -4,7 +4,7 @@
 
 ## Feedback
 
-**summary**: good, quite some orga work to be done.
+**summary**: good, quite some organization work to be done.
 
 - [x] rephrase and focus needed. see 3rd, 4th, last points in own contributions:
   - [x] CRUCIAL: what is your question? you only describe the WHAT+HOW you do things, but not at all the WHY? motivation to assess relevance *totally* unclear.
@@ -28,7 +28,7 @@
   > I explain in the abstract that this is about the advantages my contributions bring into the field:
   > Building computational frameworks for interoperability, reproducibility, and discoverability of tools.
 
-## own contribs
+## own contributions
 
 > Has been totally reworked.
 > I now clearly point out pain points in the status quo that can be fixed by software engineering,
@@ -39,7 +39,7 @@
 - [x] 1.1 Workflow
   Own contribution earlier?
 - [x] 1.1.5 Visualization as Analysis steps and result
-  at end here you write about own contribution → as reader I am waiting very much for this, then hidden within a detail expl chap → this needs major reorganization see below
+  at end here you write about own contribution → as reader I am waiting very much for this, then hidden within a detail explanation chapter → this needs major reorganization see below
 - [x] 1.2 Own Contributions
   I was hoping for this earlier
 - [x] 2 Methods
@@ -52,7 +52,7 @@
 
   - [x] emphasize own contribution
 
-    > Totally reworked own contribs
+    > Totally reworked own contributions
 
   - [x] motivation: please think about better way how to link the topics, and ask overarching "why" questions before telling the how
 
@@ -72,7 +72,7 @@
 
   > Added some clarification as well as things this enabled.
 
-- [x] combinatoric options - explain; also sounds as if you pitch for best practice/optimal workflow, which is *not* your goal → adapt to your contribution
+- [x] combinatorial options - explain; also sounds as if you pitch for best practice/optimal workflow, which is *not* your goal → adapt to your contribution
 
   > Explicitly stated what my goal is
 
@@ -112,7 +112,7 @@
 
 - [x] did you check that papers are OK, in particular review OK to list? you may need some signatures from others?
 
-  Yes, they all autopermit:
+  Yes, they all auto-permit:
 
   - Elsevier: [automatically permitted](https://www.elsevier.com/about/policies/copyright/permissions)
     - Single Cells Make Big Data: https://doi.org/10.1016/j.coisb.2017.07.004
@@ -140,7 +140,7 @@
 
 - [x] text on examples etc good → please be CAREFUL that you don’t do copy&paste from own papers and reviews *without* citation.
 
-  > I never copy and paste, any possible plagiate finder results would probably just mean that my english isn’t very varied and I tend to explain the same concept similarly.
+  > I never copy and paste, any possible plagiarism finder results would probably just mean that my english isn’t very varied and I tend to explain the same concept similarly.
 
 - [x] add a subsection
 
@@ -161,7 +161,7 @@
 
 - [x] Own contribution earlier?
 
-  > Own contribs totally reworked
+  > Own contributions totally reworked
 
 #### 1.1.1 Lib prep and sequencing
 - fig 1.2: pretty!
@@ -222,9 +222,9 @@
 
   > see above
 
-- [x] at end here you *write about own contribution* → as reader I am waiting very much for this, then hidden within a detail expl chap → this needs major reorganization see below
+- [x] at end here you *write about own contribution* → as reader I am waiting very much for this, then hidden within a detail explanation chapter → this needs major reorganization see below
 
-  > own contribs have been overhauled
+  > own contributions have been overhauled
 
 #### 1.1.6 Custom-built pipelines
 - [x] custom build vs what? don’t get this. is this about frameworks? scripts?
@@ -250,7 +250,7 @@
 
 - [x] also don’t get link here to rest
 
-  > clarified that it’s about building reusable/remixable steps for pipelines
+  > clarified that it’s about building reusable/remix-able steps for pipelines
 
 - [x] good to point out, may add citations. clear why they are needed etc?
 
@@ -270,7 +270,7 @@
 
 ### 1.2 Own Contributions
 
-> this section is obsolete because of the own contribs overhaul, I tried to address all this while doing it.
+> this section is obsolete because of the own contributions overhaul, I tried to address all this while doing it.
 >
 > 1. My first attempt was to put a single section “Own Contributions” at the end of the Introduction and each contributed article
 > 2. My second attempt is based on the comments below, especially “I expected this earlier” and “Do it like Lea”: I split my contributions up into small sections to go at the end of each intro subchapter.
@@ -281,7 +281,7 @@
 - [x] I was hoping for this earlier, in particular because it was intertwined in above a bit already
 - [x] motivation missing though
 - [x] CRUCIAL: what is your question? you only describe the WHAT+HOW you do things, but not at all the WHY? motivation to assess relevance *totally* unclear. even worse, in 2nd sentence you say, oh btw., i also analyzed sizes of data sets. this is the core thing of your 4year phd work?
-- [x] you really need to spend some time on this and exactly state what your goal is, altogether and then in each of the 3 (or 4?) projects, and then what is state of the art and in particular missing (above you described SOTA already INCLUDING your contributions) and therefore what your contribution is (see abstract comments)
+- [x] you really need to spend some time on this and exactly state what your goal is, altogether and then in each of the 3 (or 4?) projects, and then what is state of the art and in particular missing (above you described state of the art already INCLUDING your contributions) and therefore what your contribution is (see abstract comments)
 - [x] also tie things together. why the BART-seq? because you had tools to show all this and can use as proof of concept
 - [x] often (check other theses) students also shortly write about/summarize other projects they contributed to but do not put into thesis, this is useful and I would recommend this. just looked at rules again from WZW, here you miss points 4 and 5 - 1 page summary for each paper with particular highlighting of your contrib, and 5 inclusion of those papers etc. see WZW
   - [x] this needs quite some additional work, and I kindly ask you to go over this with Carsten first and then give me short answer to points done ok? thanks!
@@ -314,10 +314,10 @@
 
 - [x] when talking about extensions of that in our field, please *by all means* cite our own things at least. I expect you to know these and will ask. e.g. Buettner GLM with missing values etc
 
-  > added this and a few more like Goecken’s
+  > added this and a few more like Gokcen’s
 
 ##### 2.1.1.2 DMs
-- [x] PCA then DM does not work. would make point more on linear and nonlinear red methods, then show umap tsne etc
+- [x] PCA then DM does not work. would make point more on linear and nonlinear red methods, then show umap t-SNE etc
 
   > done
 
@@ -330,7 +330,7 @@
 
   > I cleared up that I mean distinguishing between deterministic and nondeterministic ones.
   >
-  > PCA and DM alyays come out the same, UMAPs and tSNE can be wildly different: https://mobile.twitter.com/lpachter/status/1431326001414299650
+  > PCA and DM always come out the same, UMAPs and tSNE can be wildly different: https://mobile.twitter.com/lpachter/status/1431326001414299650
 
 - [x] add a few nonlinear ones I guess
 
@@ -366,7 +366,7 @@
 
   > This is intentional.
   > The actual package documentation is far far more detailed, this just reuses names used in the API.
-  > I think my thesis will mostly be read by people who know my work on anndata,
+  > I think my thesis will mostly be read by people who know my work on AnnData,
   > so it’s a benefit to them to make connections between how things are named in the package and math variables used in the text.
 
 ### 2.3 Scanpy
@@ -385,7 +385,7 @@
   > Done
 
 #### 2.3.3 Visualization
-- [x] ties into diffmaps?
+- [x] ties into diffusion maps?
 
   > Done
 
