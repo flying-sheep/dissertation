@@ -1,4 +1,5 @@
 anndata2ri
+Bibtex
 Bioconductor
 Bowtie
 cellxgene
@@ -27,3 +28,4 @@ trendsceek
 velocyto
 Visium
 Zarr
+zotero

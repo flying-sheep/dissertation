@@ -38,49 +38,8 @@ Here, the embedding shows a bifurcation of the cells and a gradual change of gen
 If we know that gene $a$ is e.\,g. a marker for early development, this indicates that cells in the bottom left branch are young and undifferentiated, and the two other branches are differentiated.
 }]
 \startcombination[2*1]
-{
-	\hbox{
-	\starttikzpicture
-		\draw (0,0) rectangle (3, 5);
-		\node at (3.25,2.5) {$↪$};
-		\node at (1.5,2.5) {\tfa $x_{gc}$};
-		\draw[decorate, decoration={brace, amplitude=10pt}, xshift=-4pt]
-			(0,0) -- node[left=10pt, rotate=90, anchor=south] (leftcap) {$c ∈ \{1, …, C\}$} (0,5);
-		\draw[decorate, decoration={brace, amplitude=10pt}, yshift=4pt]
-			(0,5) -- node[above=10pt] (topcap) {$g ∈ \{1, …, G\}$} (3,5);
-		\scope[shift={(3.5,0)}]
-		\draw (0,0) rectangle (2, 5);
-		\node at (1,2.5) {\tfa $s_{pc}$};
-		\draw[decorate, decoration={brace, amplitude=10pt}, yshift=4pt]
-			(0,5) -- node[above=10pt] {$p ∈ \{1, …, P\}$} (2,5);
-		\endscope
-		\path (leftcap |- topcap) node[font=\bf] {a};
-	\stoptikzpicture
-	}
-}{}
-{
-	\hbox{
-	\starttikzpicture
-		\startaxis[
-			axis equal,
-			width=8cm,
-			colormap name=viridis,
-			colorbar,
-			colorbar style={title={$x_{a·}$}, ticks=none},
-			ticks=none,
-			xlabel={$s_{1·}$},
-			ylabel={$s_{2·}$}
-		]
-		\addplot[only marks, scatter, point meta=explicit]
-			table[x=DC1, y=DC2, meta=X920]
-			{scdata.dat};
-		\draw[red, dashed, thick] (-0.00,-0.02) circle (0.04);
-		\draw[red, dashed, thick] (-0.05, 0.10) circle (0.02);
-		\stopaxis
-		\path (current axis.outer north west |- current colorbar axis.outer north west) node[font=\bf, anchor=north west] {b};
-	\stoptikzpicture
-	}
-}{}
+{\hbox{\input{imgs/dim-red-matrix.tikz}}}{}
+{\hbox{\input{imgs/dim-red-plot.tikz}}}{}
 \stopcombination
 \stopplacefigure
 
