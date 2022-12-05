@@ -31,7 +31,7 @@ hematopoietic
 in-silico
 in-situ
 inclusivity
-interconnectible
+interconnective
 interpretability
 intron
 introns
@@ -56,7 +56,7 @@ pre
 preprocess
 preprocessing
 proteomics
-simplical
+simplicial
 tagmentation
 toolkits
 tradeoff

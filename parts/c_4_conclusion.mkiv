@@ -5,19 +5,19 @@
 
 \TODO[Add summary]
 
-Within few years, single cell RNA-Seq has grown to an extensive and active field of science, with new trends and opportunities.
+Within a few years, single-cell RNA-Seq has grown into an extensive and active field of science, with new trends and opportunities.
 The largest current challenges are the ever-growing dataset sizes, and the integration of different kinds of data \cite[angerer2017,nmeth2020].
 Going up to hundreds of thousands of cells, the data allows us to abandon the notion of discrete cell types and to explore the continuous processes at play.
 Destiny \cite[angerer2016] and the gene relevance method presented in this thesis prove to be valuable contributions in this direction.
 
 % extensibility and openness
-As demands on reliability at scale grow along demands posed to algorithms, more practices from software engineering are finding their way into biological science.
+As demands on reliability at scale grow along with demands posed to algorithms, more practices from software engineering are finding their way into biological science.
 For example, extensible and efficient data format standards are born from the collaboration of scientists to supplant the ad-hoc text-based formats we used to incompatibly modify to suit situational needs.
-Open source analysis frameworks have been designed to offer an open and welcoming environment for new as well as established analysts and method developers.
-My contributions towards more reproducible, scalable and interconnectible scientific programming have helped these changes along.
+Open-source analysis frameworks have been designed to offer an open and welcoming environment for new as well as established analysts and method developers.
+My contributions towards more reproducible, scalable and interconnective scientific programming have helped these changes along.
 
 \startsection[title={Multi-scale scRNA-Seq Analysis}]
-The analysis of continuous processes driving cellular heterogeneity has been enabled by fluorescent tagging and single cell imaging.
+The analysis of continuous processes driving cellular heterogeneity has been enabled by fluorescent tagging and single-cell imaging.
 Their targeted nature as well as their monetary and time costs however renders them unsuitable for unbiased heterogeneity analysis.
 While careful selection of parameters like sequencing depth is vital, scRNA-Seq is an unbiased and inexpensive method able to detect rare cells \cite[torre2018].
 This makes it uniquely suited for heterogeneity analyses.
@@ -25,7 +25,7 @@ A rarely addressed property of cellular heterogeneity is its multi-scale nature:
 multiple processes at different scales and locality shape heterogeneity of either subpopulations or all cells (see \insec[sec:visualization]).
 
 Analysis algorithms in this area have evolved alongside the protocols able to sequence hundreds of thousands of cells.
-Suitable for the low sample sizes of bulk RNA-Seq, simple linear dimension reduction methods like PCA were used to visualize early single cell studies.
+Suitable for the low sample sizes of bulk RNA-Seq, simple linear dimension reduction methods like PCA were used to visualize early single-cell studies.
 Nonlinear methods like diffusion maps, t-SNE or later UMAP have been developed and continue being improved to fit the nature of transcriptome data.
 But while they capture both continuity and heterogeneity at multiple scales, their output does not contain directly interpretable information about processes at different scales.
 Methods like the growing multitude of trajectory inference algorithms or gene relevance complement them within the same constraint \cite[saelens2019].
@@ -34,9 +34,9 @@ To analyze this foundational attribute of cellular processes, a multi-scale vari
 \stopsection
 
 \startsection[title={Multimodal \n{scanpy} and \n{AnnData}}]
-Recent developments in the joint measurement of scRNA-Seq data and multiple other data types (modes) at single cell resolution have enabled multimodal analysis.
-With it giving ripe opportunity for analysis development, Nature Methods has named single cell multimodal omics its method of the year 2019 \cite[nmeth2020].
-\inlinecite[efremova2020] provide a review of the different single cell modes that became jointly measurable with scRNA-Seq in short succession: RNA velocity, spatial location, surface protein abundances, epigenetic modifications, and chromatin accessibility.
+Recent developments in the joint measurement of scRNA-Seq data and multiple other data types (modes) at single-cell resolution have enabled multimodal analysis.
+With it giving ripe opportunity for analysis development, Nature Methods has named single-cell multimodal omics its method of the year 2019 \cite[nmeth2020].
+\inlinecite[efremova2020] provide a review of the different single-cell modes that became jointly measurable with scRNA-Seq in short succession: RNA velocity, spatial location, surface protein abundances, epigenetic modifications, and chromatin accessibility.
 
 % transfer learning
 If there is no 1:1 relation between samples, transfer learning can be used to migrate labels from one dataset or mode to another \cite[abdelaal2019].
@@ -64,8 +64,8 @@ Measuring those abundances together with scRNA-Seq data has become possible thro
 
 \startdesc{Epigenetics}
 Two epigenetic modes can be combined with scRNA-Seq data \cite[henriksson2019].
-Chromatin accessibility in single cells has been possible to measure for some years using single cell Assay for Transposase-Accessible Chromatin using Sequencing (scATAC-Seq, \inbracecite[buenrostro2013]).
-DNA methylation can be measured now using the recently developed single cell Cleavage Under Targets and Tagmentation (scCUT&Tag, \inbracecite[kaya-okur2019]).
+Chromatin accessibility in single cells has been possible to measure for some years using single-cell Assay for Transposase-Accessible Chromatin using Sequencing (scATAC-Seq, \inbracecite[buenrostro2013]).
+DNA methylation can be measured now using the recently developed single-cell Cleavage Under Targets and Tagmentation (scCUT&Tag, \inbracecite[kaya-okur2019]).
 For analysis of scRNA-Seq data combined with both modes, \n{epiScanpy} offers a \n{scanpy}-integrated workflow \cite[danese2019].
 \stopdesc
 

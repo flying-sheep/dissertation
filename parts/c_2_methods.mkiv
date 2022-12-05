@@ -9,12 +9,12 @@ Dimensionality reduction methods embed high dimensional data into a low dimensio
 They generally aim to reduce technical sources of variation (noise) while retaining variation produced by processes of interest.
 Dimensionality reduction methods can broadly be categorized by the resulting space’s purpose, which is usually a 2D or 3D space for visualization or a latent space for further processing.
 Some methods also assign scores to each result dimension, which can e.\,g. be used to decide which dimensions to discard and which ones to keep for visualization or further processing.
-An ideal latent space embedding would exclusively capture all underlying processes’ variability present in the data, and therefore match the intrinsic dimensionality of the data.
-A 2D or 3D embedding used as as scatter plot coordinates serves as the basis of visualizations interpretable by humans.
+An ideal latent space embedding would exclusively capture all underlying processes’ variability present in the data and therefore match the intrinsic dimensionality of the data.
+A 2D or 3D embedding used as scatter plot coordinates serves as the basis of visualizations interpretable by humans.
 To this end, it can be colored or annotated using input variables and statistics to analyze static relations or dynamic processes of the data.
 
-In the context of single cell RNA sequencing (scRNA-Seq) data, the high dimensional data are represented as a gene expression matrix $x_{gc}$ with tens of thousands of genes $g∈\{1,…,G\}$, measured for up to approximately one million cells $c∈\{1,…,C\}$ at once \cite[zheng2017].
-Single cell expression matrices are very sparse since cells express a limited amount of genes at a time \cite[svensson2020].
+In the context of single-cell RNA sequencing (scRNA-Seq) data, the high dimensional data are represented as a gene expression matrix $x_{gc}$ with tens of thousands of genes $g∈\{1,…,G\}$, measured for up to approximately one million cells $c∈\{1,…,C\}$ at once \cite[zheng2017].
+Single-cell expression matrices are very sparse since cells express a limited amount of genes at a time \cite[svensson2020].
 The intrinsic dimensionality of transcriptomic data is low when compared to this number of genes \cite[heimberg2016].
 Embeddings $s_{pc}$ ($p∈\{1,…,P\}$) of most datasets therefore only require a comparatively low number of dimensions $50≤P≤100$ to capture all information necessary to reconstruct all known biological processes \cite[ding2018,lenz2016].
 
@@ -75,7 +75,7 @@ While the intrinsic dimensionality of transcriptomic data is low, the number of 
 Picking a number of PCs in this range, for example using the jackstraw algorithm \cite[chung2015] is a popular preprocessing step for downstream analysis.
 
 There are a number of related methods that can serve a similar purpose, such as independent component analysis \cite[bell1995] or factor analysis \cite[stephenson1935].
-Furthermore, single cell transcriptomics specific extensions exist, such as the application of GPLVM in \inlinecite[buettner2014],
+Furthermore, extensions exist that are specific to single-cell transcriptomics, such as the application of GPLVM in \inlinecite[buettner2014],
 and the PCA extensions ZINB-WaVE \cite[risso2018] and GLM-PCA \cite[townes2019], which account for high numbers of zeros and over-dispersion of scRNA-Seq data.
 \stopsubsubsection
 
@@ -88,7 +88,7 @@ Their practicality for data analysis was first shown by \inlinecite[coifman2005]
 A diffusion map $s_{pc}$ has as components $p$ the eigenvectors of a matrix of transition probabilities $T_{cd}$ between cells $c$ and $d$.
 The transition probabilities are derived from a diffusion model applied to the cells’ expression profiles $x_{gc}$.
 There are several flavors of diffusion models, parametrized over the chosen distance function $dist$ and the kernel width $σ$.
-Using a common $σ$ for all cells can lead to $T_{cd}$ becoming disjunct, rendering its Eigen decomposition undefined.
+Using a common $σ$ for all cells can lead to $T_{cd}$ becoming disjunct, rendering its Eigendecomposition undefined.
 This led to the development of locally scaled diffusion maps, in which the kernel width $σ_c$ is locally inferred for each cell.
 A locally scaled Gaussian function is:
 
@@ -144,7 +144,7 @@ Z(c) = ∑_{d ∈ \{1,…,C\}} K(c, d)
 More commonly today, $W$ is approximated.
 One approach is to only define $W_{cd}$ for $d∈\{\text{NN}_k(c)\}$ instead of all $d∈\{1,…,C\}$,
 another is employed by UMAP (see \in[sec:learned-embeddings]),
-which uses fuzzy simplical sets derived from $σ_c$ instead of discrete sets of nearest neighbors.
+which uses fuzzy simplicial sets derived from $σ_c$ instead of discrete sets of nearest neighbors.
 
 In any case, a transition probability matrix $T$ can be obtained by row-normalizing $W$:
 
@@ -189,9 +189,9 @@ It stops iterating if the similarity matrices converge sufficiently or a maximum
 The more recent method UMAP works similarly, while claiming to represent global structures in the data more faithfully \cite[becht2018].
 Its more continuous and global structure also makes it a viable dimensionality reduction for preprocessing similarly to the aforementioned spectral decomposition methods (see \in[sec:spectral]).
 \inlinecite[kobak2019b] however showed that t-SNE and UMAP perform very similarly with the same data-driven initialization and selection of meta-parameters.
-Single cell transcriptomics specific methods exist in this space as well, such as scLVM \cite[buettner2015], a successor of the earlier GPLVM \cite[buettner2012].
+Methods specific to single-cell transcriptomics exist in this space as well, such as scLVM \cite[buettner2015], a successor of the earlier GPLVM \cite[buettner2012].
 Their performance criteria however don’t lend themselves well to the heterogeneity analysis of much more than few hundreds of cells performed today.
-This led to other approaches, such as learned embeddings modeled explicitly to perform scRNA-Seq preprocessing, e.\,g. single cell variational inference (scVI, \inbracecite[lopez2018]).
+This led to other approaches, such as learned embeddings modeled explicitly to perform scRNA-Seq preprocessing, e.\,g. single-cell variational inference (scVI, \inbracecite[lopez2018]).
 Alternatively, one can preprocess the data in a way that improves embeddings by general purpose methods, e.\,g. by denoising data using a deep count autoencoder (DCA, \inbracecite[eraslan2019]).
 
 A disadvantages of machine learning based methods is their nondeterministic nature:
@@ -337,7 +337,7 @@ It would also be computationally wasteful to use the tidy format for data is com
 % What AnnData can represent
 \n{AnnData}’s structure therefore matches the annotated observations-by-variables ($c×g$) matrix format most biological snapshot data is analyzed in.
 \footnote{In the R world, R’s native data frame matches this orientation, while count matrices are its transpose: $g×c$}
-This includes single cell imaging, where this matrix contains each segmented cell $c$’s average fluorescent channel $g$ value.
+This includes single-cell imaging, where this matrix contains each segmented cell $c$’s average fluorescent channel $g$ value.
 In RNA-Seq or quantitative real-time polymerase chain reaction (qRT-PCR, \inbracecite[nurmi2002]), $g$ stands for a gene’s expression in a tissue sample or a single cell.
 % annotations from start or later
 Each observation $c$ or variable $g$ can be annotated with different labels used in any step of an analysis pipeline.
