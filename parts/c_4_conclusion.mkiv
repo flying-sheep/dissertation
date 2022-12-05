@@ -7,8 +7,8 @@
 
 Within a few years, single-cell RNA-Seq has grown into an extensive and active field of science, with new trends and opportunities.
 The largest current challenges are the ever-growing dataset sizes, and the integration of different kinds of data \cite[angerer2017,nmeth2020].
-Going up to hundreds of thousands of cells, the data allows us to abandon the notion of discrete cell types and to explore the continuous processes at play.
-Destiny \cite[angerer2016] and the gene relevance method presented in this thesis prove to be valuable contributions in this direction.
+Going up to hundreds of thousands of cells, the data allows us to abandon the notion of discrete cell types and explore the continuous processes at play.
+Destiny \cite[angerer2016], and the gene relevance method presented in this thesis, prove to be valuable contributions in this direction.
 
 % extensibility and openness
 As demands on reliability at scale grow along with demands posed to algorithms, more practices from software engineering are finding their way into biological science.
@@ -18,15 +18,15 @@ My contributions towards more reproducible, scalable and interconnective scienti
 
 \startsection[title={Multi-scale scRNA-Seq Analysis}]
 The analysis of continuous processes driving cellular heterogeneity has been enabled by fluorescent tagging and single-cell imaging.
-Their targeted nature as well as their monetary and time costs however renders them unsuitable for unbiased heterogeneity analysis.
-While careful selection of parameters like sequencing depth is vital, scRNA-Seq is an unbiased and inexpensive method able to detect rare cells \cite[torre2018].
+Their targeted nature as well as their monetary and time costs however render them unsuitable for unbiased heterogeneity analysis.
+While a careful selection of parameters like sequencing depth is vital, scRNA-Seq is an unbiased and inexpensive method able to detect rare cells \cite[torre2018].
 This makes it uniquely suited for heterogeneity analyses.
 A rarely addressed property of cellular heterogeneity is its multi-scale nature:
-multiple processes at different scales and locality shape heterogeneity of either subpopulations or all cells (see \insec[sec:visualization]).
+multiple processes at different scales and localities shape the heterogeneity of either subpopulations or all cells (see \insec[sec:visualization]).
 
 Analysis algorithms in this area have evolved alongside the protocols able to sequence hundreds of thousands of cells.
 Suitable for the low sample sizes of bulk RNA-Seq, simple linear dimension reduction methods like PCA were used to visualize early single-cell studies.
-Nonlinear methods like diffusion maps, t-SNE or later UMAP have been developed and continue being improved to fit the nature of transcriptome data.
+Nonlinear methods like diffusion maps, t-SNE or later UMAP have been developed and continue to be improved to fit the nature of transcriptome data.
 But while they capture both continuity and heterogeneity at multiple scales, their output does not contain directly interpretable information about processes at different scales.
 Methods like the growing multitude of trajectory inference algorithms or gene relevance complement them within the same constraint \cite[saelens2019].
 Of all methods known to the author, only \n{PAGA} so far distinctively dissects continuous multi-scale heterogeneity \cite[wolf2019].
@@ -45,13 +45,13 @@ This technique has been successfully employed to link data in and to the \n{Huma
 
 \startdesc{RNA Velocity}
 RNA Velocity is a model to infer trajectories of cell differentiation from the combination of unspliced pre-mRNA with spliced mRNA \cite[lamanno2018].
-Based on  \n{Scanpy} and \n{AnnData}, \n{scVelo} is an user friendly implementation and extension of this model \cite[bergen2019].
+Based on  \n{Scanpy} and \n{AnnData}, \n{scVelo} is a user-friendly implementation and extension of this model \cite[bergen2019].
 The tool uses which uses \n{AnnData}’s \type{.layers} to distinguish between spliced and unspliced transcripts.
 \stopdesc
 
 \startdesc{Spatial location}
-Measuring spatial location of cells together with transcriptomic heterogeneity allows to analyze spatial trends such as the location of markers in embryonic development.
-The success of the \n{10x Genomics} \n{Chromium} platform indicates that the upcoming \n{Visium} platform will make spatial information ubiquitous in the near feature \cite[maniatis2019].
+Measuring the spatial location of cells together with transcriptomic heterogeneity allows for analyzing spatial trends such as the location of markers in embryonic development.
+The success of the \n{10x Genomics} \n{Chromium} platform indicates that the upcoming \n{Visium} platform will make spatial information ubiquitous soon \cite[maniatis2019].
 Novel approaches like in-situ sequencing also allow capturing 3D spatial coordinates via \n{STARmap} \cite[wang2018].
 Spatial analysis in \n{Scanpy} is straightforward, as 2D or 3D space can be stored in \n{AnnData}’s \type{.obsm}.
 The current development of spatial conventions and plotting routines will encourage the development of \n{Scanpy} based spatial algorithms similar to the R tools trendsceek \cite[edsgard2018] and SpatialDE \cite[svensson2018].
@@ -71,7 +71,7 @@ For analysis of scRNA-Seq data combined with both modes, \n{epiScanpy} offers a 
 
 \noindentation
 \n{AnnData} and \n{scanpy} currently lack true support for multimodal data where different modes can be stored for one set of observations.
-This enhancement would allow to store annotations for each mode separately while allowing joint filtering of observations.
+This enhancement would allow the storage of annotations for each mode separately while allowing joint filtering of observations.
 A further feature would be to store connections between features of different modes in a graph, such as which transcript (scRNA-Seq) encodes which surface protein (CITE-Seq).
 The current version of \n{AnnData} substantially increased usability and therefore analysis efficiency for exclusively scRNA-Seq data.
 Therefore a multimodal \n{AnnData} should do the same for the analysis of data like scCUT&Tag or CITE-Seq, which contain a second high-dimensional feature mode in addition to transcriptomic data.
@@ -79,14 +79,14 @@ Existing workflows and Python packages that use the current version of \n{AnnDat
 
 \TODO[add info about what has been added in this field from 202–2022]
 
-The combination of different data types within a single experiment enabled unprecedented insight into disease.
+The combination of different data types within a single experiment enabled unprecedented insight into the disease.
 Extending \n{AnnData} and \n{Scanpy} for joint analysis of spatial location and scRNA-Seq data promises to bring their ergonomic benefits and performance to histologic patient data analysis.
 
 \stopsection
 
 \startsection[title={New Dimensions of \n{scanpy} Scalability}]
 \n{Scanpy} has proven to be scalable in terms of CPU and memory through its efficient implementation, multiprocessing capabilities and \n{AnnData}’s disk-backed mode.
-For a successful open source project, more is necessary than just performance and ease of use.
+For a successful open-source project, more is necessary than just performance and ease of use.
 Open source projects need to be scalable in terms of maintenance structure and trust \cite[delaat2010].
 
 % Scanpy community building
@@ -97,13 +97,13 @@ To foster openness and inclusivity, \n{scanpy} will adopt a code of conduct (CoC
 CoCs have been shown to increase diversity in a project, while higher diversity is linked to increased productivity \cite[tourani2017].
 To uncouple progress with the available amount of free time of the de-facto decision makers of the project, a steering committee will be formed.
 Its membership will be open to long-term contributors, and its meeting notes publicly available.
-Automations for quality and performance criteria, such as \n{scanpy}’s high performance GPU-driven parts, similarly streamline the contribution process and will be extended.
+Automations for quality and performance criteria, such as \n{scanpy}’s high-performance GPU-driven parts, similarly streamline the contribution process and will be extended.
 This will make friendly and helpful information available regardless of the available free time of experienced contributors.
 Additionally, inclusion criteria of external tools to the scanpy website and the \type{scanpy.external} module will be formalized and made transparent.
 Communication channels with the main projects of the R world are already established and will continue to be used to ensure interoperability.
 
 These changes should be able to encourage more junior developers and data scientists to start contributing to the project.
-More active contributors in turn means that key knowledge of the project is shared by more people, which reduces reliance on the continued effort of a small group of individuals.
+More active contributors in turn mean that key knowledge of the project is shared by more people, which reduces reliance on the continued effort of a small group of individuals.
 
 Further improvements can come from the professional development world, especially if some contributors can invest time regularly.
 A bigger group of regular contributors can result in adopting agile principles.
