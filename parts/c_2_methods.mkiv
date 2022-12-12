@@ -9,12 +9,12 @@ Dimensionality reduction methods embed high dimensional data into a low dimensio
 They generally aim to reduce technical sources of variation (noise) while retaining variation produced by processes of interest.
 Dimensionality reduction methods can broadly be categorized by the resulting space’s purpose, which is usually a 2D or 3D space for visualization or a latent space for further processing.
 Some methods also assign scores to each result dimension, which can e.\,g. be used to decide which dimensions to discard and which ones to keep for visualization or further processing.
-An ideal latent space embedding would exclusively capture all underlying processes’ variability present in the data, and therefore match the intrinsic dimensionality of the data.
-A 2D or 3D embedding used as as scatter plot coordinates serves as the basis of visualizations interpretable by humans.
+An ideal latent space embedding would exclusively capture all underlying processes’ variability present in the data and therefore match the intrinsic dimensionality of the data.
+A 2D or 3D embedding used as scatter plot coordinates serves as the basis of visualizations interpretable by humans.
 To this end, it can be colored or annotated using input variables and statistics to analyze static relations or dynamic processes of the data.
 
-In the context of single cell RNA sequencing (scRNA-Seq) data, the high dimensional data are represented as a gene expression matrix $x_{gc}$ with tens of thousands of genes $g∈\{1,…,G\}$, measured for up to approximately one million cells $c∈\{1,…,C\}$ at once \cite[zheng2017].
-Single cell expression matrices are very sparse since cells express a limited amount of genes at a time \cite[svensson2020].
+In the context of single-cell RNA sequencing (scRNA-Seq) data, the high dimensional data are represented as a gene expression matrix $x_{gc}$ with tens of thousands of genes $g∈\{1,…,G\}$, measured for up to approximately one million cells $c∈\{1,…,C\}$ at once \cite[zheng2017].
+Single-cell expression matrices are very sparse since cells express a limited amount of genes at a time \cite[svensson2020].
 The intrinsic dimensionality of transcriptomic data is low when compared to this number of genes \cite[heimberg2016].
 Embeddings $s_{pc}$ ($p∈\{1,…,P\}$) of most datasets therefore only require a comparatively low number of dimensions $50≤P≤100$ to capture all information necessary to reconstruct all known biological processes \cite[ding2018,lenz2016].
 
@@ -75,7 +75,7 @@ While the intrinsic dimensionality of transcriptomic data is low, the number of 
 Picking a number of PCs in this range, for example using the jackstraw algorithm \cite[chung2015] is a popular preprocessing step for downstream analysis.
 
 There are a number of related methods that can serve a similar purpose, such as independent component analysis \cite[bell1995] or factor analysis \cite[stephenson1935].
-Furthermore, single cell transcriptomics specific extensions exist, such as the application of GPLVM in \inlinecite[buettner2014],
+Furthermore, extensions exist that are specific to single-cell transcriptomics, such as the application of GPLVM in \inlinecite[buettner2014],
 and the PCA extensions ZINB-WaVE \cite[risso2018] and GLM-PCA \cite[townes2019], which account for high numbers of zeros and over-dispersion of scRNA-Seq data.
 \stopsubsubsection
 
@@ -88,7 +88,7 @@ Their practicality for data analysis was first shown by \inlinecite[coifman2005]
 A diffusion map $s_{pc}$ has as components $p$ the eigenvectors of a matrix of transition probabilities $T_{cd}$ between cells $c$ and $d$.
 The transition probabilities are derived from a diffusion model applied to the cells’ expression profiles $x_{gc}$.
 There are several flavors of diffusion models, parametrized over the chosen distance function $dist$ and the kernel width $σ$.
-Using a common $σ$ for all cells can lead to $T_{cd}$ becoming disjunct, rendering its Eigen decomposition undefined.
+Using a common $σ$ for all cells can lead to $T_{cd}$ becoming disjunct, rendering its Eigendecomposition undefined.
 This led to the development of locally scaled diffusion maps, in which the kernel width $σ_c$ is locally inferred for each cell.
 A locally scaled Gaussian function is:
 
@@ -144,7 +144,7 @@ Z(c) = ∑_{d ∈ \{1,…,C\}} K(c, d)
 More commonly today, $W$ is approximated.
 One approach is to only define $W_{cd}$ for $d∈\{\text{NN}_k(c)\}$ instead of all $d∈\{1,…,C\}$,
 another is employed by UMAP (see \in[sec:learned-embeddings]),
-which uses fuzzy simplical sets derived from $σ_c$ instead of discrete sets of nearest neighbors.
+which uses fuzzy simplicial sets derived from $σ_c$ instead of discrete sets of nearest neighbors.
 
 In any case, a transition probability matrix $T$ can be obtained by row-normalizing $W$:
 
@@ -162,7 +162,7 @@ T_{cd} = √{\tilde{Z}(c)}^{-1} W_{cd} √{\tilde{Z}(y)}^{-1}
 \stopformula
 
 Compared to machine learning methods like t-SNE that embed data non-deterministically (see \in[sec:learned-embeddings]),
-diffusion maps preserve global structure and the pseudo-temporal ordering of cells better \cite[haghverdi2015].
+diffusion maps preserve the global structure and the pseudo-temporal ordering of cells better \cite[haghverdi2015].
 The first diffusion component is often sufficient to directly capture and visualize bifurcation events in differentiating cells.
 \stopsubsubsection
 
@@ -170,15 +170,15 @@ The first diffusion component is often sufficient to directly capture and visual
 
 \startsubsection[reference=sec:learned-embeddings, title={Learned Embeddings}]
 % https://nbisweden.github.io/workshop-scRNAseq/slides2019/Dimensionality_reduction_P_Czarnewski_2019.pdf
-Machine learning based dimensionality reduction methods use optimization to either learn an embedding directly,
+Dimensionality reduction methods based on machine learning use optimization to either learn an embedding directly
 or a function mapping high-dimensional data to embedding coordinates.
 A common optimization target is to represent high-dimensional relationships in the data as faithfully as possible in a 2D or 3D embedding that can be displayed on a screen or paper.
 
-The machine learning driven method t-SNE remains the most popular dimensionality reduction \cite[kobak2019a].
+T-SNE is a method driven by machine learning, which remains the most popular dimensionality reduction \cite[kobak2019a].
 T-SNE optimizes an embedding so that similarities in the high-dimensional space $x_{gc}$ are maintained in the low-dimensional embedding $s_{pc}$.
 Similarly to locally scaled diffusion maps, it uses distributions with kernel widths based on $x_{gc}$’s local densities to calculate similarities between cells.
-This process exaggerates short distances and de-emphasizing long distances, resulting in t-SNE’s sensitivity towards its perplexity parameter, which scales local density estimates and therefore kernel widths.
-Similarity between cells is denoted as $p_{j|i}$, which stands for $x_{·j}$’s probability density in a distribution centered at $x_{·i}$.
+This process exaggerates short distances and de-emphasizes long distances, resulting in t-SNE’s sensitivity towards its perplexity parameter, which scales local density estimates and therefore kernel widths.
+The similarity between cells is denoted as $p_{j|i}$, which stands for $x_{·j}$’s probability density in a distribution centered at $x_{·i}$.
 T-SNE uses a Gaussian distribution to calculate similarities $p_{j|i}$ within the high dimensional data.
 The iterative optimization process starts with a randomly initialized embedding $s^0_{pc}$.
 For each iteration $k$, it performs the following steps:
@@ -186,17 +186,17 @@ It calculates the similarities $q^k_{j|i}$ within the embedding $s^k_{pc}$ using
 Then it performs gradient descent to modify the embedding in a way that the new embedding $s^{k+1}_{pc}$’s similarities $q^{k+1}_{j|i}$ are closer to the similarities $p_{j|i}$ of the high dimensional data $x_{gc}$.
 It stops iterating if the similarity matrices converge sufficiently or a maximum number of iterations is reached.
 
-The more recent method UMAP works similarly, while claiming to represent global structures in the data more faithfully \cite[becht2018].
-Its more continuous and global structure also makes it a viable dimensionality reduction for preprocessing similarly to the aforementioned spectral decomposition methods (see \in[sec:spectral]).
+The more recent method UMAP works similarly while claiming to represent global structures in the data more faithfully \cite[becht2018].
+Its more continuous and global structure also makes it a viable dimensionality reduction for preprocessing similar to the aforementioned spectral decomposition methods (see \in[sec:spectral]).
 \inlinecite[kobak2019b] however showed that t-SNE and UMAP perform very similarly with the same data-driven initialization and selection of meta-parameters.
-Single cell transcriptomics specific methods exist in this space as well, such as scLVM \cite[buettner2015], a successor of the earlier GPLVM \cite[buettner2012].
-Their performance criteria however don’t lend themselves well to the heterogeneity analysis of much more than few hundreds of cells performed today.
-This led to other approaches, such as learned embeddings modeled explicitly to perform scRNA-Seq preprocessing, e.\,g. single cell variational inference (scVI, \inbracecite[lopez2018]).
-Alternatively, one can preprocess the data in a way that improves embeddings by general purpose methods, e.\,g. by denoising data using a deep count autoencoder (DCA, \inbracecite[eraslan2019]).
+Methods specific to single-cell transcriptomics exist in this space as well, such as scLVM \cite[buettner2015], a successor of the earlier GPLVM \cite[buettner2012].
+Their performance criteria, however, don’t lend themselves well to the heterogeneity analysis of much more than a few hundred cells performed today.
+This led to other approaches, such as learned embeddings modeled explicitly to perform scRNA-Seq preprocessing, e.\,g. single-cell variational inference (scVI, \inbracecite[lopez2018]).
+Alternatively, one can preprocess the data in a way that improves embeddings by general-purpose methods, e.\,g. by denoising data using a deep count autoencoder (DCA, \inbracecite[eraslan2019]).
 
-A disadvantages of machine learning based methods is their nondeterministic nature:
-due to the non-convex nature of the optimization, its converging to local optima can result in unstable inference of certain cells’ neighborhoods in the embedding \cite[hinton2003].
-Another problem is that machine learning methods that learn an embedding directly instead of an embedding function are unable to project new data into an existing embedding.
+A disadvantage of methods based on machine learning is their nondeterministic nature:
+due to the non-convex nature of the optimization, its converging to local optima can result in the unstable inference of certain cells’ neighborhoods in the embedding \cite[hinton2003].
+Another problem is that machine learning methods, that learn an embedding directly instead of an embedding function, are unable to project new data into an existing embedding.
 There are approaches to remedy this for UMAP and t-SNE \cite[vandermaaten2009b].
 \stopsubsection
 
@@ -209,15 +209,15 @@ There are approaches to remedy this for UMAP and t-SNE \cite[vandermaaten2009b].
 \definemathcommand[rank][nolop]{\mfunction{rank}}
 
 Linear dimensionality reduction methods like PCA are rarely used for visualizing scRNA-Seq data anymore.
-Nonlinear methods are preferred as their flexibility allows them visualize more information at once in 2D or 3D plots.
+Nonlinear methods are preferred as their flexibility allows them to visualize more information at once in 2D or 3D plots.
 They however lack the linear methods’ intrinsic relation from reduced dimensions to input genes.
-Such knowledge about which genes drive an embedding allows to identify target genes for subsequent analysis.
+Such knowledge about which genes drive an embedding allows identifying target genes for subsequent analysis.
 
 The gene relevance method was developed in order to derive this relation from scRNA-Seq data and any given embedding \cite[angerer2020].
-It requires no previous cluster detection algorithm and is able to find genes that cannot be identified using differential expression analysis.
+It requires no previous cluster detection algorithm and can find genes that cannot be identified using differential expression analysis.
 The method defines a gene relevance score $R_{gc}$ for gene $g$ and cell $c$, as well as summary scores called global gene relevance $\gr_r(g)$ and local gene relevance $\lr_r(g, Ψ)$ for any given set of cells $Ψ$.
 It also defines a gene relevance map as a scatter plot using the embedding coordinates and coloring each cell by its label $l_c$, which denotes the gene driving $c$’s embedding location most.
-The gene relevance score $R_{gc}$ is a measure of the extent in which a gene $g$ drives the embedding coordinates $s_{pc}$ of a specific cell $c$.
+The gene relevance score $R_{gc}$ is a measure of the extent to which a gene $g$ drives the embedding coordinates $s_{pc}$ of a specific cell $c$.
 It can be derived from the gradient $∇f_{gc}$ of the function $f$ mapping a embedding $s_{pc}$ to the gene expression $x_{gc}$:
 
 % https://de.wikipedia.org/wiki/Nabla-Operator
@@ -274,16 +274,16 @@ The set of cells of interest $Ψ$ can be obtained by metadata such as experiment
 Another alternative is the visualization of local relevance by dividing the embedding into shaped bins, which can be colored according to their respective local relevance.
 
 \startplacefigure[reference=fig:gene-relevance, title={%
-Gene relevance visualizations on a diffusion map embedding allow to reason about the role individual genes play for the embedding.
+Gene relevance visualizations on a diffusion map embedding allow reasoning about the role individual genes play in the embedding.
 Our example data from \inlinecite[guo2010] contains differentiating cells, with their differentiation state controlled by transcription factors like Klf4.
-We therefore expect those same genes to have a strong influence on the location of each cell in an diffusion map embedding derived from the data.
+We, therefore, expect those same genes to have a strong influence on the location of each cell in a diffusion map embedding derived from the data.
 \bold{a)}
 Local gene relevance of the gene Klf4 and local density for each hexagonal bin.
 This score can be calculated for any given gene in order to investigate how much it drives each cell’s location in the embedding.
-As expected, a transcription factor like Klf4 has strong effect on positioning cells in the left arm of the embedding.
+As expected, a transcription factor like Klf4 has a strong effect on positioning cells in the left arm of the embedding.
 \bold{b)}
 Gene relevance map.
-Calculating all scores allows to label each cell by the gene which drives its location in the embedding most.
+Calculating all scores allows labelling of each cell by the gene which drives its location in the embedding most.
 Klf4 shows up next to Cebpa as the strongest driver for cells in the left arm.
 }]
 \externalfigure[imgs/gene-relevance.pdf]
@@ -301,7 +301,7 @@ Using it as a global gene score yields a similar result as PCA loadings.
 
 Gene relevance maps were developed since global relevance cannot be used to detect genes driving the embedding of small subpopulations, and local relevance requires defining discrete sets of cells to score.
 They label each cell with the gene having the highest gene relevance score for that cell.
-Because this labeling is subject to noise, $m$ smoothing steps over the scores of each cells’ neighborhood are employed to obtain less and more stable labels $l_c^m$.
+Because this labeling is subject to noise, $m$ smoothing steps over the scores of each cell’s neighborhood are employed to obtain less and more stable labels $l_c^m$.
 
 \placeformula
 \startformula
@@ -312,7 +312,7 @@ l_c^m = \argmax_{g∈Ω ∧ x_{gc}≠0}
 \stopcases
 \stopformula
 
-Gene relevance is robust towards its rank cutoff parameter $r$ and reasonably robust towards its smoothing parameter $m$ \cite[angerer2020], given that strong smoothing $m≥3$ often results in all cells sharing the single most globally relevant gene as label.
+Gene relevance is robust towards its rank cutoff parameter $r$ and reasonably robust towards its smoothing parameter $m$ \cite[angerer2020], given that strong smoothing $m≥3$ often results in all cells sharing the single most globally relevant gene as a label.
 The implementation as part of the R package \n{destiny} \cite[angerer2016] is sufficiently efficient in terms of computational time and memory so that quick iterations are possible.
 Like other parts of destiny \n{destiny}, it allows control over the distance metric used,
 and handles missing values and outliers in the data.
@@ -323,21 +323,21 @@ and handles missing values and outliers in the data.
 
 \startplacefigure[reference=fig:anndata, title={%
 \n{AnnData} is structured around a central stack of variable × observation matrices (layers) and a hierarchy of unstructured annotations.
-Each dimension, variables and observations, can be annotated with vectors (1D), matrices (2D) and graphs (2D, square matrices).
+Each dimension – variables and observations – can be annotated with vectors (1D), matrices (2D) and graphs (2D, square matrices).
 }]
 \hbox{\input{imgs/anndata.tikz}}
 \stopplacefigure
 
-\n{AnnData} is a general purpose data structure for annotated two dimensional data (see \infig[fig:anndata]).
+\n{AnnData} is a general-purpose data structure for annotated two-dimensional data (see \infig[fig:anndata]).
 % rectangular vs tidy data
-This is in contrast to tidy data, where each variable type has its own column: in our case that would mean one column each for gene ID, cell ID, expression value, and each annotation \cite[wickham2014].
-Tidy data is useful for small datasets, but redundant and therefore memory-expensive for data with large amounts of variables.
-It would also be computationally wasteful to use the tidy format for data is commonly analyzed using matrix operations on a observation × main-variable matrix.
+This is in contrast to tidy data, where each variable type has its own column: in our case, that would mean one column each for gene ID, cell ID, expression value, and each annotation \cite[wickham2014].
+Tidy data is useful for small datasets but redundant and therefore memory-expensive for data with large amounts of variables.
+It would also be computationally wasteful to use the tidy format for data commonly analyzed using matrix operations on an observation × main-variable matrix.
 
 % What AnnData can represent
-\n{AnnData}’s structure therefore matches the annotated observations-by-variables ($c×g$) matrix format most biological snapshot data is analyzed in.
+\n{AnnData}’s structure, therefore, matches the annotated observations-by-variables ($c×g$) matrix format in which most biological snapshot data is analyzed.
 \footnote{In the R world, R’s native data frame matches this orientation, while count matrices are its transpose: $g×c$}
-This includes single cell imaging, where this matrix contains each segmented cell $c$’s average fluorescent channel $g$ value.
+This includes single-cell imaging, where this matrix contains each segmented cell $c$’s average fluorescent channel $g$ value.
 In RNA-Seq or quantitative real-time polymerase chain reaction (qRT-PCR, \inbracecite[nurmi2002]), $g$ stands for a gene’s expression in a tissue sample or a single cell.
 % annotations from start or later
 Each observation $c$ or variable $g$ can be annotated with different labels used in any step of an analysis pipeline.
@@ -350,7 +350,7 @@ Each aligned attribute denoted with \type{[]} is Python mapping of names to alig
 \n{AnnData} maintains this alignment, keeping matrices and annotations in sync when filtering and concatenating \n{AnnData} objects.
 
 \desc{\type{.obs_names} and \type{.var_names}}
-are arrays of unique names or IDs for for each \n{AnnData} dimension.
+are arrays of unique names or IDs for each \n{AnnData} dimension.
 Names for observations $c$ are stored in \type{.obs_names}, and variable $g$ names in \type{.var_names}.
 
 \desc{\type{.layers[]}}
@@ -377,7 +377,7 @@ An example is neighborhood graphs containing cell-cell distances calculated with
 holds unstructured hierarchical annotations, such as analysis algorithm parameters.
 They are the only kind of annotation not modified when filtering observations or variables.
 
-\n{AnnData} supports several file formats it can read and write to for long term result storage, pipeline checkpoints, file exchange, and compatibility with existing experimental protocols and other tools and pipelines.
+\n{AnnData} supports several file formats it can read and write to for long-term result storage, pipeline checkpoints, file exchange, and compatibility with existing experimental protocols and other tools and pipelines.
 This includes its own \type{.h5ad} format based on HDF5 \cite[folk2011], \n{Loom} \cite[linnarson2017], \n{UMI-Tools} \cite[smith2017], \n{Matrix Market} \cite[boisvert1996], as well as Microsoft Excel and textual spreadsheets.
 \n{AnnData} supports disk-backed operations in its native format, allowing operations on data too big to hold in memory.
 For quick integration of \n{AnnData} with \n{Bioconductor} packages \cite[huber2015] or \n{Seurat} \cite[satija2015,butler2018], \n{AnnData} can be converted to and from \n{SingleCellExperiment} \cite[lun2017a] using \n{anndata2ri} \cite[angerer2019b].
@@ -391,31 +391,32 @@ Due to \n{AnnData}’s generic structure, and its conversion and serialization o
 \n{Scanpy} is a Python package providing functions and classes for scRNA-Seq preprocessing, analysis, and visualization (see \insec[sec:preprocessing], \in{}{}[sec:analysis], and \in{}{}[sec:visualization], respectively).
 Scanpy is popular and widely used, see \insec[sec:pub-scanpy] for details.
 Its main design philosophy is ease of use without compromising performance or interaction with other tools.
-This allows analyzing of up to a million cells in reasonable time \cite[wolf2018].
+This allows analyzing of up to a million cells within a reasonable time \cite[wolf2018].
 \n{Scanpy}’s ease of interaction with other tools was ensured by developing and designing it in parallel with \n{AnnData} and avoiding a \n{scanpy}-specific data structure.
 \n{Scanpy} also integrates well with the popular \n{JupyterLab}, allowing to iterate on an analysis in an interactive environment that preserves code, plots, and output as a report file called “notebook” \cite[kluyver2016].
-Combined with disk-backed operations or saving of snapshots, this allows to interrupt a workflow at any point or move it to a different machine.
+Combined with disk-backed operations or saving of snapshots, this allows interrupting a workflow at any point or moving it to a different machine.
 A basic \n{scanpy} workflow utilizes all aforementioned features of \n{AnnData}, establishing naming conventions by which subsequent steps interact.
 For example, storing batch labels as \type{.obs['batch']} will make sure that \n{scanpy}’s batch correction algorithms use them by default.
 \n{Scanpy}’s dimensionality reduction methods store their coordinates as \type{.obsm['X_<method>']}, while \n{scanpy} provides an \type{embedding} plotting function with a parameter to choose the coordinate basis, as well as a plotting function for each method with sensible defaults.
 \n{Scanpy} reads data either directly from an experimental protocol format like \n{10x Genomics}’ \n{Chromium} \cite[zheng2017] or a generic interchange format supported by \n{AnnData}’s read functions.
 
 \startsubsection[title={Preprocessing}]
-It allows to preprocess data using a variety of quality control models and visualizations.
-Those help to filter low quality cells and genes, and to transform raw transcript counts into expression profiles matching the expectations of subsequently applied analysis tools.
-Filters are based based on count and mitochondrial gene content \cite[islam2014,ilicic2016], while transforms reduce batch effect and library size biases \cite[luecken2019].
+It allows preprocessing of data using a variety of quality control models and visualizations.
+These help to filter low-quality cells and genes, and to transform raw transcript counts into expression profiles matching the expectations of subsequently applied analysis tools.
+Filters are based on count and mitochondrial gene content \cite[islam2014,ilicic2016], while transforms reduce the batch effect and library size biases \cite[luecken2019].
 The variability score of each gene \cite[satija2015,zheng2017] can be stored as annotation and either used as further, rigorous filtering or by specific processing steps.
 Otherwise, preprocessing generally modifies the default layer \type{.X} and removes genes and cells from layers and aligned annotations.
 \stopsubsection
 
 \startsubsection[title={Analysis}]
 After finalized preprocessing, \n{scanpy} analyses generally start by pre-computing commonly used information.
-This includes a PCA with usually 50-100 components to be used as basis for distance calculations within the data and from reference data to new data.
-For highly performant access of distances within the data, a nearest neighbor graph is calculated.
-The graph serves as the basis of several different nonlinear, locality based analyses.
+This includes a PCA with usually 50-100 components to be used as the basis for distance calculations within the data and from reference data to new data.
+For highly performant access to distances within the data, the nearest neighbor graph is calculated.
+The graph serves as the basis of several different nonlinear, locality-based analyses.
 This includes certain dimensionality reduction methods like UMAP \cite[mcinnes2018], graph layout \cite[islam2011,weinreb2018b] and diffusion maps, as well as clustering algorithms such as \n{Leiden} \cite[traag2019], diffusion pseudo time \cite[haghverdi2016] and PAGA \cite[wolf2019].
 \n{Scanpy} also offers data integration similar to \inlinecite[polanski2020], and several gene scores.
-These allow analyzing either the influence of given known gene groups such as cell cycle genes \cite[satija2015] and the differential expression between clusters in one of different flavors such as the variance adjusted t-test or Wilcoxon rank-sum test \cite[wilcoxon1945,soneson2018].
+These allow analyzing the influence of given known gene groups such as cell cycle genes \cite[satija2015],
+as well as the differential expression between clusters in one of the different flavors such as the variance adjusted t-test or Wilcoxon rank-sum test \cite[wilcoxon1945,soneson2018].
 \stopsubsection
 
 \startplacefigure[reference=fig:scanpy, title={%
@@ -452,19 +453,19 @@ subpopulations that touch in the UMAP embedding can be assumed to have similar e
 \n{Scanpy} has rich visualizations based on Matplotlib \cite[hunter2007] for each step from basic quality control to complex analysis.
 Their flexibility is rooted in them being generic over the annotation column used for coloring or statistic summarization (see \infig[fig:scanpy]).
 Common analysis loops consist of repeatedly visualizing statistics either over discrete subsets of the data (\infig[fig:scanpy] a, b)
-or onto embeddings into dimension reduced spaces using e.g. UMAPs or diffusion maps (\infig[fig:scanpy] c).
-The final step of \n{scanpy} analyses consists of converting the complete \n{Jupyter} notebook, select visualizations, and the final data to publishable formats using few simple commands \cite[wolf2018].
+or onto embeddings into dimension-reduced spaces using e.g. UMAPs or diffusion maps (\infig[fig:scanpy] c).
+The final step of \n{scanpy} analyses consists of converting the complete \n{Jupyter} notebook, selected visualizations, and the final data to publishable formats using a few simple commands \cite[wolf2018].
 \stopsubsection
 
 \stopsection
 
 \startsection[reference=sec:bart-seq, title={BART-Seq (demultiplexing and quantification)}]
 
-\TODO[tie into above by mentioning that only if data quality and demultiplexing settings fit, we can expect results. There’s 6(?) steps (1. bio, 2. this, …)]
+\TODO[tie into above by mentioning that only if data quality and demultiplexing settings fit, we can expect results. There are 6(?) steps (1. bio, 2. this, …)]
 \TODO[good analysis can only be performed with a fitting tradeoff in sensitivity/specificity of quantification]
 
 Compared to classical plate-based RNA sequencing protocols (see \infig[fig:rna-seq]), BART-Seq is targeted.
-It trades the ability to measure all available transcripts in an unbiased way for the ability to inexpensive, highly sensitive measurement of a limited set of target transcripts for thousands of samples \cite[uzbas2019].
+It trades the ability to measure all available transcripts in an unbiased way for the ability to the inexpensive, highly sensitive measurement of a limited set of target transcripts for thousands of samples \cite[uzbas2019].
 High sensitivity is maintained when using single cells as samples.
 BART-Seq consists of three steps; design, experiment, and quantification.
 
@@ -487,10 +488,10 @@ The experiment concludes like a regular paired-end sequencing run \cite[fullwood
 % quantification: sequencing and multiplexing
 In the quantification step, the barcodes, linkers and low-quality bases are cut off the raw read sequence.
 The shortened read sequences are then tagged with their corresponding designed barcode if possible.
-This process assigns barcodes with up to one mismatching base using the algorithm of \inlinecite[aho1975], as long as the assignment is still unique – reads that could be tagged with one of multiple barcodes that are one mismatch away from each other are discarded.
+This process assigns barcodes with up to one mismatching base using the algorithm of \inlinecite[aho1975], as long as the assignment is still unique – reads are discarded which could be tagged with one of the multiple barcodes that are one mismatch away from each other.
 The tagged reads are then aligned to the targeted amplicons using HISAT2 \cite[kim2019].
 Amplicons are counted per barcode combination according to one of two strategies.
-The conservative strategy only counts where both reads aligned to the same amplicon, while the sensitive strategy also counts when one of both is unaligned.
+The conservative strategy only counts where both reads are aligned to the same amplicon, while the sensitive strategy also counts when one of both is unaligned.
 Neither strategy counts one of the aligned amplicons when there is a mismatch.
 The count of overall full matches, half matches, and mismatches is included in the various statistics collected about the demultiplexing and quantification process.
 

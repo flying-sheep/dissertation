@@ -12,6 +12,7 @@ Charly
 Desiree
 Drukker
 Eigen
+Eigendecomposition
 Elsevier
 Fatma
 Gannie

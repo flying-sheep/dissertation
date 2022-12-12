@@ -1,4 +1,4 @@
-Enabling technologies for visualization and analysis of single cell RNA-Seq data
+Enabling technologies for visualization and analysis of single-cell RNA-Seq data
 ================================================================================
 
 Setup `zotero-better-bibtex`’ [auto export](https://retorque.re/zotero-better-bibtex/exporting/auto/):

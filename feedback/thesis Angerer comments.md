@@ -1,6 +1,6 @@
 # Thesis Philipp Angerer comments
 
-"Enabling technologies for visualization and analysis of single cell RNA-Seq data"
+"Enabling technologies for visualization and analysis of single-cell RNA-Seq data"
 
 ## Feedback
 
@@ -15,7 +15,7 @@
 
   - [x] summaries of papers and contributions to papers (check how Laleh did it)
 
-    > Added summaries with this formula: first status quo, then “1.3 Geometric diffusions approach for cluster analysis and pseudo-time ordering of single cell differentiation data”, then paper summaries
+    > Added summaries with this formula: first status quo, then “1.3 Geometric diffusions approach for cluster analysis and pseudo-time ordering of single-cell differentiation data”, then paper summaries
 
 - [x] really play on your strengths, say data exploding in scRNA-Seq, hence need for good well implemented SOFTWARE, not only theory methods. this is where you excel.
 
@@ -148,7 +148,7 @@
 
 - [x] say e.g. something on analysis or so
 
-- [x] but: first a section on single cell biology or so?
+- [x] but: first a section on single-cell biology or so?
 
 ### 1.1 Workflow
 - [x] workflow for what?
@@ -213,7 +213,7 @@
 
   > done
 
-- [x] fig 1.4 (cell fates) somewhat nice, but give legend for arrows, add some references and say these things are artificial mostly. but: this is out of place in analysis, this should be in motivating bio questions in the single cell bio part in beginning, no? you’d need a fig for analysis etc
+- [x] fig 1.4 (cell fates) somewhat nice, but give legend for arrows, add some references and say these things are artificial mostly. but: this is out of place in analysis, this should be in motivating bio questions in the single-cell bio part in beginning, no? you’d need a fig for analysis etc
 
   > Moved and explained arrows.
 
@@ -407,11 +407,11 @@
 
 > added all of them
 
-- [x] Destiny: Diffusion maps for large-scale single cell data in R.
+- [x] Destiny: Diffusion maps for large-scale single-cell data in R.
 - [x] Single cells make big data: New challenges and opportunities in transcriptomics.
-- [x] SCANPY: large-scale single cell gene expression data analysis.
-- [x] BART-Seq: cost-effective massively parallelized targeted sequencing for genomics, transcriptomics, and single cell analysis
-- [x] Automatic identification of relevant genes from low-dimensional embeddings of single cell RNA-Seq data
+- [x] SCANPY: large-scale single-cell gene expression data analysis.
+- [x] BART-Seq: cost-effective massively parallelized targeted sequencing for genomics, transcriptomics, and single-cell analysis
+- [x] Automatic identification of relevant genes from low-dimensional embeddings of single-cell RNA-Seq data
 
 ## 3 Conclusion
 - [x] should be conclusion + outlook (which is what you do anyway)
@@ -426,7 +426,7 @@
 
   Added
 
-- [ ] "My contributions towards more reproducible, scalable and interconnectible scientific programming have helped these changes along." → sounds very different from what you wrote before
+- [ ] "My contributions towards more reproducible, scalable and interconnective scientific programming have helped these changes along." → sounds very different from what you wrote before
 
 ### 3.1 Multi-resolution scRNA-Seq Analysis
 - [x] multi-res? really? don’t understand what you mean, can you define?

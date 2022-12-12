@@ -4,12 +4,12 @@
 \startchapter[reference=sec:intro, title={Introduction}]
 
 \startsection[title={How to Understand Cell Behavior}]
-% Basic structure: Zoom in; What’s the big field, how to get from there to scRNA-Seq?
+% Basic structure: Zoom in; What’s the big field, and how to get from there to scRNA-Seq?
 
 % big topic: cell biology and medicine
 Every aspect of existence as thinking beings touches cell function.
 Our body consists of cells performing the most varied tasks in order to maintain it:
-they constitute organs, muscle, and everything else apart from teeth and bone, which are produced by cells.
+they constitute organs, muscles, and everything else apart from teeth and bone, which are produced by cells.
 We are protected by the complex interplay of the cells in our immune system, and the physical barrier of the dead keratinous cells making up our outer skin layer.
 Even our thinking depends on neurons, our psyche on cellular regulation of our brain chemistry.
 Formed by imperfect evolution, this machinery is not built to last.
@@ -17,7 +17,7 @@ Health, life and death are therefore topics every human has to confront at some 
 
 % complex diseases need better tools
 Medicine has performed incredible feats of extending our expected span and quality of life.
-In our consequently aging society, it becomes increasingly important to understand the long term effects of living.
+In our consequently aging society, it becomes increasingly important to understand the long-term effects of living.
 The more diseases we can effectively counter, the more it is possible to shift our focus to rarer or more complex ones.
 This includes diseases like cancer, caused by mutated cells, or diseases caused by malfunctioning cell regulation.
 All those diseases have in common that they cannot be understood without knowing the cellular mechanisms involved.
@@ -35,19 +35,19 @@ Proteomics, the measurement of proteins directly, is impeded in several ways.
 Proteins experience complex binding behavior and cannot be directly amplified, which impedes quantification.
 This results in proteomics being limited to targeted analysis of a small number of known proteins \cite[manzoni2018].
 The assembly of proteins in cells is however fairly well understood and measurable.
-The central dogma of molecular biology states that genes on our chromosomes are transcribed to short lived messenger RNA (mRNA) molecules, which are then translated to proteins (see \infig[fig:dogma]).
+The central dogma of molecular biology states that genes on our chromosomes are transcribed to short-lived messenger RNA (mRNA) molecules, which are then translated to proteins (see \infig[fig:dogma]).
 %Genes are transcribed into a pre-messenger RNA (pre-mRNA) and then spliced into one of several possible final mRNAs encoding a different protein each.
-The presence of mRNA in a cell therefore indicates that its respective protein is currently being produced.
+The presence of mRNA in a cell, therefore, indicates that its respective protein is currently being produced.
 It is possible to quantify and subsequently analyze snapshots of all mRNA molecules in a cell sample using RNA sequencing (RNA-Seq, \inbracecite[morin2008]).
 This untargeted large-scale process is called gene expression analysis.
 During the past decade, biological research worked with averaged RNA profiles of cell samples called bulk RNA-Seq.
-Those profiles allow to capture the gene expression of a tissue or fluid sample without accounting for cell-to-cell variability.
+Those profiles allow capturing the gene expression of a tissue or fluid sample without accounting for cell-to-cell variability.
 
 \startplacefigure[reference=fig:cell-fate, title={%
 Cells differentiate smoothly and in stochastically diverging paths, from high potency (top) to high specialization (bottom).
 Dedifferentiation (blue arrows) occurs naturally in plants and regenerating basal animals, but not humans.
 The natural occurrence of transdifferentiation (orange arrows) in humans has only been observed from α to β cells in pancreatic islets.
-Experiments to artificially induce trans- or dedifferentiation have shown promise for regeneration of tissue damage and effects of aging.
+Experiments to artificially induce trans- or dedifferentiation have shown promise for the regeneration of tissue damage and the effects of aging.
 \crlf\small{(Figure adapted from \inlinecite[gam2019] with permission)}
 }]
 %https://www.mdpi.com/2073-4409/8/10/1189
@@ -56,15 +56,15 @@ Experiments to artificially induce trans- or dedifferentiation have shown promis
 \stopplacefigure
 
 % SC revolution
-Single cell RNA-Seq (scRNA-Seq) can measure extremely small expression values down to a single mRNA molecule \cite[tang2011].
-This data comes with its own challenges, but enables the study of heterogeneous tissue, where expression averages from bulk RNA-Seq are not meaningful \cite[svensson2018b].
+Single-cell RNA-Seq (scRNA-Seq) can measure extremely small expression values down to a single mRNA molecule \cite[tang2011].
+This data comes with its challenges, but enables the study of heterogeneous tissue, where expression averages from bulk RNA-Seq are not meaningful \cite[svensson2018b].
 Nature Methods has named scRNA-Seq its method of the year 2013 together with scDNA-Seq \cite[nmeth2014].
-The ability to dissect heterogeneity allows to improve our understanding of the complex cellular interaction, in developing, mature, and diseased tissue.
-This enables new approaches to fight diseases like cancer \cite[patel2014,qian2017] and influencing cellular development (see \infig[fig:cell-fate]).
+The ability to dissect heterogeneity allows improving our understanding of the complex cellular interaction, in developing, mature, and diseased tissue.
+This enables new approaches to fight diseases like cancer \cite[patel2014,qian2017] and to influence cellular development (see \infig[fig:cell-fate]).
 The second great advantage is that the amounts of data present in scRNA-Seq are necessary for machine learning approaches.
 Advances in microfluidic devices have led to experimental protocols able to sequence more than a million cells \cite[macosko2015,klein2015,zheng2017].
 Ample variation between this multitude of individual cells enables derivation of patterns undiscernible by even the most careful manual isolation of bulk samples \cite[huang2018].
-For example \inlinecite[plass2018] have determined the developmental lineage of every cell in a planarian, a regenerative species whose cellular mechanisms could be the key to prevent scarring or delay aging in humans.
+For example, \inlinecite[plass2018] have determined the developmental lineage of every cell in a planarian, a regenerative species whose cellular mechanisms could be the key to preventing scarring or delaying aging in humans.
 \inlinecite[vento-tormo2018] have profiled cells from human placentas for regulatory interactions in the maternal-fetal interface, furthering our understanding of prenatal diseases.
 The international community of scientists working on transcriptomics is coming together to create the \n{Human Cell Atlas} (see \infig[fig:hca], \inbracecite[regev2017]).
 
@@ -79,12 +79,12 @@ Next to scRNA-Seq methods operating on disaggregated cells, HCA collects spatial
 %challenges: different sources of biases and noise
 All these opportunities come at the cost of additional complexity and more confounding variables (biases).
 For one, scRNA-Seq has by far fewer mRNA molecules per sample than bulk RNA-Seq, which results in noisier measurements in general \cite[brennecke2013].
-Experimental protocols used for sequencing single cell transcriptomes have different tradeoffs between sensitivity, cost, time investment, and individual biases \cite[ziegenhain2017,vieth2019].
+Experimental protocols used for sequencing single-cell transcriptomes have different tradeoffs between sensitivity, cost, time investment, and individual biases \cite[ziegenhain2017,vieth2019].
 For example, microfluidic protocols cannot completely avoid lysing and sequencing two cells in the same droplet (doublets).
 The number of cells that can be measured at once with a certain quality is therefore practically limited.
 Measuring thousands or more cells without exploding costs means that shallow sequencing depths and additional biases are being tackled using computational solutions where applicable \cite[angerer2017].
 % solutions
-For example there are dedicated methods for doublet filtering \cite[mcginnis2019,wolock2019].
+For example, there are dedicated methods for doublet filtering \cite[mcginnis2019,wolock2019].
 Not all effects however are correctly understood and currently approached.
 Studies have suggested in past years that microfluidic protocols inflate the number of zeros in the data due to technical reasons, where a zero stands for a gene not being detected in a cell at all.
 \inlinecite[svensson2020] however asserts that the high number of zeros stems from biological variation.
@@ -92,12 +92,12 @@ Studies have suggested in past years that microfluidic protocols inflate the num
 Increased complexity in analysis can be conquered with improved modeling or more sophisticated preprocessing.
 From-scratch modeling is more correct, but less flexible, as it requires careful informed design across the whole analysis process.
 Each new analysis that significantly deviates from previous analyses requires a re-thinking and re-building of the model almost from the ground up.
-There are however also modeling approaches that instead of performing analysis, replace several preprocessing steps specifically for scRNA-Seq data, like the normalizing single cell dimensionality reduction methods \n{scVI} \cite[lopez2018] and \n{GLM-PCA} \cite[townes2019].
+There are however also modeling approaches that instead of performing analysis, replace several preprocessing steps specifically for scRNA-Seq data, like the normalizing single-cell dimensionality reduction methods \n{scVI} \cite[lopez2018] and \n{GLM-PCA} \cite[townes2019].
 
 % motivation for my work
 The more practical approach is to start with careful preprocessing, transforming data in a way that fulfills the assumptions of subsequent analysis \cite[vieth2019].
 This allows the creation and use of streamlined building blocks for pipelines to preprocess, analyze, and visualize the data.
-Until a few years ago, there were no freely available programming environments that enabled this approach for single cell data analysis \cite[wolf2018,stuart2019].
+Until a few years ago, there were no freely available programming environments that enabled this approach for single-cell data analysis \cite[wolf2018,stuart2019].
 Analysis pipelines came custom-built for a certain publication, just as hard to take apart and reuse as a holistic model would have been.
 Every graduate student and postdoctoral researcher had to start from scratch.
 The thesis at hand is a slice of the author’s continued efforts to change this.
@@ -105,31 +105,31 @@ The thesis at hand is a slice of the author’s continued efforts to change this
 \stopsection
 
 In the following \insec[sec:workflow], I will provide an overview of a general scRNA-Seq analysis workflow.
-Afterwards, \insec[sec:org] will address the organization and reuse of analysis workflows like it.
+Afterward, \insec[sec:org] will address the organization and reuse of analysis workflows like it.
 The extent of detail in describing the individual steps will correspond to the extent of my contributions,
 a detailed breakdown of which follows in \insec[sec:pub-summary].
 
 \startsection[reference=sec:workflow, title={Workflow for scRNA-Seq Data Processing}]
-% story: new challenges by single cell data; old way to deal with data (workflows) are not efficient → new approaches needed → me
+% story: new challenges by single-cell data; the old way to deal with data (workflows) are not efficient → new approaches needed → me
 
-% Overview:Describe how the workflows work and why the aforementioned is important.
+% Overview: Describe how the workflows work and why the aforementioned is important.
 The general workflow of scRNA-Seq data processing consists of five steps.
 The first step, library preparation and sequencing, is experimental and is performed in a biological laboratory.
-The second step, counting, creates a cell × gene matrix from raw data produced in step one.
+The second step, quantification, creates a cell × gene matrix from raw data produced in step one.
 The remaining steps are preprocessing, analysis and visualization of this matrix.
 
 \startsubsection[title={Library Preparation and Sequencing}]
 % 1. (cells → transcript library) and sequencing (transcript library → reads)
 \startplacefigure[reference=fig:rna-seq, title={%
 ScRNA-Seq library preparation, sequencing, and mapping.
-\bold{a)} In-vivo steps performed by the cell.
+\bold{a)} In-vivo steps are performed by the cell.
 A gene is transcribed from DNA to a pre-messenger RNA (pre-mRNA).
 Introns are spliced out to form one of several possible splicing variant mRNAs.
-\bold{b)} In-vitro steps performed using lab equipment.
+\bold{b)} In-vitro steps are performed using lab equipment.
 The mRNA strands are fragmented chemically and reverse transcribed into cDNA for stability, as RNA degrades quickly.
 The fragments are tagged with a cell-specific barcode and optionally molecular and library identifiers.
 The tagged fragments are pooled, amplified, then sequenced using a high-throughput sequencing machine.
-\bold{c)} In-silico steps performed using a PC or server.
+\bold{c)} In-silico steps are performed using a PC or server.
 The tagged fragment sequences are aligned to a genome or transcriptome.
 The mapped fragments are counted per cell-gene combination, accounting for splicing variants.
 }]%
@@ -139,12 +139,12 @@ The mapped fragments are counted per cell-gene combination, accounting for splic
 
 \noindent
 The first step begins with an experiment to prepare and sequence a transcript library containing mostly mature mRNA but also unspliced mRNA and other RNA (see \infig[fig:rna-seq]a).
-There are different kinds of library preparation protocols, all of which have in common that they isolate and fragment the RNA per single cell, reverse transcribe it into complementary DNA (cDNA) and then tag each fragment with a cell specific barcode (see \infig[fig:rna-seq]b).
-Due to the low amount of RNA in single cells and the protocols’ detection limits, all current protocols also contain contain a step amplifying the available cDNA \cite[islam2014].
+There are different kinds of library preparation protocols, all of which have in common that they isolate and fragment the RNA per single cell, reverse transcribe it into complementary DNA (cDNA) and then tag each fragment with a cell-specific barcode (see \infig[fig:rna-seq]b).
+Due to the low amount of RNA in single cells and the protocols’ detection limits, all current protocols also contain a step amplifying the available cDNA \cite[islam2014].
 The most important differences between protocols manifest in cost, sensitivity and the distinction between those capturing paired fragments starting at both ends of the RNA and those capturing only the RNA end where translation into proteins starts, called the 3′ end \cite[ziegenhain2018].
 The sequencing machine finally digitizes the fragments and allows all further processing to happen on a computer (see \infig[fig:rna-seq]c).
-% 1½. protocol specific bias correction
-Additional to the cell barcode, some protocols allow to enrich the library with information that can be used to reduce sources of noise or bias.
+% 1½. protocol-specific bias correction
+Additional to the cell barcode, some protocols allow enriching the library with information that can be used to reduce sources of noise or bias.
 This includes e.\,g. unique molecular identifiers (UMIs), which ensure each transcript is counted only once despite the amplification step \cite[islam2014].
 A second example is adding known quantities of RNA from a foreign organism (spike-in RNA) to each cell library, which are later used to correct for nonlinear per-cell biases in transcript counts \cite[lun2017b].
 \stopsubsection
@@ -159,7 +159,7 @@ Since only the resulting count matrix is needed for many kinds of downstream ana
 For ease of use, pipelines wrapping those tools for certain experimental protocols exist.
 Those include \n{Cell Ranger} for the \n{10x Genomics} \n{Chromium} protocol \cite[zheng2017] or \n{zUMIs} \cite[parekh2018] for several protocols involving UMIs.
 
-Protocols like the above produce counts for all expressed genes, resulting in a sparse matrix of not very sensitively captured expression values.
+Protocols like the above produce count numbers for all expressed genes, resulting in a sparse matrix of not very sensitively captured expression values.
 The present thesis details a targeted RNA-Seq protocol called BART-Seq \cite[uzbas2019] (see \insec[sec:bart-seq]).
 Its tradeoffs are the inverse, allowing to sensitively capture expression values of a low number of target genes for a high number of samples.
 \stopsubsection
@@ -173,7 +173,7 @@ Commonly one starts by eliminating rows and columns from the count matrix that a
 Rows with low count sum or very few entries are assumed to be empty droplets or wells, while columns with similar properties are genes that do not impact later analysis steps.
 A popular strategy is therefore to initially remove rows and columns like this from the count matrix.
 It also removes cells containing a high fraction of mitochondrial gene counts, indicative of dead or dying cells \cite[ilicic2016].
-Doublets cannot be detected reliably by a simple count threshold, as a pair of small cells can have similar numbers of expressed genes and counts as single large cell, but more sophisticated solutions are emerging \cite[mcginnis2019,wolock2019].
+Doublets cannot be detected reliably by a simple count threshold, as a pair of small cells can have similar numbers of expressed genes and counts as a single large cell, but more sophisticated solutions are emerging \cite[mcginnis2019,wolock2019].
 \inlinecite[luecken2019] point out that each filtering covariate in isolation is insufficient to identify a non-cell row, and suggests conservative joint scoring using more than one covariate.
 
 \startplacefigure[reference=fig:batch-effect, title={%
@@ -185,7 +185,7 @@ Cells from well-normalized data will have similar expression profiles to cells f
 \stopplacefigure
 
 Another common preprocessing step is normalization, which corrects for common technical and unwanted biological sources of cell variation.
-For example when not studying the cell cycle itself, its variation can obscure the processes under investigation \cite[buettner2015].
+For example, when not studying the cell cycle itself, its variation can obscure the processes under investigation \cite[buettner2015].
 If multiple runs of the sequencer were used to obtain the full data, there will be biases per run that can be reduced by using a dedicated batch effect correction algorithm (see \infig[fig:batch-effect]).
 While older bulk correction effects such as \n{ComBat} \cite[johnson2007] have proven to be effective in the last years,
 a growing number of dedicated scRNA-Seq batch effect correction tools are becoming available \cite[haghverdi2018,lotfollahi2018,korsunsky2019,polanski2020].
@@ -198,33 +198,33 @@ This more complex filtering is performed in addition to the aforementioned quali
 
 One last step lies between preprocessing and analysis.
 In order to model and analyze count data, it is almost always necessary to calculate distances between cells’ expression profiles.
-Distance measures usually expect data with no mean–variance dependency, i.\,e. normally distributed data, which can be fulfilled in two ways.
+Distance measures usually expect data with no mean-variance dependency, i.\,e. normally distributed data, which can be fulfilled in two ways.
 One is to transform expressions into a space where those expectations hold, commonly by logarithmizing it.
-The intuition is that in log-space, distances represent log-fold changes, a usual way to compare expression levels \cite[brennecke2013,eling2018].
-However, \inlinecite[svensson2020] suggested that log-transforming data is a possible cause for distorting data by zero-inflation.
-Another way is to employ dimensional reduction methods to embed the data into a lower-dimensional space with the desired properties, such as Principal Component Analysis (PCA, \inbracecite[abdi2010]) or diffusion maps \cite[coifman2005].
+The intuition is that in log space, distances represent log-fold changes, a usual way to compare expression levels \cite[brennecke2013,eling2018].
+However, \inlinecite[svensson2020] suggested that log-transforming data is a possible cause for distorting data by zero inflation.
+Another way is to employ dimension reduction methods to embed the data into a lower-dimensional space with the desired properties, such as Principal Component Analysis (PCA, \inbracecite[abdi2010]) or diffusion maps \cite[coifman2005].
 An advantage of operating on a low-dimensional embedding instead of on the expression level is the reduced computational and memory costs.
-With single cell data specific transforms like \n{SCTransform} \cite[hafemeister2019], as well as embeddings like \n{scVI} \cite[lopez2018] or \n{GLM-PCA} \cite[townes2019], promising alternatives are emerging, despite them losing the log-fold interpretability.
+With single-cell data, specific transforms like \n{SCTransform} \cite[hafemeister2019], as well as embeddings like \n{scVI} \cite[lopez2018] or \n{GLM-PCA} \cite[townes2019], promising alternatives are emerging, despite them losing the log-fold interpretability.
 \stopsubsection
 
 \startsubsection[reference=sec:analysis, title={Analysis of heterogeneity, cellular dynamics, and gene roles}]
 % 4. uncover dynamics, heterogeneity structure, variable importance and role
 Analysts work interactively, with gradual insight gain shaping further steps.
-To this end, overview statistics and visualizations are employed from the earliest to the last steps of an analysis (see \insec[sec:visualization]).
+To this end, overview statistics and visualizations are employed from the earliest to the last steps of analysis (see \insec[sec:visualization]).
 
-Analysis of single cell data generally focuses on uncovering previously unknown heterogeneity and its sources \cite[patel2014,poirion2016,angerer2017].
+Analysis of single-cell data generally focuses on uncovering previously unknown heterogeneity and its sources \cite[patel2014,poirion2016,angerer2017].
 The kind of heterogeneity to uncover depends on what was captured experimentally:
-the simplest case is discrimination between discrete subpopulations of few clearly different cell types.
+the simplest case is discrimination between discrete subpopulations of a few clearly different cell types.
 A common goal there is to find a small number of marker genes able to reliably distinguish a subpopulation that is sufficiently distinct from the rest of the cells.
 Methods performing this search are called differential gene expression (DE) analyses \cite[soneson2018].
-While DE analysis methods stem from bulk RNA-Seq, single cell specific methods such as SCDE \cite[kharchenko2014], MAST \cite[finak2015], and BASiCS \cite[vallejos2016] outperform bulk methods due to the additional information in single cell data.
+While DE analysis methods stem from bulk RNA-Seq, single-cell specific methods such as SCDE \cite[kharchenko2014], MAST \cite[finak2015], and BASiCS \cite[vallejos2016] outperform bulk methods due to the additional information in single-cell data.
 
 Another source of heterogeneity is the composition of the studied tissue.
-Tumors as well as healthy tissue are composed of cells fulfilling a multitude of different roles that can only be uncovered using single cell analysis \cite[patel2014,zhang2016,qian2017].
+Tumors as well as healthy tissue are composed of cells fulfilling a multitude of different roles that can only be uncovered using single-cell analysis \cite[patel2014,zhang2016,qian2017].
 A common method to make sense of tissue data is cluster analysis.
-For single cell data, the multi-resolution community detection algorithm \n{Leiden} \cite[traag2019] and its predecessor \n{Louvain} are used most commonly, despite \inlinecite[kiselev2019] arguing their lack of performance for smaller datasets.
+For single-cell data, the multi-resolution community detection algorithm \n{Leiden} \cite[traag2019] and its predecessor \n{Louvain} are used most commonly, despite \inlinecite[kiselev2019] arguing their lack of performance for smaller datasets.
 A frequent problem arising from cluster analysis is data reuse.
-Clusters are commonly the basis for further analysis like inter-cluster DE analysis – a task the aforementioned single cell specific DE tools are specifically designed for.
+Clusters are commonly the basis for further analysis like inter-cluster DE analysis – a task the aforementioned single-cell specific DE tools are specifically designed for.
 However, this leads to both clusters and markers being derived from the same data, and treating clusters as ground truth in this setting leads to inflated confidence in the found markers.
 The problem can be circumvented by joint clustering and DE analysis, manually propagating uncertainties \cite[zhang2019], or not relying on clustering to detect genes \cite[angerer2020].
 
@@ -236,8 +236,8 @@ The problem can be circumvented by joint clustering and DE analysis, manually pr
     The clarity of division between clusters shows how easily a given pair of clusters can be discriminated between.
     \bold{b)} Transition State Analysis dissects metastable states and their transitions.
     This can accurately represent cell development or more gradual cell identities rather than discrete types.
-    \bold{c)} Scoring results in each cell having an individual score in one or more schemas, defining likelihood or strength of a certain property.
-    \bold{d)} Differential Expression Analysis allows to identify genes defining a given subdivision, marking them for further analysis and providing insight into cell identities.
+    \bold{c)} Scoring results in each cell having an individual score in one or more schemas, defining the likelihood or strength of a certain property.
+    \bold{d)} Differential Expression Analysis allows the identification of genes defining a given subdivision, marking them for further analysis and providing insight into cell identities.
     \bold{e)} Labelling of clusters assigns them a cell type label, based on marker genes and other external knowledge.
     \bold{f)} Trajectory Analysis groups and orders cells by similar transition states rather than absolute similarities and therefore enables reasoning about continuous processes like cellular development or spatial gradients.
     \bold{g)} Gene Module Analysis associates genes with each other to combine previous knowledge about genes’ mechanism of action with new gene associations.
@@ -246,22 +246,22 @@ The problem can be circumvented by joint clustering and DE analysis, manually pr
 \hbox{\input{imgs/heterogeneity-analysis.tikz}}
 \stopplacefigure
 % Alternative:
-% a) cell level discretization (clustering), then cluster labelling (cell type) …
+% a) cell level discretization (clustering), then cluster labeling (cell type) …
 % b) … then DE
-% c) gene level discretization (correlation modules) to be able to interpret gene results
+% c) gene-level discretization (correlation modules) to be able to interpret gene results
 % d) cell networks (e.g. PAGA) for e) pseudo-time (less discretization) f) dim. red. g) kernels like Gene Relevance
 \TODO[not using “cell identities” elsewhere, unify]
-\TODO[c not immediately mentioned. Mention that prior info is used for labelling (marker genes) and gene modules]
+\TODO[c not immediately mentioned. Mention that prior info is used for labeling (marker genes) and gene modules]
 \TODO[maybe also composition differences between datasets (mapping between cell neighborhoods)?]
 
 Trajectory analysis is an approach that uncovers a developmental direction and hierarchy in developmental snapshot data.
 While cluster analysis strongly benefits from the availability of scRNA-Seq data, trajectory analysis can only exist because of it.
-Traditionally, cells were thought of exhibiting a discrete cell type each.
+Traditionally, cells were thought of as exhibiting a discrete cell type each.
 For cells that are dramatically specialized for one main role, this idea still holds.
 Most tissues however contain a multitude of cells fulfilling multiple roles each, without fitting into a discrete and homogeneous type.
 %developmental
 This includes cells in the process of differentiating from a malleable pluripotent state to a more or less specialized mature state \cite[haghverdi2015].
-While marker genes for certain cell roles or developmental steps exist, this complex and gradual nature of most tissues requires sophisticated analysis and visualization of single cell data.
+While marker genes for certain cell roles or developmental steps exist, this complex and gradual nature of most tissues requires sophisticated analysis and visualization of single-cell data.
 Early analysis tools like \n{Wanderlust} \cite[bendall2014], or DPT \cite[haghverdi2016] can be effectively applied to simple developmental data.
 Cells usually get increasingly specialized during their path of development, but do not necessarily follow all steps of differentiation in the same order or magnitude (see \infig[fig:cell-fate]).
 This results in cells temporarily or sometimes permanently stuck as intermediate types.
@@ -270,7 +270,7 @@ The field of trajectory analysis is constantly evolving to enable the analysis o
 Analyses depend on the availability of informative data.
 RNA velocity indicates the direction in which cells differentiate and therefore enhances trajectory inference with directionality and more accuracy \cite[efremova2020].
 It is reconstructed from the relation of spliced and unspliced mRNA \cite[lamanno2018].
-This makes RNA velocity an example going beyond data captured by classic scRNA-Seq, which is is limited to spliced mRNAs.
+This makes RNA velocity an example going beyond data captured by classic scRNA-Seq, which is limited to spliced mRNAs.
 Innovative analysis methods like it require additional data modalities to improve inference of certain biological dynamics.
 \stopsubsection
 
@@ -278,13 +278,13 @@ Innovative analysis methods like it require additional data modalities to improv
 
 \startsubsection[reference=sec:visualization, title={Visualization as Analysis steps and result}]
 % 5. (results often too complex to understand as numbers)
-% talk about dim red here and the fact that it’s hard to reason about how the input variables relate back to output – make path for GR coming to the rescue
+% talk about dim red here and the fact that it’s hard to reason about how the input variables relate back to output – make a path for GR coming to the rescue
 \startplacefigure[reference=fig:embeddings, title={%
 Four increasingly complex 2D embeddings of the same differentiating cells colored by age in days \cite[guo2010].
 \bold{a)} Two carefully selected pluripotency markers are not able to separate the differentiation paths.
 \bold{b)} A PCA is able to differentiate distinct clusters.
 \bold{c)} Diffusion maps clearly show bifurcations and smooth transitions.
-\bold{d)} UMAPs use machine learning to flatten multiple kinds of differences into a 2D plot, as in this case both bifurcation events present in the data.
+\bold{d)} UMAPs use machine learning to flatten multiple kinds of differences into a 2D plot, as in this case both bifurcation events that are present in the data.
 }]
 \externalfigure[dim-red.pdf]
 %\input{imgs/dim-red.tikz}
@@ -295,12 +295,12 @@ Complex developmental hierarchies and other relations in the data need to be fai
 This commonly involves laying out points representing the cells in a flat plane while trying to maintain relationships such as developmental closeness (see \infig[fig:embeddings]).
 The main challenge of finding a fitting low dimensional representation lies in the multiple scales biological processes take place in \cite[hasenauer2015] (see \infig[fig:hybrid]).
 \TODO[maybe find better citation? this one just mentions multi-scale processes, not dim red]
-Therefore, as opposed to simple dimensional reduction methods used for distance calculations (see \insec[sec:preprocessing]), the preferred methods for visualization take this multi-scale nature into account.
-Complex transforms are irreversible, so their resulting coordinates of cells in the visualization (the embedding) cannot be directly traced back to the input genes.
+Therefore, as opposed to simple dimension reduction methods used for distance calculations (see \insec[sec:preprocessing]), the preferred methods for visualization take this multi-scale nature into account.
+Complex transforms are irreversible, so the resulting coordinates of cells in the visualization (the embedding) cannot be directly traced back to the input genes.
 
 \startplacefigure[reference=fig:hybrid, location=left, hang=no, title={%
-A so called hybrid image exemplifies how the same data can encode information on multiple scales.
-In this painting, the high frequency visual features are interpreted as a woman with a mirror while the low frequency details are interpreted as a skull \cite[oliva2006].\crlf
+A so-called hybrid image exemplifies how the same data can encode information on multiple scales.
+In this painting, the high-frequency visual features are interpreted as a woman with a mirror while the low-frequency details are interpreted as a skull \cite[oliva2006].\crlf
 (“All is Vanity” by Charles Allan Gilbert, 1892)
 }]
 \externalfigure[allisvanity.jpg][width=5.3cm]
@@ -309,23 +309,23 @@ In this painting, the high frequency visual features are interpreted as a woman 
 Without additional data providing a ground truth about subpopulation identity, or clearly separated clusters that are inherently assigned genes driving their embedding, the process of validating an embedding is not automatic, requiring creative reasoning and literature research.
 A panel of marker genes per cluster is derived from the data and cross-referenced with literature to annotate known cell types in the data.
 When discovering novel subpopulations, their adjacency to known ones can be used to make and test assumptions about their role.
-An upcoming way to simplify the process are cell transcriptome atlases \cite[regev2017,schaum2018] that can be used as references to automatically look up and annotate your cells \cite[abdelaal2019].
+An upcoming way to simplify the process is cell transcriptome atlases \cite[regev2017,schaum2018] that can be used as references to automatically look up and annotate your cells \cite[abdelaal2019].
 
 % destiny: efficient and flexible diffusion maps for R
 \TODO[find good spot]
-As an example for a relatively self contained scRNA-Seq analysis loop, this thesis presents \n{destiny},
+As an example of a relatively self-contained scRNA-Seq analysis loop, this thesis presents \n{destiny},
 a user-friendly, flexible and fast R tool for three closely related analysis steps \cite[angerer2016].
-It was created to enable dimensional reduction of both large, sparse scRNA-Seq data and qPCR data, both of which benefit from explicit handling of missing values.
+It was created to enable dimension reduction of both large, sparse scRNA-Seq data and qPCR data, both of which benefit from the explicit handling of missing values.
 The only previously existing tool was impractically slow and memory intensive when applied to scRNA-Seq data and did not support censored values present in qPCR data.
 Beyond routines for efficient computation and visualization of diffusion maps (see \insec[sec:diffmaps]), \n{destiny} offers routines for diffusion pseudo time \cite[haghverdi2016], and gene relevance (see \insec[sec:gene-relevance], \inbracecite[angerer2020]).
-Its efficiency involves reuse of intermediate results from the diffusion map creation to calculate diffusion pseudo time between cells as well as to project new data into an existing diffusion map.
+Its efficiency involves the reuse of intermediate results from the diffusion map creation to calculate diffusion pseudo time between cells as well as to project new data into an existing diffusion map.
 \stopsubsection
 
 \stopsection
 
 Algorithms for analysis and visualization are at the forefront of discovery.
 They are however only part of the picture.
-A too narrow focus on individual steps or results in turn narrows the scope of what we consider doable.
+A too-narrow focus on individual steps or results in turn narrows the scope of what we consider doable.
 The bigger picture includes interoperability between tools.
 Progress is slow when one is bogged down by difficulties in menial tasks like file format conversion, tracking down ambiguously mapped gene names, and a faster machine to run an inefficient algorithm.
 
@@ -344,7 +344,7 @@ In this section, I outline the ways in which programmatic frameworks improve reu
 I address how the field changed its approach to analysis workflows.
 
 \startplacefigure[reference=fig:dataset-sizes, title={%
-Single cell dataset sizes uploaded to Gene Expression Omnibus (GEO).
+Sizes of single-cell datasets uploaded to Gene Expression Omnibus (GEO).
 This updated version of a figure from \inlinecite[angerer2017] shows the sustained trend of increasing datasets and cell numbers per dataset.
 }]
 \externalfigure[imgs/dataset-sizes.pdf]
@@ -357,21 +357,21 @@ The steps necessary to reproduce the preprocessing and analysis of a publication
 Pipelines perform transformations on the data, compute statistics, and compile reports.
 Depending on the amount of time and resources required to run the whole pipeline, it is desirable be able to only repeat part of the processing in case of an error.
 This is mostly achieved by regularly storing snapshot files representing the processing state between two subsequent sets of steps.
-Before I started working as a PhD student in the field, pipelines were mostly written in R or \n{GNU make} and often executed a command line for each step, a procedure which by necessity consumed and produced a snapshot, but allows no choice when this high granularity is undesirable.
+Before I started working as a Ph.D. student in the field, pipelines were mostly written in R or \n{GNU make} and often executed a command line for each step, a procedure which by necessity consumed and produced a snapshot, but allowed no choice when this high granularity is undesirable.
 Despite the field’s increasing investment into machine learning algorithms implemented in Python, few tools were available in that language.
 \TODO[the above is actually about pipelines still, so move it up?]
 
 % communication
 Communication with other languages or between pipeline steps involved reading a snapshot (often text-based) from a file system, processing it, and writing it back to disk.
 This process involved long run times due to slow reading and writing, high storage space requirements and little resilience to errors.
-File corruption introduced e.\,g. via unreliable access to network storage could not be detected in text files, which lack checksums and other resilience precautions.
+File corruption introduced e.\,g. via unreliable access to the network, storage could not be detected in text files, which lack checksums and other resilience precautions.
 In practice, the lack of frameworks resulted in each tool or pipeline having to solve common problems by itself, such as hardening against the aforementioned reliability issues.
 This further wasted resources and increased the potential for errors.
 The resulting pipeline code published with papers was very application-specific and hard to generalize or reuse.
 
 % Existing methods are not focused on interoperability.
 Even within analysis pipelines operating entirely in memory instead of on slow and unreliable files, individual tools were not necessarily designed to be compatible.
-Single tools could halt progress if they had insufficient performance for upcoming large datasets from microfluidic protocols.
+Single tools could halt progress if their performance was insufficient for upcoming large datasets from microfluidic protocols.
 The tools’ varying code quality, choice of default values and error reporting led to subtle incompatibility bugs.
 Furthermore, no data structures and file exchange formats suitable for scRNA-Seq existed, so workflows manually kept count matrices and annotation data frames in sync across filtering steps, increasing the potential for error.
 Furthermore, reproducibility was hard to guarantee in the presence of nondeterministic methods and a multitude of tool versions with subtly different defaults and behavior.
@@ -382,8 +382,8 @@ In the R world, the \n{Bioconductor} project \cite[huber2015] provided tools for
 
 % - pre-GR: differential expression
 No dimensionality reduction method except for the simplistic linear PCA provides a way to relate embedding location back to input variables.
-The popularity of nonlinear dimensionality reductions meant that there was a gap between using them as cell-level analysis tool and the differential expression (DE) analysis \cite[soneson2018] as most popular gene-level analysis tool.
-DE requires discrete partitioning of the data, which is not well defined for data containing gradual transition of gene expression profiles between cells, and has the aforementioned issues with uncertainty propagation.
+The popularity of nonlinear dimensionality reductions meant that there was a gap between using them as a cell-level analysis tool and the differential expression (DE) analysis \cite[soneson2018] as the most popular gene-level analysis tool.
+DE requires discrete partitioning of the data, which is not well defined for data containing a gradual transition of gene expression profiles between cells and has the aforementioned issues with uncertainty propagation.
 \stopsubsection
 
 \startsubsection[title={Frameworks for modular scRNA-Seq Analysis Pipelines}]
@@ -398,14 +398,14 @@ Write programs to handle text streams, because that is a universal interface.
 \stopblockquote
 
 \noindentation
-Text based file formats and pipeline steps realized as command line interfaces working on these files had their place for a long time.
-The approach results in automatic availability of intermediate steps as snapshots, in a human readable form, and to use basic text manipulation to work on them.
+Text-based file formats and pipeline steps realized as command line interfaces working on these files had their place for a long time.
+The approach results in the automatic availability of intermediate steps as snapshots, in a human-readable form, and in the use of basic text manipulation to work on them.
 Attempting to serve this lowest common denominator however lead to the aforementioned limitations when building pipelines.
 
 % - What is a framework?
 The alternative is to use a framework, i.\,e. an opinionated set of data structures and routines that are tightly integrated but generic enough to be used as building blocks for pipelines or visualization tools.
-This tight integration allows to rely on information being tracked that allows the framework to provide necessary features, which would have to be rebuilt on a case-by-case basis without a framework.
-It also allows to bundle steps efficiently in memory, allowing control over when to invest the resources to store snapshots.
+This tight integration allows for reliance on information being tracked that allows the framework to provide necessary features, which would have to be rebuilt on a case-by-case basis without a framework.
+It also allows bundling steps efficiently in memory, allowing control over when to invest the resources to store snapshots.
 
 % - Through frameworks, data interchange formats and containers we get interoperability and reproducibility.
 Due to their tighter coupling of data structures and algorithms, frameworks are specific to individual programming languages.
@@ -413,15 +413,15 @@ For scRNA-Seq analysis, the major frameworks today are implemented in R and Pyth
 Note that \n{Seurat} in its original publication 2015 was no general purpose scRNA-Seq analysis framework yet, but a data alignment algorithm with additional helper routines.
 } \cite[satija2015,butler2018], \n{scater} \cite[mccarthy2017], and \n{scanpy} \cite[wolf2018] are the most popular ones.
 Their data structures allow keeping gene and cell annotations and graphs in sync with the expression matrix while filtering and concatenating data (see \insec[sec:anndata]).
-Interspersing steps from frameworks written in different languages stay possible via common serialization formats and in-memory conversion, while largely maintaining aforementioned advantages \cite[angerer2019b].
+Interspersing steps from frameworks written in different languages stay possible via common serialization formats and in-memory conversion, while largely maintaining the aforementioned advantages \cite[angerer2019b].
 
 %reproducibility
 Reproducibility seems to be largely solved, as widely available container solutions such as \n{Docker} allow defining perfectly reproducible environments \cite[ditommaso2015].
 Unlike standalone tools, the frameworks also consistently support random seeding for identical output of nondeterministic processes.
-% - good error reporting / software quality important for good science (Avoid garbage-in garbage-out)
-% - principle of many eyes: less bugs in shared code
+% - good error reporting/software quality is important for good science (Avoid garbage-in garbage-out)
+% - the principle of many eyes: fewer bugs in shared code
 The number of users of a framework or tool contributes to its quality and therefore the quality of studies relying on it, as more people report errors and special use cases, which increases the robustness of the frameworks towards those problems \cite[kim2015b].
-Bigger frameworks encompassing many tools have an easier time to test several permutations of their functionality than each tool would be able to when standing alone.
+Bigger frameworks encompassing many tools have an easier time testing several permutations of their functionality than each tool would be able to when standing alone.
 
 %R
 The R world is more fragmented than Python’s:
@@ -433,7 +433,7 @@ Standalone tools in R like \n{destiny} \cite[angerer2016], \n{scmap} \cite[kisel
 
 %AnnData and scanpy
 In Python, most newly released standalone tools come with support for the generic data structure \n{AnnData} \cite[zappia2018,eraslan2019,polanski2020].
-\n{AnnData} supports reading and writing from and to several language agnostic interchange formats.
+\n{AnnData} supports reading and writing from and to several language-agnostic interchange formats.
 It was the first annotated matrix data structure to support sparse expression matrices and therefore up to millions of cells.
 It provides its own format that supports disk backing for operations on data too large to be performed in memory, sparse or dense.
 % Scanpy

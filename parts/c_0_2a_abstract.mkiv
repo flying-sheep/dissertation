@@ -2,32 +2,32 @@
 \project project_dissertation
 
 \starttitle[title={Abstract}]
-Since its inception 11 years ago, single cell RNA sequencing (scRNA-Seq) allows measurement of high-dimensional transcriptome data with single cell resolution.
-Their availability and accessibility grants unprecedented opportunities for research on disease mechanics and cellular development.
-This potential prompted ongoing growth in experimental capabilities, data size, and analysis tools, including a zoo of dimensional reduction methods to preprocess and make sense of high-dimensional data.
+Since its inception 11 years ago, single-cell RNA sequencing (scRNA-Seq) allows the measurement of high-dimensional transcriptome data with single-cell resolution.
+Their availability and accessibility grant unprecedented opportunities for research on disease mechanics and cellular development.
+This potential prompted ongoing growth in experimental capabilities, data size, and analysis tools, including a zoo of dimension reduction methods to preprocess and make sense of high-dimensional data.
 Due to the resulting combinatorial explosion of options, arriving at a set of best practices involves both a lot of research and implementation effort.
-Traditionally, this effort resulted in inflexible processing and analysis pipelines of which only few experience continuous updates to the newest best practices.
+Traditionally, this effort resulted in inflexible processing and analysis pipelines of which only a few experience continuous updates to the newest best practices.
 Furthermore, mixing and matching analysis steps of pipelines designed around ad-hoc data formats is not a trivial task, especially with the high volumes of data commonly used today.
 This development shows a clear need for a central, efficient data structure and an extensible framework for analyzing and visualizing the data it represents.
 
-This work describes advances towards a consolidated and accessible scRNA-Seq analysis and visualization experience using such a framework.
-It focuses on the development of reusable analysis building blocks and algorithms for dimensional reduction tailored to this kind of high-volume, high-dimensional data.
+This work describes advances toward a consolidated and accessible scRNA-Seq analysis and visualization experience using such a framework.
+It focuses on the development of reusable analysis building blocks and algorithms for dimension reduction tailored to this kind of high-volume, high-dimensional data.
 A general scRNA-Seq analysis workflow is explained together with the challenges and opportunities related to each step.
-My contributions outline the development towards this framework in context of a generalized workflow;
+My contributions outline the development of this framework in the context of a generalized workflow;
 first, data is collected and quantified.
 This step commonly involves untargeted scRNA-Seq using a commercial platform, which can get expensive for high volumes of data.
 BART-Seq is an inexpensive protocol for targeted transcriptome quantification for large amounts of samples.
 Fatma Uzbas, Micha Drukker and I designed its demultiplexing and quantification strategy together, while I also implemented the quantification pipeline.
-Second, raw data is read into a data structure able to hold raw quantities, metadata, and different representations such as dimensional reductions.
+Second, raw data is read into a data structure able to hold raw quantities, metadata, and different representations such as dimension reductions.
 I designed and implemented \n{AnnData}, a by now widely used generic Python data structure for annotated matrices such as scRNA-Seq expressions.
 Third, an integrated framework and compatible tools are used to operate on the data structure and visualize insights.
 \n{AnnData} is central to \n{scanpy}, an efficient Python framework with building blocks for preprocessing, analysis, and visualization of scRNA-Seq data.
 I co-developed \n{scanpy} with F. Alex Wolf, with me focusing on interaction design and usability.
-Given the central role of dimensional reduction in analysis of high-dimensional data, I developed two methods for creating and interpreting of them.
-I developed and continuously improved \n{destiny}, an efficient implementation of the diffusion map algorithm for dimensional reduction in R, which I optimized and extended for biological data.
-Based on an initial idea by F. Theis, I designed the gene relevance algorithm, which detects genes that drive a given dimensional reduction.
+Given the central role of dimension reduction in the analysis of high-dimensional data, I developed two methods for creating and interpreting them.
+I developed and continuously improved \n{destiny}, an efficient implementation of the diffusion map algorithm for dimension reduction in R, which I optimized and extended for biological data.
+Based on an initial idea by F. Theis, I designed the gene relevance algorithm, which detects genes that drive a given dimension reduction.
 
-The established projects \n{AnnData}, \n{scanpy}, and \n{destiny} prove to be popular contributions to single cell transcriptome analysis.
+The established projects \n{AnnData}, \n{scanpy}, and \n{destiny} prove to be popular contributions to single-cell transcriptome analysis.
 Their advances in accessibility, performance and reproducibility improve the field, while their use by researchers and industry shows promise to power many applications up to and including clinical ones.
 \stoptitle
 
