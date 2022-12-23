@@ -340,8 +340,9 @@ Specifically growing data sizes (see \infig[fig:dataset-sizes]) and increasing d
 Multiple theoretical possibilities mentioned in \inlinecite[angerer2017] are becoming reality.
 For example, cell atlases containing large amounts of multimodal data can now be used to infer labels for new data using transfer learning \cite[abdelaal2019].
 
-In this section, I outline how programmatic frameworks improve reusability and therefore interoperability and reproducibility, specifically of scRNA-Seq analysis.
-I address how the field changed its approach to analysis workflows.
+In this section, I address how the field changed its approach to analysis workflows, which is the area most of my contributions are focused on (see \insec[sec:pub-summary] for details on my contributions).
+I outline how the move to programmatic frameworks improves several aspects of analysis work, specifically of scRNA-Seq analysis:
+\emph{interoperability}, \emph{interpretability}, \emph{reproducibility}, \emph{performance}, and synergy effects arising from their combination.
 
 \startplacefigure[reference=fig:dataset-sizes, title={%
 Sizes of single-cell datasets uploaded to Gene Expression Omnibus (GEO).
@@ -350,12 +351,6 @@ This updated version of a figure from \inlinecite[angerer2017] shows the sustain
 \externalfigure[imgs/dataset-sizes.pdf]
 \stopplacefigure
 \TODO[add trend line]
-
-% Desiree 1/4: table of things distinguishing frameworks
-%* Interoperability of tools (AD data structure, conversion tools for common other data types)
-%* Domain knowledge: better errors, better testing, better communities (feedback, use cases, edge cases, and new functionality)
-%* Reproducibility (seeds, versions, official containers)
-%* Performance and stability (based on Scipy/NumPy etc., efficient data structure/snapshot storage, reuse of intermediary results)
 
 \startsubsection[title={Analysis Pipelines: Status Quo}]
 % pipelines used scripts and binaries to proceed between snapshots
