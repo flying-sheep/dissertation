@@ -406,9 +406,10 @@ Attempting to serve this lowest common denominator however lead to the aforement
 \TODO[the above is actually about pipelines still, fits here?]
 
 % - What is a framework?
-The alternative is to use a framework, i.\,e. an opinionated set of data structures and routines that are tightly integrated but generic enough to be used as building blocks for pipelines or visualization tools.
+The alternative is to use a framework, i.\,e. an opinionated set of data structures and routines that are built for \emph{interoperability}:
+tightly integrated but generic enough to be used as building blocks for pipelines or visualization tools.
 This tight integration allows for reliance on information being tracked that allows the framework to provide necessary features, which would have to be rebuilt on a case-by-case basis without a framework.
-It also allows bundling steps efficiently in memory, allowing control over when to invest the resources to store snapshots.
+It also allows increased \emph{performance} by bundling steps efficiently in memory, allowing control over when to invest the resources to store snapshots.
 
 % - Through frameworks, data interchange formats and containers we get interoperability and reproducibility.
 Due to their tighter coupling of data structures and algorithms, frameworks are specific to individual programming languages.
@@ -419,11 +420,12 @@ Their data structures allow keeping gene and cell annotations and graphs in sync
 Interspersing steps from frameworks written in different languages stay possible via common serialization formats and in-memory conversion, while largely maintaining the aforementioned advantages \cite[angerer2019b].
 
 %reproducibility
-Reproducibility seems to be largely solved, as widely available container solutions such as \n{Docker} allow defining perfectly reproducible environments \cite[ditommaso2015].
+\emph{Reproducibility} seems to be largely solved, as widely available container solutions such as \n{Docker} allow defining perfectly reproducible environments \cite[ditommaso2015].
 Unlike standalone tools, the frameworks also consistently support random seeding for identical output of nondeterministic processes.
 % - good error reporting/software quality is important for good science (Avoid garbage-in garbage-out)
 % - the principle of many eyes: fewer bugs in shared code
-The number of users of a framework or tool contributes to its quality and therefore the quality of studies relying on it, as more people report errors and special use cases, which increases the robustness of the frameworks towards those problems \cite[kim2015b].
+The number of users of a framework or tool contributes to its quality and therefore the quality of studies relying on it;
+more people report errors and special use cases, which increases \emph{interpretability} of successful results as well as errors, and the robustness of the frameworks towards these use cases \cite[kim2015b].
 Bigger frameworks encompassing many tools have an easier time testing several permutations of their functionality than each tool would be able to when standing alone.
 
 %R
@@ -437,7 +439,7 @@ Standalone tools in R like \n{destiny} \cite[angerer2016], \n{scmap} \cite[kisel
 %AnnData and scanpy
 In Python, most newly released standalone tools come with support for the generic data structure \n{AnnData} \cite[zappia2018,eraslan2019,polanski2020].
 \n{AnnData} supports reading and writing from and to several language-agnostic interchange formats.
-It was the first annotated matrix data structure to support sparse expression matrices and therefore up to millions of cells.
+It was the first annotated matrix data structure to support sparse expression matrices and therefore a \emph{performance} that can handle data representing millions of cells.
 It provides its own format that supports disk backing for operations on data too large to be performed in memory, sparse or dense.
 % Scanpy
 \n{AnnData} was developed alongside \n{scanpy} in order to make the latter a highly modular framework \cite[wolf2018].
