@@ -343,6 +343,7 @@ For example, cell atlases containing large amounts of multimodal data can now be
 In this section, I address how the field changed its approach to analysis workflows, which is the area most of my contributions are focused on (see \insec[sec:pub-summary] for details on my contributions).
 I outline how the move to programmatic frameworks improves several aspects of analysis work, specifically of scRNA-Seq analysis:
 \emph{interoperability}, \emph{interpretability}, \emph{reproducibility}, \emph{performance}, and synergy effects arising from their combination.
+\TODO[mention where what goes? e.g. reliability as a synergy, …]
 
 \startplacefigure[reference=fig:dataset-sizes, title={%
 Sizes of single-cell datasets uploaded to Gene Expression Omnibus (GEO).
@@ -360,22 +361,22 @@ Depending on the amount of time and resources required to run the whole pipeline
 This is mostly achieved by regularly storing snapshot files representing the processing state between two subsequent sets of steps.
 Before I started working as a Ph.D. student in the field, pipelines were mostly written in R or \n{GNU make} and often executed a command line for each step, a procedure which by necessity consumed and produced a snapshot, but allowed no choice when this high granularity is undesirable.
 Despite the field’s increasing investment into machine learning algorithms implemented in Python, few tools were available in that language.
-\TODO[the above is actually about pipelines still, so move it up?]
 
 % communication
 Communication with other languages or between pipeline steps involved reading a snapshot (often text-based) from a file system, processing it, and writing it back to disk.
-This process involved long run times due to slow reading and writing, high storage space requirements and little resilience to errors.
-File corruption introduced e.\,g. via unreliable access to the network, storage could not be detected in text files, which lack checksums and other resilience precautions.
+This process lacked \emph{performance}, as it involved long run times due to slow reading and writing, and high storage space requirements.
+Furthermore, it had little resilience to errors, which was one of the factors leading to low \emph{reproducibility}.
+File corruption introduced e.\,g. via unreliable access to the network storage, could not be detected in text files, which lack checksums and other resilience precautions.
 In practice, the lack of frameworks resulted in each tool or pipeline having to solve common problems by itself, such as hardening against the aforementioned reliability issues.
 This further wasted resources and increased the potential for errors.
-The resulting pipeline code published with papers was very application-specific and hard to generalize or reuse.
+The resulting pipeline code published with papers had little \emph{interoperability}, as it was very application-specific and hard to generalize or reuse.
 
 % Existing methods are not focused on interoperability.
 Even within analysis pipelines operating entirely in memory instead of on slow and unreliable files, individual tools were not necessarily designed to be compatible.
 Single tools could halt progress if their performance was insufficient for upcoming large datasets from microfluidic protocols.
-The tools’ varying code quality, choice of default values and error reporting led to subtle incompatibility bugs.
+The tools’ varying code quality, choice of default values and quality of error reporting led to subtle incompatibility bugs, as well as low \emph{interpretability} of arising problems.
 Furthermore, no data structures and file exchange formats suitable for scRNA-Seq existed, so workflows manually kept count matrices and annotation data frames in sync across filtering steps, increasing the potential for error.
-Furthermore, reproducibility was hard to guarantee in the presence of nondeterministic methods and a multitude of tool versions with subtly different defaults and behavior.
+\emph{Reproducibility} was hard to guarantee in the presence of nondeterministic methods and a multitude of tool versions with subtly different defaults and behavior.
 
 % R: Bioconductor
 In the R world, the \n{Bioconductor} project \cite[huber2015] provided tools for preprocessing and basic analysis, but little in the way of embeddings.
@@ -402,6 +403,7 @@ Write programs to handle text streams, because that is a universal interface.
 Text-based file formats and pipeline steps realized as command line interfaces working on these files had their place for a long time.
 The approach results in the automatic availability of intermediate steps as snapshots, in a human-readable form, and in the use of basic text manipulation to work on them.
 Attempting to serve this lowest common denominator however lead to the aforementioned limitations when building pipelines.
+\TODO[the above is actually about pipelines still, fits here?]
 
 % - What is a framework?
 The alternative is to use a framework, i.\,e. an opinionated set of data structures and routines that are tightly integrated but generic enough to be used as building blocks for pipelines or visualization tools.
