@@ -280,12 +280,12 @@
 
 - [x] I was hoping for this earlier, in particular because it was intertwined in above a bit already
 - [x] motivation missing though
-- [x] CRUCIAL: what is your question? you only describe the WHAT+HOW you do things, but not at all the WHY? motivation to assess relevance *totally* unclear. even worse, in 2nd sentence you say, oh btw., i also analyzed sizes of data sets. this is the core thing of your 4year phd work?
+- [x] CRUCIAL: what is your question? you only describe the WHAT+HOW you do things, but not at all the WHY? motivation to assess relevance *totally* unclear. even worse, in 2nd sentence you say, oh btw., i also analyzed sizes of data sets. this is the core thing of your 4year Ph.D. work?
 - [x] you really need to spend some time on this and exactly state what your goal is, altogether and then in each of the 3 (or 4?) projects, and then what is state of the art and in particular missing (above you described state of the art already INCLUDING your contributions) and therefore what your contribution is (see abstract comments)
 - [x] also tie things together. why the BART-seq? because you had tools to show all this and can use as proof of concept
 - [x] often (check other theses) students also shortly write about/summarize other projects they contributed to but do not put into thesis, this is useful and I would recommend this. just looked at rules again from WZW, here you miss points 4 and 5 - 1 page summary for each paper with particular highlighting of your contrib, and 5 inclusion of those papers etc. see WZW
   - [x] this needs quite some additional work, and I kindly ask you to go over this with Carsten first and then give me short answer to points done ok? thanks!
-- [x] I though the cumulative thesis also needs contribution to papers and your own contributions. should this be here in intro already? usually separate chapter (e.g. with Laleh). please please please by all means look at other theses and talk with currently finished PhDs, OK? thanks!
+- [x] I though the cumulative thesis also needs contribution to papers and your own contributions. should this be here in intro already? usually separate chapter (e.g. with Laleh). please please please by all means look at other theses and talk with currently finished Ph.D.s, OK? thanks!
 
 ## 2 Methods
 - [x] intro missing before you dive into each topic. goal of this chap? methods, background, own contributions? reads like a random mixture to me

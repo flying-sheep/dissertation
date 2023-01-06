@@ -14,9 +14,7 @@ Important:
   > Could even use a more conclusive list of what makes a framework vs a pkg ie
   >
   > * Interoperability of tools (AD data structure, conversion tools for common other data types)
-  >
   > * User-driven community for feedback, edge /use cases, new func
-  >
   > * Performance and stability (based on scipy numpy etc)
   >
   > Can list and show how each community is moving toward this goal with current used ex
