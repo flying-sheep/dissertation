@@ -148,8 +148,8 @@ BART-Seq can use single cells or groups of multiple cells as samples.
 Each of its samples is tagged by combining paired-end reads with pairs of computationally designed barcodes.
 It is therefore possible to distinguish high numbers of samples while sensitively measuring the specified target amplicons, such as expressed genes.
 An advantage of predictable barcoding over randomized barcodes is that sample identity is maintained, allowing for arbitrarily much information attached to each sample of a single batch, such as treatment labels.
-BART-Seq has a unique demultiplexing and counting strategy that can be tuned for sensitivity or conservativeness (see \insec[sec:bart-seq]).
-The counting strategies and visualization routines for the protocol are available as a Python package allowing fine-grained programmatic access \cite[angerer2019a].
+BART-Seq has a unique demultiplexing and counting strategy that can be tuned for sensitivity or conservativeness (see \insec[sec:bart-seq]), improving \emph{reproducibility} and \emph{interpretability}.
+The counting strategies and visualization routines for the protocol are available as a Python package allowing fine-grained programmatic access \cite[angerer2019a], helpful for \emph{interoperability} with subsequent analysis steps.
 Part of this package is the BART-Seq equivalent to \n{Cell Ranger} or \n{zUMIs}:
 a \n{Snakemake} pipeline \cite[koster2012] that performs all steps of the protocol to create count matrices, statistics and visualizations.
 
@@ -166,7 +166,7 @@ I demultiplexed the final version of all data used in the publication using my p
 Summary:
 % combines gene-level with cell-level analysis
 In this article, we present gene relevance, a novel method for inference of the contributions individual variables have on the location of data in an embedding.
-This algorithm is the latest addition to the \n{destiny} package, building upon its efficient routines.
+This algorithm is the latest addition to the \n{destiny} package, building upon its efficient routines and therefore sharing its \emph{performance}, \emph{reproducibility}, and \emph{interoperability} characteristics.
 The method was inspired by PCA loadings, an intrinsic property of the linear dimensionality reduction method PCA.
 These loadings are the linear factors scaling a variable to define its role in a principal component.
 Using PCA as a dimension reduction method for expression data, therefore, allows seeing each gene’s contribution to a cell’s position in a plot.
@@ -175,7 +175,7 @@ It is designed to identify genes that drive the local positioning of a cell in a
 This involves estimating the partial derivatives of the gene expression with respect to the embedding location by looking at cell neighborhoods.
 This allows to detection of locally relevant genes without a discrete clustering step, and therefore without data reuse as a result of using inferred cluster labels as input for gene-level analysis.
 The article shows the robust derivation of both obvious candidates such as hemoglobin genes for hematopoietic development, as well as interesting but less obvious genes.
-We also present an easy-to-use interface for calculating gene lists and plotting as part of the \n{destiny} package.
+We also present an easy-to-use interface for calculating gene lists and plotting as part of the \n{destiny} package, allowing for easy \emph{interpretability}.
 
 My contribution:
 The initial idea comes from Fabian Theis, while I designed the changes making it applicable to real data with A. Scialdone and C. Marr.
