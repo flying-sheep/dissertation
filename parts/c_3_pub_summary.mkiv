@@ -92,7 +92,7 @@ Starting from an idea by Fabian Theis, I performed the data analysis supporting 
 showing conclusively the growth of scRNA-Seq data in both the volume per experiment and the number of experiments.
 I designed and produced the figures with feedback from other contributors.
 I wrote the major part of the publication, with parts contributed by other contributors.
-\TODO[too unspecific?]
+\TODO[make this part more specific? add the 4 terms here too?]
 
 \stopsection
 
@@ -106,20 +106,24 @@ In this article, we introduced \n{scanpy}, a framework for single-cell analysis 
 It is designed to be generic and independent of \n{scanpy}.
 
 \n{Scanpy} is designed around \n{AnnData}, storing the results of each processing step in an expression matrix layer or an aligned annotation (see \infig[fig:anndata]).
-\n{AnnData} can be stored on disk in various formats for snapshots, data interchange, and interoperability with command line tools.
+\n{AnnData} can be stored on disk in various formats for snapshots, data interchange, and \emph{interoperability} with other frameworks, languages, and command line tools.
 Its structure allows serialization in the file-tree-like formats \n{HDF5} \cite[folk2011] and \n{Zarr} \cite[miles2022].
 They, unlike Python’s “pickle” format, are not bound to individual implementation versions and therefore allow for reliable long-term storage.
 For data too large to hold in memory, \n{AnnData} supports disk-backed operations on its \n{HDF5}-based \type{.h5ad} files.
+\n{Scanpy} has official Docker containers and version logging facilities to help with \emph{reproducibility}.
+\n{AnnData} has built-in backward compatibility with older versions of itself for the same purpose.
 For details about the implementation of \n{AnnData} and \n{scanpy}, see \in{Sections}[sec:anndata] and \in{}[sec:scanpy]
 
 \n{AnnData}’s and \n{scanpy}’s modular and flexible design philosophies allow \n{scanpy} routines to be effortlessly interspersed with preprocessing and analysis steps of other tools, including R tools via \n{SingleCellExperiment} \cite[lun2017a,angerer2019b].
 \n{AnnData} has been used for this purpose by several scRNA-Seq analysis tools since the publication of \n{scanpy}, such as \n{scVI} \cite[lopez2018], \n{DCA} \cite[eraslan2019], \n{DESC} \cite[li2019], or \n{BBKNN} \cite[polanski2020].
-Its \type{.h5ad} format is supported by visual analysis pipelines like \n{Galaxy} \cite[afgan2018] or \n{cellxgene} \cite[megill2020].
+\n{AnnData}’s \type{.h5ad} format is supported by visual analysis pipelines like \n{Galaxy} \cite[afgan2018] or \n{cellxgene} \cite[megill2020].
 \n{Scanpy} is widely used and popular in the scRNA-Seq analysis community \cite[zappia2018].
 It was named Genome Biology’s milestone article of the year 2018 \cite[genomebiology2020].
-It is used for large projects like the \n{Human Cell Atlas} \cite[regev2017], \n{Tabula Muris} \cite[schaum2018], or EMBL-EBI’s expression atlas, which uses \n{scanpy} for downstream analysis of all single-cell experiments \cite[papatheodorou2020].
+Due to \n{scanpy}’s popularity and \emph{performance}, it is used for large projects like the \n{Human Cell Atlas} \cite[regev2017], \n{Tabula Muris} \cite[schaum2018], or EMBL-EBI’s expression atlas, which uses \n{scanpy} for downstream analysis of all single-cell experiments \cite[papatheodorou2020].
 The \n{Human Cell Atlas} and \n{COVID19 Cell Atlas} \cite[wilk2020] chose \n{AnnData}’s \type{.h5ad} format as their data interchange format.
 At the time of writing, \n{scanpy} is cited by over 300 studies, review papers and tools.
+The above-mentioned analysis tools share a community with \n{AnnData} and \n{scanpy} under the umbrella project \n{scverse}.
+This results in benefits for \emph{interpretability}, since the community shares domain knowledge, helps to improve test coverage and error messages for common problems, and provides other feedback and enhancements for the projects.
 
 My contribution:
 For the Python packages,
