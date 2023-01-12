@@ -214,8 +214,9 @@ To this end, overview statistics and visualizations are employed from the earlie
 
 Analysis of single-cell data generally focuses on uncovering previously unknown heterogeneity and its sources \cite[patel2014,poirion2016,angerer2017].
 The kind of heterogeneity to uncover depends on what was captured experimentally:
-the simplest case is discrimination between discrete subpopulations of a few clearly different cell types.
-A common goal there is to find a small number of marker genes able to reliably distinguish a subpopulation that is sufficiently distinct from the rest of the cells.
+the simplest case is discrimination between discrete subpopulations of a few clearly different “cell types”,
+a notion that proved too simplistic for many biological processes and that has therefore been deemphasized in later analysis methods.
+A goal in this simple case is to find a small number of marker genes able to reliably distinguish a subpopulation that is sufficiently distinct from the rest of the cells.
 Methods performing this search are called differential gene expression (DE) analyses \cite[soneson2018].
 While DE analysis methods stem from bulk RNA-Seq, single-cell specific methods such as SCDE \cite[kharchenko2014], MAST \cite[finak2015], and BASiCS \cite[vallejos2016] outperform bulk methods due to the additional information in single-cell data.
 
@@ -238,7 +239,7 @@ The problem can be circumvented by joint clustering and DE analysis, manually pr
     This can accurately represent cell development or more gradual cell identities rather than discrete types.
     \bold{c)} Scoring results in each cell having an individual score in one or more schemas, defining the likelihood or strength of a certain property.
     \bold{d)} Differential Expression Analysis allows the identification of genes defining a given subdivision, marking them for further analysis and providing insight into cell identities.
-    \bold{e)} Labelling of clusters assigns them a cell type label, based on marker genes and other external knowledge.
+    \bold{e)} Labelling of clusters assigns them a “cell type” label, approximating and discretizing their cell identity based on marker genes and other external knowledge.
     \bold{f)} Trajectory Analysis groups and orders cells by similar transition states rather than absolute similarities and therefore enables reasoning about continuous processes like cellular development or spatial gradients.
     \bold{g)} Gene Module Analysis associates genes with each other to combine previous knowledge about genes’ mechanism of action with new gene associations.
     \bold{h)} Gene Relevance Analysis relates the location of a cell in the embedding back to the genes driving that localization.
@@ -246,11 +247,10 @@ The problem can be circumvented by joint clustering and DE analysis, manually pr
 \hbox{\input{imgs/heterogeneity-analysis.tikz}}
 \stopplacefigure
 % Alternative:
-% a) cell level discretization (clustering), then cluster labeling (cell type) …
+% a) cell level discretization (clustering), then cluster labeling (cell type/identity) …
 % b) … then DE
 % c) gene-level discretization (correlation modules) to be able to interpret gene results
 % d) cell networks (e.g. PAGA) for e) pseudo-time (less discretization) f) dim. red. g) kernels like Gene Relevance
-\TODO[not using “cell identities” elsewhere, unify]
 \TODO[c not immediately mentioned. Mention that prior info is used for labeling (marker genes) and gene modules]
 \TODO[maybe also composition differences between datasets (mapping between cell neighborhoods)?]
 
@@ -258,7 +258,8 @@ Trajectory analysis is an approach that uncovers a developmental direction and h
 While cluster analysis strongly benefits from the availability of scRNA-Seq data, trajectory analysis can only exist because of it.
 Traditionally, cells were thought of as exhibiting a discrete cell type each.
 For cells that are dramatically specialized for one main role, this idea still holds.
-Most tissues however contain a multitude of cells fulfilling multiple roles each, without fitting into a discrete and homogeneous type.
+Most tissues however contain a multitude of cells fulfilling multiple roles each, without fitting into a discrete and homogeneous type,
+which leads to newer studies preferring to use the term “cell identity” instead.
 %developmental
 This includes cells in the process of differentiating from a malleable pluripotent state to a more or less specialized mature state \cite[haghverdi2015].
 While marker genes for certain cell roles or developmental steps exist, this complex and gradual nature of most tissues requires sophisticated analysis and visualization of single-cell data.
@@ -307,7 +308,7 @@ In this painting, the high-frequency visual features are interpreted as a woman 
 \stopplacefigure
 
 Without additional data providing a ground truth about subpopulation identity, or clearly separated clusters that are inherently assigned genes driving their embedding, the process of validating an embedding is not automatic, requiring creative reasoning and literature research.
-A panel of marker genes per cluster is derived from the data and cross-referenced with literature to annotate known cell types in the data.
+A panel of marker genes per cluster is derived from the data and cross-referenced with literature to annotate known cell identities in the data.
 When discovering novel subpopulations, their adjacency to known ones can be used to make and test assumptions about their role.
 An upcoming way to simplify the process is cell transcriptome atlases \cite[regev2017,schaum2018] that can be used as references to automatically look up and annotate your cells \cite[abdelaal2019].
 

@@ -130,7 +130,7 @@
 % TODO: https://ctan.math.illinois.edu/graphics/pgf/contrib/makeshape/makeshape.pdf
 %
 %do not think about vis at first, only raw data
-%a) cell level discretization (clustering), then cluster labelling (cell type) …
+%a) cell level discretization (clustering), then cluster labelling (cell identity) …
 %b) … then DE
 %c) gene level discretization (correlation modules) to be able to interpret gene results
 %d) cell networks (e.g. PAGA) for e) pseudo-time (less discretization) f) dim. red. g) kernels like Gene Relevance
