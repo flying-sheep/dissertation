@@ -16,7 +16,7 @@ Setup
   source .venv/bin/activate
   python -m pip install -U pip wheel
   python -m pip install -r requirements.txt
-  # TODO: something for R
+  R -q -s -e 'chooseCRANmirror(ind=0); install.packages(readLines("requirements-r.txt"))'
   ```
 
 - Git checks and filters
