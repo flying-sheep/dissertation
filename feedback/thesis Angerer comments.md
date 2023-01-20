@@ -426,7 +426,9 @@
 
   Added
 
-- [ ] "My contributions towards more reproducible, scalable and interconnective scientific programming have helped these changes along." → sounds very different from what you wrote before
+- [x] "My contributions towards more reproducible, scalable and interconnective scientific programming have helped these changes along." → sounds very different from what you wrote before
+
+  Added 4 fundamental terms and referenced them through thesis
 
 ### 3.1 Multi-resolution scRNA-Seq Analysis
 - [x] multi-res? really? don’t understand what you mean, can you define?
