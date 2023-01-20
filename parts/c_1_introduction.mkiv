@@ -237,7 +237,7 @@ The problem can be circumvented by joint clustering and DE analysis, manually pr
     The clarity of division between clusters shows how easily a given pair of clusters can be discriminated between.
     \bold{b)} Transition State Analysis dissects metastable states and their transitions.
     This can accurately represent cell development or more gradual cell identities rather than discrete types.
-    \bold{c)} Scoring results in each cell having an individual score in one or more schemas, defining the likelihood or strength of a certain property.
+    \bold{c)} Scoring results in each cell having an individual score in one or more schemas, defining the likelihood or strength of a certain property derived from prior information.
     \bold{d)} Differential Expression Analysis allows the identification of genes defining a given subdivision, marking them for further analysis and providing insight into cell identities.
     \bold{e)} Labelling of clusters assigns them a “cell type” label, approximating and discretizing their cell identity based on marker genes and other external knowledge.
     \bold{f)} Trajectory Analysis groups and orders cells by similar transition states rather than absolute similarities and therefore enables reasoning about continuous processes like cellular development or spatial gradients.
@@ -251,7 +251,6 @@ The problem can be circumvented by joint clustering and DE analysis, manually pr
 % b) … then DE
 % c) gene-level discretization (correlation modules) to be able to interpret gene results
 % d) cell networks (e.g. PAGA) for e) pseudo-time (less discretization) f) dim. red. g) kernels like Gene Relevance
-\TODO[c not immediately mentioned. Mention that prior info is used for labeling (marker genes) and gene modules]
 \TODO[maybe also composition differences between datasets (mapping between cell neighborhoods)?]
 
 Trajectory analysis is an approach that uncovers a developmental direction and hierarchy in developmental snapshot data.
@@ -343,8 +342,7 @@ For example, cell atlases containing large amounts of multimodal data can now be
 
 In this section, I address how the field changed its approach to analysis workflows, which is the area most of my contributions are focused on (see \insec[sec:pub-summary] for details on my contributions).
 I outline how the move to programmatic frameworks improves several aspects of analysis work, specifically of scRNA-Seq analysis:
-\emph{interoperability}, \emph{interpretability}, \emph{reproducibility}, \emph{performance}, and synergy effects arising from their combination.
-\TODO[mention where what goes? e.g. reliability as a synergy, …]
+\emph{interoperability}, \emph{interpretability}, \emph{reproducibility}, \emph{performance}, and synergy effects arising from their combination, such as user-friendliness and reliability.
 
 \startplacefigure[reference=fig:dataset-sizes, title={%
 Sizes of single-cell datasets uploaded to Gene Expression Omnibus (GEO).
@@ -404,7 +402,6 @@ Write programs to handle text streams, because that is a universal interface.
 Text-based file formats and pipeline steps realized as command line interfaces working on these files had their place for a long time.
 The approach results in the automatic availability of intermediate steps as snapshots, in a human-readable form, and in the use of basic text manipulation to work on them.
 Attempting to serve this lowest common denominator however lead to the aforementioned limitations when building pipelines.
-\TODO[the above is actually about pipelines still, fits here?]
 
 % - What is a framework?
 The alternative is to use a framework, i.\,e. an opinionated set of data structures and routines that are built for \emph{interoperability}:

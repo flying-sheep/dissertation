@@ -461,12 +461,13 @@ The final step of \n{scanpy} analyses consists of converting the complete \n{Jup
 
 \startsection[reference=sec:bart-seq, title={BART-Seq (demultiplexing and quantification)}]
 
-\TODO[tie into above by mentioning that only if data quality and demultiplexing settings fit, we can expect results. There are 6(?) steps (1. bio, 2. this, …)]
-\TODO[good analysis can only be performed with a fitting tradeoff in sensitivity/specificity of quantification]
-
+Previous sections have focused on data analysis steps, which can only lead to interpretable results if both sample quality and demultiplexing maintain the signal that is being looked for.
+To this end, the tradeoff between sensitivity and specificity of quantification needs to allow capturing this signal.
+BART-Seq is a plate-based RNA-Seq protocol.
 Compared to classical plate-based RNA sequencing protocols (see \infig[fig:rna-seq]), BART-Seq is targeted.
 It trades the ability to measure all available transcripts in an unbiased way for the ability to the inexpensive, highly sensitive measurement of a limited set of target transcripts for thousands of samples \cite[uzbas2019].
-High sensitivity is maintained when using single cells as samples.
+In this way, high sensitivity is maintained even when using single cells as samples.
+It is therefore well suited if a signal is expected in less highly expressed genes while a biased selection of target genes is acceptable.
 BART-Seq consists of three steps; design, experiment, and quantification.
 
 % primer/barcode design
