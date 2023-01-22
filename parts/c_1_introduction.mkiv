@@ -251,7 +251,6 @@ The problem can be circumvented by joint clustering and DE analysis, manually pr
 % b) … then DE
 % c) gene-level discretization (correlation modules) to be able to interpret gene results
 % d) cell networks (e.g. PAGA) for e) pseudo-time (less discretization) f) dim. red. g) kernels like Gene Relevance
-\TODO[maybe also composition differences between datasets (mapping between cell neighborhoods)?]
 
 Trajectory analysis is an approach that uncovers a developmental direction and hierarchy in developmental snapshot data.
 While cluster analysis strongly benefits from the availability of scRNA-Seq data, trajectory analysis can only exist because of it.
@@ -293,8 +292,8 @@ Four increasingly complex 2D embeddings of the same differentiating cells colore
 Analysis of complex heterogeneity patterns requires methods of matching complexity to visualize their results.
 Complex developmental hierarchies and other relations in the data need to be faithfully represented.
 This commonly involves laying out points representing the cells in a flat plane while trying to maintain relationships such as developmental closeness (see \infig[fig:embeddings]).
-The main challenge of finding a fitting low dimensional representation lies in the multiple scales biological processes take place in \cite[hasenauer2015] (see \infig[fig:hybrid]).
-\TODO[maybe find better citation? this one just mentions multi-scale processes, not dim red]
+The main challenge of finding a fitting low dimensional representation lies in the multiple scales biological processes take place in \cite[hasenauer2015,kobak2019a].
+This representation should ideally be faithful to all scales of similarity: local scales include either just nearly identical cells, or some definition of similar ones, while the global scale includes all measured cells up to maximally dissimilar ones (see \infig[fig:hybrid]).
 Therefore, as opposed to simple dimension reduction methods used for distance calculations (see \insec[sec:preprocessing]), the preferred methods for visualization take this multi-scale nature into account.
 Complex transforms are irreversible, so the resulting coordinates of cells in the visualization (the embedding) cannot be directly traced back to the input genes.
 
@@ -312,7 +311,6 @@ When discovering novel subpopulations, their adjacency to known ones can be used
 An upcoming way to simplify the process is cell transcriptome atlases \cite[regev2017,schaum2018] that can be used as references to automatically look up and annotate your cells \cite[abdelaal2019].
 
 % destiny: efficient and flexible diffusion maps for R
-\TODO[find good spot]
 As an example of a relatively self-contained scRNA-Seq analysis loop, this thesis presents \n{destiny},
 a user-friendly, flexible and fast R tool for three closely related analysis steps \cite[angerer2016].
 It was created to enable dimension reduction of both large, sparse scRNA-Seq data and qPCR data, both of which benefit from the explicit handling of missing values.

@@ -1,8 +1,12 @@
 {
     "gitlens.codeLens.enabled": false,
     "gitlens.currentLine.enabled": false,
-    "todo-tree.regex.regex": "((?<!\\\\def)(//|#|<!--|;|/\\*|^|\\\\)\\s*($TAGS)|^\\s*- \\[ \\])",
+    "todo-tree.regex.regex": "((?<!\\\\def)(//|#|<!--|;|/\\*|^|\\\\)\\s*($TAGS)|^\\s*- (?=\\[ \\]))",
     "todo-tree.ripgrep.ripgrepArgs": "--max-columns=1000 --no-config --pcre2 ",
+    "todo-tree.highlights.customHighlight": {
+        "TODO": { "icon": "issue-draft" },
+        "[ ]": { "icon": "issue-draft" },
+    },
     "python.defaultInterpreterPath": ".venv/bin/python",
     "editor.wordWrap": "on",
     "cSpell.enabled": true,

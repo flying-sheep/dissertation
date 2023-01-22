@@ -6,7 +6,7 @@ Setup
 
 - `zotero-better-bibtex`’ [auto export](https://retorque.re/zotero-better-bibtex/exporting/auto/):
 
-  - Path is `lib/library.bib`
+  - Path is `bib/library.bib`
   - Turn off title casing in “Better Bibtex” → “Export” → “Misc”
 
 - Dependencies
