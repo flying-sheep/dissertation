@@ -78,14 +78,13 @@ For analysis of scRNA-Seq data combined with both modes, \n{epiScanpy} offers a 
 \stopdesc
 
 \noindentation
-\n{AnnData} and \n{scanpy} currently lack true support for multimodal data where different modes can be stored for one set of observations.
-This enhancement would allow the storage of annotations for each mode separately while allowing joint filtering of observations.
+\n{AnnData} and \n{scanpy} lack support for multimodal data where different modes can be stored for one set of observations.
+With \n{mudata} and \n{muon}, an enhancement exists that allows the storage of annotations for each mode separately while allowing joint filtering of observations. \TODO[cite]
+These projects have the potential to be as impactful as \n{AnnData} and \n{scanpy} for the analysis of multimodal data like scCUT&Tag or CITE-Seq, which contain a second high-dimensional feature mode in addition to transcriptomic data.
+Projects like \n{epiScanpy} will be able to rely on \n{mudata} for more interoperability and on \n{muon} for common multimodal processing steps.
+
 A further feature would be to store connections between features of different modes in a graph, such as which transcript (scRNA-Seq) encodes which surface protein (CITE-Seq).
 The current version of \n{AnnData} substantially increased usability and therefore analysis efficiency for exclusively scRNA-Seq data.
-Therefore a multimodal \n{AnnData} should do the same for the analysis of data like scCUT&Tag or CITE-Seq, which contain a second high-dimensional feature mode in addition to transcriptomic data.
-Existing workflows and Python packages that use the current version of \n{AnnData}, like \n{epiScanpy}, will benefit from this upcoming multimodal extension of \n{AnnData}.
-
-\TODO[add info about what has been added in this field from 2020–2022]
 
 The combination of different data types within a single experiment enabled unprecedented insight into the disease.
 Extending \n{AnnData} and \n{Scanpy} for joint analysis of spatial location and scRNA-Seq data promises to bring their ergonomic benefits and performance to histologic patient data analysis.
