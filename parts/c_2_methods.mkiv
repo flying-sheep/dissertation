@@ -234,10 +234,10 @@ To address the high number of zeroes in scRNA-Seq data, the gradient is only def
 \placeformula
 \startformula
 \widehat{∇f_{gc}} = \left(
-\startcases[left={\left.}, style=\displaystyle]
+\startmatrix[style=\displaystyle]
 \NC \mathit{NA}, \NC if $x_{gc} = 0$ \NR
 \NC \underset{n ∈ \text{NN}_k(c) ∧ n≠c}\median \frac{x_{gn}-x_{gc}}{s_{pn}-s_{pc}}, \NC otherwise \NR
-\stopcases
+\stopmatrix
 \right)
 \stopformula
 
