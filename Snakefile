@@ -1,3 +1,7 @@
+import os
+
+os.environ["PATH"] = f"{os.getcwd()}/.venv/bin/:{os.environ['PATH']}"
+
 def harmonize(p):
     return str(p).replace('\\', '/')
 
@@ -8,7 +12,6 @@ IMGS = list(map(harmonize, [
     *Path('imgs').glob('*.png'),
     *Path('imgs').glob('*.svg'),
 ]))
-
 
 rule context:
     input:
