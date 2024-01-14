@@ -19,6 +19,7 @@
         "**/*.json",
         "**/*.rsc",
         "**/*.nu",
+        "**/*.md",
     ],
     // https://github.com/danielfdickinson/streetsidesoftware-cspell-cli/commit/73ff9497b4e1e41cbce6cd177241efa6d95ea4fd?short_path=53bc74c#diff-53bc74c9c08cea0788be2bd70bc4ca2893edd0298f12795a4615686bd7751e35
     "overrides": [
