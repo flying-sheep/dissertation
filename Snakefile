@@ -33,7 +33,7 @@ rule bib:
     output:
         'bib/prd_dissertation.bib',
     run:
-        shell(f'cd bib && bibtool -d -r biblatex -r {Path(input.conf).name}')
+        shell(f'cd bib && bibtool -r biblatex -r {Path(input.conf).name} -i {Path(input.bib).name}')
 
 rule img:
     input:
