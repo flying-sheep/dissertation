@@ -61,8 +61,8 @@
 \node[step arrow=spng] at (4.5, 1.5) {splicing};
 \node[step arrow=fgmn] at (4.5, 2.5) {fragmentation};
 \node[step arrow=rvtn] at (4.5, 3.5) {reverse transcription};
-\node[step arrow=cbcg] at (4.5, 4.5) {cell barcoding (& optionally UMIs)};
-\node[step arrow=mplp] at (4.5, 5.5) {amplification & library preparation};
+\node[step arrow=cbcg] at (4.5, 4.5) {cell barcoding (\& optionally UMIs)};
+\node[step arrow=mplp] at (4.5, 5.5) {amplification \& library preparation};
 \node[step arrow=htsq] at (4.5, 6.5) {high-throughput sequencing};
 \node[step arrow=gnmg] at (4.5, 7.5) {genome mapping};
 \node[step arrow=qntn] at (4.5, 9  ) {quantification};

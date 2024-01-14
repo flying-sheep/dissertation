@@ -1,3 +1,7 @@
+import os
+
+os.environ["PATH"] = f"{os.getcwd()}/.venv/bin/:{os.environ['PATH']}"
+
 def harmonize(p):
     return str(p).replace('\\', '/')
 
@@ -8,7 +12,6 @@ IMGS = list(map(harmonize, [
     *Path('imgs').glob('*.png'),
     *Path('imgs').glob('*.svg'),
 ]))
-
 
 rule context:
     input:
@@ -30,7 +33,7 @@ rule bib:
     output:
         'bib/prd_dissertation.bib',
     run:
-        shell(f'cd bib && bibtool -d -r biblatex -r {Path(input.conf).name}')
+        shell(f'cd bib && bibtool -r biblatex -r {Path(input.conf).name} -i {Path(input.bib).name}')
 
 rule img:
     input:
