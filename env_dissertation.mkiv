@@ -38,9 +38,9 @@
 \setupheader[text][after=\vskip 4pt \hrule]
 \setupheadertexts
 	[{\userpagenumber}]
-	[{\getmarking[chapternumber] \getmarking[chapter]}]
+	[{\getmarking[chapternumber]\ \getmarking[chapter]}]
 	[{\userpagenumber}]
-	[{\getmarking[chapternumber] \getmarking[chapter]}]
+	[{\getmarking[chapternumber]\ \getmarking[chapter]}]
 
 % Allow colors
 \setupcolors[state=start]
@@ -221,9 +221,9 @@ end
 % \usemodule[pgfplotstable]
 %\usepgfplotslibrary[groupplots]
 
-% \pgfplotsset{
-%	table/search path={data},
-% }
+\pgfplotsset{
+	table/search path={data},
+}
 
 \usetikzlibrary[positioning] % needs to be after pgfplots
 \usetikzlibrary[decorations.pathreplacing]

@@ -29,7 +29,7 @@ Some nonlinear dimensionality reduction methods also maintain global distances t
 \startplacefigure[reference=fig:dim-red,title={%
 Reducing dimensions using global and local distances.
 \bold{a)}
-Dimensionality reduction methods embed samples (such as cells) from a high dimensional space (such as gene expressions) to a low dimensional space ($x_{gc} ↪ s_{pc}$, $G>>P$).
+Dimensionality reduction methods embed samples (such as cells) from a high dimensional space (such as gene expressions) to a low dimensional space ($x_{gc} ↪ s_{pc}$, $G≫P$).
 They can be used in data preprocessing or as coordinates in visualizations.
 \bold{b)}
 A scatter plot using embedding coordinates visualizes similarities between cells’ gene expression profiles $x_{a·}$ and serves as a reference frame for visualizing further information.
@@ -264,8 +264,8 @@ With the \inlinecite[iverson1962] bracket notation:
 \startformula
 \left[P\right] =
 \startcases
-\NC 1, \NC if $P$ is true \NR
-\NC 0, \NC otherwise \NR
+\NC 1, \NC \text{if $P$ is true} \NR
+\NC 0, \NC \text{otherwise} \NR
 \stopcases
 \text{, where $P$ is any predicate.}
 \stopformula
