@@ -384,7 +384,6 @@ The popularity of nonlinear dimensionality reductions meant that there was a gap
 DE requires discrete partitioning of the data, which is not well defined for data containing a gradual transition of gene expression profiles between cells and has the aforementioned issues with uncertainty propagation.
 \stopsubsection
 
-\startsubsection[title={Frameworks for modular scRNA-Seq Analysis Pipelines}]
 % - What came before frameworks?
 The original way to implement the aforementioned pipelines arose from the lowest common denominators of program interaction, summarized by Doug McIlroy as the UNIX philosophy \cite[salus1994]:
 
@@ -396,10 +395,11 @@ Write programs to handle text streams, because that is a universal interface.
 \stopblockquote
 
 \noindentation
-Text-based file formats and pipeline steps realized as command line interfaces working on these files had their place for a long time.
-The approach results in the automatic availability of intermediate steps as snapshots, in a human-readable form, and in the use of basic text manipulation to work on them.
-Attempting to serve this lowest common denominator however lead to the aforementioned limitations when building pipelines.
+Text-based file formats and pipeline steps realized as command line interfaces working on these files were the go-to approach for a long time.
+It resulted in the automatic availability of intermediate steps as snapshots, in a human-readable form, and in the use of basic text manipulation to work on them.
+Attempting to serve this lowest common denominator, however, leads to the aforementioned limitations when building pipelines.
 
+\startsubsection[title={Frameworks for modular scRNA-Seq Analysis Pipelines}]
 % - What is a framework?
 The alternative is to use a framework, i.\,e. an opinionated set of data structures and routines that are built for \emph{interoperability}:
 tightly integrated but generic enough to be used as building blocks for pipelines or visualization tools.
@@ -438,7 +438,7 @@ It was the first annotated matrix data structure to support sparse expression ma
 It provides its own format that supports disk backing for operations on data too large to be performed in memory, sparse or dense.
 % Scanpy
 \n{AnnData} was developed alongside \n{scanpy} in order to make the latter a highly modular framework \cite[wolf2018].
-\n{Scanpy} provides commonly used building blocks which, through sharing \n{AnnData} as a mutual base, can be combined with specialized Python package for certain data types and algorithms such as \n{scVelo} \cite[bergen2019], \n{Scirpy} \cite[sturm2020], \n{muon} \cite[bredikhin2022], \n{scvi-tools} \cite[gayoso2022], \n{squidpy} \cite[palla2022], and more.
+\n{Scanpy} provides commonly used building blocks which, through sharing \n{AnnData} as a mutual base, can be combined with specialized Python packages for certain data types and algorithms such as \n{scVelo} \cite[bergen2019], \n{Scirpy} \cite[sturm2020], \n{muon} \cite[bredikhin2022], \n{scvi-tools} \cite[gayoso2022], \n{squidpy} \cite[palla2022], and more.
 \n{Scanpy} is now in widespread international use, continuously expanded with new algorithms, and together with \n{AnnData} make up the core of the community-governed umbrella project \n{scverse} \cite[zappia2018].
 Being based on \n{NumPy} \cite[vanderwalt2011], \n{SciPy} \cite[virtanen2020], and other mature and highly performant Python technologies, \n{scanpy} is very scalable.
 % - serving all MOs: iterative with biologists, manual coding, let it be done as-a-service
