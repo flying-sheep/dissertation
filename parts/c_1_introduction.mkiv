@@ -3,7 +3,7 @@
 
 \startchapter[reference=sec:intro, title={Introduction}]
 
-\startsection[title={How to Understand Cell Behavior}]
+\startsection[title={How to understand cell behavior}]
 % Basic structure: Zoom in; What’s the big field, and how to get from there to scRNA-Seq?
 
 % big topic: cell biology and medicine
@@ -109,7 +109,7 @@ Afterward, \insec[sec:org] will address the organization and reuse of analysis w
 The extent of detail in describing the individual steps will correspond to the extent of my contributions,
 a detailed breakdown of which follows in \insec[sec:pub-summary].
 
-\startsection[reference=sec:workflow, title={Workflow for scRNA-Seq Data Processing}]
+\startsection[reference=sec:workflow, title={Workflow for scRNA-Seq data processing}]
 % story: new challenges by single-cell data; the old way to deal with data (workflows) are not efficient → new approaches needed → me
 
 % Overview: Describe how the workflows work and why the aforementioned is important.
@@ -118,7 +118,7 @@ The first step, library preparation and sequencing, is experimental and is perfo
 The second step, quantification, creates a cell × gene matrix from raw data produced in step one.
 The remaining steps are preprocessing, analysis and visualization of this matrix.
 
-\startsubsection[title={Library Preparation and Sequencing}]
+\startsubsection[title={Library preparation and sequencing}]
 % 1. (cells → transcript library) and sequencing (transcript library → reads)
 \startplacefigure[reference=fig:rna-seq, title={%
 ScRNA-Seq library preparation, sequencing, and mapping.
@@ -275,7 +275,7 @@ Innovative analysis methods like it require additional data modalities to improv
 
 \page
 
-\startsubsection[reference=sec:visualization, title={Visualization as Analysis steps and result}]
+\startsubsection[reference=sec:visualization, title={Visualization as analysis steps and result}]
 % 5. (results often too complex to understand as numbers)
 % talk about dim red here and the fact that it’s hard to reason about how the input variables relate back to output – make a path for GR coming to the rescue
 \startplacefigure[reference=fig:embeddings, title={%
@@ -327,7 +327,7 @@ A too-narrow focus on individual steps or results in turn narrows the scope of w
 The bigger picture includes interoperability between tools.
 Progress is slow when one is bogged down by difficulties in menial tasks like file format conversion, tracking down ambiguously mapped gene names, and a faster machine to run an inefficient algorithm.
 
-\startsection[reference=sec:org, title={Organizing Analysis Workflows}]
+\startsection[reference=sec:org, title={Organizing analysis workflows}]
 
 % (I am the one who can create usable interfaces and/for pipelines and fill in the gaps where “cobblestones” are missing)
 
@@ -349,7 +349,7 @@ This updated version of a figure from \inlinecite[angerer2017] shows the sustain
 \externalfigure[imgs/dataset-sizes.pdf]
 \stopplacefigure
 
-\startsubsection[title={Analysis Pipelines: Status Quo}]
+\startsubsection[title={Analysis pipelines: status quo}]
 % pipelines used scripts and binaries to proceed between snapshots
 The steps necessary to reproduce the preprocessing and analysis of a publication are combined into an executable bundle of scripts called a pipeline.
 Pipelines perform transformations on the data, compute statistics, and compile reports.
@@ -399,7 +399,7 @@ Text-based file formats and pipeline steps realized as command line interfaces w
 It resulted in the automatic availability of intermediate steps as snapshots, in a human-readable form, and in the use of basic text manipulation to work on them.
 Attempting to serve this lowest common denominator, however, leads to the aforementioned limitations when building pipelines.
 
-\startsubsection[title={Frameworks for modular scRNA-Seq Analysis Pipelines}]
+\startsubsection[title={Frameworks for modular scRNA-Seq analysis pipelines}]
 % - What is a framework?
 The alternative is to use a framework, i.\,e. an opinionated set of data structures and routines that are built for \emph{interoperability}:
 tightly integrated but generic enough to be used as building blocks for pipelines or visualization tools.
