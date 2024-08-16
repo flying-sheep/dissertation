@@ -58,8 +58,10 @@
 	focus=standard,
 ]
 % \setupsynctex[state=start] % Takes time and doesn’t seem to work in Kile
-% Make all section titles interactive
-\setupcombinedlist[content][interaction=all]
+% keep track of the number but don’t show it
+\setuphead[title][incrementnumber=yes, number=no]
+% Make all section titles interactive, and show titles too
+\setupcombinedlist[content][interaction=all,list={chapter,section,subsection,subsubsection,title}]
 
 % Which PDF bookmarks to create and which ones to open
 \placebookmarks[chapter,title,section,subsection,subsubsection][chapter,title,section][force=yes]
