@@ -4,4 +4,3 @@
 - [ ] vertical integration https://www.nature.com/articles/s41587-021-00895-7/figures/1
 - [ ] tutorials help discover best practice tools
 - [ ] https://medium.com/czi-technology/new-data-reveals-the-hidden-impact-of-open-source-in-science-11cc4a16fea2
-- [ ] scverse

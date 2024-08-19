@@ -379,7 +379,7 @@ They are the only kind of annotation not modified when filtering observations or
 
 \n{AnnData} supports several file formats it can read and write to for long-term result storage, pipeline checkpoints, file exchange, and compatibility with existing experimental protocols and other tools and pipelines.
 This includes its own \type{.h5ad} format based on HDF5 \cite[folk2011], \n{Loom} \cite[linnarson2017], \n{UMI-Tools} \cite[smith2017], \n{Matrix Market} \cite[boisvert1996], as well as Microsoft Excel and textual spreadsheets.
-\n{AnnData} supports disk-backed operations in its native format, allowing operations on data too big to hold in memory.
+\n{AnnData} supports out-of-core operations on data too big to hold in memory, based on Dask \cite[rocklin2015] and CUDA \cite[nvidia2020].
 For quick integration of \n{AnnData} with \n{Bioconductor} packages \cite[huber2015] or \n{Seurat} \cite[satija2015,butler2018], \n{AnnData} can be converted to and from \n{SingleCellExperiment} \cite[lun2017a] using \n{anndata2ri} \cite[angerer2019b].
 Due to \n{AnnData}’s generic structure, and its conversion and serialization options, it serves as a backbone for analysis pipelines.
 \n{Scanpy} and other tools can interact by adding and reading annotations, as well as reading, modifying and adding layers.
@@ -394,7 +394,7 @@ Its main design philosophy is ease of use without compromising performance or in
 This allows analyzing of up to a million cells within a reasonable time \cite[wolf2018].
 \n{Scanpy}’s ease of interaction with other tools was ensured by developing and designing it in parallel with \n{AnnData} and avoiding a \n{scanpy}-specific data structure.
 \n{Scanpy} also integrates well with the popular \n{JupyterLab}, allowing to iterate on an analysis in an interactive environment that preserves code, plots, and output as a report file called “notebook” \cite[kluyver2016].
-Combined with disk-backed operations or saving of snapshots, this allows interrupting a workflow at any point or moving it to a different machine.
+Combined with out-of-core operations or saving of snapshots, this allows interrupting a workflow at any point or moving it to a different machine.
 A basic \n{scanpy} workflow utilizes all aforementioned features of \n{AnnData}, establishing naming conventions by which subsequent steps interact.
 For example, storing batch labels as \type{.obs['batch']} will make sure that \n{scanpy}’s batch correction algorithms use them by default.
 \n{Scanpy}’s dimensionality reduction methods store their coordinates as \type{.obsm['X_<method>']}, while \n{scanpy} provides an \type{embedding} plotting function with a parameter to choose the coordinate basis, as well as a plotting function for each method with sensible defaults.

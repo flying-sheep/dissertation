@@ -108,7 +108,7 @@ It is designed to be generic and independent of \n{scanpy}.
 \n{AnnData} can be stored on disk in various formats for snapshots, data interchange, and \emph{interoperability} with other frameworks, languages, and command line tools.
 Its structure allows serialization in the file-tree-like formats \n{HDF5} \cite[folk2011] and \n{Zarr} \cite[miles2022].
 They, unlike Python’s “pickle” format, are not bound to individual implementation versions and therefore allow for reliable long-term storage.
-For data too large to hold in memory, \n{AnnData} supports disk-backed operations on its \n{HDF5}-based \type{.h5ad} files.
+For data too large to hold in memory, \n{AnnData} supports out-of-core operations on its \n{HDF5}-based \type{.h5ad} files.
 \n{Scanpy} has official Docker containers and version logging facilities to help with \emph{reproducibility}.
 \n{AnnData} has built-in backward compatibility with older versions of itself for the same purpose.
 For details about the implementation of \n{AnnData} and \n{scanpy}, see \in{Sections}[sec:anndata] and \in{}[sec:scanpy]
