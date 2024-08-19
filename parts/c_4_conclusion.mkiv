@@ -59,10 +59,11 @@ The tool uses which uses \n{AnnData}’s \type{.layers} to distinguish between s
 
 \startdesc{Spatial location}
 Measuring the spatial location of cells together with transcriptomic heterogeneity allows for analyzing spatial trends such as the location of markers in embryonic development.
-The success of the \n{10x Genomics} \n{Chromium} platform indicates that the upcoming \n{Visium} platform will make spatial information ubiquitous soon \cite[maniatis2019].
+\n{10x Genomics}’ \n{Visium} platform has made spatial information available commercially \cite[maniatis2019].
 Novel approaches like in-situ sequencing also allow capturing 3D spatial coordinates via \n{STARmap} \cite[wang2018].
 Spatial analysis in \n{Scanpy} is straightforward, as 2D or 3D space can be stored in \n{AnnData}’s \type{.obsm}.
-The current development of spatial conventions and plotting routines will encourage the development of \n{Scanpy} based spatial algorithms similar to the R tools trendsceek \cite[edsgard2018] and SpatialDE \cite[svensson2018].
+With \n{SpatialData}, an \n{AnnData}-based container and \n{scanpy}-like framework exists for this modality \cite[marconato2024].
+The current development of spatial conventions and plotting routines will encourage further development of \n{Scanpy} and \n{SpatialData} based algorithms similar to the R tools trendsceek \cite[edsgard2018] and SpatialDE \cite[svensson2018].
 \stopdesc
 
 \startdesc{Surface protein abundances}
@@ -80,7 +81,7 @@ For analysis of scRNA-Seq data combined with both modes, \n{epiScanpy} offers a 
 
 \noindentation
 \n{AnnData} and \n{scanpy} lack support for multimodal data where different modes can be stored for one set of observations.
-With \n{MuData} and \n{muon}, an enhancement exists that allows the storage of annotations for each mode separately while allowing joint filtering of observations. \TODO[cite]
+With \n{MuData} and \n{muon}, an enhancement exists that allows the storage of annotations for each mode separately while allowing joint filtering of observations \cite[bredikhin2022].
 These projects have the potential to be as impactful as \n{AnnData} and \n{scanpy} for the analysis of multimodal data like scCUT&Tag or CITE-Seq, which contain a second high-dimensional feature mode in addition to transcriptomic data.
 Projects like \n{epiScanpy} will be able to rely on \n{MuData} for more interoperability and on \n{muon} for common multimodal processing steps.
 
