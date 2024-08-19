@@ -22,6 +22,7 @@ As demands on reliability at scale grow along with demands posed to algorithms, 
 For example, extensible and efficient data format standards are born from the collaboration of scientists to supplant the ad-hoc text-based formats we used to incompatibly modify to suit situational needs.
 Open-source analysis frameworks have been designed to offer an open and welcoming environment for new as well as established analysts and method developers.
 My contributions towards more \emph{interoperable}, \emph{interpretable}, \emph{reproducible}, and \emph{performant} scientific programming as described in \insec[sec:org] have helped these changes along.
+\n{scanpy} and \n{AnnData} form the foundation of the \n{scverse} ecosystem and are used by many researchers in academia and in the industry \cite[virshup2023].
 
 \startsection[title={Multi-scale scRNA-Seq analysis}]
 The analysis of continuous processes driving cellular heterogeneity has been enabled by fluorescent tagging and single-cell imaging.
@@ -41,7 +42,6 @@ To analyze this foundational attribute of cellular processes, a multi-scale vari
 \stopsection
 
 \startsection[title={Multimodal \n{scanpy} and \n{AnnData}}]
-\TODO[adapt to current situation, mention scverse]
 Recent developments in the joint measurement of scRNA-Seq data and multiple other data types (modes) at single-cell resolution have enabled multimodal analysis.
 With it giving ripe opportunity for analysis development, Nature Methods has named single-cell multimodal omics its method of the year 2019 \cite[nmeth2020].
 \inlinecite[efremova2020] provide a review of the different single-cell modes that became jointly measurable with scRNA-Seq in short succession: RNA velocity, spatial location, surface protein abundances, epigenetic modifications, and chromatin accessibility.
@@ -49,8 +49,11 @@ With it giving ripe opportunity for analysis development, Nature Methods has nam
 % transfer learning
 If there is no 1:1 relation between samples, transfer learning can be used to migrate labels from one dataset or mode to another \cite[abdelaal2019].
 This technique has been successfully employed to link data in and to the \n{Human Cell Atlas} \cite[regev2017].
-\n{Scanpy}, \n{AnnData} and projects based on the two have partial support for multimodal data, using the existing capabilities of \n{AnnData}.
+% scverse contains stuff for different modes
+\n{AnnData} and \n{scanpy} alone are not designed for multimodal analysis, but they are designed with extensibility in mind.
+Part of the reason for the foundation of the \n{scverse} ecosystem was to coordinate and consolidate the efforts of projects leveraging these capabilities.
 
+% list modes contained in scverse
 \startdesc{RNA Velocity}
 RNA Velocity is a model to infer trajectories of cell differentiation from the combination of unspliced pre-mRNA with spliced mRNA \cite[lamanno2018].
 Based on  \n{Scanpy} and \n{AnnData}, \n{scVelo} is a user-friendly implementation and extension of this model \cite[bergen2019].
@@ -79,11 +82,12 @@ DNA methylation can be measured now using the recently developed single-cell Cle
 For analysis of scRNA-Seq data combined with both modes, \n{epiScanpy} offers a \n{scanpy}-integrated workflow \cite[danese2019].
 \stopdesc
 
+% now mention how MuData and muon bring them together
 \noindentation
-\n{AnnData} and \n{scanpy} lack support for multimodal data where different modes can be stored for one set of observations.
-With \n{MuData} and \n{muon}, an enhancement exists that allows the storage of annotations for each mode separately while allowing joint filtering of observations \cite[bredikhin2022].
+\n{AnnData} and \n{scanpy} do not address the possibility of different modes being stored separately for a common set of observations, which would allow their joint filtering.
+This role is filled by \n{MuData}, which enhances \n{AnnData} in this way, while \n{muon} provides multimodal algorithms operating on it \cite[bredikhin2022].
 These projects have the potential to be as impactful as \n{AnnData} and \n{scanpy} for the analysis of multimodal data like scCUT&Tag or CITE-Seq, which contain a second high-dimensional feature mode in addition to transcriptomic data.
-Projects like \n{epiScanpy} will be able to rely on \n{MuData} for more interoperability and on \n{muon} for common multimodal processing steps.
+Going forward, projects like \n{epiScanpy} can now be based on \n{MuData} for more interoperability and on \n{muon} for common multimodal processing steps, just like projects today are based on \n{AnnData} and \n{scanpy}.
 
 A further feature would be to store connections between features of different modes in a graph, such as which transcript (scRNA-Seq) encodes which surface protein (CITE-Seq).
 The current version of \n{AnnData} substantially increased usability and therefore analysis efficiency for exclusively scRNA-Seq data.
@@ -100,8 +104,6 @@ For a successful open-source project, more is necessary than just performance an
 Open source projects need to be scalable in terms of maintenance structure and trust \cite[delaat2010].
 
 % Scanpy community building
-
-%TODO: https://docs.google.com/document/d/1RtOWhoNqCU8mr_AheZdLOLVOyjEHHeBpE88e2KYsbG4/edit?ts=60374090#
 The next steps of the \n{scanpy} project in this regard will focus on community building.
 To foster openness and inclusivity, \n{scanpy} will adopt a code of conduct (CoC).
 CoCs have been shown to increase diversity in a project, while higher diversity is linked to increased productivity \cite[tourani2017].
