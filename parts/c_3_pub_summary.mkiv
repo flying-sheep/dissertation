@@ -44,12 +44,12 @@ When opting for a global scale instead, \n{destiny} will derive a suitable kerne
 
 % plotting and color maps
 \n{Destiny} contains dedicated plotting routines for diffusion maps and \n{DPT} that directly integrate into the popular plotting package \n{ggplot2}.
-Destiny started providing perceptually continuous color maps before they have been included in the major plotting packages of Python and R.
+Destiny started providing perceptually continuous color maps before they were included in the major plotting packages of Python and R.
 Without them, accurate \emph{interpretability} of any kind of color-mapped visualizations cannot be guaranteed \cite[borkin2011,moreland2017].
 \n{Destiny} supports \n{Bioconductor}’s annotated expression matrix classes as well as plain matrices and data frames.
 
 % flexibility
-\n{Destiny} can utilize several distance metrics including euclidean, cosine, and rank correlation distance.
+\n{Destiny} can utilize several distance metrics including Euclidean, cosine, and rank correlation distance.
 Unlike other available R tools, \n{destiny} uses the chosen distance metric also for kNN search, which has been shown to improve results \cite[hu2016].
 \n{Destiny} can be used fully deterministically and therefore \emph{reproducibly} by setting a random seed.
 \n{Destiny}’s API is flexible enough to be used as an analysis tool in its own right, as well as as a diffusion map backend for integrated analysis pipelines like \n{scater} \cite[mccarthy2017].
@@ -57,7 +57,6 @@ It also served as a flexible base for the implementation of \n{DPT} and gene rel
 
 Destiny has been cited 175 times at the time of writing and has for example been used for dimension reduction and pseudo-time inference in analyses.
 This includes usage on hematopoietic stem and progenitor cell differentiation \cite[nestorowa2016], an immune atlas of clear cell renal cell carcinoma \cite[chevrier2017], development in the human adult brain \cite[lake2018] and an atlas of the aging drosophila brain \cite[davie2018].
-\TODO[move all the italic terms into the section below?]
 
 My contribution:
 For the tool, I started with a basic diffusion map implementation from \inlinecite[haghverdi2015].
@@ -91,7 +90,6 @@ Starting from an idea by Fabian Theis, I performed the data analysis supporting 
 showing conclusively the growth of scRNA-Seq data in both the volume per experiment and the number of experiments.
 I designed and produced the figures with feedback from other contributors.
 I wrote the major part of the publication, with parts contributed by other contributors.
-\TODO[make this part more specific? add the 4 terms here too?]
 
 \stopsection
 
@@ -108,7 +106,7 @@ It is designed to be generic and independent of \n{scanpy}.
 \n{AnnData} can be stored on disk in various formats for snapshots, data interchange, and \emph{interoperability} with other frameworks, languages, and command line tools.
 Its structure allows serialization in the file-tree-like formats \n{HDF5} \cite[folk2011] and \n{Zarr} \cite[miles2022].
 They, unlike Python’s “pickle” format, are not bound to individual implementation versions and therefore allow for reliable long-term storage.
-For data too large to hold in memory, \n{AnnData} supports disk-backed operations on its \n{HDF5}-based \type{.h5ad} files.
+For data too large to hold in memory, \n{AnnData} supports out-of-core operations on its \n{HDF5}-based \type{.h5ad} files.
 \n{Scanpy} has official Docker containers and version logging facilities to help with \emph{reproducibility}.
 \n{AnnData} has built-in backward compatibility with older versions of itself for the same purpose.
 For details about the implementation of \n{AnnData} and \n{scanpy}, see \in{Sections}[sec:anndata] and \in{}[sec:scanpy]
@@ -121,7 +119,7 @@ It was named Genome Biology’s milestone article of the year 2018 \cite[genomeb
 Due to \n{scanpy}’s popularity and \emph{performance}, it is used for large projects like the \n{Human Cell Atlas} \cite[regev2017], \n{Tabula Muris} \cite[schaum2018], or EMBL-EBI’s expression atlas, which uses \n{scanpy} for downstream analysis of all single-cell experiments \cite[papatheodorou2020].
 The \n{Human Cell Atlas} and \n{COVID19 Cell Atlas} \cite[wilk2020] chose \n{AnnData}’s \type{.h5ad} format as their data interchange format.
 At the time of writing, \n{scanpy} is cited by over 300 studies, review papers and tools.
-The above-mentioned analysis tools share a community with \n{AnnData} and \n{scanpy} under the umbrella project \n{scverse}.
+The above-mentioned analysis tools share a community with \n{AnnData} and \n{scanpy} under the umbrella project \n{scverse} \cite[virshup2023].
 This results in benefits for \emph{interpretability}, since the community shares domain knowledge, helps to improve test coverage and error messages for common problems, and provides other feedback and enhancements for the projects.
 
 My contribution:

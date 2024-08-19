@@ -4,6 +4,8 @@ Bioconductor
 Bowtie
 cellxgene
 ComBat
+CUDA
+Dask
 ggplot2
 Jupyter
 JupyterLab
