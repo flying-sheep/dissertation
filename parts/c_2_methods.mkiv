@@ -95,10 +95,10 @@ A locally scaled Gaussian function is:
 \placeformula
 \startformula
 Y_c\left(c′\right) =
-	∜{2 \over {π σ_c^2}}
-	\exp \left(-{
+	∜{\frac2{π σ_c^2}}
+	\exp \left(-\frac{
 		\left|\left|c′-c\right|\right|^2
-		\over
+	}{
 		σ_c^2
 	}\right)
 \stopformula
@@ -119,10 +119,10 @@ Since Gaussian functions are wave functions, the kernel $K(c, d)$ is defined by 
 	∫_{-∞}^∞ Y_c\left(c′\right) Y_d\left(c′\right) \mathword{d} c′
 \NR
 \NC \NC =
-	√{2 σ_c σ_d \over σ_c^2+σ_d^2}
-	\exp \left(-{
+	√{\frac{2 σ_c σ_d}{σ_c^2+σ_d^2}}
+	\exp \left(-\frac{
 		||c-d||^2
-		\over
+	}{
 		2\left(σ_c^2+σ_d^2\right)
 	}\right)
 \NR
@@ -133,7 +133,7 @@ With a kernel function defined, the connectivities $W_{cd}$ between cells are de
 
 \placeformula
 \startformula
-W_{cd} = {K(c, d) \over Z(c) Z(d)}
+W_{cd} = \frac{K(c, d)}{Z(c) Z(d)}
 \stopformula
 
 \placeformula
