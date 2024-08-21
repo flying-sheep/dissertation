@@ -36,7 +36,7 @@ Apart from the sparsity support making it suitable for scRNA-Seq, explicit suppo
 The R package is continuously maintained and has been adapted to make use of current best practices such as an adaptable diffusion map kernel, plotting with \n{ggplot2} and storing expression data in the \n{SingleCellExperiment} data structure.
 
 % user friendly: defaults, no sigma
-This \emph{interoperability} and flexibility make \n{destiny}n especially user-friendly.
+This \emph{interoperability} and flexibility make \n{destiny} especially user-friendly.
 It is also easy to use without detailed knowledge by being able to run without specifying parameters.
 To this end, \n{destiny} locally scales diffusion maps and heuristically derives a fitting number of nearest neighbors.
 This nonparametric diffusion map variant is also used by \n{scanpy} today.
@@ -104,7 +104,7 @@ It is designed to be generic and independent of \n{scanpy}.
 
 \n{Scanpy} is designed around \n{AnnData}, storing the results of each processing step in an expression matrix layer or an aligned annotation (see \infig[fig:anndata]).
 \n{AnnData} can be stored on disk in various formats for snapshots, data interchange, and \emph{interoperability} with other frameworks, languages, and command line tools.
-Its structure allows serialization in the file-tree-like formats \n{HDF5} \cite[folk2011] and \n{Zarr} \cite[miles2022].
+Its structure allows serialization in the file-tree-like formats \n{HDF5} \cite[folk2011] and \n{Zarr} \cite[miles2020].
 They, unlike Python’s “pickle” format, are not bound to individual implementation versions and therefore allow for reliable long-term storage.
 For data too large to hold in memory, \n{AnnData} supports out-of-core operations on its \n{HDF5}-based \type{.h5ad} files.
 \n{Scanpy} has official Docker containers and version logging facilities to help with \emph{reproducibility}.
