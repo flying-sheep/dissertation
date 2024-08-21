@@ -57,6 +57,9 @@ COPY requirements-r.txt ./
 RUN R -s -q --no-save -e 'BiocManager::install(readLines(con = "requirements-r.txt", n = -1))'
 RUN R -s -q --no-save -e 'options(warn=2); devtools::install_github("theislab/destiny", upgrade = FALSE)'
 
+# TODO: move up
+RUN apt install -y texlive-pictures
+
 # Rest
 RUN useradd -ms /bin/bash me
 WORKDIR /home/me
