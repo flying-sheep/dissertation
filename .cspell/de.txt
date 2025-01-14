@@ -3,3 +3,8 @@ Computational
 Lamentationen
 Masterpraktikum
 Retreats
+hochdimensional
+hochdimensionale
+Transkriptom
+Dimensionsreduktionsmethoden
+Framework
