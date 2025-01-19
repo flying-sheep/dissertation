@@ -12,10 +12,9 @@ Setup
 - Dependencies
 
   ```bash
-  python3 -m venv .venv
-  source .venv/bin/activate
-  python -m pip install -U pip wheel
-  python -m pip install -r requirements.txt
+  python -m virtualenv --no-seed -p 3.12 .venv
+  source .venv/bin/activate  # or: overlay activate .venv/bin/activate.nu
+  uv pip install -r requirements.txt
   R -q -s -e 'chooseCRANmirror(ind=0); install.packages(readLines("requirements-r.txt"))'
   ```
 
@@ -39,6 +38,7 @@ docker run -it -v "$PWD:/home/me" dissertation
 Build locally (needs all kinds of Python and R stuff)
 
 ```bash
+# once: python -m ipykernel install --user --name dissertation --display-name='Python (diss)'
 snakemake -j4 prd_dissertation.pdf
 ```
 
