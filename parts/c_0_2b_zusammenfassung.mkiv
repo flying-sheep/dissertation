@@ -4,7 +4,7 @@
 
 \language[de]
 \starttitle[title={Zusammenfassung}]
-Seit ihres Beginns im Jahr 2009 hat die Einzelzell-RNA-Sequenzierung (ezRNA-Seq) es erlaubt, hochdimensionale Transkriptom-Daten mit Einzelzellenauflösung zu erfassen.
+Seit ihres Beginns im Jahr 2009 hat die Einzelzell-RNA-Sequenzierung (scRNA-Seq) es erlaubt, hochdimensionale Transkriptom-Daten mit Einzelzellenauflösung zu erfassen.
 Deren Verfügbarkeit und Zugänglichkeit erlauben nie dagewesene Gelegenheiten für die Erforschung verschiedenster Bereiche, wie zum Beispiel Krankheitsmechanismen und Zellentwicklung.
 Dieses Potential führte zu einer beständigen Wachstumsphase an experimentellen Möglichkeiten, Datenmengen und Analysewerkzeugen, einschließlich einer Vielzahl von Dimensionsreduktionsmethoden um hochdimensionale Daten zu verarbeiten und zu verstehen.
 Als Folge der resultierenden kombinatorischen Explosion von Möglichkeiten ist die Zusammenstellung eines Analyseverfahrens auf Basis bewährter Lösungen mit einigem Aufwand an Recherche und Entwicklung verbunden.
@@ -12,8 +12,28 @@ Bisher resultierte dieser Aufwand in unflexiblen Verarbeitungs- und Analysepipel
 Des Weiteren ist es nicht einfach, Analyse-Schritte aus verschiedenen Pipelines zu kombinieren, die jeweils auf ihren eigenen inkompatiblen ad-hoc-Dateiformaten basieren, besonders im Hinblick auf die hohen Mengen heutzutage genutzter Daten.
 Diese Entwicklung zeigt einen klaren Bedarf nach zentralen, effizienten Datenstrukturen und einem darauf basierenden, erweiterbaren Framework zur Analyse und Visualisierung.
 
-% cspell:disable-next-line
-\TODO[This work describes advances…]
+Dieses Werk beschreibt Fortschritte in Konsolidierung und Zugänglichkeit von scRNA-Seq-Analyse und -Visualisierung mithilfe eines solchen Frameworks.
+Sein Fokus liegt auf der Entwicklung wiederverwendbarer Bausteine und Algorithmen für Dimensionsreduktion, maßgeschneidert für diese Art von voluminösen und hochdimensionalen Daten.
+Ein generalisierter Workflow zur scRNA-Seq-Analyse wird erklärt, jeder Schritt zusammen mit ihm verbundenen Herausforderungen und Gelegenheiten.
+Meine Beiträge umreißen die Entwicklung des Frameworks im Kontext dieses generalisierten Workflows.
+Als Erstes werden Daten erfasst und quantifiziert.
+Dieser Schritt beinhaltet häufig ungezieltes RNA-Seq mit Hilfe einer kommerziellen Plattform.
+Für große Datenmengen kann dies kostenintensiv werden.
+BART-Seq ist ein günstiges Protokoll zur gezielten Transkriptom-Quantifikation für hohe Sample-Zahlen.
+Fatma Uzbas, Micha Drukker und ich haben seine Demultiplexing- und Quantifikationsstrategie gemeinsam entworfen, wobei ich auch die Quantifikations-Pipeline implementierte.
+Zweitens werden Rohdaten in eine Datenstruktur eingelesen, die in der Lage ist, sowohl Roh-Messwerte zu halten, als auch Metadaten und verschiedene Repräsentationen wie zum Beispiel Dimensionreduktionen.
+Ich entwarf und implementierte \n{AnnData}, eine inzwischen weitreichend genutzte generische Python-Datenstruktur für annotierte Matrizen, zu denen scRNA-Seq-Expressionsdaten gehören.
+Drittens wird ein integriertes Framework und kompatible Werkzeuge verwendet, um mit Datenstruktur zu arbeiten und Erkenntnisse zu visualisieren.
+\n{AnnData} ist ein zentraler Bestandteil von \n{scanpy}, einem effizienten Python-Framework mit Bausteinen zur Vorverarbeitung, Analyse und Visualisierung von scRNA-Seq-Daten.
+Ich entwickelte \n{scanpy} zusammen mit F. Alex Wolf, wobei ich mich auf Benutzerschnittstelle und Benutzerfreundlichkeit konzentrierte.
+Zusammen bilden die beiden Projekte die Basis von \n{scverse}, einer Kombination aus computergestütztem Ökosystem und Benutzergemeinschaft, die die Analyse multimodaler Einzelzelldaten abdeckt.
+Aufgrund der zentralen Rolle, die Dimensionsreduktionsmethoden bei der Analyse von hochdimensionalen Daten spielen, entwickelte ich je eine Methode um sie zu erzeugen und zu interpretieren.
+Ich entwickelte \n{destiny}, eine effiziente Implementierung des Diffusion Map-Algorithmus zur Dimensionsreduktion in R, mit spezifischen Optimierungen und Erweiterungen, um die biologischen und technischen Besonderheiten von Einzelzelldaten zu berücksichtigen.
+Ich entwarf und implementierte \n{gene_relevance}, einen Algorithmus für die Identifikation von Genen, die eine gegebene Dimensionsreduktion beeinflussen.
+
+Die etablierten Projekte \n{AnnData}, \n{scanpy}, und \n{destiny} zeigen sich als beliebte Beiträge zum Feld der scRNA-Seq-Analyse.
+Sie verbessern das Feld, indem sie Zugänglichkeit, Effizienz, und Reproduzierbarkeit verbessern und eine starke Basis für \n{scverse} bilden.
+Ihre Nutzung in Forschung und Industrie ermöglichen eine Vielzahl von Anwendungen, einschließlich klinischer Studien.
 \stoptitle
 \language[en]
 

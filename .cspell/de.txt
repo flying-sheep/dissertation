@@ -1,3 +1,7 @@
+scanpy
+destiny
+AnnData
+gene_relevance
 Biology
 Computational
 Lamentationen
@@ -5,6 +9,18 @@ Masterpraktikum
 Retreats
 hochdimensional
 hochdimensionale
+hochdimensionalen
+hochdimensionaler
 Transkriptom
+Dimensionsreduktion
+Dimensionreduktionen
 Dimensionsreduktionsmethoden
 Framework
+Frameworks
+Quantifikations
+Quantifikationsstrategie
+Expressionsdaten
+multimodal
+multimodale
+multimodalen
+multimodaler

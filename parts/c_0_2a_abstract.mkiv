@@ -12,8 +12,8 @@ This development shows a clear need for a central, efficient data structure and 
 
 This work describes advances toward a consolidated and accessible scRNA-Seq analysis and visualization experience using such a framework.
 It focuses on the development of reusable analysis building blocks and algorithms for dimension reduction tailored to this kind of high-volume and high-dimensional data.
-A general scRNA-Seq analysis workflow is explained together with the challenges and opportunities related to each step.
-My contributions outline the development of this framework in the context of a generalized workflow.
+A generalized scRNA-Seq analysis workflow is explained together with the challenges and opportunities related to each step.
+My contributions outline the development of the framework in the context of this generalized workflow.
 First, data is collected and quantified.
 This step commonly involves untargeted scRNA-Seq using a commercial platform, which can get expensive for high volumes of data.
 BART-Seq is an inexpensive protocol for targeted transcriptome quantification for large amounts of samples.
@@ -24,11 +24,11 @@ Third, an integrated framework and compatible tools are used to operate on the d
 \n{AnnData} is central to \n{scanpy}, an efficient Python framework with building blocks for preprocessing, analysis, and visualization of scRNA-Seq data.
 I co-developed \n{scanpy} with F. Alex Wolf, with me focusing on interaction design and usability.
 Together, the two projects form the base of \n{scverse}, a computational ecosystem and community covering the analysis of multi-modal single-cell data.
-Given the central role of dimension reduction in the analysis of high-dimensional data, I developed two methods for creating and interpreting them.
+Given the central role of dimension reduction in the analysis of high-dimensional data, I developed methods for creating and interpreting them, respectively.
 I built and continuously improved \n{destiny}, an efficient implementation of the diffusion map algorithm for dimension reduction in R, which I optimized and extended for the biological and technical peculiarities of single-cell data.
-I designed the gene relevance algorithm, which detects genes that drive a given dimension reduction.
+I designed and implemented the gene relevance algorithm, which detects genes that drive a given dimension reduction.
 
-The established projects \n{AnnData}, \n{scanpy}, and \n{destiny} prove to be popular and contribute to single-cell transcriptome analysis.
+The established projects \n{AnnData}, \n{scanpy}, and \n{destiny} prove to be popular contributions to the field of single-cell transcriptome analysis.
 They improve the field by advancing accessibility, performance and reproducibility, and provide a strong base for \n{scverse}.
 Their use by researchers and industry powers many applications, including clinical ones.
 \stoptitle
