@@ -14,13 +14,17 @@ This work describes advances toward a consolidated and accessible scRNA-Seq anal
 It focuses on the development of reusable analysis building blocks and algorithms for dimension reduction tailored to this kind of high-volume and high-dimensional data.
 A generalized scRNA-Seq analysis workflow is explained together with the challenges and opportunities related to each step.
 My contributions outline the development of the framework in the context of this generalized workflow.
+
 First, data is collected and quantified.
 This step commonly involves untargeted scRNA-Seq using a commercial platform, which can get expensive for high volumes of data.
 BART-Seq is an inexpensive protocol for targeted transcriptome quantification for large amounts of samples.
 Fatma Uzbas, Micha Drukker and I designed its demultiplexing and quantification strategy together, while I also implemented the quantification pipeline.
+
 Second, raw data is read into a data structure able to hold raw quantities, metadata, and different representations such as dimension reductions.
 I designed and implemented \n{AnnData}, a by now widely used generic Python data structure for annotated matrices such as scRNA-Seq expressions.
+
 Third, an integrated framework and compatible tools are used to operate on the data structure and visualize insights.
+
 \n{AnnData} is central to \n{scanpy}, an efficient Python framework with building blocks for preprocessing, analysis, and visualization of scRNA-Seq data.
 I co-developed \n{scanpy} with F. Alex Wolf, with me focusing on interaction design and usability.
 Together, the two projects form the base of \n{scverse}, a computational ecosystem and community covering the analysis of multi-modal single-cell data.
