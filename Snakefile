@@ -2,6 +2,8 @@ import os
 
 os.environ["PATH"] = f"{os.getcwd()}/.venv/bin/:{os.environ['PATH']}"
 
+shell.executable("/bin/bash")
+
 def harmonize(p):
     return str(p).replace('\\', '/')
 
