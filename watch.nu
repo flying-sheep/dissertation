@@ -4,5 +4,6 @@ snakemake --detailed-summary -j1 |
     where output_file == 'prd_dissertation.pdf' |
     get 'input-file(s)' |
     split row ',' |
-    str collect (char newline) |
+    str join (char newline) |
+    str replace --all '.pdf' '.ipynb' |
     entr snakemake -j4 -R prd_dissertation.pdf

@@ -36,7 +36,7 @@
     "ignoreRegExpList": [
         "\\\\[a-z]+",
         "\\\\(input|type|tikzset)\\{[^\\}]+\\}",
-        "\\\\((in(line|brace))?cite|setup[a-z]+|externalfigure|node|draw|definemathcommand|start(itemize|alignment)|color)(\\[[^\\]]+\\])+",
+        "\\\\((in(line|brace))?cite|setup[a-z]+|externalfigure|node|draw|definemathcommand|start(itemize|alignment|cases)|color)(\\[[^\\]]+\\])+",
         "\\\\project \\w+",
         "\\b(sec|fig):[a-z]+",
         "[\\[\\{]([a-z]+\\d{4}[a-z]?,?)+[\\]\\}]",

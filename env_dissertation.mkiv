@@ -102,7 +102,7 @@
 \definefontfamily[myfonts][serif][TeX Gyre Pagella] % Palatino
 \definefontfamily[myfonts][math][TeX Gyre Pagella Math] % AMS Euler or TeX Gyre Pagella Math or XITS Math
 \definefontfamily[myfonts][sans][TeX Gyre Heros]   %Helvetica
-\definefontfamily[myfonts][mono][Luxi Mono]  % or: Tex Gyre Cursor
+\definefontfamily[myfonts][mono][Luxi Mono][rscale=0.86]  % or: Tex Gyre Cursor
 \setupbodyfont[myfonts, 12pt]
 
 % small caps
@@ -244,12 +244,16 @@ end
 
 \catcode`√=13\def√{\sqrt}
 \catcode`∜=13\def∜{\sqrt[4]}
-%\definemathcommand[cdf][nolop]{\mfunction{cdf}}
-%\definemathcommand[Cov][nolop]{\mfunction{Cov}}
-%\definemathcommand[Var][nolop]{\mfunction{Var}}
-\definemathcommand[mean][limop]{\mfunction{mean}}
-\definemathcommand[argmin][limop]{\mfunction{argmin}}
-\definemathcommand[argmax][limop]{\mfunction{argmax}}
+%\definemathfunction[cdf][mathlimits=auto]
+%\definemathfunction[Cov][mathlimits=auto]
+%\definemathfunction[Var][mathlimits=auto]
+\definemathfunction[mean][mathlimits=auto]
+\definemathfunction[argmin][mathlimits=auto]
+\definemathfunction[argmax][mathlimits=auto]
+
+\definemathfunction[LR][mathlimits=no]
+\definemathfunction[GR][mathlimits=no]
+\definemathfunction[rank][mathlimits=no]
 
 % References
 \definereferenceformat[ineq][text={Equation }] %left=(,right=),

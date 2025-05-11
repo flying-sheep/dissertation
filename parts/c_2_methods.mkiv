@@ -97,7 +97,7 @@ A locally scaled Gaussian function is:
 Y_c\left(c′\right) =
 	∜{\frac2{π σ_c^2}}
 	\exp \left(-\frac{
-		\left|\left|c′-c\right|\right|^2
+		\left‖c′-c\right‖^2
 	}{
 		σ_c^2
 	}\right)
@@ -204,10 +204,6 @@ There are approaches to remedy this for UMAP and t-SNE \cite[vandermaaten2009b].
 
 \startsubsection[reference=sec:gene-relevance, title={Gene Relevance}]
 
-\definemathcommand[lr][nolop]{\mfunction{LR}}
-\definemathcommand[gr][nolop]{\mfunction{GR}}
-\definemathcommand[rank][nolop]{\mfunction{rank}}
-
 Linear dimensionality reduction methods like PCA are rarely used for visualizing scRNA-Seq data anymore.
 Nonlinear methods are preferred as their flexibility allows them to visualize more information at once in 2D or 3D plots.
 They however lack the linear methods’ intrinsic relation from reduced dimensions to input genes.
@@ -215,7 +211,7 @@ Such knowledge about which genes drive an embedding allows identifying target ge
 
 The gene relevance method was developed in order to derive this relation from scRNA-Seq data and any given embedding \cite[angerer2020].
 It requires no previous cluster detection algorithm and can find genes that cannot be identified using differential expression analysis.
-The method defines a gene relevance score $R_{gc}$ for gene $g$ and cell $c$, as well as summary scores called global gene relevance $\gr_r(g)$ and local gene relevance $\lr_r(g, Ψ)$ for any given set of cells $Ψ$.
+The method defines a gene relevance score $R_{gc}$ for gene $g$ and cell $c$, as well as summary scores called global gene relevance $\GR_r(g)$ and local gene relevance $\LR_r(g, Ψ)$ for any given set of cells $Ψ$.
 It also defines a gene relevance map as a scatter plot using the embedding coordinates and coloring each cell by its label $l_c$, which denotes the gene driving $c$’s embedding location most.
 The gene relevance score $R_{gc}$ is a measure of the extent to which a gene $g$ drives the embedding coordinates $s_{pc}$ of a specific cell $c$.
 It can be derived from the gradient $∇f_{gc}$ of the function $f$ mapping a embedding $s_{pc}$ to the gene expression $x_{gc}$:
@@ -233,27 +229,27 @@ To address the high number of zeroes in scRNA-Seq data, the gradient is only def
 
 \placeformula
 \startformula
-\widehat{∇f_{gc}} = \left(
-\startmatrix[style=\displaystyle]
-\NC \mathit{NA}, \NC if $x_{gc} = 0$ \NR
-\NC \underset{n ∈ \text{NN}_k(c) ∧ n≠c}\median \frac{x_{gn}-x_{gc}}{s_{pn}-s_{pc}}, \NC otherwise \NR
-\stopmatrix
-\right)
+\widehat{∇f_{gc}} = %\left(
+\startcases[mathstyle=display,fences=parenthesis]
+\NC \text{N/A}, \NC \text{if $x_{gc} = 0$} \NR
+\NC \median_{n ∈ \text{NN}_k(c) ∧ n≠c} \frac{x_{gn}-x_{gc}}{s_{pn}-s_{pc}}, \NC \text{otherwise} \NR
+\stopcases
+%\right)
 \stopformula
 
 The gene relevance score $R_{gc}$ is defined as the euclidean norm of this $P$-dimensional gradient vector:
 
 \placeformula
 \startformula
-R_{gc} = \left|\left|∇f_{gc}\right|\right|_2 = \sqrt{∑_{p=1}^P \left(∇f_{gc}\right)_p^2}
+R_{gc} = \left‖∇f_{gc}\right‖_2 = \sqrt{∑_{p=1}^P \left(∇f_{gc}\right)_p^2}
 \stopformula
 
-Local gene relevance $\lr_r(g, Ψ)$ is a measure of how much a gene $g$ is driving the embedding given a set of cells $Ψ⊆\{1,…,C\}$.
+Local gene relevance $\LR_r(g, Ψ)$ is a measure of how much a gene $g$ is driving the embedding given a set of cells $Ψ⊆\{1,…,C\}$.
 Local gene relevance depends on a rank cutoff $r∈\{2,…,|Ψ|\}$.
 
 \placeformula
 \startformula
-\lr_r\left(g, Ψ\right) =
+\LR_r\left(g, Ψ\right) =
 	\frac1{\left|Ψ\right|}
 	∑_{c∈Ψ ∧ x_{gc}≠0} \left[ \rank\left(R_{gc}\right) < r \right]
 \stopformula
@@ -263,7 +259,7 @@ With the \inlinecite[iverson1962] bracket notation:
 \placeformula
 \startformula
 \left[P\right] =
-\startcases
+\startcases[mathstyle=display]
 \NC 1, \NC \text{if $P$ is true} \NR
 \NC 0, \NC \text{otherwise} \NR
 \stopcases
@@ -289,12 +285,12 @@ Klf4 shows up next to Cebpa as the strongest driver for cells in the left arm.
 \externalfigure[imgs/gene-relevance.pdf]
 \stopplacefigure
 
-Global gene relevance $\gr_r(g)$ is a score that emphasizes genes driving the embedding for large parts of the data.
+Global gene relevance $\GR_r(g)$ is a score that emphasizes genes driving the embedding for large parts of the data.
 It is defined as the local relevance of genes $\{1,…,C\}$:
 
 \placeformula
 \startformula
-\gr_r\left(g\right) = \lr_r(g, \{1,…,C\})
+\GR_r\left(g\right) = \LR_r(g, \{1,…,C\})
 \stopformula
 
 Using it as a global gene score yields a similar result as PCA loadings.
@@ -306,9 +302,9 @@ Because this labeling is subject to noise, $m$ smoothing steps over the scores o
 \placeformula
 \startformula
 l_c^m = \argmax_{g∈Ω ∧ x_{gc}≠0}
-\startcases[style=\displaystyle]
-\NC R_{gc}, \NC if $m=0$ \NR
-\NC {\textstyle \frac1k} ∑_{n ∈ \text{NN}_k(c)} \left[ l_n^{m-1} = g \right], \NC otherwise \NR
+\startcases[mathstyle=display]
+\NC R_{gc}, \NC \text{if $m=0$} \NR
+\NC {\textstyle \frac1k} ∑_{n ∈ \text{NN}_k(c)} \left[ l_n^{m-1} = g \right], \NC \text{otherwise} \NR
 \stopcases
 \stopformula
 
@@ -355,7 +351,7 @@ Names for observations $c$ are stored in \type{.obs_names}, and variable $g$ nam
 
 \desc{\type{.layers[]}}
 is the central element of each \n{AnnData} object, a mapping of names to 2D matrix layers, each holding all variables $g$ measured for all observations $c$.
-Missing values in an observation can be represented by the special pseudo-value \emph{NA}.
+Missing values in an observation can be represented by the special pseudo-value \emph{N/A}.
 Each layer has one homogeneous scalar type able to represent it in sufficient IEEE 754 floating-point precision or integer size \cite[ieee754-2019].
 The layers can be dense \n{NumPy} arrays \cite[vanderwalt2011] for normalized or densely measured data, as well as \n{Scipy} sparse matrices \cite[virtanen2020] for scRNA-Seq data with many zeros.
 
