@@ -1,3 +1,4 @@
+#!/usr/bin/nu
 snakemake -j4 -R prd_dissertation.pdf
 snakemake --detailed-summary -j1 |
     from tsv |
