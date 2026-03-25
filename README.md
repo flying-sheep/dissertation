@@ -1,5 +1,5 @@
-Enabling technologies for visualization and analysis of single-cell RNA-Seq data
-================================================================================
+Frameworks of interpretation: stabilizing scRNA-Seq data processing for discovery
+=================================================================================
 
 Setup
 -----
