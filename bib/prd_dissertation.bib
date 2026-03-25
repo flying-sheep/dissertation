@@ -390,6 +390,17 @@
   Year		= 2017
 }
 
+@Misc{		  cashman2025,
+  Abstract	= {Dimensionality reduction is used as an important tool for unraveling the complexities of high-dimensional datasets in many fields of science, such as cell biology, chemical informatics, and physics. Visualizations of the dimensionally reduced data enable scientists to delve into the intrinsic structures of their datasets and align them with established hypotheses. Visualization researchers have thus proposed many dimensionality reduction methods and interactive systems designed to uncover latent structures. At the same time, different scientific domains have formulated guidelines or common workflows for using dimensionality reduction techniques and visualizations for their respective fields. In this work, we present a critical analysis of the usage of dimensionality reduction in scientific domains outside of computer science. First, we conduct a bibliometric analysis of 21,249 academic publications that use dimensionality reduction to observe differences in the frequency of techniques across fields. Next, we conduct a survey of a 71-paper sample from four fields: biology, chemistry, physics, and business. Through this survey, we uncover common workflows, processes, and usage patterns, including the mixed use of confirmatory data analysis to validate a dataset and projection method and exploratory data analysis to then generate more hypotheses. We also find that misinterpretations and inappropriate usage is common, particularly in the visual interpretation of the resulting dimensionally reduced view. Lastly, we compare our observations with recent works in the visualization community in order to match work within our community to potential areas of impact outside our community.},
+  Author	= {Cashman, Dylan and Keller, Mark and Jeon, Hyeon and Kwon, Bum Chul and Wang, Qianwen},
+  DOI		= {10.48550/ARXIV.2503.08836},
+  Keywords	= {FOS: Computer and information sciences,Human-Computer Interaction (cs.HC)},
+  Publisher	= {arXiv},
+  Title		= {A {{Critical Analysis}} of the {{Usage}} of {{Dimensionality Reduction}} in {{Four Domains}}},
+  Year		= 2025,
+  copyright	= {Creative Commons Attribution 4.0 International}
+}
+
 @Article{	  chen2018,
   Abstract	= {A fundamental fact in biology states that genes do not operate in isolation, and yet, methods that infer regulatory networks for single cell gene expression data have been slow to emerge. With single cell sequencing methods now becoming accessible, general network inference algorithms that were initially developed for data collected from bulk samples may not be suitable for single cells. Meanwhile, although methods that are specific for single cell data are now emerging, whether they have improved performance over general methods is unknown. In this study, we evaluate the applicability of five general methods and three single cell methods for inferring gene regulatory networks from both experimental single cell gene expression data and in silico simulated data. Standard evaluation metrics using ROC curves and Precision-Recall curves against reference sets sourced from the literature demonstrated that most of the methods performed poorly when they were applied to either experimental single cell data, or simulated single cell data, which demonstrates their lack of performance for this task. Using default settings, network methods were applied to the same datasets. Comparisons of the learned networks highlighted the uniqueness of some predicted edges for each method. The fact that different methods infer networks that vary substantially reflects the underlying mathematical rationale and assumptions that distinguish network methods from each other. This study provides a comprehensive evaluation of network modeling algorithms applied to experimental single cell gene expression data and in silico simulated datasets where the network structure is known. Comparisons demonstrate that most of these assessed network methods are not able to predict network structures from single cell expression data accurately, even if they are specifically developed for single cell methods. Also, single cell methods, which usually depend on more elaborative algorithms, in general have less similarity to each other in the sets of edges detected. The results from this study emphasize the importance for developing more accurate optimized network modeling methods that are compatible for single cell data. Newly-developed single cell methods may uniquely capture particular features of potential gene-gene relationships, and caution should be taken when we interpret these results.},
   Author	= {Chen, Shuonan and Mar, Jessica C.},
@@ -526,6 +537,21 @@
   Volume	= {7},
   Year		= 2018,
   Month		= feb
+}
+
+@Article{	  cui2024,
+  Author	= {Cui, Haotian and Wang, Chloe and Maan, Hassaan and Pang, Kuan and Luo, Fengning and Duan, Nan and Wang, Bo},
+  DOI		= {10.1038/s41592-024-02201-0},
+  ISSN		= {1548-7091, 1548-7105},
+  Journal	= {Nature Methods},
+  langid	= {english},
+  Number	= {8},
+  Pages		= {1470--1480},
+  Title		= {{{scGPT}}: toward building a foundation model for single-cell multi-omics using generative {{AI}}},
+  Volume	= {21},
+  Year		= 2024,
+  Month		= aug,
+  ShortTitle	= {{{scGPT}}}
 }
 
 @Article{	  dalmolin2017,
@@ -1167,6 +1193,20 @@
   BookTitle	= {Methods in {{Molecular Biology}}}
 }
 
+@Article{	  heumos2023,
+  Author	= {Heumos, Lukas and Schaar, Anna C. and Lance, Christopher and Litinetskaya, Anastasia and Drost, Felix and Zappia, Luke and L{\"u}cken, Malte D. and Strobl, Daniel C. and Henao, Juan and Curion, Fabiola and {Single-cell Best Practices Consortium} and Aliee, Hananeh and Ansari, Meshal and {Badia-i-Mompel}, Pau and B{\"u}ttner, Maren and Dann, Emma and Dimitrov, Daniel and Dony, Leander and Frishberg, Amit and He, Dongze and {Hediyeh-zadeh}, Soroor and Hetzel, Leon and Ibarra, Ignacio L. and Jones, Matthew G. and Lotfollahi, Mohammad and Martens, Laura D. and M{\"u}ller, Christian L. and Nitzan, Mor and Ostner, Johannes and Palla, Giovanni and Patro, Rob and Piran, Zoe and {Ram{\'i}rez-Su{\'a}stegui}, Ciro and {Saez-Rodriguez}, Julio and Sarkar, Hirak and Schubert, Benjamin and Sikkema, Lisa and Srivastava, Avi and Tanevski, Jovan and Virshup, Isaac and Weiler, Philipp and Schiller, Herbert B. and Theis, Fabian J.},
+  DOI		= {10.1038/s41576-023-00586-w},
+  ISSN		= {1471-0056, 1471-0064},
+  Journal	= {Nature Reviews Genetics},
+  langid	= {english},
+  Number	= {8},
+  Pages		= {550--572},
+  Title		= {Best practices for single-cell analysis across modalities},
+  Volume	= {24},
+  Year		= 2023,
+  Month		= aug
+}
+
 @TechReport{	  hinton2003,
   Abstract	= {We describe a probabilistic approach to the task of placing objects, described by high-dimensional vectors or by pairwise dissimilarities, in a low-dimensional space in a way that preserves neighbor identities. A Gaussian is centered on each object in the high-dimensional space and the densities under this Gaussian (or the given dissimilarities) are used to define a probability distribution over all the potential neighbors of the object. The aim of the embedding is to approximate this distribution as well as possible when the same operation is performed on the low-dimensional "images" of the objects. A natural cost function is a sum of Kullback-Leibler divergences, one per object, which leads to a simple gradient for adjusting the positions of the low-dimensional images. Unlike other dimensionality reduction methods, this probabilistic framework makes it easy to represent each object by a mixture of widely separated low-dimensional images. This allows ambiguous objects, like the document count vector for the word "bank", to have versions close to the images of both "river" and "finance" without forcing the images of outdoor concepts to be located close to those of corporate concepts.},
   Author	= {Hinton, Geoffrey and Roweis, Sam},
@@ -1175,11 +1215,11 @@
   Year		= 2003
 }
 
-@Article{	  homrighausen2011,
+@Misc{		  homrighausen2011,
   Abstract	= {In many areas of machine learning, it becomes necessary to find the eigenvector decompositions of large matrices. We discuss two methods for reducing the computational burden of spectral decompositions: the more venerable Nystom extension and a newly introduced algorithm based on random projections. Previous work has centered on the ability to reconstruct the original matrix. We argue that a more interesting and relevant comparison is their relative performance in clustering and classification tasks using the approximate eigenvectors as features. We demonstrate that performance is task specific and depends on the rank of the approximation.},
   Author	= {Homrighausen, Darren and McDonald, Daniel J.},
+  DOI		= {10.48550/arXiv.1107.4340},
   Title		= {Spectral approximations in machine learning},
-  Volume	= {arXiv:1107.4340},
   Year		= 2011,
   Month		= jul
 }
@@ -1861,6 +1901,21 @@
   Year		= 2017
 }
 
+@Article{	  liu2025,
+  Abstract	= {Abstract Single-cell multimodal omics technologies have empowered the profiling of complex biological systems at a resolution and scale that were previously unattainable. These biotechnologies have propelled the fast-paced innovation and development of data integration methods, leading to a critical need for their systematic categorization, evaluation and benchmarking. Navigating and selecting the most pertinent integration approach poses a considerable challenge, contingent upon the tasks relevant to the study goals and the combination of modalities and batches present in the data at hand. Understanding how well each method performs multiple tasks, including dimension reduction, batch correction, cell type classification and clustering, imputation, feature selection and spatial registration, and at which combinations will help guide this decision. Here we develop a much-needed guideline on choosing the most appropriate method for single-cell multimodal omics data analysis through a systematic categorization and comprehensive benchmarking of current methods. The stage 1 protocol for this Registered Report was accepted in principle on 30 July 2024. The protocol, as accepted by the journal, can be found at https://springernature.figshare.com/articles/journal\_contribution/Multi-task\_benchmarking\_of\_single-cell\_multimodal\_omics\_integration\_methods/26789902 .},
+  Author	= {Liu, Chunlei and Ding, Sichang and Kim, Hani Jieun and Long, Siqu and Xiao, Di and Ghazanfar, Shila and Yang, Pengyi},
+  DOI		= {10.1038/s41592-025-02856-3},
+  ISSN		= {1548-7091, 1548-7105},
+  Journal	= {Nature Methods},
+  langid	= {english},
+  Number	= {11},
+  Pages		= {2449--2460},
+  Title		= {Multitask benchmarking of single-cell multimodal omics integration methods},
+  Volume	= {22},
+  Year		= 2025,
+  Month		= nov
+}
+
 @Article{	  livak2013,
   Abstract	= {The stochastic nature of generating eukaryotic transcripts challenges conventional methods for obtaining and analyzing single-cell gene expression data. In order to address the inherent noise, detailed methods are described on how to collect data on multiple genes in a large number of single cells using microfluidic arrays. As part of a study exploring the effect of genotype on Wnt pathway activation, data were collected for 96 qPCR assays on 1440 lymphoblastoid cells. The description of methods includes preliminary data processing steps. The methods used in the collection and analysis of single-cell qPCR data are contrasted with those used in conventional qPCR. \copyright{} 2012 Elsevier Inc.},
   Author	= {Livak, Kenneth J and Wills, Quin F and Tipping, Alex J and Datta, Krishnalekha and Mittal, Rowena and Goldson, Andrew J and Sexton, Darren W and Holmes, Chris C},
@@ -2097,9 +2152,10 @@
   Month		= apr
 }
 
-@Article{	  mcinnes2018,
+@Misc{		  mcinnes2018,
   Abstract	= {UMAP (Uniform Manifold Approximation and Projection) is a novel manifold learning technique for dimension reduction. UMAP is constructed from a theoretical framework based in Riemannian geometry and algebraic topology. The result is a practical scalable algorithm that applies to real world data. The UMAP algorithm is competitive with t-SNE for visualization quality, and arguably preserves more of the global structure with superior run time performance. Furthermore, UMAP has no computational restrictions on embedding dimension, making it viable as a general purpose dimension reduction technique for machine learning.},
   Author	= {McInnes, Leland and Healy, John and Melville, James},
+  DOI		= {10.48550/arXiv.1802.03426},
   Title		= {{{UMAP}}: {{Uniform Manifold Approximation}} and {{Projection}} for {{Dimension Reduction}}},
   Year		= 2018,
   Month		= feb
@@ -2547,10 +2603,10 @@
   Month		= dec
 }
 
-@Article{	  regev2018,
+@Misc{		  regev2018,
   Abstract	= {The Human Cell Atlas (HCA) will be made up of comprehensive reference maps of all human cells - the fundamental units of life - as a basis for understanding fundamental human biological processes and diagnosing, monitoring, and treating disease. It will help scientists understand how genetic variants impact disease risk, define drug toxicities, discover better therapies, and advance regenerative medicine. A resource of such ambition and scale should be built in stages, increasing in size, breadth, and resolution as technologies develop and understanding deepens. We will therefore pursue Phase 1 as a suite of flagship projects in key tissues, systems, and organs. We will bring together experts in biology, medicine, genomics, technology development and computation (including data analysis, software engineering, and visualization). We will also need standardized experimental and computational methods that will allow us to compare diverse cell and tissue types - and samples across human communities - in consistent ways, ensuring that the resulting resource is truly global. This document, the first version of the HCA White Paper, was written by experts in the field with feedback and suggestions from the HCA community, gathered during recent international meetings. The White Paper, released at the close of this yearlong planning process, will be a living document that evolves as the HCA community provides additional feedback, as technological and computational advances are made, and as lessons are learned during the construction of the atlas.},
   Author	= {Regev, Aviv and Teichmann, Sarah and {Rozenblatt-Rosen}, Orit and Stubbington, Michael and Ardlie, Kristin and Amit, Ido and Arlotta, Paola and Bader, Gary and Benoist, Christophe and Biton, Moshe and Bodenmiller, Bernd and Bruneau, Benoit and Campbell, Peter and Carmichael, Mary and Carninci, Piero and {Castelo-Soccio}, Leslie and Clatworthy, Menna and Clevers, Hans and Conrad, Christian and Eils, Roland and Freeman, Jeremy and Fugger, Lars and Goettgens, Berthold and Graham, Daniel and Greka, Anna and Hacohen, Nir and Haniffa, Muzlifah and Helbig, Ingo and Heuckeroth, Robert and Kathiresan, Sekar and Kim, Seung and Klein, Allon M. and Knoppers, Bartha and Kriegstein, Arnold and Lander, Eric and Lee, Jane and Lein, Ed and Linnarsson, Sten and Macosko, Evan and MacParland, Sonya and Majovski, Robert and Majumder, Partha and Marioni, John C. and McGilvray, Ian and Merad, Miriam and Mhlanga, Musa and Naik, Shalin and Nawijn, Martijn and Nolan, Garry and Paten, Benedict and Pe'er, Dana and Philippakis, Anthony and Ponting, Chris and Quake, Steve and Rajagopal, Jayaraj and Rajewsky, Nikolaus and Reik, Wolf and Rood, Jennifer and {Saeb-Parsy}, Kourosh and Schiller, Herbert and Scott, Steve and Shalek, Alex and Shapiro, Ehud and Shin, Jay and Skeldon, Kenneth and Stratton, Michael and Streicher, Jenna and Stunnenberg, Henk and Tan, Kai and Taylor, Deanne and Thorogood, Adrian and Vallier, Ludovic and {van Oudenaarden}, Alexander and Watt, Fiona and Weicher, Wilko and Weissman, Jonathan and Wells, Andrew and Wold, Barbara and Xavier, Ramnik and Zhuang, Xiaowei and Committee, Human Cell Atlas Organizing},
-  Journal	= {arXiv},
+  DOI		= {10.48550/arXiv.1810.05192},
   Title		= {The {{Human Cell Atlas White Paper}}},
   Year		= 2018,
   Month		= oct
@@ -2776,6 +2832,21 @@
   Year		= 2018
 }
 
+@Article{	  shmatko2025,
+  Abstract	= {Abstract Decision-making in healthcare relies on understanding patients' past and current health states to predict and, ultimately, change their future course 1--3 . Artificial intelligence (AI) methods promise to aid this task by learning patterns of disease progression from large corpora of health records 4,5 . However, their potential has not been fully investigated at scale. Here we modify the GPT 6 (generative pretrained transformer) architecture to model the progression and competing nature of human diseases. We train this model, Delphi-2M, on data from 0.4\,million UK Biobank participants and validate it using external data from 1.9\,million Danish individuals with no change in parameters. Delphi-2M predicts the rates of more than 1,000 diseases, conditional on each individual's past disease history, with accuracy comparable to that of~existing single-disease models. Delphi-2M's generative nature also enables sampling of synthetic future health trajectories, providing meaningful estimates of potential disease burden for up to 20 years, and enabling the training of AI models that have never seen actual data. Explainable AI methods 7 provide insights into Delphi-2M's predictions, revealing clusters of co-morbidities within and across disease chapters and their time-dependent consequences on future health, but also highlight biases learnt from training data. In summary, transformer-based models appear to be well suited for predictive and generative health-related tasks, are applicable to population-scale datasets and provide insights into temporal dependencies between disease events, potentially improving the understanding of personalized health risks and informing precision medicine approaches.},
+  Author	= {Shmatko, Artem and Jung, Alexander Wolfgang and Gaurav, Kumar and Brunak, S{\o}ren and Mortensen, Laust Hvas and Birney, Ewan and Fitzgerald, Tom and Gerstung, Moritz},
+  DOI		= {10.1038/s41586-025-09529-3},
+  ISSN		= {0028-0836, 1476-4687},
+  Journal	= {Nature},
+  langid	= {english},
+  Number	= {8088},
+  Pages		= {248--256},
+  Title		= {Learning the natural history of human disease with generative transformers},
+  Volume	= {647},
+  Year		= 2025,
+  Month		= nov
+}
+
 @Article{	  skinnider2019,
   Abstract	= {Single-cell transcriptomics provides an opportunity to characterize cell-type-specific transcriptional networks, intercellular signaling pathways and cellular diversity with unprecedented resolution by profiling thousands of cells in a single experiment. However, owing to the unique statistical properties of scRNA-seq data, the optimal measures of association for identifying gene--gene and cell--cell relationships from single-cell transcriptomics remain unclear. Here, we conducted a large-scale evaluation of 17 measures of association for their ability to reconstruct cellular networks, cluster cells of the same type and link cell-type-specific transcriptional programs to disease. Measures of proportionality were consistently among the best-performing methods across datasets and tasks. Our analysis provides data-driven guidance for gene and cell network analysis in single-cell transcriptomics.},
   Author	= {Skinnider, Michael A. and Squair, Jordan W. and Foster, Leonard J.},
@@ -2853,6 +2924,20 @@
   Title		= {Mass {{Cytometry}}: {{Single Cells}}, {{Many Features}}},
   Volume	= {165},
   Year		= 2016
+}
+
+@Article{	  squair2021,
+  Abstract	= {Differential expression analysis in single-cell transcriptomics enables the dissection of cell-type-specific responses to perturbations such as disease, trauma, or experimental manipulations. While many statistical methods are available to identify differentially expressed genes, the principles that distinguish these methods and their performance remain unclear. Here, we show that the relative performance of these methods is contingent on their ability to account for variation between biological replicates. Methods that ignore this inevitable variation are biased and prone to false discoveries. Indeed, the most widely used methods can discover hundreds of differentially expressed genes in the absence of biological differences. To exemplify these principles, we exposed true and false discoveries of differentially expressed genes in the injured mouse spinal cord.},
+  Author	= {Squair, Jordan W. and Gautier, Matthieu and Kathe, Claudia and Anderson, Mark A. and James, Nicholas D. and Hutson, Thomas H. and Hudelle, R{\'e}mi and Qaiser, Taha and Matson, Kaya J. E. and Barraud, Quentin and Levine, Ariel J. and La Manno, Gioele and Skinnider, Michael A. and Courtine, Gr{\'e}goire},
+  DOI		= {10.1038/s41467-021-25960-2},
+  ISSN		= {2041-1723},
+  Journal	= {Nature Communications},
+  Number	= {1},
+  Pages		= {5692},
+  Title		= {Confronting false discoveries in single-cell differential expression},
+  Volume	= {12},
+  Year		= 2021,
+  Month		= sep
 }
 
 @Article{	  stegle2012,
@@ -3028,6 +3113,21 @@
   Month		= feb
 }
 
+@Article{	  szalata2024,
+  Author	= {Sza{\l}ata, Artur and Hrovatin, Karin and Becker, S{\"o}ren and {Tejada-Lapuerta}, Alejandro and Cui, Haotian and Wang, Bo and Theis, Fabian J.},
+  DOI		= {10.1038/s41592-024-02353-z},
+  ISSN		= {1548-7091, 1548-7105},
+  Journal	= {Nature Methods},
+  langid	= {english},
+  Number	= {8},
+  Pages		= {1430--1443},
+  Title		= {Transformers in single-cell omics: a review and new perspectives},
+  Volume	= {21},
+  Year		= 2024,
+  Month		= aug,
+  ShortTitle	= {Transformers in single-cell omics}
+}
+
 @Article{	  tang2011,
   Abstract	= {Dissecting the relationship between genotype and phenotype is one of the central goals in developmental biology and medicine. Transcriptome analysis is a powerful strategy to connect genotype to phenotype of a cell. Here we review the history, progress, potential applications and future developments of single-cell transcriptome analysis. In combination with live cell imaging and lineage tracing, it will be possible to decipher the full gene expression network underlying physiological functions of individual cells in embryos and adults, and to study diseases. \copyright{} 2011 Nature America, Inc.},
   Author	= {Tang, Fuchou and Lao, Kaiqin and Surani, M. Azim},
@@ -3042,6 +3142,22 @@
   Volume	= {8},
   Year		= 2011,
   Month		= apr
+}
+
+@Article{	  tejada-lapuerta2025,
+  Abstract	= {Abstract Tissue makeup depends on the local cellular microenvironment. Spatial single-cell genomics enables scalable and unbiased interrogation of these interactions. Here we introduce Nicheformer, a transformer-based foundation model trained on both human and mouse dissociated single-cell and targeted spatial transcriptomics data. Pretrained on SpatialCorpus-110M, a curated collection of over 57 million dissociated and 53 million spatially resolved cells across 73 tissues on cellular reconstruction, Nicheformer learns cell representations that capture spatial context. It excels in linear-probing and fine-tuning scenarios for a newly designed set of downstream tasks, in particular spatial composition prediction and spatial label prediction. Critically, we show that models trained only on dissociated data fail to recover the complexity of spatial microenvironments, underscoring the need for multiscale integration. Nicheformer enables the prediction of the spatial context of dissociated cells, allowing the transfer of rich spatial information to scRNA-seq datasets. Overall, Nicheformer sets the stage for the next generation of machine-learning models in spatial single-cell analysis.},
+  Author	= {{Tejada-Lapuerta}, Alejandro and Schaar, Anna C. and Gutgesell, Robert and Palla, Giovanni and Halle, Lennard and Minaeva, Mariia and Vornholz, Larsen and Dony, Leander and Drummer, Francesca and Richter, Till and Bahrami, Mojtaba and Theis, Fabian J.},
+  DOI		= {10.1038/s41592-025-02814-z},
+  ISSN		= {1548-7091, 1548-7105},
+  Journal	= {Nature Methods},
+  langid	= {english},
+  Number	= {12},
+  Pages		= {2525--2538},
+  Title		= {Nicheformer: a foundation model for single-cell and spatial omics},
+  Volume	= {22},
+  Year		= 2025,
+  Month		= dec,
+  ShortTitle	= {Nicheformer}
 }
 
 @Article{	  thoen2013,
