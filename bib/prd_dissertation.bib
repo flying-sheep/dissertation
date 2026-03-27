@@ -31,6 +31,19 @@
   Month		= jul
 }
 
+@Misc{		  adduri2025,
+  Abstract	= {Abstract Cellular responses to perturbations are a cornerstone for understanding biological mechanisms and selecting drug targets. While machine learning models offer tremendous potential for predicting perturbation effects, they currently struggle to generalize to unobserved cellular contexts. Here, we introduce S tate , a transformer model that predicts perturbation effects while accounting for cellular heterogeneity within and across experiments. S tate predicts perturbation effects across sets of cells and is trained using gene expression data from over 100 million perturbed cells. S tate improved discrimination of effects on large datasets by more than 30\% and identified differentially expressed genes across genetic, signaling and chemical perturbations with significantly improved accuracy. Using its cell embedding trained on observational data from 167 million cells, S tate identified strong perturbations in novel cellular contexts where no perturbations were observed during training. We further introduce Cell-Eval, a comprehensive evaluation framework that highlights S tate 's ability to detect cell type-specific perturbation responses, such as cell survival. Overall, the performance and flexibility of S tate sets the stage for scaling the development of virtual cell models.},
+  Author	= {Adduri, Abhinav K. and Gautam, Dhruv and Bevilacqua, Beatrice and Imran, Alishba and Shah, Rohan and Naghipourfar, Mohsen and Teyssier, Noam and Ilango, Rajesh and Nagaraj, Sanjay and Dong, Mingze and {Ricci-Tam}, Chiara and Carpenter, Christopher and Subramanyam, Vishvak and Winters, Aidan and Tirukkovular, Sravya and Sullivan, Jeremy and Plosky, Brian S. and Eraslan, Basak and Youngblut, Nicholas D. and Leskovec, Jure and Gilbert, Luke A. and Konermann, Silvana and Hsu, Patrick D. and Dobin, Alexander and Burke, Dave P. and Goodarzi, Hani and Roohani, Yusuf H.},
+  DOI		= {10.1101/2025.06.26.661135},
+  langid	= {english},
+  Publisher	= {Systems Biology},
+  Title		= {Predicting cellular responses to perturbation across diverse contexts with {{State}}},
+  Year		= 2025,
+  Month		= jun,
+  ArchivePrefix	= {Systems Biology},
+  copyright	= {http://creativecommons.org/licenses/by/4.0/}
+}
+
 @Article{	  afgan2018,
   Abstract	= {Galaxy (homepage: https://galaxyproject.org, main public server: https://usegalaxy.org) is a web-based scientific analysis platform used by tens of thousands of scientists across the world to analyze large biomedical datasets such as those found in genomics, proteomics, metabolomics and imaging. Started in 2005, Galaxy continues to focus on three key challenges of data-driven biomedical science: making analyses accessible to all researchers, ensuring analyses are completely reproducible, and making it simple to communicate analyses so that they can be reused and extended. During the last two years, the Galaxy team and the open-source community around Galaxy have made substantial improvements to Galaxy's core framework, user interface, tools, and training materials. Framework and user interface improvements now enable Galaxy to be used for analyzing tens of thousands of datasets, and {$>$}5500 tools are now available from the Galaxy ToolShed. The Galaxy community has led an effort to create numerous high-quality tutorials focused on common types of genomic analyses. The Galaxy developer and user communities continue to grow and be integral to Galaxy's development. The number of Galaxy public servers, developers contributing to the Galaxy framework and its tools, and users of the main Galaxy server have all increased substantially.},
   Author	= {Afgan, Enis and Baker, Dannon and Batut, B{\'e}r{\'e}nice and Van Den Beek, Marius and Bouvier, Dave and Ech, Martin and Chilton, John and Clements, Dave and Coraor, Nate and Gr{\"u}ning, Bj{\"o}rn A. and Guerler, Aysam and {Hillman-Jackson}, Jennifer and Hiltemann, Saskia and Jalili, Vahid and Rasche, Helena and Soranzo, Nicola and Goecks, Jeremy and Taylor, James and Nekrutenko, Anton and Blankenberg, Daniel},
@@ -401,6 +414,22 @@
   copyright	= {Creative Commons Attribution 4.0 International}
 }
 
+@Article{	  chari2023,
+  Abstract	= {Dimensionality reduction is standard practice for filtering noise and identifying relevant features in large-scale data analyses. In biology, single-cell genomics studies typically begin with reduction to 2 or 3 dimensions to produce ``all-in-one'' visuals of the data that are amenable to the human eye, and these are subsequently used for qualitative and quantitative exploratory analysis. However, there is little theoretical support for this practice, and we show that extreme dimension reduction, from hundreds or thousands of dimensions to 2, inevitably induces significant distortion of high-dimensional datasets. We therefore examine the practical implications of low-dimensional embedding of single-cell data and find that extensive distortions and inconsistent practices make such embeddings counter-productive for exploratory, biological analyses. In lieu of this, we discuss alternative approaches for conducting targeted embedding and feature exploration to enable hypothesis-driven biological discovery.},
+  Author	= {Chari, Tara and Pachter, Lior},
+  DOI		= {10.1371/journal.pcbi.1011288},
+  ISSN		= {1553-7358},
+  Journal	= {PLOS Computational Biology},
+  langid	= {english},
+  Number	= {8},
+  Pages		= {e1011288},
+  Title		= {The specious art of single-cell genomics},
+  Volume	= {19},
+  Year		= 2023,
+  Month		= aug,
+  Editor	= {Papin, Jason A.}
+}
+
 @Article{	  chen2018,
   Abstract	= {A fundamental fact in biology states that genes do not operate in isolation, and yet, methods that infer regulatory networks for single cell gene expression data have been slow to emerge. With single cell sequencing methods now becoming accessible, general network inference algorithms that were initially developed for data collected from bulk samples may not be suitable for single cells. Meanwhile, although methods that are specific for single cell data are now emerging, whether they have improved performance over general methods is unknown. In this study, we evaluate the applicability of five general methods and three single cell methods for inferring gene regulatory networks from both experimental single cell gene expression data and in silico simulated data. Standard evaluation metrics using ROC curves and Precision-Recall curves against reference sets sourced from the literature demonstrated that most of the methods performed poorly when they were applied to either experimental single cell data, or simulated single cell data, which demonstrates their lack of performance for this task. Using default settings, network methods were applied to the same datasets. Comparisons of the learned networks highlighted the uniqueness of some predicted edges for each method. The fact that different methods infer networks that vary substantially reflects the underlying mathematical rationale and assumptions that distinguish network methods from each other. This study provides a comprehensive evaluation of network modeling algorithms applied to experimental single cell gene expression data and in silico simulated datasets where the network structure is known. Comparisons demonstrate that most of these assessed network methods are not able to predict network structures from single cell expression data accurately, even if they are specifically developed for single cell methods. Also, single cell methods, which usually depend on more elaborative algorithms, in general have less similarity to each other in the sets of edges detected. The results from this study emphasize the importance for developing more accurate optimized network modeling methods that are compatible for single cell data. Newly-developed single cell methods may uniquely capture particular features of potential gene-gene relationships, and caution should be taken when we interpret these results.},
   Author	= {Chen, Shuonan and Mar, Jessica C.},
@@ -692,6 +721,20 @@
   Title		= {{{STAR}}: {{Ultrafast}} universal {{RNA-seq}} aligner},
   Volume	= {29},
   Year		= 2013
+}
+
+@Misc{		  dong2026,
+  Abstract	= {Abstract Single-cell transcriptomics offers the promise of measuring the diversity of cellular phenotypes across species, diseases, and other biological conditions. Recently, foundation models have emerged to identify this variation, yet most methods represent each cell independently, despite technical limitations that reduce measurement precision at the single-cell level. Here, we present S tack , a foundation model trained on 149 million uniformly preprocessed human single cells that leverages tabular attention to generate representations for each cell informed by the cells in its context. S tack offers substantial improvements for downstream tasks in the zero-shot setting compared to baselines, whether they are zero-shot, fine-tuned, or trained from scratch on the target dataset. S tack can perform in-context learning from unlabeled cells representing arbitrary conditions, such as a chemical perturbation or a different donor, and predict the effect of those conditions on a target cell population without requiring data-specific fine-tuning. We apply S tack to generate Perturb Sapiens , the first human whole-organism atlas of perturbed cells, spanning 28 tissues, 40 cell classes, and 201 perturbations. We validated subsets of Perturb Sapiens using in vitro stimulation profiles. Overall, S tack presents a new modeling framework where cells themselves act as guiding examples at inference time, unlocking general-purpose in-context learning capabilities for single-cell biology.},
+  Author	= {Dong, Mingze and Adduri, Abhinav and Gautam, Dhruv and Carpenter, Christopher and Shah, Rohan and {Ricci-Tam}, Chiara and Kluger, Yuval and Burke, Dave P. and Roohani, Yusuf H.},
+  DOI		= {10.64898/2026.01.09.698608},
+  langid	= {english},
+  Publisher	= {Bioinformatics},
+  Title		= {Stack: {{In-Context Learning}} of {{Single-Cell Biology}}},
+  Year		= 2026,
+  Month		= jan,
+  ShortTitle	= {Stack},
+  ArchivePrefix	= {Bioinformatics},
+  copyright	= {http://creativecommons.org/licenses/by/4.0/}
 }
 
 @Article{	  duo2018,
@@ -1597,6 +1640,19 @@
   Year		= 2015
 }
 
+@Misc{		  klein2025,
+  Abstract	= {Abstract High-content phenotypic screens provide a powerful strategy for studying biological systems, but the scale of possible perturbations and cell states makes exhaustive experiments unfeasible. Computational models that are trained on existing data and extrapolate to correctly predict outcomes in unseen contexts have the potential to accelerate biological discovery. Here, we present CellFlow, a flexible framework based on flow matching that can model single cell phenotypes induced by complex perturbations. We apply CellFlow to various phenotypic screens, accurately predicting expression responses to a wide range of perturbations, including cytokine stimulation, drug treatments and gene knockouts. CellFlow successfully modeled developmental perturbations at the whole-embryo scale and guided cell fate and organoid engineering by predicting heterogeneous cell populations arising from combinatorial morphogen treatments and by performing a virtual organoid protocol screen. Taken together, CellFlow has the potential to accelerate discovery from phenotypic screens by learning from existing data and generating phenotypes induced by unseen conditions.},
+  Author	= {Klein, Dominik and Fleck, Jonas Simon and Bobrovskiy, Daniil and Zimmermann, Lea and Becker, S{\"o}ren and Palma, Alessandro and Dony, Leander and {Tejada-Lapuerta}, Alejandro and Huguet, Guillaume and Lin, Hsiu-Chuan and Azbukina, Nadezhda and {Sanch{\'i}s-Calleja}, F{\'a}tima and Uscidda, Theo and Szalata, Artur and Gander, Manuel and Regev, Aviv and Treutlein, Barbara and Camp, J. Gray and Theis, Fabian J.},
+  DOI		= {10.1101/2025.04.11.648220},
+  langid	= {english},
+  Publisher	= {Bioinformatics},
+  Title		= {{{CellFlow}} enables generative single-cell phenotype modeling with flow matching},
+  Year		= 2025,
+  Month		= apr,
+  ArchivePrefix	= {Bioinformatics},
+  copyright	= {http://creativecommons.org/licenses/by-nc-nd/4.0/}
+}
+
 @Book{		  kluyver2016,
   Abstract	= {It is increasingly necessary for researchers in all fields to write computer code, and in order to reproduce research results, it is important that this code is published. We present Jupyter notebooks, a document format for publishing code, results and explanations in a form that is both readable and executable. We discuss various tools and use cases for notebook documents.},
   Author	= {Kluyver, Thomas and {Ragan-kelley}, Benjamin and P{\'e}rez, Fernando and Granger, Brian and Bussonnier, Matthias and Frederic, Jonathan and Kelley, Kyle and Hamrick, Jessica and Grout, Jason and Corlay, Sylvain and Ivanov, Paul and Avila, Dami{\'a}n and Abdalla, Safia and Willing, Carol},
@@ -2411,6 +2467,17 @@
   Year		= 2022,
   Month		= feb,
   ShortTitle	= {Squidpy}
+}
+
+@Misc{		  palla2025,
+  Abstract	= {Computational modeling of single-cell gene expression is crucial for understanding cellular processes, but generating realistic expression profiles remains a major challenge. This difficulty arises from the count nature of gene expression data and complex latent dependencies among genes. Existing generative models often impose artificial gene orderings or rely on shallow neural network architectures. We introduce a scalable latent diffusion model for single-cell gene expression data, which we refer to as scLDM, that respects the fundamental exchangeability property of the data. Our VAE uses fixed-size latent variables leveraging a unified Multi-head Cross-Attention Block (MCAB) architecture, which serves dual roles: permutation-invariant pooling in the encoder and permutation-equivariant unpooling in the decoder. We enhance this framework by replacing the Gaussian prior with a latent diffusion model using Diffusion Transformers and linear interpolants, enabling high-quality generation with multi-conditional classifier-free guidance. We show its superior performance in a variety of experiments for both observational and perturbational single-cell data, as well as downstream tasks like cell-level classification.},
+  Author	= {Palla, Giovanni and Babu, Sudarshan and Dibaeinia, Payam and Pearce, James D. and Li, Donghui and Khan, Aly A. and Karaletsos, Theofanis and Tomczak, Jakub M.},
+  DOI		= {10.48550/ARXIV.2511.02986},
+  Keywords	= {FOS: Biological sciences,FOS: Computer and information sciences,Genomics (q-bio.GN),Machine Learning (cs.LG),Machine Learning (stat.ML)},
+  Publisher	= {arXiv},
+  Title		= {Scalable {{Single-Cell Gene Expression Generation}} with {{Latent Diffusion Models}}},
+  Year		= 2025,
+  copyright	= {Creative Commons Attribution 4.0 International}
 }
 
 @Article{	  papalexi2018,
