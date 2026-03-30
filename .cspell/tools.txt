@@ -1,4 +1,5 @@
 anndata2ri
+anndataR
 Bibtex
 Bioconductor
 Bowtie
@@ -6,6 +7,8 @@ cellxgene
 ComBat
 CUDA
 Dask
+decoupler
+expiMap
 ggplot2
 Jupyter
 JupyterLab
@@ -14,6 +17,8 @@ Loom
 Matplotlib
 Muris
 NumPy
+pertpy
+rapids-singlecell
 Salmon
 Scanpy
 scater

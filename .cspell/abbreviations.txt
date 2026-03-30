@@ -2,6 +2,7 @@ ATAC
 BART-Seq
 BBKNN
 DCA
+DRVI
 EBI
 EMBL
 FACS
@@ -19,6 +20,7 @@ RNA-Seq
 SCDE
 scRNA-Seq
 scVI
+SHAP
 STAR
 t-SNE
 t-SNE's

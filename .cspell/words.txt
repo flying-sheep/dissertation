@@ -2,6 +2,7 @@ ad-hoc
 amplicon
 amplicons
 autoencoder
+autoencoders
 automations
 barcode
 barcodes
@@ -28,7 +29,11 @@ epigenetics
 epitope
 epitopes
 euclidean
+hackathon
+hackathons
 hematopoietic
+hyperparameter
+hyperparameters
 in-silico
 in-situ
 inclusivity

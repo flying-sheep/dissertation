@@ -25,9 +25,9 @@ Its practicality is a result of high \emph{performance} making it scale from per
 
 % efficiency
 \n{Destiny}’s scalability and computational efficiency are mainly achieved by reusing the sparsity structure of the sparse distance matrix to perform element-wise operations.
-To this end, \n{destiny} symmetrizes its kNN matrix and uses the symmetric variant of diffusion maps.
+To this end, \n{destiny} symmetrizes its $k$NN matrix and uses the symmetric variant of diffusion maps.
 Other adaptations for efficiency include initializing based on a k-nearest-neighbor search, full sparse matrix support for input data, as well as taking advantage of an approximate Eigendecomposition algorithm.
-This efficient design has been adopted by \n{scanpy} for its many tools that use a kNN search as preprocessing step.
+This efficient design has been adopted by \n{scanpy} for its many tools that use a $k$NN search as preprocessing step.
 
 % enhancements
 \n{Destiny} also efficiently reuses intermediate results such as the transition matrix for its other functions.
@@ -50,7 +50,7 @@ Without them, accurate \emph{interpretability} of any kind of color-mapped visua
 
 % flexibility
 \n{Destiny} can utilize several distance metrics including Euclidean, cosine, and rank correlation distance.
-Unlike other available R tools, \n{destiny} uses the chosen distance metric also for kNN search, which has been shown to improve results \cite[hu2016].
+Unlike other available R tools, \n{destiny} uses the chosen distance metric also for $k$NN search, which has been shown to improve results \cite[hu2016].
 \n{Destiny} can be used fully deterministically and therefore \emph{reproducibly} by setting a random seed.
 \n{Destiny}’s API is flexible enough to be used as an analysis tool in its own right, as well as as a diffusion map backend for integrated analysis pipelines like \n{scater} \cite[mccarthy2017].
 It also served as a flexible base for the implementation of \n{DPT} and gene relevance (see below).
