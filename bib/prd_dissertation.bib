@@ -1506,6 +1506,22 @@
   Month		= jan
 }
 
+@Article{	  huizing2026,
+  Abstract	= {Abstract In dynamic biological processes such as development, spatial transcriptomics is revolutionizing the study of the mechanisms underlying spatial organization within tissues. Inferring cell fate trajectories from spatial transcriptomics profiled at several time points has thus emerged as a critical goal, requiring novel computational methods. Wasserstein gradient flow learning is a promising framework for analyzing sequencing data across time, built around a neural network representing the differentiation potential. However, existing gradient flow learning methods face challenges in analyzing spatially resolved transcriptomic data. Here, we propose STORIES, a method that uses an extension of Optimal Transport to learn a spatially informed potential. We benchmark our approach using three large Stereo-seq spatiotemporal atlases and demonstrate superior spatial coherence compared to existing approaches. Finally, we provide an in-depth analysis of axolotl neural regeneration and mouse gliogenesis, recovering gene trends for known markers such as Nptx1 in neuron regeneration and Aldh1l1 in gliogenesis and additional putative drivers.},
+  Author	= {Huizing, Geert-Jan and Samaran, Jules and Capocefalo, Daniele and Audit, Anna and Peyr{\'e}, Gabriel and Cantini, Laura},
+  DOI		= {10.1038/s41592-025-02855-4},
+  ISSN		= {1548-7091, 1548-7105},
+  Journal	= {Nature Methods},
+  langid	= {english},
+  Number	= {3},
+  Pages		= {522--531},
+  Title		= {{{STORIES}}: learning cell fate landscapes from spatial transcriptomics using optimal transport},
+  Volume	= {23},
+  Year		= 2026,
+  Month		= mar,
+  ShortTitle	= {{{STORIES}}}
+}
+
 @Article{	  hunter2007,
   Author	= {Hunter, John D.},
   DOI		= {10.1109/MCSE.2007.55},
@@ -1818,8 +1834,21 @@
   Year		= 2015
 }
 
-@Misc{		  klein2025,
-  Abstract	= {Abstract High-content phenotypic screens provide a powerful strategy for studying biological systems, but the scale of possible perturbations and cell states makes exhaustive experiments unfeasible. Computational models that are trained on existing data and extrapolate to correctly predict outcomes in unseen contexts have the potential to accelerate biological discovery. Here, we present CellFlow, a flexible framework based on flow matching that can model single cell phenotypes induced by complex perturbations. We apply CellFlow to various phenotypic screens, accurately predicting expression responses to a wide range of perturbations, including cytokine stimulation, drug treatments and gene knockouts. CellFlow successfully modeled developmental perturbations at the whole-embryo scale and guided cell fate and organoid engineering by predicting heterogeneous cell populations arising from combinatorial morphogen treatments and by performing a virtual organoid protocol screen. Taken together, CellFlow has the potential to accelerate discovery from phenotypic screens by learning from existing data and generating phenotypes induced by unseen conditions.},
+@InProceedings{	  klein2024,
+  Author	= {Klein, Dominik and Uscidda, Th{\'e}o and Theis, Fabian and Cuturi, Marco},
+  DOI		= {10.52202/079017-3301},
+  ISBN		= {979-8-3313-1438-5},
+  Pages		= {103897--103944},
+  Publisher	= {Neural Information Processing Systems Foundation, Inc. (NeurIPS)},
+  Title		= {{{GENOT}}: {{Entropic}} ({{Gromov}}) {{Wasserstein Flow Matching}} with {{Applications}} to {{Single-Cell Genomics}}},
+  Year		= 2024,
+  ShortTitle	= {{{GENOT}}},
+  BookTitle	= {Advances in {{Neural Information Processing Systems}} 37},
+  Address	= {Vancouver, BC, Canada}
+}
+
+@Misc{		  klein2025a,
+  Abstract	= {High-content phenotypic screens provide a powerful strategy for studying biological systems, but the scale of possible perturbations and cell states makes exhaustive experiments unfeasible. Computational models that are trained on existing data and extrapolate to correctly predict outcomes in unseen contexts have the potential to accelerate biological discovery. Here, we present CellFlow, a flexible framework based on flow matching that can model single cell phenotypes induced by complex perturbations. We apply CellFlow to various phenotypic screens, accurately predicting expression responses to a wide range of perturbations, including cytokine stimulation, drug treatments and gene knockouts. CellFlow successfully modeled developmental perturbations at the whole-embryo scale and guided cell fate and organoid engineering by predicting heterogeneous cell populations arising from combinatorial morphogen treatments and by performing a virtual organoid protocol screen. Taken together, CellFlow has the potential to accelerate discovery from phenotypic screens by learning from existing data and generating phenotypes induced by unseen conditions.},
   Author	= {Klein, Dominik and Fleck, Jonas Simon and Bobrovskiy, Daniil and Zimmermann, Lea and Becker, S{\"o}ren and Palma, Alessandro and Dony, Leander and {Tejada-Lapuerta}, Alejandro and Huguet, Guillaume and Lin, Hsiu-Chuan and Azbukina, Nadezhda and {Sanch{\'i}s-Calleja}, F{\'a}tima and Uscidda, Theo and Szalata, Artur and Gander, Manuel and Regev, Aviv and Treutlein, Barbara and Camp, J. Gray and Theis, Fabian J.},
   DOI		= {10.1101/2025.04.11.648220},
   langid	= {english},
@@ -1831,8 +1860,8 @@
   copyright	= {http://creativecommons.org/licenses/by-nc-nd/4.0/}
 }
 
-@Article{	  klein2025a,
-  Abstract	= {Abstract Single-cell genomic technologies enable the multimodal profiling of millions of cells across temporal and spatial dimensions. However, experimental limitations hinder the comprehensive measurement of cells under native temporal dynamics and in their native spatial tissue niche. Optimal transport has emerged as a powerful tool to address these constraints and has facilitated the recovery of the original cellular context 1--4 . Yet, most optimal transport applications are unable to incorporate multimodal information or scale to single-cell atlases. Here we introduce multi-omics single-cell optimal transport (moscot), a scalable framework for optimal transport in single-cell genomics that supports multimodality across all applications. We demonstrate the capability of moscot to efficiently reconstruct developmental trajectories of 1.7\,million cells from mouse embryos across 20 time points. To illustrate the capability of moscot in space, we enrich spatial transcriptomic datasets by mapping multimodal information from single-cell profiles in a mouse liver sample and align multiple coronal sections of the mouse brain. We present moscot.spatiotemporal, an approach that leverages gene-expression data across both spatial and temporal dimensions to uncover the spatiotemporal dynamics of mouse embryogenesis. We also resolve endocrine-lineage relationships of delta and epsilon cells in a previously unpublished mouse, time-resolved pancreas development dataset using paired measurements of gene expression and chromatin accessibility. Our findings are confirmed through experimental validation of NEUROD2 as a regulator of epsilon progenitor cells in a model of human induced pluripotent stem cell islet cell differentiation. Moscot is available as open-source software, accompanied by extensive documentation.},
+@Article{	  klein2025b,
+  Abstract	= {Single-cell genomic technologies enable the multimodal profiling of millions of cells across temporal and spatial dimensions. However, experimental limitations hinder the comprehensive measurement of cells under native temporal dynamics and in their native spatial tissue niche. Optimal transport has emerged as a powerful tool to address these constraints and has facilitated the recovery of the original cellular context 1--4. Yet, most optimal transport applications are unable to incorporate multimodal information or scale to single-cell atlases. Here we introduce multi-omics single-cell optimal transport (moscot), a scalable framework for optimal transport in single-cell genomics that supports multimodality across all applications. We demonstrate the capability of moscot to efficiently reconstruct developmental trajectories of 1.7\,million cells from mouse embryos across 20 time points. To illustrate the capability of moscot in space, we enrich spatial transcriptomic datasets by mapping multimodal information from single-cell profiles in a mouse liver sample and align multiple coronal sections of the mouse brain. We present moscot.spatiotemporal, an approach that leverages gene-expression data across both spatial and temporal dimensions to uncover the spatiotemporal dynamics of mouse embryogenesis. We also resolve endocrine-lineage relationships of delta and epsilon cells in a previously unpublished mouse, time-resolved pancreas development dataset using paired measurements of gene expression and chromatin accessibility. Our findings are confirmed through experimental validation of NEUROD2 as a regulator of epsilon progenitor cells in a model of human induced pluripotent stem cell islet cell differentiation. Moscot is available as open-source software, accompanied by extensive documentation.},
   Author	= {Klein, Dominik and Palla, Giovanni and Lange, Marius and Klein, Michal and Piran, Zoe and Gander, Manuel and {Meng-Papaxanthos}, Laetitia and Sterr, Michael and Saber, Lama and Jing, Changying and {Bastidas-Ponce}, Aim{\'e}e and Cota, Perla and {Tarquis-Medina}, Marta and Parikh, Shrey and Gold, Ilan and Lickert, Heiko and Bakhti, Mostafa and Nitzan, Mor and Cuturi, Marco and Theis, Fabian J.},
   DOI		= {10.1038/s41586-024-08453-2},
   ISSN		= {0028-0836, 1476-4687},
@@ -2027,7 +2056,7 @@
 }
 
 @Article{	  lange2022,
-  Abstract	= {Abstract Computational trajectory inference enables the reconstruction of cell state dynamics from single-cell RNA sequencing experiments. However, trajectory inference requires that the direction of a biological process is known, largely limiting its application to differentiating systems in normal development. Here, we present CellRank ( https://cellrank.org ) for single-cell fate mapping in diverse scenarios, including regeneration, reprogramming and disease, for which direction is unknown. Our approach combines the robustness of trajectory inference with directional information from RNA velocity, taking into account the gradual and stochastic nature of cellular fate decisions, as well as uncertainty in velocity vectors. On pancreas development data, CellRank automatically detects initial, intermediate and terminal populations, predicts fate potentials and visualizes continuous gene expression trends along individual lineages. Applied to lineage-traced cellular reprogramming data, predicted fate probabilities correctly recover reprogramming outcomes. CellRank also predicts a new dedifferentiation trajectory during postinjury lung regeneration, including previously unknown intermediate cell states, which we confirm experimentally.},
+  Abstract	= {Computational trajectory inference enables the reconstruction of cell state dynamics from single-cell RNA sequencing experiments. However, trajectory inference requires that the direction of a biological process is known, largely limiting its application to differentiating systems in normal development. Here, we present CellRank (https://cellrank.org) for single-cell fate mapping in diverse scenarios, including regeneration, reprogramming and disease, for which direction is unknown. Our approach combines the robustness of trajectory inference with directional information from RNA velocity, taking into account the gradual and stochastic nature of cellular fate decisions, as well as uncertainty in velocity vectors. On pancreas development data, CellRank automatically detects initial, intermediate and terminal populations, predicts fate potentials and visualizes continuous gene expression trends along individual lineages. Applied to lineage-traced cellular reprogramming data, predicted fate probabilities correctly recover reprogramming outcomes. CellRank also predicts a new dedifferentiation trajectory during postinjury lung regeneration, including previously unknown intermediate cell states, which we confirm experimentally.},
   Author	= {Lange, Marius and Bergen, Volker and Klein, Michal and Setty, Manu and Reuter, Bernhard and Bakhti, Mostafa and Lickert, Heiko and Ansari, Meshal and Schniering, Janine and Schiller, Herbert B. and Pe'er, Dana and Theis, Fabian J.},
   DOI		= {10.1038/s41592-021-01346-6},
   ISSN		= {1548-7091, 1548-7105},
@@ -3998,7 +4027,7 @@
 }
 
 @Article{	  weiler2024,
-  Abstract	= {Abstract Single-cell RNA sequencing allows us to model cellular state dynamics and fate decisions using expression similarity or RNA velocity to reconstruct state-change trajectories; however, trajectory inference does not incorporate valuable time point information or utilize additional modalities, whereas methods that address these different data views cannot be combined or do not scale. Here we present CellRank 2, a versatile and scalable framework to study cellular fate using multiview single-cell data of up to millions of cells in a unified fashion. CellRank 2 consistently recovers terminal states and fate probabilities across data modalities in human hematopoiesis and endodermal development. Our framework also allows combining transitions within and across experimental time points, a feature we use to recover genes promoting medullary thymic epithelial cell formation during pharyngeal endoderm development. Moreover, we enable estimating cell-specific transcription and degradation rates from metabolic-labeling data, which we apply to an intestinal organoid system to delineate differentiation trajectories and pinpoint regulatory strategies.},
+  Abstract	= {Single-cell RNA sequencing allows us to model cellular state dynamics and fate decisions using expression similarity or RNA velocity to reconstruct state-change trajectories; however, trajectory inference does not incorporate valuable time point information or utilize additional modalities, whereas methods that address these different data views cannot be combined or do not scale. Here we present CellRank 2, a versatile and scalable framework to study cellular fate using multiview single-cell data of up to millions of cells in a unified fashion. CellRank 2 consistently recovers terminal states and fate probabilities across data modalities in human hematopoiesis and endodermal development. Our framework also allows combining transitions within and across experimental time points, a feature we use to recover genes promoting medullary thymic epithelial cell formation during pharyngeal endoderm development. Moreover, we enable estimating cell-specific transcription and degradation rates from metabolic-labeling data, which we apply to an intestinal organoid system to delineate differentiation trajectories and pinpoint regulatory strategies.},
   Author	= {Weiler, Philipp and Lange, Marius and Klein, Michal and Pe'er, Dana and Theis, Fabian},
   DOI		= {10.1038/s41592-024-02303-9},
   ISSN		= {1548-7091, 1548-7105},

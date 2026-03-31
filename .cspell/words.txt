@@ -17,6 +17,7 @@ cytometry
 dataset
 datasets
 de-facto
+deconvolution
 demultiplexed
 demultiplexing
 denoising
@@ -29,6 +30,7 @@ epigenetics
 epitope
 epitopes
 euclidean
+exchangeability
 hackathon
 hackathons
 hematopoietic
@@ -44,13 +46,18 @@ introns
 logarithmized
 logarithmizing
 lysing
+mechanistical
+metacell
+metacells
 methylation
+microarray
 microfluidic
 microfluidics
 misassign
 misassigning
 multimodal
 multiresolution
+nanoball
 omics
 parallelly
 performant

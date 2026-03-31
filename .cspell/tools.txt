@@ -9,13 +9,17 @@ CUDA
 Dask
 decoupler
 expiMap
+Geneformer
+GENOT
 ggplot2
 Jupyter
 JupyterLab
 kallisto
 Loom
 Matplotlib
+moscot
 Muris
+Nicheformer
 NumPy
 pertpy
 rapids-singlecell
@@ -36,3 +40,4 @@ velocyto
 Visium
 Zarr
 zotero
+Zuckerberg

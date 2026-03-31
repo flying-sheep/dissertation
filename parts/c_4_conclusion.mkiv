@@ -21,7 +21,8 @@ As demands on reliability at scale grow along with demands posed to algorithms, 
 For example, extensible and efficient data format standards are born from the collaboration of scientists to supplant the ad-hoc text-based formats we used to incompatibly modify to suit situational needs.
 Open-source analysis frameworks have been designed to offer an open and welcoming environment for new as well as established analysts and method developers.
 My contributions towards more \emph{interoperable}, \emph{interpretable}, \emph{reproducible}, and \emph{performant} scientific programming as described in \insec[sec:org] have helped these changes along.
-\n{scanpy} and \n{AnnData} form the foundation of the \n{scverse} ecosystem and are used by many researchers in academia and in the industry \cite[virshup2023].
+\n{scanpy} and \n{AnnData} form the foundation of the \n{scverse} ecosystem and are used by many researchers in academia and in the industry \cite[virshup2023],
+which will become apparent from the fact that most articles cited in this section use \n{AnnData} and integrate with \n{scanpy}.
 
 Since the publication of the contributed articles, the field has grown substantially in scale and scope.
 Experimental protocols now routinely produce data on millions of cells, and the simultaneous measurement of multiple modalities has become commonplace.
@@ -61,7 +62,7 @@ Funding of open-source scientific software relies on grants and other goal-drive
 
 \stopsection
 
-\startsection[title={Dimensionality reduction and interpretability}]
+\startsection[reference=sec:vaes, title={Dimensionality reduction and interpretability}]
 
 Dimensionality reduction is central to the thesis at hand.
 The \n{destiny} package implements both diffusion maps for nonlinear embedding of single-cell data and the gene relevance method quantifying which genes drive a given embedding.
@@ -112,8 +113,66 @@ Suitable for the low sample sizes of bulk RNA-Seq, simple linear dimension reduc
 Nonlinear methods like diffusion maps, t-SNE or later UMAP have been developed and continue to be improved to fit the nature of transcriptome data.
 But while they capture both continuity and heterogeneity at multiple scales, their output does not contain directly interpretable information about processes at different scales.
 Methods like the growing multitude of trajectory inference algorithms or gene relevance complement them within the same constraint \cite[saelens2019].
-Of all methods known to the author, only \n{PAGA} so far distinctively dissects continuous multi-scale heterogeneity \cite[wolf2019].
-To analyze this foundational attribute of cellular processes, a multi-scale variant of gene relevance would be of great use.
+
+Since \n{DPT} was incorporated into \n{destiny} and \n{scanpy}, trajectory inference has matured substantially.
+\n{PAGA} \cite[wolf2019] infers hierarchical cell lineage structure from RNA-Seq data.
+\n{CellRank} \cite[lange2022] computes directed, probabilistic fate maps using RNA velocity while \n{CellRank\,2} \cite[weiler2024] generalizes this to multimodal data.
+It stood at the beginning of a trend of combining optimal transport with multi-modal data – especially spatial – for trajectory inference, continued by several other methods.
+These include \n{STORIES} \cite[huizing2026], which extends optimal transport to infer differentiation potentials from spatial transcriptomic data.
+Optimal transport also allows to match cell measurements from different feature spaces, as done by \n{GENOT} \cite[klein2024], which combines optimal transport with flow matching to this end.
+\n{moscot} \cite[klein2025b] is a toolbox to apply scalable optimal transport to multi-modal time-series data in order to infer trajectories, match cells, and model spatiotemporal dynamics in other ways.
+
+% A complementary development is the metacell concept.
+% \n{SEACells} \cite[persad2023] and \n{MetaCell-2} \cite[ben-kiki2022] group highly similar cells into compact units that overcome the sparsity of individual measurements while retaining biological heterogeneity.
+% This enables genuinely multi-scale analysis: metacells provide a coarser resolution that reveals global structure, while the constituent single cells remain available for fine-grained investigation.
+% The metacell abstraction is particularly useful for trajectory inference and cell-type deconvolution at scale.
+
+% TODO: wording
+Analysis of multi-modal data promises to advances in understanding of developmental heterogeneity, an important part of multi-scale heterogeneity.
+The question of how genes drive this heterogeneity at different scales remains central.
+So far, the ability to truly disentangle the separate scales has proven elusive, yet the interpretable VAE approaches discussed in \insec[sec:vaes] offer hope that similar advances in interpretability can be achieved for heterogeneity analysis.
+
+% TODO: connect to multimodal section and transformer model below
+
+\stopsection
+
+\startsection[title={Transformers and the vision of the virtual cell}]
+
+Perhaps the most visible development in computational biology in recent years is the application of generative models to single-cell data.
+An early example is \n{scGen} \cite[lotfollahi2019], which used a VAE for perturbation prediction by learning a latent representation of cellular identity and perturbation direction (see \insec[sec:vaes]).
+Since then, especially transformer architectures have seen a steep rise in adoption.
+Originally developed for natural language processing, transformers have been adapted to learn representations from large collections of gene expression profiles like cell atlases.
+
+% first wave
+A first wave of single-cell transformers was introduced in 2023–2024, aiming to produce foundation models pre-trained on tens of millions of cells that can be fine-tuned for specific tasks.
+\n{scGPT} \cite[cui2024] proposed to address cell typing, perturbation prediction, batch correction, and multi-omics integration,
+while \n{Geneformer} \cite[theodoris2023] encoded the multi-scale regulation of gene regulatory network inference.
+These models attracted significant attention, yet \inlinecite[szalata2024] identified several shortcomings in performance and approach, such as transcriptomes fundamentally lacking an order expected by this language model derived approach.
+Later, benchmarks have shown even more clearly that this approach rarely outperforms simpler approaches, e.g. and on perturbation prediction specifically, even linear models can be competitive \cite[ahlmann-eltze2025].
+While transformer models contain autoencoders, their representations are opaque unlike the interpretable VAEs discussed in \insec[sec:vaes]:
+latent dimensions do not map to identifiable biological processes, which limits the models’ utility for hypothesis generation and mechanistic understanding.
+
+% second wave
+A more targeted second wave of methods has begun to address these shortcomings.
+\n{State} \cite[adduri2025] focuses specifically on perturbation prediction by training on more than a hundred million of perturbed cells, resulting in a markedly improved performance.
+\n{Stack} \cite[dong2026] builds on the foundation model idea, but allows in-context learning, which enables predictions about unseen conditions without fine-tuning.
+Notably, \n{Stack}’s tokenization into gene module vectors provides some degree of interpretability to its latent space.
+% both flow matching, include?
+\n{scLDM} \cite[palla2025] forges the order-dependency of transformer architectures by using latent diffusion models in oder to generate realistic expression profiles for use cases like virtual experiments.
+\n{CellFlow} \cite[klein2025a] uses flow matching to model single-cell phenotypic responses to complex perturbations, including combinatorial treatments.
+
+% interpretability as core weakness
+Interpretability remains a central limitation of these models, with not even \n{Stack}’s gene-module tokens going down to the single gene level.
+Especially for medical applications, the lack of direct mechanistical reasoning about the underlying biology of a prediction might be a roadblock.
+
+% beyond technical: virtual cell vision
+The concept motivating the approach of generalist “foundation models” is the vision of the “virtual cell”: an model that can simulate cellular behavior in-silico, predicting how cells respond to perturbations, drugs, and disease \cite[bunne2024].
+Taking a step back from the single-cell level, \inlinecite[shmatko2025] demonstrate that incomplete knowledge can lead to useful predictions with \n{Delphi-2M}, a GPT-style model trained on the patient level to predicting disease trajectories up to 20 years into the future.
+The vision of the virtual cell, if realized, could accelerate drug discovery, enable personalized treatment planning at a fraction of cost it has today, and reduce the need for animal experiments.
+Without interpretability however, even a perfect black box of a virtual cell would only help with speed and cost, but but not with insight.
+
+% TODO: large scale as enabler
+
 \stopsection
 
 \startsection[title={Multimodal \n{scanpy} and \n{AnnData}}]
