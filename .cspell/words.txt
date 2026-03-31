@@ -59,6 +59,7 @@ multimodal
 multiresolution
 nanoball
 omics
+organoid
 parallelly
 performant
 pluripotency

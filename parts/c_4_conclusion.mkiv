@@ -53,12 +53,7 @@ Beyond these first steps, codification of best practices \cite[heumos2023] a pro
 the tools had stabilized enough for consensus to emerge around parts of the workflow.
 Finally reproducibility is no longer an issue: a \n{scanpy} workflow can conveniently be reproduced from a Jupyter notebook containing a manifest of Python package versions by \n{session-info2} \cite[angerer2026].
 
-The sustainability of this infrastructure is however not guaranteed.
-\inlinecite[coelho2024] argues that most research software is built by trainees on short-term grants, leading to abandoned tools after publication.
-The \n{scverse} governance model tries to combat this problem by decoupling software maintenance from the interests of individual labs and people:
-to this end it includes an open inter-lab management committee, and formalized criteria for both community conduct and inclusion of new ecosystem packages.
-The tension between academic incentives that reward novelty and the need for long-term software maintenance remains unresolved \cite[strasser2022].
-Funding of open-source scientific software relies on grants and other goal-driven fund distribution models rather than long-term employment by neutral entities like nation states.
+The sustainability of this infrastructure is however not guaranteed, see \insec[sec:sustainability].
 
 \stopsection
 
@@ -201,29 +196,45 @@ From the perspective of this thesis, this means a need for robust data structure
 
 \stopsection
 
-\startsection[title={New dimensions of \n{scanpy} scalability}]
+\startsection[title={From cell census to biological insight}]
+
+The developments described above are not purely methodological; they demonstrate a shift in how single-cell data can help us gain insight into healthy development, homeostasis, and disease.
+
+The \n{Human Cell Atlas} has progressed from a white paper \cite[regev2017] to the point where a first draft is being assembled that will encompass around 100 million cells across all major organ systems \cite[rood2025].
+It will among others contain integrated atlases of the lung, gut, organoid, and nervous system, and is transforming from a static reference into an active foundation for computational modeling \cite[rood2025].
+
+Single-cell analysis is also beginning to influence pharmaceutical practice.
+During the COVID-19 pandemic, single-cell technologies were used to measure B cell receptor repertoires to characterize immune responses, and to develop neutralizing antibodies.
+Beyond infectious diseases, \inlinecite[vandesande2023] review applications of scRNA-Seq in drug discovery, including target discovery at cell identity level, high-throughput perturbation screening, and insight into different aspects of disease such as cancer metastasis,Alzheimer’s and auto-immune diseases.
+
+The growing ability to predict cellular responses to perturbations in-silico \cite[adduri2025,klein2025a,dong2026] could further accelerate this path towards clinical insight.
+Virtual perturbation screens are realistically able to substantially narrow the space of promising drug candidates before wet-lab validation, driving down the cost and time of drug development, which in turn might push several orphan drugs back into the realm of financial feasibility.
+\n{Scanpy} and \n{AnnData} already play an important role in this effort by forming the base of many pharmaceutical researchers’ daily work.
+
+\stopsection
+
+\startsection[reference=sec:sustainability, title={Sustaining open scientific software}]
+
 \n{Scanpy} has proven to be scalable in terms of CPU and memory through its efficient implementation, multiprocessing capabilities and \n{AnnData}’s out-of-core mode,
 which continue to be actively developed for both projects.
 For a successful open-source project, more is necessary than just performance and ease of use.
 Open source projects need to be scalable in terms of maintenance structure and trust \cite[delaat2010].
 
-% Scanpy community building
-The next steps in this direction happen as part of the \n{scverse} project, which focuses on community building.
-To foster openness and inclusivity, \n{scverse} has a code of conduct (CoC).
+The \n{scverse} project has made concrete progress in this direction since its inception.
+Its code of conduct (CoC), governance model, and formalized inclusion criteria for ecosystem packages distributes decision-making beyond the original authors.
 CoCs have been shown to increase diversity in a project, while higher diversity is linked to increased productivity \cite[tourani2017].
-To uncouple progress with the available amount of free time of the de-facto decision makers of the project, a steering committee was formed.
-Its membership is open to long-term contributors, and its meeting notes are publicly available.
-Automations for quality and performance criteria, such as \n{scanpy}’s high-performance GPU-driven parts, similarly streamline the contribution process and are being extended.
-This will make friendly and helpful information available regardless of the available free time of experienced contributors.
-Additionally, inclusion criteria of ecosystem tools displayed on the \n{scverse} website are being formalized and made transparent.
-Communication channels with the main projects of the R world are already established and will continue to be used to ensure interoperability.
 
-These changes should be able to encourage more junior developers and data scientists to start contributing to the project.
-More active contributors in turn mean that key knowledge of the project is shared by more people, which reduces reliance on the continued effort of a small group of individuals.
+There is a fundamental misalignment between academic incentives rewarding novelty and the need for long-term software maintenance \cite[strasser2022].
+\inlinecite[coelho2024] observes that most research software is built by trainees on short-term grants, leading to abandoned tools after publication, and argues for a minimum five-year commitment.
+At the same time open-source scientific software relies on grants and other goal-driven fund distribution models rather than long-term employment by neutral entities like nation states.
+The result is a landscape where widely used packages depend on the continued voluntary effort of a small number of individuals, many of whom hold temporary academic positions.
 
-Further improvements can come from the professional development world, especially if some contributors can invest time regularly.
-A bigger group of regular contributors can result in adopting agile principles.
-This would result in a more structured pace of development, with regularly scheduled releases and the ability to plan which features are being focused on.
+The \n{scverse} governance model tries to combat this problem by decoupling software maintenance from the interests of individual labs and people:
+to this end it includes an open inter-lab management committee, and formalized criteria for both community conduct and inclusion of new ecosystem packages.
+We hope to be able to reduce reliance on any single contributor by encouraging contributions from junior developers and data scientists, distributing key knowledge across more people, and relying on structured development practices and automation.
+
+In the end, no matter how brilliant it is what we build, there have never been giants on whose shoulders to stand, only scaffolding that has to be maintained.
+
 \stopsection
 
 \stopchapter
