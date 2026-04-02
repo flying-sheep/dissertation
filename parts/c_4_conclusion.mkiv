@@ -200,7 +200,11 @@ From the perspective of this thesis, this means a need for robust data structure
 The developments described above are not purely methodological; they demonstrate a shift in how single-cell data can help us gain insight into healthy development, homeostasis, and disease.
 
 The \n{Human Cell Atlas} has progressed from a white paper \cite[regev2017] to the point where a first draft is being assembled that will encompass around 100 million cells across all major organ systems \cite[rood2025].
-It will among others contain integrated atlases of the lung, gut, organoid, and nervous system, and is transforming from a static reference into an active foundation for computational modeling \cite[rood2025].
+It will among others contain integrated atlases of the lung, gut, organoid, and nervous system.
+\inlinecite[lotfollahi2024] draw an analogy to reference genomes: they predict that similar to the established practice of quantifying transcriptomes by mapping reads to a reference genome, mapping new single-cell data to curated reference atlases could replace manual, unsupervised clustering and annotation.
+Reference mapping workflows project query cells into an atlas-defined coordinate space, enabling automated cell identity annotation, detection of novel populations absent from the reference, and prediction of unmeasured modalities such as spatial location or chromatin accessibility.
+Foundation models are taking steps towards this vision as described in \insec[sec:trajectory] \andsec[sec:transformers].
+Cell atlases like the \n{Human Cell Atlas} are therefore approaching their vision of becoming active infrastructure for computational modeling \cite[rood2025], much as reference genomes became infrastructure for genomics and transcriptomics.
 
 Single-cell analysis is also beginning to influence pharmaceutical practice.
 During the COVID-19 pandemic, single-cell technologies were used to measure B cell receptor repertoires to characterize immune responses, and to develop neutralizing antibodies.
