@@ -122,12 +122,11 @@ Optimal transport also allows to match cell measurements from different feature 
 % This enables genuinely multi-scale analysis: metacells provide a coarser resolution that reveals global structure, while the constituent single cells remain available for fine-grained investigation.
 % The metacell abstraction is particularly useful for trajectory inference and cell-type deconvolution at scale.
 
-% TODO: wording
-Analysis of multi-modal data promises to advances in understanding of developmental heterogeneity, an important part of multi-scale heterogeneity.
-The question of how genes drive this heterogeneity at different scales remains central.
-So far, the ability to truly disentangle the separate scales has proven elusive, yet the interpretable VAE approaches discussed in \insec[sec:vaes] offer hope that similar advances in interpretability can be achieved for heterogeneity analysis.
-
-% TODO: connect to multimodal section and transformer model below
+Analysis of multi-modal data (see \insec[sec:multimodal]) promises advances in understanding of developmental heterogeneity, an important part of multi-scale heterogeneity.
+So far, few approaches have attempted to capitalize on the large datasets that are being compiled as part of cell atlas initiatives.
+\n{PULSAR} \cite[pang2025] is one of the first methods to directly address the multi-scale challenge this way: it is a foundation model (see \insec[sec:transformers]) designed to learn representations at multiple biological scales, from gene programs to multicellular systems, and to relate them to each other.
+The question of how individual genes drive heterogeneity at different scales remains open, but the field is getting close:
+some of the interpretable VAE approaches discussed in \insec[sec:vaes] go down to the individual gene level without disentangling multiple scales, while \n{PULSAR} offers interpretability at the gene program level combined with multi-scale analysis.
 
 \stopsection
 
