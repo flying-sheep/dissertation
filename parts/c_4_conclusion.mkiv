@@ -29,6 +29,8 @@ Experimental protocols now routinely produce data on millions of cells, and the 
 Throughout this growth, the modular approach to analysis advocated here has proven its durability:
 the data infrastructure and frameworks described in this thesis remain the foundation on which new methods are built.
 
+\page
+
 \startsection[title={The maturation of single-cell data infrastructure}]
 
 The data infrastructure landscape for single-cell analysis has changed significantly over the last few years.
@@ -36,6 +38,13 @@ The data infrastructure landscape for single-cell analysis has changed significa
 It now comprises over 120 ecosystem packages and 11 core packages spanning data structures (\n{AnnData}, \n{MuData}, \n{SpatialData}), analysis frameworks (\n{scanpy}, \n{muon}, \n{squidpy}, \n{scvi-tools}), and domain-specific tools (\n{scirpy}, \n{SnapATAC2}, \n{rapids-singlecell}, \n{pertpy}, \n{decoupler}) \cite[virshup2023].
 The nonprofit maintains a flexible governance model that manages developmental strategy, funding, community management, and planning of events, such as hackathons, workshops, and conferences.
 Organizing a group of core developers mitigates the risks of having widely used scientific software that is maintained by small groups of original authors, with many of them employed on short-term academic contracts.
+See \insec[sec:sustainability] for more details.
+
+This tighter integration and communication has brought several synergistic effects, first and foremost the ability to coordinate complex tasks across multiple projects.
+In \n{scverse} workshops, the foundations of new cross package initiatives are often laid, culminating in new packages or orthogonal capabilities such as support for certain acceleration frameworks, which can then later bear fruit in enabling projects that weren’t feasible earlier.
+As an example, \n{AnnData}’s support for \n{Zarr} \cite[miles2020] was initially optional and motivated by niche performance considerations.
+It later enabled \n{SpatialData}’s \cite[marconato2024] on-disk format that combines \n{AnnData}’s with the \n{Zarr}-based serialization standard for spatial omics \n{OME-NGFF} \cite[moore2021].
+Since then, it has enabled access for web services through file servers instead of dedicated server software, and is currently being leveraged for the high-performance data loader \n{annbatch}.
 
 Single-cell analysis is however not a Python-only endeavor.
 The R world is split between the \n{Bioconductor} ecosystem and \n{Seurat}.
@@ -45,9 +54,10 @@ Representatively for \n{Seurat}, the latter study notices both its high computat
 \n{Bioconductor} has an independent data structure called \n{SingleCellExperiment}, which is used by a more healthily diverse ecosystem of tools such as \n{scater}, \n{scuttle} \cite[mccarthy2017], and \n{scDblFinder} \cite[germain2022].
 \n{AnnData} bridges ecosystems through in-memory conversion with \n{anndata2ri} \cite[angerer2019b] and its on-disk representation through \n{anndataR} \cite[deconinck2025].
 Both \n{Seurat} and \n{scanpy} now follow convergent best practices for preprocessing, quality control, and downstream analysis \cite[heumos2023].
+Communication between the language communities is growing.
 
 % beyond technical: impact on culture
-This infrastructure has had consequences beyond technical efficiency.
+\n{scverse}’s coordination of infrastructure has had consequences beyond technical efficiency.
 Standardized frameworks lower the barrier to entry for researchers new to the field as the first steps are stable, well-documented, and well-maintained.
 Beyond these first steps, codification of best practices \cite[heumos2023] a product of mature infrastructure as well:
 the tools had stabilized enough for consensus to emerge around parts of the workflow.

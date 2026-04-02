@@ -1,3 +1,4 @@
+annbatch
 anndata2ri
 anndataR
 Bibtex
@@ -27,11 +28,11 @@ rapids-singlecell
 Salmon
 Scanpy
 scater
+SCimilarity
 SciPy
 Scirpy
 scmap
 scran
-SCimilarity
 SCTransform
 scVelo
 scverse
