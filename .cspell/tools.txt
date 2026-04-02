@@ -8,6 +8,7 @@ ComBat
 CUDA
 Dask
 decoupler
+Evercode
 expiMap
 Geneformer
 GENOT

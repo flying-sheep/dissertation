@@ -57,6 +57,34 @@ The sustainability of this infrastructure is however not guaranteed, see \insec[
 
 \stopsection
 
+\startsection[title={Developments in single-cell transcriptomics protocols}]
+
+\n{10x Genomics}’ commercial microfluidic platform \n{Chromium} has been the dominant technology for high-throughput scRNA-Seq since its introduction in 2017.
+The company offers integrated solutions like the \n{Chromium\,X} instrument and chemistry designed to operate it using targeted and whole transcriptome protocols.
+In recent years, instrument-free alternatives like \n{Parse Biosciences}’s \n{Evercode} and \n{Scale Bio}’s \n{QuantumScale} have emerged, which use combinatorial split-pool barcoding to label cells without microfluidics.
+These methods are competitive in sequencing depth: \n{Evercode} achieves throughput of up to five million cells per experiment using standard laboratory equipment, making target sequencing depth rather than choice of technology the limiting factor.
+As a result, experiments at the million-cell scale are getting less exceptional.
+
+Scale is not the only area the field is evolving in.
+Single-nucleus RNA-Seq (snRNA-Seq) has emerged as an approach to sequence tissues that are difficult to dissociate, such as brain, adipose, or fibrotic tissue, as well as for archived samples.
+Fixing the tissue avoids microfluidic shearing and dissociation-induced stress artifacts at the cost of lower gene detection per nucleus.
+Fixed-tissue protocols like \n{10x Flex} and \n{Parse Evercode} can be used both for snRNA-Seq and scRNA-Seq.
+\inlinecite[hatje2025] compare the two and \n{Honeycomb Biotechnologies}’ \n{HIVE} for profiling neutrophils from patient blood, a cell type that is difficult to capture due to low RNA content and high RNase levels.
+The protocols’ focus on fixed and stabilized cells opens scRNA-Seq to clinical settings, where sensitive cell types and logistical constraints such as sample transport pose challenges.
+
+Microfluidics based scRNA-Seq commonly captures 10–40\% of cellular transcripts and is biased toward transcript ends, introducing bias with regard to certain transcripts \cite[moro2026].
+Targeted scRNA-Seq methods address these limitations by focusing sequencing capacity on defined gene panels, achieving higher sensitivity per read for genes of interest.
+\inlinecite[moro2026] provide a comprehensive review of these methods, categorizing them by which protocol step they modify to reduce bias: capture, priming, amplification, PCR, or hybridization.
+All methods mentioned in the review are based on widely available commercial platforms.
+This includes BART-Seq \cite[uzbas2019], previously presented in this thesis as an early example of this approach, which combined targeted amplification with combinatorial barcoding to sensitively profile defined gene sets across many samples at low cost.
+True to its name, \n{10x Flex} appears again among reviewed targeted methods, with the unusual quality of targeting up to 19 thousand transcripts.
+This allows it to cover most human genes, with the trade-off of missing variants that are not produced by common single-nucleotide polymorphisms (SNPs).
+
+The current state of the field is ripe with trade-offs: sequencing depth vs. number of cells, unbiased discovery vs. hypothesis-driven targeting, and the several biases that can be minimized by choice of protocol.
+Most importantly progress happened across the board in all aforementioned categories and additionally in affordability and applicability to clinical settings.
+
+\stopsection
+
 \startsection[reference=sec:vaes, title={Dimensionality reduction and interpretability}]
 
 Dimensionality reduction is central to the thesis at hand.

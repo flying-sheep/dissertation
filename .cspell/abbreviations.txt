@@ -6,6 +6,7 @@ DRVI
 EBI
 EMBL
 FACS
+FFPE
 GLM-PCA
 GPLVM
 HDF
@@ -17,6 +18,7 @@ PCA
 PCR
 qPCR
 RNA-Seq
+RNase
 SCDE
 scRNA-Seq
 scVI
