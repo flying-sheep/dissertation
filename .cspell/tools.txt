@@ -30,6 +30,7 @@ SciPy
 Scirpy
 scmap
 scran
+SCimilarity
 SCTransform
 scVelo
 scverse
