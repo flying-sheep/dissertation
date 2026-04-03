@@ -71,7 +71,10 @@ Communication between the language communities is growing.
 Standardized frameworks lower the barrier to entry for researchers new to the field as the first steps are stable, well-documented, and well-maintained.
 Beyond these first steps, codification of best practices \cite[heumos2023] a product of mature infrastructure as well:
 the tools had stabilized enough for consensus to emerge around parts of the workflow.
-Finally reproducibility is no longer an issue: a \n{scanpy} workflow can conveniently be reproduced from a Jupyter notebook containing a manifest of Python package versions by \n{session-info2} \cite[angerer2026].
+Finally reproducibility is no longer an issue: a \n{scanpy} workflow can conveniently be reproduced either by using standard software engineering practices, or alternatives tailored to common workflows.
+The former entail putting a pipeline script utilizing \n{scverse} packages together with a lockfile under version control,
+while the latter can be achieved by storing a manifest of Python package versions in a sharable Jupyter notebook.
+Creating such a manifest is possible through integration of \n{scanpy} with \n{session-info2} \cite[angerer2026], or a dedicated tool like \n{juv} \cite[manz2026].
 
 The sustainability of this infrastructure is however not guaranteed, see \insec[sec:sustainability].
 
