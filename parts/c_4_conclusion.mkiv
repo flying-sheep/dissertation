@@ -38,12 +38,24 @@ The nonprofit maintains a flexible governance model that manages developmental s
 Organizing a group of core developers mitigates the risks of having widely used scientific software that is maintained by small groups of original authors, with many of them employed on short-term academic contracts.
 See \insec[sec:sustainability] for more details.
 
+% zarr
 This tighter integration and communication has brought several synergistic effects, first and foremost the ability to coordinate complex tasks across multiple projects.
 In \n{scverse} workshops, the foundations of new cross package initiatives are often laid, culminating in new packages or orthogonal capabilities such as support for certain acceleration frameworks, which can then later bear fruit in enabling projects that weren’t feasible earlier.
 As an example, \n{AnnData}’s support for \n{Zarr} \cite[miles2020] was initially optional and motivated by niche performance considerations.
 It later enabled \n{SpatialData}’s \cite[marconato2024] on-disk format that combines \n{AnnData}’s with the \n{Zarr}-based serialization standard for spatial omics \n{OME-NGFF} \cite[moore2021].
 Since then, it has enabled access for web services through file servers instead of dedicated server software, and is currently being leveraged for the high-performance data loader \n{annbatch}.
 
+% rapids-singlecell
+The growth in dataset sizes predicted in \inlinecite[angerer2017] has materialized – experiments producing millions of cells (see \insec[sec:protocols]) require massive amounts of memory or harnessing of the out-of-core capabilities \n{AnnData} provides.
+CPU-based pipelines can require hours for some steps when performed on million-cell datasets.
+\n{rapids-singlecell} \cite[dicks2026], enabled by the modular design pioneered by \n{scanpy}, provides GPU-accelerated drop-in replacements for core operations.
+As an example, it reduced end-to-end processing times of a benchmark of one million cells from around 50 minutes on a 32-core workstation to 26 seconds on a single GPU.
+This transforms large-scale single-cell analysis into an interactive workflow, enabling real-time parameter tuning and iterative hypothesis testing on datasets that would previously have required overnight runs.
+\n{Scanpy} itself aims to be usable on lowest-common-denominator hardware, while allowing to both switch out backends for individual steps, just as it allows replacing them entirely.
+For \n{scanpy}’s most time-consuming steps UMAP and clustering however, \n{rapids-singlecell} is the most seamless high-performance swap-in, provided one has the required hardware.
+\n{rapids-singlecell} and \n{scanpy} thus demonstrate how \n{scverse}’s modularity enables researchers to leverage their resources ideally.
+
+% R and coordination
 Single-cell analysis is however not a Python-only endeavor.
 The R world is split between the \n{Bioconductor} ecosystem and \n{Seurat}.
 \n{Seurat} features prominently in new research, such as the best-practices review by \inlinecite[heumos2023] and the multimodal integration benchmark by \inlinecite[liu2025].
@@ -65,7 +77,7 @@ The sustainability of this infrastructure is however not guaranteed, see \insec[
 
 \stopsection
 
-\startsection[title={Developments in single-cell transcriptomics protocols}]
+\startsection[reference=sec:protocols, title={Developments in single-cell transcriptomics protocols}]
 
 \n{10x Genomics}’ commercial microfluidic platform \n{Chromium} has been the dominant technology for high-throughput scRNA-Seq since its introduction in 2017.
 The company offers integrated solutions like the \n{Chromium\,X} instrument and chemistry designed to operate it using targeted and whole transcriptome protocols.
