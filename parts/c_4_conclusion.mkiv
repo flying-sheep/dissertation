@@ -13,7 +13,7 @@ I summarized my contributions in the context of both arising challenges and impr
 
 Within a few years, single-cell RNA-Seq has grown into an extensive and active field of science, with new trends and opportunities.
 The largest current challenges are the ever-growing dataset sizes, and the integration of different kinds of data \cite[angerer2017,nmeth2020].
-Going up to hundreds of thousands of cells, the data allows us to abandon the notion of discrete “cell types” in favor of more gradual cell identities, and explore the continuous processes at play.
+Going up to millions of cells, the data allows us to abandon the notion of discrete “cell types” in favor of more gradual cell identities, and explore the continuous processes at play.
 Destiny \cite[angerer2016], and the gene relevance method presented in this thesis, prove to be valuable contributions in this direction.
 
 % extensibility and openness
@@ -28,8 +28,6 @@ Since the publication of the contributed articles, the field has grown substanti
 Experimental protocols now routinely produce data on millions of cells, and the simultaneous measurement of multiple modalities has become commonplace.
 Throughout this growth, the modular approach to analysis advocated here has proven its durability:
 the data infrastructure and frameworks described in this thesis remain the foundation on which new methods are built.
-
-\page
 
 \startsection[title={The maturation of single-cell data infrastructure}]
 
@@ -141,7 +139,7 @@ This makes it uniquely suited for heterogeneity analyses.
 A rarely addressed property of cellular heterogeneity is its multi-scale nature:
 multiple processes at different scales and localities shape the heterogeneity of either subpopulations or all cells (see \insec[sec:visualization]).
 
-Analysis algorithms in this area have evolved alongside the protocols able to sequence hundreds of thousands of cells.
+Analysis algorithms in this area have evolved alongside the protocols able to sequence millions of cells.
 Suitable for the low sample sizes of bulk RNA-Seq, simple linear dimension reduction methods like PCA were used to visualize early single-cell studies.
 Nonlinear methods like diffusion maps, t-SNE or later UMAP have been developed and continue to be improved to fit the nature of transcriptome data.
 But while they capture both continuity and heterogeneity at multiple scales, their output does not contain directly interpretable information about processes at different scales.
@@ -174,6 +172,8 @@ Perhaps the most visible development in computational biology in recent years is
 An early example is \n{scGen} \cite[lotfollahi2019], which used a VAE for perturbation prediction by learning a latent representation of cellular identity and perturbation direction (see \insec[sec:vaes]).
 Since then, especially transformer architectures have seen a steep rise in adoption.
 Originally developed for natural language processing, transformers have been adapted to learn representations from large collections of gene expression profiles like cell atlases.
+Large language models can be adapted to various downstream tasks, a property that gave rise of the concept of “foundation models”.
+Using fine-tuning, transformer-based foundation models are adapted to downstream tasks without full re-training, with similar processes existing for foundation models with different architectures \cite[szalata2024].
 
 % first wave
 A first wave of single-cell transformers was introduced in 2023–2024, aiming to produce foundation models pre-trained on tens of millions of cells that can be fine-tuned for specific tasks.
@@ -237,12 +237,18 @@ From the perspective of this thesis, this means a need for robust data structure
 
 The developments described above are not purely methodological; they demonstrate a shift in how single-cell data can help us gain insight into healthy development, homeostasis, and disease.
 
-The \n{Human Cell Atlas} has progressed from a white paper \cite[regev2017] to the point where a first draft is being assembled that will encompass around 100 million cells across all major organ systems \cite[rood2025].
+The \n{Human Cell Atlas} (\n{HCA}) has progressed from a white paper \cite[regev2017] to the point where a first draft is being assembled that will encompass around 100 million cells across all major organ systems \cite[rood2025].
 It will among others contain integrated atlases of the lung, gut, organoid, and nervous system.
+
+The \n{HCA}’s stated goals include being an openly accessible baseline reference.
 \inlinecite[lotfollahi2024] draw an analogy to reference genomes: they predict that similar to the established practice of quantifying transcriptomes by mapping reads to a reference genome, mapping new single-cell data to curated reference atlases could replace manual, unsupervised clustering and annotation.
 Reference mapping workflows project query cells into an atlas-defined coordinate space, enabling automated cell identity annotation, detection of novel populations absent from the reference, and prediction of unmeasured modalities such as spatial location or chromatin accessibility.
+
 Foundation models are taking steps towards this vision as described in \insec[sec:trajectory] \andsec[sec:transformers].
-Cell atlases like the \n{Human Cell Atlas} are therefore approaching their vision of becoming active infrastructure for computational modeling \cite[rood2025], much as reference genomes became infrastructure for genomics and transcriptomics.
+An example in active use is \n{SCimilarity} \cite[heimberg2025], a metric-learning model trained on 23.4 million cells from hundreds of studies for searching transcriptionally similar cells across tissues, diseases, and perturbations.
+By capturing cell similarity while preserving gene expression patterns, it achieves data integration without explicit batch correction and faithfully retrieves gene signatures, a task earlier foundation models have struggled with.
+Its ability to quickly annotate query cells from all covered domains demonstrates the kind of scalable, automated analysis that reference mapping promises.
+Cell atlases like the \n{HCA} are therefore approaching their vision of becoming active infrastructure for computational modeling \cite[rood2025], much as reference genomes became infrastructure for genomics and transcriptomics.
 
 Single-cell analysis is also beginning to influence pharmaceutical practice.
 During the COVID-19 pandemic, single-cell technologies were used to measure B cell receptor repertoires to characterize immune responses, and to develop neutralizing antibodies.
