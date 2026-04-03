@@ -196,17 +196,17 @@ Using fine-tuning, transformer-based foundation models are adapted to downstream
 A first wave of single-cell transformers was introduced in 2023–2024, aiming to produce foundation models pre-trained on tens of millions of cells that can be fine-tuned for specific tasks.
 \n{scGPT} \cite[cui2024] proposed to address cell typing, perturbation prediction, batch correction, and multi-omics integration,
 while \n{Geneformer} \cite[theodoris2023] encoded the multi-scale regulation of gene regulatory network inference.
-These models attracted significant attention, yet \inlinecite[szalata2024] identified several shortcomings in performance and approach, such as transcriptomes fundamentally lacking an order expected by this language model derived approach.
-Later, benchmarks have shown even more clearly that this approach rarely outperforms simpler approaches, e.g. and on perturbation prediction specifically, even linear models can be competitive \cite[ahlmann-eltze2025].
-While transformer models contain autoencoders, their representations are opaque unlike the interpretable VAEs discussed in \insec[sec:vaes]:
-latent dimensions do not map to identifiable biological processes, which limits the models’ utility for hypothesis generation and mechanistic understanding.
+These models attracted significant attention, yet \inlinecite[szalata2024] identified several shortcomings in performance and approach, such as its reliance on token order inherited from its language model roots, all while transcriptomes fundamentally lack an intrinsic order.
+Later, benchmarks have shown even more clearly that this approach rarely outperforms simpler approaches, with even linear models being competitive in perturbation prediction \cite[ahlmann-eltze2025].
+While transformer models architecturally contain autoencoders, they do not retain the transparency of the interpretable VAEs discussed in \insec[sec:vaes]:
+latent dimensions coming from such transformers do not map to identifiable biological processes, which limits the models’ utility for hypothesis generation and mechanistic understanding.
 
 % second wave
 A more targeted second wave of methods has begun to address these shortcomings.
 \n{State} \cite[adduri2025] focuses specifically on perturbation prediction by training on more than a hundred million of perturbed cells, resulting in a markedly improved performance.
 \n{Stack} \cite[dong2026] builds on the foundation model idea, but allows in-context learning, which enables predictions about unseen conditions without fine-tuning.
 Notably, \n{Stack}’s tokenization into gene module vectors provides some degree of interpretability to its latent space.
-% both flow matching, include?
+% both flow matching, mention?
 \n{scLDM} \cite[palla2025] forges the order-dependency of transformer architectures by using latent diffusion models in oder to generate realistic expression profiles for use cases like virtual experiments.
 \n{CellFlow} \cite[klein2025a] uses flow matching to model single-cell phenotypic responses to complex perturbations, including combinatorial treatments.
 
@@ -234,7 +234,7 @@ Nature Methods named single-cell multimodal omics its method of the year 2019 \c
 Of these, spatial transcriptomics has seen the most dramatic growth.
 In recent years, the field has expanded to encompass microarray-based, bead-based, and nanoball approaches at resolutions from tissue-level to subcellular \cite[moses2022].
 \n{SpatialData} \cite[marconato2024] and \n{squidpy} \cite[palla2022] provide \n{AnnData}-based infrastructure for this modality within \n{scverse},
-while new models show the promise of this modality, be it trajectory inference methods (see \insec[sec:trajectory]) or spatial prediction models like \n{Nicheformer} \cite[tejada-lapuerta2025].
+while new models show the promise of spatial information, be it trajectory inference methods (see \insec[sec:trajectory]) or spatial prediction models like \n{Nicheformer} \cite[tejada-lapuerta2025].
 
 % multimodal infrastructure
 The multimodal infrastructure has matured as anticipated in the contributed articles.
@@ -243,7 +243,8 @@ The multimodal infrastructure has matured as anticipated in the contributed arti
 Surface protein measurements via CITE-Seq \cite[gayoso2019] and epigenetic profiling via scCUT\&Tag \cite[kaya-okur2019] are now routinely combined with transcriptomic data.
 Parts of the multimodal landscape are beginning to settle, for example multimodal integration methods have been systematically benchmarked by \inlinecite[liu2025], leading to guidance based on the choice of which downstream task to optimize for.
 % they evaluated dimension reduction, batch correction, cell typing, imputation, feature selection and spatial registration across many method-dataset combinations.
-Additionally, the need for integration across modalities is diminishing as protocols emerge that measure multiple modalities simultaneously, such as SUM-seq \cite[lobato-moreno2025] for combined chromatin accessibility and gene expression profiling from millions of cells.
+Additionally, the need for integration across modalities might be diminishing as protocols emerge that measure multiple modalities simultaneously, such as SUM-seq \cite[lobato-moreno2025] for combined chromatin accessibility and gene expression profiling from millions of cells.
+It seems infeasible that everything can be measured together however, so integration might simply become more sophisticated by taking n-to-n mapping of modalities into account.
 
 A cell’s identity is not fully captured by its transcriptome alone; while an useful proxy, it is unlikely that we achieve insight on a level coming close to the “virtual cell” (see \insec[sec:transformers]) without integrating across modalities.
 From the perspective of this thesis, this means a need for robust data structures encapsulating the relationships between modalities and fast frameworks able to handle their combinatorial explosion.
@@ -252,7 +253,7 @@ From the perspective of this thesis, this means a need for robust data structure
 
 \startsection[title={From cell census to biological insight}]
 
-The developments described above are not purely methodological; they demonstrate a shift in how single-cell data can help us gain insight into healthy development, homeostasis, and disease.
+The developments described in the sections above are not purely methodological; they demonstrate a shift in how single-cell data can help us gain insight into healthy development, homeostasis, and disease.
 
 The \n{Human Cell Atlas} (\n{HCA}) has progressed from a white paper \cite[regev2017] to the point where a first draft is being assembled that will encompass around 100 million cells across all major organ systems \cite[rood2025].
 It will among others contain integrated atlases of the lung, gut, organoid, and nervous system.
@@ -269,9 +270,9 @@ Cell atlases like the \n{HCA} are therefore approaching their vision of becoming
 
 Single-cell analysis is also beginning to influence pharmaceutical practice.
 During the COVID-19 pandemic, single-cell technologies were used to measure B cell receptor repertoires to characterize immune responses, and to develop neutralizing antibodies.
-Beyond infectious diseases, \inlinecite[vandesande2023] review applications of scRNA-Seq in drug discovery, including target discovery at cell identity level, high-throughput perturbation screening, and insight into different aspects of disease such as cancer metastasis,Alzheimer’s and auto-immune diseases.
+Beyond infectious diseases, \inlinecite[vandesande2023] review applications of scRNA-Seq in drug discovery, including target discovery at cell identity level, high-throughput perturbation screening, and insight into different aspects of disease such as cancer metastasis,neuro-degenerative diseases such as Alzheimer’s and auto-immune diseases.
 
-The growing ability to predict cellular responses to perturbations in-silico \cite[adduri2025,klein2025a,dong2026] could further accelerate this path towards clinical insight.
+The growing ability to predict cellular responses to perturbations in-silico (See \inlinecite[adduri2025,klein2025a,dong2026] and \insec[sec:transformers]) could further accelerate this path towards clinical insight.
 Virtual perturbation screens are realistically able to substantially narrow the space of promising drug candidates before wet-lab validation, driving down the cost and time of drug development, which in turn might push several orphan drugs back into the realm of financial feasibility.
 \n{Scanpy} and \n{AnnData} already play an important role in this effort by forming the base of many pharmaceutical researchers’ daily work.
 
