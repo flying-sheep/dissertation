@@ -3,7 +3,7 @@
 
 \startchapter[reference=sec:methods, title={Methods}]
 
-\startsection[title={Dimensionality reduction}]
+\startsection[reference=sec:dim-red, title={Dimensionality reduction}]
 
 Dimensionality reduction methods embed high dimensional data into a low dimensional space.
 They generally aim to reduce technical sources of variation (noise) while retaining variation produced by processes of interest.
@@ -143,7 +143,7 @@ Z(c) = ∑_{d ∈ \{1,…,C\}} K(c, d)
 
 More commonly today, $W$ is approximated.
 One approach is to only define $W_{cd}$ for $d∈\{\text{NN}_k(c)\}$ instead of all $d∈\{1,…,C\}$,
-another is employed by UMAP (see \in[sec:learned-embeddings]),
+another is employed by UMAP (see \in[sec:heuristic-embeddings]),
 which uses fuzzy simplicial sets derived from $σ_c$ instead of discrete sets of nearest neighbors.
 
 In any case, a transition probability matrix $T$ can be obtained by row-normalizing $W$:
@@ -161,14 +161,14 @@ The symmetrical version has several computational advantages, including performa
 T_{cd} = √{\tilde{Z}(c)}^{-1} W_{cd} √{\tilde{Z}(y)}^{-1}
 \stopformula
 
-Compared to machine learning methods like t-SNE that embed data non-deterministically (see \in[sec:learned-embeddings]),
+Compared to machine learning methods like t-SNE that embed data non-deterministically (see \in[sec:heuristic-embeddings]),
 diffusion maps preserve the global structure and the pseudo-temporal ordering of cells better \cite[haghverdi2015].
 The first diffusion component is often sufficient to directly capture and visualize bifurcation events in differentiating cells.
 \stopsubsubsection
 
 \stopsubsection
 
-\startsubsection[reference=sec:learned-embeddings, title={Learned embeddings}]
+\startsubsection[reference=sec:heuristic-embeddings, title={Heuristic embeddings}]
 % https://nbisweden.github.io/workshop-scRNAseq/slides2019/Dimensionality_reduction_P_Czarnewski_2019.pdf
 Dimensionality reduction methods based on machine learning use optimization to either learn an embedding directly
 or a function mapping high-dimensional data to embedding coordinates.
@@ -191,7 +191,7 @@ Its more continuous and global structure also makes it a viable dimensionality r
 \inlinecite[kobak2019b] however showed that t-SNE and UMAP perform very similarly with the same data-driven initialization and selection of meta-parameters.
 Methods specific to single-cell transcriptomics exist in this space as well, such as scLVM \cite[buettner2015], a successor of the earlier GPLVM \cite[buettner2012].
 Their performance criteria, however, don’t lend themselves well to the heterogeneity analysis of much more than a few hundred cells performed today.
-This led to other approaches, such as learned embeddings modeled explicitly to perform scRNA-Seq preprocessing, e.\,g. single-cell variational inference (scVI, \inbracecite[lopez2018]).
+This led to other approaches, such as heuristic embeddings modeled explicitly to perform scRNA-Seq preprocessing, e.\,g. single-cell variational inference (scVI, \inbracecite[lopez2018]).
 Alternatively, one can preprocess the data in a way that improves embeddings by general-purpose methods, e.\,g. by denoising data using a deep count autoencoder (DCA, \inbracecite[eraslan2019]).
 
 A disadvantage of methods based on machine learning is their nondeterministic nature:
@@ -224,7 +224,7 @@ It can be derived from the gradient $∇f_{gc}$ of the function $f$ mapping a em
 ∇f_{gc} = \left(\frac{∂ x_{gc}}{∂ s_{1c}}, …, \frac{∂ x_{gc}}{∂ s_{Pc}}\right)
 \stopformula
 
-This gradient can be estimated using local differences $\frac{∂x}{∂s} ≈ \frac{Δx}{Δs}$ within each cell $c$’s kNN neighborhood $\text{NN}_k(c) ∧ n≠c$.
+This gradient can be estimated using local differences $\frac{∂x}{∂s} ≈ \frac{Δx}{Δs}$ within each cell $c$’s $k$NN neighborhood $\text{NN}_k(c) ∧ n≠c$.
 To address the high number of zeroes in scRNA-Seq data, the gradient is only defined for $x_{gc}≠0$:
 
 \placeformula
@@ -418,7 +418,7 @@ as well as the differential expression between clusters in one of the different 
 \startplacefigure[reference=fig:scanpy, title={%
 \n{Scanpy} flexibly computes annotations from scRNA-Seq data and visualizes results combined with previous knowledge.
 The following example cluster analysis follows one of \n{scanpy}’s tutorials.
-It explores the freely available 10x dataset “3000 Peripheral Blood Mononuclear Cells (PBMCs) from a Healthy Donor”,
+It explores the freely available \n{10x} dataset “3000 Peripheral Blood Mononuclear Cells (PBMCs) from a Healthy Donor”,
 with a focus on discovering heterogeneous subpopulations among the cells.
 It starts by determining cell clusters with the \n{Leiden} algorithm: \type{sc.tl.leiden(adata)}\crlf
 \bold{a)} Marker genes for clusters are determined with a Wilcoxon rank-sum test.\crlf

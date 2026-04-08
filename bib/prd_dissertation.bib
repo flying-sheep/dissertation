@@ -1,4 +1,18 @@
 
+@Article{	  2021,
+  DOI		= {10.1038/s41592-020-01042-x},
+  ISSN		= {1548-7091, 1548-7105},
+  Journal	= {Nature Methods},
+  langid	= {english},
+  Number	= {1},
+  Pages		= {1--1},
+  Title		= {Method of the {{Year}} 2020: spatially resolved transcriptomics},
+  Volume	= {18},
+  Year		= 2021,
+  Month		= jan,
+  ShortTitle	= {Method of the {{Year}} 2020}
+}
+
 @Article{	  abdelaal2019,
   Abstract	= {Background: Single-cell transcriptomics is rapidly advancing our understanding of the cellular composition of complex tissues and organisms. A major limitation in most analysis pipelines is the reliance on manual annotations to determine cell identities, which are time-consuming and irreproducible. The exponential growth in the number of cells and samples has prompted the adaptation and development of supervised classification methods for automatic cell identification. Results: Here, we benchmarked 22 classification methods that automatically assign cell identities including single-cell-specific and general-purpose classifiers. The performance of the methods is evaluated using 27 publicly available single-cell RNA sequencing datasets of different sizes, technologies, species, and levels of complexity. We use 2 experimental setups to evaluate the performance of each method for within dataset predictions (intra-dataset) and across datasets (inter-dataset) based on accuracy, percentage of unclassified cells, and computation time. We further evaluate the methods' sensitivity to the input features, number of cells per population, and their performance across different annotation levels and datasets. We find that most classifiers perform well on a variety of datasets with decreased accuracy for complex datasets with overlapping classes or deep annotations. The general-purpose support vector machine classifier has overall the best performance across the different experiments. Conclusions: We present a comprehensive evaluation of automatic cell identification methods for single-cell RNA sequencing data. All the code used for the evaluation is available on GitHub (https://github.com/tabdelaal/scRNAseq-Benchmark). Additionally, we provide a Snakemake workflow to facilitate the benchmarking and to support the extension of new methods and new datasets.},
   Author	= {Abdelaal, Tamim and Michielsen, Lieke and Cats, Davy and Hoogduin, Dylan and Mei, Hailiang and Reinders, Marcel J.T. and Mahfouz, Ahmed},
@@ -31,6 +45,19 @@
   Month		= jul
 }
 
+@Misc{		  adduri2025,
+  Abstract	= {Abstract Cellular responses to perturbations are a cornerstone for understanding biological mechanisms and selecting drug targets. While machine learning models offer tremendous potential for predicting perturbation effects, they currently struggle to generalize to unobserved cellular contexts. Here, we introduce S tate , a transformer model that predicts perturbation effects while accounting for cellular heterogeneity within and across experiments. S tate predicts perturbation effects across sets of cells and is trained using gene expression data from over 100 million perturbed cells. S tate improved discrimination of effects on large datasets by more than 30\% and identified differentially expressed genes across genetic, signaling and chemical perturbations with significantly improved accuracy. Using its cell embedding trained on observational data from 167 million cells, S tate identified strong perturbations in novel cellular contexts where no perturbations were observed during training. We further introduce Cell-Eval, a comprehensive evaluation framework that highlights S tate 's ability to detect cell type-specific perturbation responses, such as cell survival. Overall, the performance and flexibility of S tate sets the stage for scaling the development of virtual cell models.},
+  Author	= {Adduri, Abhinav K. and Gautam, Dhruv and Bevilacqua, Beatrice and Imran, Alishba and Shah, Rohan and Naghipourfar, Mohsen and Teyssier, Noam and Ilango, Rajesh and Nagaraj, Sanjay and Dong, Mingze and {Ricci-Tam}, Chiara and Carpenter, Christopher and Subramanyam, Vishvak and Winters, Aidan and Tirukkovular, Sravya and Sullivan, Jeremy and Plosky, Brian S. and Eraslan, Basak and Youngblut, Nicholas D. and Leskovec, Jure and Gilbert, Luke A. and Konermann, Silvana and Hsu, Patrick D. and Dobin, Alexander and Burke, Dave P. and Goodarzi, Hani and Roohani, Yusuf H.},
+  DOI		= {10.1101/2025.06.26.661135},
+  langid	= {english},
+  Publisher	= {Systems Biology},
+  Title		= {Predicting cellular responses to perturbation across diverse contexts with {{State}}},
+  Year		= 2025,
+  Month		= jun,
+  ArchivePrefix	= {Systems Biology},
+  copyright	= {http://creativecommons.org/licenses/by/4.0/}
+}
+
 @Article{	  afgan2018,
   Abstract	= {Galaxy (homepage: https://galaxyproject.org, main public server: https://usegalaxy.org) is a web-based scientific analysis platform used by tens of thousands of scientists across the world to analyze large biomedical datasets such as those found in genomics, proteomics, metabolomics and imaging. Started in 2005, Galaxy continues to focus on three key challenges of data-driven biomedical science: making analyses accessible to all researchers, ensuring analyses are completely reproducible, and making it simple to communicate analyses so that they can be reused and extended. During the last two years, the Galaxy team and the open-source community around Galaxy have made substantial improvements to Galaxy's core framework, user interface, tools, and training materials. Framework and user interface improvements now enable Galaxy to be used for analyzing tens of thousands of datasets, and {$>$}5500 tools are now available from the Galaxy ToolShed. The Galaxy community has led an effort to create numerous high-quality tutorials focused on common types of genomic analyses. The Galaxy developer and user communities continue to grow and be integral to Galaxy's development. The number of Galaxy public servers, developers contributing to the Galaxy framework and its tools, and users of the main Galaxy server have all increased substantially.},
   Author	= {Afgan, Enis and Baker, Dannon and Batut, B{\'e}r{\'e}nice and Van Den Beek, Marius and Bouvier, Dave and Ech, Martin and Chilton, John and Clements, Dave and Coraor, Nate and Gr{\"u}ning, Bj{\"o}rn A. and Guerler, Aysam and {Hillman-Jackson}, Jennifer and Hiltemann, Saskia and Jalili, Vahid and Rasche, Helena and Soranzo, Nicola and Goecks, Jeremy and Taylor, James and Nekrutenko, Anton and Blankenberg, Daniel},
@@ -42,6 +69,21 @@
   Title		= {The {{Galaxy}} platform for accessible, reproducible and collaborative biomedical analyses: 2018 update},
   Volume	= {46},
   Year		= 2018
+}
+
+@Article{	  ahlmann-eltze2025,
+  Abstract	= {Abstract Recent research in deep-learning-based foundation models promises to learn representations of single-cell data that enable prediction of the effects of genetic perturbations. Here we compared five foundation models and two other deep learning models against deliberately simple baselines for predicting transcriptome changes after single or double perturbations. None outperformed the baselines, which highlights the importance of critical benchmarking in directing and evaluating method development.},
+  Author	= {{Ahlmann-Eltze}, Constantin and Huber, Wolfgang and Anders, Simon},
+  DOI		= {10.1038/s41592-025-02772-6},
+  ISSN		= {1548-7091, 1548-7105},
+  Journal	= {Nature Methods},
+  langid	= {english},
+  Number	= {8},
+  Pages		= {1657--1661},
+  Title		= {Deep-learning-based gene perturbation effect prediction does not yet outperform simple linear baselines},
+  Volume	= {22},
+  Year		= 2025,
+  Month		= aug
 }
 
 @Article{	  aho1975,
@@ -134,6 +176,18 @@
   Editor	= {Birol, Inanc}
 }
 
+@Misc{		  angerer2026,
+  Abstract	= {[\#147] feat: enable uvx session-info2 by adding a session-info2 command (@flying-sheep) [\#148] feat: add .format('text' \textbar{} 'markdown' \textbar{} \dots ) method (@flying-sheep)},
+  Author	= {Angerer, Philipp and Caceres, Enzo and Kuehl, Malte and Dicks, Severin},
+  DOI		= {10.5281/ZENODO.19330849},
+  Title		= {scverse/session-info2: 0.4},
+  Year		= 2026,
+  Month		= feb,
+  ShortTitle	= {scverse/session-info2},
+  copyright	= {Mozilla Public License 2.0},
+  HowPublished	= {Zenodo}
+}
+
 @Article{	  bacher2016,
   Abstract	= {\copyright{} 2016 Bacher and Kendziorski. Single-cell RNA-sequencing (scRNA-seq) has emerged as a revolutionary tool that allows us to address scientific questions that eluded examination just a few years ago. With the advantages of scRNA-seq come computational challenges that are just beginning to be addressed. In this article, we highlight the computational methods available for the design and analysis of scRNA-seq experiments, their advantages and disadvantages in various settings, the open questions for which novel methods are needed, and expected future developments in this exciting area.},
   Author	= {Bacher, Rhonda and Kendziorski, Christina},
@@ -186,6 +240,22 @@
   Title		= {An information-maximization approach to blind separation and blind deconvolution.},
   Volume	= {7},
   Year		= 1995
+}
+
+@Article{	  ben-kiki2022,
+  Abstract	= {Abstract Scaling scRNA-seq to profile millions of cells is crucial for constructing high-resolution maps of transcriptional manifolds. Current analysis strategies, in particular dimensionality reduction and two-phase clustering, offer only limited scaling and sensitivity to define such manifolds. We introduce Metacell-2, a recursive divide-and-conquer algorithm allowing efficient decomposition of scRNA-seq datasets of any size into small and cohesive groups of cells called metacells. Metacell-2 improves outlier cell detection and rare cell type identification, as shown with human bone marrow cell atlas and mouse embryonic data. Metacell-2 is implemented over the scanpy framework for easy integration in any analysis pipeline.},
+  Author	= {{Ben-Kiki}, Oren and Bercovich, Akhiad and Lifshitz, Aviezer and Tanay, Amos},
+  DOI		= {10.1186/s13059-022-02667-1},
+  ISSN		= {1474-760X},
+  Journal	= {Genome Biology},
+  langid	= {english},
+  Number	= {1},
+  Pages		= {100},
+  Title		= {Metacell-2: a divide-and-conquer metacell algorithm for scalable {{scRNA-seq}} analysis},
+  Volume	= {23},
+  Year		= 2022,
+  Month		= dec,
+  ShortTitle	= {Metacell-2}
 }
 
 @Article{	  bendall2014,
@@ -332,6 +402,21 @@
   Year		= 2015
 }
 
+@Article{	  bunne2024,
+  Author	= {Bunne, Charlotte and Roohani, Yusuf and Rosen, Yanay and Gupta, Ankit and Zhang, Xikun and Roed, Marcel and Alexandrov, Theo and AlQuraishi, Mohammed and Brennan, Patricia and Burkhardt, Daniel B. and Califano, Andrea and Cool, Jonah and Dernburg, Abby F. and Ewing, Kirsty and Fox, Emily B. and Haury, Matthias and Herr, Amy E. and Horvitz, Eric and Hsu, Patrick D. and Jain, Viren and Johnson, Gregory R. and Kalil, Thomas and Kelley, David R. and Kelley, Shana O. and Kreshuk, Anna and Mitchison, Tim and Otte, Stephani and Shendure, Jay and Sofroniew, Nicholas J. and Theis, Fabian and Theodoris, Christina V. and Upadhyayula, Srigokul and Valer, Marc and Wang, Bo and Xing, Eric and {Yeung-Levy}, Serena and Zitnik, Marinka and Karaletsos, Theofanis and Regev, Aviv and Lundberg, Emma and Leskovec, Jure and Quake, Stephen R.},
+  DOI		= {10.1016/j.cell.2024.11.015},
+  ISSN		= {00928674},
+  Journal	= {Cell},
+  langid	= {english},
+  Number	= {25},
+  Pages		= {7045--7063},
+  Title		= {How to build the virtual cell with artificial intelligence: {{Priorities}} and opportunities},
+  Volume	= {187},
+  Year		= 2024,
+  Month		= dec,
+  ShortTitle	= {How to build the virtual cell with artificial intelligence}
+}
+
 @Article{	  butler2018,
   Abstract	= {Computational single-cell RNA-seq (scRNA-seq) methods have been successfully applied to experiments representing a single condition, technology, or species to discover and define cellular phenotypes. However, identifying subpopulations of cells that are present across multiple data sets remains challenging. Here, we introduce an analytical strategy for integrating scRNA-seq data sets based on common sources of variation, enabling the identification of shared populations across data sets and downstream comparative analysis. We apply this approach, implemented in our R toolkit Seurat (http://satijalab.org/seurat/), to align scRNA-seq data sets of peripheral blood mononuclear cells under resting and stimulated conditions, hematopoietic progenitors sequenced using two profiling technologies, and pancreatic cell 'atlases' generated from human and mouse islets. In each case, we learn distinct or transitional cell states jointly across data sets, while boosting statistical power through integrated analysis. Our approach facilitates general comparisons of scRNA-seq data sets, potentially deepening our understanding of how distinct cell states respond to perturbation, disease, and evolution.},
   Author	= {Butler, Andrew and Hoffman, Paul and Smibert, Peter and Papalexi, Efthymia and Satija, Rahul},
@@ -390,6 +475,33 @@
   Year		= 2017
 }
 
+@Misc{		  cashman2025,
+  Abstract	= {Dimensionality reduction is used as an important tool for unraveling the complexities of high-dimensional datasets in many fields of science, such as cell biology, chemical informatics, and physics. Visualizations of the dimensionally reduced data enable scientists to delve into the intrinsic structures of their datasets and align them with established hypotheses. Visualization researchers have thus proposed many dimensionality reduction methods and interactive systems designed to uncover latent structures. At the same time, different scientific domains have formulated guidelines or common workflows for using dimensionality reduction techniques and visualizations for their respective fields. In this work, we present a critical analysis of the usage of dimensionality reduction in scientific domains outside of computer science. First, we conduct a bibliometric analysis of 21,249 academic publications that use dimensionality reduction to observe differences in the frequency of techniques across fields. Next, we conduct a survey of a 71-paper sample from four fields: biology, chemistry, physics, and business. Through this survey, we uncover common workflows, processes, and usage patterns, including the mixed use of confirmatory data analysis to validate a dataset and projection method and exploratory data analysis to then generate more hypotheses. We also find that misinterpretations and inappropriate usage is common, particularly in the visual interpretation of the resulting dimensionally reduced view. Lastly, we compare our observations with recent works in the visualization community in order to match work within our community to potential areas of impact outside our community.},
+  Author	= {Cashman, Dylan and Keller, Mark and Jeon, Hyeon and Kwon, Bum Chul and Wang, Qianwen},
+  DOI		= {10.48550/ARXIV.2503.08836},
+  Keywords	= {FOS: Computer and information sciences,Human-Computer Interaction (cs.HC)},
+  Publisher	= {arXiv},
+  Title		= {A {{Critical Analysis}} of the {{Usage}} of {{Dimensionality Reduction}} in {{Four Domains}}},
+  Year		= 2025,
+  copyright	= {Creative Commons Attribution 4.0 International}
+}
+
+@Article{	  chari2023,
+  Abstract	= {Dimensionality reduction is standard practice for filtering noise and identifying relevant features in large-scale data analyses. In biology, single-cell genomics studies typically begin with reduction to 2 or 3 dimensions to produce ``all-in-one'' visuals of the data that are amenable to the human eye, and these are subsequently used for qualitative and quantitative exploratory analysis. However, there is little theoretical support for this practice, and we show that extreme dimension reduction, from hundreds or thousands of dimensions to 2, inevitably induces significant distortion of high-dimensional datasets. We therefore examine the practical implications of low-dimensional embedding of single-cell data and find that extensive distortions and inconsistent practices make such embeddings counter-productive for exploratory, biological analyses. In lieu of this, we discuss alternative approaches for conducting targeted embedding and feature exploration to enable hypothesis-driven biological discovery.},
+  Author	= {Chari, Tara and Pachter, Lior},
+  DOI		= {10.1371/journal.pcbi.1011288},
+  ISSN		= {1553-7358},
+  Journal	= {PLOS Computational Biology},
+  langid	= {english},
+  Number	= {8},
+  Pages		= {e1011288},
+  Title		= {The specious art of single-cell genomics},
+  Volume	= {19},
+  Year		= 2023,
+  Month		= aug,
+  Editor	= {Papin, Jason A.}
+}
+
 @Article{	  chen2018,
   Abstract	= {A fundamental fact in biology states that genes do not operate in isolation, and yet, methods that infer regulatory networks for single cell gene expression data have been slow to emerge. With single cell sequencing methods now becoming accessible, general network inference algorithms that were initially developed for data collected from bulk samples may not be suitable for single cells. Meanwhile, although methods that are specific for single cell data are now emerging, whether they have improved performance over general methods is unknown. In this study, we evaluate the applicability of five general methods and three single cell methods for inferring gene regulatory networks from both experimental single cell gene expression data and in silico simulated data. Standard evaluation metrics using ROC curves and Precision-Recall curves against reference sets sourced from the literature demonstrated that most of the methods performed poorly when they were applied to either experimental single cell data, or simulated single cell data, which demonstrates their lack of performance for this task. Using default settings, network methods were applied to the same datasets. Comparisons of the learned networks highlighted the uniqueness of some predicted edges for each method. The fact that different methods infer networks that vary substantially reflects the underlying mathematical rationale and assumptions that distinguish network methods from each other. This study provides a comprehensive evaluation of network modeling algorithms applied to experimental single cell gene expression data and in silico simulated datasets where the network structure is known. Comparisons demonstrate that most of these assessed network methods are not able to predict network structures from single cell expression data accurately, even if they are specifically developed for single cell methods. Also, single cell methods, which usually depend on more elaborative algorithms, in general have less similarity to each other in the sets of edges detected. The results from this study emphasize the importance for developing more accurate optimized network modeling methods that are compatible for single cell data. Newly-developed single cell methods may uniquely capture particular features of potential gene-gene relationships, and caution should be taken when we interpret these results.},
   Author	= {Chen, Shuonan and Mar, Jessica C.},
@@ -418,6 +530,22 @@
   Month		= aug
 }
 
+@Article{	  chen2024,
+  Abstract	= {Most current single-cell analysis pipelines are limited to cell embeddings and rely heavily on clustering, while lacking the ability to explicitly model interactions between different feature types. Furthermore, these methods are tailored to specific tasks, as distinct single-cell problems are formulated differently. To address these shortcomings, here we present SIMBA, a graph embedding method that jointly embeds single cells and their defining features, such as genes, chromatin-accessible regions and DNA sequences, into a common latent space. By leveraging the co-embedding of cells and features, SIMBA allows for the study of cellular heterogeneity, clustering-free marker discovery, gene regulation inference, batch effect removal and omics data integration. We show that SIMBA provides a single framework that allows diverse single-cell problems to be formulated in a unified way and thus simplifies the development of new analyses and extension to new single-cell modalities. SIMBA is implemented as a comprehensive Python library (https://simba-bio.readthedocs.io).},
+  Author	= {Chen, Huidong and Ryu, Jayoung and Vinyard, Michael E. and Lerer, Adam and Pinello, Luca},
+  DOI		= {10.1038/s41592-023-01899-8},
+  ISSN		= {1548-7091, 1548-7105},
+  Journal	= {Nature Methods},
+  langid	= {english},
+  Number	= {6},
+  Pages		= {1003--1013},
+  Title		= {{{SIMBA}}: single-cell embedding along with features},
+  Volume	= {21},
+  Year		= 2024,
+  Month		= jun,
+  ShortTitle	= {{{SIMBA}}}
+}
+
 @Article{	  chevrier2017,
   Abstract	= {Immune cells in the tumor microenvironment modulate cancer progression and are attractive therapeutic targets. Macrophages and T cells are key components of the microenvironment, yet their phenotypes and relationships in this ecosystem and to clinical outcomes are ill defined. We used mass cytometry with extensive antibody panels to perform in-depth immune profiling of samples from 73 clear cell renal cell carcinoma (ccRCC) patients and five healthy controls. In 3.5 million measured cells, we identified 17 tumor-associated macrophage phenotypes, 22 T cell phenotypes, and a distinct immune composition correlated with progression-free survival, thereby presenting an in-depth human atlas of the immune tumor microenvironment in this disease. This study revealed potential biomarkers and targets for immunotherapy development and validated tools that can be used for immune profiling of other tumor types.},
   Author	= {Chevrier, St{\'e}phane and Levine, Jacob Harrison and Zanotelli, Vito Riccardo Tomaso and Silina, Karina and Schulz, Daniel and Bacac, Marina and Ries, Carola Hermine and Ailles, Laurie and Jewett, Michael Alexander Spencer and Moch, Holger and {van den Broek}, Maries and Beisel, Christian and Stadler, Michael Beda and Gedye, Craig and Reis, Bernhard and Pe'er, Dana and Bodenmiller, Bernd},
@@ -431,6 +559,22 @@
   Volume	= {169},
   Year		= 2017,
   Month		= may
+}
+
+@Article{	  choi2023,
+  Abstract	= {Abstract Neural networks such as variational autoencoders (VAE) perform dimensionality reduction for the visualization and analysis of genomic data, but are limited in their interpretability: it is unknown which data features are represented by each embedding dimension. We present siVAE, a VAE that is interpretable by design, thereby enhancing downstream analysis tasks. Through interpretation, siVAE also identifies gene modules and hubs without explicit gene network inference. We use siVAE to identify gene modules whose connectivity is associated with diverse phenotypes such as iPSC neuronal differentiation efficiency and dementia, showcasing the wide applicability of interpretable generative models for genomic data analysis.},
+  Author	= {Choi, Yongin and Li, Ruoxin and Quon, Gerald},
+  DOI		= {10.1186/s13059-023-02850-y},
+  ISSN		= {1474-760X},
+  Journal	= {Genome Biology},
+  langid	= {english},
+  Number	= {1},
+  Pages		= {29},
+  Title		= {{{siVAE}}: interpretable deep generative models for single-cell transcriptomes},
+  Volume	= {24},
+  Year		= 2023,
+  Month		= feb,
+  ShortTitle	= {{{siVAE}}}
 }
 
 @Article{	  chung2015,
@@ -456,6 +600,21 @@
   Title		= {Comprehensive benchmarking of computational deconvolution of transcriptomics data},
   Year		= 2020,
   Month		= jan
+}
+
+@Article{	  coelho2024,
+  Author	= {Coelho, Luis Pedro},
+  DOI		= {10.1371/journal.pcbi.1011920},
+  ISSN		= {1553-7358},
+  Journal	= {PLOS Computational Biology},
+  langid	= {english},
+  Number	= {3},
+  Pages		= {e1011920},
+  Title		= {For long-term sustainable software in bioinformatics},
+  Volume	= {20},
+  Year		= 2024,
+  Month		= mar,
+  Editor	= {Papin, Jason A.}
 }
 
 @Article{	  coifman2005,
@@ -528,6 +687,21 @@
   Month		= feb
 }
 
+@Article{	  cui2024,
+  Author	= {Cui, Haotian and Wang, Chloe and Maan, Hassaan and Pang, Kuan and Luo, Fengning and Duan, Nan and Wang, Bo},
+  DOI		= {10.1038/s41592-024-02201-0},
+  ISSN		= {1548-7091, 1548-7105},
+  Journal	= {Nature Methods},
+  langid	= {english},
+  Number	= {8},
+  Pages		= {1470--1480},
+  Title		= {{{scGPT}}: toward building a foundation model for single-cell multi-omics using generative {{AI}}},
+  Volume	= {21},
+  Year		= 2024,
+  Month		= aug,
+  ShortTitle	= {{{scGPT}}}
+}
+
 @Article{	  dalmolin2017,
   Abstract	= {The sequencing of the transcriptomes of single-cells or single-cell RNA-sequencing has now become the dominant technology for the identification of novel cell types or the study of stochastic gene expression. In recent years, various tools for analyzing single-cell RNA-sequencing data have been proposed, many of them with the purpose of performing differentially expression analysis. In this work, we compare four different tools for single-cell RNA-sequencing differential expression, together with two popular methods originally developed for the analysis of bulk RNA-sequencing data, but largely applied to single-cell data. We discuss results obtained in two real datasets and one synthetic dataset, along with considerations about the perspectives of single-cell differential expression analysis. In particular, we explore the methods performance in four different scenarios, mimicking different unimodal or bimodal distribution of the data, as characteristic of single-cell transcriptomics. We observe marked differences between the selected methods in terms of precision and recall, the number of detected differentially expressed genes and the overall performance. Globally, the results obtained in our study suggest that is difficult to identify a best performing tool and that efforts are needed to improve the methodologies for single-cell RNA-sequencing data analysis and gain better accuracy of results.},
   Author	= {Dal Molin, Alessandra and Baruzzo, Giacomo and Di Camillo, Barbara},
@@ -567,6 +741,19 @@
   Volume	= {174},
   Year		= 2018,
   Month		= aug
+}
+
+@Misc{		  deconinck2025,
+  Abstract	= {Abstract Summary Many single-cell transcriptomics datasets are stored in the HDF5-backed AnnData (H5AD) file format, as popularised by the Python scverse ecosystem. However, accessing these datasets from R, allowing users to take advantage of the strengths of each language, can be difficult. anndataR facilitates this access by allowing users to natively read and write H5AD files in R, convert them to and from SingleCellExperiment or Seurat objects, or even work with the resulting R AnnData object directly. We perform rigorous testing to ensure compatibility between Python-written and R-written H5AD files, guaranteeing long-term interoperability between languages. Availability anndataR's source code is available on GitHub at scverse/anndataR under the MIT license. It is compatible with R version 4.5, has been archived at 10.5281/zenodo.18775712 and included within Bioconductor: 10.18129/B9.bioc.anndataR. Installation instructions and tutorials can be found in the online documentation at anndatar.scverse.org. Issues can be reported at the GitHub repository. Code to reproduce the analyses performed can be found on GitHub at LouiseDck/anndataR-paper, archived at 10.5281/zenodo.18792241. Contact robrecht.cannoodt@gmail.com},
+  Author	= {Deconinck, Louise and Zappia, Luke and Cannoodt, Robrecht and Morgan, Martin and {scverse core} and Virshup, Isaac and {Sang-Aram}, Chananchida and Bredikhin, Danila and Schilder, Brian and Seurinck, Ruth and Saeys, Yvan},
+  DOI		= {10.1101/2025.08.18.669052},
+  langid	= {english},
+  Publisher	= {Bioinformatics},
+  Title		= {{{anndataR}} improves interoperability between {{R}} and {{Python}} in single-cell transcriptomics},
+  Year		= 2025,
+  Month		= aug,
+  ArchivePrefix	= {Bioinformatics},
+  copyright	= {http://creativecommons.org/licenses/by/4.0/}
 }
 
 @Article{	  delaat2010,
@@ -623,6 +810,17 @@
   Year		= 2019
 }
 
+@Misc{		  dicks2026,
+  Abstract	= {Single-cell sequencing technologies reveal cellular heterogeneity at high resolution, advancing our understanding of biological complexity. As datasets start to scale to tens of millions of cells, computational workflows face substantial bottlenecks, with CPU-based analytical pipelines requiring hours or days for routine processing steps like filtering, normalization, and clustering. These scalability limitations fundamentally restrict common interactive data exploration and iterative hypothesis testing. Here we introduce rapids-singlecell, a GPU-accelerated framework that integrates natively with the scverse ecosystem and operates directly on the AnnData data structure, which delivers orders-of-magnitude speedups for single-cell workflows. Built on CuPy arrays and the NVIDIA CUDA-X Data Science (RAPIDS) ecosystem, rapids-singlecell provides near drop-in GPU replacements for core scanpy-based analysis steps. Across standard single-cell workflows such as preprocessing, dimensionality reduction, neighborhood graph construction, clustering, and batch correction, rapids-singlecell achieves speedups of up to several hundred-fold compared to optimized CPU baselines. This reduces analysis time from hours to minutes on standard hardware, while maintaining consistent biological interpretations. These performance improvements make it possible to analyze large data sets in close to real time, without the need for data splitting. Together with real-time parameter tuning and iterative workflows, rapids-singlecell makes interactive large-scale single-cell analysis possible.},
+  Author	= {Dicks, Severin and Heumos, Lukas and May, Lilly and Jimenez, Sara and Angerer, Philipp and Gold, Ilan and Virshup, Isaac and Fischer, Felix and Gill, Michelle and Boerries, Melanie and Nolet, Corey J and Chen, Tiffany J. and Theis, Fabian J.},
+  DOI		= {10.48550/ARXIV.2603.02402},
+  Keywords	= {FOS: Biological sciences,Genomics (q-bio.GN)},
+  Publisher	= {arXiv},
+  Title		= {{{GPU-accelerated}} single-cell analysis at scale with rapids-singlecell},
+  Year		= 2026,
+  copyright	= {Creative Commons Attribution 4.0 International}
+}
+
 @Article{	  ding2018,
   Abstract	= {Single-cell RNA-sequencing has great potential to discover cell types, identify cell states, trace development lineages, and reconstruct the spatial organization of cells. However, dimension reduction to interpret structure in single-cell sequencing data remains a challenge. Existing algorithms are either not able to uncover the clustering structures in the data or lose global information such as groups of clusters that are close to each other. We present a robust statistical model, scvis, to capture and visualize the low-dimensional structures in single-cell gene expression data. Simulation results demonstrate that low-dimensional representations learned by scvis preserve both the local and global neighbor structures in the data. In addition, scvis is robust to the number of data points and learns a probabilistic parametric mapping function to add new data points to an existing embedding. We then use scvis to analyze four single-cell RNA-sequencing datasets, exemplifying interpretable two-dimensional representations of the high-dimensional single-cell RNA-sequencing data. Although single-cell transcriptome data are increasingly available, their interpretation remains a challenge. Here, the authors present a dimensionality reduction approach that preserves both the local and global neighbourhood structures in the data thus enhancing its interpretability.},
   Author	= {Ding, Jiarui and Condon, Anne and Shah, Sohrab P.},
@@ -666,6 +864,37 @@
   Title		= {{{STAR}}: {{Ultrafast}} universal {{RNA-seq}} aligner},
   Volume	= {29},
   Year		= 2013
+}
+
+@Article{	  doncevic2023,
+  Abstract	= {Abstract Motivation Variational autoencoders (VAEs) have rapidly increased in popularity in biological applications and have already successfully been used on many omic datasets. Their latent space provides a low-dimensional representation of input data, and VAEs have been applied, e.g. for clustering of single-cell transcriptomic data. However, due to their non-linear nature, the patterns that VAEs learn in the latent space remain obscure. Hence, the lower-dimensional data embedding cannot directly be related to input features. Results To shed light on the inner workings of VAE and enable direct interpretability of the model through its structure, we designed a novel VAE, OntoVAE (Ontology guided VAE) that can incorporate any ontology in its latent space and decoder part and, thus, provide pathway or phenotype activities for the ontology terms. In this work, we demonstrate that OntoVAE can be applied in the context of predictive modeling and show its ability to predict the effects of genetic or drug-induced perturbations using different ontologies and both, bulk and single-cell transcriptomic datasets. Finally, we provide a flexible framework, which can be easily adapted to any ontology and dataset. Availability and implementation OntoVAE is available as a python package under https://github.com/hdsu-bioquant/onto-vae.},
+  Author	= {Doncevic, Daria and Herrmann, Carl},
+  DOI		= {10.1093/bioinformatics/btad387},
+  ISSN		= {1367-4811},
+  Journal	= {Bioinformatics},
+  langid	= {english},
+  Number	= {6},
+  Pages		= {btad387},
+  Title		= {Biologically informed variational autoencoders allow predictive modeling of genetic and drug-induced perturbations},
+  Volume	= {39},
+  Year		= 2023,
+  Month		= jun,
+  Editor	= {Martelli, Pier Luigi},
+  copyright	= {https://creativecommons.org/licenses/by/4.0/}
+}
+
+@Misc{		  dong2026,
+  Abstract	= {Abstract Single-cell transcriptomics offers the promise of measuring the diversity of cellular phenotypes across species, diseases, and other biological conditions. Recently, foundation models have emerged to identify this variation, yet most methods represent each cell independently, despite technical limitations that reduce measurement precision at the single-cell level. Here, we present S tack , a foundation model trained on 149 million uniformly preprocessed human single cells that leverages tabular attention to generate representations for each cell informed by the cells in its context. S tack offers substantial improvements for downstream tasks in the zero-shot setting compared to baselines, whether they are zero-shot, fine-tuned, or trained from scratch on the target dataset. S tack can perform in-context learning from unlabeled cells representing arbitrary conditions, such as a chemical perturbation or a different donor, and predict the effect of those conditions on a target cell population without requiring data-specific fine-tuning. We apply S tack to generate Perturb Sapiens , the first human whole-organism atlas of perturbed cells, spanning 28 tissues, 40 cell classes, and 201 perturbations. We validated subsets of Perturb Sapiens using in vitro stimulation profiles. Overall, S tack presents a new modeling framework where cells themselves act as guiding examples at inference time, unlocking general-purpose in-context learning capabilities for single-cell biology.},
+  Author	= {Dong, Mingze and Adduri, Abhinav and Gautam, Dhruv and Carpenter, Christopher and Shah, Rohan and {Ricci-Tam}, Chiara and Kluger, Yuval and Burke, Dave P. and Roohani, Yusuf H.},
+  DOI		= {10.64898/2026.01.09.698608},
+  langid	= {english},
+  Publisher	= {Bioinformatics},
+  Title		= {Stack: {{In-Context Learning}} of {{Single-Cell Biology}}},
+  Year		= 2026,
+  Month		= jan,
+  ShortTitle	= {Stack},
+  ArchivePrefix	= {Bioinformatics},
+  copyright	= {http://creativecommons.org/licenses/by/4.0/}
 }
 
 @Article{	  duo2018,
@@ -979,6 +1208,20 @@
   HowPublished	= {https://genomebiology.biomedcentral.com/20years}
 }
 
+@Article{	  germain2022,
+  Abstract	= {Doublets are prevalent in single-cell sequencing data and can lead to artifactual findings. A number of strategies have therefore been proposed to detect them. Building on the strengths of existing approaches, we developed scDblFinder , a fast, flexible and accurate Bioconductor-based doublet detection method. Here we present the method, justify its design choices, demonstrate its performance on both single-cell RNA and accessibility (ATAC) sequencing data, and provide some observations on doublet formation, detection, and enrichment analysis. Even in complex datasets, scDblFinder can accurately identify most heterotypic doublets, and was already found by an independent benchmark to outcompete alternatives.},
+  Author	= {Germain, Pierre-Luc and Lun, Aaron and Garcia Meixide, Carlos and Macnair, Will and Robinson, Mark D.},
+  DOI		= {10.12688/f1000research.73600.2},
+  ISSN		= {2046-1402},
+  Journal	= {F1000Research},
+  langid	= {english},
+  Pages		= {979},
+  Title		= {Doublet identification in single-cell sequencing data using {{scDblFinder}}},
+  Volume	= {10},
+  Year		= 2022,
+  Month		= may
+}
+
 @Article{	  goldberg2014,
   Abstract	= {The prediction of protein sub-cellular localization is an important step toward elucidating protein function. For each query protein sequence, LocTree2 applies machine learning (profile kernel SVM) to predict the native sub-cellular localization in 18 classes for eukaryotes, in six for bacteria and in three for archaea. The method outputs a score that reflects the reliability of each prediction. LocTree2 has performed on par with or better than any other state-of-the-art method. Here, we report the availability of LocTree3 as a public web server. The server includes the machine learning-based LocTree2 and improves over it through the addition of homology-based inference. Assessed on sequence-unique data, LocTree3 reached an 18-state accuracy Q18 = 80 \textpm{} 3\% for eukaryotes and a six-state accuracy Q6 = 89 \textpm{} 4\% for bacteria. The server accepts submissions ranging from single protein sequences to entire proteomes. Response time of the unloaded server is about 90 s for a 300-residue eukaryotic protein and a few hours for an entire eukaryotic proteome not considering the generation of the alignments. For over 1000 entirely sequenced organisms, the predictions are directly available as downloads. The web server is available at http://www.rostlab.org/services/loctree3.},
   Author	= {Goldberg, Tatyana and Hecht, Maximilian and Hamp, Tobias and Karl, Timothy and Yachdav, Guy and Ahmed, Nadeem and Altermann, Uwe and Angerer, Philipp and Ansorge, Sonja and Balasz, Kinga and Bernhofer, Michael and Betz, Alexander and Cizmadija, Laura and Do, Kieu Trinh and Gerke, Julia and Greil, Robert and Joerdens, Vadim and Hastreiter, Maximilian and Hembach, Katharina and Herzog, Max and Kalemanov, Maria and Kluge, Michael and Meier, Alice and Nasir, Hassan and Neumaier, Ulrich and Prade, Verena and Reeb, Jonas and Sorokoumov, Aleksandr and Troshani, Ilira and Vorberg, Susann and Waldraff, Sonja and Zierer, Jonas and Nielsen, Henrik and Rost, Burkhard},
@@ -1035,6 +1278,21 @@
   Title		= {Resolution of {{Cell Fate Decisions Revealed}} by {{Single-Cell Gene Expression Analysis}} from {{Zygote}} to {{Blastocyst}}},
   Volume	= {18},
   Year		= 2010
+}
+
+@Article{	  hackenberg2025,
+  Abstract	= {Abstract Dimensionality reduction greatly facilitates the exploration of cellular heterogeneity in single-cell RNA sequencing data. While most of such approaches are data-driven, it can be useful to incorporate biologically plausible assumptions about the underlying structure or the experimental design. We propose the boosting autoencoder (BAE) approach, which combines the advantages of unsupervised deep learning for dimensionality reduction and boosting for formalizing assumptions. Specifically, our approach selects small sets of genes that explain latent dimensions. As illustrative applications, we explore the diversity of neural cell identities and temporal patterns of embryonic development.},
+  Author	= {Hackenberg, Maren and Brunn, Niklas and Vogel, Tanja and Binder, Harald},
+  DOI		= {10.1038/s42003-025-07872-9},
+  ISSN		= {2399-3642},
+  Journal	= {Communications Biology},
+  langid	= {english},
+  Number	= {1},
+  Pages		= {414},
+  Title		= {Infusing structural assumptions into dimensionality reduction for single-cell {{RNA}} sequencing data to identify small gene sets},
+  Volume	= {8},
+  Year		= 2025,
+  Month		= mar
 }
 
 @Article{	  hafemeister2019,
@@ -1126,6 +1384,21 @@
   Month		= jun
 }
 
+@Article{	  hatje2025,
+  Abstract	= {Neutrophils are crucial in the clinical setting, as they are key immune responders and important markers in various diseases. Transcriptional profiling of neutrophils by single-cell RNA sequencing (scRNA-seq) has remained challenging due to the low levels of mRNA and high levels of RNases. We compare current scRNA-seq methods to evaluate the efficiency of the preservation of neutrophils in samples and resulting data quality with the goal of identifying an scRNA-seq method with a simple sample collection that is suitable for implementation on clinical samples and ensures the best data quality.},
+  Author	= {Hatje, Klas and Schneider, Kim and Danilin, Sabrina and Koechl, Fabian and Giroud, Nicolas and Juglair, Laurent and Marbach, Daniel and Knuckles, Philip and Bergauer, Tobias and Metruccio, Matteo and Garrido, Alba and Zhang, Jitao David and Sultan, Marc and Bell, Emma},
+  DOI		= {10.1016/j.crmeth.2025.101173},
+  ISSN		= {26672375},
+  Journal	= {Cell Reports Methods},
+  langid	= {english},
+  Number	= {9},
+  Pages		= {101173},
+  Title		= {Comparison of single-cell {{RNA-seq}} methods to enable transcriptome profiling of neutrophils in clinical samples},
+  Volume	= {5},
+  Year		= 2025,
+  Month		= sep
+}
+
 @Article{	  heimberg2016,
   Abstract	= {A tradeoff between precision and throughput constrains all biological measurements, including sequencing-based technologies. Here, we develop a mathematical framework that defines this tradeoff between mRNA-sequencing depth and error in the extraction of biological information. We find that transcriptional programs can be reproducibly identified at 1\% of conventional read depths. We demonstrate that this resilience to noise of "shallow" sequencing derives from a natural property, low dimensionality, which is a fundamental feature of gene expression data. Accordingly, our conclusions hold for {$\sim$}350 single-cell and bulk gene expression datasets across yeast, mouse, and human. In total, our approach provides quantitative guidelines for the choice of sequencing depth necessary to achieve a desired level of analytical resolution. We codify these guidelines in an open-source read depth calculator. This work demonstrates that the structure inherent in biological networks can be productively exploited to increase measurement throughput, an idea that is now common in many branches of science, such as image processing.},
   Author	= {Heimberg, Graham and Bhatnagar, Rajat and {El-Samad}, Hana and Thomson, Matt},
@@ -1139,6 +1412,21 @@
   Volume	= {2},
   Year		= 2016,
   Month		= apr
+}
+
+@Article{	  heimberg2025,
+  Abstract	= {Single-cell RNA sequencing has profiled hundreds of millions of human cells across organs, diseases, development and perturbations to date. Mining these growing atlases could reveal cell--disease associations, identify cell states in unexpected tissue contexts and relate in vivo biology to in vitro models. These require a common measure of cell similarity across the body and an efficient way to search. Here we develop SCimilarity, a metric-learning framework to learn a unified and interpretable representation that enables rapid queries of tens of millions of cell profiles from diverse studies for cells that are transcriptionally similar to an input cell profile or state. We use SCimilarity to query a 23.4-million-cell atlas of 412 single-cell RNA-sequencing studies for macrophage and fibroblast profiles from interstitial lung disease1 and reveal similar cell profiles across other fibrotic diseases and tissues. The top scoring in vitro hit for the macrophage query was a 3D hydrogel system2, which we experimentally demonstrated reproduces this cell state. SCimilarity serves as a foundation model for single-cell profiles that enables researchers to query for similar cellular states across the human body, providing a powerful tool for generating biological insights from the Human Cell Atlas.},
+  Author	= {Heimberg, Graham and Kuo, Tony and DePianto, Daryle J. and Salem, Omar and Heigl, Tobias and Diamant, Nathaniel and Scalia, Gabriele and Biancalani, Tommaso and Turley, Shannon J. and Rock, Jason R. and Corrada Bravo, H{\'e}ctor and Kaminker, Josh and Vander Heiden, Jason A. and Regev, Aviv},
+  DOI		= {10.1038/s41586-024-08411-y},
+  ISSN		= {0028-0836, 1476-4687},
+  Journal	= {Nature},
+  langid	= {english},
+  Number	= {8052},
+  Pages		= {1085--1094},
+  Title		= {A cell atlas foundation model for scalable search of similar human cells},
+  Volume	= {638},
+  Year		= 2025,
+  Month		= feb
 }
 
 @Article{	  heiser2019,
@@ -1167,6 +1455,20 @@
   BookTitle	= {Methods in {{Molecular Biology}}}
 }
 
+@Article{	  heumos2023,
+  Author	= {Heumos, Lukas and Schaar, Anna C. and Lance, Christopher and Litinetskaya, Anastasia and Drost, Felix and Zappia, Luke and L{\"u}cken, Malte D. and Strobl, Daniel C. and Henao, Juan and Curion, Fabiola and {Single-cell Best Practices Consortium} and Aliee, Hananeh and Ansari, Meshal and {Badia-i-Mompel}, Pau and B{\"u}ttner, Maren and Dann, Emma and Dimitrov, Daniel and Dony, Leander and Frishberg, Amit and He, Dongze and {Hediyeh-zadeh}, Soroor and Hetzel, Leon and Ibarra, Ignacio L. and Jones, Matthew G. and Lotfollahi, Mohammad and Martens, Laura D. and M{\"u}ller, Christian L. and Nitzan, Mor and Ostner, Johannes and Palla, Giovanni and Patro, Rob and Piran, Zoe and {Ram{\'i}rez-Su{\'a}stegui}, Ciro and {Saez-Rodriguez}, Julio and Sarkar, Hirak and Schubert, Benjamin and Sikkema, Lisa and Srivastava, Avi and Tanevski, Jovan and Virshup, Isaac and Weiler, Philipp and Schiller, Herbert B. and Theis, Fabian J.},
+  DOI		= {10.1038/s41576-023-00586-w},
+  ISSN		= {1471-0056, 1471-0064},
+  Journal	= {Nature Reviews Genetics},
+  langid	= {english},
+  Number	= {8},
+  Pages		= {550--572},
+  Title		= {Best practices for single-cell analysis across modalities},
+  Volume	= {24},
+  Year		= 2023,
+  Month		= aug
+}
+
 @TechReport{	  hinton2003,
   Abstract	= {We describe a probabilistic approach to the task of placing objects, described by high-dimensional vectors or by pairwise dissimilarities, in a low-dimensional space in a way that preserves neighbor identities. A Gaussian is centered on each object in the high-dimensional space and the densities under this Gaussian (or the given dissimilarities) are used to define a probability distribution over all the potential neighbors of the object. The aim of the embedding is to approximate this distribution as well as possible when the same operation is performed on the low-dimensional "images" of the objects. A natural cost function is a sum of Kullback-Leibler divergences, one per object, which leads to a simple gradient for adjusting the positions of the low-dimensional images. Unlike other dimensionality reduction methods, this probabilistic framework makes it easy to represent each object by a mixture of widely separated low-dimensional images. This allows ambiguous objects, like the document count vector for the word "bank", to have versions close to the images of both "river" and "finance" without forcing the images of outdoor concepts to be located close to those of corporate concepts.},
   Author	= {Hinton, Geoffrey and Roweis, Sam},
@@ -1175,11 +1477,11 @@
   Year		= 2003
 }
 
-@Article{	  homrighausen2011,
+@Misc{		  homrighausen2011,
   Abstract	= {In many areas of machine learning, it becomes necessary to find the eigenvector decompositions of large matrices. We discuss two methods for reducing the computational burden of spectral decompositions: the more venerable Nystom extension and a newly introduced algorithm based on random projections. Previous work has centered on the ability to reconstruct the original matrix. We argue that a more interesting and relevant comparison is their relative performance in clustering and classification tasks using the approximate eigenvectors as features. We demonstrate that performance is task specific and depends on the rank of the approximation.},
   Author	= {Homrighausen, Darren and McDonald, Daniel J.},
+  DOI		= {10.48550/arXiv.1107.4340},
   Title		= {Spectral approximations in machine learning},
-  Volume	= {arXiv:1107.4340},
   Year		= 2011,
   Month		= jul
 }
@@ -1243,6 +1545,22 @@
   Volume	= {12},
   Year		= 2015,
   Month		= jan
+}
+
+@Article{	  huizing2026,
+  Abstract	= {Abstract In dynamic biological processes such as development, spatial transcriptomics is revolutionizing the study of the mechanisms underlying spatial organization within tissues. Inferring cell fate trajectories from spatial transcriptomics profiled at several time points has thus emerged as a critical goal, requiring novel computational methods. Wasserstein gradient flow learning is a promising framework for analyzing sequencing data across time, built around a neural network representing the differentiation potential. However, existing gradient flow learning methods face challenges in analyzing spatially resolved transcriptomic data. Here, we propose STORIES, a method that uses an extension of Optimal Transport to learn a spatially informed potential. We benchmark our approach using three large Stereo-seq spatiotemporal atlases and demonstrate superior spatial coherence compared to existing approaches. Finally, we provide an in-depth analysis of axolotl neural regeneration and mouse gliogenesis, recovering gene trends for known markers such as Nptx1 in neuron regeneration and Aldh1l1 in gliogenesis and additional putative drivers.},
+  Author	= {Huizing, Geert-Jan and Samaran, Jules and Capocefalo, Daniele and Audit, Anna and Peyr{\'e}, Gabriel and Cantini, Laura},
+  DOI		= {10.1038/s41592-025-02855-4},
+  ISSN		= {1548-7091, 1548-7105},
+  Journal	= {Nature Methods},
+  langid	= {english},
+  Number	= {3},
+  Pages		= {522--531},
+  Title		= {{{STORIES}}: learning cell fate landscapes from spatial transcriptomics using optimal transport},
+  Volume	= {23},
+  Year		= 2026,
+  Month		= mar,
+  ShortTitle	= {{{STORIES}}}
 }
 
 @Article{	  hunter2007,
@@ -1557,6 +1875,47 @@
   Year		= 2015
 }
 
+@InProceedings{	  klein2024,
+  Author	= {Klein, Dominik and Uscidda, Th{\'e}o and Theis, Fabian and Cuturi, Marco},
+  DOI		= {10.52202/079017-3301},
+  ISBN		= {979-8-3313-1438-5},
+  Pages		= {103897--103944},
+  Publisher	= {Neural Information Processing Systems Foundation, Inc. (NeurIPS)},
+  Title		= {{{GENOT}}: {{Entropic}} ({{Gromov}}) {{Wasserstein Flow Matching}} with {{Applications}} to {{Single-Cell Genomics}}},
+  Year		= 2024,
+  ShortTitle	= {{{GENOT}}},
+  BookTitle	= {Advances in {{Neural Information Processing Systems}} 37},
+  Address	= {Vancouver, BC, Canada}
+}
+
+@Misc{		  klein2025a,
+  Abstract	= {High-content phenotypic screens provide a powerful strategy for studying biological systems, but the scale of possible perturbations and cell states makes exhaustive experiments unfeasible. Computational models that are trained on existing data and extrapolate to correctly predict outcomes in unseen contexts have the potential to accelerate biological discovery. Here, we present CellFlow, a flexible framework based on flow matching that can model single cell phenotypes induced by complex perturbations. We apply CellFlow to various phenotypic screens, accurately predicting expression responses to a wide range of perturbations, including cytokine stimulation, drug treatments and gene knockouts. CellFlow successfully modeled developmental perturbations at the whole-embryo scale and guided cell fate and organoid engineering by predicting heterogeneous cell populations arising from combinatorial morphogen treatments and by performing a virtual organoid protocol screen. Taken together, CellFlow has the potential to accelerate discovery from phenotypic screens by learning from existing data and generating phenotypes induced by unseen conditions.},
+  Author	= {Klein, Dominik and Fleck, Jonas Simon and Bobrovskiy, Daniil and Zimmermann, Lea and Becker, S{\"o}ren and Palma, Alessandro and Dony, Leander and {Tejada-Lapuerta}, Alejandro and Huguet, Guillaume and Lin, Hsiu-Chuan and Azbukina, Nadezhda and {Sanch{\'i}s-Calleja}, F{\'a}tima and Uscidda, Theo and Szalata, Artur and Gander, Manuel and Regev, Aviv and Treutlein, Barbara and Camp, J. Gray and Theis, Fabian J.},
+  DOI		= {10.1101/2025.04.11.648220},
+  langid	= {english},
+  Publisher	= {Bioinformatics},
+  Title		= {{{CellFlow}} enables generative single-cell phenotype modeling with flow matching},
+  Year		= 2025,
+  Month		= apr,
+  ArchivePrefix	= {Bioinformatics},
+  copyright	= {http://creativecommons.org/licenses/by-nc-nd/4.0/}
+}
+
+@Article{	  klein2025b,
+  Abstract	= {Single-cell genomic technologies enable the multimodal profiling of millions of cells across temporal and spatial dimensions. However, experimental limitations hinder the comprehensive measurement of cells under native temporal dynamics and in their native spatial tissue niche. Optimal transport has emerged as a powerful tool to address these constraints and has facilitated the recovery of the original cellular context 1--4. Yet, most optimal transport applications are unable to incorporate multimodal information or scale to single-cell atlases. Here we introduce multi-omics single-cell optimal transport (moscot), a scalable framework for optimal transport in single-cell genomics that supports multimodality across all applications. We demonstrate the capability of moscot to efficiently reconstruct developmental trajectories of 1.7\,million cells from mouse embryos across 20 time points. To illustrate the capability of moscot in space, we enrich spatial transcriptomic datasets by mapping multimodal information from single-cell profiles in a mouse liver sample and align multiple coronal sections of the mouse brain. We present moscot.spatiotemporal, an approach that leverages gene-expression data across both spatial and temporal dimensions to uncover the spatiotemporal dynamics of mouse embryogenesis. We also resolve endocrine-lineage relationships of delta and epsilon cells in a previously unpublished mouse, time-resolved pancreas development dataset using paired measurements of gene expression and chromatin accessibility. Our findings are confirmed through experimental validation of NEUROD2 as a regulator of epsilon progenitor cells in a model of human induced pluripotent stem cell islet cell differentiation. Moscot is available as open-source software, accompanied by extensive documentation.},
+  Author	= {Klein, Dominik and Palla, Giovanni and Lange, Marius and Klein, Michal and Piran, Zoe and Gander, Manuel and {Meng-Papaxanthos}, Laetitia and Sterr, Michael and Saber, Lama and Jing, Changying and {Bastidas-Ponce}, Aim{\'e}e and Cota, Perla and {Tarquis-Medina}, Marta and Parikh, Shrey and Gold, Ilan and Lickert, Heiko and Bakhti, Mostafa and Nitzan, Mor and Cuturi, Marco and Theis, Fabian J.},
+  DOI		= {10.1038/s41586-024-08453-2},
+  ISSN		= {0028-0836, 1476-4687},
+  Journal	= {Nature},
+  langid	= {english},
+  Number	= {8052},
+  Pages		= {1065--1075},
+  Title		= {Mapping cells through time and space with moscot},
+  Volume	= {638},
+  Year		= 2025,
+  Month		= feb
+}
+
 @Book{		  kluyver2016,
   Abstract	= {It is increasingly necessary for researchers in all fields to write computer code, and in order to reproduce research results, it is important that this code is published. We present Jupyter notebooks, a document format for publishing code, results and explanations in a form that is both readable and executable. We discuss various tools and use cases for notebook documents.},
   Author	= {Kluyver, Thomas and {Ragan-kelley}, Benjamin and P{\'e}rez, Fernando and Granger, Brian and Bussonnier, Matthias and Frederic, Jonathan and Kelley, Kyle and Hamrick, Jessica and Grout, Jason and Corlay, Sylvain and Ivanov, Paul and Avila, Dami{\'a}n and Abdalla, Safia and Willing, Carol},
@@ -1737,6 +2096,21 @@
   Month		= aug
 }
 
+@Article{	  lange2022,
+  Abstract	= {Computational trajectory inference enables the reconstruction of cell state dynamics from single-cell RNA sequencing experiments. However, trajectory inference requires that the direction of a biological process is known, largely limiting its application to differentiating systems in normal development. Here, we present CellRank (https://cellrank.org) for single-cell fate mapping in diverse scenarios, including regeneration, reprogramming and disease, for which direction is unknown. Our approach combines the robustness of trajectory inference with directional information from RNA velocity, taking into account the gradual and stochastic nature of cellular fate decisions, as well as uncertainty in velocity vectors. On pancreas development data, CellRank automatically detects initial, intermediate and terminal populations, predicts fate potentials and visualizes continuous gene expression trends along individual lineages. Applied to lineage-traced cellular reprogramming data, predicted fate probabilities correctly recover reprogramming outcomes. CellRank also predicts a new dedifferentiation trajectory during postinjury lung regeneration, including previously unknown intermediate cell states, which we confirm experimentally.},
+  Author	= {Lange, Marius and Bergen, Volker and Klein, Michal and Setty, Manu and Reuter, Bernhard and Bakhti, Mostafa and Lickert, Heiko and Ansari, Meshal and Schniering, Janine and Schiller, Herbert B. and Pe'er, Dana and Theis, Fabian J.},
+  DOI		= {10.1038/s41592-021-01346-6},
+  ISSN		= {1548-7091, 1548-7105},
+  Journal	= {Nature Methods},
+  langid	= {english},
+  Number	= {2},
+  Pages		= {159--170},
+  Title		= {{{CellRank}} for directed single-cell fate mapping},
+  Volume	= {19},
+  Year		= 2022,
+  Month		= feb
+}
+
 @Article{	  langmead2009,
   Abstract	= {Bowtie is an ultrafast, memory-efficient alignment program for aligning short DNA sequence reads to large genomes. For the human genome, Burrows-Wheeler indexing allows Bowtie to align more than 25 million reads per CPU hour with a memory footprint of approximately 1.3 gigabytes. Bowtie extends previous Burrows-Wheeler techniques with a novel quality-aware backtracking algorithm that permits mismatches. Multiple processor cores can be used simultaneously to achieve even greater alignment speeds. Bowtie is open source http://bowtie.cbcb.umd.edu. \copyright{} 2009 Langmead et al.; licensee BioMed Central Ltd.},
   Author	= {Langmead, Ben and Trapnell, Cole and Pop, Mihai and Salzberg, Steven L.},
@@ -1782,6 +2156,23 @@
   Year		= 2001,
   Month		= jun,
   ShortTitle	= {Promoter {{Function}} of the {{Angiogenic Inducer Cyr61Gene}} in {{Transgenic Mice}}}
+}
+
+@Article{	  lause2024,
+  Abstract	= {A recent paper claimed that t -SNE and UMAP embeddings of single-cell datasets are ``specious'' and fail to capture true biological structure. The authors argued that such embeddings are as arbitrary and as misleading as forcing the data into an elephant shape. Here we show that this conclusion was based on inadequate and limited metrics of embedding quality. More appropriate metrics quantifying neighborhood and class preservation reveal the elephant in the room: while t -SNE and UMAP embeddings of single-cell data do not preserve high-dimensional distances, they can nevertheless provide biologically relevant information.},
+  Author	= {Lause, Jan and Berens, Philipp and Kobak, Dmitry},
+  DOI		= {10.1371/journal.pcbi.1012403},
+  ISSN		= {1553-7358},
+  Journal	= {PLOS Computational Biology},
+  langid	= {english},
+  Number	= {10},
+  Pages		= {e1012403},
+  Title		= {The art of seeing the elephant in the room: {{2D}} embeddings of single-cell data do make sense},
+  Volume	= {20},
+  Year		= 2024,
+  Month		= oct,
+  ShortTitle	= {The art of seeing the elephant in the room},
+  Editor	= {Papin, Jason A.}
 }
 
 @Article{	  lenz2016,
@@ -1861,6 +2252,21 @@
   Year		= 2017
 }
 
+@Article{	  liu2025,
+  Abstract	= {Abstract Single-cell multimodal omics technologies have empowered the profiling of complex biological systems at a resolution and scale that were previously unattainable. These biotechnologies have propelled the fast-paced innovation and development of data integration methods, leading to a critical need for their systematic categorization, evaluation and benchmarking. Navigating and selecting the most pertinent integration approach poses a considerable challenge, contingent upon the tasks relevant to the study goals and the combination of modalities and batches present in the data at hand. Understanding how well each method performs multiple tasks, including dimension reduction, batch correction, cell type classification and clustering, imputation, feature selection and spatial registration, and at which combinations will help guide this decision. Here we develop a much-needed guideline on choosing the most appropriate method for single-cell multimodal omics data analysis through a systematic categorization and comprehensive benchmarking of current methods. The stage 1 protocol for this Registered Report was accepted in principle on 30 July 2024. The protocol, as accepted by the journal, can be found at https://springernature.figshare.com/articles/journal\_contribution/Multi-task\_benchmarking\_of\_single-cell\_multimodal\_omics\_integration\_methods/26789902 .},
+  Author	= {Liu, Chunlei and Ding, Sichang and Kim, Hani Jieun and Long, Siqu and Xiao, Di and Ghazanfar, Shila and Yang, Pengyi},
+  DOI		= {10.1038/s41592-025-02856-3},
+  ISSN		= {1548-7091, 1548-7105},
+  Journal	= {Nature Methods},
+  langid	= {english},
+  Number	= {11},
+  Pages		= {2449--2460},
+  Title		= {Multitask benchmarking of single-cell multimodal omics integration methods},
+  Volume	= {22},
+  Year		= 2025,
+  Month		= nov
+}
+
 @Article{	  livak2013,
   Abstract	= {The stochastic nature of generating eukaryotic transcripts challenges conventional methods for obtaining and analyzing single-cell gene expression data. In order to address the inherent noise, detailed methods are described on how to collect data on multiple genes in a large number of single cells using microfluidic arrays. As part of a study exploring the effect of genotype on Wnt pathway activation, data were collected for 96 qPCR assays on 1440 lymphoblastoid cells. The description of methods includes preliminary data processing steps. The methods used in the collection and analysis of single-cell qPCR data are contrasted with those used in conventional qPCR. \copyright{} 2012 Elsevier Inc.},
   Author	= {Livak, Kenneth J and Wills, Quin F and Tipping, Alex J and Datta, Krishnalekha and Mittal, Rowena and Goldson, Andrew J and Sexton, Darren W and Holmes, Chris C},
@@ -1874,6 +2280,21 @@
   Title		= {Methods for {{qPCR}} gene expression profiling applied to 1440 lymphoblastoid single cells},
   Volume	= {59},
   Year		= 2013
+}
+
+@Article{	  lobato-moreno2025,
+  Abstract	= {Abstract Enhancers and transcription factors (TFs) are crucial in regulating cellular processes. Current multiomic technologies to study these elements in gene regulatory mechanisms lack multiplexing capability and scalability. Here we present single-cell ultra-high-throughput multiplexed sequencing (SUM-seq) for co-assaying chromatin accessibility and gene expression in single nuclei. SUM-seq enables profiling hundreds of samples at the million cell scale and outperforms current high-throughput single-cell methods. We demonstrate the capability of SUM-seq to (1) resolve temporal gene regulation of macrophage M1 and M2 polarization to bridge TF regulatory networks and immune disease genetic variants, (2) define the regulatory landscape of primary T helper cell subsets and (3) dissect the effect of perturbing lineage TFs via arrayed CRISPR screens in spontaneously differentiating human induced pluripotent stem cells. SUM-seq offers a cost-effective, scalable solution for ultra-high-throughput single-cell multiomic sequencing, accelerating the unraveling of complex gene regulatory networks in cell differentiation, responses to perturbations and disease studies.},
+  Author	= {{Lobato-Moreno}, Sara and Yildiz, Umut and Claringbould, Annique and Servaas, Nila H. and Vlachou, Evi P. and Arnold, Christian and Bauersachs, Hanke Gwendolyn and {Campos-Forn{\'e}s}, V{\'i}ctor and Kim, Minyoung and Berest, Ivan and Prummel, Karin D. and Noh, Kyung-Min and Marttinen, Mikael and Zaugg, Judith B.},
+  DOI		= {10.1038/s41592-025-02700-8},
+  ISSN		= {1548-7091, 1548-7105},
+  Journal	= {Nature Methods},
+  langid	= {english},
+  Number	= {6},
+  Pages		= {1213--1225},
+  Title		= {Single-cell ultra-high-throughput multiplexed chromatin and {{RNA}} profiling reveals gene regulatory dynamics},
+  Volume	= {22},
+  Year		= 2025,
+  Month		= jun
 }
 
 @Article{	  lopez2018,
@@ -1902,6 +2323,33 @@
   Volume	= {16},
   Year		= 2019,
   Month		= aug
+}
+
+@Article{	  lotfollahi2023,
+  Abstract	= {The increasing availability of large-scale single-cell atlases has enabled the detailed description of cell states. In parallel, advances in deep learning allow rapid analysis of newly generated query datasets by mapping them into reference atlases. However, existing data transformations learned to map query data are not easily explainable using biologically known concepts such as genes or pathways. Here we propose expiMap, a biologically informed deep-learning architecture that enables single-cell reference mapping. ExpiMap learns to map cells into biologically understandable components representing known `gene programs'. The activity of each cell for a gene program is learned while simultaneously refining them and learning de novo programs. We show that expiMap compares favourably to existing methods while bringing an additional layer of interpretability to integrative single-cell analysis. Furthermore, we demonstrate its applicability to analyse single-cell perturbation responses in different tissues and species and resolve responses of patients who have coronavirus disease 2019 to different treatments across cell types.},
+  Author	= {Lotfollahi, Mohammad and Rybakov, Sergei and Hrovatin, Karin and {Hediyeh-zadeh}, Soroor and {Talavera-L{\'o}pez}, Carlos and Misharin, Alexander V. and Theis, Fabian J.},
+  DOI		= {10.1038/s41556-022-01072-x},
+  ISSN		= {1465-7392, 1476-4679},
+  Journal	= {Nature Cell Biology},
+  langid	= {english},
+  Title		= {Biologically informed deep learning to query gene programs in single-cell atlases},
+  Year		= 2023,
+  Month		= feb
+}
+
+@Article{	  lotfollahi2024,
+  Abstract	= {As the number of single-cell datasets continues to grow rapidly, workflows that map new data to well-curated reference atlases offer enormous promise for the biological community. In this perspective, we discuss key computational challenges and opportunities for single-cell reference-mapping algorithms. We discuss how mapping algorithms will enable the integration of diverse datasets across disease states, molecular modalities, genetic perturbations, and diverse species and will eventually replace manual and laborious unsupervised clustering pipelines.},
+  Author	= {Lotfollahi, Mohammad and {Yuhan Hao} and Theis, Fabian J. and Satija, Rahul},
+  DOI		= {10.1016/j.cell.2024.03.009},
+  ISSN		= {00928674},
+  Journal	= {Cell},
+  langid	= {english},
+  Number	= {10},
+  Pages		= {2343--2358},
+  Title		= {The future of rapid and automated single-cell data analysis using reference mapping},
+  Volume	= {187},
+  Year		= 2024,
+  Month		= may
 }
 
 @Article{	  luecken2019,
@@ -2037,6 +2485,13 @@
   Month		= apr
 }
 
+@Misc{		  manz2026,
+  Author	= {Manz, Trevor},
+  Title		= {juv -- {{A}} toolkit for reproducible {{Jupyter}} notebooks},
+  Year		= 2026,
+  Month		= mar
+}
+
 @Article{	  manzoni2018,
   Abstract	= {Advances in the technologies and informatics used to generate and process large biological data sets (omics data) are promoting a critical shift in the study of biomedical sciences. While genomics, transcriptomics and proteinomics, coupled with bioinformatics and biostatistics, are gainingmomentum, they are still, for the most part, assessed individually with distinct approaches generatingmonothematic rather than integrated knowledge. As other areas of biomedical sciences, including metabolomics, epigenomics and pharmacogenomics, aremoving towards the omics scale, we are witnessing the rise of interdisciplinary data integration strategies to support a better understanding of biological systems and eventually the development of successful precisionmedicine. This review cuts across the boundaries between genomics, transcriptomics and proteomics, summarizing how omics data are generated, analysed and shared, and provides an overview of the current strengths and weaknesses of this global approach. This work intends to target students and researchers seeking knowledge outside of their field of expertise and fosters a leap fromthe reductionist to the global-integrative analytical approach in research.},
   Author	= {Manzoni, Claudia and Kia, Demis A. and Vandrovcova, Jana and Hardy, John and Wood, Nicholas W. and Lewis, Patrick A. and Ferrari, Raffaele},
@@ -2097,9 +2552,10 @@
   Month		= apr
 }
 
-@Article{	  mcinnes2018,
+@Misc{		  mcinnes2018,
   Abstract	= {UMAP (Uniform Manifold Approximation and Projection) is a novel manifold learning technique for dimension reduction. UMAP is constructed from a theoretical framework based in Riemannian geometry and algebraic topology. The result is a practical scalable algorithm that applies to real world data. The UMAP algorithm is competitive with t-SNE for visualization quality, and arguably preserves more of the global structure with superior run time performance. Furthermore, UMAP has no computational restrictions on embedding dimension, making it viable as a general purpose dimension reduction technique for machine learning.},
   Author	= {McInnes, Leland and Healy, John and Melville, James},
+  DOI		= {10.48550/arXiv.1802.03426},
   Title		= {{{UMAP}}: {{Uniform Manifold Approximation}} and {{Projection}} for {{Dimension Reduction}}},
   Year		= 2018,
   Month		= feb
@@ -2176,6 +2632,19 @@
   Year		= 2015
 }
 
+@Misc{		  moinfar2024,
+  Abstract	= {Single-cell genomics allows for the unbiased exploration of cellular heterogeneity. While deep generative models have become a key processing step for integration and dimensionality reduction of single cell data, they function as black boxes that entangle biological signals and gene programs, restricting their interpretability and utility for downstream analysis. We address this limitation with Disentangled Representation Variational Inference (DRVI), a deep generative framework designed to provide dimension-wise interpretable disentangled representations for single-cell omics. DRVI isolates distinct sources of variation --- such as cell-type identity, developmental stage, cytokine signaling, and technical noise --- into individual, interpretable, and parallel factors without relying on supervised priors or restrictive linearity assumptions. This is achieved by exploiting additive decoders with a novel nonlinear pooling approach. We validate DRVI's capabilities to isolate cell types, secondary biological processes, perturbation effects, and stages in continuous trajectories on seven diverse datasets. In the Human Lung Cell Atlas, DRVI enables isolation of biological processes beyond cell types, covering interferon signaling, angiogenesis, proliferation, and stress response to metal ions, and identifies rare cell types such as migratory dendritic cells. In other examples, we show how to use interpretable factors to regress out isolated technical stress signals caused by sequencing, and to refine annotations for dendritic cells in an immune dataset. DRVI's interpretability does not come at the cost of integration performance, interpretable factors are consistent and transferable to similar datasets, and it generalizes easily to other modalities, such as single-cell chromatin accessibility. Altogether, DRVI provides a versatile framework for resolving the underlying structure of single-cell omics data.},
+  Author	= {Moinfar, Amir Ali and Theis, Fabian J.},
+  DOI		= {10.1101/2024.11.06.622266},
+  langid	= {english},
+  Publisher	= {Bioinformatics},
+  Title		= {Disentangling cellular heterogeneity into interpretable biological factors through structured latent representations},
+  Year		= 2024,
+  Month		= nov,
+  ArchivePrefix	= {Bioinformatics},
+  copyright	= {http://creativecommons.org/licenses/by-nc-nd/4.0/}
+}
+
 @Article{	  moon2018,
   Abstract	= {Recent advances in single-cell RNA sequencing technologies enable deep insights into cellular development, gene regulation, and phenotypic diversity by measuring gene expression for thousands of cells in a single experiment. While these technologies hold great potential for improving our understanding of cellular states and progression, they also pose new challenges and require advanced mathematical and algorithmic tools to extract underlying biological signals. In this review, we cover one of the most promising avenues of research into unlocking the potential of scRNA-seq data: the field of manifold learning, and the related manifold assumption in data analysis. Manifold learning provides a powerful structure for algorithmic approaches to process the data, extract its dynamics, and infer patterns in it. In particular, we cover manifold learning-based methods for denoising the data, revealing gene interactions, extracting pseudotime progressions with model fitting, visualizing the cellular state space via dimensionality reduction, and clustering the data.},
   Author	= {Moon, Kevin R and Stanley, Jay S and Burkhardt, Daniel and v. {van Dijk}, David and Wolf, Guy and Krishnaswamy, Smita},
@@ -2188,6 +2657,22 @@
   Volume	= {7},
   Year		= 2018,
   Series	= {{$\bullet$} {{Future}} of systems biology{$\bullet$} {{Genomics}} and epigenomics}
+}
+
+@Article{	  moore2021,
+  Abstract	= {Abstract The rapid pace of innovation in biological imaging and the diversity of its applications have prevented the establishment of a community-agreed standardized data format. We propose that complementing established open formats such as OME-TIFF and HDF5 with a next-generation file format such as Zarr will satisfy the majority of use cases in bioimaging. Critically, a common metadata format used in all these vessels can deliver truly findable, accessible, interoperable and reusable bioimaging data.},
+  Author	= {Moore, Josh and Allan, Chris and Besson, S{\'e}bastien and Burel, Jean-Marie and Diel, Erin and Gault, David and Kozlowski, Kevin and Lindner, Dominik and Linkert, Melissa and Manz, Trevor and Moore, Will and Pape, Constantin and Tischer, Christian and Swedlow, Jason R.},
+  DOI		= {10.1038/s41592-021-01326-w},
+  ISSN		= {1548-7091, 1548-7105},
+  Journal	= {Nature Methods},
+  langid	= {english},
+  Number	= {12},
+  Pages		= {1496--1498},
+  Title		= {{{OME-NGFF}}: a next-generation file format for expanding bioimaging data-access strategies},
+  Volume	= {18},
+  Year		= 2021,
+  Month		= dec,
+  ShortTitle	= {{{OME-NGFF}}}
 }
 
 @Article{	  moreland2017,
@@ -2217,6 +2702,35 @@
   Volume	= {45},
   Year		= 2008,
   Month		= jul
+}
+
+@Article{	  moro2026,
+  Abstract	= {Current single-cell RNA sequencing (scRNA-seq) methods suffer from biases that restrict the detection of cellular transcripts to 10--40\% of total RNAs. This hinders the identification of transcripts of interest. Additionally, information retrieved from most high-throughput scRNA-seq methods is confined to untranslated regions toward transcript ends, resulting in loss of detail in internal regions. In this review, we outline biases in scRNA-seq protocol steps that limit transcript and region detection. We then discuss the advantages and disadvantages of targeted sequencing solutions, grouped into five categories according to the protocol step they target. Finally, we present a decision tree that guides researchers in selecting the most suitable targeted method for their experiment.},
+  Author	= {Moro, Giulia and Brunner, Erich and Basler, Konrad},
+  DOI		= {10.1038/s42003-026-09675-y},
+  ISSN		= {2399-3642},
+  Journal	= {Communications Biology},
+  langid	= {english},
+  Number	= {1},
+  Pages		= {250},
+  Title		= {A practical guide to targeted single-cell {{RNA}} sequencing technologies},
+  Volume	= {9},
+  Year		= 2026,
+  Month		= feb
+}
+
+@Article{	  moses2022,
+  Author	= {Moses, Lambda and Pachter, Lior},
+  DOI		= {10.1038/s41592-022-01409-2},
+  ISSN		= {1548-7091, 1548-7105},
+  Journal	= {Nature Methods},
+  langid	= {english},
+  Number	= {5},
+  Pages		= {534--546},
+  Title		= {Museum of spatial transcriptomics},
+  Volume	= {19},
+  Year		= 2022,
+  Month		= may
 }
 
 @Article{	  muller2006,
@@ -2342,7 +2856,7 @@
 }
 
 @Article{	  palla2022,
-  Abstract	= {Abstract Spatial omics data are advancing the study of tissue organization and cellular communication at an unprecedented scale. Flexible tools are required to store, integrate and visualize the large diversity of spatial omics data. Here, we present Squidpy, a Python framework that brings together tools from omics and image analysis to enable scalable description of spatial molecular data, such as transcriptome or multivariate proteins. Squidpy provides efficient infrastructure and numerous analysis methods that allow to efficiently store, manipulate and interactively visualize spatial omics data. Squidpy is extensible and can be interfaced with a variety of already existing libraries for the scalable analysis of spatial omics data.},
+  Abstract	= {Spatial omics data are advancing the study of tissue organization and cellular communication at an unprecedented scale. Flexible tools are required to store, integrate and visualize the large diversity of spatial omics data. Here, we present Squidpy, a Python framework that brings together tools from omics and image analysis to enable scalable description of spatial molecular data, such as transcriptome or multivariate proteins. Squidpy provides efficient infrastructure and numerous analysis methods that allow to efficiently store, manipulate and interactively visualize spatial omics data. Squidpy is extensible and can be interfaced with a variety of already existing libraries for the scalable analysis of spatial omics data.},
   Author	= {Palla, Giovanni and Spitzer, Hannah and Klein, Michal and Fischer, David and Schaar, Anna Christina and Kuemmerle, Louis Benedikt and Rybakov, Sergei and Ibarra, Ignacio L. and Holmberg, Olle and Virshup, Isaac and Lotfollahi, Mohammad and Richter, Sabrina and Theis, Fabian J.},
   DOI		= {10.1038/s41592-021-01358-2},
   ISSN		= {1548-7091, 1548-7105},
@@ -2355,6 +2869,31 @@
   Year		= 2022,
   Month		= feb,
   ShortTitle	= {Squidpy}
+}
+
+@Misc{		  palla2025,
+  Abstract	= {Computational modeling of single-cell gene expression is crucial for understanding cellular processes, but generating realistic expression profiles remains a major challenge. This difficulty arises from the count nature of gene expression data and complex latent dependencies among genes. Existing generative models often impose artificial gene orderings or rely on shallow neural network architectures. We introduce a scalable latent diffusion model for single-cell gene expression data, which we refer to as scLDM, that respects the fundamental exchangeability property of the data. Our VAE uses fixed-size latent variables leveraging a unified Multi-head Cross-Attention Block (MCAB) architecture, which serves dual roles: permutation-invariant pooling in the encoder and permutation-equivariant unpooling in the decoder. We enhance this framework by replacing the Gaussian prior with a latent diffusion model using Diffusion Transformers and linear interpolants, enabling high-quality generation with multi-conditional classifier-free guidance. We show its superior performance in a variety of experiments for both observational and perturbational single-cell data, as well as downstream tasks like cell-level classification.},
+  Author	= {Palla, Giovanni and Babu, Sudarshan and Dibaeinia, Payam and Pearce, James D. and Li, Donghui and Khan, Aly A. and Karaletsos, Theofanis and Tomczak, Jakub M.},
+  DOI		= {10.48550/ARXIV.2511.02986},
+  Keywords	= {FOS: Biological sciences,FOS: Computer and information sciences,Genomics (q-bio.GN),Machine Learning (cs.LG),Machine Learning (stat.ML)},
+  Publisher	= {arXiv},
+  Title		= {Scalable {{Single-Cell Gene Expression Generation}} with {{Latent Diffusion Models}}},
+  Year		= 2025,
+  copyright	= {Creative Commons Attribution 4.0 International}
+}
+
+@Misc{		  pang2025,
+  Abstract	= {Biology emerges from interactions across physical scales, where molecular interactions drive cellular states, which in turn orchestrate multicellular tissue functions that collectively define health and disease. However, current computational models are often constrained to single scales in isolation, failing to integrate the biology that emerges from lower to higher levels [1]. Here we present PULSAR (Patient Understanding Leveraging Single-cell universAl Representation), a multi-scale and multicellular foundation model architecture that explicitly enables information flow from genes to cells to multicellular systems. Applied to the human peripheral immune system, PULSAR extracts a unified donor representation that supports rapid disease classification, biomarker prediction, and forecasting of future clinical events, such as Rheumatoid arthritis onset. As a generative model, PULSAR enables the simulation of cytokine perturbation response across physical resolutions, while its interpretability reveals the key cell types driving disease. Overall, PULSAR opens new avenues for precision medicine by enabling computational reasoning that connects molecular biology to clinical phenotypes.},
+  Author	= {Pang, Kuan and Rosen, Yanay and Kedzierska, Kasia and He, Ziyuan and Rajagopal, Abhejit and Gustafson, Claire E. and Huynh, Grace and Leskovec, Jure},
+  DOI		= {10.1101/2025.11.24.685470},
+  langid	= {english},
+  Publisher	= {Bioinformatics},
+  Title		= {{{PULSAR}}: a {{Foundation Model}} for {{Multi-scale}} and {{Multicellular Biology}}},
+  Year		= 2025,
+  Month		= nov,
+  ShortTitle	= {{{PULSAR}}},
+  ArchivePrefix	= {Bioinformatics},
+  copyright	= {http://creativecommons.org/licenses/by-nc-nd/4.0/}
 }
 
 @Article{	  papalexi2018,
@@ -2437,6 +2976,21 @@
   Title		= {Salmon provides fast and bias-aware quantification of transcript expression},
   Volume	= {14},
   Year		= 2017
+}
+
+@Article{	  persad2023,
+  Abstract	= {Abstract Metacells are cell groupings derived from single-cell sequencing data that represent highly granular, distinct cell states. Here we present single-cell aggregation of cell states (SEACells), an algorithm for identifying metacells that overcome the sparsity of single-cell data while retaining heterogeneity obscured by traditional cell clustering. SEACells outperforms existing algorithms in identifying comprehensive, compact and well-separated metacells in both RNA and assay for transposase-accessible chromatin (ATAC) modalities across datasets with discrete cell types and continuous trajectories. We demonstrate the use of SEACells to improve gene--peak associations, compute ATAC gene scores and infer the activities of critical regulators during differentiation. Metacell-level analysis scales to large datasets and is particularly well suited for patient cohorts, where per-patient aggregation provides more robust units for data integration. We use our metacells to reveal expression dynamics and gradual reconfiguration of the chromatin landscape during hematopoietic differentiation and to uniquely identify CD4 T cell differentiation and activation states associated with disease onset and severity in a Coronavirus Disease 2019 (COVID-19) patient cohort.},
+  Author	= {Persad, Sitara and Choo, Zi-Ning and Dien, Christine and Sohail, Noor and Masilionis, Ignas and Chalign{\'e}, Ronan and Nawy, Tal and Brown, Chrysothemis C. and Sharma, Roshan and Pe'er, Itsik and Setty, Manu and Pe'er, Dana},
+  DOI		= {10.1038/s41587-023-01716-9},
+  ISSN		= {1087-0156, 1546-1696},
+  Journal	= {Nature Biotechnology},
+  langid	= {english},
+  Number	= {12},
+  Pages		= {1746--1757},
+  Title		= {{{SEACells}} infers transcriptional and epigenomic cellular states from single-cell genomics data},
+  Volume	= {41},
+  Year		= 2023,
+  Month		= dec
 }
 
 @Article{	  plass2018,
@@ -2547,10 +3101,10 @@
   Month		= dec
 }
 
-@Article{	  regev2018,
+@Misc{		  regev2018,
   Abstract	= {The Human Cell Atlas (HCA) will be made up of comprehensive reference maps of all human cells - the fundamental units of life - as a basis for understanding fundamental human biological processes and diagnosing, monitoring, and treating disease. It will help scientists understand how genetic variants impact disease risk, define drug toxicities, discover better therapies, and advance regenerative medicine. A resource of such ambition and scale should be built in stages, increasing in size, breadth, and resolution as technologies develop and understanding deepens. We will therefore pursue Phase 1 as a suite of flagship projects in key tissues, systems, and organs. We will bring together experts in biology, medicine, genomics, technology development and computation (including data analysis, software engineering, and visualization). We will also need standardized experimental and computational methods that will allow us to compare diverse cell and tissue types - and samples across human communities - in consistent ways, ensuring that the resulting resource is truly global. This document, the first version of the HCA White Paper, was written by experts in the field with feedback and suggestions from the HCA community, gathered during recent international meetings. The White Paper, released at the close of this yearlong planning process, will be a living document that evolves as the HCA community provides additional feedback, as technological and computational advances are made, and as lessons are learned during the construction of the atlas.},
   Author	= {Regev, Aviv and Teichmann, Sarah and {Rozenblatt-Rosen}, Orit and Stubbington, Michael and Ardlie, Kristin and Amit, Ido and Arlotta, Paola and Bader, Gary and Benoist, Christophe and Biton, Moshe and Bodenmiller, Bernd and Bruneau, Benoit and Campbell, Peter and Carmichael, Mary and Carninci, Piero and {Castelo-Soccio}, Leslie and Clatworthy, Menna and Clevers, Hans and Conrad, Christian and Eils, Roland and Freeman, Jeremy and Fugger, Lars and Goettgens, Berthold and Graham, Daniel and Greka, Anna and Hacohen, Nir and Haniffa, Muzlifah and Helbig, Ingo and Heuckeroth, Robert and Kathiresan, Sekar and Kim, Seung and Klein, Allon M. and Knoppers, Bartha and Kriegstein, Arnold and Lander, Eric and Lee, Jane and Lein, Ed and Linnarsson, Sten and Macosko, Evan and MacParland, Sonya and Majovski, Robert and Majumder, Partha and Marioni, John C. and McGilvray, Ian and Merad, Miriam and Mhlanga, Musa and Naik, Shalin and Nawijn, Martijn and Nolan, Garry and Paten, Benedict and Pe'er, Dana and Philippakis, Anthony and Ponting, Chris and Quake, Steve and Rajagopal, Jayaraj and Rajewsky, Nikolaus and Reik, Wolf and Rood, Jennifer and {Saeb-Parsy}, Kourosh and Schiller, Herbert and Scott, Steve and Shalek, Alex and Shapiro, Ehud and Shin, Jay and Skeldon, Kenneth and Stratton, Michael and Streicher, Jenna and Stunnenberg, Henk and Tan, Kai and Taylor, Deanne and Thorogood, Adrian and Vallier, Ludovic and {van Oudenaarden}, Alexander and Watt, Fiona and Weicher, Wilko and Weissman, Jonathan and Wells, Andrew and Wold, Barbara and Xavier, Ramnik and Zhuang, Xiaowei and Committee, Human Cell Atlas Organizing},
-  Journal	= {arXiv},
+  DOI		= {10.48550/arXiv.1810.05192},
   Title		= {The {{Human Cell Atlas White Paper}}},
   Year		= 2018,
   Month		= oct
@@ -2594,6 +3148,20 @@
   Title		= {Dask: {{Parallel Computation}} with {{Blocked}} algorithms and {{Task Scheduling}}},
   Year		= 2015,
   ShortTitle	= {Dask}
+}
+
+@Article{	  rood2025,
+  Author	= {Rood, Jennifer E. and Wynne, Samantha and Robson, Lucia and Hupalowska, Anna and Randell, John and Teichmann, Sarah A. and Regev, Aviv},
+  DOI		= {10.1038/s41586-024-08338-4},
+  ISSN		= {0028-0836, 1476-4687},
+  Journal	= {Nature},
+  langid	= {english},
+  Number	= {8048},
+  Pages		= {1065--1071},
+  Title		= {The {{Human Cell Atlas}} from a cell census to a unified foundation model},
+  Volume	= {637},
+  Year		= 2025,
+  Month		= jan
 }
 
 @Article{	  rostom2017,
@@ -2736,6 +3304,21 @@
   Month		= mar
 }
 
+@Article{	  seninge2021,
+  Abstract	= {Abstract Deep learning architectures such as variational autoencoders have revolutionized the analysis of transcriptomics data. However, the latent space of these variational autoencoders offers little to no interpretability. To provide further biological insights, we introduce a novel sparse Variational Autoencoder architecture, VEGA (VAE Enhanced by Gene Annotations), whose decoder wiring mirrors user-provided gene modules, providing direct interpretability to the latent variables. We demonstrate the performance of VEGA in diverse biological contexts using pathways, gene regulatory networks and cell type identities as the gene modules that define its latent space. VEGA successfully recapitulates the mechanism of cellular-specific response to treatments, the status of master regulators as well as jointly revealing the cell type and cellular state identity in developing cells. We envision the approach could serve as an explanatory biological model for development and drug treatment experiments.},
+  Author	= {Seninge, Lucas and Anastopoulos, Ioannis and Ding, Hongxu and Stuart, Joshua},
+  DOI		= {10.1038/s41467-021-26017-0},
+  ISSN		= {2041-1723},
+  Journal	= {Nature Communications},
+  langid	= {english},
+  Number	= {1},
+  Pages		= {5684},
+  Title		= {{{VEGA}} is an interpretable generative model for inferring biological network activity in single-cell transcriptomics},
+  Volume	= {12},
+  Year		= 2021,
+  Month		= sep
+}
+
 @Article{	  shapiro2013,
   Author	= {Shapiro, Ehud and Biezuner, Tamir and Linnarsson, Sten},
   DOI		= {10.1038/nrg3542},
@@ -2774,6 +3357,21 @@
   Title		= {Single-cell and single-molecule epigenomics to uncover genome regulation at unprecedented resolution},
   Volume	= {51},
   Year		= 2018
+}
+
+@Article{	  shmatko2025,
+  Abstract	= {Abstract Decision-making in healthcare relies on understanding patients' past and current health states to predict and, ultimately, change their future course 1--3 . Artificial intelligence (AI) methods promise to aid this task by learning patterns of disease progression from large corpora of health records 4,5 . However, their potential has not been fully investigated at scale. Here we modify the GPT 6 (generative pretrained transformer) architecture to model the progression and competing nature of human diseases. We train this model, Delphi-2M, on data from 0.4\,million UK Biobank participants and validate it using external data from 1.9\,million Danish individuals with no change in parameters. Delphi-2M predicts the rates of more than 1,000 diseases, conditional on each individual's past disease history, with accuracy comparable to that of~existing single-disease models. Delphi-2M's generative nature also enables sampling of synthetic future health trajectories, providing meaningful estimates of potential disease burden for up to 20 years, and enabling the training of AI models that have never seen actual data. Explainable AI methods 7 provide insights into Delphi-2M's predictions, revealing clusters of co-morbidities within and across disease chapters and their time-dependent consequences on future health, but also highlight biases learnt from training data. In summary, transformer-based models appear to be well suited for predictive and generative health-related tasks, are applicable to population-scale datasets and provide insights into temporal dependencies between disease events, potentially improving the understanding of personalized health risks and informing precision medicine approaches.},
+  Author	= {Shmatko, Artem and Jung, Alexander Wolfgang and Gaurav, Kumar and Brunak, S{\o}ren and Mortensen, Laust Hvas and Birney, Ewan and Fitzgerald, Tom and Gerstung, Moritz},
+  DOI		= {10.1038/s41586-025-09529-3},
+  ISSN		= {0028-0836, 1476-4687},
+  Journal	= {Nature},
+  langid	= {english},
+  Number	= {8088},
+  Pages		= {248--256},
+  Title		= {Learning the natural history of human disease with generative transformers},
+  Volume	= {647},
+  Year		= 2025,
+  Month		= nov
 }
 
 @Article{	  skinnider2019,
@@ -2855,6 +3453,20 @@
   Year		= 2016
 }
 
+@Article{	  squair2021,
+  Abstract	= {Differential expression analysis in single-cell transcriptomics enables the dissection of cell-type-specific responses to perturbations such as disease, trauma, or experimental manipulations. While many statistical methods are available to identify differentially expressed genes, the principles that distinguish these methods and their performance remain unclear. Here, we show that the relative performance of these methods is contingent on their ability to account for variation between biological replicates. Methods that ignore this inevitable variation are biased and prone to false discoveries. Indeed, the most widely used methods can discover hundreds of differentially expressed genes in the absence of biological differences. To exemplify these principles, we exposed true and false discoveries of differentially expressed genes in the injured mouse spinal cord.},
+  Author	= {Squair, Jordan W. and Gautier, Matthieu and Kathe, Claudia and Anderson, Mark A. and James, Nicholas D. and Hutson, Thomas H. and Hudelle, R{\'e}mi and Qaiser, Taha and Matson, Kaya J. E. and Barraud, Quentin and Levine, Ariel J. and La Manno, Gioele and Skinnider, Michael A. and Courtine, Gr{\'e}goire},
+  DOI		= {10.1038/s41467-021-25960-2},
+  ISSN		= {2041-1723},
+  Journal	= {Nature Communications},
+  Number	= {1},
+  Pages		= {5692},
+  Title		= {Confronting false discoveries in single-cell differential expression},
+  Volume	= {12},
+  Year		= 2021,
+  Month		= sep
+}
+
 @Article{	  stegle2012,
   Abstract	= {We present PEER (probabilistic estimation of expression residuals), a software package implementing statistical models that improve the sensitivity and interpretability of genetic associations in population-scale expression data. This approach builds on factor analysis methods that infer broad variance components in the measurements. PEER takes as input transcript profiles and covariates from a set of individuals, and then outputs hidden factors that explain much of the expression variability. Optionally, these factors can be interpreted as pathway or transcription factor activations by providing prior information about which genes are involved in the pathway or targeted by the factor. The inferred factors are used in genetic association analyses. First, they are treated as additional covariates, and are included in the model to increase detection power for mapping expression traits. Second, they are analyzed as phenotypes themselves to understand the causes of global expression variability. PEER extends previous related surrogate variable models and can be implemented within hours on a desktop computer.},
   Author	= {Stegle, Oliver and Parts, Leopold and Piipari, Matias and Winn, John and Durbin, Richard},
@@ -2898,6 +3510,22 @@
   Volume	= {136},
   Year		= 1935,
   Month		= aug
+}
+
+@Article{	  strasser2022,
+  Abstract	= {Scientific research increasingly relies on open source software (OSS). Funding OSS development requires intentional focus on issues of scholarly credit, unique forms of labor, maintenance, governance, and inclusive community-building. Such issues cut across different scientific disciplines that make them of interest to a variety of funders and institutions but may present challenges in understanding generalized needs. Here we present 10 simple rules for investing in scientific OSS and the teams who build and maintain it.},
+  Author	= {Strasser, Carly and Hertweck, Kate and Greenberg, Josh and Taraborelli, Dario and Vu, Elizabeth},
+  DOI		= {10.1371/journal.pcbi.1010627},
+  ISSN		= {1553-7358},
+  Journal	= {PLOS Computational Biology},
+  langid	= {english},
+  Number	= {11},
+  Pages		= {e1010627},
+  Title		= {Ten simple rules for funding scientific open source software},
+  Volume	= {18},
+  Year		= 2022,
+  Month		= nov,
+  Editor	= {Markel, Scott}
 }
 
 @Article{	  street2018,
@@ -3028,6 +3656,21 @@
   Month		= feb
 }
 
+@Article{	  szalata2024,
+  Author	= {Sza{\l}ata, Artur and Hrovatin, Karin and Becker, S{\"o}ren and {Tejada-Lapuerta}, Alejandro and Cui, Haotian and Wang, Bo and Theis, Fabian J.},
+  DOI		= {10.1038/s41592-024-02353-z},
+  ISSN		= {1548-7091, 1548-7105},
+  Journal	= {Nature Methods},
+  langid	= {english},
+  Number	= {8},
+  Pages		= {1430--1443},
+  Title		= {Transformers in single-cell omics: a review and new perspectives},
+  Volume	= {21},
+  Year		= 2024,
+  Month		= aug,
+  ShortTitle	= {Transformers in single-cell omics}
+}
+
 @Article{	  tang2011,
   Abstract	= {Dissecting the relationship between genotype and phenotype is one of the central goals in developmental biology and medicine. Transcriptome analysis is a powerful strategy to connect genotype to phenotype of a cell. Here we review the history, progress, potential applications and future developments of single-cell transcriptome analysis. In combination with live cell imaging and lineage tracing, it will be possible to decipher the full gene expression network underlying physiological functions of individual cells in embryos and adults, and to study diseases. \copyright{} 2011 Nature America, Inc.},
   Author	= {Tang, Fuchou and Lao, Kaiqin and Surani, M. Azim},
@@ -3042,6 +3685,36 @@
   Volume	= {8},
   Year		= 2011,
   Month		= apr
+}
+
+@Article{	  tejada-lapuerta2025,
+  Abstract	= {Abstract Tissue makeup depends on the local cellular microenvironment. Spatial single-cell genomics enables scalable and unbiased interrogation of these interactions. Here we introduce Nicheformer, a transformer-based foundation model trained on both human and mouse dissociated single-cell and targeted spatial transcriptomics data. Pretrained on SpatialCorpus-110M, a curated collection of over 57 million dissociated and 53 million spatially resolved cells across 73 tissues on cellular reconstruction, Nicheformer learns cell representations that capture spatial context. It excels in linear-probing and fine-tuning scenarios for a newly designed set of downstream tasks, in particular spatial composition prediction and spatial label prediction. Critically, we show that models trained only on dissociated data fail to recover the complexity of spatial microenvironments, underscoring the need for multiscale integration. Nicheformer enables the prediction of the spatial context of dissociated cells, allowing the transfer of rich spatial information to scRNA-seq datasets. Overall, Nicheformer sets the stage for the next generation of machine-learning models in spatial single-cell analysis.},
+  Author	= {{Tejada-Lapuerta}, Alejandro and Schaar, Anna C. and Gutgesell, Robert and Palla, Giovanni and Halle, Lennard and Minaeva, Mariia and Vornholz, Larsen and Dony, Leander and Drummer, Francesca and Richter, Till and Bahrami, Mojtaba and Theis, Fabian J.},
+  DOI		= {10.1038/s41592-025-02814-z},
+  ISSN		= {1548-7091, 1548-7105},
+  Journal	= {Nature Methods},
+  langid	= {english},
+  Number	= {12},
+  Pages		= {2525--2538},
+  Title		= {Nicheformer: a foundation model for single-cell and spatial omics},
+  Volume	= {22},
+  Year		= 2025,
+  Month		= dec,
+  ShortTitle	= {Nicheformer}
+}
+
+@Article{	  theodoris2023,
+  Author	= {Theodoris, Christina V. and Xiao, Ling and Chopra, Anant and Chaffin, Mark D. and Al Sayed, Zeina R. and Hill, Matthew C. and Mantineo, Helene and Brydon, Elizabeth M. and Zeng, Zexian and Liu, X. Shirley and Ellinor, Patrick T.},
+  DOI		= {10.1038/s41586-023-06139-9},
+  ISSN		= {0028-0836, 1476-4687},
+  Journal	= {Nature},
+  langid	= {english},
+  Number	= {7965},
+  Pages		= {616--624},
+  Title		= {Transfer learning enables predictions in network biology},
+  Volume	= {618},
+  Year		= 2023,
+  Month		= jun
 }
 
 @Article{	  thoen2013,
@@ -3143,6 +3816,22 @@
   Volume	= {32},
   Year		= 2014,
   Month		= apr
+}
+
+@Article{	  treppner2022,
+  Abstract	= {Abstract Deep generative models can learn the underlying structure, such as pathways or gene programs, from omics data. We provide an introduction as well as an overview of such techniques, specifically illustrating their use with single-cell gene expression data. For example, the low dimensional latent representations offered by various approaches, such as variational auto-encoders, are useful to get a better understanding of the relations between observed gene expressions and experimental factors or phenotypes. Furthermore, by providing a generative model for the latent and observed variables, deep generative models can generate synthetic observations, which allow us to assess the uncertainty in the learned representations. While deep generative models are useful to learn the structure of high-dimensional omics data by efficiently capturing non-linear dependencies between genes, they are sometimes difficult to interpret due to their neural network building blocks. More precisely, to understand the relationship between learned latent variables and observed variables, e.g., gene transcript abundances and external phenotypes, is difficult. Therefore, we also illustrate current approaches that allow us to infer the relationship between learned latent variables and observed variables as well as external phenotypes. Thereby, we render deep learning approaches more interpretable. In an application with single-cell gene expression data, we demonstrate the utility of the discussed methods.},
+  Author	= {Treppner, Martin and Binder, Harald and Hess, Moritz},
+  DOI		= {10.1007/s00439-021-02417-6},
+  ISSN		= {0340-6717, 1432-1203},
+  Journal	= {Human Genetics},
+  langid	= {english},
+  Number	= {9},
+  Pages		= {1481--1498},
+  Title		= {Interpretable generative deep learning: an illustration with single cell gene expression data},
+  Volume	= {141},
+  Year		= 2022,
+  Month		= sep,
+  ShortTitle	= {Interpretable generative deep learning}
 }
 
 @Article{	  tritschler2017,
@@ -3296,6 +3985,21 @@
   Month		= mar
 }
 
+@Article{	  vandesande2023,
+  Abstract	= {Single-cell technologies, particularly single-cell RNA sequencing (scRNA-seq) methods, together with associated computational tools and the growing availability of public data resources, are transforming drug discovery and development. New opportunities are emerging in target identification owing to improved disease understanding through cell subtyping, and highly multiplexed functional genomics screens incorporating scRNA-seq are enhancing target credentialling and prioritization. ScRNA-seq is also aiding the selection of relevant preclinical disease models and providing new insights into drug mechanisms of action. In clinical development, scRNA-seq can inform decision-making via improved biomarker identification for patient stratification and more precise monitoring of drug response and disease progression. Here, we illustrate how scRNA-seq methods are being applied in key steps in drug discovery and development, and discuss ongoing challenges for their implementation in the pharmaceutical industry.},
+  Author	= {Van De Sande, Bram and Lee, Joon Sang and {Mutasa-Gottgens}, Euphemia and Naughton, Bart and Bacon, Wendi and Manning, Jonathan and Wang, Yong and Pollard, Jack and Mendez, Melissa and Hill, Jon and Kumar, Namit and Cao, Xiaohong and Chen, Xiao and Khaladkar, Mugdha and Wen, Ji and Leach, Andrew and Ferran, Edgardo},
+  DOI		= {10.1038/s41573-023-00688-4},
+  ISSN		= {1474-1776, 1474-1784},
+  Journal	= {Nature Reviews Drug Discovery},
+  langid	= {english},
+  Number	= {6},
+  Pages		= {496--520},
+  Title		= {Applications of single-cell {{RNA}} sequencing in drug discovery and development},
+  Volume	= {22},
+  Year		= 2023,
+  Month		= jun
+}
+
 @Article{	  vento-tormo2018,
   Abstract	= {During early human pregnancy the uterine mucosa transforms into the decidua, into which the fetal placenta implants and where placental trophoblast cells intermingle and communicate with maternal cells. Trophoblast-decidual interactions underlie common diseases of pregnancy, including pre-eclampsia and stillbirth. Here we profile the transcriptomes of about 70,000 single cells from first-trimester placentas with matched maternal blood and decidual cells. The cellular composition of human decidua reveals subsets of perivascular and stromal cells that are located in distinct decidual layers. There are three major subsets of decidual natural killer cells that have distinctive immunomodulatory and chemokine profiles. We develop a repository of ligand-receptor complexes and a statistical tool to predict the cell-type specificity of cell-cell communication via these molecular interactions. Our data identify many regulatory interactions that prevent harmful innate or adaptive immune responses in this environment. Our single-cell atlas of the maternal-fetal interface reveals the cellular organization of the decidua and placenta, and the interactions that are critical for placentation and reproductive success.},
   Author	= {{Vento-Tormo}, Roser and Efremova, Mirjana and Botting, Rachel A and Turco, Margherita Y and {Vento-Tormo}, Miquel and Meyer, Kerstin B and Park, Jong-Eun and Stephenson, Emily and Pola{\'n}ski, Krzysztof and Goncalves, Angela and Gardner, Lucy and Holmqvist, Staffan and Henriksson, Johan and Zou, Angela and Sharkey, Andrew M and Millar, Ben and Innes, Barbara and Wood, Laura and {Wilbrey-Clark}, Anna and Payne, Rebecca P and Ivarsson, Martin A and Lisgo, Steve and Filby, Andrew and Rowitch, David H and Bulmer, Judith N and Wright, Gavin J and Stubbington, Michael J T and Haniffa, Muzlifah and Moffett, Ashley and Teichmann, Sarah A},
@@ -3347,6 +4051,21 @@
   Year		= 2023,
   Month		= may,
   copyright	= {2023 The Author(s), under exclusive licence to Springer Nature America, Inc.}
+}
+
+@Article{	  virshup2024,
+  Author	= {Virshup, Isaac and Rybakov, Sergei and Theis, Fabian J. and Angerer, Philipp and Wolf, F. Alexander},
+  DOI		= {10.21105/joss.04371},
+  ISSN		= {2475-9066},
+  Journal	= {Journal of Open Source Software},
+  Number	= {101},
+  Pages		= {4371},
+  Title		= {anndata: {{Access}} and store annotated datamatrices},
+  Volume	= {9},
+  Year		= 2024,
+  Month		= sep,
+  ShortTitle	= {anndata},
+  copyright	= {http://creativecommons.org/licenses/by/4.0/}
 }
 
 @Article{	  virtanen2020,
@@ -3421,6 +4140,18 @@
   Year		= 2019
 }
 
+@Article{	  wang2025,
+  Abstract	= {Biological studies rely on embeddings of single-cell profiles but assessing the quality of these embeddings is challenging. Here we show that current evaluation metrics are incomplete by training a three-layer perceptron, Islander. Islander outperforms all leading embedding methods on a diverse set of cell atlases but it distorts biological structures, limiting its use for biological discovery. We then present a new metric, scGraph, to help flag such distortions.},
+  Author	= {Wang, Hanchen and Leskovec, Jure and Regev, Aviv},
+  DOI		= {10.1038/s41587-025-02702-z},
+  ISSN		= {1087-0156, 1546-1696},
+  Journal	= {Nature Biotechnology},
+  langid	= {english},
+  Title		= {Limitations of cell embedding metrics assessed using drifting islands},
+  Year		= 2025,
+  Month		= jun
+}
+
 @Article{	  webber2010,
   Abstract	= {Ranked lists are encountered in research and daily life and it is often of interest to compare these lists even when they are incomplete or have only some members in common. An example is document rankings returned for the same query by different search engines. A measure of the similarity between incomplete rankings should handle nonconjointness, weight high ranks more heavily than low, and be monotonic with increasing depth of evaluation; but no measure satisfying all these criteria currently exists. In this article, we propose a new measure having these qualities, namely rank-biased overlap (RBO). The RBO measure is based on a simple probabilistic user model. It provides monotonicity by calculating, at a given depth of evaluation, a base score that is non-decreasing with additional evaluation, and a maximum score that is nonincreasing. An extrapolated score can be calculated between these bounds if a point estimate is required. RBO has a parameter which determines the strength of the weighting to top ranks. We extend RBO to handle tied ranks and rankings of different lengths. Finally, we give examples of the use of the measure in comparing the results produced by public search engines and in assessing retrieval systems in the laboratory.},
   Author	= {Webber, William and Moffat, Alistair and Zobel, Justin},
@@ -3432,6 +4163,22 @@
   Title		= {A similarity measure for indefinite rankings},
   Volume	= {28},
   Year		= 2010
+}
+
+@Article{	  weiler2024,
+  Abstract	= {Single-cell RNA sequencing allows us to model cellular state dynamics and fate decisions using expression similarity or RNA velocity to reconstruct state-change trajectories; however, trajectory inference does not incorporate valuable time point information or utilize additional modalities, whereas methods that address these different data views cannot be combined or do not scale. Here we present CellRank 2, a versatile and scalable framework to study cellular fate using multiview single-cell data of up to millions of cells in a unified fashion. CellRank 2 consistently recovers terminal states and fate probabilities across data modalities in human hematopoiesis and endodermal development. Our framework also allows combining transitions within and across experimental time points, a feature we use to recover genes promoting medullary thymic epithelial cell formation during pharyngeal endoderm development. Moreover, we enable estimating cell-specific transcription and degradation rates from metabolic-labeling data, which we apply to an intestinal organoid system to delineate differentiation trajectories and pinpoint regulatory strategies.},
+  Author	= {Weiler, Philipp and Lange, Marius and Klein, Michal and Pe'er, Dana and Theis, Fabian},
+  DOI		= {10.1038/s41592-024-02303-9},
+  ISSN		= {1548-7091, 1548-7105},
+  Journal	= {Nature Methods},
+  langid	= {english},
+  Number	= {7},
+  Pages		= {1196--1205},
+  Title		= {{{CellRank}} 2: unified fate mapping in multiview single-cell data},
+  Volume	= {21},
+  Year		= 2024,
+  Month		= jul,
+  ShortTitle	= {{{CellRank}} 2}
 }
 
 @Article{	  weinreb2018a,

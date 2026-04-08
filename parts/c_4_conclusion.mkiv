@@ -1,124 +1,310 @@
 \startcomponent *
 \project project_dissertation
 
+% TODO: tenses, especially replace “has been”s with simple past
+
 \startchapter[reference=conclusion, title={Conclusion and Outlook}]
 
 % 1 sentence summary
-In this thesis, I presented the developments in the field of scRNA-Seq analysis in 2016 and beyond, with a focus on my contributions to tackling arising challenges.
+In this thesis, I presented the developments in the field of single cell RNA-Seq analysis from 2016 onwards, with a focus on my contributions to tackling arising challenges.
 % intro
 I introduced the behavior, identity, and differentiation of cells, and the roles that these concepts play in several complex diseases.
 Furthermore, I described the insight that scRNA-Seq can grant into the processes underlying these concepts, and therefore its potential for fighting complex diseases.
 I outlined the process and challenges of analyzing scRNA-Seq data in order to gain this kind of insight, with a focus on low-dimensional embeddings.
 I summarized my contributions in the context of both arising challenges and improvements to the analysis process through the introduction of programmatic frameworks.
 
-Within a few years, single-cell RNA-Seq has grown into an extensive and active field of science, with new trends and opportunities.
-The largest current challenges are the ever-growing dataset sizes, and the integration of different kinds of data \cite[angerer2017,nmeth2020].
-Going up to hundreds of thousands of cells, the data allows us to abandon the notion of discrete “cell types” in favor of more gradual cell identities, and explore the continuous processes at play.
+Within a few years, scRNA-Seq has grown into an extensive and active field of science, with new trends and opportunities.
+The largest current challenges are the ever-growing dataset sizes, and the integration of different data modalities \cite[angerer2017,nmeth2020,heumos2023].
+Going up to millions of cells, the data allows us to abandon the notion of discrete “cell types” in favor of more gradual cell identities, and explore the continuous processes at play.
 Destiny \cite[angerer2016], and the gene relevance method presented in this thesis, prove to be valuable contributions in this direction.
 
 % extensibility and openness
-As demands on reliability at scale grow along with demands posed to algorithms, more practices from software engineering are finding their way into biological science.
+As demands grow both for biological complexity captured by algorithms and their reliability at scale, more practices from software engineering are finding their way into biological science.
 For example, extensible and efficient data format standards are born from the collaboration of scientists to supplant the ad-hoc text-based formats we used to incompatibly modify to suit situational needs.
 Open-source analysis frameworks have been designed to offer an open and welcoming environment for new as well as established analysts and method developers.
 My contributions towards more \emph{interoperable}, \emph{interpretable}, \emph{reproducible}, and \emph{performant} scientific programming as described in \insec[sec:org] have helped these changes along.
-\n{scanpy} and \n{AnnData} form the foundation of the \n{scverse} ecosystem and are used by many researchers in academia and in the industry \cite[virshup2023].
+\n{scanpy} and \n{AnnData} form the foundation of the \n{scverse} ecosystem and are used by many researchers in academia and in the industry \cite[virshup2023],
+demonstrated by the fact that most articles cited in this section are fundamentally based on \n{AnnData} and either directly use or integrate with \n{scanpy}’s modular design.
 
-\startsection[title={Multi-scale scRNA-Seq analysis}]
-The analysis of continuous processes driving cellular heterogeneity has been enabled by fluorescent tagging and single-cell imaging.
+Since the publication of my contributed articles (see \insec[sec:pub-summary]), the field has grown substantially in scale and scope.
+Experimental protocols now routinely produce data on millions of cells, and the simultaneous measurement of multiple modalities has become commonplace.
+Throughout this growth, the modular approach to analysis advocated here has proven its durability:
+the data infrastructure and frameworks described in this thesis remain the foundation on which new methods are built.
+
+\startsection[title={The maturation of single-cell data infrastructure}]
+
+The data infrastructure landscape for single-cell analysis has changed significantly over the last few years.
+\n{scverse} was founded as a nonprofit organization aimed at being the center of a community.
+It has since grown from a core of seven packages including \n{AnnData} and \n{scanpy} into the dominant Python ecosystem for single-cell omics.
+It now comprises over 120 ecosystem packages and 11 core packages spanning data structures (\n{AnnData}, \n{MuData}, \n{SpatialData}), analysis frameworks (\n{scanpy}, \n{muon}, \n{squidpy}, \n{scvi-tools}), and domain-specific tools (\n{scirpy}, \n{SnapATAC2}, \n{rapids-singlecell}, \n{pertpy}, \n{decoupler}) \cite[virshup2023].
+\n{scverse} maintains a flexible governance model that manages developmental strategy, funding, community management, and planning of events, such as hackathons, workshops, and conferences.
+Organizing a group of core developers mitigates certain risks current practices in scientific software development, such as maintenance bottlenecks.
+See \insec[sec:sustainability] for more details about \n{scverse}’s organization and role in sustainable science.
+
+% zarr
+\n{scverse}’s tight integration and communication has brought several synergistic effects, first and foremost the ability to coordinate complex tasks across multiple projects.
+The community’s workshops often lay the foundations of new cross-package initiatives, which can either culminate in orthogonal capabilities like support for certain acceleration frameworks, or in new projects enabled by aforementioned capabilities.
+As an example, \n{AnnData}’s support for \n{Zarr} \cite[miles2020] was initially optional and motivated by its technical promise, such as performance.
+The decision paid off by enabling first \n{SpatialData}’s \cite[marconato2024] on-disk format that combines \n{AnnData}’s with the \n{Zarr}-based serialization standard for spatial omics \n{OME-NGFF} \cite[moore2021].
+Later, it enabled access for web services through file servers instead of dedicated server software, and is currently being leveraged for the high-performance data loader \n{annbatch}.
+
+% rapids-singlecell
+The growth in dataset sizes predicted in \inlinecite[angerer2017] materialized – experiments producing millions of cells (see \insec[sec:protocols]) either require massive amounts of memory or methods able to harness the out-of-core capabilities \n{AnnData} provides.
+Currently, CPU-based pipelines can require hours for some of their steps when performed on million-cell datasets.
+\n{rapids-singlecell} \cite[dicks2026], enabled by \n{scanpy}’s pioneering modular design, provides GPU-accelerated drop-in replacements for core operations.
+As an example, it reduced end-to-end processing times of a benchmark of one million cells from around 50 minutes on a 32-core workstation to 26 seconds on a single GPU.
+This transforms large-scale single-cell analysis into an interactive workflow, enabling real-time parameter tuning and iterative hypothesis testing on datasets that would previously have required overnight runs.
+\n{Scanpy} itself aims to be usable on lowest-common-denominator environments, providing at least one permissively licensed and generic backend implementation for each step.
+In addition, it allows swapping out backends and entire steps with faster alternative implementations that come with more restrictive licensing or hardware requirements.
+For \n{scanpy}’s most time-consuming steps, UMAP and clustering, \n{rapids-singlecell} is a seamless high-performance swap-in, provided one has the required hardware.
+\n{rapids-singlecell} and \n{scanpy} thus demonstrate how \n{scverse}’s modularity enables researchers to leverage their resources ideally.
+
+% R and coordination
+Single-cell analysis is not a Python-only endeavor, R being the most commonly chosen alternative.
+The R world is split between the \n{Bioconductor} ecosystem and \n{Seurat}.
+\n{Seurat} features prominently in new research, such as the best-practices review by \inlinecite[heumos2023] and the multimodal integration benchmark by \inlinecite[liu2025].
+Representatively for \n{Seurat}, the latter study notices both its high computational requirements and strong statistical performance.
+\n{Seurat} evolved from a monolithic analysis tool towards a more modular framework, yet did not develop an independent data structure.
+As a consequence, few independent tools have been built upon it.
+\n{Bioconductor} has an independent data structure called \n{SingleCellExperiment}, which is used by a more healthily diverse ecosystem of tools such as \n{scater}, \n{scuttle} \cite[mccarthy2017], and \n{scDblFinder} \cite[germain2022].
+\n{AnnData} bridges ecosystems through in-memory conversion with \n{anndata2ri} \cite[angerer2019b] and its on-disk representation through \n{anndataR} \cite[deconinck2025].
+Both \n{Seurat} and \n{scanpy} now follow convergent best practices for preprocessing, quality control, and downstream analysis \cite[heumos2023].
+Communication between the language communities is growing.
+
+% beyond technical: impact on culture
+\n{scverse}’s coordination of infrastructure has had consequences beyond technical efficiency.
+Standardized frameworks lower the barrier to entry for researchers new to the field as the first steps are stable, well-documented, and well-maintained.
+Beyond these first steps, codification of best practices as described in \inlinecite[heumos2023] is a product of mature infrastructure as well:
+the landscape of algorithms and tools had stabilized enough for consensus to emerge around parts of the workflow.
+Finally reproducibility is no longer an issue: a \n{scanpy} workflow can conveniently be reproduced either by using standard software engineering practices, or alternatives tailored to common workflows.
+The former entail combining a pipeline script utilizing \n{scverse} packages with a lockfile under version control,
+while the latter can be achieved by storing a manifest of Python package versions in a sharable Jupyter notebook.
+Maintaining such a manifest is possible either through integration of \n{scanpy} with \n{session-info2} \cite[angerer2026], or a dedicated tool like \n{juv} \cite[manz2026].
+
+The sustainability of this infrastructure is however not guaranteed, see \insec[sec:sustainability].
+
+\stopsection
+
+\startsection[reference=sec:protocols, title={Developments in single-cell transcriptomics protocols}]
+
+\n{10x Genomics}’ commercial microfluidic platform \n{Chromium} has been the dominant technology for high-throughput scRNA-Seq since its introduction in 2017.
+The company offers integrated solutions like the \n{Chromium\,X} instrument, targeted and whole transcriptome protocols designed around it, and the chemistry kits used in these protocols.
+In recent years, high-throughput alternatives have emerged that do not require special microfluidic hardware for library preparation, like \n{Parse Biosciences}’s \n{Evercode} and \n{Scale Biosciences}’s \n{QuantumScale}, which use combinatorial split-pool barcoding for cell identification instead.
+These methods are competitive in throughput: \n{Evercode} achieves up to five million cells per experiment using standard laboratory equipment.
+A selection of competitive alternatives make the trade-off between sequencing depth and cost the limiting factor, rather than choice of technology.
+As a result, experiments at the million-cell scale, while still expensive, are no longer exceptional.
+
+Scale is not the only area the field is evolving in.
+Single-nucleus RNA-Seq (snRNA-Seq) has emerged as an approach to sequence tissues that are difficult to dissociate, such as brain, adipose, or fibrotic tissue, as well as for archived samples.
+Fixing the tissue avoids microfluidic shearing and dissociation-induced stress artifacts at the cost of lower gene detection per observation unit (cell or nucleus).
+Fixed-tissue protocols like \n{10x Flex} and \n{Parse Evercode} can be used both for snRNA-Seq and scRNA-Seq.
+\inlinecite[hatje2025] compare the two protocols and \n{Honeycomb Biotechnologies}’ \n{HIVE} for profiling neutrophils from patient blood, a cell type that is difficult to capture due to low RNA content and high RNase levels.
+They show that these protocols’ focus on fixed and stabilized cells opens scRNA-Seq up to clinical settings with their unique logistical challenges, including sensitive cell types and sample transport.
+
+Microfluidics based scRNA-Seq commonly captures 10–40\% of cellular transcripts and uses probes targeting transcript ends, which introduces bias based on transcript length and composition \cite[moro2026].
+Targeted scRNA-Seq methods address these limitations by focusing sequencing capacity on defined gene panels, achieving higher sensitivity per read for transcripts of interest.
+\inlinecite[moro2026] provide a comprehensive review of these methods, categorizing them by which protocol step they modify to reduce bias: capture, priming, amplification, PCR, or hybridization.
+All methods mentioned in the review are based on widely available commercial platforms, avoiding the cost and design overhead of custom solutions.
+This includes BART-Seq \cite[uzbas2019], previously presented in this thesis as an early example of this approach, which combined targeted amplification with combinatorial barcoding to sensitively profile defined gene sets across many samples at low cost.
+True to its name, \n{10x Flex} appears again among reviewed targeted methods, with the unusual quality of targeting up to 19 thousand transcripts.
+This allows it to cover most human genes, with the trade-off of missing variants that are not produced by common single-nucleotide polymorphisms (SNPs).
+
+The current state of the field is ripe with trade-offs: sequencing depth vs. number of cells, unbiased discovery vs. hypothesis-driven targeting, and the several biases that can be minimized by choice of protocol.
+Most importantly progress happened across the board in all aforementioned categories and additionally in affordability and applicability to clinical settings.
+
+\stopsection
+
+\startsection[reference=sec:vaes, title={Dimensionality reduction and interpretability}]
+
+Dimensionality reduction was established as a foundational class of methods for scRNA-Seq analysis in \insec[sec:dim-red].
+The \n{destiny} package implements both diffusion maps for nonlinear embedding of single-cell data and the gene relevance method quantifies which genes drive a given embedding.
+Both methods address an issue that has no definitive answer to this day: ensuring interpretability of low-dimensional representations of high-dimensional data.
+
+Since the respective articles were written, the field engaged in a debate about what dimensionality reduction can and cannot tell us.
+\inlinecite[chari2023] argued that extreme reduction from thousands of dimensions to two inevitably causes significant distortion, and demonstrated that an autoencoder could map cells into arbitrary shapes while preserving pairwise distances comparably to heuristic embeddings like UMAP or t-SNE.
+They concluded that heuristic embeddings are arbitrary and should be abandoned for exploratory analysis.
+The critique raised valid points: inter-cluster distances in heuristic embeddings are not meaningful, cluster sizes are artifacts of hyperparameters, and yet qualitative over-interpretation of visual groupings is widespread \cite[cashman2025].
+Their conclusion however was controversial.
+Notably absent from the discussion were diffusion maps – while the paper critiqued both linear PCA and heuristic embeddings, diffusion maps are both nonlinear and deterministic.
+\inlinecite[lause2024] later showed that the metrics used by \inlinecite[chari2023] – purely distance-based – failed to capture what makes heuristic embeddings useful in practice.
+Using four neighborhood and class preservation metrics, they demonstrated that these methods strongly outperform both PCA and the arbitrary-shape embedding at separating known cell identities, thereby refuting the central thesis of \inlinecite[chari2023].
+Furthermore, it is possible to use evaluation metrics to quantify embedding quality, provided an adequate choice of metrics \cite[wang2025].
+The outcome of this debate has been increased caution about what to read into 2D plots, yet continued use of heuristic embeddings for visualization.
+
+This debate reinforces the case for interpretable embeddings.
+2D plots remain a central part of the analysis workflow, so quantifying their relation to the underlying data is critical.
+Methods like gene relevance address this need by quantifying gene-level contributions to the embedding.
+New methods can be broadly categorized into two groups:
+In addition to the gene relevance approach of post-hoc attribution to explain existing embeddings, methods have emerged that – like PCA – sport architectures that are interpretable by construction.
+
+As examples of the first category, gradient-based attribution methods such as saliency maps and SHAP pursue the same goal as gene relevance by back-propagating through the model’s computation graph \cite[treppner2022].
+The Boosting Autoencoder \cite[hackenberg2025] takes a different route, combining deep autoencoders with statistical boosting to select sparse gene sets that explain each latent dimension.
+
+The second category consists of variational autoencoders (VAEs), which constrain the model architecture itself to produce interpretable latent spaces.
+\n{DRVI} \cite[moinfar2024] uses additive decoders with nonlinear pooling to achieve disentanglement, where each latent dimension captures a distinct biological source of variation such as cell identity, developmental stage, or technical noise.
+Constrained approaches like \n{VEGA} \cite[seninge2021], \n{expiMap} \cite[lotfollahi2023] and \n{OntoVAE} \cite[doncevic2023] are VAEs mapping each latent variable to a known gene program or pathway, while staying robust to incomplete knowledge.
+\n{siVAE} \cite[choi2023] and \n{SIMBA} \cite[chen2024] jointly learn cell and gene embeddings, producing a gene-to-dimension loading matrix analogous to PCA loadings but with nonlinear expressiveness.
+
+These developments reinforce the argument for interpretability made by this thesis:
+dimensionality reduction does not end with a visually appealing scatter plot, but needs to be tightly integrated with a model that allows interpretation.
+Interpretable VAEs in particular meet this challenge in a fundamentally strong way.
+
+\stopsection
+
+\startsection[reference=sec:trajectory, title={Multi-scale analysis and cellular heterogeneity}]
+
+The analysis of continuous processes driving cellular heterogeneity was initially enabled by fluorescent tagging and single-cell imaging.
 Their targeted nature as well as their monetary and time costs however render them unsuitable for unbiased heterogeneity analysis.
-While a careful selection of parameters like sequencing depth is vital, scRNA-Seq is an unbiased and inexpensive method able to detect rare cells \cite[torre2018].
+While a careful selection of experimental parameters like sequencing depth is vital, scRNA-Seq is an unbiased and inexpensive method able to detect rare cells \cite[torre2018].
 This makes it uniquely suited for heterogeneity analyses.
 A rarely addressed property of cellular heterogeneity is its multi-scale nature:
-multiple processes at different scales and localities shape the heterogeneity of either subpopulations or all cells (see \insec[sec:visualization]).
+biochemical processes at different scales and localities shape the heterogeneity of both subpopulations and entire tissues or organisms (see \insec[sec:visualization]).
 
-Analysis algorithms in this area have evolved alongside the protocols able to sequence hundreds of thousands of cells.
+Analysis algorithms in this area have evolved alongside protocols able to sequence first thousands and later millions of cells.
 Suitable for the low sample sizes of bulk RNA-Seq, simple linear dimension reduction methods like PCA were used to visualize early single-cell studies.
-Nonlinear methods like diffusion maps, t-SNE or later UMAP have been developed and continue to be improved to fit the nature of transcriptome data.
-But while they capture both continuity and heterogeneity at multiple scales, their output does not contain directly interpretable information about processes at different scales.
-Methods like the growing multitude of trajectory inference algorithms or gene relevance complement them within the same constraint \cite[saelens2019].
-Of all methods known to the author, only \n{PAGA} so far distinctively dissects continuous multi-scale heterogeneity \cite[wolf2019].
-To analyze this foundational attribute of cellular processes, a multi-scale variant of gene relevance would be of great use.
-\stopsection
+Nonlinear methods like diffusion maps, t-SNE or later UMAP were developed and continue to be improved to fit the nature of transcriptome data.
+But while they capture both continuity and heterogeneity at multiple scales, their output does not contain directly interpretable information about processes acting on these scales.
+Methods like the growing multitude of trajectory inference algorithms or gene relevance complement them in their domain \cite[saelens2019].
 
-\startsection[title={Multimodal \n{scanpy} and \n{AnnData}}]
-Recent developments in the joint measurement of scRNA-Seq data and multiple other data types (modes) at single-cell resolution have enabled multimodal analysis.
-With it giving ripe opportunity for analysis development, Nature Methods has named single-cell multimodal omics its method of the year 2019 \cite[nmeth2020].
-\inlinecite[efremova2020] provide a review of the different single-cell modes that became jointly measurable with scRNA-Seq in short succession: RNA velocity, spatial location, surface protein abundances, epigenetic modifications, and chromatin accessibility.
+Since \n{DPT} was incorporated into \n{destiny} and \n{scanpy}, trajectory inference matured substantially.
+\n{PAGA} \cite[wolf2019] infers hierarchical cell lineage structure from RNA-Seq data.
+\n{CellRank} \cite[lange2022] computes directed, probabilistic fate maps using RNA velocity while \n{CellRank\,2} \cite[weiler2024] generalizes this to multimodal data.
+In the following years, it became part of a trend in which optimal transport (OT) was combined with multi-modal data – especially spatial – for trajectory inference.
+Among the methods following this approach is \n{STORIES} \cite[huizing2026], which extends OT to infer differentiation potentials from spatial transcriptomic data.
+OT also allows to match cell measurements from different feature spaces, as done by \n{GENOT} \cite[klein2024], which combines OT with flow matching to this end.
+\n{moscot} \cite[klein2025b] is a toolbox designed to apply scalable OT to multi-modal and time-series data in order to infer trajectories, match cells, and model spatiotemporal dynamics in other ways.
 
-% transfer learning
-If there is no 1:1 relation between samples, transfer learning can be used to migrate labels from one dataset or mode to another \cite[abdelaal2019].
-This technique has been successfully employed to link data in and to the \n{Human Cell Atlas} \cite[regev2017].
-% scverse contains stuff for different modes
-\n{AnnData} and \n{scanpy} alone are not designed for multimodal analysis, but they are designed with extensibility in mind.
-Part of the reason for the foundation of the \n{scverse} ecosystem was to coordinate and consolidate the efforts of projects leveraging these capabilities.
+% A complementary development is the metacell concept.
+% \n{SEACells} \cite[persad2023] and \n{MetaCell-2} \cite[ben-kiki2022] group highly similar cells into compact units that overcome the sparsity of individual measurements while retaining biological heterogeneity.
+% This enables genuinely multi-scale analysis: metacells provide a coarser resolution that reveals global structure, while the constituent single cells remain available for fine-grained investigation.
+% The metacell abstraction is particularly useful for trajectory inference and cell-type deconvolution at scale.
 
-% list modes contained in scverse
-\startdesc{RNA Velocity}
-RNA Velocity is a model to infer trajectories of cell differentiation from the combination of unspliced pre-mRNA with spliced mRNA \cite[lamanno2018].
-Based on  \n{Scanpy} and \n{AnnData}, \n{scVelo} is a user-friendly implementation and extension of this model \cite[bergen2019].
-The tool uses \n{AnnData}’s \type{.layers} to distinguish between spliced and unspliced transcripts.
-\stopdesc
-
-\startdesc{Spatial location}
-Measuring the spatial location of cells together with transcriptomic heterogeneity allows for analyzing spatial trends such as the location of markers in embryonic development.
-\n{10x Genomics}’ \n{Visium} platform has made spatial information available commercially \cite[maniatis2019].
-Novel approaches like in-situ sequencing also allow capturing 3D spatial coordinates via \n{STARmap} \cite[wang2018].
-Spatial analysis in \n{Scanpy} is straightforward, as 2D or 3D space can be stored in \n{AnnData}’s \type{.obsm}.
-With \n{SpatialData} \cite[marconato2024] and \n{squidpy} \cite[palla2022], an \n{AnnData}-based container and a \n{scanpy}-like framework, respectively, exist for this modality.
-The current development of spatial conventions and plotting routines will encourage further development of algorithms similar to the R tools trendsceek \cite[edsgard2018] and SpatialDE \cite[svensson2018] as part of \n{squidpy}.
-\stopdesc
-
-\startdesc{Surface protein abundances}
-Measuring surface protein abundances is difficult but necessary in cases where transcriptomics and proteomics are poorly correlated, such as with posttranslationally modified proteins.
-Measuring those abundances together with scRNA-Seq data has become possible through Cellular Indexing of Transcriptomes and Epitopes by sequencing (CITE-seq, \inbracecite[gayoso2019]).
-\stopdesc
-
-\startdesc{Epigenetics}
-Two epigenetic modes can be combined with scRNA-Seq data \cite[henriksson2019].
-Chromatin accessibility in single cells has been possible to measure for some years using single-cell Assay for Transposase-Accessible Chromatin using Sequencing (scATAC-Seq, \inbracecite[buenrostro2013]).
-SnapATAC2, built on \n{AnnData}, allows combined analysis of chromatin accessibility and scRNA-Seq information \cite[fang2021,zhang2024].
-DNA methylation can be measured now using the recently developed single-cell Cleavage Under Targets and Tagmentation (scCUT&Tag, \inbracecite[kaya-okur2019]).
-For analysis of scRNA-Seq data combined with both modes, \n{epiScanpy} offers a \n{scanpy}-integrated workflow \cite[danese2019].
-\stopdesc
-
-% now mention how MuData and muon bring them together
-\noindentation
-\n{AnnData} and \n{scanpy} do not address the possibility of different modes being stored separately for a common set of observations, which would allow their joint filtering.
-This role is filled by \n{MuData}, which enhances \n{AnnData} in this way, while \n{muon} provides multimodal algorithms operating on it \cite[bredikhin2022].
-These projects have the potential to be as impactful as \n{AnnData} and \n{scanpy} for the analysis of multimodal data like scCUT&Tag or CITE-Seq, which contain a second high-dimensional feature mode in addition to transcriptomic data.
-Going forward, projects like \n{epiScanpy} can now be based on \n{MuData} for more interoperability and on \n{muon} for common multimodal processing steps, just like projects today are based on \n{AnnData} and \n{scanpy}.
-
-A further feature would be to store connections between features of different modes in a graph, such as which transcript (scRNA-Seq) encodes which surface protein (CITE-Seq).
-The current version of \n{AnnData} substantially increased usability and therefore analysis efficiency for exclusively scRNA-Seq data.
-
-The combination of different data types within a single experiment enabled unprecedented insight into the disease.
-Extending \n{AnnData} and \n{Scanpy} for joint analysis of spatial location and scRNA-Seq data promises to bring their ergonomic benefits and performance to histologic patient data analysis.
+Analysis of multi-modal data (see \insec[sec:multimodal]) promises advances in understanding of developmental heterogeneity, an important part of multi-scale heterogeneity.
+So far, few approaches have attempted to capitalize on the large datasets that are being compiled as part of cell atlas initiatives.
+\n{PULSAR} \cite[pang2025] is one of the first methods to directly identify multi-scale processes by using this approach: it is a foundation model (see \insec[sec:transformers]) designed to learn representations at multiple biological scales, from gene programs to multicellular systems, and to relate them to each other.
+The question of how individual genes drive heterogeneity at different scales remains open, but some methods approach this level of detail from several angles:
+some of the interpretable VAE approaches discussed in \insec[sec:vaes] go down to the individual gene level without disentangling multiple scales, while \n{PULSAR} offers interpretability at the gene program level combined with multi-scale analysis.
 
 \stopsection
 
-\startsection[title={New dimensions of \n{scanpy} scalability}]
+\startsection[reference=sec:transformers, title={Transformers and the vision of the virtual cell}]
+
+Perhaps the most visible development in computational biology in recent years is the application of generative models to single-cell data.
+An early example is \n{scGen} \cite[lotfollahi2019], which used a VAE for perturbation prediction by learning a latent representation of cellular identity and perturbation direction (see \insec[sec:vaes]).
+Since then, transformer architectures saw a steep rise in adoption.
+Originally developed for natural language processing, transformers have been adapted to learn representations from large collections of gene expression profiles like cell atlases.
+Large language models can be adapted to various downstream tasks, a property that gave rise to the concept of “foundation models”.
+Using fine-tuning, transformer-based foundation models are adapted to downstream tasks without full re-training, with similar processes existing for foundation models with different architectures \cite[szalata2024].
+
+% first wave
+A first wave of single-cell transformers was introduced in 2023–2024, aiming to produce foundation models pre-trained on tens of millions of cells that can be fine-tuned for specific tasks.
+\n{scGPT} \cite[cui2024] proposed to address cell typing, perturbation prediction, batch correction, and multi-omics integration,
+while \n{Geneformer} \cite[theodoris2023] encoded the multi-scale regulation of gene regulatory network inference.
+These models attracted significant attention, yet \inlinecite[szalata2024] identified several shortcomings in performance and approach, such as its reliance on token order inherited from its language model roots, all while transcriptomes fundamentally lack an intrinsic order.
+Later, benchmarks have shown even more clearly that this approach rarely outperforms simpler approaches, with even linear models being competitive in perturbation prediction \cite[ahlmann-eltze2025].
+While transformer models architecturally contain autoencoders, they do not retain the transparency of the interpretable VAEs discussed in \insec[sec:vaes]:
+latent dimensions coming from such transformers do not map to identifiable biological processes, which limits the models’ utility for hypothesis generation and mechanistic understanding.
+
+% second wave
+A more targeted second wave of methods has begun to address these shortcomings.
+\n{State} \cite[adduri2025] focuses specifically on perturbation prediction by training on more than a hundred million of perturbed cells, resulting in a markedly improved performance.
+\n{Stack} \cite[dong2026] builds on the foundation model idea, but allows in-context learning, which enables predictions about unseen conditions without fine-tuning.
+Notably, \n{Stack}’s tokenization into gene module vectors provides some degree of interpretability to its latent space.
+% both flow matching, mention?
+\n{scLDM} \cite[palla2025] forges the order-dependency of transformer architectures by using latent diffusion models in order to generate realistic expression profiles for use cases like virtual experiments.
+\n{CellFlow} \cite[klein2025a] uses flow matching to model single-cell phenotypic responses to complex perturbations, including combinatorial treatments.
+
+% interpretability as core weakness
+Interpretability remains a central limitation of these models, with not even \n{Stack}’s gene-module tokens going down to the single gene level.
+Especially for medical applications, the lack of direct mechanistical reasoning about the underlying biology of a prediction might be a roadblock.
+
+% beyond technical: virtual cell vision
+The concept motivating the approach of generalist “foundation models” is the vision of the “virtual cell”: a model that can simulate cellular behavior in-silico, predicting how cells respond to perturbations, drugs, and disease \cite[bunne2024].
+Taking a step back from the single-cell level, \inlinecite[shmatko2025] demonstrate that incomplete knowledge can lead to useful predictions with \n{Delphi-2M}, a GPT-style model trained on patient level data to predict disease trajectories up to 20 years into the future.
+The vision of the virtual cell, if realized, could accelerate drug discovery, enable personalized treatment planning at a fraction of its cost today, and reduce the need for animal experiments.
+Without interpretability however, even a perfect black box of a virtual cell would only help with speed and cost, but not with insight.
+However it is realized, the path leading up to it will require processing large amounts of data to resolve even the most niche cell identities.
+
+\stopsection
+
+\startsection[reference=sec:multimodal, title={Multimodal integration and spatial transcriptomics}]
+
+Recent developments in the joint measurement of scRNA-Seq data and multiple other data types at single-cell resolution have enabled multimodal analysis.
+Nature Methods named single-cell multimodal omics its method of the year 2019 \cite[nmeth2020], and spatially resolved transcriptomics its method of the year 2020 \cite[nmeth2021spatial].
+\inlinecite[efremova2020] provided an early review of the different single-cell modes that became jointly measurable with scRNA-Seq in short succession: RNA velocity, spatial location, surface protein abundances, epigenetic modifications, and chromatin accessibility.
+
+% spatial explosion
+Of these, spatial transcriptomics saw the most dramatic growth.
+In recent years, the field has expanded to encompass microarray-based, bead-based, and nanoball approaches at resolutions from tissue-level to subcellular \cite[moses2022].
+\n{SpatialData} \cite[marconato2024] and \n{squidpy} \cite[palla2022] provide \n{AnnData}-based infrastructure for this modality within \n{scverse},
+while new models show the promise of spatial information, be it trajectory inference methods (see \insec[sec:trajectory]) or spatial prediction models like \n{Nicheformer} \cite[tejada-lapuerta2025].
+
+% multimodal infrastructure
+The multimodal infrastructure has matured as anticipated in the contributed articles.
+\n{MuData} and \n{muon} \cite[bredikhin2022] fill the role of storing and jointly analyzing multiple modalities for common sets of observations.
+\n{SnapATAC2} \cite[fang2021,zhang2024], built on \n{AnnData}, has become a core \n{scverse} package for chromatin accessibility analysis.
+Surface protein measurements via CITE-Seq \cite[gayoso2019] and epigenetic profiling via scCUT\&Tag \cite[kaya-okur2019] are now routinely combined with transcriptomic data.
+Parts of the multimodal landscape are beginning to settle, for example multimodal integration methods have been systematically benchmarked by \inlinecite[liu2025], leading to guidance based on the choice of which downstream task to optimize for.
+% they evaluated dimension reduction, batch correction, cell typing, imputation, feature selection and spatial registration across many method-dataset combinations.
+Additionally, the need for integration across modalities might be diminishing as protocols emerge that measure multiple modalities simultaneously, such as SUM-seq \cite[lobato-moreno2025] for combined chromatin accessibility and gene expression profiling from millions of cells.
+It seems infeasible that everything can be measured together however, so integration might simply become more sophisticated by taking n-to-n mapping of modalities into account.
+
+A cell’s identity is not fully captured by its transcriptome alone; while a useful proxy, it is unlikely that we achieve insight on a level coming close to the “virtual cell” (see \insec[sec:transformers]) without integrating across modalities.
+From the perspective of this thesis, this means a need for robust data structures encapsulating the relationships between modalities and fast frameworks able to handle their combinatorial explosion.
+
+\stopsection
+
+\startsection[title={From cell census to biological insight}]
+
+The developments described in the sections above are not purely methodological; they demonstrate a shift in how single-cell data can help us gain insight into healthy development, homeostasis, and disease.
+
+The \n{Human Cell Atlas} (\n{HCA}) has progressed from a white paper \cite[regev2017] to the point where a first draft is being assembled that will encompass around 100 million cells across all major organ systems \cite[rood2025].
+It will among others contain integrated atlases of the lung, gut, organoid, and nervous system.
+
+The \n{HCA}’s stated goals include being an openly accessible baseline reference.
+\inlinecite[lotfollahi2024] draw an analogy to reference genomes: they predict that similar to the established practice of quantifying transcriptomes by mapping reads to a reference genome, mapping new single-cell data to curated reference atlases could replace manual, unsupervised clustering and annotation.
+Reference mapping workflows project query cells into an atlas-defined coordinate space, enabling automated cell identity annotation, detection of novel populations absent from the reference, and prediction of unmeasured modalities such as spatial location or chromatin accessibility.
+
+Foundation models are taking steps towards this vision as described in \insec[sec:trajectory] \andsec[sec:transformers].
+An example in active use is \n{SCimilarity} \cite[heimberg2025], a metric-learning model trained on 23.4 million cells from hundreds of studies for searching transcriptionally similar cells across tissues, diseases, and perturbations.
+By capturing cell similarity while preserving gene expression patterns, it achieves data integration without explicit batch correction and faithfully retrieves gene signatures, a task earlier foundation models struggled with.
+Its ability to quickly annotate query cells from all covered domains demonstrates the kind of scalable, automated analysis that reference mapping promises.
+Cell atlases like the \n{HCA} are therefore approaching their vision of becoming active infrastructure for computational modeling \cite[rood2025], much as reference genomes became infrastructure for genomics and transcriptomics.
+
+Single-cell analysis is also beginning to influence pharmaceutical practice.
+During the COVID-19 pandemic, single-cell technologies were used to measure B cell receptor repertoires to characterize immune responses, and to develop neutralizing antibodies.
+Beyond infectious diseases, \inlinecite[vandesande2023] review applications of scRNA-Seq in drug discovery, including target discovery at cell identity level, high-throughput perturbation screening, and insight into different aspects of disease such as cancer metastasis, neuro-degenerative diseases such as Alzheimer’s, and auto-immune diseases.
+
+The growing ability to predict cellular responses to perturbations in-silico (See \inlinecite[adduri2025,klein2025a,dong2026] and \insec[sec:transformers]) could further accelerate this path towards clinical insight.
+Virtual perturbation screens are realistically able to substantially narrow the space of promising drug candidates before wet-lab validation, driving down the cost and time of drug development, which in turn might push several orphan drugs back into the realm of financial feasibility.
+\n{Scanpy} and \n{AnnData} already play an important role in this effort by forming the base of many pharmaceutical researchers’ daily work.
+
+\stopsection
+
+\startsection[reference=sec:sustainability, title={Sustaining open scientific software}]
+
 \n{Scanpy} has proven to be scalable in terms of CPU and memory through its efficient implementation, multiprocessing capabilities and \n{AnnData}’s out-of-core mode,
 which continue to be actively developed for both projects.
 For a successful open-source project, more is necessary than just performance and ease of use.
 Open source projects need to be scalable in terms of maintenance structure and trust \cite[delaat2010].
 
-% Scanpy community building
-The next steps in this direction happen as part of the \n{scverse} project, which focuses on community building.
-To foster openness and inclusivity, \n{scverse} has a code of conduct (CoC).
+The \n{scverse} project has made concrete progress in this direction since its inception.
+Its code of conduct (CoC), governance model, and formalized inclusion criteria for ecosystem packages distributes decision-making beyond the original authors.
 CoCs have been shown to increase diversity in a project, while higher diversity is linked to increased productivity \cite[tourani2017].
-To uncouple progress with the available amount of free time of the de-facto decision makers of the project, a steering committee was formed.
-Its membership is open to long-term contributors, and its meeting notes are publicly available.
-Automations for quality and performance criteria, such as \n{scanpy}’s high-performance GPU-driven parts, similarly streamline the contribution process and are being extended.
-This will make friendly and helpful information available regardless of the available free time of experienced contributors.
-Additionally, inclusion criteria of ecosystem tools displayed on the \n{scverse} website are being formalized and made transparent.
-Communication channels with the main projects of the R world are already established and will continue to be used to ensure interoperability.
 
-These changes should be able to encourage more junior developers and data scientists to start contributing to the project.
-More active contributors in turn mean that key knowledge of the project is shared by more people, which reduces reliance on the continued effort of a small group of individuals.
+There is a fundamental misalignment between academic incentives rewarding novelty and the need for long-term software maintenance \cite[strasser2022].
+\inlinecite[coelho2024] observes that most research software is built by trainees on short-term grants, leading to abandoned tools after publication, and argues for a minimum five-year commitment.
+At the same time open-source scientific software relies on grants and other goal-driven fund distribution models rather than long-term employment by neutral entities like countries.
+The result is a landscape where widely used packages depend on the continued voluntary effort of a small number of individuals, many of whom hold temporary academic positions.
 
-Further improvements can come from the professional development world, especially if some contributors can invest time regularly.
-A bigger group of regular contributors can result in adopting agile principles.
-This would result in a more structured pace of development, with regularly scheduled releases and the ability to plan which features are being focused on.
+The \n{scverse} governance model tries to combat this problem by decoupling software maintenance from the interests of individual labs and people:
+to this end it includes an open inter-lab management committee, and formalized criteria for both community conduct and inclusion of new ecosystem packages.
+We hope to be able to reduce reliance on any single contributor by encouraging contributions from junior developers and data scientists, distributing key knowledge across more people, and relying on structured development practices and automation.
+
+Free and open software and science, just like life itself require a great deal of interlocking supporting systems to be feasible.
+When society is at its best, it builds the resources and social capital to sustain more of these systems.
+Because no matter how brilliant a given scientific advancement is, it stands not only on the shoulders of giants, but also on the shoulders of the social and technical scaffolding that enabled such potential to realize.
+
 \stopsection
 
 \stopchapter

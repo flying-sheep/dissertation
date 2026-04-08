@@ -17,6 +17,7 @@ Elsevier
 Fatma
 Gannie
 Gokcen
+Gromov
 Haghverdi
 Hrabě
 Iverson
@@ -32,4 +33,5 @@ Theis
 Uzbas
 Valerio
 Vitzthum
+Wasserstein
 Wilcoxon
