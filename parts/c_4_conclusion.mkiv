@@ -49,7 +49,7 @@ The decision paid off by enabling first \n{SpatialData}’s \cite[marconato2024]
 Later, it enabled access for web services through file servers instead of dedicated server software, and is currently being leveraged for the high-performance data loader \n{annbatch}.
 
 % rapids-singlecell
-The growth in dataset sizes predicted in \inlinecite[angerer2017] has materialized – experiments producing millions of cells (see \insec[sec:protocols]) either require massive amounts of memory or methods able to harness the out-of-core capabilities \n{AnnData} provides.
+The growth in dataset sizes predicted in \inlinecite[angerer2017] materialized – experiments producing millions of cells (see \insec[sec:protocols]) either require massive amounts of memory or methods able to harness the out-of-core capabilities \n{AnnData} provides.
 Currently, CPU-based pipelines can require hours for some of their steps when performed on million-cell datasets.
 \n{rapids-singlecell} \cite[dicks2026], enabled by \n{scanpy}’s pioneering modular design, provides GPU-accelerated drop-in replacements for core operations.
 As an example, it reduced end-to-end processing times of a benchmark of one million cells from around 50 minutes on a 32-core workstation to 26 seconds on a single GPU.
@@ -120,7 +120,7 @@ Dimensionality reduction was established as a foundational class of methods for 
 The \n{destiny} package implements both diffusion maps for nonlinear embedding of single-cell data and the gene relevance method quantifies which genes drive a given embedding.
 Both methods address an issue that has no definitive answer to this day: ensuring interpretability of low-dimensional representations of high-dimensional data.
 
-Since the respective articles were written, the field has engaged in a debate about what dimensionality reduction can and cannot tell us.
+Since the respective articles were written, the field engaged in a debate about what dimensionality reduction can and cannot tell us.
 \inlinecite[chari2023] argued that extreme reduction from thousands of dimensions to two inevitably causes significant distortion, and demonstrated that an autoencoder could map cells into arbitrary shapes while preserving pairwise distances comparably to heuristic embeddings like UMAP or t-SNE.
 They concluded that heuristic embeddings are arbitrary and should be abandoned for exploratory analysis.
 The critique raised valid points: inter-cluster distances in heuristic embeddings are not meaningful, cluster sizes are artifacts of hyperparameters, and yet qualitative over-interpretation of visual groupings is widespread \cite[cashman2025].
@@ -166,7 +166,7 @@ Nonlinear methods like diffusion maps, t-SNE or later UMAP were developed and co
 But while they capture both continuity and heterogeneity at multiple scales, their output does not contain directly interpretable information about processes acting on these scales.
 Methods like the growing multitude of trajectory inference algorithms or gene relevance complement them in their domain \cite[saelens2019].
 
-Since \n{DPT} was incorporated into \n{destiny} and \n{scanpy}, trajectory inference has matured substantially.
+Since \n{DPT} was incorporated into \n{destiny} and \n{scanpy}, trajectory inference matured substantially.
 \n{PAGA} \cite[wolf2019] infers hierarchical cell lineage structure from RNA-Seq data.
 \n{CellRank} \cite[lange2022] computes directed, probabilistic fate maps using RNA velocity while \n{CellRank\,2} \cite[weiler2024] generalizes this to multimodal data.
 In the following years, it became part of a trend in which optimal transport (OT) was combined with multi-modal data – especially spatial – for trajectory inference.
@@ -191,9 +191,9 @@ some of the interpretable VAE approaches discussed in \insec[sec:vaes] go down t
 
 Perhaps the most visible development in computational biology in recent years is the application of generative models to single-cell data.
 An early example is \n{scGen} \cite[lotfollahi2019], which used a VAE for perturbation prediction by learning a latent representation of cellular identity and perturbation direction (see \insec[sec:vaes]).
-Since then, transformer architectures have seen a steep rise in adoption.
+Since then, transformer architectures saw a steep rise in adoption.
 Originally developed for natural language processing, transformers have been adapted to learn representations from large collections of gene expression profiles like cell atlases.
-Large language models can be adapted to various downstream tasks, a property that gave rise of the concept of “foundation models”.
+Large language models can be adapted to various downstream tasks, a property that gave rise to the concept of “foundation models”.
 Using fine-tuning, transformer-based foundation models are adapted to downstream tasks without full re-training, with similar processes existing for foundation models with different architectures \cite[szalata2024].
 
 % first wave
@@ -219,8 +219,8 @@ Interpretability remains a central limitation of these models, with not even \n{
 Especially for medical applications, the lack of direct mechanistical reasoning about the underlying biology of a prediction might be a roadblock.
 
 % beyond technical: virtual cell vision
-The concept motivating the approach of generalist “foundation models” is the vision of the “virtual cell”: an model that can simulate cellular behavior in-silico, predicting how cells respond to perturbations, drugs, and disease \cite[bunne2024].
-Taking a step back from the single-cell level, \inlinecite[shmatko2025] demonstrate that incomplete knowledge can lead to useful predictions with \n{Delphi-2M}, a GPT-style model trained on patient level data to predicting disease trajectories up to 20 years into the future.
+The concept motivating the approach of generalist “foundation models” is the vision of the “virtual cell”: a model that can simulate cellular behavior in-silico, predicting how cells respond to perturbations, drugs, and disease \cite[bunne2024].
+Taking a step back from the single-cell level, \inlinecite[shmatko2025] demonstrate that incomplete knowledge can lead to useful predictions with \n{Delphi-2M}, a GPT-style model trained on patient level data to predict disease trajectories up to 20 years into the future.
 The vision of the virtual cell, if realized, could accelerate drug discovery, enable personalized treatment planning at a fraction of its cost today, and reduce the need for animal experiments.
 Without interpretability however, even a perfect black box of a virtual cell would only help with speed and cost, but not with insight.
 However it is realized, the path leading up to it will require processing large amounts of data to resolve even the most niche cell identities.
@@ -234,7 +234,7 @@ Nature Methods named single-cell multimodal omics its method of the year 2019 \c
 \inlinecite[efremova2020] provided an early review of the different single-cell modes that became jointly measurable with scRNA-Seq in short succession: RNA velocity, spatial location, surface protein abundances, epigenetic modifications, and chromatin accessibility.
 
 % spatial explosion
-Of these, spatial transcriptomics has seen the most dramatic growth.
+Of these, spatial transcriptomics saw the most dramatic growth.
 In recent years, the field has expanded to encompass microarray-based, bead-based, and nanoball approaches at resolutions from tissue-level to subcellular \cite[moses2022].
 \n{SpatialData} \cite[marconato2024] and \n{squidpy} \cite[palla2022] provide \n{AnnData}-based infrastructure for this modality within \n{scverse},
 while new models show the promise of spatial information, be it trajectory inference methods (see \insec[sec:trajectory]) or spatial prediction models like \n{Nicheformer} \cite[tejada-lapuerta2025].
